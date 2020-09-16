@@ -31,7 +31,7 @@ namespace Business.Commands.Classifications
 
             RuleFor(e => e.Code)
                 .NotEmpty()
-                .Must(e => !db.Classifications.Any(c => c.Code == e)).WithLocalizedStringMessage(typeof(Core.Resources.Validation), "CodeAlreadyExists")
+                .Must((command, c) => !db.Classifications.Any(cl => cl.Code == command.Code && cl.Id != command.Id)).WithLocalizedStringMessage(typeof(Core.Resources.Validation), "CodeAlreadyExists")
                 ;
 
             RuleFor(e => e.DescEng)
