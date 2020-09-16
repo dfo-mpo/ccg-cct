@@ -51,10 +51,13 @@ namespace Service
             ValidatorOptions.LanguageManager = new LocalizedLanguageManager();
 
 
-            services.AddMvc().AddJsonOptions(options =>
-            {
-                options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
-            });
+            services
+                .AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                })
+                .AddHybridModelBinder();
 
             services
                 .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
@@ -80,7 +83,7 @@ namespace Service
 
                             if (identity.HasClaim(e => e.Type == "aud" && e.Value == _identityConfig.ClientAudience))
                             {
-                                
+
                                 // get user data from claims
                                 var command = new AddNewUserAccountCommand()
                                 {
@@ -180,21 +183,25 @@ namespace Service
                 .UseStaticFiles()
                 ;
 
-
         }
 
         private void ConfigureContainer(IApplicationBuilder app)
         {
-            _container.Register(() => new DbContextOptionsBuilder<ExampleDbContext>().UseSqlServer(Configuration.GetConnectionString("ExampleDbContext")).Options, Lifestyle.Singleton);
+            _container.Register(
+                () => new DbContextOptionsBuilder<ExampleDbContext>()
+                    .UseSqlServer(Configuration.GetConnectionString("ExampleDbContext")).Options, Lifestyle.Singleton);
             _container.Register<DbContext, ExampleDbContext>(Lifestyle.Scoped);
             _container.Register<ExampleDbContext>(Lifestyle.Scoped);
             _container.Register(() => _emailConfig, Lifestyle.Singleton);
             _container.Register(() => _appConfig, Lifestyle.Singleton);
             _container.Register<CcgAccountClientConfiguration>(() => _identityConfig, Lifestyle.Singleton);
             _container.Register<ExampleIdentityConfiguration>(() => _identityConfig, Lifestyle.Singleton);
-            var assembliesToScan = AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains("Business")).ToArray();
+            var assembliesToScan = AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains("Business"))
+                .ToArray();
             StartupHelper.Configure<ExampleDbContext>(app, _container, assembliesToScan);
+
         }
+
     }
 }
 

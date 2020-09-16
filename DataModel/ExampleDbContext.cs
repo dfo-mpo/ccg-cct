@@ -24,9 +24,11 @@ namespace DataModel
             ReferenceHttpContextAccessor = provider;
         }
 
+        public DbSet<Classification> Classifications { get; set; }
+
 
         // code tables
-        public DbSet<Status> Statuses { get; set; }
+        public DbSet<StatusCode> Statuses { get; set; }
 
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<EventLog> EventLogs { get; set; }
@@ -51,14 +53,13 @@ namespace DataModel
             builder.Entity<SystemRole>().HasData(Lookup.Auth.SystemRoles);
             builder.Entity<SystemRolePrivilege>().HasData(Lookup.Auth.SystemRolePrivileges);
             //codes
-            builder.Entity<Status>().HasData(Lookup.CodeTables.Statuses);
+            builder.Entity<StatusCode>().HasData(Lookup.CodeTables.Statuses);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CcgApiTemplate;Trusted_Connection=True;");
-            //optionsBuilder.UseSqlite("Data Source=app.db");
             optionsBuilder.EnableSensitiveDataLogging();
         }
         private void SetTracking(EntityEntry entry)

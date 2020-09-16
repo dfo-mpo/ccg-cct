@@ -21,11 +21,6 @@ namespace DataModel.Lookup
             new Privilege() { Id = Guid.Parse("CFEA2A8F-40FD-4B8E-B7C2-062CF42745C6"), Code = "Auth_Role_Manage", DescEng = "Manage roles", DescFre = "Gérer les rôles", IsActive = true },
             new Privilege() { Id = Guid.Parse("3BF1919A-C5D5-46AA-BA99-70DD1F73D8D4"), Code = "Auth_Privilege_View", DescEng = "View Privileges", DescFre = "Afficher les privilèges", IsActive = true },
             new Privilege() { Id = Guid.Parse("6D823333-1C28-4BA5-8544-E0004D1BD272"), Code = "Code_View", DescEng = "View Code Tables", DescFre = "Afficher les tableaux de codes", IsActive = true },
-            new Privilege() { Id = Guid.Parse("6FCC0103-8DC0-49FD-B22B-62DE9CAC461D"), Code = "Voc_Intake", DescEng = "Create a file", DescFre = "Créer un dossier", IsActive = true },
-            new Privilege() { Id = Guid.Parse("FF51E03A-1ACF-4600-8C0A-65F73CAED103"), Code = "Voc_View", DescEng = "View files", DescFre = "Afficher les dossier", IsActive = true },
-            new Privilege() { Id = Guid.Parse("2E3F1ADB-78BA-4E13-84DB-C703F71D09DB"), Code = "Voc_Edit", DescEng = "Edit file", DescFre = "Modifier le dossier", IsActive = true },
-            new Privilege() { Id = Guid.Parse("05CABE94-D27E-44FF-A2DF-3A085F73100B"), Code = "Voc_Delete", DescEng = "Delete files", DescFre = "Supprimer les dossiers", IsActive = true },
-            new Privilege() { Id = Guid.Parse("6a16b3db-52ed-4882-ad14-298a2c98dc94"), Code = "Report_View", DescEng = "View reports", DescFre = "Afficher les rapports", IsActive = true }
         };
 
         private static Guid GuestSystemRoleId =>

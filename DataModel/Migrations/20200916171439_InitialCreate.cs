@@ -23,6 +23,20 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Classifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Code = table.Column<string>(nullable: false),
+                    DescEng = table.Column<string>(unicode: false, maxLength: 255, nullable: true),
+                    DescFre = table.Column<string>(unicode: false, maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classifications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EventLogs",
                 columns: table => new
                 {
@@ -61,23 +75,15 @@ namespace DataModel.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    ParentStatusId = table.Column<Guid>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     SortOrder = table.Column<short>(nullable: false, defaultValue: (short)0),
                     IsActive = table.Column<bool>(nullable: false),
                     DescEng = table.Column<string>(nullable: true),
-                    DescFre = table.Column<string>(nullable: true),
-                    ParentId = table.Column<Guid>(nullable: true)
+                    DescFre = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Statuses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Statuses_Statuses_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "Statuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,39 +174,34 @@ namespace DataModel.Migrations
                 values: new object[,]
                 {
                     { new Guid("afe32f00-b6a6-4caa-b452-30e1240e34c0"), "Auth_User_View", "View users", "Afficher les utilisateurs", true, (short)0 },
-                    { new Guid("6a16b3db-52ed-4882-ad14-298a2c98dc94"), "Report_View", "View reports", "Afficher les rapports", true, (short)0 },
-                    { new Guid("05cabe94-d27e-44ff-a2df-3a085f73100b"), "Voc_Delete", "Delete files", "Supprimer les dossiers", true, (short)0 },
-                    { new Guid("2e3f1adb-78ba-4e13-84db-c703f71d09db"), "Voc_Edit", "Edit file", "Modifier le dossier", true, (short)0 },
-                    { new Guid("6fcc0103-8dc0-49fd-b22b-62de9cac461d"), "Voc_Intake", "Create a file", "Créer un dossier", true, (short)0 },
-                    { new Guid("6d823333-1c28-4ba5-8544-e0004d1bd272"), "Code_View", "View Code Tables", "Afficher les tableaux de codes", true, (short)0 },
-                    { new Guid("ff51e03a-1acf-4600-8c0a-65f73caed103"), "Voc_View", "View files", "Afficher les dossier", true, (short)0 },
-                    { new Guid("cfea2a8f-40fd-4b8e-b7c2-062cf42745c6"), "Auth_Role_Manage", "Manage roles", "Gérer les rôles", true, (short)0 },
-                    { new Guid("664feb76-8bcf-445a-a70d-8a31ea9c9954"), "Auth_Role_View", "View roles", "Afficher les rôles", true, (short)0 },
-                    { new Guid("b78ecf44-75b6-4058-b9fe-c4ae4a5b1baa"), "Auth_Assign_Manage", "Manage role privileges", "Gérer les privilèges de rôles", true, (short)0 },
-                    { new Guid("c3e4261f-66d9-4a22-b589-3cdd5c17c12d"), "Auth_Assign_View", "View role privileges", "Afficher les privilèges de rôle", true, (short)0 },
                     { new Guid("3a76dde2-b837-450c-a6b3-eda358720bbd"), "Auth_User_Manage", "Manage users", "Gérer les utilisateurs", true, (short)0 },
-                    { new Guid("3bf1919a-c5d5-46aa-ba99-70dd1f73d8d4"), "Auth_Privilege_View", "View Privileges", "Afficher les privilèges", true, (short)0 }
+                    { new Guid("c3e4261f-66d9-4a22-b589-3cdd5c17c12d"), "Auth_Assign_View", "View role privileges", "Afficher les privilèges de rôle", true, (short)0 },
+                    { new Guid("b78ecf44-75b6-4058-b9fe-c4ae4a5b1baa"), "Auth_Assign_Manage", "Manage role privileges", "Gérer les privilèges de rôles", true, (short)0 },
+                    { new Guid("664feb76-8bcf-445a-a70d-8a31ea9c9954"), "Auth_Role_View", "View roles", "Afficher les rôles", true, (short)0 },
+                    { new Guid("cfea2a8f-40fd-4b8e-b7c2-062cf42745c6"), "Auth_Role_Manage", "Manage roles", "Gérer les rôles", true, (short)0 },
+                    { new Guid("3bf1919a-c5d5-46aa-ba99-70dd1f73d8d4"), "Auth_Privilege_View", "View Privileges", "Afficher les privilèges", true, (short)0 },
+                    { new Guid("6d823333-1c28-4ba5-8544-e0004d1bd272"), "Code_View", "View Code Tables", "Afficher les tableaux de codes", true, (short)0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive", "ParentId", "ParentStatusId" },
-                values: new object[] { new Guid("f75ef970-7785-446f-a125-b52c0f71ef85"), "TA", "Technical assessment/remediation in progress", "Évaluation technique/assainissement en cours", true, null, new Guid("fd988731-d699-40d1-a860-5619f331727e") });
+                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive" },
+                values: new object[] { new Guid("fd988731-d699-40d1-a860-5619f331727e"), "A", "Active", "Actifs", true });
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive", "ParentId", "ParentStatusId" },
-                values: new object[] { new Guid("fd988731-d699-40d1-a860-5619f331727e"), "A", "Active", "Actifs", true, null, null });
+                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive" },
+                values: new object[] { new Guid("904d49f7-227e-4650-aba0-47b25d54c41b"), "O", "Ongoing monitoring/assessment required to determine way forward", "Un suivi et une évaluation continus sont nécessaires pour déterminer la voie à suivre.", true });
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive", "ParentId", "ParentStatusId" },
-                values: new object[] { new Guid("904d49f7-227e-4650-aba0-47b25d54c41b"), "O", "Ongoing monitoring/assessment required to determine way forward", "Un suivi et une évaluation continus sont nécessaires pour déterminer la voie à suivre.", true, null, new Guid("fd988731-d699-40d1-a860-5619f331727e") });
+                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive" },
+                values: new object[] { new Guid("f75ef970-7785-446f-a125-b52c0f71ef85"), "TA", "Technical assessment/remediation in progress", "Évaluation technique/assainissement en cours", true });
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive", "ParentId", "ParentStatusId" },
-                values: new object[] { new Guid("b91082f4-21d0-4640-82e4-143ab566ec3f"), "OTH", "Other", "Autre", true, null, null });
+                columns: new[] { "Id", "Code", "DescEng", "DescFre", "IsActive" },
+                values: new object[] { new Guid("b91082f4-21d0-4640-82e4-143ab566ec3f"), "OTH", "Other", "Autre", true });
 
             migrationBuilder.InsertData(
                 table: "SystemRoles",
@@ -235,11 +236,6 @@ namespace DataModel.Migrations
                 name: "IX_Statuses_Code",
                 table: "Statuses",
                 column: "Code");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Statuses_ParentId",
-                table: "Statuses",
-                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SystemRolePrivileges_PrivilegeId",
@@ -278,6 +274,9 @@ namespace DataModel.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AuditLogs");
+
+            migrationBuilder.DropTable(
+                name: "Classifications");
 
             migrationBuilder.DropTable(
                 name: "EventLogs");

@@ -19,7 +19,7 @@ namespace Core.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Validation {
@@ -61,20 +61,20 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code already exists..
+        /// </summary>
+        public static string CodeAlreadyExists {
+            get {
+                return ResourceManager.GetString("CodeAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find record..
         /// </summary>
         public static string NotFound {
             get {
                 return ResourceManager.GetString("NotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Phone Number Invalid.
-        /// </summary>
-        public static string PhoneNumberInvalid {
-            get {
-                return ResourceManager.GetString("PhoneNumberInvalid", resourceCulture);
             }
         }
         

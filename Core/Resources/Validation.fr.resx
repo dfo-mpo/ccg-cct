@@ -120,9 +120,6 @@
   <data name="NotFound" xml:space="preserve">
     <value>Dossier introuvable.</value>
   </data>
-  <data name="PhoneNumberInvalid" xml:space="preserve">
-    <value>Numéro de téléphone erroné</value>
-  </data>
   <data name="RouteParameterMustMatchFormDataParameter" xml:space="preserve">
     <value>Le paramètre d’itinéraire doit correspondre au paramètre de données du formulaire.</value>
   </data>

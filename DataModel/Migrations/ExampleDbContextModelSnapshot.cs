@@ -64,12 +64,7 @@ namespace DataModel.Migrations
                         new { Id = new Guid("664feb76-8bcf-445a-a70d-8a31ea9c9954"), Code = "Auth_Role_View", DescEng = "View roles", DescFre = "Afficher les rôles", IsActive = true, SortOrder = (short)0 },
                         new { Id = new Guid("cfea2a8f-40fd-4b8e-b7c2-062cf42745c6"), Code = "Auth_Role_Manage", DescEng = "Manage roles", DescFre = "Gérer les rôles", IsActive = true, SortOrder = (short)0 },
                         new { Id = new Guid("3bf1919a-c5d5-46aa-ba99-70dd1f73d8d4"), Code = "Auth_Privilege_View", DescEng = "View Privileges", DescFre = "Afficher les privilèges", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("6d823333-1c28-4ba5-8544-e0004d1bd272"), Code = "Code_View", DescEng = "View Code Tables", DescFre = "Afficher les tableaux de codes", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("6fcc0103-8dc0-49fd-b22b-62de9cac461d"), Code = "Voc_Intake", DescEng = "Create a file", DescFre = "Créer un dossier", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("ff51e03a-1acf-4600-8c0a-65f73caed103"), Code = "Voc_View", DescEng = "View files", DescFre = "Afficher les dossier", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("2e3f1adb-78ba-4e13-84db-c703f71d09db"), Code = "Voc_Edit", DescEng = "Edit file", DescFre = "Modifier le dossier", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("05cabe94-d27e-44ff-a2df-3a085f73100b"), Code = "Voc_Delete", DescEng = "Delete files", DescFre = "Supprimer les dossiers", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("6a16b3db-52ed-4882-ad14-298a2c98dc94"), Code = "Report_View", DescEng = "View reports", DescFre = "Afficher les rapports", IsActive = true, SortOrder = (short)0 }
+                        new { Id = new Guid("6d823333-1c28-4ba5-8544-e0004d1bd272"), Code = "Code_View", DescEng = "View Code Tables", DescFre = "Afficher les tableaux de codes", IsActive = true, SortOrder = (short)0 }
                     );
                 });
 
@@ -175,7 +170,28 @@ namespace DataModel.Migrations
                     b.ToTable("UserClaims");
                 });
 
-            modelBuilder.Entity("DataModel.CodeTables.Status", b =>
+            modelBuilder.Entity("DataModel.Classification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code")
+                        .IsRequired();
+
+                    b.Property<string>("DescEng")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("DescFre")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Classifications");
+                });
+
+            modelBuilder.Entity("DataModel.CodeTables.StatusCode", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -188,10 +204,6 @@ namespace DataModel.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<Guid?>("ParentId");
-
-                    b.Property<Guid?>("ParentStatusId");
-
                     b.Property<short>("SortOrder")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue((short)0);
@@ -200,14 +212,12 @@ namespace DataModel.Migrations
 
                     b.HasIndex("Code");
 
-                    b.HasIndex("ParentId");
-
                     b.ToTable("Statuses");
 
                     b.HasData(
                         new { Id = new Guid("fd988731-d699-40d1-a860-5619f331727e"), Code = "A", DescEng = "Active", DescFre = "Actifs", IsActive = true, SortOrder = (short)0 },
-                        new { Id = new Guid("904d49f7-227e-4650-aba0-47b25d54c41b"), Code = "O", DescEng = "Ongoing monitoring/assessment required to determine way forward", DescFre = "Un suivi et une évaluation continus sont nécessaires pour déterminer la voie à suivre.", IsActive = true, ParentStatusId = new Guid("fd988731-d699-40d1-a860-5619f331727e"), SortOrder = (short)0 },
-                        new { Id = new Guid("f75ef970-7785-446f-a125-b52c0f71ef85"), Code = "TA", DescEng = "Technical assessment/remediation in progress", DescFre = "Évaluation technique/assainissement en cours", IsActive = true, ParentStatusId = new Guid("fd988731-d699-40d1-a860-5619f331727e"), SortOrder = (short)0 },
+                        new { Id = new Guid("904d49f7-227e-4650-aba0-47b25d54c41b"), Code = "O", DescEng = "Ongoing monitoring/assessment required to determine way forward", DescFre = "Un suivi et une évaluation continus sont nécessaires pour déterminer la voie à suivre.", IsActive = true, SortOrder = (short)0 },
+                        new { Id = new Guid("f75ef970-7785-446f-a125-b52c0f71ef85"), Code = "TA", DescEng = "Technical assessment/remediation in progress", DescFre = "Évaluation technique/assainissement en cours", IsActive = true, SortOrder = (short)0 },
                         new { Id = new Guid("b91082f4-21d0-4640-82e4-143ab566ec3f"), Code = "OTH", DescEng = "Other", DescFre = "Autre", IsActive = true, SortOrder = (short)0 }
                     );
                 });
@@ -263,13 +273,6 @@ namespace DataModel.Migrations
                         .WithMany("UserClaims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DataModel.CodeTables.Status", b =>
-                {
-                    b.HasOne("DataModel.CodeTables.Status", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId");
                 });
 #pragma warning restore 612, 618
         }
