@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="CCG.AspNetCore.Web" Version="1.0.1" />
-    <PackageReference Include="HybridModelBinding" Version="0.17.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
