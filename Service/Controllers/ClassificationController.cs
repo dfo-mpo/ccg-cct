@@ -7,7 +7,6 @@ using Business.Queries.Classifications;
 using Business.Queries.Dtos;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Common.Resources;
-using HybridModelBinding;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
