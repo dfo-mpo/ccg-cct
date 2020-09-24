@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCG.AspNetCore" Version="1.0.6" />
+    <PackageReference Include="CCG.AspNetCore" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Audit.Core;
-using CCG.AspNetCore.Business.Commands.Audits;
 using CCG.AspNetCore.Business.Commands.Auth;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;
 using CCG.AspNetCore.Common.Configuration;
-using CCG.AspNetCore.Data.Audit;
 using CCG.AspNetCore.Web;
 using CCG.AspNetCore.Web.Authorization;
 using Core;
@@ -19,12 +15,14 @@ using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using SimpleInjector;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace Service
 {
@@ -34,28 +32,34 @@ namespace Service
         private readonly EmailConfiguration _emailConfig;
         private readonly ApplicationConfiguration _appConfig;
         private readonly ExampleIdentityConfiguration _identityConfig;
+        private readonly ConfigurationBootstrapper _bootstrapper;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
             _emailConfig = Configuration.GetSection("Email").Get<EmailConfiguration>();
             _appConfig = Configuration.GetSection("Application").Get<ApplicationConfiguration>();
             _identityConfig = Configuration.GetSection("IdentityProvider").Get<ExampleIdentityConfiguration>();
+            _bootstrapper = new ConfigurationBootstrapper(_container);
         }
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            ValidatorOptions.LanguageManager = new LocalizedLanguageManager();
+            ValidatorOptions.Global.LanguageManager = new LocalizedLanguageManager();
 
 
             services
-                .AddMvc()
-                .AddJsonOptions(options =>
+                .AddControllers()
+                .AddNewtonsoftJson(options => options.SerializerSettings.DateTimeZoneHandling  = DateTimeZoneHandling.Utc)
+                .ConfigureApiBehaviorOptions(options =>
                 {
-                    options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+                    options.SuppressConsumesConstraintForFormFileParameters = true;
+                    options.SuppressInferBindingSourcesForParameters = true;
+                    options.SuppressModelStateInvalidFilter = true;
+                    options.SuppressMapClientErrors = true;
+                    options.ClientErrorMapping[StatusCodes.Status404NotFound].Link = "https://httpstatuses.com/404";
                 });
 
             services
@@ -120,71 +124,98 @@ namespace Service
 
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
 
-                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
                 {
-                    Flow = "implicit",
-                    AuthorizationUrl = $"{_identityConfig.Authority}/connect/authorize",
-                    Scopes = new Dictionary<string, string> { { _identityConfig.ClientScope, _identityConfig.ClientScope } }
+                    Type = SecuritySchemeType.OAuth2,
+
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Implicit = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri($"{_identityConfig.Authority}/connect/authorize", UriKind.Absolute),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { _identityConfig.ClientScope, _identityConfig.ClientScope },
+                            }
+                        }
+                    }
                 });
+                
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
+
             });
 
-            StartupHelper.ConfigureServices(services, _container);
+            _bootstrapper
+                .Initialize(services, options =>
+                {
+                    // AddAspNetCore() wraps web requests in a Simple Injector scope and
+                    // allows request-scoped framework services to be resolved.
+                    options.AddAspNetCore()
 
-            Audit.Core.Configuration.Setup()
-                .UseEntityFramework(_ => _
-                    .AuditTypeMapper(t => typeof(AuditLog))
-                    .AuditEntityAction<AuditLog>(async (ev, entry, entity) =>
-                    {
-                        var commandSender = _container.GetInstance<ICommandSender>();
-                        await commandSender.SendAsync(new AddAuditLogCommand() { Entity = entity, Entry = entry });
-                    })
-                    .IgnoreMatchedProperties());
+                        // Ensure activation of a specific framework type to be created by
+                        // Simple Injector instead of the built-in configuration system.
+                        // All calls are optional. You can enable what you need. For instance,
+                        // ViewComponents, PageModels, and TagHelpers are not needed when you
+                        // build a Web API.
+                        .AddControllerActivation()
+                        //.AddViewComponentActivation()
+                        //.AddPageModelActivation()
+                        //.AddTagHelperActivation()
+                        ;
+
+                    // Optionally, allow application components to depend on the non-generic
+                    // ILogger (Microsoft.Extensions.Logging) or IStringLocalizer
+                    // (Microsoft.Extensions.Localization) abstractions.
+                    //options.AddLogging();
+                    //options.AddLocalization();
+                })
+                .WithAuditing()
+                .WithAuthorization<ExampleDbContext>()
+                .WithCqrs(AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains("Business")).ToArray())
+                ;
+
+            InitializeContainer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            ConfigureContainer(app);
-
-            app.UseCors("CorsPolicy");
-            app.UseAuthentication();
+            _bootstrapper.Finalize(app);
+            _container.Verify();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            _container.Verify();
-
             app
                 .UseSwagger()
                 .UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("v1/swagger.json", "My API V1");
-
                     options.OAuthClientId(_identityConfig.ClientId);
-
                     options.OAuthAppName(_identityConfig.ClientId);
-                })
-                .UseMvc(routes =>
-                {
-                    routes.MapRoute(
-                        name: "default",
-                        template: "{controller=Home}/{action=Index}/{id?}");
+                });
 
-                    routes.MapSpaFallbackRoute(
-                        name: "catch-all",
-                        defaults: new { controller = "App", action = "RedirectIndex" });
-                })
-                .UseStaticFiles()
-                ;
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapFallbackToFile("/index.html");
+            });
 
         }
 
-        private void ConfigureContainer(IApplicationBuilder app)
+        private void InitializeContainer()
         {
             _container.Register(
                 () => new DbContextOptionsBuilder<ExampleDbContext>()
@@ -195,9 +226,6 @@ namespace Service
             _container.Register(() => _appConfig, Lifestyle.Singleton);
             _container.Register<CcgAccountClientConfiguration>(() => _identityConfig, Lifestyle.Singleton);
             _container.Register<ExampleIdentityConfiguration>(() => _identityConfig, Lifestyle.Singleton);
-            var assembliesToScan = AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains("Business"))
-                .ToArray();
-            StartupHelper.Configure<ExampleDbContext>(app, _container, assembliesToScan);
 
         }
 

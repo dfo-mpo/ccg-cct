@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Enrichers.AspnetcoreHttpcontext;
-using Serilog.Events;
-using Serilog.Sinks.MSSqlServer;
-using Service.Helper;
 
 namespace Service
 {
@@ -50,23 +44,11 @@ namespace Service
                 .UseStartup<Startup>()
                 .UseSerilog((provider, context, loggerConfiguration) =>
                 {
-                    var options = new ColumnOptions();
-                    options.Store.Remove(StandardColumn.Properties);
-                    options.Store.Add(StandardColumn.LogEvent);
-
                     loggerConfiguration
                         .ReadFrom.Configuration(Configuration)
-                        .Enrich.WithAspnetcoreHttpcontext(provider)
                         .Enrich.FromLogContext()
-                        .Enrich.WithAspnetcoreHttpcontext(provider, customMethod: HttpContextUserLogEnricher.AddUserClaims)
-                        .WriteTo.Console(outputTemplate:"[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {NewLine}{HttpContext}")
-                        .WriteTo.MSSqlServer(
-                            connectionString: Configuration.GetConnectionString("ExampleDbContext"),
-                            tableName: "EventLogs",
-                            columnOptions: options,
-                            autoCreateSqlTable: true
-                        );
-
+                        .WriteTo.Console(
+                            outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {NewLine}{HttpContext}");
                 })
                 .Build();
 

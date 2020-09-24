@@ -23,8 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Commands.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{B3FBA4E3-085D-4DEA-8969-422E7973992D}"
 	ProjectSection(SolutionItems) = preProject
-		packages-local\ccg.aspnetcore.1.0.6.nupkg = packages-local\ccg.aspnetcore.1.0.6.nupkg
-		packages-local\ccg.aspnetcore.web.1.0.1.nupkg = packages-local\ccg.aspnetcore.web.1.0.1.nupkg
+		packages-local\ccg.aspnetcore.3.1.0.nupkg = packages-local\ccg.aspnetcore.3.1.0.nupkg
+		packages-local\ccg.aspnetcore.web.3.1.0.nupkg = packages-local\ccg.aspnetcore.web.3.1.0.nupkg
 		README.md = README.md
 	EndProjectSection
 EndProject
