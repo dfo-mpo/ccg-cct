@@ -1,0 +1,77 @@
+﻿@inject IStringLocalizer<Wet> Localizer
+@inject NavigationManager NavigationManager
+<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+<noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+@*<script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer1' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer1', 'GTM-TLGQ9K');</script>*@
+<!-- End Google Tag Manager -->
+
+<ul id="wb-tphp">
+    <li class="wb-slc">
+        <a class="wb-sl" href="#wb-cont">@Localizer["SkipToMain"]</a>
+    </li>
+    <li class="wb-slc">
+        <a class="wb-sl" href="#wb-info">@Localizer["SkipToAbout"]</a>
+    </li>
+</ul>
+
+<header role="banner">
+    <div id="wb-bnr" class="container">
+
+        <div class="row">
+            <div class="brand col-xs-8 col-sm-9 col-md-6">
+                <a href="@("https://www.canada.ca/"+_languageKey+".html")"><img src="/wet/4.0.29/GCWeb/assets/sig-blk-en.svg" alt=""><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+            </div>
+            <div class="col-xs-4 col-sm-9 col-md-6">
+                <section id="wb-lng" class="visible-md visible-lg text-right">
+                    <h2 class="wb-inv">@Localizer["LanguageSelection"]</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-inline margin-bottom-none">
+                                <li>
+                                    <a href="@_languageSwitchUri" lang="@Localizer["AlternateLanguageKey"]">@Localizer["AlternateLanguageTitle"]</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+                <h2>@Localizer["search-menu"]</h2>
+                <ul class="list-inline text-right chvrn">
+                    <li><a href="#mb-pnl" title="@Localizer["SearchAndMenus"]" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">@Localizer["SearchAndMenus"]</span></span></span></a></li>
+                </ul>
+                <div id="mb-pnl"></div>
+            </section>
+
+        </div>
+    </div>
+
+    <nav id="wb-sm"  data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+
+        <div class="pnl-strt container nvbar">
+            <h2>@Localizer["topics-menu"]</h2>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-6">
+                    <Menu></Menu>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+@code {
+    private string _languageKey;
+    private string _languageSwitchUri;
+
+    protected override Task OnInitializedAsync()
+    {
+        _languageKey = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+
+        var uri = new Uri(NavigationManager.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        _languageSwitchUri = $"/SetCulture?culture={Uri.EscapeDataString(Localizer["AlternateLanguageKey"].Value)}&" + $"redirectUri={Uri.EscapeDataString(uri)}";
+        return Task.CompletedTask;
+    }
+
+}
