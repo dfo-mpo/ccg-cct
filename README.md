@@ -4,7 +4,7 @@ This is a template project for running a restful API at CCG. Authentication is h
 # Getting Started
 ## Software dependencies
 - [Visual Studio Professional](https://visualstudio.microsoft.com/vs/professional/) 2017 or 2019
-- [ASP.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1)
+- [ASP.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
 ## Package and tool references
 The following packages/tools are used in the project.
