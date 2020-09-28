@@ -22,7 +22,7 @@ namespace Business.Commands.Tests.Validation
         {
             _dbHelper = new DbHelper<ExampleDbContext>().RunMigrations();
             _handlerDbContext = _dbHelper.GetDbContext();
-            ValidatorOptions.LanguageManager = new LocalizedLanguageManager();
+            ValidatorOptions.Global.LanguageManager = new LocalizedLanguageManager();
         }
 
         public void Dispose()
