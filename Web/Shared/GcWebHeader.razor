@@ -1,0 +1,78 @@
+﻿@inject NavigationManager NavigationManager
+@inject IStringLocalizer<GcWeb> L
+<nav>
+    <ul id="wb-tphp">
+        <li class="wb-slc">
+            <a class="wb-sl" href="#wb-cont">@L["SkipToMainContent"]</a>
+        </li>
+        <li class="wb-slc">
+            <a class="wb-sl" href="#wb-info">@L["SkipToAbout"]</a>
+        </li>
+    </ul>
+</nav>
+<header>
+    <div id="wb-bnr" class="container">
+        <div class="row">
+            <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+                <h2 class="wb-inv">@L["LanguageSelection"]</h2>
+                <ul class="list-inline mrgn-bttm-0">
+                    <li>
+                        <a lang="@L["AlternateLanguageKey"]" hreflang="@L["AlternateLanguageKey"]" href="@_languageSwitchUri">
+                            <span class="hidden-xs">@L["AlternateLanguageTitle"]</span>
+                            <abbr title="@L["AlternateLanguageTitle"]" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">@L["AlternateLanguageKey"]</abbr>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                <a href="https://www.canada.ca/@(_languageKey).html" property="url"><img src="/themes-dist-8.0.1-gcweb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo"><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span></a>
+                <meta property="name" content="@L["Government of Canada"]">
+                <meta property="areaServed" typeof="Country" content="Canada">
+                <link property="logo" href="/themes-dist-8.0.1-gcweb/GCWeb/assets/wmms-blk.svg">
+            </div>
+            <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                <h2>@L["Search"]</h2>
+                <form action="#" method="post" name="cse-search-box" role="search">
+                    <div class="form-group wb-srch-qry">
+                        <label for="wb-srch-q" class="wb-inv">@L["Search"]</label>
+                        <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="@L["Search Canada.ca"]">
+                        <datalist id="wb-srch-q-ac">
+                        </datalist>
+                    </div>
+                    <div class="form-group submit">
+                        <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">@L["Search"]</span></button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <nav class="gcweb-menu" typeof="SiteNavigationElement">
+        <div class="container">
+            <h2 class="wb-inv">@L["Menu"]</h2>
+            <button type="button" aria-haspopup="true" aria-expanded="false">@((MarkupString)L["Main Menu"].Value)</button>
+            <GcWebMenu />
+        </div>
+    </nav>
+    <nav id="wb-bc" property="breadcrumb">
+        <h2>@L["You are here:"]</h2>
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="https://www.canada.ca/@(_languageKey).html">Canada.ca</a></li>
+            </ol>
+        </div>
+    </nav>
+</header>
+
+@code {
+    private string _languageKey;
+    private string _languageSwitchUri;
+
+    protected override Task OnInitializedAsync()
+    {
+        _languageKey = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+        var uri = new Uri(NavigationManager.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        _languageSwitchUri = $"/SetCulture?culture={Uri.EscapeDataString(L["AlternateLanguageKey"].Value)}&" + $"redirectUri={Uri.EscapeDataString(uri)}";
+
+        return Task.CompletedTask;
+    }
+}
