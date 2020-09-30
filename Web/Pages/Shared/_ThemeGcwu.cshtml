@@ -1,0 +1,164 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IViewLocalizer Localizer
+@inject IHttpContextAccessor contextAccessor
+@{ 
+
+    var twoLetter = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+    var isEnglish = twoLetter == "en";
+    var page = contextAccessor.HttpContext.Request.RouteValues["page"];
+}
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="@twoLetter" dir="ltr">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>
+        @ViewData["Title"] - CCG API Web Template
+    </title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <!-- Meta data -->
+    <meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
+    <meta name="dcterms.title" content="Content page - Web Experience Toolkit">
+    <meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu">
+    <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
+    <meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
+    <meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
+    <meta name="dcterms.language" title="ISO639-2" content="eng"> <!-- Meta data-->
+    <!--[if gte IE 9 | !IE ]><!-->
+    <link href="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/assets/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/css/theme.min.css">
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+            <link href="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/assets/favicon.ico" rel="shortcut icon" />
+            <link rel="stylesheet" href="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/css/ie8-theme.min.css" />
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="~/themes-dist-4.0.25-theme-gcwu-fegc/wet-boew/js/ie8-wet-boew.min.js"></script>
+            <![endif]-->
+    <noscript><link rel="stylesheet" href="~/themes-dist-4.0.25-theme-gcwu-fegc/wet-boew/css/noscript.min.css" /></noscript>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+    <ul id="wb-tphp">
+        <li class="wb-slc">
+            <a class="wb-sl" href="#wb-cont">@Localizer["Skip to main content"]</a>
+        </li>
+        <li class="wb-slc visible-sm visible-md visible-lg">
+            <a class="wb-sl" href="#wb-info">@Localizer["Skip to About this site"]</a>
+        </li>
+    </ul>
+    <header role="banner">
+        <div id="wb-bnr">
+            <div id="wb-bar">
+                <div class="container">
+                    <div class="row">
+                        <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/assets/sig-@(twoLetter).svg" aria-label="@Localizer["Government of Canada"]"></object>
+                        <ul id="gc-bar" class="list-inline">
+                            @if (isEnglish)
+                            {
+                <li><a href="http://www.canada.ca/en/index.html" rel="external">Canada.ca</a></li>
+                                <li><a href="http://www.canada.ca/en/services/index.html" rel="external">Services</a></li>
+                                                <li><a href="http://www.canada.ca/en/gov/dept/index.html" rel="external">Departments</a></li>
+ }
+                                            else
+                                            {
+                                <li><a href="http://www.canada.ca/fr/index.html" rel="external">Canada.ca</a></li>
+                                                <li><a href="http://www.canada.ca/fr/services/index.html" rel="external">Services</a></li>
+                                                                <li><a href="http://www.canada.ca/fr/gouv/min/index.html" rel="external">Ministères</a></li>}
+                            <li id="wb-lng">
+                                <h2>
+                                    @Localizer["Language selection"]
+                                </h2>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a lang="@Localizer["AlternateLanguageKey"]"
+                                           asp-route-culture="@Localizer["AlternateLanguageKey"].Value"
+                                           asp-page="@(page)">@Localizer["AlternateLanguageTitle"]</a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+                            <h2>
+                                @Localizer["Search and menus"]
+                            </h2>
+                            <ul class="pnl-btn list-inline text-right">
+                                <li><a href="#mb-pnl" title="@Localizer["Search and menus"]" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">@Localizer["Search and menus"]</span></span></span></a></li>
+                            </ul>
+                            <div id="mb-pnl"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div id="wb-sttl" class="col-md-5">
+                        <a href="http://wet-boew.github.io/v4.0-ci/index-en.html">
+                            <span>CCG API Web Template</span>
+                        </a>
+                    </div>
+                    <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/assets/wmms.svg" aria-label="@Localizer["Symbol of the Government of Canada"]"></object>
+                    <section id="wb-srch" class="visible-md visible-lg">
+                        <h2>
+                            @Localizer["Search"]
+                        </h2>
+                        <form action="https://google.ca/search" method="get" role="search" class="form-inline">
+                            <div class="form-group">
+                                <label for="wb-srch-q">
+                                    @Localizer["Search website"]
+                                </label>
+                                <input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150">
+                                <input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/">
+                            </div>
+                            <button type="submit" id="wb-srch-sub" class="btn btn-default">@Localizer["Search"]</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <partial name="_ThemeGcwuMenu" />
+
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="container">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        @if (isEnglish)
+                        {
+            <li><a href="https://www.ccg-gcc.gc.ca/index-eng.html">Home</a></li>
+                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-eng.html">College and careers</a></li> }
+                                        else
+                                        {
+                            <li><a href="https://www.ccg-gcc.gc.ca/index-fra.html">Accueil</a></li>
+                                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-fra.html">Collège et carrières</a></li>}
+                        @RenderSection("Breadcrumbs", required: false)
+                    </ol>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" property="mainContentOfPage" class="container">
+
+        @RenderBody()
+
+    </main>
+
+    <partial name="_ThemeGcwuFooter" />
+
+    <!--[if gte IE 9 | !IE ]><!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="~/themes-dist-4.0.25-theme-gcwu-fegc/wet-boew/js/wet-boew.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+            <script src="~/themes-dist-4.0.25-theme-gcwu-fegc/wet-boew/js/ie8-wet-boew2.min.js"></script>
+
+            <![endif]-->
+    <script src="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/js/theme.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

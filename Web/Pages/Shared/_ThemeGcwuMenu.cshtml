@@ -1,0 +1,36 @@
+﻿@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+}
+@if (isEnglish) {
+    <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+        <div class="container nvbar">
+            <h2>Topics menu</h2>
+            <div class="row">
+                <ul class="list-inline menu">
+                    <li><a href="https://www.ccg-gcc.gc.ca/navigation/index-eng.html">Navigation</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/fleet-flotte/index-eng.html">Fleet</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/college-careers-eng.html">College and careers</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/programs-services-eng.html">Programs and services</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/contact/emergency-urgence/index-eng.html">Emergency numbers</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
+else
+{
+    <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+        <div class="container nvbar">
+            <h2>Menu des sujets</h2>
+            <div class="row">
+                <ul class="list-inline menu">
+                    <li><a href="https://www.ccg-gcc.gc.ca/navigation/index-fra.html">Navigation</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/fleet-flotte/index-fra.html">Flotte</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/college-careers-fra.html">Collège et carrières</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/programs-services-fra.html">Programmes et services</a></li>
+                    <li><a href="https://www.ccg-gcc.gc.ca/contact/emergency-urgence/index-fra.html">Numéros d’urgence</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
