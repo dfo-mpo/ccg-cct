@@ -1,48 +1,70 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Toolbelt.Blazor.Extensions.DependencyInjection;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Web.Config;
-using Web.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization.Routing;
+using Web.Helpers;
+using System.Linq;
 
 namespace Web
 {
     public class Startup
     {
         public AppConfiguration AppConfiguration { get; set; }
+        public static RequestCulture DefaultRequestCulture = new RequestCulture("en");
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
             AppConfiguration = Configuration.GetSection("App").Get<AppConfiguration>();
+
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHeadElementHelper();
             services.AddControllers();
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-            services.AddSingleton<ClassificationService>();
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            services
+                .AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.Add(new CultureTemplatePageRouteModelConvention());
+                })
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts =>
+                    {
+                        opts.ResourcesPath = "Resources";
+                    });
+
             services.AddHttpClient("api", c =>
             {
                 c.BaseAddress = new Uri(AppConfiguration.ApiEndpoint);
             });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(p =>  typeof(Web.Data.IDataService).IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract);
+
+            foreach (var type in types)
+            {
+                services.AddSingleton(type);
+            }
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,26 +83,30 @@ namespace Web
 
             app.UseHttpsRedirection();
 
-            var supportedCultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("fr") };
 
-            var options = new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("en"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            };
 
-            app.UseRequestLocalization(options);
-            app.UseHeadElementServerPrerendering();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthorization();
+
+            var supportedCultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("fr") };
+            var requestLocalizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = DefaultRequestCulture,
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+            requestLocalizationOptions.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = requestLocalizationOptions });
+            app.UseRequestLocalization(requestLocalizationOptions);
+
+            app.UseCultureRoutingAlways();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Web.Data
 {
-    public class ClassificationService
+    public class ClassificationService : IDataService
     {
         private readonly IHttpClientFactory _clientFactory;
 

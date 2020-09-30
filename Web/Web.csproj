@@ -6,32 +6,36 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.1.8" />
-    <PackageReference Include="Toolbelt.Blazor.HeadElement" Version="1.2.0" />
-    <PackageReference Include="Toolbelt.Blazor.HeadElement.ServerPrerendering" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Shared\GcWeb.Designer.cs">
+    <Compile Update="Resources\Pages\Index.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>GcWeb.resx</DependentUpon>
+      <DependentUpon>Index.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Shared\Wet.Designer.cs">
+    <Compile Update="Resources\Pages\Shared\_ThemeGcwu.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Wet.resx</DependentUpon>
+      <DependentUpon>_ThemeGcwu.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Shared\GcWeb.resx">
+    <Content Update="wwwroot\favicon.ico">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Pages\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GcWeb.Designer.cs</LastGenOutput>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Shared\Wet.resx">
+    <EmbeddedResource Update="Resources\Pages\Shared\_ThemeGcwu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Wet.Designer.cs</LastGenOutput>
+      <LastGenOutput>_ThemeGcwu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
