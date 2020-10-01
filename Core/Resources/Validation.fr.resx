@@ -126,4 +126,7 @@
   <data name="UserAlreadyExists" xml:space="preserve">
     <value>L’utilisateur existe déjà</value>
   </data>
+  <data name="CodeAlreadyExists" xml:space="preserve">
+    <value>Le code existe déjà.</value>
+  </data>
 </root>

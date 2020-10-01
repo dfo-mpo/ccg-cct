@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Controllers
 {
-    [ApiController, AllowAnonymous, Route("api/classification"), Authorize]
+    [ApiController, AllowAnonymous, Route("api/classification")]
     public class ClassificationController : Controller
     {
         private readonly ICommandSender _commandSender;
