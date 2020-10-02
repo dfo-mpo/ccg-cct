@@ -12,19 +12,16 @@ namespace Web.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly ClassificationService _classificationService;
         
-        public Classification[] Classifications;
 
-        public IndexModel(ILogger<IndexModel> logger, ClassificationService classificationService)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            _classificationService = classificationService;
         }
 
-        public async Task OnGet()
+        public Task OnGet()
         {
-            Classifications = await _classificationService.GetClassifications();
+            return Task.CompletedTask;
         }
     }
 }
