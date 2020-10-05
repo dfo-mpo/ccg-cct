@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DataModel.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataModel
@@ -10,6 +12,7 @@ namespace DataModel
         public CctDbContext(DbContextOptions<CctDbContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
             _httpContextAccessor = httpContextAccessor;
+            AzureAccessTokenService.AddAccessToken(Database.GetDbConnection() as SqlConnection);
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

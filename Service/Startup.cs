@@ -48,7 +48,7 @@ namespace Service
 
             services
                 .AddControllers()
-                .AddNewtonsoftJson(options => options.SerializerSettings.DateTimeZoneHandling  = DateTimeZoneHandling.Utc)
+                .AddNewtonsoftJson(options => options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc)
                 .ConfigureApiBehaviorOptions(options =>
                 {
                     options.SuppressConsumesConstraintForFormFileParameters = true;
@@ -113,6 +113,8 @@ namespace Service
             _bootstrapper.Finalize(app);
             _container.Verify();
 
+            UpdateDatabase();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -129,13 +131,24 @@ namespace Service
 
             app.UseRouting();
 
-           
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToFile("/index.html");
+                if (env.IsDevelopment())
+                {
+                    endpoints.MapFallbackToFile("/index.html");
+                }
             });
 
+        }
+
+        private void UpdateDatabase()
+        {
+            var opts = _container.GetInstance<DbContextOptions<CctDbContext>>();
+            var accessor = new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
+            using var db = new CctDbContext(opts, accessor);
+            db.Database.Migrate();
         }
 
         private void InitializeContainer()
