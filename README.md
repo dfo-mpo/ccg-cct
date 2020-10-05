@@ -1,6 +1,12 @@
 # ccg-cct
 Career Competency Tool for Canadian Coast Guard
 
+<p align="center">
+  <a href="https://dev.azure.com/foc-poc/CCG-CCT/_build?definitionId=645">
+    <img src="https://dev.azure.com/foc-poc/CCG-CCT/_apis/build/status/dfo-mpo.ccg-cct?branchName=master" alt="Azure Pipeline Status">
+  </a>
+</p>
+
 # Getting Started
 ## Software dependencies
 - [Visual Studio Professional](https://visualstudio.microsoft.com/vs/professional/) 2017 or 2019
