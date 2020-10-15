@@ -1,0 +1,37 @@
+﻿@page
+@model Web.Pages.Mockups.Competency_Position_SearchModel
+@inject IViewLocalizer Localizer
+
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["h2Text"]</h2>
+        <div class="row">
+            <div class="col-sm-4 mrgn-bttm-md">
+                <figure>
+                    <a class="nav-link" href="#">
+                        <img src="~/Theresa/img/blank.jpg" alt="Photo of" class="img-responsive thumbnail mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["h4Text1"]</h4></figcaption>
+                </figure>
+            </div>
+
+            <div class="col-sm-4 mrgn-bttm-md">
+                <figure>
+                    <a href="All_Positions">
+                        <img src="~/Theresa/img/blank.jpg" alt="Photo of" class="img-responsive thumbnail mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["h4Text2"]</h4></figcaption>
+                </figure>
+            </div>
+
+            <div class="col-sm-4 mrgn-bttm-md">
+                <figure>
+                    <a href="#">
+                        <img src="~/Theresa/img/blank.jpg" alt="Photo of" class="img-responsive thumbnail mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["h4Text3"]</h4></figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
