@@ -14,7 +14,7 @@ namespace DataModel
             _httpContextAccessor = httpContextAccessor;
             AzureAccessTokenService.AddAccessToken(Database.GetDbConnection() as SqlConnection);
         }
-
+        public DbSet<Classification> Classification { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
@@ -29,6 +29,7 @@ namespace DataModel
         {
             if (optionsBuilder.IsConfigured) return;
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CCT;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlite(@"Data source=ccgdata.db");
             optionsBuilder.EnableSensitiveDataLogging();
         }
 
