@@ -1,0 +1,45 @@
+﻿@page 
+@model Web.Pages.Mockups.IndexModel
+
+@inject IViewLocalizer Localizer
+
+<section role="contentinfo">
+        <div class="col-md-12">
+            <h1 class="display-4">@Localizer["IndexTitle"]</h1>
+
+            <p>@Localizer["WelcomeText"]</p>
+        </div>
+    </section>
+
+    <section role="contentinfo">
+        <div class="col-md-12">
+            <h2>@Localizer["Question1"]</h2>
+            <div class="row">
+                <div class="col-lg-3 col-sm-4 mrgn-bttm-md">
+                    <figure>
+                        <a class="nav-link" href="member_position">
+                            <img src="~/Theresa/img/CCG-employee.png" alt="Photo of a Member of the Canadian Coast Guard" class="img-responsive img-circle mrgn-bttm-sm" />
+                        </a>
+                        <figcaption><h4 class="text-center">@Localizer["CCGMember"]</h4></figcaption>
+                    </figure>
+                </div>
+                <div class="col-lg-3 col-sm-4 mrgn-bttm-md">
+                    <figure>
+                        <a href="#">
+                            <img src="~/Theresa/img/Students.png" alt="Photo of students at graduation" class="img-responsive img-circle mrgn-bttm-sm" />
+                        </a>
+                        <figcaption><h4 class="text-center">@Localizer["Student"]</h4></figcaption>
+                    </figure>
+                </div>
+                <div class="col-lg-3 col-sm-4 mrgn-bttm-md">
+                    <figure>
+                        <a href="#">
+                            <img src="~/Theresa/img/external candidates.png" alt="Photo of a group of individuals" class="img-responsive img-circle mrgn-bttm-sm" />
+                        </a>
+                        <figcaption><h4 class="text-center">@Localizer["External Candidate"]</h4></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
