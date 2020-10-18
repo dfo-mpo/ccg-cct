@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201016070409_initiatecreate1.cs" />
+    <Compile Remove="Migrations\20201016070409_initiatecreate1.Designer.cs" />
+    <Compile Remove="Migrations\20201016074715_initiatecreate2.cs" />
+    <Compile Remove="Migrations\20201016074715_initiatecreate2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
