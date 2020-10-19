@@ -7,6 +7,7 @@ namespace DataModel
     public class JobPositionCompetency
     {
         public int JobPositionId { get; set; }
+
         public JobPosition JobPosition { get; set; }
 
         public int CompetencyId { get; set; }
