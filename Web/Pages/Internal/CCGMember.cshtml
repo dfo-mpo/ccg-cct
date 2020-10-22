@@ -1,0 +1,36 @@
+﻿@page
+@model Web.Pages.Internal.CCGMemberModel
+@inject IViewLocalizer Localizer
+
+
+<h3>@Localizer["Question1"]</h3>
+<a asp-page="">
+    <div class="col-sm-3 mrgn-bttm-md">
+        <figure>
+            <img src="~/img/Internal/offshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <input type="radio"  value="Offshore"><strong>@Localizer["Offshore"]</strong>
+        </figure>
+    </div>
+</a>
+<a asp-page="">
+    <div class="col-sm-3 mrgn-bttm-md">
+        <figure>
+            <img src="~/img/Internal/onshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <input type="radio"  value="Onshore"><strong>@Localizer["Onshore"]</strong>
+        </figure>
+    </div>
+</a>
+<a asp-page="">
+    <div class="col-sm-3 mrgn-bttm-md">
+        <figure>
+            <img src="~/img/Internal/all-positions.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <input type="radio" checked="" value="All positions"><strong>@Localizer["Allpositions"]</strong>
+        </figure>
+    </div>
+</a>
+<div class="col-sm-6">
+    <form>
+        <button asp-page="../Index">@Localizer["Back"]</button>
+        <button asp-page="AllPositions">@Localizer["Next"]</button>
+    </form>
+</div>

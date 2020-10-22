@@ -1,0 +1,50 @@
+﻿@page
+@model Web.Pages.Mockups.Compare_PositionModel
+
+@inject IViewLocalizer Localizer
+
+
+<section role="contentinfo">
+
+    <h2>Select a level and position</h2>
+    <figure><img src="~/Theresa/img/Positions-full.jpg" alt="Photo of " class="img-responsive  mrgn-bttm-md" /></figure>
+
+    <h3>Administrative Services (AS)</h3>
+    <div class="row col-md-12">
+        <form method="get" action="#">
+            <div class="form-group col-sm-2">
+                <label for="Level" class="control-label">@Localizer["Level"]</label>
+                <select data-val="true" id="Level" name="Level" class="form-control maxwidth">
+                    <option value="AS01">AS 01</option>
+                    <option value="AS02">AS 02</option>
+                    <option value="AS03">AS 03</option>
+                    <option value="AS04">AS 04</option>
+                    <option value="AS05">AS 05</option>
+                    <option value="AS06">AS 06</option>
+                    <option value="AS07">AS 07</option>
+                    <option value="AS08">AS 08</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm-9">
+                <label for="Position" class="control-label">Position</label>
+                <select name="Position" id="Position" class="form-control maxwidth">
+                    <option value="POS1">Officer (Business Services, Regulatory Coast Guard Planning, Investment, Project Planning & Control, Planning, Staff Management & Business Services) / Policy Analyst</option>
+                    <option value="POS2">Senior Analyst Public Affairs and International Management (PAIM)/Business Resource Management (BRM)</option>
+                    <option value="POS3">Performance & Quality Assurance Officer</option>
+                    <option value="POS4">Executive Assistant to the Assistant Commissioner (AC), Deputy Commissioner (DC), Staff Officer to the Director General (DG)</option>
+                    <option value="POS5">Workforce Development Manager</option>
+                    <option value="POS6">Workforce Development Analyst</option>
+                    <option value="POS7">Fleet Resources Manager</option>
+                    <option value="POS8">Public Affairs - Web Officer / Leader Communications (Comms) & Internet / PIO Manager</option>
+                    <option value="POS9">Marine Security Operations Centre (MSOC) Operations Liaison Officer</option>
+                    <option value="POS10">Officer - Fleet (Exercise Planning, Staff Liaison, Standards & Training)</option>
+                    <option value="POS11">Manager Finance Admin. & Planning / Executive & Client Services Officer</option>
+                </select>
+            </div>
+        </form>
+    </div>
+   
+    <a class="btn btn-primary" href="/en/Mockups/Delta" role="button">Compare Positions</a>
+
+</section>

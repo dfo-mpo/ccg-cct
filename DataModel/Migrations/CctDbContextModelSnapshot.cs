@@ -3,6 +3,7 @@ using System;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
@@ -14,31 +15,482 @@ namespace DataModel.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8");
+                .HasAnnotation("ProductVersion", "3.1.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DataModel.Classification", b =>
+            modelBuilder.Entity("DataModel.Competency", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("CompetencyId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Code")
+                    b.Property<string>("CompetencyNameEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyNameFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompetencyId");
+
+                    b.ToTable("Competency");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyGroupsRatings", b =>
+                {
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyRatingLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyLevelRequirementsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompetencyId", "CompetencyRatingLevelId", "CompetencyLevelRequirementsId");
+
+                    b.HasIndex("CompetencyLevelRequirementsId");
+
+                    b.HasIndex("CompetencyRatingLevelId");
+
+                    b.ToTable("CompetencyGroupsRatings");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyGroupsTypes", b =>
+                {
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyTypeid")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompetencyId", "CompetencyTypeid");
+
+                    b.HasIndex("CompetencyTypeid");
+
+                    b.ToTable("CompetencyGroupsTypes");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyLevelRequirements", b =>
+                {
+                    b.Property<int>("CompetencyLevelRequirementsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompetencyLevelRequirementsEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyLevelRequirementsFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompetencyLevelRequirementsId");
+
+                    b.ToTable("CompetencyLevelRequirements");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyRatingLevel", b =>
+                {
+                    b.Property<int>("CompetencyRatingLevelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompetencyRatingLevelDescriptionEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyRatingLevelDescriptionFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyRatingLevelNameEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyRatingLevelNameFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompetencyRatingLevelId");
+
+                    b.ToTable("CompetencyRatingLevel");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyType", b =>
+                {
+                    b.Property<int>("CompetencyTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompetencyCategoryEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompetencyCategoryFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DescEng")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
+                    b.HasKey("CompetencyTypeId");
 
-                    b.Property<string>("DescFre")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
+                    b.ToTable("CompetencyType");
 
-                    b.HasKey("Id");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("CompetencyType");
+                });
 
-                    b.ToTable("Classification");
+            modelBuilder.Entity("DataModel.JobCategory", b =>
+                {
+                    b.Property<int>("JobCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobCategoryValueEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobCategoryValueFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobCategoryId");
+
+                    b.ToTable("JobCategory");
+                });
+
+            modelBuilder.Entity("DataModel.JobGroup", b =>
+                {
+                    b.Property<int>("JobGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobGroupClassification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobGroupId");
+
+                    b.ToTable("JobGroup");
+                });
+
+            modelBuilder.Entity("DataModel.JobGroupLevel", b =>
+                {
+                    b.Property<int>("JobGroupLevelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobGroupClassificationLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobGroupLevelId");
+
+                    b.ToTable("JobGroupLevel");
+                });
+
+            modelBuilder.Entity("DataModel.JobGroupPosition", b =>
+                {
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobKeyTaskPerLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobLocationRegionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobCategoryId", "JobPositionId", "JobKeyTaskPerLevelId", "JobLocationRegionId");
+
+                    b.HasIndex("JobCategoryId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.HasIndex("JobKeyTaskPerLevelId");
+
+                    b.HasIndex("JobLocationRegionId");
+
+                    b.HasIndex("JobPositionId");
+
+                    b.ToTable("JobPosition");
+                });
+
+            modelBuilder.Entity("DataModel.JobKeyTaskPerLevel", b =>
+                {
+                    b.Property<int>("JobKeyTaskPerLevelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobKeyTaskPerLevelEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobKeyTaskPerLevelFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobKeyTaskPerLevelId");
+
+                    b.ToTable("JobKeyTaskPerLevel");
+                });
+
+            modelBuilder.Entity("DataModel.JobLocationRegion", b =>
+                {
+                    b.Property<int>("JobLocationRegionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("JobLocationRegionEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobLocationRegionFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobLocationRegionId");
+
+                    b.ToTable("JobLocationRegion");
+                });
+
+            modelBuilder.Entity("DataModel.JobPosition", b =>
+                {
+                    b.Property<int>("JobPositionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("JobPositionTitleEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobPositionTitleFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("JobPositionId");
+
+                    b.HasIndex("JobGroupId");
+
+                    b.ToTable("JobGroupPosition");
+                });
+
+            modelBuilder.Entity("DataModel.JobPositionCompetency", b =>
+                {
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobPositionId", "CompetencyId");
+
+                    b.HasIndex("CompetencyId");
+
+                    b.ToTable("JobPositionCompetency");
+                });
+
+            modelBuilder.Entity("DataModel.JobRoles", b =>
+                {
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupId", "JobGroupLevelId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.ToTable("JobRoles");
+                });
+
+            modelBuilder.Entity("DataModel.JobRolesPositionCompetency", b =>
+                {
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "CompetencyId");
+
+                    b.HasIndex("CompetencyId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.HasIndex("JobPositionId");
+
+                    b.ToTable("JobRolesPositionCompetency");
+                });
+
+            modelBuilder.Entity("DataModel.Certificate", b =>
+                {
+                    b.HasBaseType("DataModel.CompetencyType");
+
+                    b.Property<string>("CertificateDescriptionEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CertificateDescriptionFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequireIndicatorEng")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequireIndicatorFra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Certificate");
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyGroupsRatings", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany("CompetencyGroupsRatings")
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyLevelRequirements", "CompetencyLevelRequirements")
+                        .WithMany("CompetencyGroupsRatings")
+                        .HasForeignKey("CompetencyLevelRequirementsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyRatingLevel", "CompetencyRatingLevel")
+                        .WithMany("CompetencyGroupsRatings")
+                        .HasForeignKey("CompetencyRatingLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyGroupsTypes", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany("CompetencyGroupsTypes")
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyType", "CompetencyType")
+                        .WithMany("CompetencyGroupsTypes")
+                        .HasForeignKey("CompetencyTypeid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobGroupPosition", b =>
+                {
+                    b.HasOne("DataModel.JobCategory", "JobCategory")
+                        .WithMany("JobGroupPosition")
+                        .HasForeignKey("JobCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany("JobGroupPosition")
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany("JobGroupPosition")
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobKeyTaskPerLevel", "JobKeyTaskPerLevel")
+                        .WithMany("JobGroupPosition")
+                        .HasForeignKey("JobKeyTaskPerLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobLocationRegion", "JobLocationRegion")
+                        .WithMany("JobGroupPosition")
+                        .HasForeignKey("JobLocationRegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany()
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobPosition", b =>
+                {
+                    b.HasOne("DataModel.JobGroup", null)
+                        .WithMany("JobPosition")
+                        .HasForeignKey("JobGroupId");
+                });
+
+            modelBuilder.Entity("DataModel.JobPositionCompetency", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany("JobPositionCompetency")
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany("JobPositionCompetency")
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobRoles", b =>
+                {
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany("JobRoles")
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany("JobRoles")
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobRolesPositionCompetency", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany("JobRolesPositionCompetency")
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany()
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany("JobRolesPositionCompetency")
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany("JobRolesPositionCompetency")
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

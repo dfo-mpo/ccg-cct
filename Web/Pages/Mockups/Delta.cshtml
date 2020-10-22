@@ -1,0 +1,511 @@
+﻿@page
+@{
+    ViewData["Title"] = "Delta";
+}
+@model Web.Pages.Mockups.DeltaModel
+@inject IViewLocalizer Localizer
+
+
+<section role="contentinfo">
+
+    <div class="row mrgn-tp-md">
+        <button class="btn btn-primary mrgn-lft-md" type="button">Print PDF</button>
+        <button class="btn btn-primary pull-right mrgn-rght-md" type="button">Save PDF</button>
+    </div>
+    <div class="row  mrgn-bttm-lg">
+        <h2 class="text-center">Results Comparing 2 Positions</h2>
+    </div>
+    <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td class="bg-success" width="50%"><b>Current Position:</b> AS 02 - Human Resources (HR) Officer / Workforce Development</td>
+                <td class="bg-info" width="50%"><b>Selected Position:</b> AS 04 - Workforce Development Manager</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center text-danger" colspan="2" scope="col">MATCHING COMPETENCIES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th width="50%">CERTIFICATIONS</th>
+                <th width="50%">TECHNICAL ELEMENTS</th>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Business Analysis</td>
+            </tr>
+            <tr>
+                <th>KNOWLEDGE ELEMENTS</th>
+                <th>BEHAVIOURAL ELEMENTS</th>
+            </tr>
+            <tr>
+                <td>Program Knowledge and Application</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center text-danger" colspan="3" scope="col">DELTA COMPETENCIES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>CERTIFICATIONS</th>
+                <th class="text-center bg-success">Current Position</th>
+                <th class="text-center bg-info">Selected Position</th>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td class="text-center bg-success">&nbsp;</td>
+                <td class="text-center bg-info">&nbsp;</td>
+            </tr>
+            <tr>
+                <th>KNOWLEDGE ELEMENTS</th>
+                <td class="text-center bg-success"></td>
+                <td class="text-center bg-info"></td>
+            </tr>
+            <tr>
+                <td>Organizational Knowledge</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup1" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Organizational Knowledge">2</abbr></a>
+                    <section id="centred-popup1" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Organizational Knowledge: Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup2" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Organizational Knowledge">3</abbr></a>
+                    <section id="centred-popup2" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Organizational Knowledge: Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Practical knowledge of the Coast Guard and Fisheries and Oceans Canada (DFO) organizations, and of the Coast Guard as a special operating agency. Understands a program and its linkages to other programs and directorates regionally and/or nationally.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Administrative Knowledge</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup3" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Administrative Knowledge">2</abbr></a>
+                    <section id="centred-popup3" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Administration Knowledge: Understanding of administrative procedures and processes in one or more area of responsibility.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Novice</b> (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Recognizes when administration requirements are met. Understands systems and software pertaining to administrative functions and where applicable, the shipboard logistics functions in the performance of duties.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup4" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Administrative Knowledge">3</abbr></a>
+                    <section id="centred-popup4" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Administration Knowledge: Understanding of administrative procedures and processes in one or more area of responsibility.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Understands the full range of administration services such as expense forms, reimbursements (travel, stores, etc.) and where applicable items such as ex gratiapayments, timesheets, drafting correspondence and reports, training requests and authorizations, etc.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <th>TECHNICAL ELEMENTS</th>
+                <td class="text-center bg-success"></td>
+                <td class="text-center bg-info"></td>
+            </tr>
+            <tr>
+                <td>Project/Program Management</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup5" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Project/Program Management">2</abbr></a>
+                    <section id="centred-popup5" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Project/Program Management: Manages a project or program while respecting procedures, operations, policies, and legislation, including inter-relationships with other departments, agencies, or the private sector. Project management involves effectively participating and/or integrating all aspects of a given finite project, ensuring that work progresses towards achieving goals and objectives. Program management involves effectively managing an ongoing activity line.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Respects project/program goals, participants' roles, and the importance of project management principles. Participates in project support activities (i.e. gathering needed information). Participates with others in small and well defined components of the project/program.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup6" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Project/Program Management">3</abbr></a>
+                    <section id="centred-popup6" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Project/Program Management: Manages a project or program while respecting procedures, operations, policies, and legislation, including inter-relationships with other departments, agencies, or the private sector. Project management involves effectively participating and/or integrating all aspects of a given finite project, ensuring that work progresses towards achieving goals and objectives. Program management involves effectively managing an ongoing activity line.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Actively promotes project goals, participants' roles, and the importance of project management principles, such as time, cost, and quality management. Participates, with minimal supervision, with others in all aspects of project or program. Seeks advice and guidance for more complex components of the project/program.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Planning and Prioritizing</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup7" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Planning and Prioritizing">1</abbr></a>
+                    <section id="centred-popup7" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Planning and Prioritizing: Integrates various ideas, intentions, and information to form effective goals, objectives, timelines, action plans, and solutions.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Fundamental Awareness</b> (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Monitors the quality and timeliness of individual responsibilities using the available resources, searching for clarity as needed.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup8" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Planning and Prioritizing">3</abbr></a>
+                    <section id="centred-popup8" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Planning and Prioritizing: Integrates various ideas, intentions, and information to form effective goals, objectives, timelines, action plans, and solutions.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Plans and organizes activities efficiently. Monitors the quality and timeliness of unit workloads. Uses available resources and seeks assistance to clarify priorities, when and where required. Reports on results to promote accountability.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Workforce Management (HR) for Specialists</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup9" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Workforce Management (HR) for Specialists">2</abbr></a>
+                    <section id="centred-popup9" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Workforce Management (HR) for Specialists: Plans, organizes, controls, and evaluates the operations of workforce management and personnel units. Develops and implements policies, programs, and procedures regarding workforce planning, recruitment, training, wellness, and career development.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Novice</b> (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Compiles, maintains, and processes information relating to recruitment, training, performance evaluation, HR systems, or classification. Facilitates business line, workforce intelligence, succession planning, organizational awareness, and HR management practices. Arranges for advertising or posting job vacancies. Assists in screening of job applicants, and conducting of reference checks, when and where applicable.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup10" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Workforce Management (HR) for Specialists">3</abbr></a>
+                    <section id="centred-popup10" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Workforce Management (HR) for Specialists: Plans, organizes, controls, and evaluates the operations of workforce management and personnel units. Develops and implements policies, programs, and procedures regarding workforce planning, recruitment, training, wellness, and career development.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Identifies job vacancies and prospective recruiting requirements. Provides advice to managers related to recruitment, training, or HR systems. Interprets and applies legislation and policies related to workforce management functions. Determines eligibility to entitlements, arranges and delivers member training. Provides information or services such as employee assistance, counselling, and recognition programs, when and where applicable. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Financial Management for Specialists</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup11" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Financial Management for Specialists">1</abbr></a>
+                    <section id="centred-popup11" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Financial Management for Specialists: Applies required financial procedures and tracking in order to manage public funds in an appropriate manner.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Fundamental Awareness</b> (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Adheres to budget controls as assigned. Articulates a "value for money" mindset. Provides correct financial information as required. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    0
+                </td>
+            </tr>
+            <tr>
+                <td>Support Services</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup12" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Support Services">2</abbr></a>
+                    <section id="centred-popup12" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Support Services: Provides a high standard of service to Canadian Coast Guard members and other stakeholders. </h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Novice</b> (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Establishes and maintains electronic and paper filing systems so that information can be readily retrieved. Actively promotes services to existing and potential clients. Anticipates potential problems and initiates ways of improving standards. Complies with existing quality standards, procedures, guidelines, and service agreements. Asks questions in order to clarify the needs and requirements associated with initial client requests.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup13" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Support Services">3</abbr></a>
+                    <section id="centred-popup13" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Support Services: Provides a high standard of service to Canadian Coast Guard members and other stakeholders. </h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Applies due diligence and sound judgment when responding to requests and dealing with confidential information. Quickly and effectively solves client’s problems including complaints. Serves Coast Guard clients with the understanding that service is a core principle of the organization.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Workforce Management (HR) for Supervisors/Managers</td>
+                <td class="text-center bg-success">
+                    0
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup14" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Workforce Management (HR) for Supervisors/Managers">2</abbr></a>
+                    <section id="centred-popup14" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Workforce Management (HR) for Supervisors/Managers: Manages unit or units workforce planning, recruitment, organizational design, classification issues, training and development, employment equity, official languages issues, performance management/labour relations, compensation issues, and rewards/recognition items</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Novice</b> (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Provides basic HR-related information to colleagues, members, and others. Identifies deviations in applications of HR procedures or validates them with the competent authority. Supervises a small unit and conducts performance management input.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Financial Management for Supervisors/Managers</td>
+                <td class="text-center bg-success">
+                    0
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup15" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Financial Management for Supervisors/Managers">2</abbr></a>
+                    <section id="centred-popup15" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Financial Management for Supervisors/Managers: Applies the rules, policies, regulations, and procedures of the Financial Administration Act as they apply to the Canadian Coast Guard as well as the organization's financial assets and management procedures (including related procurement rules) such as: financial authority level and approval process, financial accounting procedures, public accountability, budgeting, projecting, monitoring, reporting, financial auditing, etc.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Novice</b> (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Maintains Coast Guard unit assets and property (e.g. office equipment, vehicles, information databases, etc.). Updates budgets and projections. Purchases with credit cards when required. Runs salary and Operations and Maintenance (O&M) reports and statements for managers. Makes budget entries and reconciles accounts with rationales. Tracks and analyzes unit cash flow.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Materiel Management</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup16" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Materiel Management">1</abbr></a>
+                    <section id="centred-popup16" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Materiel Management: Classifies materiel according to Canadian Coast Guard and Public Services and Procurement Canada (PSPC) directives. Tracks materiel during receipt, storage, issue, and disposal.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Fundamental Awareness</b> (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Requests supplies based on demand. Ensures that proper receipt, identification, and inspection is carried out for all incoming materiel.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    0
+                </td>
+            </tr>
+            <tr>
+                <th>BEHAVIOURAL ELEMENTS</th>
+                <td class="text-center bg-success"></td>
+                <td class="text-center bg-info"></td>
+            </tr>
+            <tr>
+                <td>Demonstrating Integrity and Respect</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup17" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Demonstrating Integrity and Respect">2</abbr></a>
+                    <section id="centred-popup17" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Demonstrating Integrity and Respect: Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while avoiding conflicts of interest and maintaining political and interpersonal neutrality.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Uses government assets responsibly. Discusses ethical concerns with their supervisor or colleagues and, when necessary, seeks and follows appropriate disclosure procedures.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup18" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Demonstrating Integrity and Respect">3</abbr></a>
+                    <section id="centred-popup18" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Demonstrating Integrity and Respect: Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while avoiding conflicts of interest and maintaining political and interpersonal neutrality.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Works in a manner that reflects a commitment to public service excellence. Assists peers respectfully when dealing with ethical concerns. Recognizes the importance of diversity, and bilingualism. Is well versed in the Government of Canada's Values and Ethics Code. Demonstrates respect for government property and policies.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Thinking Things Through</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup19" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Thinking Things Through">2</abbr></a>
+                    <section id="centred-popup19" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Thinking Things Through: Plans and adjusts work based on a thorough understanding of the Canadian Coast Guard's priorities. Obtains relevant information, considers all facts, and exercises sound judgement to formulate an opinion and/or make a decision. Analyzes situations and seeks feedback to learn from mistakes.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Researches available options to recommend a solution. Understands the Coast Guard's operational and organizational goals and strategies, and aligns activities towards the vision and strategic imperatives.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup20" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Thinking Things Through">3</abbr></a>
+                    <section id="centred-popup20" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Thinking Things Through: Plans and adjusts work based on a thorough understanding of the Canadian Coast Guard's priorities. Obtains relevant information, considers all facts, and exercises sound judgement to formulate an opinion and/or make a decision. Analyzes situations and seeks feedback to learn from mistakes.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Analyzes multiple causal relationships among several parts of a problem or situation. Anticipates the risks or implications inherent in a suggested plan of action and devises appropriate strategies to mitigate their impact. Makes a well-reasoned response even when faced with incomplete or contradictory information. Synthesizes complex ideas, issues, and observations into a clear understanding. Thinks beyond the work environment and makes decisions in the context of the bigger picture.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Working Effectively with Others</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup21" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Working Effectively with Others">2</abbr></a>
+                    <section id="centred-popup21" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Working Effectively With Others: Works cooperatively in order to achieve results. Works positively as part of a team and manages internal conflict. Identifies opportunities to work together within the organization to improve team dynamics and develop relationships. Seeks and builds internal/external alliances, collaborations, and partnerships to advance the Canadian Coast Guard's mandate.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Solicits opinions and viewpoints of team members. Cultivates personal bonds with colleagues in order to enhance performance throughout the organization. Discusses issues and exchanges information with partners to identify areas of mutual interest and benefit. Draws on other groups to facilitate project execution or persuade others. Manages personal work-life balance and respects the work-life balance of others.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup22" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Working Effectively with Others">3</abbr></a>
+                    <section id="centred-popup22" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Working Effectively With Others: Works cooperatively in order to achieve results. Works positively as part of a team and manages internal conflict. Identifies opportunities to work together within the organization to improve team dynamics and develop relationships. Seeks and builds internal/external alliances, collaborations, and partnerships to advance the Canadian Coast Guard's mandate.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Effectively promotes a respectful and positive work environment. Recognizes diverse needs and perspectives (e.g. language differences, cultural differences, disabilities, and personal family circumstances). Recognizes individuals' achievements, knowledge, and capabilities. Monitors the work environment, successfully identifies underlying issues that impact negatively on people, and takes appropriate action, when and where applicable. Seeks and influences new relationships outside own unit and identifies new collaborative partnerships that better position of the Coast Guard's programs and services. Identifies and creates opportunities to partner through networking and participating in cross-functional, multi-stakeholder groups.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Showing Initiative and Being Action Oriented</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup23" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Showing Initiative and Being Action Oriented">2</abbr></a>
+                    <section id="centred-popup23" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Showing Initiative and Being Action Oriented: Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Responds to issues and/or brings concerns forward rather than waiting for them to be reported by someone else. Looks for new opportunities and seizes them when they arise. Plans for contingencies to deal with unexpected events. Structures work in order to achieve required results. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup24" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Showing Initiative and Being Action Oriented">3</abbr></a>
+                    <section id="centred-popup24" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Showing Initiative and Being Action Oriented: Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Considers ideas from a variety of sources in order to solve problems. Remains flexible to find alternate ways around obstacles/barriers to achieve goals. Takes calculated risks to achieve goals/outcomes. Perseveres in seeking solutions despite obstacles. Regularly evaluate and challenges work processes. Establishes effective organizational methods for assigning, managing, and tracking work, when and where applicable. Solicits and/or provides information that could affect the planning, programs, and decision-making for the Canadian Coast Guard.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Leadership</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup25" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Leadership">2</abbr></a>
+                    <section id="centred-popup25" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Leadership: Attracts and mobilizes members and colleagues towards a shared vision and purpose in the best interests of the Canadian Coast Guard and the public it serves. Motivates project members, sets achievable objectives, maintains a positive outlook, takes responsibility, makes decisions, and provides constructive feedback.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Adapts to change to help the team evolve in conjunction with the Coast Guard's evolving concerns. Seizes opportunities to increase skills and knowledge about operations, members, and stakeholders, when and where applicable.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup26" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Leadership">3</abbr></a>
+                    <section id="centred-popup26" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Leadership: Attracts and mobilizes members and colleagues towards a shared vision and purpose in the best interests of the Canadian Coast Guard and the public it serves. Motivates project members, sets achievable objectives, maintains a positive outlook, takes responsibility, makes decisions, and provides constructive feedback.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Demonstrates interest in team members' success and well-being by listening and actively viewing situations through others' perspectives. Identifies strengths, leverages them, and persuades others for the benefit of the Coast Guard. Routinely teaches and guides work, based on operational knowledge through direct and indirect means. Seeks solutions by charting opinions and options.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Canadian Coast Guard Cultural Awareness</td>
+                <td class="text-center bg-success">
+                    <a href="#centred-popup27" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Canadian Coast Guard Cultural Awareness">2</abbr></a>
+                    <section id="centred-popup27" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Canadian Coast Guard Cultural Awareness: The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p><b>Novice</b>  (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Canadian Coast Guard Cultural Awareness: The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center bg-info">
+                    <a href="#centred-popup28" aria-controls="centred-popup" class="wb-lbx" role="button"><abbr title="Canadian Coast Guard Cultural Awareness">3</abbr></a>
+                    <section id="centred-popup28" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Canadian Coast Guard Cultural Awareness: The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.</h2>
+                        </header>
+                        <div class="modal-body">
+                            <p><b>Intermediate</b> (Able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)</p>
+                            <p>Expresses pride in the Coast Guard's regional and/or national achievements. Incorporates and models the Coast Guard's ambitious vision and motto in daily practice and supports it within units. Articulates the Coast Guard's vision when providing advice or instructions internally. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+

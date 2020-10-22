@@ -113,7 +113,7 @@ namespace Service
             _bootstrapper.Finalize(app);
             _container.Verify();
 
-            UpdateDatabase();
+            //UpdateDatabase();
 
             if (env.IsDevelopment())
             {
@@ -156,7 +156,6 @@ namespace Service
             _container.Register(
                 () => new DbContextOptionsBuilder<CctDbContext>()
                     .UseSqlServer(Configuration.GetConnectionString("CctDbContext")).Options, Lifestyle.Singleton);
-                    //.UseSqlite(Configuration.GetConnectionString("CctDbContext")).Options, Lifestyle.Singleton);
             _container.Register<DbContext, CctDbContext>(Lifestyle.Scoped);
             _container.Register<CctDbContext>(Lifestyle.Scoped);
             _container.Register(() => _appConfig, Lifestyle.Singleton);

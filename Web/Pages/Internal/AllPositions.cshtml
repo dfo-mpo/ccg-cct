@@ -1,0 +1,56 @@
+﻿@page
+@model Web.Pages.Member.AllPositionsModel
+@inject IViewLocalizer Localizer
+@{ 
+    var jobCategories = Model.JobCategories;
+    var imagefolder = "~/img/Internal/";
+    bool noresults = true;
+    }
+    <section role="contentinfo">
+        <div class="col-md-12">
+            <h2>@Localizer["AllPositions"]</h2>
+            <form>
+                <p>
+                    <input type="text" asp-for="filter" />
+                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+                </p>
+            </form>
+            @if (Model.filter is null)
+            {
+                @foreach (var jobcategory in jobCategories)
+                {
+                    <a asp-page="@jobcategory.JobCategoryValueEng">
+                        <div class="col-sm-3 mrgn-bttm-md">
+                            <figure>
+                                <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                <figcaption class="text-center"><h6>@Localizer[jobcategory.JobCategoryValueEng]</h6></figcaption>
+                            </figure>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                @foreach (var jobcategory in jobCategories)
+                {
+                    @if (jobcategory.JobCategoryValueEng.ToLower().Contains(@Model.filter.ToLower()))
+                    {
+                        noresults = false;
+                        <a asp-page="@jobcategory.JobCategoryValueEng">
+                            <div class="col-sm-3 mrgn-bttm-md">
+                                <figure>
+                                    <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@Localizer[jobcategory.JobCategoryValueEng]</h6></figcaption>
+                                </figure>
+                            </div>
+                        </a>
+                    }
+                }
+                if (noresults)
+                {
+                    <h4>@Localizer["NoResults"]</h4>
+                }                        
+            }
+        </div>
+    </section>
+

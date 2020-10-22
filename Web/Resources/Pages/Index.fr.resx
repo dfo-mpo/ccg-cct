@@ -127,7 +127,7 @@
     <value>Outil de compétence professionnelle</value>
   </data>
   <data name="Question1" xml:space="preserve">
-    <value>Pour commencer, veuillez sélectionner l’un des rôles</value>
+    <value>Pour commencer, dites-nous qui vous êtes</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Étudiant</value>
