@@ -1,0 +1,137 @@
+﻿@page
+@model Web.Pages.Mockups.Similar_DetailsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Similar Position Details";
+}
+
+<div class="row mrgn-tp-md">
+    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+    <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+</div>
+
+<div class="mrgn-tp-lg">
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" colspan="2">@Localizer["POSITIONS DETAILS"]: CS-02 Computer Systems</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["LEVEL"]</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Organizational Knowledge</a>
+                    <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Organizational Knowledge</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                    <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">@Localizer["Current Position Level"]: 2</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally. </p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Computer Architecture Knowledge</a>
+                    <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Computer Architecture Knowledge</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>The rules and methods that describe the functionality, organization, and implementation of computer systems and their frameworks. </p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#4" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                    <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">@Localizer["Current Position Level"]: 2</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Limited knowledge of determining the needs of the user and designing a product that meets the requirements effectively within economic and technological constraints and the creation of basic models based upon specifications.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["TECHNICAL ELEMENTS"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["LEVEL"]</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">Application Development/Support and Maintenance</a>
+                    <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Application Development/Support and Maintenance</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Designs, defines, constructs, enhances, supports, and maintains application software on one or more application platforms.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#6" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                    <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">@Localizer["Current Position Level"]: 2</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Applies one or more programming languages. Writes or adapts software modules for testing and integration. Understands and employs basic development methods and standards. Tests/debugs program modules. Uses a testing tool and prepares basic test cases. Prepares operational documentation and uses appropriate tools and technologies for developing information technology (IT) systems and services that are barrier-free and accessible.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>Infrastructure/Platforms</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Project/Program Management</td>
+                <td class="text-center">3</td>
+            </tr>
+            <tr>
+                <td>Security/Information and Application Protection</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["LEVEL"]</th>
+            </tr>
+            <tr>
+                <td>Demonstrating Integrity and Respect</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Thinking Things Through</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Working Effectively With Others</td>
+                <td class="text-center">2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
