@@ -148,7 +148,7 @@
     <value>Les gardiens de phare</value>
   </data>
   <data name="NoResults" xml:space="preserve">
-    <value>Aucun résultat trouvé</value>
+    <value>Aucun résultat correspondant trouvé</value>
   </data>
   <data name="Purchasing and Supply" xml:space="preserve">
     <value>Achat et approvisionnement</value>

@@ -21,6 +21,12 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobCategory[]>("/api/jobcategories");
         }
 
+        public async Task<JobCategory> GetJobCategoryById(int id)
+        {
+            string baseurl = "/api/jobcategories/"+id;
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCategory>(baseurl);
+        }
 
     }
 }

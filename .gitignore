@@ -342,3 +342,4 @@ ASALocalRun/
 # MSBuild Binary and Structured Log
 *.binlog
 /AccessExporter/output
+/DataModel/DbSeed.cs

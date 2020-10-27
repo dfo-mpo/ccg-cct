@@ -43,5 +43,15 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync<GetAllJobCategoriesValuesQueryHandler, List<string>>();
             return Ok(results);
         }
+        public GetJobCategoryByIdQuery query = new GetJobCategoryByIdQuery();
+        [HttpGet, Route("{Id}")]
+        [ProducesResponseType(typeof(JobCategoryDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetById(int Id)
+        {
+            query.JobCategoryId = Id;
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
     }
 }

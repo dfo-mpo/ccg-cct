@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +9,25 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Microsoft.AspNetCore.Routing;
 
-namespace Web.Pages.Member
+namespace Web.Pages.Internal
 {
-    public class AllPositionsModel : PageModel
+    public class Current_PositionModel : PageModel
     {
-        //private readonly ILogger<AllPositionsModel> _logger;
         private readonly JobCategoryService _jobcategoryService;
-        public JobCategory[] JobCategories { get; set; }   
-        
+        public JobCategory JobCategory { get; set; }
+
         [BindProperty(SupportsGet = true)]
-        public string filter { get; set; }
-        public AllPositionsModel(ILogger<AllPositionsModel> logger, JobCategoryService jobcategoryService)
+        public int filter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int id { get; set; }
+        public  Current_PositionModel(ILogger<Current_PositionModel> logger, JobCategoryService jobcategoryService)
         {
             //_logger = logger;
             _jobcategoryService = jobcategoryService;
         }
         public async Task OnGetAsync()
         {
-            JobCategories = await _jobcategoryService.GetJobCategories();
+            JobCategory = await _jobcategoryService.GetJobCategoryById(id);
         }
-
     }
 }

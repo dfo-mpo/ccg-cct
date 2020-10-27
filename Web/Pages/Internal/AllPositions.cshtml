@@ -1,56 +1,105 @@
-﻿@page
-@model Web.Pages.Member.AllPositionsModel
+﻿@page ""
 @inject IViewLocalizer Localizer
-@{ 
+@model Web.Pages.Member.AllPositionsModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor contextAccessor
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var jobCategories = Model.JobCategories;
     var imagefolder = "~/img/Internal/";
     bool noresults = true;
-    }
-    <section role="contentinfo">
-        <div class="col-md-12">
-            <h2>@Localizer["AllPositions"]</h2>
-            <form>
-                <p>
-                    <input type="text" asp-for="filter" />
-                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-                </p>
-            </form>
-            @if (Model.filter is null)
+}
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["AllPositions"]</h2>
+        <form>
+            <p>
+                <input type="text" asp-for="filter" />
+                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+            </p>
+        </form>
+        <form method="post">
+            @if (isEnglish)
             {
-                @foreach (var jobcategory in jobCategories)
+                @if (Model.filter is null)
                 {
-                    <a asp-page="@jobcategory.JobCategoryValueEng">
-                        <div class="col-sm-3 mrgn-bttm-md">
-                            <figure>
-                                <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                <figcaption class="text-center"><h6>@Localizer[jobcategory.JobCategoryValueEng]</h6></figcaption>
-                            </figure>
-                        </div>
-                    </a>
-                }
-            }
-            else
-            {
-                @foreach (var jobcategory in jobCategories)
-                {
-                    @if (jobcategory.JobCategoryValueEng.ToLower().Contains(@Model.filter.ToLower()))
+                    @foreach (var jobcategory in jobCategories)
                     {
-                        noresults = false;
-                        <a asp-page="@jobcategory.JobCategoryValueEng">
+                        <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+
                             <div class="col-sm-3 mrgn-bttm-md">
                                 <figure>
                                     <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@Localizer[jobcategory.JobCategoryValueEng]</h6></figcaption>
+                                    <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueEng</h6></figcaption>
                                 </figure>
                             </div>
                         </a>
                     }
                 }
-                if (noresults)
+                else
                 {
-                    <h4>@Localizer["NoResults"]</h4>
-                }                        
+                    @foreach (var jobcategory in jobCategories)
+                    {
+                        @if (jobcategory.JobCategoryValueEng.ToLower().Contains(@Model.filter.ToLower()))
+                        {
+                            noresults = false;
+                            <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                                <div class="col-sm-3 mrgn-bttm-md">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueEng</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
+                        }
+                    }
+                    if (noresults)
+                    {
+                        <h4>@Localizer["NoResults"]</h4>
+                    }
+                }
             }
-        </div>
-    </section>
+            else
+            {
+                @if (Model.filter is null)
+                {
+                    @foreach (var jobcategory in jobCategories)
+                    {
+                        <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+
+                            <div class="col-sm-3 mrgn-bttm-md">
+                                <figure>
+                                    <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueFra</h6></figcaption>
+                                </figure>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    @foreach (var jobcategory in jobCategories)
+                    {
+                        @if (jobcategory.JobCategoryValueFra.ToLower().Contains(@Model.filter.ToLower()))
+                        {
+                            noresults = false;
+                            <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                                <div class="col-sm-3 mrgn-bttm-md">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueFra</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
+                        }
+                    }
+                    if (noresults)
+                    {
+                        <h4>@Localizer["NoResults"]</h4>
+                    }
+                }
+            }
+        </form>
+    </div>
+</section>
 
