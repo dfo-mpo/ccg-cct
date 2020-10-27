@@ -15,7 +15,6 @@ namespace DataModel
 
         public JobGroupLevel JobGroupLevel { get; set; }
 
-
         public int JobPositionId { get; set; }
 
         public JobPosition JobPosition { get; set; }

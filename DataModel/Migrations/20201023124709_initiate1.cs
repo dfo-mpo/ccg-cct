@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class cct_datamodel1 : Migration
+    public partial class initiate1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -138,6 +138,20 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "JobPosition",
+                columns: table => new
+                {
+                    JobPositionId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobPositionTitleEng = table.Column<string>(nullable: true),
+                    JobPositionTitleFra = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobPosition", x => x.JobPositionId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CompetencyGroupsRatings",
                 columns: table => new
                 {
@@ -190,27 +204,6 @@ namespace DataModel.Migrations
                         principalTable: "CompetencyType",
                         principalColumn: "CompetencyTypeId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JobPosition",
-                columns: table => new
-                {
-                    JobPositionId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JobPositionTitleEng = table.Column<string>(nullable: true),
-                    JobPositionTitleFra = table.Column<string>(nullable: true),
-                    JobGroupId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JobPosition", x => x.JobPositionId);
-                    table.ForeignKey(
-                        name: "FK_JobPosition_JobGroup_JobGroupId",
-                        column: x => x.JobGroupId,
-                        principalTable: "JobGroup",
-                        principalColumn: "JobGroupId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -373,14 +366,14 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "JobPosition",
-                columns: new[] { "JobPositionId", "JobGroupId", "JobPositionTitleEng", "JobPositionTitleFra" },
+                columns: new[] { "JobPositionId", "JobPositionTitleEng", "JobPositionTitleFra" },
                 values: new object[,]
                 {
-                    { 1, null, "Manager", "Gestionnaire" },
-                    { 2, null, "Technical Advisor", "Conseiller technique" },
-                    { 3, null, "Business Architect", "Architecte d'affaires" },
-                    { 4, null, "Project Officer", "Agent de projets" },
-                    { 5, null, "Project Manager", "Gestionnaire de projets" }
+                    { 1, "Manager", "Gestionnaire" },
+                    { 2, "Technical Advisor", "Conseiller technique" },
+                    { 3, "Business Architect", "Architecte d'affaires" },
+                    { 4, "Project Officer", "Agent de projets" },
+                    { 5, "Project Manager", "Gestionnaire de projets" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -422,11 +415,6 @@ namespace DataModel.Migrations
                 name: "IX_JobGroupPosition_JobPositionId",
                 table: "JobGroupPosition",
                 column: "JobPositionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_JobPosition_JobGroupId",
-                table: "JobPosition",
-                column: "JobGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobPositionCompetency_CompetencyId",
@@ -496,13 +484,13 @@ namespace DataModel.Migrations
                 name: "Competency");
 
             migrationBuilder.DropTable(
+                name: "JobGroup");
+
+            migrationBuilder.DropTable(
                 name: "JobGroupLevel");
 
             migrationBuilder.DropTable(
                 name: "JobPosition");
-
-            migrationBuilder.DropTable(
-                name: "JobGroup");
         }
     }
 }
