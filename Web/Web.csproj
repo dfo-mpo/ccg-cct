@@ -41,6 +41,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Candidate\" />
+    <Folder Include="Pages\Student\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

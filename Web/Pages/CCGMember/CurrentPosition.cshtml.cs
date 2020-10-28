@@ -9,23 +9,24 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Microsoft.AspNetCore.Routing;
 
-namespace Web.Pages.Internal
+namespace Web.Pages.CCGMember
 {
-    public class Current_PositionModel : PageModel
+    public class CurrentPositionModel : PageModel
     {
         private readonly JobCategoryService _jobcategoryService;
+        [BindProperty(SupportsGet = true)]
         public JobCategory JobCategory { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int filter { get; set; }
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }
-        public  Current_PositionModel(ILogger<Current_PositionModel> logger, JobCategoryService jobcategoryService)
+        public  CurrentPositionModel(ILogger<CurrentPositionModel> logger, JobCategoryService jobcategoryService)
         {
             //_logger = logger;
             _jobcategoryService = jobcategoryService;
         }
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int id)
         {
             JobCategory = await _jobcategoryService.GetJobCategoryById(id);
         }

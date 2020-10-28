@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Microsoft.AspNetCore.Routing;
 
-namespace Web.Pages.Member
+namespace Web.Pages.CCGMember
 {
     public class AllPositionsModel : PageModel
     {

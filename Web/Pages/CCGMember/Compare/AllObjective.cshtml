@@ -1,12 +1,12 @@
 ﻿@page ""
 @inject IViewLocalizer Localizer
-@model Web.Pages.Member.AllPositionsModel
+@model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor contextAccessor
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var jobCategories = Model.JobCategories;
-    var imagefolder = "~/img/Internal/";
+    var imagefolder = "~/img/CCGMember/";
     bool noresults = true;
 }
 <section role="contentinfo">
@@ -25,7 +25,7 @@
                 {
                     @foreach (var jobcategory in jobCategories)
                     {
-                        <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                        <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
 
                             <div class="col-sm-3 mrgn-bttm-md">
                                 <figure>
@@ -43,7 +43,7 @@
                         @if (jobcategory.JobCategoryValueEng.ToLower().Contains(@Model.filter.ToLower()))
                         {
                             noresults = false;
-                            <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                            <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
                                 <div class="col-sm-3 mrgn-bttm-md">
                                     <figure>
                                         <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
@@ -65,7 +65,7 @@
                 {
                     @foreach (var jobcategory in jobCategories)
                     {
-                        <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                        <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
 
                             <div class="col-sm-3 mrgn-bttm-md">
                                 <figure>
@@ -83,7 +83,7 @@
                         @if (jobcategory.JobCategoryValueFra.ToLower().Contains(@Model.filter.ToLower()))
                         {
                             noresults = false;
-                            <a asp-page="CurrentPosition" asp-route-id="@jobcategory.JobCategoryId">
+                            <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
                                 <div class="col-sm-3 mrgn-bttm-md">
                                     <figure>
                                         <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />

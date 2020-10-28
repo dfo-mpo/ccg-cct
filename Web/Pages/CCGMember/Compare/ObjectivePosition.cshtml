@@ -1,24 +1,23 @@
 ﻿@page
 @using Microsoft.AspNetCore.Http
+@model Web.Pages.CCGMember.Compare.ObjectivePositionModel
+@inject IViewLocalizer Localizer
 @inject IHttpContextAccessor contextAccessor
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues;
+    var objtitle = isEnglish ? Model.JobCategory.JobCategoryValueEng : Model.JobCategory.JobCategoryValueFra;
 }
-@model Web.Pages.Internal.Current_PositionModel
-@inject IViewLocalizer Localizer
 
-@{
-
-}<form method="post">
+<form method="post">
     <section role="contentinfo">
 
         <h2>@Localizer["h2Text"]</h2>
         <figure><img src="~/img/Internal/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
-        <h2>@Model.JobCategory.JobCategoryValueEng</h2>
+        <h2>@objtitle</h2>
         <br />
         <div class="row col-md-12">
-            <form method="get" action="#" >
+            <form method="get" action="#">
                 <div class="form-group col-md-2">
                     <label for="dt_level" class="control-label">@Localizer["Level"]</label>
                     <select class="form-control maxwidth" id="dt_level" name="dt_level" data-column="2">
@@ -56,13 +55,12 @@
 
                     <h2 class="wb-inv">Document navigation</h2>
 
-                    <ul class="pager">
-                        <li class="previous"><a href="member_position" rel="prev">@Localizer["Previous"]</a></li>
-                        <li class="next"><a href="Competency_Position_Search" rel="next">@Localizer["Next"]</a></li>
-                    </ul>
+                    <button type="button" class="btn btn-primary">Compare Positions</button>
 
                 </nav>
             </div>
         </div>
     </section>
+
+
 </form>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Web.Pages.Internal
+namespace Web.Pages.CCGMember
 {
     public class CCGMemberModel : PageModel
     {

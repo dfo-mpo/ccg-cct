@@ -1,13 +1,12 @@
 ﻿@page
-@model Web.Pages.Internal.CCGMemberModel
+@model Web.Pages.CCGMember.CCGMemberModel
 @inject IViewLocalizer Localizer
-
 
 <h3>@Localizer["Question1"]</h3>
 <a asp-page="">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
-            <img src="~/img/Internal/offshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <img src="~/img/CCGMember/offshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
             <input type="radio"  value="Offshore"><strong>@Localizer["Offshore"]</strong>
         </figure>
     </div>
@@ -15,7 +14,7 @@
 <a asp-page="">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
-            <img src="~/img/Internal/onshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <img src="~/img/CCGMember/onshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
             <input type="radio"  value="Onshore"><strong>@Localizer["Onshore"]</strong>
         </figure>
     </div>
@@ -23,7 +22,7 @@
 <a asp-page="AllPositions">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
-            <img src="~/img/Internal/all-positions.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+            <img src="~/img/CCGMember/all-positions.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
             <input type="radio" checked="" value="All positions"><strong>@Localizer["Allpositions"]</strong>
         </figure>
     </div>
