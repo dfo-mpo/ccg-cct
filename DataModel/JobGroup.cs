@@ -15,11 +15,12 @@ namespace DataModel
         // entity will hold all of the JobRoles entities that are related to that JobGroup entity.
         public virtual ICollection<JobRoles> JobRoles { get; set; }
 
-        // entity will hold all of the JobPosition entities that are related to that JobGroup entity.
-        public virtual ICollection<JobPosition> JobPosition { get; set; }
-
         // entity will hold all of the JobGroupPosition entities that are related to thatJobGroup entity.
         public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+
+        // entity will hold all of the JobRolesPositionCompetency entities that are related to that JobPosition entity.
+        public virtual ICollection<JobRolesPositionCompetency> JobRolesPositionCompetency { get; set; }
+
 
     }
 }
