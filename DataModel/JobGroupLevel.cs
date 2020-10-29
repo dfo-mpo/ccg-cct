@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
@@ -8,13 +10,15 @@ namespace DataModel
     {
 
         // Primary Key
-        public int JobGroupLevelId { get; set; }
+        public int Id { get; set; }
 
         // Properties
-        public string JobGroupClassificationLevel { get; set; }
+
+        [StringLength(150)]
+        public string ClassificationLevel { get; set; }
 
         // entity will hold all of the JobRoles entities that are related to that JobGroupLevel entity.
-        public virtual ICollection<JobRoles> JobRoles { get; set; }
+        public virtual ICollection<JobRole> JobRole { get; set; }
 
         // entity will hold all of the JobGroupPosition entities that are related to that JobGroupLevel entity.
         public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }

@@ -3,14 +3,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201029042804_initiate9")]
+    partial class initiate9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,23 +183,6 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobGroups");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClassificationName = "GT"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClassificationName = "PG"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClassificationName = "SO-MAO"
-                        });
                 });
 
             modelBuilder.Entity("DataModel.JobGroupLevel", b =>
@@ -214,23 +199,6 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobGroupLevels");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClassificationLevel = "01"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClassificationLevel = "02"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClassificationLevel = "03"
-                        });
                 });
 
             modelBuilder.Entity("DataModel.JobGroupPosition", b =>
@@ -326,38 +294,6 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobPositions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PositionNameEng = "Manager",
-                            PositionNameFre = "Gestionnaire"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            PositionNameEng = "Technical Advisor",
-                            PositionNameFre = "Conseiller technique"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            PositionNameEng = "Business Architect",
-                            PositionNameFre = "Architecte d'affaires"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            PositionNameEng = "Project Officer",
-                            PositionNameFre = "Agent de projets"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            PositionNameEng = "Project Manager",
-                            PositionNameFre = "Gestionnaire de projets"
-                        });
                 });
 
             modelBuilder.Entity("DataModel.JobPositionCompetency", b =>

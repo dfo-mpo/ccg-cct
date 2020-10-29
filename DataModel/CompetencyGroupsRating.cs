@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public class CompetencyGroupsRatings
+    public class CompetencyGroupsRating
     {
         public int CompetencyId { get; set; }
 
@@ -13,9 +15,9 @@ namespace DataModel
         public int CompetencyRatingLevelId { get; set; }
 
         public CompetencyRatingLevel CompetencyRatingLevel { get; set; }
+ 
+        public int CompetencyLevelRequirementId { get; set; }
 
-        public int CompetencyLevelRequirementsId { get; set; }
-
-        public CompetencyLevelRequirements CompetencyLevelRequirements { get; set; }
+        public CompetencyLevelRequirement CompetencyLevelRequirement { get; set; }
     }
 }

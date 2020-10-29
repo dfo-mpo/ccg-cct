@@ -26,6 +26,8 @@
     <Compile Remove="Migrations\20201022015338_cct_modeldata1.Designer.cs" />
     <Compile Remove="Migrations\20201023123849_initcreate1.cs" />
     <Compile Remove="Migrations\20201023123849_initcreate1.Designer.cs" />
+    <Compile Remove="Migrations\20201029034808_iniate4.cs" />
+    <Compile Remove="Migrations\20201029034808_iniate4.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
