@@ -46,14 +46,6 @@ namespace DataModel
            
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
 
-            // configure one-many, many-one, many-many relationships Entity Framework Core
-            /* builder.Entity<CompetencyGroupsRating>().HasKey(cgr => new { cgr.CompetencyId, cgr.CompetencyRatingLevelId, cgr.CompetencyLevelRequirementsId });
-             builder.Entity<CompetencyGroupsType>().HasKey(cgt => new { cgt.CompetencyId, cgt.CompetencyTypeId });
-             builder.Entity<JobGroupPosition>().HasKey(jp => new { jp.JobGroupId, jp.JobGroupLevelId, jp.JobCategoryId, jp.JobPositionId, jp.JobKeyTaskPerLevelId, jp.JobLocationRegionId });
-             builder.Entity<JobPositionCompetency>().HasKey(jpc => new { jpc.JobPositionId, jpc.CompetencyId });
-             builder.Entity<JobRole>().HasKey(jr => new { jr.JobGroupId, jr.JobGroupLevelId });
-             builder.Entity<JobRolesPositionCompetency>().HasKey(jgrpc => new { jgrpc.JobGroupId, jgrpc.JobGroupLevelId, jgrpc.JobPositionId, jgrpc.CompetencyId });
-            */
            SeedData(builder);
         }
 
