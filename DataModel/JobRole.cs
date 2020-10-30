@@ -11,11 +11,11 @@ namespace DataModel
 
         public int JobGroupId { get; set; }
 
-        public JobGroup JobGroup { get; set; }
+        public JobGroup JobGroup { get; set; } // ex:  AS, GT
 
         public int JobGroupLevelId { get; set; }
 
-        public JobGroupLevel JobGroupLevel { get; set; }
+        public JobGroupLevel JobGroupLevel { get; set; } // ex: 01, 02
 
     }
 }

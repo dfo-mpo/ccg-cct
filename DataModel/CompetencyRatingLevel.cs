@@ -9,7 +9,9 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        public string NameEng { get; set; }
+        public int Value { get; set; } // ex: 1, 2
+
+        public string NameEng { get; set; } // ex: Novice, Intermediate
 
         public string NameFre { get; set; }
 

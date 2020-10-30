@@ -9,7 +9,7 @@ namespace DataModel
     {     
         public int Id { get; set; }
 
-        public string ClassificationName { get; set; }
+        public string Name { get; set; } // ex: AS, CS, GL 
 
         public virtual ICollection<JobRole> JobRoles { get; set; }
 

@@ -63,9 +63,9 @@ namespace DataModel
         private void SeedData(ModelBuilder builder)
         {
             builder.Entity<JobGroup>().HasData(
-                          new JobGroup() { Id = 1, ClassificationName = "GT" },
-                          new JobGroup() { Id = 2, ClassificationName = "PG" },
-                          new JobGroup() { Id = 3, ClassificationName = "SO-MAO" }
+                          new JobGroup() { Id = 1, Name = "GT" },
+                          new JobGroup() { Id = 2, Name = "PG" },
+                          new JobGroup() { Id = 3, Name = "SO-MAO" }
                           );
 
             builder.Entity<JobGroupLevel>().HasData(

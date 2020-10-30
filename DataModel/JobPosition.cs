@@ -10,7 +10,7 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        public string TitleEng { get; set; }
+        public string TitleEng { get; set; } // ex: Manager, IT advisor
 
         public string TitleFre { get; set; }
 

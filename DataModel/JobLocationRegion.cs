@@ -10,7 +10,7 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        public string NameEng { get; set; }
+        public string NameEng { get; set; } // ex : Atlantic, Western
 
         public string NameFre { get; set; }
 
