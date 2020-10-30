@@ -9,7 +9,7 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        public string ValueEng { get; set; } // offshore, onshore locations
+        public string ValueEng { get; set; }
 
         public string ValueFre { get; set; }
 
