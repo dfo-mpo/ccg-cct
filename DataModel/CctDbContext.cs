@@ -37,24 +37,7 @@ namespace DataModel
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new CertificateConfiguration());
-            builder.ApplyConfiguration(new CompetencyConfiguration());
-            builder.ApplyConfiguration(new CompetencyLevelRequirementConfiguration());
-            builder.ApplyConfiguration(new CompetencyRatingGroupConfiguration());
-            builder.ApplyConfiguration(new CompetencyRatingLevelConfiguration());
-            builder.ApplyConfiguration(new CompetencyTypeConfiguration());
-            builder.ApplyConfiguration(new CompetencyTypeGroupConfiguration());
-            builder.ApplyConfiguration(new JobCategoryConfiguration());
-            builder.ApplyConfiguration(new JobGroupConfiguration());
-            builder.ApplyConfiguration(new JobGroupLevelConfiguration());
-            builder.ApplyConfiguration(new JobGroupPositionConfiguration());
-            builder.ApplyConfiguration(new JobKeyTaskPerLevelConfiguration());
-            builder.ApplyConfiguration(new JobLocationRegionConfiguration());
-            builder.ApplyConfiguration(new JobPositionCompetencyConfiguration());
-            builder.ApplyConfiguration(new JobPositionConfiguration());
-            builder.ApplyConfiguration(new JobRoleConfiguration());
-            builder.ApplyConfiguration(new JobRolePositionCompetencyConfiguration());
-           
+                      
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
 
            SeedData(builder);
