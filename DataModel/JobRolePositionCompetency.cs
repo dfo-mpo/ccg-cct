@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public class JobRolesPositionCompetency
+    public class JobRolePositionCompetency
     {
         public int JobGroupId { get; set; }
 

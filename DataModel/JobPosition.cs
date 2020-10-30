@@ -10,17 +10,13 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        [StringLength(150)]
-        public string PositionNameEng { get; set; }
+        public string TitleEng { get; set; }
 
-        [StringLength(150)]
-        public string PositionNameFre { get; set; }
+        public string TitleFre { get; set; }
 
-        // entity will hold all of the JobPositionCompetency entities that are related to that JobPosition entity.
-        public virtual ICollection<JobPositionCompetency> JobPositionCompetency { get; set; }
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
 
-        // entity will hold all of the JobRolesPositionCompetency entities that are related to that JobPosition entity.
-        public virtual ICollection<JobRolesPositionCompetency> JobRolesPositionCompetency { get; set; }
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
         
     }
 }

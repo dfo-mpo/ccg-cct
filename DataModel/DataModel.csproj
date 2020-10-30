@@ -28,6 +28,14 @@
     <Compile Remove="Migrations\20201023123849_initcreate1.Designer.cs" />
     <Compile Remove="Migrations\20201029034808_iniate4.cs" />
     <Compile Remove="Migrations\20201029034808_iniate4.Designer.cs" />
+    <Compile Remove="Migrations\20201029193645_initiatecreate8.cs" />
+    <Compile Remove="Migrations\20201029193645_initiatecreate8.Designer.cs" />
+    <Compile Remove="Migrations\20201030114251_initiate6.cs" />
+    <Compile Remove="Migrations\20201030114251_initiate6.Designer.cs" />
+    <Compile Remove="Migrations\20201030114817_initiate6.cs" />
+    <Compile Remove="Migrations\20201030114817_initiate6.Designer.cs" />
+    <Compile Remove="Migrations\20201030115537_initiate7.cs" />
+    <Compile Remove="Migrations\20201030115537_initiate7.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

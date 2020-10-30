@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 
 namespace DataModel
 {
-    public class Certificate : CompetencyType
+    public class Certificate
     {
-        [StringLength(150)]
-        public string DescriptionEng { get; set; }
+        
+        public int Id { get; set; }
 
-        [StringLength(150)]
-        public string DescriptionFre { get; set; }
+        public Competency Competency { get; set; }
 
-        [StringLength(150)]
+        public string DescEng { get; set; }
+
+        public string DescFre { get; set; }
+
         public string RequireIndicatorEng { get; set; }
 
-        [StringLength(150)]
         public string RequireIndicatorFre { get; set; }
+
     }
 }

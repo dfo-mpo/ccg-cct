@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 
 namespace DataModel
@@ -11,13 +10,10 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        [StringLength(150)]
-        public string RegionNameEng { get; set; }
+        public string NameEng { get; set; }
 
-        [StringLength(150)]
-        public string RegionNameFre { get; set; }
+        public string NameFre { get; set; }
 
-        // entity will hold all of the JobGroupPosition entities that are related to that JobLocationRegion entity.
-        public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
     }
 }

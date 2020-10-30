@@ -17,32 +17,43 @@ namespace DataModel
         }
 		
         public DbSet<Certificate> Certificates { get; set; }
-        public DbSet<Competency> Competencys { get; set; }
-        public DbSet<CompetencyGroupsRating> CompetencyGroupsRatings { get; set; }
-        public DbSet<CompetencyGroupsType> CompetencyGroupsTypes { get; set; }
+        public DbSet<Competency> Competencies { get; set; }
+        public DbSet<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+        public DbSet<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
         public DbSet<CompetencyLevelRequirement> CompetencyLevelRequirements { get; set; }
         public DbSet<CompetencyRatingLevel> CompetencyRatingLevels { get; set; }
         public DbSet<CompetencyType> CompetencyTypes { get; set; }
-        public DbSet<JobCategory> JobCategorys { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<JobGroup> JobGroups { get; set; }
         public DbSet<JobGroupLevel> JobGroupLevels { get; set; }
         public DbSet<JobPosition> JobPositions { get; set; }
         public DbSet<JobKeyTaskPerLevel> JobKeyTaskPerLevels { get; set; }
         public DbSet<JobLocationRegion> JobLocationRegions { get; set; }
         public DbSet<JobGroupPosition> JobGroupPositions { get; set; }
-        public DbSet<JobPositionCompetency> JobPositionCompetencys { get; set; }
+        public DbSet<JobPositionCompetency> JobPositionCompetencies { get; set; }
         public DbSet<JobRole> JobRoles { get; set; }
-        public DbSet<JobRolesPositionCompetency> JobRolesPositionCompetencys { get; set; }
+        public DbSet<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new CompetencyGroupsRatingConfiguration());
-            builder.ApplyConfiguration(new CompetencyGroupsTypeConfiguration());
+            builder.ApplyConfiguration(new CertificateConfiguration());
+            builder.ApplyConfiguration(new CompetencyConfiguration());
+            builder.ApplyConfiguration(new CompetencyLevelRequirementConfiguration());
+            builder.ApplyConfiguration(new CompetencyRatingGroupConfiguration());
+            builder.ApplyConfiguration(new CompetencyRatingLevelConfiguration());
+            builder.ApplyConfiguration(new CompetencyTypeConfiguration());
+            builder.ApplyConfiguration(new CompetencyTypeGroupConfiguration());
+            builder.ApplyConfiguration(new JobCategoryConfiguration());
+            builder.ApplyConfiguration(new JobGroupConfiguration());
+            builder.ApplyConfiguration(new JobGroupLevelConfiguration());
             builder.ApplyConfiguration(new JobGroupPositionConfiguration());
+            builder.ApplyConfiguration(new JobKeyTaskPerLevelConfiguration());
+            builder.ApplyConfiguration(new JobLocationRegionConfiguration());
             builder.ApplyConfiguration(new JobPositionCompetencyConfiguration());
+            builder.ApplyConfiguration(new JobPositionConfiguration());
             builder.ApplyConfiguration(new JobRoleConfiguration());
-            builder.ApplyConfiguration(new JobRolesPositionCompetencyConfiguration());
+            builder.ApplyConfiguration(new JobRolePositionCompetencyConfiguration());
            
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
 
@@ -58,17 +69,17 @@ namespace DataModel
                           );
 
             builder.Entity<JobGroupLevel>().HasData(
-                            new JobGroupLevel() { Id = 1, ClassificationLevel = "01" },
-                            new JobGroupLevel() { Id = 2, ClassificationLevel = "02" },
-                            new JobGroupLevel() { Id = 3, ClassificationLevel = "03" }
+                            new JobGroupLevel() { Id = 1, Value = "01" },
+                            new JobGroupLevel() { Id = 2, Value = "02" },
+                            new JobGroupLevel() { Id = 3, Value = "03" }
                             );
 
             builder.Entity<JobPosition>().HasData(
-                            new JobPosition() { Id = 1, PositionNameEng = "Manager", PositionNameFre = "Gestionnaire" },
-                            new JobPosition() { Id = 2, PositionNameEng = "Technical Advisor", PositionNameFre = "Conseiller technique" },
-                            new JobPosition() { Id = 3, PositionNameEng = "Business Architect", PositionNameFre = "Architecte d'affaires" },
-                            new JobPosition() { Id = 4, PositionNameEng = "Project Officer", PositionNameFre = "Agent de projets" },
-                            new JobPosition() { Id = 5, PositionNameEng = "Project Manager", PositionNameFre = "Gestionnaire de projets" }
+                            new JobPosition() { Id = 1, TitleEng = "Manager", TitleFre = "Gestionnaire" },
+                            new JobPosition() { Id = 2, TitleEng = "Technical Advisor", TitleFre = "Conseiller technique" },
+                            new JobPosition() { Id = 3, TitleEng = "Business Architect", TitleFre = "Architecte d'affaires" },
+                            new JobPosition() { Id = 4, TitleEng = "Project Officer", TitleFre = "Agent de projets" },
+                            new JobPosition() { Id = 5, TitleEng = "Project Manager", TitleFre = "Gestionnaire de projets" }
                             ); 
         }
 

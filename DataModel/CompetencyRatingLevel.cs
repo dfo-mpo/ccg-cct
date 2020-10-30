@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace DataModel
@@ -11,20 +9,15 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        [StringLength(150)]
-        public string RatingLevelNameEng { get; set; }
+        public string NameEng { get; set; }
 
-        [StringLength(150)]
-        public string RatingLevelNameFre { get; set; }
+        public string NameFre { get; set; }
 
-        [StringLength(150)]
-        public string RatingLevelDescEng { get; set; }
+        public string DescEng { get; set; }
 
-        [StringLength(150)]
-        public string RatingLevelDescFre { get; set; }
+        public string DescFre { get; set; }
 
-        // entity will hold all of the CompetencyGroupsRatings entities that are related to that CompetencyRatingLevel entity.
-        public virtual ICollection<CompetencyGroupsRating> CompetencyGroupsRating { get; set; }
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
 
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace DataModel
 {
@@ -10,13 +9,10 @@ namespace DataModel
     {
         public int Id { get; set; }
 
-        [StringLength(150)]
-        public string NameEng { get; set; } // Certificate, KE, TE, BE
+        public string NameEng { get; set; }
 
-        [StringLength(150)]
         public string NameFre { get; set; }
 
-        // entity will hold all of the CompetencyGroupsTypes entities that are related to that CompetencyType entity.
-        public virtual ICollection<CompetencyGroupsType> CompetencyGroupsType { get; set; } 
+        public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; } 
     }
 }

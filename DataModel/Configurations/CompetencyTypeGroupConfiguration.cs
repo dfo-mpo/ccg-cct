@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-   public class CompetencyGroupsTypeConfiguration : IEntityTypeConfiguration<CompetencyGroupsType>
+   public class CompetencyTypeGroupConfiguration : IEntityTypeConfiguration<CompetencyTypeGroup>
     {
-        public void Configure(EntityTypeBuilder<CompetencyGroupsType> builder)
+        public void Configure(EntityTypeBuilder<CompetencyTypeGroup> builder)
         {
             builder.HasKey(cgt => new { cgt.CompetencyId, cgt.CompetencyTypeId });
         }

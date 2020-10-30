@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-    public class JobRolesPositionCompetencyConfiguration : IEntityTypeConfiguration<JobRolesPositionCompetency>
+    public class JobRolePositionCompetencyConfiguration : IEntityTypeConfiguration<JobRolePositionCompetency>
     {
-        public void Configure(EntityTypeBuilder<JobRolesPositionCompetency> builder)
+        public void Configure(EntityTypeBuilder<JobRolePositionCompetency> builder)
         {
             builder.HasKey(jgrpc => new { jgrpc.JobGroupId, jgrpc.JobGroupLevelId, jgrpc.JobPositionId, jgrpc.CompetencyId });
         }

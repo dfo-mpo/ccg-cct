@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel
 {
@@ -11,23 +11,17 @@ namespace DataModel
         
         public int Id { get; set; }
 
-        [StringLength(150)]
         public string NameEng { get; set; }
 
-        [StringLength(150)]
         public string NameFre { get; set; }
 
-        // entity will hold all of the CompetencyGroupsRatings entities that are related to that Competency entity.
-        public virtual ICollection<CompetencyGroupsRating> CompetencyGroupsRating { get; set; }
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
 
-        // entity will hold all of the CompetencyGroupsTypes entities that are related to that Competency entity.
-        public virtual ICollection<CompetencyGroupsType> CompetencyGroupsType { get; set; }
+        public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
         
-        // entity will hold all of the JobPositionCompetency entities that are related to that Competency entity.
-        public virtual ICollection<JobPositionCompetency> JobPositionCompetency { get; set; }
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
         
-        // entity will hold all of the JobRolesPositionCompetency entities that are related to that Competency entity.
-        public virtual ICollection<JobRolesPositionCompetency> JobRolesPositionCompetency { get; set; }
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
 
     }
 }
