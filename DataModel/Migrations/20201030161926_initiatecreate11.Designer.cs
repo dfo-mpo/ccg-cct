@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20201030120221_initial8")]
-    partial class initial8
+    [Migration("20201030161926_initiatecreate11")]
+    partial class initiatecreate11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -145,6 +145,9 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("CompetencyRatingLevels");
@@ -216,7 +219,7 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClassificationName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
@@ -229,17 +232,17 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            ClassificationName = "GT"
+                            Name = "GT"
                         },
                         new
                         {
                             Id = 2,
-                            ClassificationName = "PG"
+                            Name = "PG"
                         },
                         new
                         {
                             Id = 3,
-                            ClassificationName = "SO-MAO"
+                            Name = "SO-MAO"
                         });
                 });
 

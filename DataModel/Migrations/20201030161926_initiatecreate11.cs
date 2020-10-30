@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class initial8 : Migration
+    public partial class initiatecreate11 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,6 +40,7 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Value = table.Column<int>(nullable: false),
                     NameEng = table.Column<string>(maxLength: 250, nullable: false),
                     NameFre = table.Column<string>(maxLength: 250, nullable: false),
                     DescEng = table.Column<string>(maxLength: 250, nullable: true),
@@ -97,7 +98,7 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClassificationName = table.Column<string>(maxLength: 250, nullable: false)
+                    Name = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -374,7 +375,7 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "JobGroups",
-                columns: new[] { "Id", "ClassificationName" },
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
                     { 1, "GT" },

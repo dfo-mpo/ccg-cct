@@ -36,9 +36,8 @@ namespace DataModel
 
 
         protected override void OnModelCreating(ModelBuilder builder)
-        {
-                      
-            builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
+        {           
+           builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
 
            SeedData(builder);
         }
