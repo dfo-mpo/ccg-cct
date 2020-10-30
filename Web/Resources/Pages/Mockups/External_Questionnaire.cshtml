@@ -1,0 +1,316 @@
+﻿@page
+@model Web.Pages.Mockups.External_QuestionnaireModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "External Candidate Questionnaire";
+}
+
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h3>@Localizer["h3Q1Text"]</h3>
+        <form method="post" action="#">
+            <div class="form-group">
+                <select multiple class="form-control maxwidth " id="dt_certifications" name="dt_certifications">
+                    <option value="1">Bridge Watch Certificate</option>
+                    <option value="2">CCG Medic-A Certificate</option>
+                    <option value="3">Diver Certification Board of Canada (DCBC) Restricted Surface Supplied Diver Certification</option>
+                    <option value="4">First Aid, Marine First Aid, and Advanced Marine First Aid</option>
+                    <option value="5">Marine Emergency Duties - Basic Safety</option>
+                    <option value="6">Marine Emergency Duties - Proficiency in Advanced Firefighting</option>
+                    <option value="7">Marine Emergency Duties - Survival Craft / Rescue Boats</option>
+                    <option value="8">Master 150 GT Domestic</option>
+                    <option value="9">OEM Maintenance Qualification; Technician</option>
+                    <option value="10">Restricted Operator Certificate-Maritime Commerical (ROC-MC)</option>
+                </select>
+            </div>
+
+            <h3>@Localizer["h3Q2Text"]</h3>
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th>@Localizer["Level 1"]</th>
+                        <th>@Localizer["Level 2"]</th>
+                        <th>@Localizer["Level 3"]</th>
+                        <th>@Localizer["Level 4"]</th>
+                        <th>@Localizer["Level 5"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Organizational Knowledge</a>
+                            <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Organizational Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#2" aria-controls="centred-popup" class="wb-lbx" role="button">Search and Rescue (SAR) Knowledge</a>
+                            <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Search and Rescue (SAR) Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Leads the maritime component of the federal SAR system in the provision of search and rescue services to Canadian mariners and to others in need of humanitarian aid, including the coordination of SAR operations on the water for the provision of aid to persons, ships, or other craft which are, or are feared to be, in distress or imminent danger</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Marine Domain Awareness Knowledge</a>
+                            <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Marine Domain Awareness Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Having true and timely information about everything on, under, related to, adjacent to, or bordering a sea, ocean, or other navigable waterway. This includes all related activities, infrastructure, shipping, vessels, cartography, and natural phenomena. For marine security, it includes being aware of anything in the marine domain that could threaten Canada's national security.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#4" aria-controls="centred-popup" class="wb-lbx" role="button">Program Knowledge and Application</a>
+                            <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Program Knowledge and Application</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates:  Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">Acts and Regulations Knowledge</a>
+                            <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Acts and Regulations Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>An understanding of the acts and regulations pertinent to operational programs, including their affective clauses, sources, authorities, and impacts on a given program or programs in the Canadian Coast Guard.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#6" aria-controls="centred-popup" class="wb-lbx" role="button">Diving Operations Knowledge</a>
+                            <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Diving Operations Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Diving knowledge required to work safely in a hostile environment through proper organization and planning.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Diving" value="1" /></td>
+                        <td><input type="radio" name="Diving" value="2" /></td>
+                        <td><input type="radio" name="Diving" value="3" /></td>
+                        <td><input type="radio" name="Diving" value="4" /></td>
+                        <td><input type="radio" name="Diving" value="5" /></td>
+                    </tr>
+                    <tr>
+                        <td>Other</td>
+                        <td colspan="4"><input type="text" id="" name="" /></td>
+                        <td><button>Add</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th>@Localizer["Level 1"]</th>
+                        <th>@Localizer["Level 2"]</th>
+                        <th>@Localizer["Level 3"]</th>
+                        <th>@Localizer["Level 4"]</th>
+                        <th>@Localizer["Level 5"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rigging and Lifting</td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Diving Supervision</td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Search and Rescue (SAR)</td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Bridge Watchkeeping Duties</td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Small Boats, Helicopters, Barges, Tackle Operations</td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Problem Solving</td>
+                        <td><input type="radio" name="Diving" value="1" /></td>
+                        <td><input type="radio" name="Diving" value="2" /></td>
+                        <td><input type="radio" name="Diving" value="3" /></td>
+                        <td><input type="radio" name="Diving" value="4" /></td>
+                        <td><input type="radio" name="Diving" value="5" /></td>
+                    </tr>
+                    <tr>
+                        <td>Other</td>
+                        <td colspan="4"><input type="text" id="" name="" /></td>
+                        <td><button>Add</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th>@Localizer["Level 1"]</th>
+                        <th>@Localizer["Level 2"]</th>
+                        <th>@Localizer["Level 3"]</th>
+                        <th>@Localizer["Level 4"]</th>
+                        <th>@Localizer["Level 5"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Demonstrating Integrity and Respect</td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                        <td><input type="radio" name="Org" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Thinking Things Through</td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                        <td><input type="radio" name="SAR" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Working Effectively With Others</td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                        <td><input type="radio" name="Marine" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Showing Initiative and Being Action Oriented</td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                        <td><input type="radio" name="Program" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Apply Safety Considerations</td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                        <td><input type="radio" name="Acts" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Leadership</td>
+                        <td><input type="radio" name="Diving" value="1" /></td>
+                        <td><input type="radio" name="Diving" value="2" /></td>
+                        <td><input type="radio" name="Diving" value="3" /></td>
+                        <td><input type="radio" name="Diving" value="4" /></td>
+                        <td><input type="radio" name="Diving" value="5" /></td>
+                    </tr>
+                    <tr>
+                        <td>Canadian Coast Guard Cultural Awareness</td>
+                        <td><input type="radio" name="Diving" value="1" /></td>
+                        <td><input type="radio" name="Diving" value="2" /></td>
+                        <td><input type="radio" name="Diving" value="3" /></td>
+                        <td><input type="radio" name="Diving" value="4" /></td>
+                        <td><input type="radio" name="Diving" value="5" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</section>
+<div class="row">
+    <div class="col-lg-12 mrgn-bttm-md">
+        <nav role="navigation" class="mrgn-bttm-lg">
+
+            <h2 class="wb-inv">Document navigation</h2>
+
+            <ul class="pager">
+                <li class="previous"><a href="External_Candidate" rel="prev">@Localizer["Previous"]</a></li>
+                <li class="next"><a href="External_List" rel="next">@Localizer["Next"]</a></li>
+            </ul>
+
+        </nav>
+    </div>
+</div>
