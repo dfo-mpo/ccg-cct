@@ -14,19 +14,19 @@ namespace Web.Pages.CCGMember.Compare
     public class AllObjectiveModel : PageModel
     {
         //private readonly ILogger<AllPositionsModel> _logger;
-        private readonly JobCategoryService _jobcategoryService;
-        public JobCategory[] JobCategories { get; set; }   
+        private readonly JobGroupService _jobgroupService;
+        public JobGroup[] JobGroups { get; set; }   
         
         [BindProperty(SupportsGet = true)]
         public string filter { get; set; }
-        public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobCategoryService jobcategoryService)
+        public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobGroupService jobgroupService)
         {
             //_logger = logger;
-            _jobcategoryService = jobcategoryService;
+            _jobgroupService = jobgroupService;
         }
         public async Task OnGetAsync()
         {
-            JobCategories = await _jobcategoryService.GetJobCategories();
+            JobGroups = await _jobgroupService.GetJobGroups();
         }
 
     }

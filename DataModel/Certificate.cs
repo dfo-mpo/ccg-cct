@@ -1,13 +1,26 @@
-﻿namespace DataModel
-{
-    public class Certificate : CompetencyType
-    {
-        public string CertificateDescriptionEng { get; set; }
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-        public string CertificateDescriptionFra { get; set; }
+
+namespace DataModel
+{
+    public class Certificate
+    {
+        
+        public int Id { get; set; }
+
+        public Competency Competency { get; set; }
+
+        public string DescEng { get; set; }
+
+        public string DescFre { get; set; }
 
         public string RequireIndicatorEng { get; set; }
 
-        public string RequireIndicatorFra { get; set; }
+        public string RequireIndicatorFre { get; set; }
+
     }
 }

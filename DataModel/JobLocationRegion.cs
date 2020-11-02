@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace DataModel
 {
     public class JobLocationRegion
     {
-        public int JobLocationRegionId { get; set; }
+        public int Id { get; set; }
 
-        public string JobLocationRegionEng { get; set; }
+        public string NameEng { get; set; } // ex : Atlantic, Western
 
-        public string JobLocationRegionFra { get; set; }
+        public string NameFre { get; set; }
 
-        // entity will hold all of the JobGroupPosition entities that are related to that JobLocationRegion entity.
-        public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
     }
 }

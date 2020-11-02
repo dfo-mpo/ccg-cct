@@ -11,7 +11,7 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobCategories
-{
+{/*
     public class GetAllJobCategoriesValuesQueryHandler : IQueryHandler<List<string>>
     {
         private readonly CctDbContext _db;
@@ -28,5 +28,5 @@ namespace Business.Queries.JobCategories
                     e.JobCategoryValueEng
                 ).ToListAsync(cancellationToken);
      }
-    }
+}*/
 }

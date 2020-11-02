@@ -7,7 +7,7 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues;
     var id = Model.id;
-    var jobtitle = isEnglish ? Model.JobCategory.JobCategoryValueEng : Model.JobCategory.JobCategoryValueFra;
+    var jobtitle = isEnglish ? Model.JobCategory.NameEng : Model.JobCategory.NameFre;
 }
 <form method="post">
     <section role="contentinfo">

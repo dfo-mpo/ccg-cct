@@ -13,22 +13,22 @@ namespace Web.Pages.CCGMember
 {
     public class CurrentPositionModel : PageModel
     {
-        private readonly JobCategoryService _jobcategoryService;
+        private readonly JobGroupService _jobcategoryService;
         [BindProperty(SupportsGet = true)]
-        public JobCategory JobCategory { get; set; }
+        public JobGroup JobCategory { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int filter { get; set; }
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }
-        public  CurrentPositionModel(ILogger<CurrentPositionModel> logger, JobCategoryService jobcategoryService)
+        public  CurrentPositionModel(ILogger<CurrentPositionModel> logger, JobGroupService jobcategoryService)
         {
             //_logger = logger;
             _jobcategoryService = jobcategoryService;
         }
         public async Task OnGetAsync(int id)
         {
-            JobCategory = await _jobcategoryService.GetJobCategoryById(id);
+            JobCategory = await _jobcategoryService.GetJobGroupById(id);
         }
     }
 }

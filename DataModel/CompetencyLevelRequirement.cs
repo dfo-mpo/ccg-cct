@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataModel
 {
-    public class JobKeyTaskPerLevel
+    public class CompetencyLevelRequirement
     {
         public int Id { get; set; }
 
@@ -13,6 +13,6 @@ namespace DataModel
 
         public string DescFre { get; set; }
 
-        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
     }
 }

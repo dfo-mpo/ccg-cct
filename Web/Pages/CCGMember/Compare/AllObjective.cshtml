@@ -5,7 +5,7 @@
 @inject IHttpContextAccessor contextAccessor
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var jobCategories = Model.JobCategories;
+    var jobGroups = Model.JobGroups;
     var imagefolder = "~/img/CCGMember/";
     bool noresults = true;
 }
@@ -23,14 +23,14 @@
             {
                 @if (Model.filter is null)
                 {
-                    @foreach (var jobcategory in jobCategories)
+                    @foreach (var jobgroup in jobGroups)
                     {
-                        <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
+                        <a asp-page="ObjectivePosition" asp-route-id="@jobgroup.Id">
 
                             <div class="col-sm-3 mrgn-bttm-md">
                                 <figure>
-                                    <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueEng</h6></figcaption>
+                                    <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@jobgroup.NameEng</h6></figcaption>
                                 </figure>
                             </div>
                         </a>
@@ -38,16 +38,16 @@
                 }
                 else
                 {
-                    @foreach (var jobcategory in jobCategories)
+                    @foreach (var jobgroup in jobGroups)
                     {
-                        @if (jobcategory.JobCategoryValueEng.ToLower().Contains(@Model.filter.ToLower()))
+                        @if (jobgroup.NameEng.ToLower().Contains(@Model.filter.ToLower()))
                         {
                             noresults = false;
-                            <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
+                            <a asp-page="ObjectivePosition" asp-route-id="@jobgroup.Id">
                                 <div class="col-sm-3 mrgn-bttm-md">
                                     <figure>
-                                        <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueEng</h6></figcaption>
+                                        <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobgroup.NameEng</h6></figcaption>
                                     </figure>
                                 </div>
                             </a>
@@ -63,14 +63,14 @@
             {
                 @if (Model.filter is null)
                 {
-                    @foreach (var jobcategory in jobCategories)
+                    @foreach (var jobgroup in jobGroups)
                     {
-                        <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
+                        <a asp-page="ObjectivePosition" asp-route-id="@jobgroup.Id">
 
                             <div class="col-sm-3 mrgn-bttm-md">
                                 <figure>
-                                    <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueFra</h6></figcaption>
+                                    <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@jobgroup.NameFre</h6></figcaption>
                                 </figure>
                             </div>
                         </a>
@@ -78,16 +78,16 @@
                 }
                 else
                 {
-                    @foreach (var jobcategory in jobCategories)
+                    @foreach (var jobgroup in jobGroups)
                     {
-                        @if (jobcategory.JobCategoryValueFra.ToLower().Contains(@Model.filter.ToLower()))
+                        @if (jobgroup.NameFre.ToLower().Contains(@Model.filter.ToLower()))
                         {
                             noresults = false;
-                            <a asp-page="ObjectivePosition" asp-route-id="@jobcategory.JobCategoryId">
+                            <a asp-page="ObjectivePosition" asp-route-id="@jobgroup.Id">
                                 <div class="col-sm-3 mrgn-bttm-md">
                                     <figure>
-                                        <img src="@Url.Content(imagefolder + jobcategory.JobCategoryValueEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@jobcategory.JobCategoryValueFra</h6></figcaption>
+                                        <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobgroup.NameFre</h6></figcaption>
                                     </figure>
                                 </div>
                             </a>

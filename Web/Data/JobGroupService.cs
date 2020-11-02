@@ -6,26 +6,26 @@ using Microsoft.AspNetCore.Components;
 
 namespace Web.Data 
 {
-    public class JobCategoryService : IDataService
+    public class JobGroupService : IDataService
     {
         private readonly IHttpClientFactory _clientFactory;
 
-        public JobCategoryService(IHttpClientFactory clientFactory)
+        public JobGroupService(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
         }
 
-        public async Task<JobCategory[]> GetJobCategories()
+        public async Task<JobGroup[]> GetJobGroups()
         {
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCategory[]>("/api/jobcategories");
+            return await httpClient.GetJsonAsync<JobGroup[]>("/api/jobgroups");
         }
 
-        public async Task<JobCategory> GetJobCategoryById(int id)
+        public async Task<JobGroup> GetJobGroupById(int id)
         {
-            string url = "/api/jobcategories/"+id;
+            string url = "/api/jobgroups/"+id;
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCategory>(url);
+            return await httpClient.GetJsonAsync<JobGroup>(url);
         }
 
     }

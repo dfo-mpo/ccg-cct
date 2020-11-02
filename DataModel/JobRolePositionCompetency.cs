@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public class JobRolesPositionCompetency
+    public class JobRolePositionCompetency
     {
         public int JobGroupId { get; set; }
 

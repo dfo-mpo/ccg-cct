@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DataModel
 {
     public class JobCategory
     {
-        public int JobCategoryId { get; set; }
+        public int Id { get; set; }
 
-        public string JobCategoryValueEng { get; set; }
+        public string ValueEng { get; set; } // ex:  Onboard, onshore 
 
-        public string JobCategoryValueFra { get; set; }
+        public string ValueFre { get; set; }
 
-        // entity will hold all of the JobGroupPosition entities that are related to that JobCategory entity.
-        public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
     }
 
 }

@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DataModel
 {
     public class CompetencyRatingLevel
     {
-        public int CompetencyRatingLevelId { get; set; }
+        public int Id { get; set; }
 
-        public string CompetencyRatingLevelNameEng { get; set; }
+        public int Value { get; set; } // ex: 1, 2
 
-        public string CompetencyRatingLevelNameFra { get; set; }
+        public string NameEng { get; set; } // ex: Novice, Intermediate
 
-        public string CompetencyRatingLevelDescriptionEng { get; set; }
+        public string NameFre { get; set; }
 
-        public string CompetencyRatingLevelDescriptionFra { get; set; }
+        public string DescEng { get; set; }
 
-        // entity will hold all of the CompetencyGroupsRatings entities that are related to that CompetencyRatingLevel entity.
-        public virtual ICollection<CompetencyGroupsRatings> CompetencyGroupsRatings { get; set; }
+        public string DescFre { get; set; }
+
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
 
     }
 }

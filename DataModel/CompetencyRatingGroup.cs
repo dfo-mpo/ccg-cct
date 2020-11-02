@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DataModel
 {
-    public class CompetencyGroupsRatings
+    public class CompetencyRatingGroup
     {
         public int CompetencyId { get; set; }
 
@@ -13,9 +14,9 @@ namespace DataModel
         public int CompetencyRatingLevelId { get; set; }
 
         public CompetencyRatingLevel CompetencyRatingLevel { get; set; }
+ 
+        public int CompetencyLevelRequirementId { get; set; }
 
-        public int CompetencyLevelRequirementsId { get; set; }
-
-        public CompetencyLevelRequirements CompetencyLevelRequirements { get; set; }
+        public CompetencyLevelRequirement CompetencyLevelRequirement { get; set; }
     }
 }

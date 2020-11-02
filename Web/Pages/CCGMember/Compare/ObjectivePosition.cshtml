@@ -6,7 +6,7 @@
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues;
-    var objtitle = isEnglish ? Model.JobCategory.JobCategoryValueEng : Model.JobCategory.JobCategoryValueFra;
+    var objtitle = isEnglish ? Model.JobCategory.NameEng : Model.JobCategory.NameFre;
 }
 
 <form method="post">
@@ -55,7 +55,7 @@
 
                     <h2 class="wb-inv">Document navigation</h2>
 
-                    <button type="button" class="btn btn-primary">Compare Positions</button>
+                    <a asp-page="Delta"><button type="button" class="btn btn-primary">Compare Positions</button></a>
 
                 </nav>
             </div>

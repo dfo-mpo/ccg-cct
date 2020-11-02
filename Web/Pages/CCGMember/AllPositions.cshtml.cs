@@ -14,19 +14,19 @@ namespace Web.Pages.CCGMember
     public class AllPositionsModel : PageModel
     {
         //private readonly ILogger<AllPositionsModel> _logger;
-        private readonly JobCategoryService _jobcategoryService;
-        public JobCategory[] JobCategories { get; set; }   
+        private readonly JobGroupService _jobgroupService;
+        public JobGroup[] JobGroups { get; set; }   
         
         [BindProperty(SupportsGet = true)]
         public string filter { get; set; }
-        public AllPositionsModel(ILogger<AllPositionsModel> logger, JobCategoryService jobcategoryService)
+        public AllPositionsModel(ILogger<AllPositionsModel> logger, JobGroupService jobcategoryService)
         {
             //_logger = logger;
-            _jobcategoryService = jobcategoryService;
+            _jobgroupService = jobcategoryService;
         }
         public async Task OnGetAsync()
         {
-            JobCategories = await _jobcategoryService.GetJobCategories();
+            JobGroups = await _jobgroupService.GetJobGroups();
         }
 
     }

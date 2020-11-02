@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
     public class JobPosition
     {
-        public int JobPositionId { get; set; }
+        public int Id { get; set; }
 
-        public string JobPositionTitleEng { get; set; }
+        public string TitleEng { get; set; } // ex: Manager, IT advisor
 
-        public string JobPositionTitleFra { get; set; }
+        public string TitleFre { get; set; }
 
-        // entity will hold all of the JobPositionCompetency entities that are related to that JobPosition entity.
-        public virtual ICollection<JobPositionCompetency> JobPositionCompetency { get; set; }
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
 
-        // entity will hold all of the JobRolesPositionCompetency entities that are related to that JobPosition entity.
-        public virtual ICollection<JobRolesPositionCompetency> JobRolesPositionCompetency { get; set; }
-
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
+        
     }
 }
