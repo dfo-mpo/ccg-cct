@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataModel
+{
+    public class Competency
+    {
+        
+        public int Id { get; set; }
+
+        public string NameEng { get; set; }
+
+        public string NameFre { get; set; }
+
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+
+        public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
+        
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
+        
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
+
+    }
+}
