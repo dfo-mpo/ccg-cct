@@ -6,6 +6,41 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201020045123_ccginitial.cs" />
+    <Compile Remove="Migrations\20201020045123_ccginitial.Designer.cs" />
+    <Compile Remove="Migrations\20201020045433_ccginitial2.cs" />
+    <Compile Remove="Migrations\20201020045433_ccginitial2.Designer.cs" />
+    <Compile Remove="Migrations\20201020045827_ccginitial3.cs" />
+    <Compile Remove="Migrations\20201020045827_ccginitial3.Designer.cs" />
+    <Compile Remove="Migrations\20201020050151_init3.cs" />
+    <Compile Remove="Migrations\20201020050151_init3.Designer.cs" />
+    <Compile Remove="Migrations\20201020050706_datainit.cs" />
+    <Compile Remove="Migrations\20201020050706_datainit.Designer.cs" />
+    <Compile Remove="Migrations\20201022010014_init_data3.cs" />
+    <Compile Remove="Migrations\20201022010014_init_data3.Designer.cs" />
+    <Compile Remove="Migrations\20201022010325_add2.cs" />
+    <Compile Remove="Migrations\20201022010325_add2.Designer.cs" />
+    <Compile Remove="Migrations\20201022011731_newccg.cs" />
+    <Compile Remove="Migrations\20201022011731_newccg.Designer.cs" />
+    <Compile Remove="Migrations\20201022015338_cct_modeldata1.cs" />
+    <Compile Remove="Migrations\20201022015338_cct_modeldata1.Designer.cs" />
+    <Compile Remove="Migrations\20201023123849_initcreate1.cs" />
+    <Compile Remove="Migrations\20201023123849_initcreate1.Designer.cs" />
+    <Compile Remove="Migrations\20201029034808_iniate4.cs" />
+    <Compile Remove="Migrations\20201029034808_iniate4.Designer.cs" />
+    <Compile Remove="Migrations\20201029193645_initiatecreate8.cs" />
+    <Compile Remove="Migrations\20201029193645_initiatecreate8.Designer.cs" />
+    <Compile Remove="Migrations\20201030114251_initiate6.cs" />
+    <Compile Remove="Migrations\20201030114251_initiate6.Designer.cs" />
+    <Compile Remove="Migrations\20201030114817_initiate6.cs" />
+    <Compile Remove="Migrations\20201030114817_initiate6.Designer.cs" />
+    <Compile Remove="Migrations\20201030115537_initiate7.cs" />
+    <Compile Remove="Migrations\20201030115537_initiate7.Designer.cs" />
+    <Compile Remove="Migrations\20201030161554_initiatecreate11.cs" />
+    <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
