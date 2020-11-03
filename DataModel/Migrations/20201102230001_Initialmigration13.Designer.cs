@@ -4,14 +4,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201102230001_Initialmigration13")]
+    partial class Initialmigration13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,7 +283,7 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("LevelValue")
+                    b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
@@ -294,17 +296,17 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            LevelValue = "01"
+                            Value = "01"
                         },
                         new
                         {
                             Id = 2,
-                            LevelValue = "02"
+                            Value = "02"
                         },
                         new
                         {
                             Id = 3,
-                            LevelValue = "03"
+                            Value = "03"
                         });
                 });
 
@@ -551,28 +553,6 @@ namespace DataModel.Migrations
                     b.HasIndex("JobGroupLevelId");
 
                     b.ToTable("JobRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            JobGroupId = 1,
-                            JobGroupLevelId = 1
-                        },
-                        new
-                        {
-                            JobGroupId = 2,
-                            JobGroupLevelId = 1
-                        },
-                        new
-                        {
-                            JobGroupId = 3,
-                            JobGroupLevelId = 3
-                        },
-                        new
-                        {
-                            JobGroupId = 3,
-                            JobGroupLevelId = 2
-                        });
                 });
 
             modelBuilder.Entity("DataModel.JobRolePositionCompetency", b =>

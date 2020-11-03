@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20201030161926_initiatecreate11")]
-    partial class initiatecreate11
+    [Migration("20201103010254_Initiatemigration14")]
+    partial class Initiatemigration14
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -210,6 +210,20 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ValueEng = "Seagoing",
+                            ValueFre = "En mer"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ValueEng = "non-seagoing",
+                            ValueFre = "non maritime"
+                        });
                 });
 
             modelBuilder.Entity("DataModel.JobGroup", b =>
@@ -219,7 +233,17 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("NameEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("NameFre")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
@@ -232,17 +256,23 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "GT"
+                            Code = "GT",
+                            NameEng = "General Technician",
+                            NameFre = "Technicien general"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "PG"
+                            Code = "AS",
+                            NameEng = "Admin. Services",
+                            NameFre = "Services Admin"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "SO-MAO"
+                            Code = "CS",
+                            NameEng = "Computer Science",
+                            NameFre = "Sciences informatiques"
                         });
                 });
 
@@ -253,7 +283,7 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Value")
+                    b.Property<string>("LevelValue")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
@@ -266,17 +296,17 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            Value = "01"
+                            LevelValue = "01"
                         },
                         new
                         {
                             Id = 2,
-                            Value = "02"
+                            LevelValue = "02"
                         },
                         new
                         {
                             Id = 3,
-                            Value = "03"
+                            LevelValue = "03"
                         });
                 });
 
@@ -313,6 +343,44 @@ namespace DataModel.Migrations
                     b.HasIndex("JobPositionId");
 
                     b.ToTable("JobGroupPositions");
+
+                    b.HasData(
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 1,
+                            JobCategoryId = 1,
+                            JobPositionId = 2,
+                            JobKeyTaskPerLevelId = 1,
+                            JobLocationRegionId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobCategoryId = 1,
+                            JobPositionId = 2,
+                            JobKeyTaskPerLevelId = 2,
+                            JobLocationRegionId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobCategoryId = 2,
+                            JobPositionId = 2,
+                            JobKeyTaskPerLevelId = 4,
+                            JobLocationRegionId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobCategoryId = 2,
+                            JobPositionId = 2,
+                            JobKeyTaskPerLevelId = 4,
+                            JobLocationRegionId = 4
+                        });
                 });
 
             modelBuilder.Entity("DataModel.JobKeyTaskPerLevel", b =>
@@ -333,6 +401,32 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobKeyTaskPerLevels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DescEng = "It is a long established fact that a reader will be distracted",
+                            DescFre = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DescEng = "or avoids pleasure itself, because it is pleasure",
+                            DescFre = "Nemo enim ipsam voluptatem quia voluptas sit"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DescEng = " but because occasionally circumstances occur in which toil and pain can procure",
+                            DescFre = "dolore magnam aliquam quaerat voluptatem."
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DescEng = "To take a trivial example",
+                            DescFre = "Nam libero tempore, cum soluta nobis est eligendi"
+                        });
                 });
 
             modelBuilder.Entity("DataModel.JobLocationRegion", b =>
@@ -355,6 +449,32 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobLocationRegions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NameEng = "Atlantic",
+                            NameFre = "Quebec"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NameEng = "Western",
+                            NameFre = "Ouest"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NameEng = "Arctic",
+                            NameFre = "Artique"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameEng = "National Headquarters",
+                            NameFre = "siège national"
+                        });
                 });
 
             modelBuilder.Entity("DataModel.JobPosition", b =>
@@ -402,12 +522,6 @@ namespace DataModel.Migrations
                             Id = 4,
                             TitleEng = "Project Officer",
                             TitleFre = "Agent de projets"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            TitleEng = "Project Manager",
-                            TitleFre = "Gestionnaire de projets"
                         });
                 });
 
@@ -439,6 +553,28 @@ namespace DataModel.Migrations
                     b.HasIndex("JobGroupLevelId");
 
                     b.ToTable("JobRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 2
+                        });
                 });
 
             modelBuilder.Entity("DataModel.JobRolePositionCompetency", b =>

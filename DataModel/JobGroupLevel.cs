@@ -10,7 +10,7 @@ namespace DataModel
 
         public int Id { get; set; }
 
-        public string Value { get; set; }  // ex. "01", "02"
+        public string LevelValue { get; set; }  // ex. "01", "02"
 
         public virtual ICollection<JobRole> JobRoles { get; set; }
 

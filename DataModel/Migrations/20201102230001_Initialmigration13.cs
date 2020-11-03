@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class initiatecreate11 : Migration
+    public partial class Initialmigration13 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,7 +98,9 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 250, nullable: false)
+                    Code = table.Column<string>(maxLength: 250, nullable: false),
+                    NameEng = table.Column<string>(maxLength: 250, nullable: false),
+                    NameFre = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -364,6 +366,15 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "JobCategories",
+                columns: new[] { "Id", "ValueEng", "ValueFre" },
+                values: new object[,]
+                {
+                    { 1, "Seagoing", "En mer" },
+                    { 2, "non-seagoing", "non maritime" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "JobGroupLevels",
                 columns: new[] { "Id", "Value" },
                 values: new object[,]
@@ -375,12 +386,34 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "JobGroups",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Code", "NameEng", "NameFre" },
                 values: new object[,]
                 {
-                    { 1, "GT" },
-                    { 2, "PG" },
-                    { 3, "SO-MAO" }
+                    { 1, "GT", "General Technician", "Technicien general" },
+                    { 2, "AS", "Admin. Services", "Services Admin" },
+                    { 3, "CS", "Computer Science", "Sciences informatiques" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "JobKeyTaskPerLevels",
+                columns: new[] { "Id", "DescEng", "DescFre" },
+                values: new object[,]
+                {
+                    { 4, "To take a trivial example", "Nam libero tempore, cum soluta nobis est eligendi" },
+                    { 3, " but because occasionally circumstances occur in which toil and pain can procure", "dolore magnam aliquam quaerat voluptatem." },
+                    { 2, "or avoids pleasure itself, because it is pleasure", "Nemo enim ipsam voluptatem quia voluptas sit" },
+                    { 1, "It is a long established fact that a reader will be distracted", "Lorem ipsum dolor sit amet, consectetur adipiscing elit" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "JobLocationRegions",
+                columns: new[] { "Id", "NameEng", "NameFre" },
+                values: new object[,]
+                {
+                    { 1, "Atlantic", "Quebec" },
+                    { 2, "Western", "Ouest" },
+                    { 3, "Arctic", "Artique" },
+                    { 4, "National Headquarters", "siège national" }
                 });
 
             migrationBuilder.InsertData(
@@ -391,8 +424,18 @@ namespace DataModel.Migrations
                     { 1, "Manager", "Gestionnaire" },
                     { 2, "Technical Advisor", "Conseiller technique" },
                     { 3, "Business Architect", "Architecte d'affaires" },
-                    { 4, "Project Officer", "Agent de projets" },
-                    { 5, "Project Manager", "Gestionnaire de projets" }
+                    { 4, "Project Officer", "Agent de projets" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "JobGroupPositions",
+                columns: new[] { "JobGroupId", "JobGroupLevelId", "JobCategoryId", "JobPositionId", "JobKeyTaskPerLevelId", "JobLocationRegionId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, 2, 1, 1 },
+                    { 2, 2, 1, 2, 2, 2 },
+                    { 3, 3, 2, 2, 4, 3 },
+                    { 3, 3, 2, 2, 4, 4 }
                 });
 
             migrationBuilder.CreateIndex(
