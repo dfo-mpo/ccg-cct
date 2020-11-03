@@ -5,17 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Mockups\**" />
-    <Compile Remove="Resources\Pages\Mockups\**" />
-    <Content Remove="Pages\Mockups\**" />
-    <Content Remove="Resources\Pages\Mockups\**" />
-    <EmbeddedResource Remove="Pages\Mockups\**" />
-    <EmbeddedResource Remove="Resources\Pages\Mockups\**" />
-    <None Remove="Pages\Mockups\**" />
-    <None Remove="Resources\Pages\Mockups\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
@@ -56,6 +45,17 @@
     <Folder Include="Properties\" />
     <Folder Include="wwwroot\img\Candidate\" />
     <Folder Include="wwwroot\img\Student\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Mockups\All_Positions.cshtml" />
+    <None Include="Pages\Mockups\Compare_Position.cshtml" />
+    <None Include="Pages\Mockups\Competency_Position_Search.cshtml" />
+    <None Include="Pages\Mockups\Current_Position.cshtml" />
+    <None Include="Pages\Mockups\Delta.cshtml" />
+    <None Include="Pages\Mockups\Index.cshtml" />
+    <None Include="Pages\Mockups\Member_Position.cshtml" />
+    <None Include="Pages\Mockups\splash.cshtml" />
   </ItemGroup>
 
 </Project>

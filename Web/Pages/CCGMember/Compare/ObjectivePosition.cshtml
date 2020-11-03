@@ -9,7 +9,6 @@
     var objtitle = isEnglish ? Model.JobCategory.NameEng : Model.JobCategory.NameFre;
 }
 
-<form method="post">
     <section role="contentinfo">
 
         <h2>@Localizer["h2Text"]</h2>
@@ -55,12 +54,10 @@
 
                     <h2 class="wb-inv">Document navigation</h2>
 
-                    <a asp-page="Delta"><button type="button" class="btn btn-primary">Compare Positions</button></a>
-
+                    <a asp-page="Delta">
+                        <button type="button" class="btn btn-primary page-item" href="Delta">Compare Positions</button>
+                    </a>
                 </nav>
             </div>
         </div>
     </section>
-
-
-</form>

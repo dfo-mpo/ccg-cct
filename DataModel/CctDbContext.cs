@@ -52,8 +52,8 @@ namespace DataModel
               new JobGroup() { Id = 5, AcrEng = "ES", AcrFre = "ATS", NameEng = "Engineering and Scientific Support", NameFre = "Assistance technique et scientifique" },
               new JobGroup() { Id = 6, AcrEng = "PS", AcrFre = "AA", NameEng = "Purchasing and Supply", NameFre = "Achat et approvisionnement" },
               new JobGroup() { Id = 7, AcrEng = "GL", AcrFre = "TGM", NameEng = "General Labour and Trades", NameFre = "Travail général et métiers" },
-              new JobGroup() { Id = 8, AcrEng = "SC", AcrFre = "EN", NameEng = "Ships'' Crews", NameFre = "Équipages de navires" },
-              new JobGroup() { Id = 9, AcrEng = "SO", AcrFre = "ON", NameEng = "Ships'' Officers", NameFre = "Officiers de navire" }
+              new JobGroup() { Id = 8, AcrEng = "SC", AcrFre = "EN", NameEng = "Ships' Crews", NameFre = "Équipages de navires" },
+              new JobGroup() { Id = 9, AcrEng = "SO", AcrFre = "ON", NameEng = "Ships' Officers", NameFre = "Officiers de navire" }
 
               );
 
