@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Mockups\**" />
+    <Compile Remove="Resources\Pages\Mockups\**" />
+    <Content Remove="Pages\Mockups\**" />
+    <Content Remove="Resources\Pages\Mockups\**" />
+    <EmbeddedResource Remove="Pages\Mockups\**" />
+    <EmbeddedResource Remove="Resources\Pages\Mockups\**" />
+    <None Remove="Pages\Mockups\**" />
+    <None Remove="Resources\Pages\Mockups\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
@@ -41,9 +52,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Candidate\" />
     <Folder Include="Pages\Student\" />
     <Folder Include="Properties\" />
+    <Folder Include="wwwroot\img\Candidate\" />
+    <Folder Include="wwwroot\img\Student\" />
   </ItemGroup>
 
 </Project>

@@ -7,9 +7,10 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues;
     var id = Model.id;
-    var jobtitle = isEnglish ? Model.JobCategory.NameEng : Model.JobCategory.NameFre;
+    var jobtitle = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
+    var jobLevels = Model.JobGroupLevels;
+    var jobPositions = Model.JobGroupPositions;
 }
-<form method="post">
     <section role="contentinfo">
 
         <h2>@Localizer["h2Text"]</h2>
@@ -61,4 +62,3 @@
             </div>
         </div>
     </section>
-</form>

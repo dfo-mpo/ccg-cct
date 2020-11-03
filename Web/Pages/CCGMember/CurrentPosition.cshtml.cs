@@ -14,8 +14,9 @@ namespace Web.Pages.CCGMember
     public class CurrentPositionModel : PageModel
     {
         private readonly JobGroupService _jobcategoryService;
-        [BindProperty(SupportsGet = true)]
-        public JobGroup JobCategory { get; set; }
+        public JobGroup JobGroup { get; set; }
+        public JobGroupLevel[] JobGroupLevels { get; set; }
+        public JobGroupPosition[] JobGroupPositions { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int filter { get; set; }
@@ -28,7 +29,9 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int id)
         {
-            JobCategory = await _jobcategoryService.GetJobGroupById(id);
+            JobGroup = await _jobcategoryService.GetJobGroupById(id);
+            //JobGroupLevels = await _jobcategoryService.GetJobGroupLevelsById(id);
+            //JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
         }
     }
 }

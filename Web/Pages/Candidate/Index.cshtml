@@ -1,0 +1,29 @@
+﻿@page
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "External Candidate";
+}
+
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>Which area would you like to explore?</h2>
+        <div class="row">
+            <div class="col-sm-4">
+                <figure>
+                    <a class="nav-link" href="External_Offshore">
+                        <img src="~/img/Candidate/mcts.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">Shoreside Positions</h4></figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-4">
+                <figure>
+                    <a href="External_Offshore">
+                        <img src="~/img/Candidate/Offshore.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">Seagoing Positions</h4></figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
