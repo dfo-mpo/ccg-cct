@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel
 {
     public class Competency
     {
-        public int CompetencyId { get; set; }
-
-        public string CompetencyNameEng { get; set; }
-        public string CompetencyNameFra { get; set; }
-
-        // entity will hold all of the CompetencyGroupsRatings entities that are related to that Competency entity.
-        public virtual ICollection<CompetencyGroupsRatings> CompetencyGroupsRatings { get; set; }
-
-        // entity will hold all of the CompetencyGroupsTypes entities that are related to that Competency entity.
-        public virtual ICollection<CompetencyGroupsTypes> CompetencyGroupsTypes { get; set; }
         
-        // entity will hold all of the JobPositionCompetency entities that are related to that Competency entity.
-        public virtual ICollection<JobPositionCompetency> JobPositionCompetency { get; set; }
+        public int Id { get; set; }
+
+        public string NameEng { get; set; }
+
+        public string NameFre { get; set; }
+
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+
+        public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
         
-        // entity will hold all of the JobRolesPositionCompetency entities that are related to that Competency entity.
-        public virtual ICollection<JobRolesPositionCompetency> JobRolesPositionCompetency { get; set; }
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
+        
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
 
     }
 }

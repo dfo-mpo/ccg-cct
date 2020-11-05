@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DataModel
 {
     public class JobKeyTaskPerLevel
     {
-        public int JobKeyTaskPerLevelId { get; set; }
+        public int Id { get; set; }
 
-        public string JobKeyTaskPerLevelEng { get; set; }
+        public string DescEng { get; set; }
 
-        public string JobKeyTaskPerLevelFra { get; set; }
+        public string DescFre { get; set; }
 
-        // entity will hold all of the JobGroupPosition entities that are related to that JobKeyTaskPerLevel entity.
-        public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
     }
 }

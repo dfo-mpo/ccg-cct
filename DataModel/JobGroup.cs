@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+
 
 namespace DataModel
 {
     public class JobGroup
-    {
-        // Primary Key
-        public int JobGroupId { get; set; }
+    {     
+        public int Id { get; set; }
 
-        // Properties
-        public string JobGroupClassification { get; set; }
+        public string Code { get; set; } // ex: AS, CS, GL
+        
+        public string NameEng { get; set; } // ex. Administrative services
 
-        // entity will hold all of the JobRoles entities that are related to that JobGroup entity.
-        public virtual ICollection<JobRoles> JobRoles { get; set; }
+        public string NameFre { get; set; } // ex. Services administratifs
 
-        // entity will hold all of the JobPosition entities that are related to that JobGroup entity.
-        public virtual ICollection<JobPosition> JobPosition { get; set; }
+        public virtual ICollection<JobRole> JobRoles { get; set; }
 
-        // entity will hold all of the JobGroupPosition entities that are related to thatJobGroup entity.
-        public virtual ICollection<JobGroupPosition> JobGroupPosition { get; set; }
+        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
+
+        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
 
     }
 }
