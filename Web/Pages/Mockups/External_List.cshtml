@@ -1,0 +1,59 @@
+﻿@page
+@model Web.Pages.Mockups.External_ListModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "External Candidate Position List";
+}
+
+<div class="row mrgn-tp-md">
+    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+    <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["CCG POSITIONS"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                <th class="bg-primary" width="73%">@Localizer["POSITIONS"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CS-02</td>
+                <td>Computer Systems</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>EC-03</td>
+                <td>Economic and Policy Analyst</td>
+                <td><a asp-page="External_Details" role="button">More Details</a></td>
+            </tr>
+            <tr>
+                <td>EG 04</td>
+                <td>Aids to Navigation (AtoN) Design</td>
+                <td><a asp-page="External_Details" role="button">More Details</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-10</td>
+                <td>Assistant Facility, Manager</td>
+                <td><a asp-page="External_Details" role="button">More Details</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+
+                <h2 class="wb-inv">Document navigation</h2>
+
+                <ul class="pager">
+                    <li class="previous"><a href="External_Questionnaire" rel="prev">@Localizer["Previous"]</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
