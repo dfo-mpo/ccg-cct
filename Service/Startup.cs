@@ -113,8 +113,6 @@ namespace Service
             _bootstrapper.Finalize(app);
             _container.Verify();
 
-            UpdateDatabase();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -140,6 +138,8 @@ namespace Service
                     endpoints.MapFallbackToFile("/index.html");
                 }
             });
+
+            UpdateDatabase();
 
         }
 
