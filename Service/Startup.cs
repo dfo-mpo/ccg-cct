@@ -29,13 +29,13 @@ namespace Service
     public class Startup
     {
         private readonly Container _container = new Container();
-        private readonly ApplicationConfiguration _appConfig;
+        private readonly CctApplicationConfiguration _appConfig;
         private readonly ConfigurationBootstrapper _bootstrapper;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _appConfig = Configuration.GetSection("Application").Get<ApplicationConfiguration>();
+            _appConfig = Configuration.GetSection("Application").Get<CctApplicationConfiguration>();
             _bootstrapper = new ConfigurationBootstrapper(_container);
         }
 
@@ -145,6 +145,7 @@ namespace Service
 
         private void UpdateDatabase()
         {
+            if (!_appConfig.MigrationsOnStartup) return;
             var opts = _container.GetInstance<DbContextOptions<CctDbContext>>();
             var accessor = new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
             using var db = new CctDbContext(opts, accessor);
@@ -159,6 +160,7 @@ namespace Service
             _container.Register<DbContext, CctDbContext>(Lifestyle.Scoped);
             _container.Register<CctDbContext>(Lifestyle.Scoped);
             _container.Register(() => _appConfig, Lifestyle.Singleton);
+            _container.Register<ApplicationConfiguration>(() => _appConfig, Lifestyle.Singleton);
 
         }
 
