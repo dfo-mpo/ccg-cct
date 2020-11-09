@@ -120,14 +120,14 @@
   <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
     <value>BEHAVIOURAL ELEMENTS</value>
   </data>
-  <data name="Current Position Level" xml:space="preserve">
-    <value>Current Position Level</value>
-  </data>
   <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
     <value>KNOWLEDGE ELEMENTS</value>
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>LEVEL</value>
+  </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Position Level</value>
   </data>
   <data name="POSITIONS DETAILS" xml:space="preserve">
     <value>POSITIONS DETAILS</value>
