@@ -16,7 +16,7 @@ namespace DataModel
 
         public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
 
-        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
+        public virtual ICollection<JobRolePositionCompetency> JobRolePositionCompetencies { get; set; }
         
     }
 }

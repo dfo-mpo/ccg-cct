@@ -3,14 +3,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201111022754_dataseed5")]
+    partial class dataseed5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,14 +48,14 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            CompetencyId = 6,
+                            CompetencyId = 4,
                             RequireIndicatorEng = "lorem ipsum",
                             RequireIndicatorFre = "lorem ipsum"
                         },
                         new
                         {
                             Id = 2,
-                            CompetencyId = 7,
+                            CompetencyId = 4,
                             RequireIndicatorEng = "lorem ipsum",
                             RequireIndicatorFre = "lorem ipsum"
                         });
@@ -136,16 +138,16 @@ namespace DataModel.Migrations
                             Id = 6,
                             DescEng = "lorem ipus",
                             DescFre = "lorem ipus",
-                            NameEng = "Master 1505 GT",
-                            NameFre = "Master 1505 GT"
+                            NameEng = "Master 150 GT",
+                            NameFre = "Master 150 GT"
                         },
                         new
                         {
                             Id = 7,
                             DescEng = "lorem ipus",
                             DescFre = "lorem ipus",
-                            NameEng = "Master 1500 GT",
-                            NameFre = "Master 1500 GT"
+                            NameEng = "Master 1700 GT",
+                            NameFre = "Master 1700 GT"
                         });
                 });
 
@@ -167,38 +169,6 @@ namespace DataModel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CompetencyLevelRequirements");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DescEng = "Lorem ipsumEng",
-                            DescFre = "Lorem ipsumFre"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DescEng = "Lorem ipsumEng",
-                            DescFre = "Lorem ipsumFre"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DescEng = "Lorem ipsumEng",
-                            DescFre = "Lorem ipsumFre"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DescEng = "Lorem ipsumEng",
-                            DescFre = "Lorem ipsumFre"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DescEng = "Lorem ipsumEng",
-                            DescFre = "Lorem ipsumFre"
-                        });
                 });
 
             modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
@@ -219,158 +189,6 @@ namespace DataModel.Migrations
                     b.HasIndex("CompetencyRatingLevelId");
 
                     b.ToTable("CompetencyRatingGroups");
-
-                    b.HasData(
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        });
                 });
 
             modelBuilder.Entity("DataModel.CompetencyRatingLevel", b =>
@@ -585,7 +403,7 @@ namespace DataModel.Migrations
                         {
                             Id = 2,
                             ValueEng = "non-seagoing",
-                            ValueFre = "sur terre"
+                            ValueFre = "non maritime"
                         });
                 });
 
@@ -1042,8 +860,8 @@ namespace DataModel.Migrations
                         {
                             JobGroupId = 2,
                             JobGroupLevelId = 3,
-                            JobPositionId = 1,
-                            CompetencyId = 6
+                            JobPositionId = 2,
+                            CompetencyId = 5
                         },
                         new
                         {
@@ -1056,13 +874,6 @@ namespace DataModel.Migrations
                         {
                             JobGroupId = 3,
                             JobGroupLevelId = 2,
-                            JobPositionId = 2,
-                            CompetencyId = 5
-                        },
-                        new
-                        {
-                            JobGroupId = 3,
-                            JobGroupLevelId = 2,
                             JobPositionId = 3,
                             CompetencyId = 7
                         },
@@ -1085,7 +896,7 @@ namespace DataModel.Migrations
                             JobGroupId = 3,
                             JobGroupLevelId = 2,
                             JobPositionId = 4,
-                            CompetencyId = 7
+                            CompetencyId = 4
                         });
                 });
 

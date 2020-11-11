@@ -14,8 +14,4 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="JobGroups\" />
-  </ItemGroup>
-
 </Project>

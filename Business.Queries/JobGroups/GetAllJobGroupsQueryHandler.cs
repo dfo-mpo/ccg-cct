@@ -27,7 +27,9 @@ namespace Business.Queries.JobGroups
                 .Select(e => new JobGroupDto()
                 {
                     Id = e.Id,
-                    JobGroupCode = e.Code
+                    Code = e.Code,
+                    NameEng = e.NameEng,
+                    NameFre = e.NameFre
 
                 }).ToListAsync(cancellationToken);
         }
