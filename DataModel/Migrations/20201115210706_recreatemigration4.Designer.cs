@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20201111050222_iniatedataseed1")]
-    partial class iniatedataseed1
+    [Migration("20201115210706_recreatemigration4")]
+    partial class recreatemigration4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,20 +27,31 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CompetencyId")
-                        .HasColumnType("int");
+                    b.Property<string>("DescEng")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("DescFre")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("NameEng")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("NameFre")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("RequireIndicatorEng")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("RequireIndicatorFre")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompetencyId");
 
                     b.ToTable("Certificates");
 
@@ -48,14 +59,60 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            CompetencyId = 6,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "Master 1500 GT",
+                            NameFre = "Master 1500 GT",
                             RequireIndicatorEng = "lorem ipsum",
                             RequireIndicatorFre = "lorem ipsum"
                         },
                         new
                         {
                             Id = 2,
-                            CompetencyId = 7,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "Master 1600A GT",
+                            NameFre = "Master 1600A GT",
+                            RequireIndicatorEng = "lorem ipsum",
+                            RequireIndicatorFre = "lorem ipsum"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "Z Alpha MDX",
+                            NameFre = "Z Alpha MDX",
+                            RequireIndicatorEng = "lorem ipsum",
+                            RequireIndicatorFre = "lorem ipsum"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "V Delta MKZ",
+                            NameFre = "V Delta MKZ",
+                            RequireIndicatorEng = "lorem ipsum",
+                            RequireIndicatorFre = "lorem ipsum"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "six Sigma",
+                            NameFre = "six Sigma",
+                            RequireIndicatorEng = "lorem ipsum",
+                            RequireIndicatorFre = "lorem ipsum"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DescEng = "lorem ipsum",
+                            DescFre = "lorem ipsum",
+                            NameEng = "Gamma v9",
+                            NameFre = "Gamma v9",
                             RequireIndicatorEng = "lorem ipsum",
                             RequireIndicatorFre = "lorem ipsum"
                         });
@@ -138,16 +195,8 @@ namespace DataModel.Migrations
                             Id = 6,
                             DescEng = "lorem ipus",
                             DescFre = "lorem ipus",
-                            NameEng = "Master 1505 GT",
-                            NameFre = "Master 1505 GT"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DescEng = "lorem ipus",
-                            DescFre = "lorem ipus",
-                            NameEng = "Master 1500 GT",
-                            NameFre = "Master 1500 GT"
+                            NameEng = "Control and procurement",
+                            NameFre = "Controlle et approvisionnement"
                         });
                 });
 
@@ -200,178 +249,6 @@ namespace DataModel.Migrations
                             Id = 5,
                             DescEng = "Lorem ipsumEng",
                             DescFre = "Lorem ipsumFre"
-                        });
-                });
-
-            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
-                {
-                    b.Property<int>("CompetencyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompetencyRatingLevelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompetencyLevelRequirementId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CompetencyId", "CompetencyRatingLevelId", "CompetencyLevelRequirementId");
-
-                    b.HasIndex("CompetencyLevelRequirementId");
-
-                    b.HasIndex("CompetencyRatingLevelId");
-
-                    b.ToTable("CompetencyRatingGroups");
-
-                    b.HasData(
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 1,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 2,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 3,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 4,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 1,
-                            CompetencyLevelRequirementId = 1
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 2,
-                            CompetencyLevelRequirementId = 2
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 3,
-                            CompetencyLevelRequirementId = 3
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 4,
-                            CompetencyLevelRequirementId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 5,
-                            CompetencyRatingLevelId = 5,
-                            CompetencyLevelRequirementId = 5
                         });
                 });
 
@@ -494,12 +371,6 @@ namespace DataModel.Migrations
                             Id = 3,
                             NameEng = "Behavioural Elements",
                             NameFre = "Éléments comportementaux"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            NameEng = "Certificates",
-                            NameFre = "Certificats"
                         });
                 });
 
@@ -526,7 +397,7 @@ namespace DataModel.Migrations
                         new
                         {
                             CompetencyId = 2,
-                            CompetencyTypeId = 2
+                            CompetencyTypeId = 1
                         },
                         new
                         {
@@ -536,7 +407,7 @@ namespace DataModel.Migrations
                         new
                         {
                             CompetencyId = 4,
-                            CompetencyTypeId = 3
+                            CompetencyTypeId = 2
                         },
                         new
                         {
@@ -546,12 +417,7 @@ namespace DataModel.Migrations
                         new
                         {
                             CompetencyId = 6,
-                            CompetencyTypeId = 4
-                        },
-                        new
-                        {
-                            CompetencyId = 7,
-                            CompetencyTypeId = 4
+                            CompetencyTypeId = 3
                         });
                 });
 
@@ -621,23 +487,23 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            Code = "GT",
-                            NameEng = "General Technician",
-                            NameFre = "Technicien general"
+                            Code = "AS",
+                            NameEng = "Admin. Services",
+                            NameFre = "Admin. Services"
                         },
                         new
                         {
                             Id = 2,
-                            Code = "AS",
+                            Code = "CS",
                             NameEng = "Admin. Services",
                             NameFre = "Services Admin"
                         },
                         new
                         {
                             Id = 3,
-                            Code = "CS",
-                            NameEng = "Computer Science",
-                            NameFre = "Sciences informatiques"
+                            Code = "GT",
+                            NameEng = "General Technician",
+                            NameFre = "Technicien General"
                         });
                 });
 
@@ -683,10 +549,10 @@ namespace DataModel.Migrations
                     b.Property<int>("JobGroupLevelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("JobCategoryId")
+                    b.Property<int>("JobPositionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("JobPositionId")
+                    b.Property<int>("JobCategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("JobKeyTaskPerLevelId")
@@ -695,7 +561,7 @@ namespace DataModel.Migrations
                     b.Property<int>("JobLocationRegionId")
                         .HasColumnType("int");
 
-                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobCategoryId", "JobPositionId", "JobKeyTaskPerLevelId", "JobLocationRegionId");
+                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId");
 
                     b.HasIndex("JobCategoryId");
 
@@ -714,35 +580,53 @@ namespace DataModel.Migrations
                         {
                             JobGroupId = 1,
                             JobGroupLevelId = 1,
-                            JobCategoryId = 1,
                             JobPositionId = 1,
+                            JobCategoryId = 1,
                             JobKeyTaskPerLevelId = 1,
                             JobLocationRegionId = 1
                         },
                         new
                         {
-                            JobGroupId = 2,
+                            JobGroupId = 1,
                             JobGroupLevelId = 2,
-                            JobCategoryId = 1,
                             JobPositionId = 2,
+                            JobCategoryId = 1,
                             JobKeyTaskPerLevelId = 2,
                             JobLocationRegionId = 2
                         },
                         new
                         {
-                            JobGroupId = 3,
-                            JobGroupLevelId = 3,
-                            JobCategoryId = 2,
+                            JobGroupId = 2,
+                            JobGroupLevelId = 1,
                             JobPositionId = 3,
+                            JobCategoryId = 2,
+                            JobKeyTaskPerLevelId = 4,
+                            JobLocationRegionId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            JobCategoryId = 2,
+                            JobKeyTaskPerLevelId = 4,
+                            JobLocationRegionId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 1,
+                            JobPositionId = 5,
+                            JobCategoryId = 2,
                             JobKeyTaskPerLevelId = 4,
                             JobLocationRegionId = 3
                         },
                         new
                         {
                             JobGroupId = 3,
-                            JobGroupLevelId = 3,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 6,
                             JobCategoryId = 2,
-                            JobPositionId = 4,
                             JobKeyTaskPerLevelId = 4,
                             JobLocationRegionId = 4
                         });
@@ -887,7 +771,34 @@ namespace DataModel.Migrations
                             Id = 4,
                             TitleEng = "Project Officer",
                             TitleFre = "Agent de projets"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            TitleEng = "cooker",
+                            TitleFre = "cuisiner"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            TitleEng = "Major",
+                            TitleFre = "Major"
                         });
+                });
+
+            modelBuilder.Entity("DataModel.JobPositionCertificate", b =>
+                {
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CertificateId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobPositionId", "CertificateId");
+
+                    b.HasIndex("CertificateId");
+
+                    b.ToTable("JobPositionCertificates");
                 });
 
             modelBuilder.Entity("DataModel.JobPositionCompetency", b =>
@@ -922,38 +833,68 @@ namespace DataModel.Migrations
                         },
                         new
                         {
-                            JobPositionId = 1,
+                            JobPositionId = 2,
+                            CompetencyId = 1
+                        },
+                        new
+                        {
+                            JobPositionId = 2,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobPositionId = 3,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobPositionId = 3,
+                            CompetencyId = 3
+                        },
+                        new
+                        {
+                            JobPositionId = 3,
+                            CompetencyId = 4
+                        },
+                        new
+                        {
+                            JobPositionId = 3,
                             CompetencyId = 6
                         },
                         new
                         {
-                            JobPositionId = 2,
-                            CompetencyId = 4
-                        },
-                        new
-                        {
-                            JobPositionId = 2,
-                            CompetencyId = 5
-                        },
-                        new
-                        {
-                            JobPositionId = 3,
-                            CompetencyId = 7
-                        },
-                        new
-                        {
-                            JobPositionId = 3,
-                            CompetencyId = 4
+                            JobPositionId = 4,
+                            CompetencyId = 2
                         },
                         new
                         {
                             JobPositionId = 4,
-                            CompetencyId = 5
+                            CompetencyId = 3
                         },
                         new
                         {
                             JobPositionId = 4,
-                            CompetencyId = 7
+                            CompetencyId = 4
+                        },
+                        new
+                        {
+                            JobPositionId = 5,
+                            CompetencyId = 1
+                        },
+                        new
+                        {
+                            JobPositionId = 5,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobPositionId = 6,
+                            CompetencyId = 1
+                        },
+                        new
+                        {
+                            JobPositionId = 6,
+                            CompetencyId = 2
                         });
                 });
 
@@ -979,18 +920,160 @@ namespace DataModel.Migrations
                         },
                         new
                         {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2
+                        },
+                        new
+                        {
                             JobGroupId = 2,
                             JobGroupLevelId = 1
                         },
                         new
                         {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2
+                        },
+                        new
+                        {
                             JobGroupId = 3,
-                            JobGroupLevelId = 3
+                            JobGroupLevelId = 1
                         },
                         new
                         {
                             JobGroupId = 3,
                             JobGroupLevelId = 2
+                        });
+                });
+
+            modelBuilder.Entity("DataModel.JobRolePositionCertificate", b =>
+                {
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CertificateId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "CertificateId");
+
+                    b.HasIndex("CertificateId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.HasIndex("JobPositionId");
+
+                    b.ToTable("JobRolePositionCertificates");
+
+                    b.HasData(
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CertificateId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CertificateId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CertificateId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CertificateId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CertificateId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CertificateId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CertificateId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CertificateId = 5
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CertificateId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CertificateId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CertificateId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CertificateId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CertificateId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CertificateId = 6
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 6,
+                            CertificateId = 6
                         });
                 });
 
@@ -1022,103 +1105,344 @@ namespace DataModel.Migrations
                         new
                         {
                             JobGroupId = 1,
-                            JobGroupLevelId = 1,
+                            JobGroupLevelId = 3,
                             JobPositionId = 1,
                             CompetencyId = 1
                         },
                         new
                         {
                             JobGroupId = 1,
-                            JobGroupLevelId = 1,
+                            JobGroupLevelId = 3,
                             JobPositionId = 1,
                             CompetencyId = 2
                         },
                         new
                         {
                             JobGroupId = 1,
-                            JobGroupLevelId = 1,
+                            JobGroupLevelId = 3,
                             JobPositionId = 1,
+                            CompetencyId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CompetencyId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
                             CompetencyId = 3
                         },
                         new
                         {
                             JobGroupId = 2,
                             JobGroupLevelId = 3,
-                            JobPositionId = 1,
-                            CompetencyId = 6
+                            JobPositionId = 3,
+                            CompetencyId = 4
                         },
                         new
                         {
                             JobGroupId = 2,
                             JobGroupLevelId = 3,
-                            JobPositionId = 2,
+                            JobPositionId = 3,
+                            CompetencyId = 6
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CompetencyId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
                             CompetencyId = 4
                         },
                         new
                         {
                             JobGroupId = 3,
-                            JobGroupLevelId = 2,
-                            JobPositionId = 2,
-                            CompetencyId = 5
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 1
                         },
                         new
                         {
                             JobGroupId = 3,
-                            JobGroupLevelId = 2,
-                            JobPositionId = 3,
-                            CompetencyId = 7
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 2
                         },
                         new
                         {
                             JobGroupId = 3,
-                            JobGroupLevelId = 2,
-                            JobPositionId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
                             CompetencyId = 4
                         },
                         new
                         {
                             JobGroupId = 3,
-                            JobGroupLevelId = 2,
-                            JobPositionId = 4,
-                            CompetencyId = 5
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 6
                         },
                         new
                         {
                             JobGroupId = 3,
                             JobGroupLevelId = 2,
-                            JobPositionId = 4,
-                            CompetencyId = 7
+                            JobPositionId = 6,
+                            CompetencyId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 6,
+                            CompetencyId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 6,
+                            CompetencyId = 6
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Certificate", b =>
+            modelBuilder.Entity("DataModel.JobRolePositionCompetencyRating", b =>
                 {
-                    b.HasOne("DataModel.Competency", "Competency")
-                        .WithMany()
-                        .HasForeignKey("CompetencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
 
-            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
-                {
-                    b.HasOne("DataModel.Competency", "Competency")
-                        .WithMany("CompetencyRatingGroups")
-                        .HasForeignKey("CompetencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
 
-                    b.HasOne("DataModel.CompetencyLevelRequirement", "CompetencyLevelRequirement")
-                        .WithMany("CompetencyRatingGroups")
-                        .HasForeignKey("CompetencyLevelRequirementId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
 
-                    b.HasOne("DataModel.CompetencyRatingLevel", "CompetencyRatingLevel")
-                        .WithMany("CompetencyRatingGroups")
-                        .HasForeignKey("CompetencyRatingLevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyLevelRequirementId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyRatingLevelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "CompetencyId");
+
+                    b.HasIndex("CompetencyId");
+
+                    b.HasIndex("CompetencyLevelRequirementId");
+
+                    b.HasIndex("CompetencyRatingLevelId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.HasIndex("JobPositionId");
+
+                    b.ToTable("JobRolePositionCompetencyRatings");
+
+                    b.HasData(
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CompetencyId = 1,
+                            CompetencyLevelRequirementId = 1,
+                            CompetencyRatingLevelId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 2,
+                            CompetencyRatingLevelId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 1,
+                            CompetencyId = 3,
+                            CompetencyLevelRequirementId = 3,
+                            CompetencyRatingLevelId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CompetencyId = 1,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 1,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 2,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 5,
+                            CompetencyRatingLevelId = 5
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 1,
+                            CompetencyRatingLevelId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CompetencyId = 3,
+                            CompetencyLevelRequirementId = 2,
+                            CompetencyRatingLevelId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CompetencyId = 4,
+                            CompetencyLevelRequirementId = 3,
+                            CompetencyRatingLevelId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 3,
+                            CompetencyId = 6,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 5,
+                            CompetencyRatingLevelId = 5
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CompetencyId = 3,
+                            CompetencyLevelRequirementId = 1,
+                            CompetencyRatingLevelId = 1
+                        },
+                        new
+                        {
+                            JobGroupId = 2,
+                            JobGroupLevelId = 2,
+                            JobPositionId = 4,
+                            CompetencyId = 4,
+                            CompetencyLevelRequirementId = 2,
+                            CompetencyRatingLevelId = 2
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 1,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 4,
+                            CompetencyLevelRequirementId = 5,
+                            CompetencyRatingLevelId = 5
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 5,
+                            CompetencyId = 6,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 6,
+                            CompetencyId = 1,
+                            CompetencyLevelRequirementId = 3,
+                            CompetencyRatingLevelId = 3
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 6,
+                            CompetencyId = 2,
+                            CompetencyLevelRequirementId = 4,
+                            CompetencyRatingLevelId = 4
+                        },
+                        new
+                        {
+                            JobGroupId = 3,
+                            JobGroupLevelId = 3,
+                            JobPositionId = 6,
+                            CompetencyId = 6,
+                            CompetencyLevelRequirementId = 3,
+                            CompetencyRatingLevelId = 3
+                        });
                 });
 
             modelBuilder.Entity("DataModel.CompetencyTypeGroup", b =>
@@ -1175,6 +1499,21 @@ namespace DataModel.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("DataModel.JobPositionCertificate", b =>
+                {
+                    b.HasOne("DataModel.Certificate", "Certificate")
+                        .WithMany("JobPositionCertificates")
+                        .HasForeignKey("CertificateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany()
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DataModel.JobPositionCompetency", b =>
                 {
                     b.HasOne("DataModel.Competency", "Competency")
@@ -1184,7 +1523,7 @@ namespace DataModel.Migrations
                         .IsRequired();
 
                     b.HasOne("DataModel.JobPosition", "JobPosition")
-                        .WithMany("JobPositionCompetencies")
+                        .WithMany("JobPositionCertCompetencies")
                         .HasForeignKey("JobPositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1201,6 +1540,33 @@ namespace DataModel.Migrations
                     b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
                         .WithMany("JobRoles")
                         .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobRolePositionCertificate", b =>
+                {
+                    b.HasOne("DataModel.Certificate", "Certificate")
+                        .WithMany("JobRolePositionCertificates")
+                        .HasForeignKey("CertificateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany()
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany()
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany()
+                        .HasForeignKey("JobPositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1227,6 +1593,45 @@ namespace DataModel.Migrations
 
                     b.HasOne("DataModel.JobPosition", "JobPosition")
                         .WithMany("JobRolePositionCompetencies")
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobRolePositionCompetencyRating", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany("JobPositionCompetencyRatings")
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyLevelRequirement", "CompetencyLevelRequirement")
+                        .WithMany("JobRolePositionCompetencyRatings")
+                        .HasForeignKey("CompetencyLevelRequirementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyRatingLevel", "CompetencyRatingLevel")
+                        .WithMany("JobRolePositionCompetencyRatings")
+                        .HasForeignKey("CompetencyRatingLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany()
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany()
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany()
                         .HasForeignKey("JobPositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

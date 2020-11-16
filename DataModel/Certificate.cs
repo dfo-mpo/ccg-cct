@@ -13,14 +13,21 @@ namespace DataModel
     {
         
         public int Id { get; set; }
+        public string NameEng { get; set; }
 
-        public int CompetencyId { get; set; }
+        public string NameFre { get; set; }
 
-        public Competency Competency { get; set; }
+        public string DescEng { get; set; }
+
+        public string DescFre { get; set; }
 
         public string RequireIndicatorEng { get; set; }
 
         public string RequireIndicatorFre { get; set; }
+
+        public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
+
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
 }

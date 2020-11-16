@@ -8,7 +8,6 @@ namespace DataModel
 {
     public class JobRole
     {
-
         public int JobGroupId { get; set; }
 
         public JobGroup JobGroup { get; set; } // ex:  AS, GT

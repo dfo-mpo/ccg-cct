@@ -19,7 +19,7 @@ namespace DataModel
 
         public string DescFre { get; set; }
 
-        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+        public virtual ICollection<JobRolePositionCompetencyRating> JobPositionCompetencyRatings { get; set; }
 
         public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
         

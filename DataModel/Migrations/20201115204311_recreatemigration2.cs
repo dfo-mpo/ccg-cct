@@ -2,10 +2,28 @@
 
 namespace DataModel.Migrations
 {
-    public partial class Initialmigration13 : Migration
+    public partial class recreatemigration2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Certificates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameEng = table.Column<string>(maxLength: 500, nullable: true),
+                    NameFre = table.Column<string>(maxLength: 500, nullable: true),
+                    DescEng = table.Column<string>(maxLength: 500, nullable: true),
+                    DescFre = table.Column<string>(maxLength: 500, nullable: true),
+                    RequireIndicatorEng = table.Column<string>(maxLength: 500, nullable: true),
+                    RequireIndicatorFre = table.Column<string>(maxLength: 500, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Certificates", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Competencies",
                 columns: table => new
@@ -13,7 +31,9 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameEng = table.Column<string>(maxLength: 250, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 250, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 250, nullable: false),
+                    DescEng = table.Column<string>(maxLength: 250, nullable: false),
+                    DescFre = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,7 +105,7 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Value = table.Column<string>(maxLength: 250, nullable: false)
+                    LevelValue = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,60 +170,6 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Certificates",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompetencyId = table.Column<int>(nullable: true),
-                    DescEng = table.Column<string>(maxLength: 250, nullable: false),
-                    DescFre = table.Column<string>(maxLength: 250, nullable: false),
-                    RequireIndicatorEng = table.Column<string>(maxLength: 250, nullable: true),
-                    RequireIndicatorFre = table.Column<string>(maxLength: 250, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Certificates", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Certificates_Competencies_CompetencyId",
-                        column: x => x.CompetencyId,
-                        principalTable: "Competencies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CompetencyRatingGroups",
-                columns: table => new
-                {
-                    CompetencyId = table.Column<int>(nullable: false),
-                    CompetencyRatingLevelId = table.Column<int>(nullable: false),
-                    CompetencyLevelRequirementId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompetencyRatingGroups", x => new { x.CompetencyId, x.CompetencyRatingLevelId, x.CompetencyLevelRequirementId });
-                    table.ForeignKey(
-                        name: "FK_CompetencyRatingGroups_Competencies_CompetencyId",
-                        column: x => x.CompetencyId,
-                        principalTable: "Competencies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CompetencyRatingGroups_CompetencyLevelRequirements_CompetencyLevelRequirementId",
-                        column: x => x.CompetencyLevelRequirementId,
-                        principalTable: "CompetencyLevelRequirements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CompetencyRatingGroups_CompetencyRatingLevels_CompetencyRatingLevelId",
-                        column: x => x.CompetencyRatingLevelId,
-                        principalTable: "CompetencyRatingLevels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CompetencyTypeGroups",
                 columns: table => new
                 {
@@ -264,7 +230,7 @@ namespace DataModel.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobGroupPositions", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobCategoryId, x.JobPositionId, x.JobKeyTaskPerLevelId, x.JobLocationRegionId });
+                    table.PrimaryKey("PK_JobGroupPositions", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId });
                     table.ForeignKey(
                         name: "FK_JobGroupPositions_JobCategories_JobCategoryId",
                         column: x => x.JobCategoryId,
@@ -304,6 +270,30 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "JobPositionCertificates",
+                columns: table => new
+                {
+                    JobPositionId = table.Column<int>(nullable: false),
+                    CertificateId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobPositionCertificates", x => new { x.JobPositionId, x.CertificateId });
+                    table.ForeignKey(
+                        name: "FK_JobPositionCertificates_Certificates_CertificateId",
+                        column: x => x.CertificateId,
+                        principalTable: "Certificates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobPositionCertificates_JobPositions_JobPositionId",
+                        column: x => x.JobPositionId,
+                        principalTable: "JobPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "JobPositionCompetencies",
                 columns: table => new
                 {
@@ -328,7 +318,45 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobRolesPositionCompetencies",
+                name: "JobRolePositionCertificates",
+                columns: table => new
+                {
+                    JobGroupId = table.Column<int>(nullable: false),
+                    JobGroupLevelId = table.Column<int>(nullable: false),
+                    JobPositionId = table.Column<int>(nullable: false),
+                    CertificateId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobRolePositionCertificates", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CertificateId });
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCertificates_Certificates_CertificateId",
+                        column: x => x.CertificateId,
+                        principalTable: "Certificates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCertificates_JobGroups_JobGroupId",
+                        column: x => x.JobGroupId,
+                        principalTable: "JobGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCertificates_JobGroupLevels_JobGroupLevelId",
+                        column: x => x.JobGroupLevelId,
+                        principalTable: "JobGroupLevels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCertificates_JobPositions_JobPositionId",
+                        column: x => x.JobPositionId,
+                        principalTable: "JobPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobRolePositionCompetencies",
                 columns: table => new
                 {
                     JobGroupId = table.Column<int>(nullable: false),
@@ -338,125 +366,84 @@ namespace DataModel.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobRolesPositionCompetencies", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CompetencyId });
+                    table.PrimaryKey("PK_JobRolePositionCompetencies", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CompetencyId });
                     table.ForeignKey(
-                        name: "FK_JobRolesPositionCompetencies_Competencies_CompetencyId",
+                        name: "FK_JobRolePositionCompetencies_Competencies_CompetencyId",
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_JobRolesPositionCompetencies_JobGroups_JobGroupId",
+                        name: "FK_JobRolePositionCompetencies_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_JobRolesPositionCompetencies_JobGroupLevels_JobGroupLevelId",
+                        name: "FK_JobRolePositionCompetencies_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_JobRolesPositionCompetencies_JobPositions_JobPositionId",
+                        name: "FK_JobRolePositionCompetencies_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "JobCategories",
-                columns: new[] { "Id", "ValueEng", "ValueFre" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "JobRolePositionCompetencyRatings",
+                columns: table => new
                 {
-                    { 1, "Seagoing", "En mer" },
-                    { 2, "non-seagoing", "non maritime" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobGroupLevels",
-                columns: new[] { "Id", "Value" },
-                values: new object[,]
+                    JobGroupId = table.Column<int>(nullable: false),
+                    JobGroupLevelId = table.Column<int>(nullable: false),
+                    JobPositionId = table.Column<int>(nullable: false),
+                    CompetencyId = table.Column<int>(nullable: false),
+                    CompetencyRatingLevelId = table.Column<int>(nullable: false),
+                    CompetencyLevelRequirementId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
                 {
-                    { 1, "01" },
-                    { 2, "02" },
-                    { 3, "03" }
+                    table.PrimaryKey("PK_JobRolePositionCompetencyRatings", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CompetencyId });
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_Competencies_CompetencyId",
+                        column: x => x.CompetencyId,
+                        principalTable: "Competencies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_CompetencyLevelRequirements_CompetencyLevelRequirementId",
+                        column: x => x.CompetencyLevelRequirementId,
+                        principalTable: "CompetencyLevelRequirements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_CompetencyRatingLevels_CompetencyRatingLevelId",
+                        column: x => x.CompetencyRatingLevelId,
+                        principalTable: "CompetencyRatingLevels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_JobGroups_JobGroupId",
+                        column: x => x.JobGroupId,
+                        principalTable: "JobGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_JobGroupLevels_JobGroupLevelId",
+                        column: x => x.JobGroupLevelId,
+                        principalTable: "JobGroupLevels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCompetencyRatings_JobPositions_JobPositionId",
+                        column: x => x.JobPositionId,
+                        principalTable: "JobPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "JobGroups",
-                columns: new[] { "Id", "Code", "NameEng", "NameFre" },
-                values: new object[,]
-                {
-                    { 1, "GT", "General Technician", "Technicien general" },
-                    { 2, "AS", "Admin. Services", "Services Admin" },
-                    { 3, "CS", "Computer Science", "Sciences informatiques" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobKeyTaskPerLevels",
-                columns: new[] { "Id", "DescEng", "DescFre" },
-                values: new object[,]
-                {
-                    { 4, "To take a trivial example", "Nam libero tempore, cum soluta nobis est eligendi" },
-                    { 3, " but because occasionally circumstances occur in which toil and pain can procure", "dolore magnam aliquam quaerat voluptatem." },
-                    { 2, "or avoids pleasure itself, because it is pleasure", "Nemo enim ipsam voluptatem quia voluptas sit" },
-                    { 1, "It is a long established fact that a reader will be distracted", "Lorem ipsum dolor sit amet, consectetur adipiscing elit" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobLocationRegions",
-                columns: new[] { "Id", "NameEng", "NameFre" },
-                values: new object[,]
-                {
-                    { 1, "Atlantic", "Quebec" },
-                    { 2, "Western", "Ouest" },
-                    { 3, "Arctic", "Artique" },
-                    { 4, "National Headquarters", "siège national" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobPositions",
-                columns: new[] { "Id", "TitleEng", "TitleFre" },
-                values: new object[,]
-                {
-                    { 1, "Manager", "Gestionnaire" },
-                    { 2, "Technical Advisor", "Conseiller technique" },
-                    { 3, "Business Architect", "Architecte d'affaires" },
-                    { 4, "Project Officer", "Agent de projets" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobGroupPositions",
-                columns: new[] { "JobGroupId", "JobGroupLevelId", "JobCategoryId", "JobPositionId", "JobKeyTaskPerLevelId", "JobLocationRegionId" },
-                values: new object[,]
-                {
-                    { 1, 1, 1, 2, 1, 1 },
-                    { 2, 2, 1, 2, 2, 2 },
-                    { 3, 3, 2, 2, 4, 3 },
-                    { 3, 3, 2, 2, 4, 4 }
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Certificates_CompetencyId",
-                table: "Certificates",
-                column: "CompetencyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Certificates_Id",
-                table: "Certificates",
-                column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CompetencyRatingGroups_CompetencyLevelRequirementId",
-                table: "CompetencyRatingGroups",
-                column: "CompetencyLevelRequirementId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CompetencyRatingGroups_CompetencyRatingLevelId",
-                table: "CompetencyRatingGroups",
-                column: "CompetencyRatingLevelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CompetencyTypeGroups_CompetencyTypeId",
@@ -489,39 +476,78 @@ namespace DataModel.Migrations
                 column: "JobPositionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_JobPositionCertificates_CertificateId",
+                table: "JobPositionCertificates",
+                column: "CertificateId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JobPositionCompetencies_CompetencyId",
                 table: "JobPositionCompetencies",
                 column: "CompetencyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobRoles_JobGroupLevelId",
-                table: "JobRoles",
+                name: "IX_JobRolePositionCertificates_CertificateId",
+                table: "JobRolePositionCertificates",
+                column: "CertificateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCertificates_JobGroupLevelId",
+                table: "JobRolePositionCertificates",
                 column: "JobGroupLevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobRolesPositionCompetencies_CompetencyId",
-                table: "JobRolesPositionCompetencies",
+                name: "IX_JobRolePositionCertificates_JobPositionId",
+                table: "JobRolePositionCertificates",
+                column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencies_CompetencyId",
+                table: "JobRolePositionCompetencies",
                 column: "CompetencyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobRolesPositionCompetencies_JobGroupLevelId",
-                table: "JobRolesPositionCompetencies",
+                name: "IX_JobRolePositionCompetencies_JobGroupLevelId",
+                table: "JobRolePositionCompetencies",
                 column: "JobGroupLevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobRolesPositionCompetencies_JobPositionId",
-                table: "JobRolesPositionCompetencies",
+                name: "IX_JobRolePositionCompetencies_JobPositionId",
+                table: "JobRolePositionCompetencies",
                 column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencyRatings_CompetencyId",
+                table: "JobRolePositionCompetencyRatings",
+                column: "CompetencyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencyRatings_CompetencyLevelRequirementId",
+                table: "JobRolePositionCompetencyRatings",
+                column: "CompetencyLevelRequirementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencyRatings_CompetencyRatingLevelId",
+                table: "JobRolePositionCompetencyRatings",
+                column: "CompetencyRatingLevelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencyRatings_JobGroupLevelId",
+                table: "JobRolePositionCompetencyRatings",
+                column: "JobGroupLevelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCompetencyRatings_JobPositionId",
+                table: "JobRolePositionCompetencyRatings",
+                column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRoles_JobGroupLevelId",
+                table: "JobRoles",
+                column: "JobGroupLevelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Certificates");
-
-            migrationBuilder.DropTable(
-                name: "CompetencyRatingGroups");
-
             migrationBuilder.DropTable(
                 name: "CompetencyTypeGroups");
 
@@ -529,19 +555,22 @@ namespace DataModel.Migrations
                 name: "JobGroupPositions");
 
             migrationBuilder.DropTable(
+                name: "JobPositionCertificates");
+
+            migrationBuilder.DropTable(
                 name: "JobPositionCompetencies");
 
             migrationBuilder.DropTable(
+                name: "JobRolePositionCertificates");
+
+            migrationBuilder.DropTable(
+                name: "JobRolePositionCompetencies");
+
+            migrationBuilder.DropTable(
+                name: "JobRolePositionCompetencyRatings");
+
+            migrationBuilder.DropTable(
                 name: "JobRoles");
-
-            migrationBuilder.DropTable(
-                name: "JobRolesPositionCompetencies");
-
-            migrationBuilder.DropTable(
-                name: "CompetencyLevelRequirements");
-
-            migrationBuilder.DropTable(
-                name: "CompetencyRatingLevels");
 
             migrationBuilder.DropTable(
                 name: "CompetencyTypes");
@@ -556,16 +585,25 @@ namespace DataModel.Migrations
                 name: "JobLocationRegions");
 
             migrationBuilder.DropTable(
+                name: "Certificates");
+
+            migrationBuilder.DropTable(
                 name: "Competencies");
+
+            migrationBuilder.DropTable(
+                name: "CompetencyLevelRequirements");
+
+            migrationBuilder.DropTable(
+                name: "CompetencyRatingLevels");
+
+            migrationBuilder.DropTable(
+                name: "JobPositions");
 
             migrationBuilder.DropTable(
                 name: "JobGroups");
 
             migrationBuilder.DropTable(
                 name: "JobGroupLevels");
-
-            migrationBuilder.DropTable(
-                name: "JobPositions");
         }
     }
 }
