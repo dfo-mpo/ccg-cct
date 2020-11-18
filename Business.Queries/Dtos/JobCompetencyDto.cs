@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-namespace DataModel
+namespace Business.Queries.Dtos
 {
-    public class CompetencyLevelRequirement
+    class JobCompetencyDto
     {
         public int Id { get; set; }
+
+        public string Type { get; set; }
+
+        public string NameEng { get; set; }
+
+        public string NameFre { get; set; }
 
         public string DescEng { get; set; }
 
         public string DescFre { get; set; }
-
-        public virtual ICollection<JobRolePositionCompetencyRating> JobRolePositionCompetencyRatings { get; set; }
     }
 }

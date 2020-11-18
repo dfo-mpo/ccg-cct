@@ -8,27 +8,30 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
+    
     public class CertificateConfiguration : IEntityTypeConfiguration<Certificate>
     {
+       
         public void Configure(EntityTypeBuilder<Certificate> builder)
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasIndex(b => b.Id);
+            builder.Property(b => b.NameEng)
+                .HasMaxLength(500);
+
+            builder.Property(b => b.NameFre)
+               .HasMaxLength(500);
 
             builder.Property(b => b.DescEng)
-                .IsRequired()
-                .HasMaxLength(250);
+               .HasMaxLength(500);
 
             builder.Property(b => b.DescFre)
-                .IsRequired()
-                .HasMaxLength(250);
-
+              .HasMaxLength(500);
             builder.Property(b => b.RequireIndicatorEng)
-                .HasMaxLength(250);
+                .HasMaxLength(500);
 
             builder.Property(b => b.RequireIndicatorFre)
-                .HasMaxLength(250);
+                .HasMaxLength(500);
         }
-    }
+    } 
 }

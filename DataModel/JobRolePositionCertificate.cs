@@ -4,9 +4,10 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace DataModel
 {
-    public class JobRolePositionCompetency
+    public class JobRolePositionCertificate
     {
         public int JobGroupId { get; set; }
 
@@ -20,12 +21,8 @@ namespace DataModel
 
         public JobPosition JobPosition { get; set; }
 
-        public int CompetencyId { get; set; }
+        public int CertificateId { get; set; }
 
-        public Competency Competency { get; set; }
-
-        public int CompetencyTypeId { get; set; }
-
-        public CompetencyType CompetencyType { get; set; }
-    } 
+        public Certificate Certificate { get; set; }
+    }
 }

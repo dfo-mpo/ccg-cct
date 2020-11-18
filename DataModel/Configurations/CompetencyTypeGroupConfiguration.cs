@@ -7,11 +7,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
+   
    public class CompetencyTypeGroupConfiguration : IEntityTypeConfiguration<CompetencyTypeGroup>
     {
         public void Configure(EntityTypeBuilder<CompetencyTypeGroup> builder)
         {
-            builder.HasKey(cgt => new { cgt.CompetencyId, cgt.CompetencyTypeId });
+           builder.HasKey(cgt => new { cgt.CompetencyId, cgt.CompetencyTypeId });
         }
-    }
+    } 
+   
 }
