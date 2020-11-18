@@ -117,22 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CCGMember" xml:space="preserve">
-    <value>Membre de la GCC</value>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS DE COMPORTEMENT</value>
   </data>
-  <data name="ExternalCandidate" xml:space="preserve">
-    <value>Candidat externe</value>
+  <data name="h3Q1Text" xml:space="preserve">
+    <value>Quelles certifications possédez-vous actuellement?</value>
   </data>
-  <data name="IndexTitle" xml:space="preserve">
-    <value>Outil de compétence professionnelle</value>
+  <data name="h3Q2Text" xml:space="preserve">
+    <value>Quelles compétences et quels niveaux possédez-vous actuellement?</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Pour commencer, dites-nous qui vous êtes</value>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
-  <data name="Student" xml:space="preserve">
-    <value>Étudiant</value>
+  <data name="Level 1" xml:space="preserve">
+    <value>Niveau 1</value>
   </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>Bienvenue dans l'outil de compétence professionnelle. Cet outil est conçu pour vous permettre de rechercher et de comparer divers postes au sein de la Garde côtière canadienne.</value>
+  <data name="Level 2" xml:space="preserve">
+    <value>Niveau 2</value>
+  </data>
+  <data name="Level 3" xml:space="preserve">
+    <value>Niveau 3</value>
+  </data>
+  <data name="Level 4" xml:space="preserve">
+    <value>Niveau 4</value>
+  </data>
+  <data name="Level 5" xml:space="preserve">
+    <value>Niveau 5</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS TECHNIQUES</value>
   </data>
 </root>

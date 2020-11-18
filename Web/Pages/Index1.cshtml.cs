@@ -9,14 +9,19 @@ using Web.Data;
 
 namespace Web.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel1 : PageModel
     {
+        private readonly ILogger<IndexModel> _logger;
+        
 
-
-
-        public async Task OnGet()
+        public IndexModel1(ILogger<IndexModel> logger)
         {
-            //Classifications = await _classificationService.GetClassifications();
+            _logger = logger;
+        }
+
+        public Task OnGet()
+        {
+            return Task.CompletedTask;
         }
     }
 }

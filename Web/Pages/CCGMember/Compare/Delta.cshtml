@@ -1,0 +1,220 @@
+﻿@page
+@{ ViewData["Title"] = "Delta"; }
+@model Web.Pages.CCGMember.Compare.DeltaModel
+@inject IViewLocalizer Localizer
+@{ 
+    var cur = Model.curposition;
+    var obj = Model.objposition;
+    var diff = Model.diff;
+    var match = Model.matchingcomp;
+    bool type1 = true;
+    bool type2 = true;
+    bool type3 = true;
+    bool type4 = true;
+
+}
+<section role="contentinfo">
+    <div class="row mrgn-tp-md">
+        <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+        <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+    </div>
+    <div class="row  mrgn-bttm-lg">
+        <h2 class="text-center">@Localizer["h2Results"]</h2>
+    </div>
+    <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCodeEng @cur.JobGroupLevelValue - @cur.JobTitleEng</td>
+                <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCodeEng @obj.JobGroupLevelValue - @obj.JobTitleEng</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+    <table class="table table-responsive table-bordered">
+
+        @if (match.Count == 0)
+        {
+    <tr>
+        <th style="background-color:#f2f2f2" width="100%">No Matching Competencies</th>
+    </tr>
+
+        }
+        else
+        {
+    <tr>
+        <th style="background-color:#f2f2f2" width="50%">Competency</th>
+        <th style="background-color:#f2f2f2" width="50%">Rating</th>
+    </tr>
+                    @foreach (var c in match)
+                    {
+                        if (c.TypeId == 1)
+                        {
+                            if (type1 == true)
+                            {
+                                type1 = false;
+    <tr>
+        <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
+        <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
+    </tr> }
+    <tr>
+        <td>@c.CompetencyNameEng</td>
+        <td>@c.RatingValue</td>
+    </tr>
+                        }
+                    }
+                                    @foreach (var c in match)
+                                    {
+                                        if (c.TypeId == 2)
+                                        {
+                                            if (type2 == true)
+                                            {
+                                                type2 = false;
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
+                        <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
+                    </tr> }
+
+                    <tr>
+                        <td>@c.CompetencyNameEng</td>
+                        <td>@c.RatingValue</td>
+                    </tr>
+                                        }
+                                    }
+
+                                                    @foreach (var c in match)
+                                                    {
+                                                        if (c.TypeId == 3)
+                                                        {
+                                                            if (type3 == true)
+                                                            {
+                                                                type3 = false;
+                                    <tr>
+                                        <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
+                                        <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
+                                    </tr>
+                                                            }
+        <tr>
+            <td>@c.CompetencyNameEng</td>
+            <td>@c.RatingValue</td>
+        </tr>}
+                                                    }
+                                                                    @foreach (var c in match)
+                                                                    {
+                                                                        if (c.TypeId == 4)
+                                                                        {
+                                                                            if (type4 == true)
+                                                                            {
+                                                                                type4 = false;
+                                                    <tr>
+                                                        <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
+                                                        <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
+                                                    </tr> }
+                                                    <tr>
+                                                        <td>@c.CompetencyNameEng</td>
+                                                        <td>@c.RatingValue</td>
+                                                    </tr>
+                                                                        }
+                                                                    }}
+    </table>
+
+
+    
+    <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
+    <table class="table table-hover table-bordered">
+        <tbody>
+            @if (diff.Count == 0)
+            {
+        <tr>
+            <th style="background-color:#f2f2f2" width="100%">No Differing Competencies</th>
+        </tr>
+ }
+                    else
+                    {
+                            type1 = true;
+                            type2 = true;
+                            type3 = true;
+                            type4 = true; 
+                        @foreach (var d in diff)
+                        {
+                            if (d.TypeId == 1)
+                            {
+                                if (type1 == true)
+                                {
+                                    type1 = false;
+        <tr>
+            <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
+            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+        </tr> }
+        <tr>
+
+            <td>@d.CompetencyNameEng</td>
+            <td class="text-center bg-success">@d.RatingValueCur</td>
+            <td class="text-center bg-info">@d.RatingValueObj</td>
+        </tr>}
+                        }
+                                        @foreach (var d in diff)
+                                        {
+                                            if (d.TypeId == 2)
+                                            {
+                                                if (type2 == true)
+                                                {
+                                                    type2 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
+                            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                        </tr> }
+                        <tr>
+
+                            <td>@d.CompetencyNameEng</td>
+                            <td class="text-center bg-success">@d.RatingValueCur</td>
+                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                        </tr>}
+                                        }
+                                                        @foreach (var d in diff)
+                                                        {
+                                                            if (d.TypeId == 3)
+                                                            {
+                                                                if (type3 == true)
+                                                                {
+                                                                    type3 = false;
+                                        <tr>
+                                            <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
+                                            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                                            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                                        </tr>
+ }
+            <tr>
+
+                <td>@d.CompetencyNameEng</td>
+                <td class="text-center bg-success">@d.RatingValueCur</td>
+                <td class="text-center bg-info">@d.RatingValueObj</td>
+            </tr>
+}
+    }
+                                                                        @foreach (var d in diff)
+                                                                        {
+                                                                            if (d.TypeId == 4)
+                                                                            {
+                                                                                if (type4 == true)
+                                                                                {
+                                                                                    type4 = false;
+                                                        <tr>
+                                                            <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
+                                                            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                                                            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                                                        </tr>
+ }
+                            <tr>
+
+                                <td>@d.CompetencyNameEng</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>}
+
+                                            }           }
+
+        </tbody>
+ </table>
+</section>

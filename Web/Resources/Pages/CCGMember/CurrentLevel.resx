@@ -117,22 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CCGMember" xml:space="preserve">
-    <value>Membre de la GCC</value>
+  <data name="AdminAS" xml:space="preserve">
+    <value>Administrative Services (AS)</value>
   </data>
-  <data name="ExternalCandidate" xml:space="preserve">
-    <value>Candidat externe</value>
+  <data name="Analyst" xml:space="preserve">
+    <value>Analyst Public Affairs and International Relations (PAIR)/Strategic Business Mangement (SBM)</value>
   </data>
-  <data name="IndexTitle" xml:space="preserve">
-    <value>Outil de compétence professionnelle</value>
+  <data name="Executive Assistant" xml:space="preserve">
+    <value>Executive Assistant to the Director General (DG) / Administrative Assistant to the Deputy Commissioner / Administrative Assistant to the Director &amp; Administrative Assistant to the Executive Director</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Pour commencer, dites-nous qui vous êtes</value>
+  <data name="Finance Officer" xml:space="preserve">
+    <value>Finance Officer (Strategic Planning &amp; Finance)</value>
   </data>
-  <data name="Student" xml:space="preserve">
-    <value>Étudiant</value>
+  <data name="h2Text" xml:space="preserve">
+    <value>Select your current level</value>
   </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>Bienvenue dans l'outil de compétence professionnelle. Cet outil est conçu pour vous permettre de rechercher et de comparer divers postes au sein de la Garde côtière canadienne.</value>
+  <data name="Human Resources" xml:space="preserve">
+    <value>Human Resources (HR) Officer / Workforce Development</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Level1" xml:space="preserve">
+    <value>Level 01</value>
+  </data>
+  <data name="Level2" xml:space="preserve">
+    <value>Level 02</value>
+  </data>
+  <data name="Level3" xml:space="preserve">
+    <value>Level 03</value>
+  </data>
+  <data name="Level4" xml:space="preserve">
+    <value>Level 04</value>
+  </data>
+  <data name="Level5" xml:space="preserve">
+    <value>Level 05</value>
+  </data>
+  <data name="Level6" xml:space="preserve">
+    <value>Level 06</value>
+  </data>
+  <data name="Level7" xml:space="preserve">
+    <value>Level 07</value>
+  </data>
+  <data name="Level8" xml:space="preserve">
+    <value>Level 08</value>
+  </data>
+  <data name="Maritime Admin" xml:space="preserve">
+    <value>Maritime Administrative Assistant</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officer (Business Services, Resources, Documentation &amp; Management, Documentation &amp; Systems Control, Resources Planning, Business Planning, Administrative)</value>
+  </data>
+  <data name="Official Publications" xml:space="preserve">
+    <value>Official Publications &amp; Intranet Management</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Project Assistant" xml:space="preserve">
+    <value>Project Assistant</value>
+  </data>
+  <data name="Select Level" xml:space="preserve">
+    <value>Select Level</value>
+  </data>
+  <data name="Select Position" xml:space="preserve">
+    <value>Select Position</value>
+  </data>
+  <data name="Staff Management" xml:space="preserve">
+    <value>Staff Management Specialist &amp; Front Desk Supervisor</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Training Admin" xml:space="preserve">
+    <value>Training Administrative Assistant &amp; Linguistic Services Officer</value>
   </data>
 </root>

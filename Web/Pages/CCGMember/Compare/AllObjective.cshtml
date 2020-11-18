@@ -1,0 +1,125 @@
+﻿@page ""
+@inject IViewLocalizer Localizer
+@model Web.Pages.CCGMember.Compare.AllObjectiveModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor contextAccessor
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var jobGroups = Model.JobGroups;
+    var imagefolder = "~/img/CCGMember/";
+    bool noresults = true;
+}
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["AllPositions"]</h2>
+        <form>
+            <p>
+                <input type="text" asp-for="filter" asp-route-id="@Model.positionid"/>
+                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+            </p>
+        </form>
+        <form method="post">
+            @if (isEnglish)
+            {
+                @if (Model.filter is null)
+                {
+                    @foreach (var jobgroup in jobGroups)
+                    {
+                        var data = new Dictionary<string, string>
+                         {
+                          { "current",  Model.positionid.ToString()},
+                          { "id",  jobgroup.Id.ToString()}
+                         };
+                        <a asp-page="ObjectiveLevel" asp-all-route-data="data">
+
+                            <div class="col-sm-3 mrgn-bttm-md">
+                                <figure>
+                                    <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@jobgroup.NameEng (@jobgroup.CodeEng)</h6></figcaption>
+                                </figure>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    @foreach (var jobgroup in jobGroups)
+                    {
+                        @if (jobgroup.NameEng.ToLower().Contains(@Model.filter.ToLower()))
+                        {
+                            var data = new Dictionary<string, string>
+                         {
+                          { "id",  Model.positionid.ToString()},
+                          { "group",  jobgroup.Id.ToString()}
+                         };
+                            noresults = false;
+                            <a asp-page="ObjectiveLevel" asp-all-route-data="data">
+                                <div class="col-sm-3 mrgn-bttm-md">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobgroup.NameEng (@jobgroup.CodeEng)</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
+                        }
+                    }
+                    if (noresults)
+                    {
+                        <h4>@Localizer["NoResults"]</h4>
+                    }
+                }
+            }
+            else
+            {
+                @if (Model.filter is null)
+                {
+                    @foreach (var jobgroup in jobGroups)
+                    {
+                        var data = new Dictionary<string, string>
+                         {
+                          { "id",  Model.positionid.ToString()},
+                          { "group",  jobgroup.Id.ToString()}
+                         };
+                        <a asp-page="ObjectiveLevel" asp-all-route-data="data">
+
+                            <div class="col-sm-3 mrgn-bttm-md">
+                                <figure>
+                                    <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@jobgroup.NameFre (@jobgroup.CodeFre)</h6></figcaption>
+                                </figure>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    @foreach (var jobgroup in jobGroups)
+                    {
+                        @if (jobgroup.NameFre.ToLower().Contains(@Model.filter.ToLower()))
+                        {
+                            var data = new Dictionary<string, string>
+                         {
+                          { "id",  Model.positionid.ToString()},
+                          { "group",  jobgroup.Id.ToString()}
+                         };
+                            noresults = false;
+                            <a asp-page="ObjectiveLevel" asp-all-route-data="data">
+                                <div class="col-sm-3 mrgn-bttm-md">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobgroup.NameEng +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@jobgroup.NameFre (@jobgroup.CodeFre)</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
+                        }
+                    }
+                    if (noresults)
+                    {
+                        <h4>@Localizer["NoResults"]</h4>
+                    }
+                }
+            }
+        </form>
+    </div>
+</section>
+

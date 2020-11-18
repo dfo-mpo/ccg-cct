@@ -117,22 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CCGMember" xml:space="preserve">
-    <value>Membre de la GCC</value>
+  <data name="h2Text" xml:space="preserve">
+    <value>Sélectionnez votre position actuelle</value>
   </data>
-  <data name="ExternalCandidate" xml:space="preserve">
-    <value>Candidat externe</value>
-  </data>
-  <data name="IndexTitle" xml:space="preserve">
-    <value>Outil de compétence professionnelle</value>
-  </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Pour commencer, dites-nous qui vous êtes</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Étudiant</value>
-  </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>Bienvenue dans l'outil de compétence professionnelle. Cet outil est conçu pour vous permettre de rechercher et de comparer divers postes au sein de la Garde côtière canadienne.</value>
+  <data name="Level" xml:space="preserve">
+    <value>Niveau</value>
   </data>
 </root>
