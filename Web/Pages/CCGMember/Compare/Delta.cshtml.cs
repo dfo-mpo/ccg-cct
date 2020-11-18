@@ -24,7 +24,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty]
         public List<JobCompetencyRating> matchingcomp { get; set; }
         [BindProperty]
-        public List<SharedJobCompetencyRating> diff { get; set; }
+        public List<SharedJobCompetencyRating> diffcomp { get; set; }
         public DeltaModel(ILogger<DeltaModel> logger, JobCompetencyService jobcompetencyService)
         {
             //_logger = logger;
@@ -37,7 +37,7 @@ namespace Web.Pages.CCGMember.Compare
             curratings = await _jobcompetencyService.GetJobCompetencyRatings(current);
             objratings = await _jobcompetencyService.GetJobCompetencyRatings(obj);
             matchingcomp = new List<JobCompetencyRating>();
-            diff = new List<SharedJobCompetencyRating>();
+            diffcomp = new List<SharedJobCompetencyRating>();
             foreach (var cur in curratings)
             {
                 foreach (var ob in objratings)
@@ -49,7 +49,7 @@ namespace Web.Pages.CCGMember.Compare
                     }
                         else
                         {
-                            diff.Add(new SharedJobCompetencyRating()
+                            diffcomp.Add(new SharedJobCompetencyRating()
                             {
                                 TypeId = ob.TypeId,
                                 CompetencyDescEng = ob.CompetencyDescEng,

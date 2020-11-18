@@ -15,12 +15,9 @@ namespace Web.Pages.CCGMember
     public class CurrentLevelModel : PageModel
     {
         private readonly JobGroupService _jobcategoryService;
-        public JobGroup JobGroup { get; set; }
 
         [BindProperty]
         public int level { get; set; }
-
-        public JobGroupLevel[] JobGroupLevels { get; set; }
         public JobGroupPosition[] JobGroupPositions { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -32,19 +29,7 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int id)
         {
-            JobGroup = await _jobcategoryService.GetJobGroupById(id);
             JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
-            //var er = Request.Form["dt_level"];
-
-            //JobGroupLevels = await _jobcategoryService.GetJobGroupLevelsById(id);
-
-        }
-        public void OnPostEdit(int id)
-        {
-
-            //JobGroup = await _jobcategoryService.GetJobGroupById(3);
-            //JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(3);
-
         }
     }
 }

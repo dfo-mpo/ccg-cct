@@ -21,7 +21,6 @@ namespace Service.Controllers
         private readonly IQueryProcessor _queryProvider;
         private readonly GetJobGroupByIdQuery jobGroupQuery = new GetJobGroupByIdQuery();
         private readonly GetJobGroupPositionsByIdQuery jobGroupPositionsQuery = new GetJobGroupPositionsByIdQuery();
-        private readonly GetJobPositionByIdQuery positionsQuery = new GetJobPositionByIdQuery();
         private readonly GetJobPositionsByLevelGroupIdQuery positionslevelgroupQuery = new GetJobPositionsByLevelGroupIdQuery();
         public JobGroupController(IQueryProcessor queryProvider, ICommandSender commandSender)
         {
@@ -39,7 +38,7 @@ namespace Service.Controllers
         }
 
         [HttpGet, Route("{Id}")]
-        [ProducesResponseType(typeof(JobCategoryDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(JobGroupDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById(int Id)
         {
             jobGroupQuery.Id = Id;
@@ -53,17 +52,8 @@ namespace Service.Controllers
         public async Task<IActionResult> GetLevelsById(int Id)
         {
             jobGroupPositionsQuery.Id = Id;
-            var jgp =
+            var results =
                 await _queryProvider.ProcessAsync(jobGroupPositionsQuery);
-            var results = new List<JobGroupPositionDto>();
-            foreach (var jg in jgp)
-            {
-                results.Add(new JobGroupPositionDto
-                {
-                    LevelId = jg.JobGroupLevelId,
-                    JobId = jg.JobPositionId
-                });
-            }
             return Ok(results);
         }
 
@@ -73,9 +63,9 @@ namespace Service.Controllers
         {
             positionslevelgroupQuery.Id = Id;
             positionslevelgroupQuery.level = level;
-            var positions =
+            var results =
                 await _queryProvider.ProcessAsync(positionslevelgroupQuery);
-            return Ok(positions);
+            return Ok(results);
         }
     }
 }

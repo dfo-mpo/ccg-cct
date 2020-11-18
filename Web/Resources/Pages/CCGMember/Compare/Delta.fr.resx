@@ -120,4 +120,10 @@
   <data name="h2Results" xml:space="preserve">
     <value>Recherche de position</value>
   </data>
+  <data name="NoDiff" xml:space="preserve">
+    <value>Pas de compétences différentes</value>
+  </data>
+  <data name="NoMatch" xml:space="preserve">
+    <value>Aucune compétence correspondante</value>
+  </data>
 </root>

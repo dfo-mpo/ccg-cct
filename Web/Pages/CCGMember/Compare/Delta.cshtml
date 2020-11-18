@@ -5,8 +5,8 @@
 @{ 
     var cur = Model.curposition;
     var obj = Model.objposition;
-    var diff = Model.diff;
     var match = Model.matchingcomp;
+    var diff = Model.diffcomp;
     bool type1 = true;
     bool type2 = true;
     bool type3 = true;
@@ -35,7 +35,7 @@
         @if (match.Count == 0)
         {
     <tr>
-        <th style="background-color:#f2f2f2" width="100%">No Matching Competencies</th>
+        <th style="background-color:#f2f2f2" width="100%">@Localizer["NoMatch"]</th>
     </tr>
 
         }
@@ -125,7 +125,7 @@
             @if (diff.Count == 0)
             {
         <tr>
-            <th style="background-color:#f2f2f2" width="100%">No Differing Competencies</th>
+            <th style="background-color:#f2f2f2" width="100%">@Localizer["NoDiff"]</th>
         </tr>
  }
                     else

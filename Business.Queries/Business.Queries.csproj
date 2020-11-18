@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\JobCategoryDto.cs" />
+    <Compile Remove="Dtos\JobGroupLevelDto.cs" />
+    <Compile Remove="Dtos\JobGroupTitleDto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 

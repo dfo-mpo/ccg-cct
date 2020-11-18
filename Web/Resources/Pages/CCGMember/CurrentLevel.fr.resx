@@ -117,79 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdminAS" xml:space="preserve">
-    <value>Services administratifs (AS)</value>
-  </data>
-  <data name="Analyst" xml:space="preserve">
-    <value>Analyste Affaires publiques et gestion internationale (PAIR)/Gestion stratégique des affaires (GSA)</value>
-  </data>
-  <data name="Executive Assistant" xml:space="preserve">
-    <value>Adjoint exécutif au Directeur Général  / Adjoint administratif au commissaire adjoint / Adjoint administratif au directeur et adjoint administratif au directeur exécutif</value>
-  </data>
-  <data name="Finance Officer" xml:space="preserve">
-    <value>Agent financier (Planification stratégique et financière)</value>
-  </data>
   <data name="h2Text" xml:space="preserve">
     <value>Sélectionnez votre niveau actuel</value>
-  </data>
-  <data name="Human Resources" xml:space="preserve">
-    <value>Agent des ressources humaines / développement de la main-d'œuvre</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>Niveau</value>
-  </data>
-  <data name="Level1" xml:space="preserve">
-    <value>Niveau 01</value>
-  </data>
-  <data name="Level2" xml:space="preserve">
-    <value>Niveau 02</value>
-  </data>
-  <data name="Level3" xml:space="preserve">
-    <value>Niveau 03</value>
-  </data>
-  <data name="Level4" xml:space="preserve">
-    <value>Niveau 04</value>
-  </data>
-  <data name="Level5" xml:space="preserve">
-    <value>Niveau 05</value>
-  </data>
-  <data name="Level6" xml:space="preserve">
-    <value>Niveau 06</value>
-  </data>
-  <data name="Level7" xml:space="preserve">
-    <value>Niveau 07</value>
-  </data>
-  <data name="Level8" xml:space="preserve">
-    <value>Niveau 08</value>
-  </data>
-  <data name="Maritime Admin" xml:space="preserve">
-    <value>Administrateur maritime</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
-  <data name="Officer" xml:space="preserve">
-    <value>Agent (services opérationnels, ressource/gestion des documents, système de contrôle des documents, planification des ressources, planification d'affaires, administratifs)</value>
-  </data>
-  <data name="Official Publications" xml:space="preserve">
-    <value>Gestion de publication officielles et intranet</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
-  </data>
-  <data name="Project Assistant" xml:space="preserve">
-    <value>Assistant de projet</value>
-  </data>
-  <data name="Select Level" xml:space="preserve">
-    <value>Choisir le niveau</value>
-  </data>
-  <data name="Select Position" xml:space="preserve">
-    <value>Sélectionnez votre poste</value>
-  </data>
-  <data name="Staff Management" xml:space="preserve">
-    <value>Spécialiste en gestion du personnel et superviseur à la réception</value>
-  </data>
-  <data name="Training Admin" xml:space="preserve">
-    <value>Administrateur de formation et Agent des services linguistiques</value>
   </data>
 </root>

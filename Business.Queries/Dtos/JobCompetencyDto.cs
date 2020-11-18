@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Business.Queries.Dtos
 {
-    class JobCompetencyDto
+    public class JobCompetencyDto
     {
         public int Id { get; set; }
 

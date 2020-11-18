@@ -12,12 +12,12 @@ using Microsoft.EntityFrameworkCore;
 namespace Business.Queries.JobPositions
 {
     
-    public class GetJobCompetenciesByTypeIdQuery : IQuery<List<Competency>>
+    public class GetJobCompetenciesByTypeIdQuery : IQuery<List<JobCompetencyDto>>
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
     }
-    public class GetJobCompetenciesByTypeIdQueryHandler : IQueryHandler<GetJobCompetenciesByTypeIdQuery, List<Competency>>
+    public class GetJobCompetenciesByTypeIdQueryHandler : IQueryHandler<GetJobCompetenciesByTypeIdQuery, List<JobCompetencyDto>>
     {
         private readonly CctDbContext _db;
 
@@ -26,10 +26,19 @@ namespace Business.Queries.JobPositions
             _db = db;
         }
 
-        public Task<List<Competency>> HandleAsync(GetJobCompetenciesByTypeIdQuery query, CancellationToken cancellationToken = new CancellationToken())
+        public Task<List<JobCompetencyDto>> HandleAsync(GetJobCompetenciesByTypeIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
             return _db.CompetencyTypeGroups.Where(e => e.CompetencyTypeId == query.TypeId)
-                .Select(e => e.Competency)
+                .Include(e => e.Competency)
+                .Select(e => new JobCompetencyDto()
+                {
+                    Type = e.CompetencyType.NameEng,
+                    Id = e.CompetencyId,
+                    DescEng = e.Competency.DescEng,
+                    DescFre = e.Competency.DescFre,
+                    NameEng = e.Competency.NameEng,
+                    NameFre = e.Competency.NameFre
+                })
                 .ToListAsync(cancellationToken);
                            
         }

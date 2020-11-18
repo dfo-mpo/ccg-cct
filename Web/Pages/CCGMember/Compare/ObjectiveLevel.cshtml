@@ -3,19 +3,16 @@
 @model Web.Pages.CCGMember.Compare.ObjectiveLevelModel
 @inject IHttpContextAccessor contextAccessor
 @inject IViewLocalizer Localizer
-@{ var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-                var page = contextAccessor.HttpContext.Request.RouteValues;
-                var id = Model.id;
-                var jobtitle = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
-                var jobLevels = Model.JobGroupLevels;
-                var jobPositions = Model.JobGroupPositions;
-                var levels = new List<int>();
-
-                foreach (var jp in jobPositions)
-                {
-                    levels.Add(jp.LevelId);
-                }
-                var levelsd = levels.Distinct(); }
+@{      
+    //var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var id = Model.id;
+    var jobPositions = Model.JobGroupPositions;
+    var levels = new List<String>();
+    foreach (var jp in jobPositions)
+    {
+        levels.Add(jp.LevelValue);
+    }
+    var levelsd = levels.Distinct(); }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

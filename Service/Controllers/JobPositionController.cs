@@ -52,19 +52,19 @@ namespace Service.Controllers
         public async Task<IActionResult> GetCompetenciesById(int Id)
         {
             competenciesbyJobIdQuery.Id = Id;
-            var position =
+            var results =
                 await _queryProvider.ProcessAsync(competenciesbyJobIdQuery);
-            return Ok(position);
+            return Ok(results);
         }
 
         [HttpGet, Route("{Id}/{competencytypeId}/competencies")]
-        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<JobCompetencyDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetCompetenciesByTypeId(int Id, int competencytypeId)
         {
             competenciesType.TypeId = competencytypeId;
-            var position =
+            var results =
                 await _queryProvider.ProcessAsync(competenciesType);
-            return Ok(position);
+            return Ok(results);
         }
 
     }

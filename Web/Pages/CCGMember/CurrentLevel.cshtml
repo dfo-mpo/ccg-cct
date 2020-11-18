@@ -4,17 +4,14 @@
 @inject IHttpContextAccessor contextAccessor
 @inject IViewLocalizer Localizer
 @{
-    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var page = contextAccessor.HttpContext.Request.RouteValues;
+    //var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var id = Model.id;
-    var jobtitle = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
-    var jobLevels = Model.JobGroupLevels;
     var jobPositions = Model.JobGroupPositions;
-    var levels = new List<int>();
+    var levels = new List<string>();
 
     foreach (var jp in jobPositions)
     {
-        levels.Add(jp.LevelId);
+        levels.Add(jp.LevelValue);
     }
     var levelsd = levels.Distinct();
 }

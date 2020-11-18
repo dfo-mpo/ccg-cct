@@ -16,8 +16,6 @@ namespace Web.Pages.CCGMember.Compare
 
         [BindProperty]
         public int level { get; set; }
-
-        public JobGroupLevel[] JobGroupLevels { get; set; }
         public JobGroupPosition[] JobGroupPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public int current { get; set; }
@@ -31,18 +29,7 @@ namespace Web.Pages.CCGMember.Compare
         }
         public async Task OnGetAsync(int id)
         {
-            JobGroup = await _jobcategoryService.GetJobGroupById(id);
             JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
-            //var er = Request.Form["dt_level"];
-
-            //JobGroupLevels = await _jobcategoryService.GetJobGroupLevelsById(id);
-
-        }
-        public void OnPostEdit(int id)
-        {
-
-            //JobGroup = await _jobcategoryService.GetJobGroupById(3);
-            //JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(3);
 
         }
     }

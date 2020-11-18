@@ -38,6 +38,9 @@
     <Compile Remove="Migrations\20201030115537_initiate7.Designer.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
+    <Compile Remove="Migrations\20201118191020_addschematables.cs" />
+    <Compile Remove="Migrations\20201118191020_addschematables.Designer.cs" />
+    <Compile Remove="Migrations\CctDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

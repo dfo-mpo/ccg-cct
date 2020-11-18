@@ -2,7 +2,8 @@
 {
     public class JobGroupPositionDto
     {
-        public int LevelId { get; set; }
         public int JobId { get; set; }
+        public int LevelId { get; set; }
+        public string LevelValue { get; set; }
     }
 }
