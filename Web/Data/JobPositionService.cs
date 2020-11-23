@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Components;
 
 namespace Web.Data
 {
-    public class JobCompetencyService : IDataService
+    public class JobPositionService : IDataService
     {
         private readonly IHttpClientFactory _clientFactory;
 
-        public JobCompetencyService(IHttpClientFactory clientFactory)
+        public JobPositionService(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
         }
@@ -29,6 +29,13 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
 
+        }
+
+        public async Task<JobCertificate[]> GetJobCertificatesById(int id)
+        {
+            string url = "/api/jobpositions/" + id + "/certificates";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCertificate[]>(url);
         }
     
     }

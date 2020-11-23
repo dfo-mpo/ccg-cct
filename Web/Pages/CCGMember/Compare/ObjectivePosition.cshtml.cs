@@ -33,9 +33,7 @@ namespace Web.Pages.CCGMember.Compare
         }
         public async Task OnGetAsync(int id, int level)
         {
-            //JobGroup = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
             JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
-
         }
     }
 }

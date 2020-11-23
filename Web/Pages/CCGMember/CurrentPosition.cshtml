@@ -28,13 +28,13 @@
         {
             foreach (var jp in jobPositions)
             {
-                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="SearchType" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleEng</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleEng</a></li>
             }
         }
         else
         {
             foreach (var jp in jobPositions) { 
-            <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="SearchType" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleFre</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleFre</a></li>
             }
         }
     </ul>

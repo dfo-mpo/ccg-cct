@@ -339,7 +339,7 @@ namespace DataModel
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseSqlServer(@"Server=//;Database=CCT;Trusted_Connection=True;");
+            optionsBuilder.UseMySQL(@"Server=localhost;port=3306;Database=CCTData;User=root;Password=Gdzanre!2");
             optionsBuilder.EnableSensitiveDataLogging();
         }
 

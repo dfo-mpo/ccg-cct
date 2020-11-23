@@ -40,7 +40,6 @@
     <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
     <Compile Remove="Migrations\20201118191020_addschematables.cs" />
     <Compile Remove="Migrations\20201118191020_addschematables.Designer.cs" />
-    <Compile Remove="Migrations\CctDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,6 +54,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,7 +16,7 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
-
+        public CompareByName comparebyname = new CompareByName();
         public class CompareByName : IComparer
         {
             int IComparer.Compare(object o1, object o2)
@@ -33,7 +33,7 @@ namespace Web.Data
         {
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobGroup[]>("/api/jobgroups");
-            Array.Sort(list, new CompareByName());
+            Array.Sort(list, comparebyname);
             return list;
         }
 

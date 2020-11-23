@@ -21,6 +21,8 @@ namespace Service.Controllers
         private readonly GetJobPositionByIdQuery jobPositionQuery = new GetJobPositionByIdQuery();
         private readonly GetJobCompetencyRatingsByJobPositionIdQuery competenciesbyJobIdQuery = new GetJobCompetencyRatingsByJobPositionIdQuery();
         private readonly GetJobCompetenciesByTypeIdQuery competenciesType = new GetJobCompetenciesByTypeIdQuery();
+        private readonly GetAllJobCertificatesByJobPositionIdQuery positioncertificatesQuery = new GetAllJobCertificatesByJobPositionIdQuery();
+
 
         public JobPositionController(IQueryProcessor queryProvider, ICommandSender commandSender)
         {
@@ -64,6 +66,16 @@ namespace Service.Controllers
             competenciesType.TypeId = competencytypeId;
             var results =
                 await _queryProvider.ProcessAsync(competenciesType);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("{Id}/certificates")]
+        [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPositionCertificatesByGroupLevelId(int Id, int level)
+        {
+            positioncertificatesQuery.Id = Id;
+            var results =
+                await _queryProvider.ProcessAsync(positioncertificatesQuery);
             return Ok(results);
         }
 
