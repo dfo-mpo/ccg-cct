@@ -15,13 +15,17 @@ namespace DataModel
 
         public string NameFre { get; set; }
 
-        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+        public string DescEng { get; set; }
+
+        public string DescFre { get; set; }
+
+        public virtual ICollection<JobRolePositionCompetencyRating> JobPositionCompetencyRatings { get; set; }
 
         public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
         
         public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
         
-        public virtual ICollection<JobRolePositionCompetency> JobRolesPositionCompetencies { get; set; }
+        public virtual ICollection<JobRolePositionCompetency> JobRolePositionCompetencies { get; set; }
 
     }
 }
