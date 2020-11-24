@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="JobGroupLevels\**" />
+    <Compile Remove="JobGroupTitles\**" />
+    <EmbeddedResource Remove="JobGroupLevels\**" />
+    <EmbeddedResource Remove="JobGroupTitles\**" />
+    <None Remove="JobGroupLevels\**" />
+    <None Remove="JobGroupTitles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Dtos\JobCategoryDto.cs" />
     <Compile Remove="Dtos\JobGroupLevelDto.cs" />
     <Compile Remove="Dtos\JobGroupTitleDto.cs" />
