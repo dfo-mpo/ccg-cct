@@ -76,6 +76,7 @@ namespace Web.Pages.CCGMember.Compare
             diffcomp3 = new List<SharedJobCompetencyRating>();
             matchingcomp4 = new List<JobCompetencyRating>();
             diffcomp4 = new List<SharedJobCompetencyRating>();
+
             foreach (var cur in curratings1)
             {
                 foreach (var ob in objratings1)

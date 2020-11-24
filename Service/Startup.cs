@@ -149,7 +149,7 @@ namespace Service
             var opts = _container.GetInstance<DbContextOptions<CctDbContext>>();
             var accessor = new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
             using var db = new CctDbContext(opts, accessor);
-            //db.Database.Migrate();
+            db.Database.Migrate();
         }
 
         private void InitializeContainer()

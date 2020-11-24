@@ -54,6 +54,9 @@
     <Compile Remove="Migrations\20201115205857_recreatemigration3.Designer.cs" />
     <Compile Remove="Migrations\20201123020006_recreatemodel.cs" />
     <Compile Remove="Migrations\20201123020006_recreatemodel.Designer.cs" />
+    <Compile Remove="Migrations\20201124211150_addschematables.cs" />
+    <Compile Remove="Migrations\20201124211150_addschematables.Designer.cs" />
+    <Compile Remove="Migrations\CctDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

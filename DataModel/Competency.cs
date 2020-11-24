@@ -7,8 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DataModel
 {
     public class Competency
-    {
-        
+    {     
         public int Id { get; set; }
 
         public string NameEng { get; set; }
