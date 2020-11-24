@@ -11,7 +11,7 @@ namespace DataModel
         public int Id { get; set; }
 
         public string Code { get; set; } // ex: AS, CS, GL
-
+        
         public string NameEng { get; set; } // ex. Administrative services
 
         public string NameFre { get; set; } // ex. Services administratifs

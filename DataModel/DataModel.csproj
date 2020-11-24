@@ -38,14 +38,22 @@
     <Compile Remove="Migrations\20201030115537_initiate7.Designer.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
-    <Compile Remove="Migrations\20201118191020_addschematables.cs" />
-    <Compile Remove="Migrations\20201118191020_addschematables.Designer.cs" />
-    <Compile Remove="Migrations\20201124165340_addalltables1.cs" />
-    <Compile Remove="Migrations\20201124165340_addalltables1.Designer.cs" />
-    <Compile Remove="Migrations\20201124170122_addalltables2.cs" />
-    <Compile Remove="Migrations\20201124170122_addalltables2.Designer.cs" />
-    <Compile Remove="Migrations\20201124173221_addschematables1.cs" />
-    <Compile Remove="Migrations\20201124173221_addschematables1.Designer.cs" />
+    <Compile Remove="Migrations\20201102225553_initmigration13.cs" />
+    <Compile Remove="Migrations\20201102225553_initmigration13.Designer.cs" />
+    <Compile Remove="Migrations\20201103005915_Initialmigration14.cs" />
+    <Compile Remove="Migrations\20201103005915_Initialmigration14.Designer.cs" />
+    <Compile Remove="Migrations\20201111022419_dataseed4.cs" />
+    <Compile Remove="Migrations\20201111022419_dataseed4.Designer.cs" />
+    <Compile Remove="Migrations\20201115203413_migrationrecreate.cs" />
+    <Compile Remove="Migrations\20201115203413_migrationrecreate.Designer.cs" />
+    <Compile Remove="Migrations\20201115203808_migrationrecreate.cs" />
+    <Compile Remove="Migrations\20201115203808_migrationrecreate.Designer.cs" />
+    <Compile Remove="Migrations\20201115204042_recreatemigration1.cs" />
+    <Compile Remove="Migrations\20201115204042_recreatemigration1.Designer.cs" />
+    <Compile Remove="Migrations\20201115205857_recreatemigration3.cs" />
+    <Compile Remove="Migrations\20201115205857_recreatemigration3.Designer.cs" />
+    <Compile Remove="Migrations\20201123020006_recreatemodel.cs" />
+    <Compile Remove="Migrations\20201123020006_recreatemodel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,7 +68,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>
 
   <ItemGroup>
