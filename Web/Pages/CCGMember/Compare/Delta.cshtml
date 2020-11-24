@@ -2,18 +2,17 @@
 @{ ViewData["Title"] = "Delta"; }
 @model Web.Pages.CCGMember.Compare.DeltaModel
 @inject IViewLocalizer Localizer
-@{ 
+@{
     var cur = Model.curposition;
     var obj = Model.objposition;
-    var match = Model.matchingcomp;
-    var diff = Model.diffcomp;
+    var match1 = Model.matchingcomp1;
+    var diff1 = Model.diffcomp1;
+    var match2 = Model.matchingcomp2;
+    var diff2 = Model.diffcomp2;
+    var match3 = Model.matchingcomp3;
+    var diff3 = Model.diffcomp3;
     var matchcert = Model.matchcert;
     var diffcert = Model.diffcert;
-    bool type1 = true;
-    bool type2 = true;
-    bool type3 = true;
-    bool type4 = true;
-
 }
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
@@ -21,260 +20,294 @@
             <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
         </div>
         <div class="row  mrgn-bttm-lg">
-            <h2 class="text-center">@Localizer["h2Results"]</h2>
+            <h2><b>@Localizer["h2Results"]</b></h2>
         </div>
         <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCodeEng @cur.JobGroupLevelValue - @cur.JobTitleEng</td>
-                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCodeEng @obj.JobGroupLevelValue - @obj.JobTitleEng</td>
+                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCode @cur.JobGroupLevelValue - @cur.JobTitleEng</td>
+                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCode @obj.JobGroupLevelValue - @obj.JobTitleEng</td>
                 </tr>
             </tbody>
         </table>
-        <h3>@Localizer["MATCHING CERTIFICATES"]</h3>
+        <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
         <table class="table table-responsive table-bordered">
-            @if (matchcert.Count == 0)
+            <tr>
+                <th style="background-color:#f2f2f2" width="50%">CERTIFICATIONS</th>
+                <th style="background-color:#f2f2f2" width="50%">TECHNICAL ELEMENTS</th>
+            </tr>
+            @if (match2.Count > matchcert.Count)
             {
+                var d = new Dictionary<string, string>();
+                @for (int i = 0; i < match2.Count; i++)
+                {
+                    if (i < matchcert.Count)
+                    {
+                        d.Add(match2[i].CompetencyNameEng as string, matchcert[i].NameEng as string);
+                    }
+                    else
+                    {
+                        d.Add(match2[i].CompetencyNameEng as string, null);
+                    }
+                }
+                @for (int i = 0; i < match2.Count; i++)
+                {
+                    <tr>
+                        <td width="50%">@d.ElementAt(i).Value</td>
+                        <td width="50%">@d.ElementAt(i).Key</td>
+                    </tr>
+                }
                 <tr>
-                    <th style="background-color:#f2f2f2" width="100%">No Matching Certificates</th>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
+                </tr>
+            }
+            else if (matchcert.Count > match2.Count)
+            {
+                var d = new Dictionary<string, string>();
+                @for (int i = 0; i < matchcert.Count; i++)
+                {
+                    if (i < match2.Count)
+                    {
+                        d.Add(matchcert[i].NameEng as string, match2[i].CompetencyNameEng as string);
+                    }
+                    else
+                    {
+                        d.Add(matchcert[i].NameEng as string, null);
+                    }
+                }
+                @for (int i = 0; i < matchcert.Count; i++)
+                {
+                    <tr>
+                        <td width="50%">@d.ElementAt(i).Key</td>
+                        <td width="50%">@d.ElementAt(i).Value</td>
+                    </tr>
+                }
+                <tr>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
                 </tr>
             }
             else
             {
                 <tr>
-                    <th style="background-color:#f2f2f2" width="50%">Certificate</th>
-                    <th style="background-color:#f2f2f2" width="50%"></th>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
                 </tr>
-                @foreach (var c in matchcert)
+            }
+            <tr>
+                <th style="background-color:#f2f2f2" width="50%">KNOWLEDGE ELEMENTS</th>
+                <th style="background-color:#f2f2f2" width="50%">BEHAVIOURAL ELEMENTS</th>
+            </tr>
+            @if (match1.Count > match3.Count)
+            {
+                var d = new Dictionary<string, string>();
+                @for (int i = 0; i < match1.Count; i++)
                 {
+                    if (i < match3.Count)
+                    {
+                        d.Add(match1[i].CompetencyNameEng as string, match3[i].CompetencyNameEng as string);
+                    }
+                    else
+                    {
+                        d.Add(match1[i].CompetencyNameEng as string, null);
+                    }
+                }
+                @for (int i = 0; i < match2.Count; i++)
+                {
+
                     <tr>
-                        <td style="background-color:#f2f2f2" width="50%">@c.NameEng</td>
-                        <td style="background-color:#f2f2f2" width="50%">&nbsp;</td>
+                        <td width="50%">@d.ElementAt(i).Key</td>
+                        <td width="50%">@d.ElementAt(i).Value</td>
                     </tr>
 
                 }
-            }
-        </table>
-        <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
-        <table class="table table-responsive table-bordered">
-            @if (match.Count == 0)
-            {
                 <tr>
-                    <th style="background-color:#f2f2f2" width="100%">@Localizer["NoMatch"]</th>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
                 </tr>
-
+            }
+            else if (match3.Count > match1.Count)
+            {
+                var d = new Dictionary<string, string>();
+                @for (int i = 0; i < match3.Count; i++)
+                {
+                    if (i < match1.Count)
+                    {
+                        d.Add(match3[i].CompetencyNameEng as string, match1[i].CompetencyNameEng as string);
+                    }
+                    else
+                    {
+                        d.Add(match1[i].CompetencyNameEng as string, null);
+                    }
+                }
+                @for (int i = 0; i < match3.Count; i++)
+                {
+                    <tr>
+                        <td width="50%">@d.ElementAt(i).Value</td>
+                        <td width="50%">@d.ElementAt(i).Key</td>
+                    </tr>
+                }
+                <tr>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
+                </tr>
             }
             else
             {
-
                 <tr>
-                    <th style="background-color:#f2f2f2" width="50%">Competency</th>
-                    <th style="background-color:#f2f2f2" width="50%">Rating</th>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
                 </tr>
-                @foreach (var c in match)
-                {
-                    if (c.TypeId == 1)
-                    {
-                        if (type1 == true)
-                        {
-                            type1 = false;
-                            <tr>
-                                <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
-                                <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
-                            </tr>
-                        }
-                        <tr>
-                            <td>@c.CompetencyNameEng</td>
-                            <td>@c.RatingValue</td>
-                        </tr>
-                    }
-                }
-                @foreach (var c in match)
-                {
-                    if (c.TypeId == 2)
-                    {
-                        if (type2 == true)
-                        {
-                            type2 = false;
-                            <tr>
-                                <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
-                                <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
-                            </tr>
-                        }
-
-                        <tr>
-                            <td>@c.CompetencyNameEng</td>
-                            <td>@c.RatingValue</td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var c in match)
-                {
-                    if (c.TypeId == 3)
-                    {
-                        if (type3 == true)
-                        {
-                            type3 = false;
-                            <tr>
-                                <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
-                                <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
-                            </tr>
-                        }
-                        <tr>
-                            <td>@c.CompetencyNameEng</td>
-                            <td>@c.RatingValue</td>
-                        </tr>
-                    }
-                }
-                @foreach (var c in match)
-                {
-                    if (c.TypeId == 4)
-                    {
-                        if (type4 == true)
-                        {
-                            type4 = false;
-                            <tr>
-                                <th style="background-color:#f2f2f2" width="50%">@c.TypeNameEng</th>
-                                <th style="background-color:#f2f2f2" width="50%">&nbsp;</th>
-                            </tr>
-                        }
-                        <tr>
-                            <td>@c.CompetencyNameEng</td>
-                            <td>@c.RatingValue</td>
-                        </tr>
-                    }
-                }}
+            }
         </table>
-        <h3>@Localizer["REQUIRED CERTIFICATES"]</h3>
+        <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
         <table class="table table-hover table-bordered">
+            <tr>
+                <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+            </tr>
             <tbody>
                 @if (diffcert.Count == 0)
                 {
                     <tr>
-                        <th style="background-color:#f2f2f2" width="50%">No Additional Certificates required for this role</th>
-                        <th style="background-color:#f2f2f2" width="50%"></th>
+                        <td width="70%"></td>
+                        <td class="text-center bg-success"></td>
+                        <td class="text-center bg-info"></td>
                     </tr>
-                }
-                else{
-                <tr>
-                    <th style="background-color:#f2f2f2" width="50%">Certificate</th>
-                    <th style="background-color:#f2f2f2" width="50%"></th>
-                </tr>
-                @foreach (var c in diffcert)
-                {
                     <tr>
-                        <td style="background-color:#f2f2f2" width="50%">@c.NameEng</td>
-                        <td style="background-color:#f2f2f2" width="50%">&nbsp;</td>
-                    </tr>
-
-                }
-                }
-            </tbody>
-        </table>
-
-        <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
-        <table class="table table-hover table-bordered">
-            <tbody>
-
-                @if (diff.Count == 0)
-                {
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="100%">@Localizer["NoDiff"]</th>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 }
                 else
                 {
-                    type1 = true;
-                    type2 = true;
-                    type3 = true;
-                    type4 = true;
-                    @foreach (var d in diff)
+                    @foreach (var d in diffcert)
                     {
-                        if (d.TypeId == 1)
-                        {
-                            if (type1 == true)
-                            {
-                                type1 = false;
-                                <tr>
-                                    <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
-                                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                                </tr>
-                            }
-                            <tr>
+                        <tr>
 
-                                <td>@d.CompetencyNameEng</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
-                            </tr>
-                        }
+                            <td width="70%">@d.NameEng</td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
                     }
-                    @foreach (var d in diff)
-                    {
-                        if (d.TypeId == 2)
-                        {
-                            if (type2 == true)
-                            {
-                                type2 = false;
-                                <tr>
-                                    <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
-                                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                                </tr>
-                            }
-                            <tr>
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
 
-                                <td>@d.CompetencyNameEng</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
-                            </tr>
-                        }
+                @if (diff1.Count == 0)
+                {
+                    <tr>
+                        <td width="70%"></td>
+                        <td class="text-center bg-success"></td>
+                        <td class="text-center bg-info"></td>
+                    </tr>
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+
+                else
+                {
+                    @foreach (var d in diff1)
+                    {
+                        <tr>
+
+                            <td width="70%">@d.CompetencyNameEng</td>
+                            <td class="text-center bg-success">@d.RatingValueCur</td>
+                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                        </tr>
                     }
-                    @foreach (var d in diff)
-                    {
-                        if (d.TypeId == 3)
-                        {
-                            if (type3 == true)
-                            {
-                                type3 = false;
-                                <tr>
-                                    <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
-                                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                                </tr>
-                            }
-                            <tr>
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
 
-                                <td>@d.CompetencyNameEng</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
-                            </tr>
-                        }
+                @if (diff2.Count == 0)
+                {
+                    <tr>
+                        <td width="70%"></td>
+                        <td class="text-center bg-success"></td>
+                        <td class="text-center bg-info"></td>
+                    </tr>
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var d in diff2)
+                    {
+                        <tr>
+
+                            <td width="70%">@d.CompetencyNameEng</td>
+                            <td class="text-center bg-success">@d.RatingValueCur</td>
+                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                        </tr>
                     }
-                    @foreach (var d in diff)
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
+
+                @if (diff3.Count == 0)
+                {
+                    <tr>
+                        <td width="70%"></td>
+                        <td class="text-center bg-success"></td>
+                        <td class="text-center bg-info"></td>
+                    </tr>
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var d in diff3)
                     {
-                        if (d.TypeId == 4)
-                        {
-                            if (type4 == true)
-                            {
-                                type4 = false;
-                                <tr>
-                                    <th style="background-color:#f2f2f2" width="70%">@d.TypeNameEng</th>
-                                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                                </tr>
-                            }
-                            <tr>
+                        <tr>
 
-                                <td>@d.CompetencyNameEng</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
-                            </tr>
-                        }
-
-                    }}
-
+                            <td width="70%">@d.CompetencyNameEng</td>
+                            <td class="text-center bg-success">@d.RatingValueCur</td>
+                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
             </tbody>
         </table>
     </section>

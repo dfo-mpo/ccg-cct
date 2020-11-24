@@ -8,8 +8,9 @@ namespace Web.Data
     public class JobPosition
     {
         public int JobGroupId { get; set; }
-        public string JobGroupCodeEng { get; set; }
-        public string JobGroupCodeFre { get; set; }
+        public string JobGroupCode { get; set; }
+        public string JobGroupTitleEng { get; set; }
+        public string JobGroupTitleFre { get; set; }
         public int JobGroupLevelId { get; set; }
         public string JobGroupLevelValue { get; set; }
 

@@ -119,8 +119,7 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    CodeEng = table.Column<string>(maxLength: 250, nullable: false),
-                    CodeFre = table.Column<string>(maxLength: 250, nullable: false),
+                    Code = table.Column<string>(maxLength: 250, nullable: false),
                     NameEng = table.Column<string>(maxLength: 250, nullable: false),
                     NameFre = table.Column<string>(maxLength: 250, nullable: false)
                 },
@@ -550,7 +549,7 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "JobGroups",
-                columns: new[] { "Id", "CodeEng", "CodeFre", "NameEng", "NameFre" },
+                columns: new[] { "Id", "Code", "NameEng", "NameFre" },
                 values: new object[,]
                 {
                     { 4, "GS", "SG", "General Services", "Services généraux" },

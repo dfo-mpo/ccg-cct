@@ -40,6 +40,12 @@
     <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
     <Compile Remove="Migrations\20201118191020_addschematables.cs" />
     <Compile Remove="Migrations\20201118191020_addschematables.Designer.cs" />
+    <Compile Remove="Migrations\20201124165340_addalltables1.cs" />
+    <Compile Remove="Migrations\20201124165340_addalltables1.Designer.cs" />
+    <Compile Remove="Migrations\20201124170122_addalltables2.cs" />
+    <Compile Remove="Migrations\20201124170122_addalltables2.Designer.cs" />
+    <Compile Remove="Migrations\20201124173221_addschematables1.cs" />
+    <Compile Remove="Migrations\20201124173221_addschematables1.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

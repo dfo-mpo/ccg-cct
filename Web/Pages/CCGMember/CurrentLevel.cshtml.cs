@@ -16,9 +16,11 @@ namespace Web.Pages.CCGMember
     {
         private readonly JobGroupService _jobcategoryService;
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public int level { get; set; }
+        public JobGroup JobGroup { get; set; }
         public JobGroupPosition[] JobGroupPositions { get; set; }
+        public JobPosition[] JobPositions { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }
@@ -29,7 +31,9 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int id)
         {
+            JobGroup = await _jobcategoryService.GetJobGroupById(id);
             JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
         }
+
     }
 }

@@ -23,7 +23,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public int level { get; set; }
 
-        public JobGroupLevel[] JobGroupLevels { get; set; }
+        public JobGroupPosition[] JobGroupLevels { get; set; }
         public JobPosition[] JobGroupPositions { get; set; }
 
         public ObjectivePositionModel(ILogger<ObjectivePositionModel> logger, JobGroupService jobcategoryService)
@@ -33,6 +33,8 @@ namespace Web.Pages.CCGMember.Compare
         }
         public async Task OnGetAsync(int id, int level)
         {
+            JobGroup = await _jobcategoryService.GetJobGroupById(id);
+            JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(id);
             JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
         }
     }

@@ -27,8 +27,7 @@ namespace Business.Queries.JobGroups
                 .Select(e => new JobGroupDto()
                 {
                     Id = e.Id,
-                    CodeEng = e.CodeEng,
-                    CodeFre = e.CodeFre,
+                    Code = e.Code,
                     NameEng = e.NameEng,
                     NameFre = e.NameFre,
 

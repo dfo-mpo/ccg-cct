@@ -31,6 +31,14 @@ namespace Web.Data
 
         }
 
+        public async Task<JobCompetencyRating[]> GetJobCompetencyRatingsByTypeId(int id, int compentencytypeid)
+        {
+            string url = "/api/jobpositions/" + id + "/" + compentencytypeid + "/competencies";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
+
+        }
+
         public async Task<JobCertificate[]> GetJobCertificatesById(int id)
         {
             string url = "/api/jobpositions/" + id + "/certificates";

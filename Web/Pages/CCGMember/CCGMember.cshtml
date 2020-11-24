@@ -2,12 +2,12 @@
 @model Web.Pages.CCGMember.CCGMemberModel
 @inject IViewLocalizer Localizer
 
-<h3>@Localizer["Question1"]</h3>
+<h2><b>@Localizer["Question1"]</b></h2>
 <a asp-page="">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
             <img src="~/img/CCGMember/offshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-            <input type="radio"  value="Offshore"><strong>@Localizer["Offshore"]</strong>
+            <input type="radio" value="Offshore"><strong>@Localizer["Offshore"]</strong>
         </figure>
     </div>
 </a>
@@ -15,7 +15,7 @@
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
             <img src="~/img/CCGMember/onshore.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-            <input type="radio"  value="Onshore"><strong>@Localizer["Onshore"]</strong>
+            <input type="radio" value="Onshore"><strong>@Localizer["Onshore"]</strong>
         </figure>
     </div>
 </a>
@@ -27,9 +27,17 @@
         </figure>
     </div>
 </a>
-<div class="col-sm-6">
-    <form>
-        <button asp-page="../Index">@Localizer["Back"]</button>
-        <button asp-page="AllPositions">@Localizer["Next"]</button>
-    </form>
+<div class="row">
+    <div class="col-lg-12 mrgn-bttm-md">
+        <nav role="navigation" class="mrgn-bttm-lg">
+
+            <h2 class="wb-inv">Document navigation</h2>
+
+            <ul class="pager">
+                <li class="previous"><a asp-page="../Index" rel="prev">Previous</a></li>
+                <li class="next"><a asp-page="AllPositions" rel="next">Next</a></li>
+            </ul>
+
+        </nav>
+    </div>
 </div>

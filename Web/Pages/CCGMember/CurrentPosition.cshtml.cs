@@ -22,7 +22,7 @@ namespace Web.Pages.CCGMember
         [BindProperty(SupportsGet = true)]
         public int level { get; set; }
 
-        public JobGroupLevel[] JobGroupLevels { get; set; }
+        public JobGroupPosition[] JobGroupLevels { get; set; }
         public JobPosition[] JobGroupPositions { get; set; }
 
         public  CurrentPositionModel(ILogger<CurrentPositionModel> logger, JobGroupService jobcategoryService)
@@ -32,9 +32,9 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int id, int level)
         {
-            //JobGroup = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
-           
+            JobGroup = await _jobcategoryService.GetJobGroupById(id);
+            JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(id);
+            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);    
         }
 
     }

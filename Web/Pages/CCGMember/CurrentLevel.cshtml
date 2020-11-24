@@ -19,42 +19,41 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<h2>@Localizer["h2Text"]</h2>
+<h2><b>@Localizer["h2Text"]</b></h2>
 
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
-<br />
-
+<h3><b>@Model.JobGroup.NameEng (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-        Select Level
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-        @foreach (var level in levelsd)
-        {
-            var data = new Dictionary<string, string>
+    <div class="col-sm-3">
+        <label><b>Level</b></label><br />
+        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+            Select Level
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            @foreach (var level in levelsd)
+            {
+                var data = new Dictionary<string, string>
         {
            { "id",  id.ToString()},
            { "level",  level.ToString()}
         };
-            <li role="presentation"><a role="menuitem" tabindex="-1" 
-                                      asp-page="CurrentPosition" asp-all-route-data="data">Level @level</a></li>
-           
-
-            
-
-        }
-    </ul>
-</div>
-
-<div class="row">
-    <div class="col-lg-12 mrgn-bttm-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="Compare/SearchType" asp-route-id="@Model.level">@Localizer["Next"]</a></li>
-            </ul>
-        </nav>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1"
+               asp-page="CurrentPosition" asp-all-route-data="data">Level @level</a>
+        </li>
+    }
+        </ul>
     </div>
-</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
+                    <li class="next"><a asp-page="Compare/SearchType" asp-route-id="@Model.level">@Localizer["Next"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>

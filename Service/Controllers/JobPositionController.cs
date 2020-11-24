@@ -63,6 +63,7 @@ namespace Service.Controllers
         [ProducesResponseType(typeof(List<JobCompetencyDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetCompetenciesByTypeId(int Id, int competencytypeId)
         {
+            competenciesType.Id = Id;
             competenciesType.TypeId = competencytypeId;
             var results =
                 await _queryProvider.ProcessAsync(competenciesType);

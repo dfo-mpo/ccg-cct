@@ -36,8 +36,9 @@ namespace Business.Queries.JobPositions
                     JobGroupId = e.JobGroupId,
                     JobLevelId = e.JobGroupLevel.Id,
                     JobLevelValue = e.JobGroupLevel.LevelValue,
-                    JobGroupCodeEng = e.JobGroup.CodeEng,
-                    JobGroupCodeFre = e.JobGroup.CodeFre,
+                    JobGroupCode = e.JobGroup.Code,
+                    JobGroupTitleEng = e.JobGroup.NameEng,
+                    JobGroupTitleFre = e.JobGroup.NameFre,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobGroupLevelValue = e.JobGroupLevel.LevelValue,
                     

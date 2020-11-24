@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20201118223459_addalltables")]
-    partial class addalltables
+    [Migration("20201124173221_addschematables1")]
+    partial class addschematables1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -456,12 +456,7 @@ namespace DataModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CodeEng")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("CodeFre")
+                    b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(250)")
                         .HasMaxLength(250);
@@ -484,80 +479,70 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = 1,
-                            CodeEng = "AS",
-                            CodeFre = "SA",
+                            Code = "AS",
                             NameEng = "Administrative Services",
                             NameFre = "Services Administratif"
                         },
                         new
                         {
                             Id = 2,
-                            CodeEng = "CS",
-                            CodeFre = "SI",
+                            Code = "CS",
                             NameEng = "Computer Systems",
                             NameFre = "Systèmes informatiques"
                         },
                         new
                         {
                             Id = 3,
-                            CodeEng = "GT",
-                            CodeFre = "TG",
+                            Code = "GT",
                             NameEng = "General Technical",
                             NameFre = "Technique générale"
                         },
                         new
                         {
                             Id = 4,
-                            CodeEng = "GS",
-                            CodeFre = "SG",
+                            Code = "GS",
                             NameEng = "General Services",
                             NameFre = "Services généraux"
                         },
                         new
                         {
                             Id = 5,
-                            CodeEng = "L",
-                            CodeFre = "GP",
+                            Code = "L",
                             NameEng = "Lightkeepers",
                             NameFre = "Les gardiens de phare"
                         },
                         new
                         {
                             Id = 6,
-                            CodeEng = "ES",
-                            CodeFre = "TS",
+                            Code = "ES",
                             NameEng = "Engineering and Scientific Support",
                             NameFre = "Assistance technique et scientifique"
                         },
                         new
                         {
                             Id = 7,
-                            CodeEng = "PS",
-                            CodeFre = "AA",
+                            Code = "PS",
                             NameEng = "Purchasing and Supply",
                             NameFre = "Achat et approvisionnement"
                         },
                         new
                         {
                             Id = 8,
-                            CodeEng = "GL",
-                            CodeFre = "GM",
+                            Code = "GL",
                             NameEng = "General Labour and Trades",
                             NameFre = "Travail général et métiers"
                         },
                         new
                         {
                             Id = 9,
-                            CodeEng = "SC",
-                            CodeFre = "EN",
+                            Code = "SC",
                             NameEng = "Ships' Crews",
                             NameFre = "Équipages de navires"
                         },
                         new
                         {
                             Id = 10,
-                            CodeEng = "SO",
-                            CodeFre = "ON",
+                            Code = "SO",
                             NameEng = "Ships' Officers",
                             NameFre = "Officiers de navire"
                         });

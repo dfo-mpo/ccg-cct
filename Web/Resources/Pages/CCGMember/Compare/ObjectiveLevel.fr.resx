@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="h2Text" xml:space="preserve">
-    <value>Sélectionnez un niveau </value>
+    <value>Sélectionnez un niveau et une position</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>

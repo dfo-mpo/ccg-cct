@@ -10,8 +10,7 @@ namespace DataModel
     {     
         public int Id { get; set; }
 
-        public string CodeEng { get; set; } // ex: AS, CS, GL
-        public string CodeFre { get; set; }
+        public string Code { get; set; } // ex: AS, CS, GL
 
         public string NameEng { get; set; } // ex. Administrative services
 

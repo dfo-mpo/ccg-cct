@@ -34,8 +34,7 @@ namespace Business.Queries.JobGroups
                             .Select(e => new JobPositionDto()
                             {
                                 JobGroupId = e.JobGroupId,
-                                JobGroupCodeEng = e.JobGroup.CodeEng,
-                                JobGroupCodeFre = e.JobGroup.CodeFre,
+                                JobGroupCode = e.JobGroup.Code,
                                 JobGroupLevelId = e.JobGroupLevelId,
                                 JobGroupLevelValue = e.JobGroupLevel.LevelValue,
                                 JobTitleId = e.JobPositionId,

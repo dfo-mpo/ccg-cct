@@ -47,16 +47,16 @@ namespace DataModel
         private void SeedData(ModelBuilder builder)
         {
             builder.Entity<JobGroup>().HasData(
-              new JobGroup() { Id = 1, CodeEng = "AS", CodeFre = "SA", NameEng = "Administrative Services", NameFre = "Services Administratif" },
-              new JobGroup() { Id = 2, CodeEng = "CS", CodeFre = "SI", NameEng = "Computer Systems", NameFre = "Systèmes informatiques" },
-              new JobGroup() { Id = 3, CodeEng = "GT", CodeFre = "TG", NameEng = "General Technical", NameFre = "Technique générale" },
-              new JobGroup() { Id = 4, CodeEng = "GS", CodeFre = "SG", NameEng = "General Services", NameFre = "Services généraux" },
-              new JobGroup() { Id = 5, CodeEng = "L", CodeFre = "GP", NameEng = "Lightkeepers", NameFre = "Les gardiens de phare" },
-              new JobGroup() { Id = 6, CodeEng = "ES", CodeFre = "TS", NameEng = "Engineering and Scientific Support", NameFre = "Assistance technique et scientifique" },
-              new JobGroup() { Id = 7, CodeEng = "PS", CodeFre = "AA", NameEng = "Purchasing and Supply", NameFre = "Achat et approvisionnement" },
-              new JobGroup() { Id = 8, CodeEng = "GL", CodeFre = "GM", NameEng = "General Labour and Trades", NameFre = "Travail général et métiers" },
-              new JobGroup() { Id = 9, CodeEng = "SC", CodeFre = "EN", NameEng = "Ships' Crews", NameFre = "Équipages de navires" },
-              new JobGroup() { Id = 10, CodeEng = "SO", CodeFre = "ON", NameEng = "Ships' Officers", NameFre = "Officiers de navire" }
+              new JobGroup() { Id = 1, Code = "AS", NameEng = "Administrative Services", NameFre = "Services Administratif" },
+              new JobGroup() { Id = 2, Code = "CS", NameEng = "Computer Systems", NameFre = "Systèmes informatiques" },
+              new JobGroup() { Id = 3, Code = "GT", NameEng = "General Technical", NameFre = "Technique générale" },
+              new JobGroup() { Id = 4, Code = "GS", NameEng = "General Services", NameFre = "Services généraux" },
+              new JobGroup() { Id = 5, Code = "L",  NameEng = "Lightkeepers", NameFre = "Les gardiens de phare" },
+              new JobGroup() { Id = 6, Code = "ES", NameEng = "Engineering and Scientific Support", NameFre = "Assistance technique et scientifique" },
+              new JobGroup() { Id = 7, Code = "PS", NameEng = "Purchasing and Supply", NameFre = "Achat et approvisionnement" },
+              new JobGroup() { Id = 8, Code = "GL", NameEng = "General Labour and Trades", NameFre = "Travail général et métiers" },
+              new JobGroup() { Id = 9, Code = "SC", NameEng = "Ships' Crews", NameFre = "Équipages de navires" },
+              new JobGroup() { Id = 10, Code = "SO", NameEng = "Ships' Officers", NameFre = "Officiers de navire" }
 
               );
 
@@ -339,7 +339,7 @@ namespace DataModel
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseMySQL(@"Server=localhost;port=3306;Database=CCTData;User=root;Password=Gdzanre!2");
+            optionsBuilder.UseMySQL(@"Server=localhost;port=3306;Database=CCT;User=root;Password=root");
             optionsBuilder.EnableSensitiveDataLogging();
         }
 
