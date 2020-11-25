@@ -38,7 +38,6 @@ namespace Service.Controllers
         [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetById([FromRoute] GetJobPositionByIdQuery query)
         {
-            //jobPositionQuery.Id = Id;
             var results =
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);

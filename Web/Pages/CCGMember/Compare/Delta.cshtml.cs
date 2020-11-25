@@ -87,6 +87,7 @@ namespace Web.Pages.CCGMember.Compare
                             CompetencyDescFre = ob.CompetencyDescFre,
                             CompetencyNameEng = ob.CompetencyNameEng,
                             CompetencyNameFre = ob.CompetencyNameFre,
+                            RatingValueCur = "N/A",
                             RatingValueObj = ob.RatingValue.ToString(),
                             TypeNameEng = ob.TypeNameEng,
                             TypeNameFre = ob.TypeNameFre
@@ -98,7 +99,7 @@ namespace Web.Pages.CCGMember.Compare
                              {
                                  if(cur.CompetencyId == ob.CompetencyId) {
                                     nomatch = false;
-                                if (cur.RatingValue < ob.RatingValue)
+                                if (cur.RatingValue != ob.RatingValue)
                                        {
                                         
                                           diffcomp1.Add(new SharedJobCompetencyRating()
@@ -115,8 +116,8 @@ namespace Web.Pages.CCGMember.Compare
                                     });
                                            
                                          }
-                                             else 
-                                               {
+                                else 
+                                {
                                                      matchingcomp1.Add(ob);
                                                }
                                           }
@@ -130,6 +131,7 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
+                                RatingValueCur = "N/A",
                                 RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
@@ -148,6 +150,7 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
+                                RatingValueCur = "N/A",
                                 RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
@@ -159,7 +162,7 @@ namespace Web.Pages.CCGMember.Compare
                     {
                             if (cur.CompetencyId == ob.CompetencyId) {
                                 nomatch = false;
-                                if (cur.RatingValue < ob.RatingValue)
+                                if (cur.RatingValue != ob.RatingValue)
                                   {
                                     nomatch = false;
                                     diffcomp2.Add(new SharedJobCompetencyRating()
@@ -175,8 +178,8 @@ namespace Web.Pages.CCGMember.Compare
                                         TypeNameFre = ob.TypeNameFre
                                     });
                                 }
-                                 else 
-                                   {                                  
+                                else
+                                {                                  
                                     matchingcomp2.Add(ob);
                                 }
                             }
@@ -190,6 +193,7 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
+                                RatingValueCur = "N/A",
                                 RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
@@ -209,6 +213,7 @@ namespace Web.Pages.CCGMember.Compare
                             CompetencyDescFre = ob.CompetencyDescFre,
                             CompetencyNameEng = ob.CompetencyNameEng,
                             CompetencyNameFre = ob.CompetencyNameFre,
+                            RatingValueCur = "N/A",
                             RatingValueObj = ob.RatingValue.ToString(),
                             TypeNameEng = ob.TypeNameEng,
                             TypeNameFre = ob.TypeNameFre
@@ -220,7 +225,7 @@ namespace Web.Pages.CCGMember.Compare
                     {
                             if (cur.CompetencyId == ob.CompetencyId) {
                                 nomatch = false;
-                                if (cur.RatingValue < ob.RatingValue)
+                                if (cur.RatingValue != ob.RatingValue)
                         {                                    
                                     diffcomp3.Add(new SharedJobCompetencyRating()
                                     {
@@ -236,7 +241,7 @@ namespace Web.Pages.CCGMember.Compare
                                     }
                                     );
                         }
-                        else
+                        else 
                         {
                                     matchingcomp3.Add(ob);
                                 }
@@ -251,10 +256,11 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
+                                RatingValueCur = "N/A",
                                 RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
-                            });
+                            }) ;
                         }
                     }
                 }
