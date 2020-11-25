@@ -22,12 +22,12 @@ namespace DataModel.Configurations
             builder.Property(b => b.NameFre)
                .HasMaxLength(500);
 
-            builder.Property(b => b.DescEng)
+            builder.Property(b => b.DescEng);
 
-            builder.Property(b => b.DescFre)
-            builder.Property(b => b.RequireIndicatorEng)
+            builder.Property(b => b.DescFre);
+            builder.Property(b => b.RequireIndicatorEng);
 
-            builder.Property(b => b.RequireIndicatorFre)
+            builder.Property(b => b.RequireIndicatorFre);
         }
     } 
 }
