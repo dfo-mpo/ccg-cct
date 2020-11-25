@@ -120,14 +120,14 @@
   <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS DE COMPORTEMENT</value>
   </data>
-  <data name="Current Position Level" xml:space="preserve">
-    <value>Niveau de poste actuel</value>
-  </data>
   <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau de poste</value>
   </data>
   <data name="POSITIONS DETAILS" xml:space="preserve">
     <value>DÉTAILS DES POSTES</value>

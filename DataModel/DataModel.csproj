@@ -42,6 +42,18 @@
     <Compile Remove="Migrations\20201102225553_initmigration13.Designer.cs" />
     <Compile Remove="Migrations\20201103005915_Initialmigration14.cs" />
     <Compile Remove="Migrations\20201103005915_Initialmigration14.Designer.cs" />
+    <Compile Remove="Migrations\20201111022419_dataseed4.cs" />
+    <Compile Remove="Migrations\20201111022419_dataseed4.Designer.cs" />
+    <Compile Remove="Migrations\20201115203413_migrationrecreate.cs" />
+    <Compile Remove="Migrations\20201115203413_migrationrecreate.Designer.cs" />
+    <Compile Remove="Migrations\20201115203808_migrationrecreate.cs" />
+    <Compile Remove="Migrations\20201115203808_migrationrecreate.Designer.cs" />
+    <Compile Remove="Migrations\20201115204042_recreatemigration1.cs" />
+    <Compile Remove="Migrations\20201115204042_recreatemigration1.Designer.cs" />
+    <Compile Remove="Migrations\20201115205857_recreatemigration3.cs" />
+    <Compile Remove="Migrations\20201115205857_recreatemigration3.Designer.cs" />
+    <Compile Remove="Migrations\20201123020006_recreatemodel.cs" />
+    <Compile Remove="Migrations\20201123020006_recreatemodel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

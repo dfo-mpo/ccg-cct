@@ -16,5 +16,8 @@ namespace DataModel
 
         public Competency Competency { get; set; }
 
+        public int CompetencyTypeId { get; set; }
+
+        public CompetencyType CompetencyType { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace DataModel
@@ -11,8 +13,9 @@ namespace DataModel
     {
         
         public int Id { get; set; }
+        public string NameEng { get; set; }
 
-        public Competency Competency { get; set; }
+        public string NameFre { get; set; }
 
         public string DescEng { get; set; }
 
@@ -21,6 +24,10 @@ namespace DataModel
         public string RequireIndicatorEng { get; set; }
 
         public string RequireIndicatorFre { get; set; }
+
+        public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
+
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
 }
