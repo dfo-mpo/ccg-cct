@@ -20,8 +20,8 @@ namespace Web.Data
             public string CompetencyDescFre { get; set; }
             //public int RatingId { get; set; }
 
-            public int RatingValueCur { get; set; } // ex: 1, 2
-            public int RatingValueObj { get; set; } // ex: 1, 2
+            public string RatingValueCur { get; set; } // ex: 1, 2
+            public string RatingValueObj { get; set; } // ex: 1, 2
 
 
 

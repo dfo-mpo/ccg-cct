@@ -17,7 +17,7 @@ namespace Web.Pages.CCGMember
         private readonly JobGroupService _jobcategoryService;
 
         [BindProperty(SupportsGet = true)]
-        public int level { get; set; }
+        public string level { get; set; }
         public JobGroup JobGroup { get; set; }
         public JobGroupPosition[] JobGroupPositions { get; set; }
         public JobPosition[] JobPositions { get; set; }

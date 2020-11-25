@@ -29,6 +29,7 @@ namespace Web.Pages.CCGMember.Compare
         public JobCompetencyRating[] objratings3 { get; set; }
         public JobCompetencyRating[] curratings4 { get; set; }
         public JobCompetencyRating[] objratings4 { get; set; }
+        public JobCompetencyRating[] allobjratings { get; set; }
         [BindProperty]
         public List<JobCompetencyRating> matchingcomp1 { get; set; }
         [BindProperty]
@@ -66,28 +67,61 @@ namespace Web.Pages.CCGMember.Compare
             objratings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 2);
             curratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(current, 3);
             objratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 3);
-            curratings4 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(current, 4);
-            objratings4 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 4);
+            allobjratings = await _jobpositionService.GetJobCompetencyRatings(obj);
             matchingcomp1 = new List<JobCompetencyRating>();
             diffcomp1 = new List<SharedJobCompetencyRating>();
             matchingcomp2 = new List<JobCompetencyRating>();
             diffcomp2 = new List<SharedJobCompetencyRating>();
             matchingcomp3 = new List<JobCompetencyRating>();
             diffcomp3 = new List<SharedJobCompetencyRating>();
-            matchingcomp4 = new List<JobCompetencyRating>();
-            diffcomp4 = new List<SharedJobCompetencyRating>();
-
-            foreach (var cur in curratings1)
+            
+            foreach (var ob in allobjratings)
             {
-                foreach (var ob in objratings1)
-                {
-                    if (cur.CompetencyId == ob.CompetencyId)
-                    {
-                        if (cur.RatingValue == ob.RatingValue)
+                if (ob.TypeId == 1)
+                {                 
+                    if (curratings1.Length == 0) {
+                        diffcomp1.Add(new SharedJobCompetencyRating()
                         {
-                            matchingcomp1.Add(ob);
+                            TypeId = ob.TypeId,
+                            CompetencyDescEng = ob.CompetencyDescEng,
+                            CompetencyDescFre = ob.CompetencyDescFre,
+                            CompetencyNameEng = ob.CompetencyNameEng,
+                            CompetencyNameFre = ob.CompetencyNameFre,
+                            RatingValueObj = ob.RatingValue.ToString(),
+                            TypeNameEng = ob.TypeNameEng,
+                            TypeNameFre = ob.TypeNameFre
+                        });
+                    }
+                    else {
+                        bool nomatch = true;
+                        foreach (var cur in curratings1)
+                             {
+                                 if(cur.CompetencyId == ob.CompetencyId) {
+                                    nomatch = false;
+                                if (cur.RatingValue < ob.RatingValue)
+                                       {
+                                        
+                                          diffcomp1.Add(new SharedJobCompetencyRating()
+                                           {
+                                               TypeId = ob.TypeId,
+                                                CompetencyDescEng = ob.CompetencyDescEng,
+                                                CompetencyDescFre = ob.CompetencyDescFre,
+                                                CompetencyNameEng = ob.CompetencyNameEng,
+                                                CompetencyNameFre = ob.CompetencyNameFre,
+                                                RatingValueCur = cur.RatingValue.ToString(),
+                                                RatingValueObj = ob.RatingValue.ToString(),
+                                                  TypeNameEng = ob.TypeNameEng,
+                                              TypeNameFre = ob.TypeNameFre
+                                    });
+                                           
+                                         }
+                                             else 
+                                               {
+                                                     matchingcomp1.Add(ob);
+                                               }
+                                          }
                         }
-                        else if (cur.RatingValue < ob.RatingValue)
+                        if (nomatch)
                         {
                             diffcomp1.Add(new SharedJobCompetencyRating()
                             {
@@ -96,28 +130,58 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
-                                RatingValueCur = cur.RatingValue,
-                                RatingValueObj = ob.RatingValue,
+                                RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
-                            })
-                           ;
+                            }) ;
                         }
                     }
                 }
-            }
-
-            foreach (var cur in curratings2)
-            {
-                foreach (var ob in objratings2)
+                if (ob.TypeId == 2)
                 {
-                    if (cur.CompetencyId == ob.CompetencyId)
+                    if (curratings2.Length == 0)
                     {
-                        if (cur.RatingValue == ob.RatingValue)
-                        {
-                            matchingcomp2.Add(ob);
+                            diffcomp2.Add(new SharedJobCompetencyRating()
+                            {
+                                TypeId = ob.TypeId,
+                                CompetencyDescEng = ob.CompetencyDescEng,
+                                CompetencyDescFre = ob.CompetencyDescFre,
+                                CompetencyNameEng = ob.CompetencyNameEng,
+                                CompetencyNameFre = ob.CompetencyNameFre,
+                                RatingValueObj = ob.RatingValue.ToString(),
+                                TypeNameEng = ob.TypeNameEng,
+                                TypeNameFre = ob.TypeNameFre
+                            });                       
+                    }
+                    else {
+                        bool nomatch = true;
+                        foreach (var cur in curratings2)
+                    {
+                            if (cur.CompetencyId == ob.CompetencyId) {
+                                nomatch = false;
+                                if (cur.RatingValue < ob.RatingValue)
+                                  {
+                                    nomatch = false;
+                                    diffcomp2.Add(new SharedJobCompetencyRating()
+                                    {
+                                        TypeId = ob.TypeId,
+                                        CompetencyDescEng = ob.CompetencyDescEng,
+                                        CompetencyDescFre = ob.CompetencyDescFre,
+                                        CompetencyNameEng = ob.CompetencyNameEng,
+                                        CompetencyNameFre = ob.CompetencyNameFre,
+                                        RatingValueCur = cur.RatingValue.ToString(),
+                                        RatingValueObj = ob.RatingValue.ToString(),
+                                        TypeNameEng = ob.TypeNameEng,
+                                        TypeNameFre = ob.TypeNameFre
+                                    });
+                                }
+                                 else 
+                                   {                                  
+                                    matchingcomp2.Add(ob);
+                                }
+                            }
                         }
-                        else if (cur.RatingValue < ob.RatingValue)
+                        if (nomatch)
                         {
                             diffcomp2.Add(new SharedJobCompetencyRating()
                             {
@@ -126,28 +190,59 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
-                                RatingValueCur = cur.RatingValue,
-                                RatingValueObj = ob.RatingValue,
+                                RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
-                            })
-                           ;
+                            });
                         }
-                    }
+                        }                   
                 }
-            }
 
-            foreach (var cur in curratings3)
-            {
-                foreach (var ob in objratings3)
+                if (ob.TypeId == 3)
                 {
-                    if (cur.CompetencyId == ob.CompetencyId)
+                    if (curratings3.Length==0)
                     {
-                        if (cur.RatingValue == ob.RatingValue)
+                        diffcomp3.Add(new SharedJobCompetencyRating()
                         {
-                            matchingcomp3.Add(ob);
+                            TypeId = ob.TypeId,
+                            CompetencyDescEng = ob.CompetencyDescEng,
+                            CompetencyDescFre = ob.CompetencyDescFre,
+                            CompetencyNameEng = ob.CompetencyNameEng,
+                            CompetencyNameFre = ob.CompetencyNameFre,
+                            RatingValueObj = ob.RatingValue.ToString(),
+                            TypeNameEng = ob.TypeNameEng,
+                            TypeNameFre = ob.TypeNameFre
+                        });
+                    }
+                    else {
+                        bool nomatch = true;
+                    foreach (var cur in curratings3)
+                    {
+                            if (cur.CompetencyId == ob.CompetencyId) {
+                                nomatch = false;
+                                if (cur.RatingValue < ob.RatingValue)
+                        {                                    
+                                    diffcomp3.Add(new SharedJobCompetencyRating()
+                                    {
+                                        TypeId = ob.TypeId,
+                                        CompetencyDescEng = ob.CompetencyDescEng,
+                                        CompetencyDescFre = ob.CompetencyDescFre,
+                                        CompetencyNameEng = ob.CompetencyNameEng,
+                                        CompetencyNameFre = ob.CompetencyNameFre,
+                                        RatingValueCur = cur.RatingValue.ToString(),
+                                        RatingValueObj = ob.RatingValue.ToString(),
+                                        TypeNameEng = ob.TypeNameEng,
+                                        TypeNameFre = ob.TypeNameFre
+                                    }
+                                    );
                         }
-                        else if(cur.RatingValue<ob.RatingValue)
+                        else
+                        {
+                                    matchingcomp3.Add(ob);
+                                }
+                            }
+                        }
+                        if (nomatch)
                         {
                             diffcomp3.Add(new SharedJobCompetencyRating()
                             {
@@ -156,15 +251,14 @@ namespace Web.Pages.CCGMember.Compare
                                 CompetencyDescFre = ob.CompetencyDescFre,
                                 CompetencyNameEng = ob.CompetencyNameEng,
                                 CompetencyNameFre = ob.CompetencyNameFre,
-                                RatingValueCur = cur.RatingValue,
-                                RatingValueObj = ob.RatingValue,
+                                RatingValueObj = ob.RatingValue.ToString(),
                                 TypeNameEng = ob.TypeNameEng,
                                 TypeNameFre = ob.TypeNameFre
-                            })
-                           ;
+                            });
                         }
                     }
                 }
+
             }
 
             matchcert = new List<JobCertificate>();

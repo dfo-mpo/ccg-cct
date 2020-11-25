@@ -19,9 +19,7 @@ namespace Service.Controllers
     {
         private readonly ICommandSender _commandSender;
         private readonly IQueryProcessor _queryProvider;
-        private readonly GetJobGroupByIdQuery jobGroupQuery = new GetJobGroupByIdQuery();
-        private readonly GetJobGroupPositionsByIdQuery jobGroupPositionsQuery = new GetJobGroupPositionsByIdQuery();
-        private readonly GetJobPositionsByLevelGroupIdQuery positionslevelgroupQuery = new GetJobPositionsByLevelGroupIdQuery();
+
         public JobGroupController(IQueryProcessor queryProvider, ICommandSender commandSender)
         {
             _queryProvider = queryProvider;
@@ -39,32 +37,28 @@ namespace Service.Controllers
 
         [HttpGet, Route("{Id}")]
         [ProducesResponseType(typeof(JobGroupDto), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById(int Id)
+        public async Task<IActionResult> GetById([FromRoute]GetJobGroupByIdQuery query)
         {
-            jobGroupQuery.Id = Id;
             var results =
-                await _queryProvider.ProcessAsync(jobGroupQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
         [HttpGet, Route("{Id}/levels")]
         [ProducesResponseType(typeof(List<JobGroupPositionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetLevelsById(int Id)
+        public async Task<IActionResult> GetLevelsById([FromRoute]GetJobGroupPositionsByIdQuery query)
         {
-            jobGroupPositionsQuery.Id = Id;
             var results =
-                await _queryProvider.ProcessAsync(jobGroupPositionsQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
         [HttpGet, Route("{Id}/levels/{level}/positions")]
         [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPositionsByGroupLevelId(int Id, int level)
+        public async Task<IActionResult> GetPositionsByGroupLevelId([FromRoute]GetJobPositionsByLevelGroupIdQuery query)
         {
-            positionslevelgroupQuery.Id = Id;
-            positionslevelgroupQuery.level = level;
             var results =
-                await _queryProvider.ProcessAsync(positionslevelgroupQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
     }

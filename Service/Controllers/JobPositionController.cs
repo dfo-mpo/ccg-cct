@@ -18,11 +18,6 @@ namespace Service.Controllers
     {
         private readonly ICommandSender _commandSender;
         private readonly IQueryProcessor _queryProvider;
-        private readonly GetJobPositionByIdQuery jobPositionQuery = new GetJobPositionByIdQuery();
-        private readonly GetJobCompetencyRatingsByJobPositionIdQuery competenciesbyJobIdQuery = new GetJobCompetencyRatingsByJobPositionIdQuery();
-        private readonly GetJobCompetenciesByTypeIdQuery competenciesType = new GetJobCompetenciesByTypeIdQuery();
-        private readonly GetAllJobCertificatesByJobPositionIdQuery positioncertificatesQuery = new GetAllJobCertificatesByJobPositionIdQuery();
-
 
         public JobPositionController(IQueryProcessor queryProvider, ICommandSender commandSender)
         {
@@ -41,42 +36,38 @@ namespace Service.Controllers
 
         [HttpGet, Route("{Id}")]
         [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetById(int Id)
+        public async Task<IActionResult> GetById([FromRoute] GetJobPositionByIdQuery query)
         {
-            jobPositionQuery.Id = Id;
+            //jobPositionQuery.Id = Id;
             var results =
-                await _queryProvider.ProcessAsync(jobPositionQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
         [HttpGet, Route("{Id}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyRatingDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetCompetenciesById(int Id)
+        public async Task<IActionResult> GetCompetenciesById([FromRoute]GetJobCompetencyRatingsByJobPositionIdQuery query)
         {
-            competenciesbyJobIdQuery.Id = Id;
             var results =
-                await _queryProvider.ProcessAsync(competenciesbyJobIdQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
         [HttpGet, Route("{Id}/{competencytypeId}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetCompetenciesByTypeId(int Id, int competencytypeId)
+        public async Task<IActionResult> GetCompetenciesByTypeId([FromRoute]GetJobCompetenciesByTypeIdQuery query)
         {
-            competenciesType.Id = Id;
-            competenciesType.TypeId = competencytypeId;
             var results =
-                await _queryProvider.ProcessAsync(competenciesType);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
         [HttpGet, Route("{Id}/certificates")]
         [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPositionCertificatesByGroupLevelId(int Id, int level)
+        public async Task<IActionResult> GetPositionCertificatesByGroupLevelId([FromRoute]GetAllJobCertificatesByJobPositionIdQuery query)
         {
-            positioncertificatesQuery.Id = Id;
             var results =
-                await _queryProvider.ProcessAsync(positioncertificatesQuery);
+                await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 

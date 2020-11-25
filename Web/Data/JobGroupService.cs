@@ -16,7 +16,7 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
-        public CompareByName comparebyname = new CompareByName();
+        
         public class CompareByName : IComparer
         {
             int IComparer.Compare(object o1, object o2)
@@ -31,31 +31,32 @@ namespace Web.Data
 
         public async Task<JobGroup[]> GetJobGroups()
         {
+            CompareByName comparebyname = new CompareByName();
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobGroup[]>("/api/jobgroups");
             Array.Sort(list, comparebyname);
             return list;
         }
 
-        public async Task<JobGroup> GetJobGroupById(int id)
+        public async Task<JobGroup> GetJobGroupById(int Id)
         {
-            string url = "/api/jobgroups/" + id;
+            string url = "/api/jobgroups/" + Id;
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobGroup>(url);
         }
 
         //api/jobgroups/{id}/levels
-        public async Task<JobGroupPosition[]> GetJobGroupPositionsById(int id)
+        public async Task<JobGroupPosition[]> GetJobGroupPositionsById(int Id)
         {
-            string url = "/api/jobgroups/" + id + "/levels";
+            string url = "/api/jobgroups/" + Id + "/levels";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobGroupPosition[]>(url);
         }
 
         //api/jobgroups/{id}/levels/{level}/positions
-        public async Task<JobPosition[]> GetJobGroupPositionsByLevel(int id, int level)
+        public async Task<JobPosition[]> GetJobGroupPositionsByLevel(int Id, int level)
         {
-            string url = "/api/jobgroups/" + id + "/levels/" + level + "/positions";
+            string url = "/api/jobgroups/" + Id + "/levels/" + level + "/positions";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobPosition[]>(url);
         }

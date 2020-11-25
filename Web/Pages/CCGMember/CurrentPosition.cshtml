@@ -27,10 +27,10 @@
 <div class="dropdown">
     <div class="col-sm-3">
         <label><b>Level</b></label><br />
-        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-            @Model.JobGroup.Code @Model.level
-            <span class="caret"></span>
-        </button>
+                                   <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                                       @Model.JobGroup.Code @Model.level  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <span class="caret"></span>
+                                   </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in levelsd)
             {

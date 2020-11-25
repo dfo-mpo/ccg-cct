@@ -43,11 +43,11 @@
                 {
                     if (i < matchcert.Count)
                     {
-                        d.Add(match2[i].CompetencyNameEng as string, matchcert[i].NameEng as string);
+                        d.Add(match2[i].CompetencyNameEng, matchcert[i].NameEng);
                     }
                     else
                     {
-                        d.Add(match2[i].CompetencyNameEng as string, null);
+                        d.Add(match2[i].CompetencyNameEng, null);
                     }
                 }
                 @for (int i = 0; i < match2.Count; i++)
@@ -69,11 +69,11 @@
                 {
                     if (i < match2.Count)
                     {
-                        d.Add(matchcert[i].NameEng as string, match2[i].CompetencyNameEng as string);
+                        d.Add(matchcert[i].NameEng, match2[i].CompetencyNameEng);
                     }
                     else
                     {
-                        d.Add(matchcert[i].NameEng as string, null);
+                        d.Add(matchcert[i].NameEng, null);
                     }
                 }
                 @for (int i = 0; i < matchcert.Count; i++)
@@ -106,14 +106,14 @@
                 {
                     if (i < match3.Count)
                     {
-                        d.Add(match1[i].CompetencyNameEng as string, match3[i].CompetencyNameEng as string);
+                        d.Add(match1[i].CompetencyNameEng, match3[i].CompetencyNameEng);
                     }
                     else
                     {
-                        d.Add(match1[i].CompetencyNameEng as string, null);
+                        d.Add(match1[i].CompetencyNameEng, null);
                     }
                 }
-                @for (int i = 0; i < match2.Count; i++)
+                @for (int i = 0; i < match1.Count; i++)
                 {
 
                     <tr>
@@ -134,11 +134,11 @@
                 {
                     if (i < match1.Count)
                     {
-                        d.Add(match3[i].CompetencyNameEng as string, match1[i].CompetencyNameEng as string);
+                        d.Add(match3[i].CompetencyNameEng, match1[i].CompetencyNameEng);
                     }
                     else
                     {
-                        d.Add(match3[i].CompetencyNameEng as string, null);
+                        d.Add(match3[i].CompetencyNameEng, null);
                     }
                 }
                 @for (int i = 0; i < match3.Count; i++)

@@ -21,7 +21,7 @@ namespace Web.Pages.CCGMember.Compare
         public int id { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public int level { get; set; }
+        public string level { get; set; }
 
         public JobGroupPosition[] JobGroupLevels { get; set; }
         public JobPosition[] JobGroupPositions { get; set; }

@@ -15,33 +15,31 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
-        public async Task<JobPosition> GetJobPosition(int id)
+        public async Task<JobPosition> GetJobPosition(int Id)
         {
-            string url = "/api/jobpositions/" + id;
+            string url = "/api/jobpositions/" + Id;
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobPosition>(url);
-
         }
 
-        public async Task<JobCompetencyRating[]> GetJobCompetencyRatings(int id)
+        public async Task<JobCompetencyRating[]> GetJobCompetencyRatings(int Id)
         {
-            string url = "/api/jobpositions/" + id + "/competencies";
+            string url = "/api/jobpositions/" + Id + "/competencies";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
 
         }
 
-        public async Task<JobCompetencyRating[]> GetJobCompetencyRatingsByTypeId(int id, int compentencytypeid)
+        public async Task<JobCompetencyRating[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
         {
-            string url = "/api/jobpositions/" + id + "/" + compentencytypeid + "/competencies";
+            string url = "/api/jobpositions/" + Id + "/" + compentencytypeId + "/competencies";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
-
         }
 
-        public async Task<JobCertificate[]> GetJobCertificatesById(int id)
+        public async Task<JobCertificate[]> GetJobCertificatesById(int Id)
         {
-            string url = "/api/jobpositions/" + id + "/certificates";
+            string url = "/api/jobpositions/" + Id + "/certificates";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificate[]>(url);
         }

@@ -15,7 +15,7 @@ namespace Business.Queries.JobPositions
     public class GetJobCompetenciesByTypeIdQuery : IQuery<List<JobCompetencyRatingDto>>
     {
         public int Id { get; set; }
-        public int TypeId { get; set; }
+        public int competencytypeId { get; set; }
     }
     public class GetJobCompetenciesByTypeIdQueryHandler : IQueryHandler<GetJobCompetenciesByTypeIdQuery, List<JobCompetencyRatingDto>>
     {
@@ -28,7 +28,7 @@ namespace Business.Queries.JobPositions
 
         public Task<List<JobCompetencyRatingDto>> HandleAsync(GetJobCompetenciesByTypeIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.Id && e.CompetencyTypeId == query.TypeId)
+            return _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.Id && e.CompetencyTypeId == query.competencytypeId)
                 .Include(e => e.Competency)
                 .Select(e => new JobCompetencyRatingDto()
                 {
