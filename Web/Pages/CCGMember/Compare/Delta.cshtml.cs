@@ -164,7 +164,6 @@ namespace Web.Pages.CCGMember.Compare
                                 nomatch = false;
                                 if (cur.RatingValue != ob.RatingValue)
                                   {
-                                    nomatch = false;
                                     diffcomp2.Add(new SharedJobCompetencyRating()
                                     {
                                         TypeId = ob.TypeId,
