@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20201123020231_recreatedatamodel")]
-    partial class recreatedatamodel
+    [Migration("20201130185723_newdatamigration")]
+    partial class newdatamigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -250,6 +250,26 @@ namespace DataModel.Migrations
                             DescEng = "Lorem ipsumEng",
                             DescFre = "Lorem ipsumFre"
                         });
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
+                {
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyRatingLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyLevelRequirementId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompetencyId", "CompetencyRatingLevelId", "CompetencyLevelRequirementId");
+
+                    b.HasIndex("CompetencyLevelRequirementId");
+
+                    b.HasIndex("CompetencyRatingLevelId");
+
+                    b.ToTable("CompetencyRatingGroup");
                 });
 
             modelBuilder.Entity("DataModel.CompetencyRatingLevel", b =>
@@ -2404,6 +2424,27 @@ namespace DataModel.Migrations
                             CompetencyLevelRequirementId = 4,
                             CompetencyRatingLevelId = 4
                         });
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany()
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyLevelRequirement", "CompetencyLevelRequirement")
+                        .WithMany()
+                        .HasForeignKey("CompetencyLevelRequirementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyRatingLevel", "CompetencyRatingLevel")
+                        .WithMany()
+                        .HasForeignKey("CompetencyRatingLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DataModel.CompetencyTypeGroup", b =>
