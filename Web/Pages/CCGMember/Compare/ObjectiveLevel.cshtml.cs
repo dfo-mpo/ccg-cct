@@ -18,7 +18,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public int level { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int current { get; set; }
+        public int positionid { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }

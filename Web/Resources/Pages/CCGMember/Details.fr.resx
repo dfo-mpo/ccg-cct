@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="h2Text" xml:space="preserve">
-    <value>Sélectionnez votre niveau et votre position actuels</value>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
+  </data>
+  <data name="CERTIFICATIONS" xml:space="preserve">
+    <value>CERTIFICATIONS</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Détails de la position actuelle</value>
+  </data>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Position</value>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="POSITION DETAILS" xml:space="preserve">
+    <value>DÉTAILS DU POSTE</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
-  <data name="Select Level" xml:space="preserve">
-    <value>Sélectionnez un niveau</value>
+  <data name="Print PDF" xml:space="preserve">
+    <value>Imprimer PDF</value>
   </data>
-  <data name="Select Position" xml:space="preserve">
-    <value>Sélectionner une position</value>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Enregistrer PDF</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS TECHNIQUES</value>
   </data>
 </root>

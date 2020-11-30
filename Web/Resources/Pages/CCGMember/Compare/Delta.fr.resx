@@ -117,13 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
+  </data>
+  <data name="CERTIFICATIONS" xml:space="preserve">
+    <value>CERTIFICATIONS</value>
+  </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Position actuelle</value>
+  </data>
+  <data name="DIFFERING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES DIFFÉRENTES</value>
+  </data>
   <data name="h2Results" xml:space="preserve">
-    <value>Recherche de position</value>
+    <value>Résultats comparant deux positions</value>
+  </data>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS DE CONNAISSANCE</value>
+  </data>
+  <data name="MATCHING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES ASSOCIÉES</value>
   </data>
   <data name="NoDiff" xml:space="preserve">
     <value>Pas de compétences différentes</value>
   </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Aucune compétence correspondante</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="Print PDF" xml:space="preserve">
+    <value>Imprimer PDF</value>
+  </data>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Enregistrer PDF</value>
+  </data>
+  <data name="Selected Position" xml:space="preserve">
+    <value>Position sélectionnée</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS TECHNIQUES</value>
   </data>
 </root>

@@ -14,7 +14,7 @@
         <h2><b>@Localizer["AllPositions"]</b></h2>
         <form>
             <p>
-                <input type="text" asp-for="filter" asp-route-id="@Model.positionid"/>
+                <input type="text" asp-for="filter"/>
                 <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
             </p>
         </form>
@@ -27,7 +27,7 @@
                     {
                         var data = new Dictionary<string, string>
                          {
-                          { "current",  Model.positionid.ToString()},
+                          { "positionid",  Model.positionid.ToString()},
                           { "id",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="data">
@@ -49,8 +49,8 @@
                         {
                             var data = new Dictionary<string, string>
                          {
-                          { "id",  Model.positionid.ToString()},
-                          { "group",  jobgroup.Id.ToString()}
+                          { "positionid",  Model.positionid.ToString()},
+                          { "id",  jobgroup.Id.ToString()}
                          };
                             noresults = false;
                             <a asp-page="ObjectiveLevel" asp-all-route-data="data">
@@ -77,8 +77,8 @@
                     {
                         var data = new Dictionary<string, string>
                          {
-                          { "id",  Model.positionid.ToString()},
-                          { "group",  jobgroup.Id.ToString()}
+                          { "positionid",  Model.positionid.ToString()},
+                          { "id",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="data">
 
@@ -99,8 +99,8 @@
                         {
                             var data = new Dictionary<string, string>
                          {
-                          { "id",  Model.positionid.ToString()},
-                          { "group",  jobgroup.Id.ToString()}
+                          { "positionid",  Model.positionid.ToString()},
+                          { "id",  jobgroup.Id.ToString()}
                          };
                             noresults = false;
                             <a asp-page="ObjectiveLevel" asp-all-route-data="data">

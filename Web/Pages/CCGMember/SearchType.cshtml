@@ -4,7 +4,7 @@
 
 
 <h2><b>@Localizer["Question1"]</b></h2>
-<a asp-page="">
+<a asp-page="" asp-route-positionid="@Model.positionid">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
             <img src="~/img/CCGMember/similar.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
@@ -20,7 +20,7 @@
         </figure>
     </div>
 </a>
-<a asp-page="">
+<a asp-page="" asp-route-positionid="@Model.positionid">
     <div class="col-sm-3 mrgn-bttm-md">
         <figure>
             <img src="~/img/CCGMember/blank.jpg" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />

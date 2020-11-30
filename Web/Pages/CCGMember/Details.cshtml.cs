@@ -13,24 +13,17 @@ namespace Web.Pages.CCGMember
     {
         private readonly JobPositionService _jobpositionService;
         [BindProperty(SupportsGet = true)]
-        public int positionId { get; set; }
-
+        public string id { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int obj { get; set; }
+        public int positionid { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string level { get; set; }
         public JobPosition curposition { get; set; }
-        public JobPosition objposition { get; set; }
         public JobCertificate[] curcertificates { get; set; }
-        public JobCertificate[] objcertificates { get; set; }
-        public JobCompetencyRating[] curratings { get; set; }
-        public JobCompetencyRating[] objratings { get; set; }
-        [BindProperty]
-        public List<JobCompetencyRating> matchingcomp { get; set; }
-        [BindProperty]
-        public List<SharedJobCompetencyRating> diffcomp { get; set; }
-        [BindProperty]
-        public List<JobCertificate> matchcert { get; set; }
-        [BindProperty]
-        public List<JobCertificate> diffcert { get; set; }
+        public JobCompetencyRating[] curratings1 { get; set; }
+        public JobCompetencyRating[] curratings2 { get; set; }
+        public JobCompetencyRating[] curratings3 { get; set; }
+
         public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
         {
             //_logger = logger;
@@ -38,11 +31,12 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int positionid)
         {
-            curcertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             curposition = await _jobpositionService.GetJobPosition(positionid);
-            curratings = await _jobpositionService.GetJobCompetencyRatings(positionid);
-
-            }
+            curcertificates = await _jobpositionService.GetJobCertificatesById(positionid);           
+            curratings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
+            curratings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
+            curratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+        }
         }
 
     }

@@ -5,11 +5,19 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    //var page = contextAccessor.HttpContext.Request.RouteValues;
     var id = Model.id;
     var jobPositions = Model.JobGroupPositions;
     var groupLevels = Model.JobGroupLevels;
     var levels = new List<string>();
+    var JobGroupName = "";
+    if (isEnglish)
+    {
+        JobGroupName = Model.JobGroup.NameEng;
+    }
+    else
+    {
+        JobGroupName = Model.JobGroup.NameFre;
+    }
 
     foreach (var jp in groupLevels)
     {
@@ -23,34 +31,32 @@
 
 <h2><b>@Localizer["h2Text"]</b></h2>
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
-<h3><b>@Model.JobGroup.NameEng (@Model.JobGroup.Code)</b></h3>
+<h3><b>@JobGroupName (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
-        <label><b>Level</b></label><br />
-                                   <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-                                       @Model.JobGroup.Code @Model.level  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <span class="caret"></span>
-                                   </button>
+        <label><b>@Localizer["Level"]</b></label><br />
+        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+            @Model.JobGroup.Code @Model.level  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="caret"></span>
+        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in levelsd)
             {
-                var data = new Dictionary<string, string>
-        {
-           { "id",  id.ToString()},
-           { "level",  level.ToString()}
-        };
-        <li role="presentation">
-            <a role="menuitem" tabindex="-1"
-               asp-page="CurrentPosition" asp-all-route-data="data">Level @level</a>
-        </li>
-
-    }
+                var routedata = new Dictionary<string, string>
+                     {
+                          { "id",  id.ToString()},
+                          { "level",  level.ToString()}
+                      };
+<li role="presentation">
+    <a role="menuitem" tabindex="-1"
+       asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Level"] @level</a>
+</li>}
         </ul>
-    </div>
+</div>
     <div class="col-sm-3">
-        <label><b>Position</b></label><br />
+        <label><b>@Localizer["Position"]</b></label><br />
         <button class="dropdown-toggle" id="menu1" type="button" width="100%" data-toggle="dropdown">
-            Select Position
+            @Localizer["Select Position"]
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -58,13 +64,25 @@
             {
                 foreach (var jp in jobPositions)
                 {
-    <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleEng</a></li> }
-                }
-                else
+                    var routedata = new Dictionary<string, string>
+                        {
+                        { "id",  id.ToString()},
+                        { "level",  Model.level.ToString()},
+                        { "positionid", jp.JobTitleId.ToString()}
+                     };
+    <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-all-route-data="routedata">@jp.JobTitleEng</a></li> }
+            }
+            else
+            {
+                foreach (var jp in jobPositions)
                 {
-                    foreach (var jp in jobPositions)
-                    {
-    <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-route-positionid="@jp.JobTitleId">@jp.JobTitleFre</a></li>}
+                    var routedata = new Dictionary<string, string>
+                        {
+                        { "id",  id.ToString()},
+                        { "level",  Model.level.ToString()},
+                        { "positionid", jp.JobTitleId.ToString()}
+                     };
+    <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Details" asp-all-route-data="routedata">@jp.JobTitleFre</a></li>}
                 }
         </ul>
     </div>
@@ -74,8 +92,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                    <li class="next"><a asp-page="SearchType">@Localizer["Next"]</a></li>
+                    <li class="previous"><a asp-page="CurrentLevel" asp-route-id="@id">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>

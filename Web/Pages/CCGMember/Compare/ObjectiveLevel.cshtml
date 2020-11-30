@@ -4,13 +4,20 @@
 @inject IHttpContextAccessor contextAccessor
 @inject IViewLocalizer Localizer
 @{
-    //var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var id = Model.id;
-    var current = Model.current;
-    var jobPositions = Model.JobGroupPositions;
+    var jobGroupPositions = Model.JobGroupPositions;
     var levels = new List<string>();
-
-    foreach (var jp in jobPositions)
+    var JobGroupName = "";
+    if (isEnglish)
+    {
+        JobGroupName = Model.JobGroup.NameEng;
+    }
+    else
+    {
+        JobGroupName = Model.JobGroup.NameFre;
+    }
+    foreach (var jp in jobGroupPositions)
     {
         levels.Add(jp.LevelValue);
     }
@@ -23,30 +30,30 @@
 <h2><b>@Localizer["h2Text"]</b></h2>
 
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
-<h3><b>@Model.JobGroup.NameEng (@Model.JobGroup.Code)</b></h3>
+<h3><b>@JobGroupName (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
-        <label><b>Level</b></label><br />
-        <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-            Select Level
-            <span class="caret"></span>
-        </button>
+        <label><b>@Localizer["Level"]</b></label><br />
+                  <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
+                       @Localizer["Select Level"]
+                   <span class="caret"></span>
+                   </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in levelsd)
             {
-              var data = new Dictionary<string, string>
+                var data = new Dictionary<string, string>
                  {
-                       {"current",  current.ToString() },
+                       {"positionid",  Model.positionid.ToString() },
                        { "id",  id.ToString()},
                        { "level",  level}
                   };
-        <li role="presentation">
-            <a role="menuitem" tabindex="-1"
-               asp-page="ObjectivePosition" asp-all-route-data="data">Level @level</a>
-        </li>
-    }
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       asp-page="ObjectivePosition" asp-all-route-data="data">@Localizer["Level"] @level</a>
+                </li>
+            }
         </ul>
-    </div>
+</div>
 </div>
 <div class="row">
     <div class="col-lg-12 mrgn-bttm-md">

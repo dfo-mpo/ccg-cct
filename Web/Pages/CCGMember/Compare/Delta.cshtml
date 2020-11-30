@@ -1,8 +1,8 @@
 ﻿@page
-@{ ViewData["Title"] = "Delta"; }
 @model Web.Pages.CCGMember.Compare.DeltaModel
 @inject IViewLocalizer Localizer
 @{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var cur = Model.curposition;
     var obj = Model.objposition;
     var match1 = Model.matchingcomp1;
@@ -19,295 +19,572 @@
             <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
             <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
         </div>
-        <div class="row text-center mrgn-bttm-lg">
-            <h2><b>@Localizer["h2Results"]</b></h2>
-        </div>
-        <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tbody>
-                <tr>
-                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCode @cur.JobGroupLevelValue - @cur.JobTitleEng</td>
-                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCode @obj.JobGroupLevelValue - @obj.JobTitleEng</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
-        <table class="table table-responsive table-bordered">
-            <tr>
-                <th style="background-color:#f2f2f2" width="50%">@Localizer["CERTIFICATIONS"]</th>
-                <th style="background-color:#f2f2f2" width="50%">@Localizer["TECHNICAL ELEMENTS"]</th>
-            </tr>
-            @if (match2.Count > matchcert.Count)
-            {
-                var d = new Dictionary<string, string>();
-                @for (int i = 0; i < match2.Count; i++)
-                {
-                    if (i < matchcert.Count)
-                    {
-                        d.Add(match2[i].CompetencyNameEng, matchcert[i].NameEng);
-                    }
-                    else
-                    {
-                        d.Add(match2[i].CompetencyNameEng, null);
-                    }
-                }
-                @for (int i = 0; i < match2.Count; i++)
-                {
+        @if (isEnglish)
+        {
+            <div class="row text-center mrgn-bttm-lg">
+                <h2><b>@Localizer["h2Results"]</b></h2>
+            </div>
+            <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
                     <tr>
-                        <td width="50%">@d.ElementAt(i).Value</td>
-                        <td width="50%">@d.ElementAt(i).Key</td>
+                        <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCode @cur.JobGroupLevelValue - @cur.JobTitleEng</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCode @obj.JobGroupLevelValue - @obj.JobTitleEng</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["CERTIFICATIONS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                </tr>
+                @if (match2.Count > matchcert.Count)
+                {
+                    @for (int i = 0; i < match2.Count; i++)
+                    {
+                        if (i < matchcert.Count)
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameEng</td>
+                                <td width="50%">@match2[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@match2[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-            else if (matchcert.Count > match2.Count)
-            {
-                var d = new Dictionary<string, string>();
-                @for (int i = 0; i < matchcert.Count; i++)
+                else if (matchcert.Count > match2.Count)
                 {
-                    if (i < match2.Count)
+                    @for (int i = 0; i < matchcert.Count; i++)
                     {
-                        d.Add(matchcert[i].NameEng, match2[i].CompetencyNameEng);
+                        if (i < match2.Count)
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameEng</td>
+                                <td width="50%">@match2[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameEng</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
                     }
-                    else
-                    {
-                        d.Add(matchcert[i].NameEng, null);
-                    }
-                }
-                @for (int i = 0; i < matchcert.Count; i++)
-                {
                     <tr>
-                        <td width="50%">@d.ElementAt(i).Key</td>
-                        <td width="50%">@d.ElementAt(i).Value</td>
-                    </tr>
-                }
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-            <tr>
-                <th style="background-color:#f2f2f2" width="50%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
-                <th style="background-color:#f2f2f2" width="50%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
-            </tr>
-            @if (match1.Count > match3.Count)
-            {
-                var d = new Dictionary<string, string>();
-                @for (int i = 0; i < match1.Count; i++)
-                {
-                    if (i < match3.Count)
-                    {
-                        d.Add(match1[i].CompetencyNameEng, match3[i].CompetencyNameEng);
-                    }
-                    else
-                    {
-                        d.Add(match1[i].CompetencyNameEng, null);
-                    }
-                }
-                @for (int i = 0; i < match1.Count; i++)
-                {
-
-                    <tr>
-                        <td width="50%">@d.ElementAt(i).Key</td>
-                        <td width="50%">@d.ElementAt(i).Value</td>
-                    </tr>
-
-                }
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-            else if (match3.Count > match1.Count)
-            {
-                var d = new Dictionary<string, string>();
-                @for (int i = 0; i < match3.Count; i++)
-                {
-                    if (i < match1.Count)
-                    {
-                        d.Add(match3[i].CompetencyNameEng, match1[i].CompetencyNameEng);
-                    }
-                    else
-                    {
-                        d.Add(match3[i].CompetencyNameEng, null);
-                    }
-                }
-                @for (int i = 0; i < match3.Count; i++)
-                {
-                    <tr>
-                        <td width="50%">@d.ElementAt(i).Value</td>
-                        <td width="50%">@d.ElementAt(i).Key</td>
-                    </tr>
-                }
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
-                </tr>
-            }
-        </table>
-        <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
-        <table class="table table-hover table-bordered">
-            <tr>
-                <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
-                <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-            </tr>
-            <tbody>
-                @if (diffcert.Count == 0)
-                {
-                    <tr>
-                        <td width="70%"></td>
-                        <td class="text-center bg-success"></td>
-                        <td class="text-center bg-info"></td>
-                    </tr>
-                    <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
                 else
                 {
-                    @foreach (var d in diffcert)
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                </tr>
+                @if (match1.Count > match3.Count)
+                {
+                    @for (int i = 0; i < match1.Count; i++)
+                    {
+                        if (i < match3.Count)
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameEng</td>
+                                <td width="50%">@match3[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameEng</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+                else if (match3.Count > match1.Count)
+                {
+                    @for (int i = 0; i < match3.Count; i++)
+                    {
+                        if (i < match1.Count)
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameEng</td>
+                                <td width="50%">@match3[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@match3[i].CompetencyNameEng</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+            </table>
+            <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
+                <tbody>
+                    @if (diffcert.Count == 0)
                     {
                         <tr>
-
-                            <td width="70%">@d.NameEng</td>
+                            <td width="70%"></td>
                             <td class="text-center bg-success"></td>
                             <td class="text-center bg-info"></td>
                         </tr>
-                    }
-                    <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                }
-                <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
-                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                </tr>
-
-                @if (diff1.Count == 0)
-                {
-                    <tr>
-                        <td width="70%"></td>
-                        <td class="text-center bg-success"></td>
-                        <td class="text-center bg-info"></td>
-                    </tr>
-                    <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                }
-
-                else
-                {
-                    @foreach (var d in diff1)
-                    {
                         <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diffcert)
+                        {
+                            <tr>
 
-                            <td width="70%">@d.CompetencyNameEng</td>
-                            <td class="text-center bg-success">@d.RatingValueCur</td>
-                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                                <td width="70%">@d.NameEng</td>
+                                <td class="text-center bg-success"></td>
+                                <td class="text-center bg-info"></td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (diff1.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
+                    else
+                    {
+                        @foreach (var d in diff1)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameEng</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (diff2.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diff2)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameEng</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (diff3.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diff3)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameEng</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="row text-center mrgn-bttm-lg">
+                <h2><b>@Localizer["h2Results"]</b></h2>
+            </div>
+            <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @cur.JobGroupCode @cur.JobGroupLevelValue - @cur.JobTitleFre</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @obj.JobGroupCode @obj.JobGroupLevelValue - @obj.JobTitleFre</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["CERTIFICATIONS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                </tr>
+                @if (match2.Count > matchcert.Count)
+                {
+                    @for (int i = 0; i < match2.Count; i++)
+                    {
+                        if (i < matchcert.Count)
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameFre</td>
+                                <td width="50%">@match2[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@match2[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
-                <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
-                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                </tr>
-
-                @if (diff2.Count == 0)
+                else if (matchcert.Count > match2.Count)
                 {
+                    @for (int i = 0; i < matchcert.Count; i++)
+                    {
+                        if (i < match2.Count)
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameFre</td>
+                                <td width="50%">@match2[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@matchcert[i].NameFre</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
+                    }
                     <tr>
-                        <td width="70%"></td>
-                        <td class="text-center bg-success"></td>
-                        <td class="text-center bg-info"></td>
-                    </tr>
-                    <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
                 else
                 {
-                    @foreach (var d in diff2)
-                    {
-                        <tr>
-
-                            <td width="70%">@d.CompetencyNameEng</td>
-                            <td class="text-center bg-success">@d.RatingValueCur</td>
-                            <td class="text-center bg-info">@d.RatingValueObj</td>
-                        </tr>
-                    }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
                 <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
-                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
                 </tr>
-
-                @if (diff3.Count == 0)
+                @if (match1.Count > match3.Count)
                 {
+                    @for (int i = 0; i < match1.Count; i++)
+                    {
+                        if (i < match3.Count)
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameFre</td>
+                                <td width="50%">@match3[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameFre</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
+                    }
                     <tr>
-                        <td width="70%"></td>
-                        <td class="text-center bg-success"></td>
-                        <td class="text-center bg-info"></td>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
+                }
+                else if (match3.Count > match1.Count)
+                {
+                    @for (int i = 0; i < match3.Count; i++)
+                    {
+                        if (i < match1.Count)
+                        {
+                            <tr>
+                                <td width="50%">@match1[i].CompetencyNameFre</td>
+                                <td width="50%">@match3[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@match3[i].CompetencyNameFre</td>
+                            </tr>
+                        }
+                    }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
                     </tr>
                 }
                 else
                 {
-                    @foreach (var d in diff3)
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+            </table>
+            <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
+                <tbody>
+                    @if (diffcert.Count == 0)
                     {
                         <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diffcert)
+                        {
+                            <tr>
 
-                            <td width="70%">@d.CompetencyNameEng</td>
-                            <td class="text-center bg-success">@d.RatingValueCur</td>
-                            <td class="text-center bg-info">@d.RatingValueObj</td>
+                                <td width="70%">@d.NameFre</td>
+                                <td class="text-center bg-success"></td>
+                                <td class="text-center bg-info"></td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+
+                    @if (diff1.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
+                    else
+                    {
+                        @foreach (var d in diff1)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameFre</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (diff2.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diff2)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameFre</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (diff3.Count == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in diff3)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.CompetencyNameFre</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td width="70%"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </section>

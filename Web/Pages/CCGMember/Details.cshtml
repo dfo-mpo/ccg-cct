@@ -1,130 +1,193 @@
 ﻿@page
 @model Web.Pages.CCGMember.DetailsModel
-@{
-    ViewData["Title"] = "Details";
-}
-
 @inject IViewLocalizer Localizer
 
 @{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var cur = Model.curposition;
     var curcert = Model.curcertificates;
-    var currat = Model.curratings;
-
+    var currat1 = Model.curratings1;
+    var currat2 = Model.curratings2;
+    var currat3 = Model.curratings3;
     bool type1 = true;
     bool type2 = true;
     bool type3 = true;
-    bool type4 = true;
+
 }
 
-<section role="contentinfo">
-    <div class="row mrgn-tp-md">
-        <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
-        <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
-    </div>
-    <h2><b>@Localizer["Current Position Details"]</b></h2>
-    <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
-        <thead>
-            <tr>
-                <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @cur.JobGroupCode-@cur.JobGroupLevelValue @cur.JobTitleEng</th>
-            </tr>
-        </thead>
-        <tr>
-            <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
-        </tr>
-
-        @if (curcert.Length > 0)
+    <section role="contentinfo">
+        <div class="row mrgn-tp-md">
+            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+            <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+        </div>
+        <h2><b>@Localizer["Current Position Details"]</b></h2>
+        @if (isEnglish)
         {
-            @foreach (var c in curcert)
-            {
+            <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @cur.JobGroupCode-@cur.JobGroupLevelValue @cur.JobTitleEng</th>
+                    </tr>
+                </thead>
                 <tr>
-                    <td colspan="2">@c.NameEng</td>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
-            }
+
+                @if (curcert.Length > 0)
+                {
+                    @foreach (var c in curcert)
+                    {
+                        <tr>
+                            <td colspan="2">@c.NameEng</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">@Localizer["No Certifications"]</td>
+                    </tr>
+                }
+
+                @foreach (var c in currat1)
+                {
+
+                    if (type1 == true)
+                    {
+                        type1 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@c.CompetencyNameEng</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
+                    </tr>
+
+                }
+                @foreach (var c in currat2)
+                {
+
+                    if (type2 == true)
+                    {
+                        type2 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td>@c.CompetencyNameEng</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
+                    </tr>
+
+                }
+
+                @foreach (var c in currat3)
+                {
+
+                    if (type3 == true)
+                    {
+                        type3 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@c.CompetencyNameEng</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
+                    </tr>
+
+                }
+            </table>
         }
         else
         {
-            <tr>
-                <td colspan="2">@Localizer["No Certifications"]</td>
-            </tr>
-        }
-
-        @foreach (var c in currat)
-        {
-            if (c.TypeId == 1)
-            {
-                if (type1 == true)
-                {
-                    type1 = false;
+            <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
                     <tr>
-                        <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
-                        <th style="background-color:#f2f2f2" class="text-center" width="20%">Level</th>
+                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @cur.JobGroupCode-@cur.JobGroupLevelValue @cur.JobTitleFre</th>
                     </tr>
-                }
+                </thead>
                 <tr>
-                    <td>@c.CompetencyNameEng</td>
-                    <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
-            }
-        }
-        @foreach (var c in currat)
-        {
-            if (c.TypeId == 2)
-            {
-                if (type2 == true)
+
+                @if (curcert.Length > 0)
                 {
-                    type2 = false;
+                    @foreach (var c in curcert)
+                    {
+                        <tr>
+                            <td colspan="2">@c.NameFre</td>
+                        </tr>
+                    }
+                }
+                else
+                {
                     <tr>
-                        <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
-                        <th style="background-color:#f2f2f2" class="text-center" width="20%">Level</th>
+                        <td colspan="2">@Localizer["No Certifications"]</td>
                     </tr>
                 }
 
-                <tr>
-                    <td>@c.CompetencyNameEng</td>
-                    <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
-                </tr>
-            }
-        }
+                @foreach (var c in currat1)
+                {
 
-        @foreach (var c in currat)
-        {
-            if (c.TypeId == 3)
-            {
-                if (type3 == true)
-                {
-                    type3 = false;
+                    if (type1 == true)
+                    {
+                        type1 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameFre.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
                     <tr>
-                        <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
-                        <th style="background-color:#f2f2f2" class="text-center" width="20%">Level</th>
+                        <td>@c.CompetencyNameFre</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescFre">@c.RatingValue</a></td>
                     </tr>
+
                 }
-                <tr>
-                    <td>@c.CompetencyNameEng</td>
-                    <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
-                </tr>
-            }
-        }
-        @foreach (var c in currat)
-        {
-            if (c.TypeId == 4)
-            {
-                if (type4 == true)
+                @foreach (var c in currat2)
                 {
-                    type4 = false;
+
+                    if (type2 == true)
+                    {
+                        type2 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameFre.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
+
                     <tr>
-                        <th style="background-color:#f2f2f2" width="80%">@c.TypeNameEng.ToUpper()</th>
-                        <th style="background-color:#f2f2f2" class="text-center" width="20%">Level</th>
+                        <td>@c.CompetencyNameFre</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescFre">@c.RatingValue</a></td>
                     </tr>
+
                 }
-                <tr>
-                    <td>@c.CompetencyNameEng</td>
-                    <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescEng">@c.RatingValue</a></td>
-                </tr>
-            }
+
+                @foreach (var c in currat3)
+                {
+
+                    if (type3 == true)
+                    {
+                        type3 = false;
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@c.TypeNameFre.ToUpper()</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@c.CompetencyNameFre</td>
+                        <td class="text-center"><a data-toggle="tooltip" title="@c.RatingDescFre">@c.RatingValue</a></td>
+                    </tr>
+
+                }
+            </table>
         }
-    </table>
-</section>
+    </section>
 
 <div class="row">
     <div class="col-lg-12 mrgn-bttm-md">
@@ -133,8 +196,15 @@
             <h2 class="wb-inv">Document navigation</h2>
 
             <ul class="pager">
-                <li class="previous"><a asp-page="CurrentPosition">Previous</a></li>
-                <li class="next"><a asp-page="SearchType" asp-route-positionid="@cur.JobTitleId">Next</a></li>
+                @{ 
+                    var routedata = new Dictionary<string, string>
+        {
+           { "id",  Model.id.ToString()},
+           { "level",  Model.level}
+        };
+                }
+                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                <li class="next"><a asp-page="SearchType" asp-route-positionid="@cur.JobTitleId">@Localizer["Next"]</a></li>
             </ul>
 
         </nav>

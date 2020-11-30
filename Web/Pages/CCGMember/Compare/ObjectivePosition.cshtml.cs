@@ -16,7 +16,7 @@ namespace Web.Pages.CCGMember.Compare
         private readonly JobGroupService _jobcategoryService;
         public JobGroup JobGroup { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int current { get; set; }
+        public int positionid { get; set; }
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }
 

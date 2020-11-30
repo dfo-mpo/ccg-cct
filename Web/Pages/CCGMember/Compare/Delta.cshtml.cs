@@ -12,10 +12,10 @@ namespace Web.Pages.CCGMember.Compare
     public class DeltaModel : PageModel
     {
         private readonly JobPositionService _jobpositionService;
-        [BindProperty(SupportsGet = true)]
-        public int current { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public int positionid { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty(SupportsGet =true)]
         public int obj { get; set; }
         public JobPosition curposition { get; set; }
         public JobPosition objposition { get; set; }
@@ -55,17 +55,17 @@ namespace Web.Pages.CCGMember.Compare
             //_logger = logger;
             _jobpositionService = jobcompetencyService;
         }
-        public async Task OnGetAsync(int current, int obj)
+        public async Task OnGetAsync(int positionid, int obj)
         {
-            curcertificates = await _jobpositionService.GetJobCertificatesById(current);
+            curcertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             objcertificates = await _jobpositionService.GetJobCertificatesById(obj);
-            curposition = await _jobpositionService.GetJobPosition(current);
+            curposition = await _jobpositionService.GetJobPosition(positionid);
             objposition = await _jobpositionService.GetJobPosition(obj);
-            curratings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(current, 1);
+            curratings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
             objratings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 1);
-            curratings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(current, 2);
+            curratings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
             objratings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 2);
-            curratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(current, 3);
+            curratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
             objratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 3);
             allobjratings = await _jobpositionService.GetJobCompetencyRatings(obj);
             matchingcomp1 = new List<JobCompetencyRating>();

@@ -120,4 +120,13 @@
   <data name="h2Text" xml:space="preserve">
     <value>Sélectionnez un niveau et une position</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="Select Level" xml:space="preserve">
+    <value>Sélectionnez un niveau</value>
+  </data>
+  <data name="Select Position" xml:space="preserve">
+    <value>Sélectionner une position</value>
+  </data>
 </root>

@@ -33,7 +33,7 @@ namespace Business.Queries.JobPositions
                 .Select(e => new JobCompetencyRatingDto()
                 {
                     TypeNameEng = e.CompetencyType.NameEng,
-                    TypeNameFre = e.CompetencyType.NameEng,
+                    TypeNameFre = e.CompetencyType.NameFre,
                     RatingDescFre = e.CompetencyRatingLevel.DescFre,
                     RatingDescEng = e.CompetencyRatingLevel.DescEng,
                     CompetencyId = e.CompetencyId,
