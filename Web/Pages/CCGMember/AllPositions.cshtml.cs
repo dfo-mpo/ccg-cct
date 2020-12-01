@@ -1,13 +1,9 @@
-﻿using System;
-using System.Web;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
-using Microsoft.AspNetCore.Routing;
+using Data.Classes.JobGroups;
 
 namespace Web.Pages.CCGMember
 {
@@ -15,10 +11,10 @@ namespace Web.Pages.CCGMember
     {
         //private readonly ILogger<AllPositionsModel> _logger;
         private readonly JobGroupService _jobgroupService;
-        public JobGroup[] JobGroups { get; set; }   
+        public JobGroupDto[] JobGroups { get; set; }   
         
         [BindProperty(SupportsGet = true)]
-        public string filter { get; set; }
+        public string Filter { get; set; }
         public AllPositionsModel(ILogger<AllPositionsModel> logger, JobGroupService jobcategoryService)
         {
             //_logger = logger;

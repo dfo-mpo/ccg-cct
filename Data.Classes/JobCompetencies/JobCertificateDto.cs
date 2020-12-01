@@ -1,6 +1,6 @@
-﻿namespace Web.Data
+﻿namespace Data.Classes.JobCompetencies
 {
-    public class JobCertificate
+    public class JobCertificateDto
     {
         public int Id { get; set; }
         public string NameEng { get; set; }

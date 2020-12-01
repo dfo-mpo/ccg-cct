@@ -38,6 +38,8 @@
     <Compile Remove="Migrations\20201030115537_initiate7.Designer.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.cs" />
     <Compile Remove="Migrations\20201030161554_initiatecreate11.Designer.cs" />
+    <Compile Remove="Migrations\20201030161926_initiatecreate11.cs" />
+    <Compile Remove="Migrations\20201030161926_initiatecreate11.Designer.cs" />
     <Compile Remove="Migrations\20201102225553_initmigration13.cs" />
     <Compile Remove="Migrations\20201102225553_initmigration13.Designer.cs" />
     <Compile Remove="Migrations\20201103005915_Initialmigration14.cs" />
@@ -58,6 +60,7 @@
     <Compile Remove="Migrations\20201123020231_recreatedatamodel.Designer.cs" />
     <Compile Remove="Migrations\20201124211150_addschematables.cs" />
     <Compile Remove="Migrations\20201124211150_addschematables.Designer.cs" />
+    <Compile Remove="Migrations\20201125221402_newmodelmigration.cs" />
   </ItemGroup>
 
   <ItemGroup>

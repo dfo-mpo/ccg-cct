@@ -1,4 +1,4 @@
-﻿namespace Business.Queries.Dtos
+﻿namespace Data.Classes.JobCompetencies
 {
     public class JobCompetencyDto
     {

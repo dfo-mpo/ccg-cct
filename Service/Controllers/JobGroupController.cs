@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Business.Queries.JobGroups;
-using Business.Queries.Dtos;
+using Data.Classes.JobPositions;
+using Data.Classes.JobGroups;
 using CCG.AspNetCore.Business.Interface;
-using CCG.AspNetCore.Common.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Business.Queries.JobPositions;
+
 
 namespace Service.Controllers
 {

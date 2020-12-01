@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Data.Classes.JobCompetencies;
+using Data.Classes.JobPositions;
 
 namespace Web.Data
 {
@@ -15,33 +17,33 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
-        public async Task<JobPosition> GetJobPosition(int Id)
+        public async Task<JobPositionDto> GetJobPosition(int Id)
         {
-            string url = "/api/jobpositions/" + Id;
+            string url = $"/api/jobpositions/{Id}";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPosition>(url);
+            return await httpClient.GetJsonAsync<JobPositionDto>(url);
         }
 
-        public async Task<JobCompetencyRating[]> GetJobCompetencyRatings(int Id)
+        public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatings(int Id)
         {
-            string url = "/api/jobpositions/" + Id + "/competencies";
+            string url = $"/api/jobpositions/{Id}/competencies";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
+            return await httpClient.GetJsonAsync<JobCompetencyRatingDto[]>(url);
 
         }
 
-        public async Task<JobCompetencyRating[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
+        public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
         {
-            string url = "/api/jobpositions/" + Id + "/" + compentencytypeId + "/competencies";
+            string url = $"/api/jobpositions/{Id}/{compentencytypeId}/competencies";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCompetencyRating[]>(url);
+            return await httpClient.GetJsonAsync<JobCompetencyRatingDto[]>(url);
         }
 
-        public async Task<JobCertificate[]> GetJobCertificatesById(int Id)
+        public async Task<JobCertificateDto[]> GetJobCertificatesById(int Id)
         {
-            string url = "/api/jobpositions/" + Id + "/certificates";
+            string url = $"/api/jobpositions/{Id}/certificates";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCertificate[]>(url);
+            return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
         }
     
     }

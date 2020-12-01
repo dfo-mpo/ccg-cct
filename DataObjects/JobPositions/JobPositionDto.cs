@@ -1,4 +1,4 @@
-﻿namespace Business.Queries.Dtos
+﻿namespace Data.Classes.JobPositions
 {
     public class JobPositionDto
     {

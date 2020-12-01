@@ -1,13 +1,13 @@
-﻿namespace Web.Data
+﻿namespace Data.Classes.JobCompetencies
 {
-    public class JobCompetencyRating
+    public class JobCompetencyRatingDto
     {
         public int JobPositionId { get; set; }
         public int TypeId { get; set; }
         public string TypeNameEng { get; set; } // ex. Behavioral, knowledge, technical
         public string TypeNameFre { get; set; }
 
-        public int CompetencyId { get; set; }
+        public int CompetencyId {get;set;}
         public string CompetencyNameEng { get; set; }
 
         public string CompetencyNameFre { get; set; }
@@ -26,5 +26,6 @@
         public string RatingDescEng { get; set; }
 
         public string RatingDescFre { get; set; }
+
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace Business.Queries.Dtos
+﻿namespace Data.Classes.JobGroups
 {
     public class JobGroupDto
     {

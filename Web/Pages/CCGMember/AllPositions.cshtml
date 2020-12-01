@@ -1,8 +1,6 @@
 ﻿@page 
 @inject IViewLocalizer Localizer
 @model Web.Pages.CCGMember.AllPositionsModel
-@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor contextAccessor
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var jobGroups = Model.JobGroups;
@@ -14,90 +12,31 @@
         <h2><b>@Localizer["AllPositions"]</b></h2>
         <form>
             <p>
-                <input type="text" asp-for="filter" />
+                <input type="text" asp-for="Filter" />
                 <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
             </p>
         </form>
         <form method="post">
-            @if (isEnglish)
-            {
-                @if (Model.filter is null)
-                {
-                    @foreach (var jobgroup in jobGroups)
-                    {
-                        <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                            <div class="col-sm-3 mrgn-bttm-md">
-                                <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@jobgroup.NameEng (@jobgroup.Code)</h6></figcaption>
-                                </figure>
-                            </div>
-                        </a>
-                    }
-                }
-                else
-                {
-                    @foreach (var jobgroup in jobGroups)
-                    {
-                        @if (jobgroup.NameEng.ToLower().Contains(@Model.filter.ToLower()))
-                        {
-                            noresults = false;
-                            <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                                <div class="col-sm-3 mrgn-bttm-md">
-                                    <figure>
-                                        <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@jobgroup.NameEng (@jobgroup.Code)</h6></figcaption>
-                                    </figure>
-                                </div>
-                            </a>
-                        }
-                    }
-                    if (noresults)
-                    {
-                        <h4>@Localizer["NoResults"]</h4>
-                    }
-                }
-            }
-            else
-            {
-                @if (Model.filter is null)
-                {
-                    @foreach (var jobgroup in jobGroups)
-                    {
-                        <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
 
-                            <div class="col-sm-3 mrgn-bttm-md">
-                                <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@jobgroup.NameFre (@jobgroup.Code)</h6></figcaption>
-                                </figure>
-                            </div>
-                        </a>
-                    }
-                }
-                else
-                {
-                    @foreach (var jobgroup in jobGroups)
-                    {
-                        @if (jobgroup.NameFre.ToLower().Contains(@Model.filter.ToLower()))
-                        {
-                            noresults = false;
-                            <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                                <div class="col-sm-3 mrgn-bttm-md">
-                                    <figure>
-                                        <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@jobgroup.NameFre (@jobgroup.Code)</h6></figcaption>
-                                    </figure>
-                                </div>
-                            </a>
-                        }
-                    }
-                    if (noresults)
-                    {
-                        <h4>@Localizer["NoResults"]</h4>
-                    }
-                }
-            }
+        @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+        {
+                 noresults = false; 
+
+                 <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
+                      <div class="col-sm-3 mrgn-bttm-md">
+                          <figure>
+                             <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                           <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                        </figure>
+                     </div>
+                   </a>
+              }
+
+            @if (noresults)
+            {
+               <h4>@Localizer["NoResults"]</h4>
+             }
+
         </form>
     </div>
 </section>

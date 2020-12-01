@@ -6,21 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\**" />
     <Compile Remove="JobGroupLevels\**" />
     <Compile Remove="JobGroupTitles\**" />
+    <EmbeddedResource Remove="Dtos\**" />
     <EmbeddedResource Remove="JobGroupLevels\**" />
     <EmbeddedResource Remove="JobGroupTitles\**" />
+    <None Remove="Dtos\**" />
     <None Remove="JobGroupLevels\**" />
     <None Remove="JobGroupTitles\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Dtos\JobCategoryDto.cs" />
-    <Compile Remove="Dtos\JobGroupLevelDto.cs" />
-    <Compile Remove="Dtos\JobGroupTitleDto.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Data.Classes\Data.Classes.csproj" />
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 

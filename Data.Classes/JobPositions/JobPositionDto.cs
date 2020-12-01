@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Web.Data
+﻿namespace Data.Classes.JobPositions
 {
-    public class JobPosition
+    public class JobPositionDto
     {
         public int JobGroupId { get; set; }
+        public int JobLevelId { get; set; }
+        public string JobLevelValue { get; set; }
         public string JobGroupCode { get; set; }
         public string JobGroupTitleEng { get; set; }
         public string JobGroupTitleFre { get; set; }

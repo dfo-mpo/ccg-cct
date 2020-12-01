@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using Data.Classes.JobPositions;
+using Data.Classes.JobCompetencies;
+using Data.Classes.Shared;
 
 namespace Web.Pages.CCGMember.Compare
 {
@@ -17,39 +19,35 @@ namespace Web.Pages.CCGMember.Compare
 
         [BindProperty(SupportsGet =true)]
         public int obj { get; set; }
-        public JobPosition curposition { get; set; }
-        public JobPosition objposition { get; set; }
-        public JobCertificate[] curcertificates { get; set; }
-        public JobCertificate[] objcertificates { get; set; }
-        public JobCompetencyRating[] curratings1 { get; set; }
-        public JobCompetencyRating[] objratings1 { get; set; }
-        public JobCompetencyRating[] curratings2 { get; set; }
-        public JobCompetencyRating[] objratings2 { get; set; }
-        public JobCompetencyRating[] curratings3 { get; set; }
-        public JobCompetencyRating[] objratings3 { get; set; }
-        public JobCompetencyRating[] curratings4 { get; set; }
-        public JobCompetencyRating[] objratings4 { get; set; }
-        public JobCompetencyRating[] allobjratings { get; set; }
+        public JobPositionDto curposition { get; set; }
+        public JobPositionDto objposition { get; set; }
+        public JobCertificateDto[] curcertificates { get; set; }
+        public JobCertificateDto[] objcertificates { get; set; }
+        public JobCompetencyRatingDto[] curratings1 { get; set; }
+        public JobCompetencyRatingDto[] objratings1 { get; set; }
+        public JobCompetencyRatingDto[] curratings2 { get; set; }
+        public JobCompetencyRatingDto[] objratings2 { get; set; }
+        public JobCompetencyRatingDto[] curratings3 { get; set; }
+        public JobCompetencyRatingDto[] objratings3 { get; set; }
+        public JobCompetencyRatingDto[] curratings4 { get; set; }
+        public JobCompetencyRatingDto[] objratings4 { get; set; }
+        public JobCompetencyRatingDto[] allobjratings { get; set; }
         [BindProperty]
-        public List<JobCompetencyRating> matchingcomp1 { get; set; }
+        public List<JobCompetencyRatingDto> matchingcomp1 { get; set; }
         [BindProperty]
         public List<SharedJobCompetencyRating> diffcomp1 { get; set; }
         [BindProperty]
-        public List<JobCompetencyRating> matchingcomp2 { get; set; }
+        public List<JobCompetencyRatingDto> matchingcomp2 { get; set; }
         [BindProperty]
         public List<SharedJobCompetencyRating> diffcomp2 { get; set; }
         [BindProperty]
-        public List<JobCompetencyRating> matchingcomp3 { get; set; }
+        public List<JobCompetencyRatingDto> matchingcomp3 { get; set; }
         [BindProperty]
         public List<SharedJobCompetencyRating> diffcomp3 { get; set; }
         [BindProperty]
-        public List<JobCompetencyRating> matchingcomp4 { get; set; }
+        public List<JobCertificateDto> matchcert { get; set; }
         [BindProperty]
-        public List<SharedJobCompetencyRating> diffcomp4 { get; set; }
-        [BindProperty]
-        public List<JobCertificate> matchcert { get; set; }
-        [BindProperty]
-        public List<JobCertificate> diffcert { get; set; }
+        public List<JobCertificateDto> diffcert { get; set; }
         public DeltaModel(ILogger<DeltaModel> logger, JobPositionService jobcompetencyService)
         {
             //_logger = logger;
@@ -68,11 +66,11 @@ namespace Web.Pages.CCGMember.Compare
             curratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
             objratings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(obj, 3);
             allobjratings = await _jobpositionService.GetJobCompetencyRatings(obj);
-            matchingcomp1 = new List<JobCompetencyRating>();
+            matchingcomp1 = new List<JobCompetencyRatingDto>();
             diffcomp1 = new List<SharedJobCompetencyRating>();
-            matchingcomp2 = new List<JobCompetencyRating>();
+            matchingcomp2 = new List<JobCompetencyRatingDto>();
             diffcomp2 = new List<SharedJobCompetencyRating>();
-            matchingcomp3 = new List<JobCompetencyRating>();
+            matchingcomp3 = new List<JobCompetencyRatingDto>();
             diffcomp3 = new List<SharedJobCompetencyRating>();
             
             foreach (var ob in allobjratings)
@@ -111,8 +109,8 @@ namespace Web.Pages.CCGMember.Compare
                                                 CompetencyNameFre = ob.CompetencyNameFre,
                                                 RatingValueCur = cur.RatingValue.ToString(),
                                                 RatingValueObj = ob.RatingValue.ToString(),
-                                                  TypeNameEng = ob.TypeNameEng,
-                                              TypeNameFre = ob.TypeNameFre
+                                                TypeNameEng = ob.TypeNameEng,
+                                                TypeNameFre = ob.TypeNameFre
                                     });
                                            
                                          }
@@ -240,9 +238,10 @@ namespace Web.Pages.CCGMember.Compare
                                     }
                                     );
                         }
-                        else 
+                        else
                         {
                                     matchingcomp3.Add(ob);
+                                    
                                 }
                             }
                         }
@@ -266,14 +265,14 @@ namespace Web.Pages.CCGMember.Compare
 
             }
 
-            matchcert = new List<JobCertificate>();
-            diffcert = new List<JobCertificate>();
+            matchcert = new List<JobCertificateDto>();
+            diffcert = new List<JobCertificateDto>();
 
             foreach (var ob in objcertificates)
             {
                 if (!Array.Exists(curcertificates, c => c.Id == ob.Id))
                 {
-                    diffcert.Add(new JobCertificate()
+                    diffcert.Add(new JobCertificateDto()
                     {
                         Id = ob.Id,
                         DescEng = ob.DescEng,
@@ -288,7 +287,7 @@ namespace Web.Pages.CCGMember.Compare
                 {
                     if (cer.Id == ob.Id)
                     {
-                        matchcert.Add(new JobCertificate()
+                        matchcert.Add(new JobCertificateDto()
                         {
                             Id = cer.Id,
                             DescEng = cer.DescEng,

@@ -7,22 +7,9 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var id = Model.JobGroup.Id;
     var jobPositions = Model.JobGroupPositions;
-    var groupLevels = Model.JobGroupLevels;
-    var levels = new List<string>();
-    var JobGroupName = "";
-    if (isEnglish)
-    {
-        JobGroupName = Model.JobGroup.NameEng;
-    }
-    else
-    {
-        JobGroupName = Model.JobGroup.NameFre;
-    }
-    foreach (var jp in groupLevels)
-    {
-        levels.Add(jp.LevelValue);
-    }
-    var levelsd = levels.Distinct();
+    var levels = Model.JobGroupLevels.Select(e => e.LevelValue).ToList().Distinct();
+    var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
+
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,15 +23,15 @@
     <div class="col-sm-3">
         <label><b>@Localizer["Level"]</b></label><br />
         <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-            @Model.JobGroup.Code @Model.level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Model.JobGroup.Code @Model.Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in levelsd)
+            @foreach (var level in levels)
             {
                 var data = new Dictionary<string, string>
                  {
-                     { "positionid", Model.positionid.ToString()},
+                     { "positionid", Model.PositionId.ToString()},
                      { "id",  id.ToString()},
                      { "level",  level.ToString() }
                   };
@@ -68,7 +55,7 @@
                 {
                     var data = new Dictionary<string, string>
                      {
-                        { "positionid",  Model.positionid.ToString()},
+                        { "positionid",  Model.PositionId.ToString()},
                         { "obj",  jp.JobTitleId.ToString()}
                      };
     <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@jp.JobTitleEng</a></li> 
@@ -80,7 +67,7 @@
                     {
                     var data = new Dictionary<string, string>
                       {
-                          { "positionid",  Model.positionid.ToString()},
+                          { "positionid",  Model.PositionId.ToString()},
                           { "obj",  jp.JobTitleId.ToString()}
                       };
      <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@jp.JobTitleFre</a></li>

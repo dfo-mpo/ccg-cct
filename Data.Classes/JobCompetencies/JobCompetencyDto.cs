@@ -1,8 +1,11 @@
-﻿namespace Business.Queries.Dtos
+﻿namespace Data.Classes.JobCompetencies
 {
-    public class JobCertificateDto
+    public class JobCompetencyDto
     {
         public int Id { get; set; }
+
+        public string Type { get; set; }
+
         public string NameEng { get; set; }
 
         public string NameFre { get; set; }
@@ -10,9 +13,5 @@
         public string DescEng { get; set; }
 
         public string DescFre { get; set; }
-
-        public string RequireIndicatorEng { get; set; }
-
-        public string RequireIndicatorFre { get; set; }
     }
 }

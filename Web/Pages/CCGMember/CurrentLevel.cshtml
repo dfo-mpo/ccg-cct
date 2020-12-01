@@ -5,25 +5,11 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var id = Model.id;
-    var jobGroupPositions = Model.JobGroupPositions;
-    var levels = new List<string>();
+    var id = Model.Id;
+    var levels = Model.JobGroupPositions.Select(e => e.LevelValue).ToList().Distinct();
     var JobGroupCode = Model.JobGroup.Code;
-    var JobGroupName = "";
-    if (isEnglish)
-    {
-        JobGroupName = Model.JobGroup.NameEng;
-    }
-    else
-    {
-        JobGroupName = Model.JobGroup.NameFre;
-    }
+    var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
 
-    foreach (var jp in jobGroupPositions)
-    {
-        levels.Add(jp.LevelValue);
-    }
-    var levelsd = levels.Distinct();
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -41,7 +27,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in levelsd)
+            @foreach (var level in levels)
             {
                 var routedata = new Dictionary<string, string>
                         {

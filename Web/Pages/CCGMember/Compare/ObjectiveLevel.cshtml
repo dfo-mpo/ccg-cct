@@ -5,23 +5,11 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var id = Model.id;
+    var id = Model.Id;
     var jobGroupPositions = Model.JobGroupPositions;
-    var levels = new List<string>();
-    var JobGroupName = "";
-    if (isEnglish)
-    {
-        JobGroupName = Model.JobGroup.NameEng;
-    }
-    else
-    {
-        JobGroupName = Model.JobGroup.NameFre;
-    }
-    foreach (var jp in jobGroupPositions)
-    {
-        levels.Add(jp.LevelValue);
-    }
-    var levelsd = levels.Distinct();
+    var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
+    var levels = jobGroupPositions.Select(e => e.LevelValue).ToList().Distinct();
+
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -39,11 +27,11 @@
                    <span class="caret"></span>
                    </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in levelsd)
+            @foreach (var level in levels)
             {
                 var data = new Dictionary<string, string>
                  {
-                       {"positionid",  Model.positionid.ToString() },
+                       {"positionid",  Model.PositionId.ToString() },
                        { "id",  id.ToString()},
                        { "level",  level}
                   };
@@ -61,7 +49,7 @@
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
                 <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="Compare/SearchType" asp-route-id="@Model.level">@Localizer["Next"]</a></li>
+                <li class="next"><a asp-page="Compare/SearchType" asp-route-id="@Model.Level">@Localizer["Next"]</a></li>
             </ul>
         </nav>
     </div>

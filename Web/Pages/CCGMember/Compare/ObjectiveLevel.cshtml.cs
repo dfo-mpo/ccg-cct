@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using Data.Classes.JobGroups;
+
 
 namespace Web.Pages.CCGMember.Compare
 {
     public class ObjectiveLevelModel : PageModel
     {
         private readonly JobGroupService _jobcategoryService;
-        public JobGroup JobGroup { get; set; }
-        public JobGroupPosition[] JobGroupPositions { get; set; }
+        public JobGroupDto JobGroup { get; set; }
+        public JobGroupPositionDto[] JobGroupPositions { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public int level { get; set; }
+        public int Level { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int positionid { get; set; }
+        public int PositionId { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public int id { get; set; }
+        public int Id { get; set; }
         public ObjectiveLevelModel(ILogger<ObjectiveLevelModel> logger, JobGroupService jobcategoryService)
         {
             //_logger = logger;
