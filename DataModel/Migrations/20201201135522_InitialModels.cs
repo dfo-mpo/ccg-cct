@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class recreatedatamodel : Migration
+    public partial class InitialModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,6 +167,37 @@ namespace DataModel.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JobPositions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompetencyRatingGroup",
+                columns: table => new
+                {
+                    CompetencyId = table.Column<int>(nullable: false),
+                    CompetencyRatingLevelId = table.Column<int>(nullable: false),
+                    CompetencyLevelRequirementId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompetencyRatingGroup", x => new { x.CompetencyId, x.CompetencyRatingLevelId, x.CompetencyLevelRequirementId });
+                    table.ForeignKey(
+                        name: "FK_CompetencyRatingGroup_Competencies_CompetencyId",
+                        column: x => x.CompetencyId,
+                        principalTable: "Competencies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompetencyRatingGroup_CompetencyLevelRequirements_CompetencyLevelRequirementId",
+                        column: x => x.CompetencyLevelRequirementId,
+                        principalTable: "CompetencyLevelRequirements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompetencyRatingGroup_CompetencyRatingLevels_CompetencyRatingLevelId",
+                        column: x => x.CompetencyRatingLevelId,
+                        principalTable: "CompetencyRatingLevels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -845,6 +876,16 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CompetencyRatingGroup_CompetencyLevelRequirementId",
+                table: "CompetencyRatingGroup",
+                column: "CompetencyLevelRequirementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CompetencyRatingGroup_CompetencyRatingLevelId",
+                table: "CompetencyRatingGroup",
+                column: "CompetencyRatingLevelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CompetencyTypeGroups_CompetencyTypeId",
                 table: "CompetencyTypeGroups",
                 column: "CompetencyTypeId");
@@ -962,6 +1003,9 @@ namespace DataModel.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CompetencyRatingGroup");
+
             migrationBuilder.DropTable(
                 name: "CompetencyTypeGroups");
 
