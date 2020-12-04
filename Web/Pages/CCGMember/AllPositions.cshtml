@@ -5,7 +5,6 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var jobGroups = Model.JobGroups;
     var imagefolder = "~/img/CCGMember/";
-    bool noresults = true;
 }
 <section role="contentinfo">
     <div class="col-md-12">
@@ -18,26 +17,26 @@
         </form>
         <form method="post">
 
-        @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+      @if (jobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
         {
-                 noresults = false; 
+          @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+           {
+        <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
+            <div class="col-sm-3 mrgn-bttm-md">
+                <figure>
+                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                    <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                </figure>
+            </div>
+        </a>
+        }
+      }
+      else
+       {
+        <h4>@Localizer["NoResults"]</h4>
+        }
 
-                 <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                      <div class="col-sm-3 mrgn-bttm-md">
-                          <figure>
-                             <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                           <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                        </figure>
-                     </div>
-                   </a>
-              }
-
-            @if (noresults)
-            {
-               <h4>@Localizer["NoResults"]</h4>
-             }
-
-        </form>
+      </form>
     </div>
 </section>
 

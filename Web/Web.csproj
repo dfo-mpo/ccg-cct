@@ -144,7 +144,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data.Classes\Data.Classes.csproj" />
+    <ProjectReference Include="..\Business.Dtos\Business.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

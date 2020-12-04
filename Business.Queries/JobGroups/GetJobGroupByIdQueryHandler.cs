@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Data.Classes.JobGroups;
+using Business.Dtos.JobGroups;
 using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;

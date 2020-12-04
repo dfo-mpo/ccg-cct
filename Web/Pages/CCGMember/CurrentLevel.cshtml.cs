@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
-using Data.Classes.JobGroups;
+using Business.Dtos.JobGroups;
 
 namespace Web.Pages.CCGMember
 {

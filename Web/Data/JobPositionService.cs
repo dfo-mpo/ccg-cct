@@ -1,11 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Data.Classes.JobCompetencies;
-using Data.Classes.JobPositions;
+using Business.Dtos.JobCompetencies;
+using Business.Dtos.JobPositions;
 
 namespace Web.Data
 {
@@ -17,7 +14,7 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
-        public async Task<JobPositionDto> GetJobPosition(int Id)
+        public async Task<JobPositionDto> GetJobPositionById(int Id)
         {
             string url = $"/api/jobpositions/{Id}";
             using var httpClient = _clientFactory.CreateClient("api");
@@ -29,7 +26,6 @@ namespace Web.Data
             string url = $"/api/jobpositions/{Id}/competencies";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyRatingDto[]>(url);
-
         }
 
         public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
@@ -45,6 +41,6 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
         }
-    
+
     }
 }

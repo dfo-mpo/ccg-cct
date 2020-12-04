@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Data.Classes.JobCompetencies;
+using Business.Dtos.JobCompetencies;
 using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;

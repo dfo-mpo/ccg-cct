@@ -4,11 +4,11 @@
 
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var cur = Model.Position;
-    var curcert = Model.PositionCertificates;
-    var currat1 = Model.PositionRatings1;
-    var currat2 = Model.PositionRatings2;
-    var currat3 = Model.PositionRatings3;
+    var position = Model.Position;
+    var certificates = Model.PositionCertificates;
+    var type1competencyratings = Model.PositionRatings1;
+    var type2competencyratings = Model.PositionRatings2;
+    var type3competencyratings = Model.PositionRatings3;
 }
 
     <section role="contentinfo">
@@ -21,70 +21,72 @@
         <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
-                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @cur.JobGroupCode-@cur.JobGroupLevelValue @(isEnglish?cur.JobTitleEng:cur.JobTitleFre)</th>
+                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @position.JobGroupCode-@position.JobGroupLevelValue @(isEnglish?position.JobTitleEng:position.JobTitleFre)</th>
                 </tr>
             </thead>
-            <tr>
-                <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
-            </tr>
+            <tbody>
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
+                </tr>
 
-            @if (curcert.Length > 0)
-            {
-                @foreach (var c in curcert)
+                @if (certificates.Length > 0)
+                {
+                    @foreach (var c in certificates)
+                    {
+                        <tr>
+                            <td colspan="2">@(isEnglish?c.NameEng:c.NameFre)</td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td colspan="2">@(isEnglish?c.NameEng:c.NameFre)</td>
+                        <td colspan="2">@Localizer["No Certifications"]</td>
                     </tr>
                 }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="2">@Localizer["No Certifications"]</td>
-                </tr>
-            }        
-            @if (currat1.Length > 0)
-            {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
-                </tr>
-                @foreach (var c in currat1)
+                @if (type1competencyratings.Length > 0)
                 {
                     <tr>
-                        <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
-                        <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
                     </tr>
+                    @foreach (var c in type1competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
                 }
-            }
-            @if (currat2.Length > 0)
-            {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@Localizer["TECHNICAL ELEMENTS"]</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
-                </tr>
-                @foreach (var c in currat2)
+                @if (type2competencyratings.Length > 0)
                 {
                     <tr>
-                        <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
-                        <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
                     </tr>
+                    @foreach (var c in type2competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
                 }
-            }
-            @if (currat3.Length > 0)
-            {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
-                </tr>
-                @foreach (var c in currat3)
+                @if (type3competencyratings.Length > 0)
                 {
                     <tr>
-                        <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
-                        <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
                     </tr>
+                    @foreach (var c in type3competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
                 }
-            }
+            </tbody>
         </table>
     </section>
 <div class="row">
@@ -102,7 +104,7 @@
         };
                 }
                 <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="SearchType" asp-route-positionid="@cur.JobTitleId">@Localizer["Next"]</a></li>
+                <li class="next"><a asp-page="SearchType" asp-route-positionid="@position.JobTitleId">@Localizer["Next"]</a></li>
             </ul>
         </nav>
     </div>

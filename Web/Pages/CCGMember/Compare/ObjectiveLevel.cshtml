@@ -5,7 +5,6 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var id = Model.Id;
     var jobGroupPositions = Model.JobGroupPositions;
     var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
     var levels = jobGroupPositions.Select(e => e.LevelValue).ToList().Distinct();
@@ -22,17 +21,17 @@
 <div class="dropdown">
     <div class="col-sm-3">
         <label><b>@Localizer["Level"]</b></label><br />
-                  <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-                       @Localizer["Select Level"]
-                   <span class="caret"></span>
-                   </button>
+        <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
+            @Localizer["Select Level"]
+            <span class="caret"></span>
+        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in levels)
             {
                 var data = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
-                       { "id",  id.ToString()},
+                       { "id",  Model.Id.ToString()},
                        { "level",  level}
                   };
                 <li role="presentation">
@@ -41,7 +40,7 @@
                 </li>
             }
         </ul>
-</div>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-12 mrgn-bttm-md">

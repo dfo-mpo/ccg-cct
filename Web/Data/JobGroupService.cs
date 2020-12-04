@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Collections;
-using Data.Classes.JobGroups;
-using Data.Classes.JobPositions;
+using Business.Dtos.JobGroups;
+using Business.Dtos.JobPositions;
 
 namespace Web.Data 
 {
@@ -47,7 +47,6 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobGroupDto>(url);
         }
 
-        //api/jobgroups/{id}/levels
         public async Task<JobGroupPositionDto[]> GetJobGroupPositionsById(int Id)
         {
             string url = $"/api/jobgroups/{Id}/levels";
@@ -55,7 +54,6 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobGroupPositionDto[]>(url);
         }
 
-        //api/jobgroups/{id}/levels/{level}/positions
         public async Task<JobPositionDto[]> GetJobGroupPositionsByLevel(int Id, int level)
         {
             string url = $"/api/jobgroups/{Id}/levels/{level}/positions";

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Business.Queries.JobGroups;
-using Data.Classes.JobPositions;
-using Data.Classes.JobGroups;
+using Business.Dtos.JobPositions;
+using Business.Dtos.JobGroups;
 using CCG.AspNetCore.Business.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

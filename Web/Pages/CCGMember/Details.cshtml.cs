@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
-using Data.Classes.JobPositions;
-using Data.Classes.JobCompetencies;
+using Business.Dtos.JobPositions;
+using Business.Dtos.JobCompetencies;
 
 
 
@@ -32,7 +32,7 @@ namespace Web.Pages.CCGMember
         }
         public async Task OnGetAsync(int positionid)
         {
-            Position = await _jobpositionService.GetJobPosition(positionid);
+            Position = await _jobpositionService.GetJobPositionById(positionid);
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
             PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);

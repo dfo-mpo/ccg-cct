@@ -5,7 +5,6 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var jobGroups = Model.JobGroups;
     var imagefolder = "~/img/CCGMember/";
-    bool noresults = true;
 }
 <section role="contentinfo">
     <div class="col-md-12">
@@ -18,9 +17,9 @@
         </form>
         <form method="post">
 
-            @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
-            {
-                noresults = false;
+            @if(jobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()))) { 
+             @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+              {
                 var routedata = new Dictionary<string, string>
                          {
                           { "positionid",  Model.PositionId.ToString()},
@@ -34,13 +33,12 @@
                         </figure>
                     </div>
                 </a>
+              }
             }
-
-            @if (noresults)
+            else
             {
                 <h4>@Localizer["NoResults"]</h4>
             }
-
 
         </form>
     </div>

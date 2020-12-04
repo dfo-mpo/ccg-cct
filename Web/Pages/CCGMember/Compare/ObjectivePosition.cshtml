@@ -5,11 +5,9 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var id = Model.JobGroup.Id;
     var jobPositions = Model.JobGroupPositions;
     var levels = Model.JobGroupLevels.Select(e => e.LevelValue).ToList().Distinct();
     var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
-
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,7 +30,7 @@
                 var data = new Dictionary<string, string>
                  {
                      { "positionid", Model.PositionId.ToString()},
-                     { "id",  id.ToString()},
+                     { "id",  Model.JobGroup.Id.ToString()},
                      { "level",  level.ToString() }
                   };
                 <li role="presentation">
@@ -41,7 +39,7 @@
                 </li>
             }
         </ul>
-</div>
+    </div>
     <div class="col-sm-3">
         <label><b>@Localizer["Position"]</b></label><br />
         <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
@@ -49,41 +47,29 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @if (isEnglish)
+
+            @foreach (var jp in jobPositions)
             {
-                foreach (var jp in jobPositions)
-                {
-                    var data = new Dictionary<string, string>
+                var data = new Dictionary<string, string>
                      {
                         { "positionid",  Model.PositionId.ToString()},
                         { "obj",  jp.JobTitleId.ToString()}
                      };
-    <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@jp.JobTitleEng</a></li> 
-    }
-                }
-                else
-                {
-                    foreach (var jp in jobPositions)
-                    {
-                    var data = new Dictionary<string, string>
-                      {
-                          { "positionid",  Model.PositionId.ToString()},
-                          { "obj",  jp.JobTitleId.ToString()}
-                      };
-     <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@jp.JobTitleFre</a></li>
-                      }
-                     }
+                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
+
+            }
+
         </ul>
     </div>
 </div>
-    <div class="row">
-        <div class="col-sm-12 mrgn-bttm-md">
-            <nav role="navigation" class="mrgn-bttm-lg">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                    <li class="next"><a asp-page="SearchType">@Localizer["Next"]</a></li>
-                </ul>
-            </nav>
-        </div>
+<div class="row">
+    <div class="col-sm-12 mrgn-bttm-md">
+        <nav role="navigation" class="mrgn-bttm-lg">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
+                <li class="next"><a asp-page="SearchType">@Localizer["Next"]</a></li>
+            </ul>
+        </nav>
     </div>
+</div>

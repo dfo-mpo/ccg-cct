@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data.Classes\Data.Classes.csproj" />
+    <ProjectReference Include="..\Business.Dtos\Business.Dtos.csproj" />
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
