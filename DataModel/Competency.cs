@@ -8,7 +8,7 @@ namespace DataModel
 {
     public class Competency
     {
-        
+
         public int Id { get; set; }
 
         public string NameEng { get; set; }
@@ -22,9 +22,9 @@ namespace DataModel
         public virtual ICollection<JobRolePositionCompetencyRating> JobPositionCompetencyRatings { get; set; }
 
         public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }
-        
+
         public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
-        
+
         public virtual ICollection<JobRolePositionCompetency> JobRolePositionCompetencies { get; set; }
 
     }

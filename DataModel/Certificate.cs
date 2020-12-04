@@ -11,8 +11,9 @@ namespace DataModel
 {
     public class Certificate
     {
-        
+
         public int Id { get; set; }
+
         public string NameEng { get; set; }
 
         public string NameFre { get; set; }
@@ -21,11 +22,7 @@ namespace DataModel
 
         public string DescFre { get; set; }
 
-        public string RequireIndicatorEng { get; set; }
-
-        public string RequireIndicatorFre { get; set; }
-
-        public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
+        //public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
 
         public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 

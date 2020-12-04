@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-   public class JoRolebPositionCompetencyConfiguration : IEntityTypeConfiguration<JobRolePositionCompetency>
+    public class JoRolebPositionCompetencyConfiguration : IEntityTypeConfiguration<JobRolePositionCompetency>
     {
         public void Configure(EntityTypeBuilder<JobRolePositionCompetency> builder)
         {
-            builder.HasKey(cgr => new { cgr.JobGroupId, cgr.JobGroupLevelId, cgr.JobPositionId, cgr.CompetencyId });
+            builder.HasKey(cgr => new { cgr.JobGroupId, cgr.JobGroupLevelId, cgr.JobPositionId, cgr.CompetencyId, cgr.CompetencyTypeId });
+
         }
     }
 }

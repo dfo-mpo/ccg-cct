@@ -14,9 +14,11 @@ namespace DataModel
 
         public string TitleFre { get; set; }
 
-        public virtual ICollection<JobPositionCompetency> JobPositionCertCompetencies { get; set; }
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+
+        public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }
 
         public virtual ICollection<JobRolePositionCompetency> JobRolePositionCompetencies { get; set; }
-        
+
     }
 }
