@@ -4533,6 +4533,9 @@ namespace DataModel.Migrations
 
             migrationBuilder.DropTable(
                name: "JobLocationRegions");
+               
+             migrationBuilder.DropTable(
+                name: "JobPositionCertificates");
 
             migrationBuilder.DropTable(
                 name: "JobPositionCompetencies");
