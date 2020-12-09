@@ -27,6 +27,7 @@ namespace DataModel.Configurations
 
             builder.Property(b => b.DescFre)
               .HasMaxLength(500);
+
             builder.Property(b => b.RequireIndicatorEng)
                 .HasMaxLength(500);
 

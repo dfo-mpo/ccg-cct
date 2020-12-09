@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-    public class JobCategoryConfiguration : IEntityTypeConfiguration<JobCategory>
+    public class JobHLCategoryConfiguration : IEntityTypeConfiguration<JobHLCategory>
     {
-        public void Configure(EntityTypeBuilder<JobCategory> builder)
+        public void Configure(EntityTypeBuilder<JobHLCategory> builder)
         {
             builder.HasKey(x => x.Id);
 
@@ -23,3 +23,4 @@ namespace DataModel.Configurations
         }
     }
 }
+

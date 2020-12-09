@@ -25,8 +25,6 @@ namespace DataModel
 
         public string RequireIndicatorFre { get; set; }
 
-        public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
-
         public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
