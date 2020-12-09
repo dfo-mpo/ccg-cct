@@ -7,14 +7,8 @@
 
   <ItemGroup>
     <Compile Remove="Dtos\**" />
-    <Compile Remove="JobGroupLevels\**" />
-    <Compile Remove="JobGroupTitles\**" />
     <EmbeddedResource Remove="Dtos\**" />
-    <EmbeddedResource Remove="JobGroupLevels\**" />
-    <EmbeddedResource Remove="JobGroupTitles\**" />
     <None Remove="Dtos\**" />
-    <None Remove="JobGroupLevels\**" />
-    <None Remove="JobGroupTitles\**" />
   </ItemGroup>
 
   <ItemGroup>
