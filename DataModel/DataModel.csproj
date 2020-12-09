@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="20201208211911_modelupdate.cs" />
     <Compile Remove="Migrations\20201002132520_Initial.cs" />
     <Compile Remove="Migrations\20201002132520_Initial.Designer.cs" />
     <Compile Remove="Migrations\20201020045123_ccginitial.cs" />
@@ -60,6 +61,14 @@
     <Compile Remove="Migrations\20201123020006_recreatemodel.Designer.cs" />
 	<Compile Remove="Migrations\20201130185723_newdatamigration.cs" />
 	<Compile Remove="Migrations\20201130185723_newdatamigration.Designer.cs" />
+	<Compile Remove="Migrations\20201209191932_RemovedSeedData.cs" />
+	<Compile Remove="Migrations\20201209191932_RemovedSeedData.Designer.cs" />
+	<Compile Remove="Migrations\20201209192223_ResetMigrations.cs" />
+	<Compile Remove="Migrations\20201209192223_ResetMigrations.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="20201208211911_modelupdate.cs" />
   </ItemGroup>
 
   <ItemGroup>
