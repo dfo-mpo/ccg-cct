@@ -21,5 +21,7 @@ namespace DataModel
 
         public virtual ICollection<JobRolePositionCompetencyRating> JobRolePositionCompetencyRatings { get; set; }
 
+        public virtual ICollection<CompetencyRatingGroup> CompetencyRatingGroups { get; set; }
+
     }
 }
