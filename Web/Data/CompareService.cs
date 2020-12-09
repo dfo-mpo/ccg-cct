@@ -44,5 +44,12 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
         }
 
+        public async Task<JobCertificateDto[]> GetDifferingCertificatesByPositionId(int PositionId, int ObjectiveId)
+        {
+            string url = $"/api/compare/differing/certificates/{PositionId}/{ObjectiveId}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
+        }
+
     }
 }

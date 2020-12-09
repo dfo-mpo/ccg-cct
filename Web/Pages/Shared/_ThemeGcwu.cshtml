@@ -9,11 +9,12 @@
     var routedata = new Dictionary<string, string>
                            {
                                 {"culture", Localizer["AlternateLanguageKey"].Value },
-                                { "id",  Context.Request.Query["id"]},
-                                { "level",  Context.Request.Query["level"]},
-                                { "positionid",  Context.Request.Query["positionid"]},
-                                { "obj",  Context.Request.Query["obj"]}
-                           }; 
+                           };
+
+    foreach (var param in Context.Request.QueryString.Value.TrimStart('?').Split('&'))
+    {
+        routedata.Add(param.Split('=')[0], Context.Request.Query[param.Split('=')[0]]);
+    }
 }
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->

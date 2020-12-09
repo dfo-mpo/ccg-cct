@@ -26,10 +26,9 @@ namespace Business.Queries.Compare
 
         public Task<List<JobCertificateDto>> HandleAsync(GetMatchingCertificatesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return (from pos in _db.JobPositionCertificates.Where(e => e.JobPositionId == query.PositionId)
-                    join obj in _db.JobPositionCertificates.Where(e => e.JobPositionId == query.ObjectiveId)
+            return (from pos in _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.PositionId)
+                    join obj in _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.ObjectiveId)
                     on pos.CertificateId equals obj.CertificateId
-                    where obj.CertificateId == pos.CertificateId
                     orderby obj.CertificateId
                     select new JobCertificateDto()
                     {
@@ -40,7 +39,7 @@ namespace Business.Queries.Compare
                         Id =  pos.CertificateId,
                         RequireIndicatorEng = pos.Certificate.RequireIndicatorEng,
                         RequireIndicatorFre = pos.Certificate.RequireIndicatorFre                   
-                    }).ToListAsync();
+                    }).ToListAsync(cancellationToken);
         }
 
     }

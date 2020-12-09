@@ -26,8 +26,25 @@ namespace Business.Queries.Compare
 
         public Task<List<JobCertificateDto>> HandleAsync(GetDifferingCertificatesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            //still in work
-            return null;
+            var currentcertificates = _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.PositionId)
+                .Select(e=>e.CertificateId)
+                .ToList();
+            return _db.JobRolePositionCertificates
+                .Where(e => e.JobPositionId == query.ObjectiveId)
+                .Where(e=>!currentcertificates.Contains(e.CertificateId))
+                 .Include(e => e.Certificate) 
+                 .Select(e => new JobCertificateDto()
+                 {
+                     NameEng = e.Certificate.NameEng,
+                     NameFre = e.Certificate.NameFre,
+                     DescEng = e.Certificate.DescEng,
+                     DescFre = e.Certificate.DescFre,
+                     RequireIndicatorFre = e.Certificate.RequireIndicatorEng,
+                     RequireIndicatorEng = e.Certificate.RequireIndicatorEng,
+                     Id = e.CertificateId
+                 }
+                 ).ToListAsync(cancellationToken);
+                
         }
 
     }

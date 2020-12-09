@@ -44,7 +44,7 @@ namespace Business.Queries.Compare
                         TypeNameEng = pos.CompetencyType.NameEng,
                         TypeNameFre = pos.CompetencyType.NameFre,
                         TypeId = pos.CompetencyType.Id
-                    }).ToListAsync();
+                    }).ToListAsync(cancellationToken);
         }
     }
 }

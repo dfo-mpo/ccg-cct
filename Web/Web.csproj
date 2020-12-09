@@ -15,7 +15,6 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\AS.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\CCG-employee.png" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\CR-clerical.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\CS-clerical.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EC.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ED.jpg" />
@@ -23,7 +22,6 @@
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EG.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ENG.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EU.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EX-executive.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\external candidates.png" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GL.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GS.jpg" />

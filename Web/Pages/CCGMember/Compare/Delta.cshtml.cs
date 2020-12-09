@@ -51,8 +51,7 @@ namespace Web.Pages.CCGMember.Compare
             DifferingCompetenciesType3 = await _compareService.GetDifferingCompetenciesByTypeId(3, positionid, obj);
 
             MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
-            DifferingCertificates = new JobCertificateDto[] { };
-
+            DifferingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
         }
     }
 }

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 
 namespace DataModel
 {
-    public class JobGroupPosition
+    public class JobRolePositionHLCategory
     {
-
         public int JobGroupId { get; set; }
 
         public JobGroup JobGroup { get; set; }
@@ -22,5 +18,10 @@ namespace DataModel
 
         public JobPosition JobPosition { get; set; }
 
+        public int JobCategoryId { get; set; }
+
+        public JobHLCategory JobHLCategory { get; set; }
+
+        public int JobHLCategoryId { get; set; }
     }
 }

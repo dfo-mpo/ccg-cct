@@ -16,11 +16,11 @@ namespace DataModel.Configurations
 
             builder.Property(b => b.TitleEng)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(3000);
 
             builder.Property(b => b.TitleFre)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(3000);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Business.Queries.Compare
         }
 
         public Task<List<SharedJobCompetencyRating>> HandleAsync(GetMatchingCompetenciesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
-        {//still in work
+        {
             return (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId)
                     join obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId)
                     on pos.CompetencyId equals obj.CompetencyId                 
@@ -42,7 +42,7 @@ namespace Business.Queries.Compare
                         TypeNameEng = pos.CompetencyType.NameEng,
                         TypeNameFre = pos.CompetencyType.NameFre,
                         TypeId = pos.CompetencyType.Id
-                    }).ToListAsync();
+                    }).ToListAsync(cancellationToken);
         }
 
     }

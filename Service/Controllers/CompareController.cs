@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Business.Dtos.JobCompetencies;
-using Business.Dtos.JobPositions;
 using Business.Dtos.Shared;
 using CCG.AspNetCore.Business.Interface;
 using Microsoft.AspNetCore.Authorization;
