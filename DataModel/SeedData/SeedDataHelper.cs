@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataModel.SeedData
 {
@@ -20,67 +21,115 @@ namespace DataModel.SeedData
         {
             // base tables
             JobGroups();
-            //JobGroupLevels();
-            //JobPositions();
-            //JobHLCategories();
-            //Competencies();
-            //CompetencyRatingLevel();
-            //CompetencyTypes();
-            //CompetencyLevelRequirements();
-            //Certificates();
+            JobGroupLevels();
+            JobPositions();
+            JobHLCategories();
+            Competencies();
+            CompetencyRatingLevel();
+            CompetencyTypes();
+            CompetencyLevelRequirements();
+            Certificates();
 
             // link tables
-            //JobLocationRegions();
-            //JobRoles();
-            //JobGroupPositions();
-            //CompetencyTypeGroups();
-            //CompetencyRatingGroups();
-            //JobPositionCompetencies();
-            //JobRolePositionCompetencies();
-            //JobRolePositionCertificates();
-            //JobRolePositionCompetencyRatings();
-            //JobRolePositionLocations();
-            //JobRolePositionHLCategories();
+            JobLocationRegions();
+            JobRoles();
+            JobGroupPositions();
+            CompetencyTypeGroups();
+            CompetencyRatingGroups();
+            JobPositionCompetencies();
+            JobRolePositionCompetencies();
+            JobRolePositionCertificates();
+            JobRolePositionCompetencyRatings();
+            JobRolePositionLocations();
+            JobRolePositionHLCategories();
 
         }
+
+        private void Save<T>() where T : class
+        {
+            var tableName = _db.Model.FindEntityType(typeof(T)).GetTableName();
+            try 
+            { 
+                _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} ON;");
+                _db.SaveChanges();
+            }
+            finally 
+            { 
+                _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} OFF;");
+            }
+
+        }
+
 
         private void JobGroups()
         {
             if (_db.JobGroups.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobGroups.AddRange(new List<JobGroup>()
             {
-                    new JobGroup { Id =  1, Code =  "GT", NameEng =  "General Technician", NameFre =  "Technicien général"  },
-                    new JobGroup { Id =  2, Code =  "AS", NameEng =  "Administrative Services", NameFre =  "Services administratif"  },
-                    new JobGroup { Id =  3, Code =  "CS", NameEng =  "Computer Systems", NameFre =  "Systèmes informatiques"  },
-                    new JobGroup { Id =  4, Code =  "GS", NameEng =  "General Services", NameFre =  "Services généraux"  },
-                    new JobGroup { Id =  5, Code =  "LI", NameEng =  "Lightkeepers", NameFre =  "Les gardiens de phare"  },
-                    new JobGroup { Id =  6, Code =  "EG", NameEng =  "Engineering and Scientific Support", NameFre =  "Soutien technologique et scientifique"  },
-                    new JobGroup { Id =  7, Code =  "PG", NameEng =  "Purchasing and Supply", NameFre =  "Achat et approvisionnement"  },
-                    new JobGroup { Id =  8, Code =  "GL", NameEng =  "General Labour and Trades", NameFre =  "Travail général et métiers"  },
-                    new JobGroup { Id =  9, Code =  "SC", NameEng =  "Ships' Crews", NameFre =  "Équipages de navires"  },
-                    new JobGroup { Id =  10, Code =  "SO", NameEng =  "Ships' Officers", NameFre =  "Officiers de navire"  },
-                    new JobGroup { Id =  11, Code =  "ENG", NameEng =  "Architecture, Engineering", NameFre =  "Architecture et Ingénierie"  },
-                    new JobGroup { Id =  12, Code =  "CR", NameEng =  "Clerical and Regulatory", NameFre =  "Commis aux écritures et aux règlements"  },
-                    new JobGroup { Id =  13, Code =  "EC", NameEng =  "Economics and Social Science Services", NameFre =  "Économique et services de sciences sociales"  },
-                    new JobGroup { Id =  14, Code =  "ED", NameEng =  "Education Services", NameFre =  "Services de l’enseignement"  },
-                    new JobGroup { Id =  15, Code =  "EU", NameEng =  "Educational Support", NameFre =  "Soutien de l’enseignement"  },
-                    new JobGroup { Id =  16, Code =  "EX", NameEng =  "Executive Group", NameFre =  "Groupe exécutif"  },
-                    new JobGroup { Id =  17, Code =  "LS", NameEng =  "Library Science", NameFre =  "Bibliothéconomie"  },
-                    new JobGroup { Id =  18, Code =  "NU", NameEng =  "Nursing", NameFre =  "Infirmiers"  },
-                    new JobGroup { Id =  19, Code =  "OE", NameEng =  "Office Equipment", NameFre =  "Matériel de bureau"  },
-                    new JobGroup { Id =  20, Code =  "PM", NameEng =  "Programme Administration", NameFre =  "Administration des programmes"  },
-                    new JobGroup { Id =  21, Code =  "RO", NameEng =  "Radio Operations", NameFre =  "Radiotélégraphie"  }
+                new JobGroup {Id = 1, Code = "GT", NameEng = "General Technician", NameFre = "Technicien général"},
+                new JobGroup
+                    {Id = 2, Code = "AS", NameEng = "Administrative Services", NameFre = "Services administratif"},
+                new JobGroup
+                    {Id = 3, Code = "CS", NameEng = "Computer Systems", NameFre = "Systèmes informatiques"},
+                new JobGroup {Id = 4, Code = "GS", NameEng = "General Services", NameFre = "Services généraux"},
+                new JobGroup {Id = 5, Code = "LI", NameEng = "Lightkeepers", NameFre = "Les gardiens de phare"},
+                new JobGroup
+                {
+                    Id = 6, Code = "EG", NameEng = "Engineering and Scientific Support",
+                    NameFre = "Soutien technologique et scientifique"
+                },
+                new JobGroup
+                {
+                    Id = 7, Code = "PG", NameEng = "Purchasing and Supply", NameFre = "Achat et approvisionnement"
+                },
+                new JobGroup
+                {
+                    Id = 8, Code = "GL", NameEng = "General Labour and Trades",
+                    NameFre = "Travail général et métiers"
+                },
+                new JobGroup {Id = 9, Code = "SC", NameEng = "Ships' Crews", NameFre = "Équipages de navires"},
+                new JobGroup {Id = 10, Code = "SO", NameEng = "Ships' Officers", NameFre = "Officiers de navire"},
+                new JobGroup
+                {
+                    Id = 11, Code = "ENG", NameEng = "Architecture, Engineering",
+                    NameFre = "Architecture et Ingénierie"
+                },
+                new JobGroup
+                {
+                    Id = 12, Code = "CR", NameEng = "Clerical and Regulatory",
+                    NameFre = "Commis aux écritures et aux règlements"
+                },
+                new JobGroup
+                {
+                    Id = 13, Code = "EC", NameEng = "Economics and Social Science Services",
+                    NameFre = "Économique et services de sciences sociales"
+                },
+                new JobGroup
+                    {Id = 14, Code = "ED", NameEng = "Education Services", NameFre = "Services de l’enseignement"},
+                new JobGroup
+                    {Id = 15, Code = "EU", NameEng = "Educational Support", NameFre = "Soutien de l’enseignement"},
+                new JobGroup {Id = 16, Code = "EX", NameEng = "Executive Group", NameFre = "Groupe exécutif"},
+                new JobGroup {Id = 17, Code = "LS", NameEng = "Library Science", NameFre = "Bibliothéconomie"},
+                new JobGroup {Id = 18, Code = "NU", NameEng = "Nursing", NameFre = "Infirmiers"},
+                new JobGroup {Id = 19, Code = "OE", NameEng = "Office Equipment", NameFre = "Matériel de bureau"},
+                new JobGroup
+                {
+                    Id = 20, Code = "PM", NameEng = "Programme Administration",
+                    NameFre = "Administration des programmes"
+                },
+                new JobGroup {Id = 21, Code = "RO", NameEng = "Radio Operations", NameFre = "Radiotélégraphie"}
             });
-
-            _db.SaveChanges();
-
+            Save<JobGroup>();
+            transaction.Commit();
         }
 
         private void JobGroupLevels()
         {
             if (_db.JobGroupLevels.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobGroupLevels.AddRange(new List<JobGroupLevel>()
             {
                 new JobGroupLevel() { Id = 1, LevelValue = "01" },
@@ -93,12 +142,15 @@ namespace DataModel.SeedData
                 new JobGroupLevel() { Id = 8, LevelValue = "08" },
                 new JobGroupLevel() { Id = 9, LevelValue = "09" }
             });
+            Save<JobGroupLevel>();
+            transaction.Commit();
         }
 
         private void JobPositions()
         {
             if (_db.JobPositions.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobPositions.AddRange(new List<JobPosition>()
             {
                     new JobPosition { Id= 1, TitleEng = "Administrative (Admin) or Project Assistant or Executive Assitant / Officer (Aids to Nav. Database, Financial Admin, Scheduling Coordination, Documentation Control, Publication, Technical Business", TitleFre=  "Assistant administratif ou de projet / Agent (Données d'aide à la navigation, Administratif financière, planification / Coordination contrôle de document, Publication, Affaires techniques" },
@@ -178,23 +230,29 @@ namespace DataModel.SeedData
                     new JobPosition { Id=  76, TitleEng = "Senior Advisor Maritime Security", TitleFre=  "Conseiller principal sécurité maritime"  },
                     new JobPosition { Id=  77, TitleEng = "Director, Safety and Security", TitleFre=  "Directeur sûreté et sécurité"  }
             });
+            Save<JobPosition>();
+            transaction.Commit();
         }
 
         private void JobHLCategories()
         {
             if (_db.JobHLCategories.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobHLCategories.AddRange(new List<JobHLCategory>()
             {
                 new JobHLCategory() { Id = 1, ValueEng = "Seagoing", ValueFre = "En mer" },
                 new JobHLCategory() { Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre" }
             });
+            Save<JobGroup>();
+            transaction.Commit();
         }
 
         private void JobLocationRegions()
         {
             if (_db.JobLocationRegions.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobLocationRegions.AddRange(new List<JobLocationRegion>()
             {
                 new JobLocationRegion { Id=  1, NameEng = "Atlantic", NameFre=  "Atlantique"  },
@@ -205,12 +263,15 @@ namespace DataModel.SeedData
                 new JobLocationRegion { Id=  6, NameEng = "CCG College", NameFre=  "Collège de la GCC"  },
                 new JobLocationRegion { Id=  7, NameEng = "All Regions", NameFre=  "Toutes les régions"  }
             });
+            Save<JobLocationRegion>();
+            transaction.Commit();
         }
 
         private void JobRoles()
         {
             if (_db.JobRoles.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRoles.AddRange(new List<JobRole>()
             {
                 new JobRole() { JobGroupId = 1, JobGroupLevelId = 1 },
@@ -225,12 +286,15 @@ namespace DataModel.SeedData
                 new JobRole() { JobGroupId = 2, JobGroupLevelId = 7 },
                 new JobRole() { JobGroupId = 2, JobGroupLevelId = 8 }
             });
+            Save<JobRole>();
+            transaction.Commit();
         }
 
         private void JobGroupPositions()
         {
             if (_db.JobGroupPositions.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobGroupPositions.AddRange(new List<JobGroupPosition>()
             {
                 new JobGroupPosition { JobGroupId =  2, JobGroupLevelId=  1, JobPositionId=  1  },
@@ -310,11 +374,14 @@ namespace DataModel.SeedData
                 new JobGroupPosition { JobGroupId =  2, JobGroupLevelId=  7, JobPositionId=  76  },
                 new JobGroupPosition { JobGroupId =  2, JobGroupLevelId=  8, JobPositionId=  77  }
             });
+            Save<JobGroupPosition>();
+            transaction.Commit();
         }
         private void Competencies()
         {
             if (_db.Competencies.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.Competencies.AddRange(new List<Competency>()
             {
                 new Competency { Id =  1, NameEng = "Organizational Knowledge", NameFre = "Connaissance de l'organisation", DescEng = "Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.", DescFre =  "Connaissance de l'organisation de la Garde côtière canadienne, des partenaires et des relations avec Pêches et Océans Canada (MPO) et d'autres intervenants internes et externes."  },
@@ -350,11 +417,14 @@ namespace DataModel.SeedData
                 new Competency { Id =  36, NameEng = "Leadership", NameFre = "Leadership", DescEng = "Attracts and mobilizes members and colleagues towards a shared vision and purpose in the best interests of the Canadian Coast Guard and the public it serves. Motivates project members, sets achievable objectives, maintains a positive outlook, takes responsibility, makes decisions, and provides constructive feedback.", DescFre =  "Attire et mobilise les membres et les collègues vers une vision et un but communs dans le meilleur intérêt de la Garde côtière canadienne et du public qu'elle sert. Motiver les membres du projet, fixer des objectifs réalisables, maintenir une attitude positive, prendre des responsabilités, prendre des décisions et fournir une rétroaction constructive."  },
                 new Competency { Id =  37, NameEng = "Canadian Coast Guard Cultural Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne", DescEng = "The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.", DescFre =  "La mesure dans laquelle les membres croient en la mission, le mandat et les valeurs de la Garde côtière et projettent cet engagement par leurs actions et leurs attitudes envers l'organisation et ses intervenants. Les déclarations et la conduite des employés reflètent un enthousiasme naturel pour la Garde côtière, ce qu'elle fait et comment elle est perçue par le public."  }
             });
+            Save<Competency>();
+            transaction.Commit();
         }
         private void CompetencyRatingLevel()
         {
             if (_db.CompetencyRatingLevels.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.CompetencyRatingLevels.AddRange(new List<CompetencyRatingLevel>()
             {
                 new CompetencyRatingLevel { Id=  1, Value =  1, NameEng = "Fundamental Awareness", NameFre = "Conscience fondamentale", DescEng = "(Common knowledge or an understanding of basic techniques and concepts)", DescFre =  "(connaissance commune ou compréhension des techniques et concepts de base)"  },
@@ -363,11 +433,14 @@ namespace DataModel.SeedData
                 new CompetencyRatingLevel { Id=  4, Value =  4, NameEng = "Advanced", NameFre = "Avancé", DescEng = "(Performs the actions associated with this skill without assistance. Able to provide assistance to other colleagues when questions arise regarding this skill)", DescFre =  "(effectue les actions associées à cette compétence sans assistance. Capable de fournir une assistance à d'autres collègues lorsque des questions se posent concernant cette compétence)"  },
                 new CompetencyRatingLevel { Id=  5, Value =  5, NameEng = "Expert", NameFre = "Expert", DescEng = "(Provides guidance, troubleshoot, and answer questions related to this area of expertise and the field where the skill is used)", DescFre =  "(fournit des conseils, dépanne et répond aux questions relatives à ce domaine d'expertise et au domaine dans lequel la compétence est utilisée)"  }
             });
+            Save<CompetencyRatingLevel>();
+            transaction.Commit();
         }
         private void CompetencyTypes()
         {
             if (_db.CompetencyTypes.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.CompetencyTypes.AddRange(new List<CompetencyType>()
             {
                 new CompetencyType() { Id = 1, NameEng = "Knowledge Elements", NameFre = "Éléments de connaissance" },
@@ -375,11 +448,14 @@ namespace DataModel.SeedData
                 new CompetencyType() { Id = 3, NameEng = "Behavioural Elements", NameFre = "Éléments de comportement" }
 
             });
+            Save<CompetencyType>();
+            transaction.Commit();
         }
         private void Certificates()
         {
             if (_db.Certificates.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.Certificates.AddRange(new List<Certificate>()
             {
                 new Certificate { Id =  1, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master 1500 GT", NameFre = "Master 1500 GT", RequireIndicatorEng = "Master 1500 GT", RequireIndicatorFre = "Master 1500 GT" },
@@ -394,11 +470,14 @@ namespace DataModel.SeedData
                 new Certificate { Id =  10, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Occupational Health & Safety Certificate", NameFre = "Certificat de santé et de sécurité au travail", RequireIndicatorEng = "Occupational Health & Safety Certificate", RequireIndicatorFre = "Certificat de santé et de sécurité au travail" },
                 new Certificate { Id =  11, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Accident Investigation Program", NameFre = "Programme d'enquête sur les accidents", RequireIndicatorEng = "Accident Investigation Program", RequireIndicatorFre = "Programme d'enquête sur les accidents" }
             });
+            Save<Certificate>();
+            transaction.Commit();
         }
         private void CompetencyTypeGroups()
         {
             if (_db.CompetencyTypeGroups.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.CompetencyTypeGroups.AddRange(new List<CompetencyTypeGroup>()
             {
                 new CompetencyTypeGroup { CompetencyId =  1, CompetencyTypeId =  1  },
@@ -434,11 +513,14 @@ namespace DataModel.SeedData
                 new CompetencyTypeGroup { CompetencyId =  36, CompetencyTypeId =  3  },
                 new CompetencyTypeGroup { CompetencyId =  37, CompetencyTypeId =  3  }
             });
+            Save<CompetencyTypeGroup>();
+            transaction.Commit();
         }
         private void CompetencyLevelRequirements()
         {
             if (_db.CompetencyLevelRequirements.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.CompetencyLevelRequirements.AddRange(new List<CompetencyLevelRequirement>()
             {
                     new CompetencyLevelRequirement { Id=  1, DescEng = "Basic knowledge of a unit in the Coast Guard organization chart and its reporting relationships.", DescFre =  "Connaissance de base d'une unité dans l'organigramme de la Garde côtière et de ses rapports hiérarchiques."  },
@@ -603,11 +685,14 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id=  161, DescEng = "Models organizational pride in the Coast Guard's brand and the jobs it performs. Champions the organization when working collectively with internal and external stakeholders. Promotes organizational achievements and employee engagement events nationally. Strives to hone organizational excellence through celebration and pageantry.", DescFre =  "Donne l'exemple de la fierté organisationnelle à l'égard de l'image de marque de la Garde côtière et des tâches qu'elle accomplit. Se fait le champion de l'organisation lorsqu'elle travaille collectivement avec les intervenants internes et externes. Fait la promotion des réalisations organisationnelles et des activités d'engagement des employés à l'échelle nationale. S'efforce d'affiner l'excellence organisationnelle par la célébration et l'apparat."  }
 
             });
+            Save<CompetencyLevelRequirement>();
+            transaction.Commit();
         }
         private void CompetencyRatingGroups()
         {
             if (_db.CompetencyRatingGroups.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.CompetencyRatingGroups.AddRange(new List<CompetencyRatingGroup>()
             {
                     new CompetencyRatingGroup { CompetencyId =  1, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  1  },
@@ -772,11 +857,14 @@ namespace DataModel.SeedData
                     new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161  }
 
             });
+            Save<CompetencyRatingGroup>();
+            transaction.Commit();
         }
         private void JobPositionCompetencies()
         {
             if (_db.JobPositionCompetencies.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobPositionCompetencies.AddRange(new List<JobPositionCompetency>()
             {
                     new JobPositionCompetency { JobPositionId = 1, CompetencyId =  1, CompetencyTypeId =  1 },
@@ -2175,12 +2263,15 @@ namespace DataModel.SeedData
                     new JobPositionCompetency { JobPositionId = 77, CompetencyId =  37, CompetencyTypeId =  3 }
 
             });
+            Save<JobPositionCompetency>();
+            transaction.Commit();
         }
 
         private void JobRolePositionCompetencies()
         {
             if (_db.JobRolePositionCompetencies.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionCompetencies.AddRange(new List<JobRolePositionCompetency>()
             {
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId =  1, JobPositionId =  1, CompetencyId =  1, CompetencyTypeId =  1 },
@@ -3576,21 +3667,27 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  36, CompetencyTypeId =  3 },
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  37, CompetencyTypeId =  3 }
             });
+            Save<JobRolePositionCompetency>();
+            transaction.Commit();
         }
 
         private void JobRolePositionCertificates()
         {
             if (_db.JobRolePositionCertificates.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionCertificates.AddRange(new List<JobRolePositionCertificate>()
             {
                 new JobRolePositionCertificate { JobGroupId = 1, JobGroupLevelId = 3, JobPositionId = 5, CertificateId = 1 }
             });
+            Save<JobRolePositionCertificate>();
+            transaction.Commit();
         }
         private void JobRolePositionCompetencyRatings()
         {
             if (_db.JobRolePositionCompetencyRatings.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionCompetencyRatings.AddRange(new List<JobRolePositionCompetencyRating>()
             {
                     new JobRolePositionCompetencyRating { JobGroupId = 2, JobGroupLevelId =  1, JobPositionId =  1, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  1 },
@@ -4990,11 +5087,14 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetencyRating { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161 }
 
             });
+            Save<JobRolePositionCompetencyRating>();
+            transaction.Commit();
         }
         private void JobRolePositionLocations()
         {
             if (_db.JobRolePositionLocations.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionLocations.AddRange(new List<JobRolePositionLocation>()
             {
                     new JobRolePositionLocation { JobGroupId= 2, JobGroupLevelId =  1, JobPositionId =  1, JobLocationRegionId =  1 },
@@ -5566,12 +5666,15 @@ namespace DataModel.SeedData
                     new JobRolePositionLocation { JobGroupId= 2, JobGroupLevelId =  8, JobPositionId =  77, JobLocationRegionId =  4 }
 
             });
+            Save<JobRolePositionLocation>();
+            transaction.Commit();
         }
 
         private void JobRolePositionHLCategories()
         {
             if (_db.JobRolePositionHLCategories.Any()) return;
 
+            using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionHLCategories.AddRange(new List<JobRolePositionHLCategory>()
             {
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId =  1, JobPositionId =  1, JobHLCategoryId =  2 },
@@ -5651,6 +5754,8 @@ namespace DataModel.SeedData
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId =  7, JobPositionId =  76, JobHLCategoryId =  2 },
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, JobHLCategoryId =  2 }
             });
+            Save<JobRolePositionHLCategory>();
+            transaction.Commit();
         }
     }
 }
