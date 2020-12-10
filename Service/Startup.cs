@@ -10,6 +10,7 @@ using CCG.AspNetCore.Web;
 using CCG.AspNetCore.Web.Authorization;
 using Core;
 using DataModel;
+using DataModel.SeedData;
 using FluentValidation;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -148,8 +149,11 @@ namespace Service
             if (!_appConfig.MigrationsOnStartup) return;
             var opts = _container.GetInstance<DbContextOptions<CctDbContext>>();
             var accessor = new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
-            using var db = new CctDbContext(opts, accessor);
-            db.Database.Migrate();
+            using (var db = new CctDbContext(opts, accessor))
+            {
+                db.Database.Migrate();
+                new SeedDataHelper(db).Run();
+            }
         }
 
         private void InitializeContainer()

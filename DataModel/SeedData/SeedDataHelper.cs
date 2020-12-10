@@ -13,26 +13,35 @@ namespace DataModel.SeedData
         {
             _db = db;
 
+            
+        }
+
+        public void Run()
+        {
+            // base tables
             JobGroups();
-            JobGroupLevels();
-            JobPositions();
-            JobHLCategories();
-            JobLocationRegions();
-            JobRoles();
-            JobGroupPositions();
-            Competencies();
-            CompetencyRatingLevel();
-            CompetencyTypes();
-            Certificates();
-            CompetencyTypeGroups();
-            CompetencyLevelRequirements();
-            CompetencyRatingGroups();
-            JobPositionCompetencies();
-            JobRolePositionCompetencies();
-            JobRolePositionCertificates();
-            JobRolePositionCompetencyRatings();
-            JobRolePositionLocations();
-            JobRolePositionHLCategories();
+            //JobGroupLevels();
+            //JobPositions();
+            //JobHLCategories();
+            //Competencies();
+            //CompetencyRatingLevel();
+            //CompetencyTypes();
+            //CompetencyLevelRequirements();
+            //Certificates();
+
+            // link tables
+            //JobLocationRegions();
+            //JobRoles();
+            //JobGroupPositions();
+            //CompetencyTypeGroups();
+            //CompetencyRatingGroups();
+            //JobPositionCompetencies();
+            //JobRolePositionCompetencies();
+            //JobRolePositionCertificates();
+            //JobRolePositionCompetencyRatings();
+            //JobRolePositionLocations();
+            //JobRolePositionHLCategories();
+
         }
 
         private void JobGroups()
@@ -63,6 +72,9 @@ namespace DataModel.SeedData
                     new JobGroup { Id =  20, Code =  "PM", NameEng =  "Programme Administration", NameFre =  "Administration des programmes"  },
                     new JobGroup { Id =  21, Code =  "RO", NameEng =  "Radio Operations", NameFre =  "Radiotélégraphie"  }
             });
+
+            _db.SaveChanges();
+
         }
 
         private void JobGroupLevels()
