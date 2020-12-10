@@ -374,7 +374,7 @@ namespace DataModel.SeedData
                 new JobGroupPosition { JobGroupId =  2, JobGroupLevelId=  7, JobPositionId=  76  },
                 new JobGroupPosition { JobGroupId =  2, JobGroupLevelId=  8, JobPositionId=  77  }
             });
-            Save<JobGroupPosition>();
+            Save<JobLocationRegion>();
             transaction.Commit();
         }
         private void Competencies()
@@ -513,7 +513,7 @@ namespace DataModel.SeedData
                 new CompetencyTypeGroup { CompetencyId =  36, CompetencyTypeId =  3  },
                 new CompetencyTypeGroup { CompetencyId =  37, CompetencyTypeId =  3  }
             });
-            Save<CompetencyTypeGroup>();
+            Save<CompetencyType>();
             transaction.Commit();
         }
         private void CompetencyLevelRequirements()
@@ -857,7 +857,7 @@ namespace DataModel.SeedData
                     new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161  }
 
             });
-            Save<CompetencyRatingGroup>();
+            Save<CompetencyLevelRequirement>();
             transaction.Commit();
         }
         private void JobPositionCompetencies()
@@ -2263,7 +2263,7 @@ namespace DataModel.SeedData
                     new JobPositionCompetency { JobPositionId = 77, CompetencyId =  37, CompetencyTypeId =  3 }
 
             });
-            Save<JobPositionCompetency>();
+            Save<CompetencyType>();
             transaction.Commit();
         }
 
@@ -3667,7 +3667,7 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  36, CompetencyTypeId =  3 },
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  37, CompetencyTypeId =  3 }
             });
-            Save<JobRolePositionCompetency>();
+            Save<CompetencyType>();
             transaction.Commit();
         }
 
@@ -3680,7 +3680,7 @@ namespace DataModel.SeedData
             {
                 new JobRolePositionCertificate { JobGroupId = 1, JobGroupLevelId = 3, JobPositionId = 5, CertificateId = 1 }
             });
-            Save<JobRolePositionCertificate>();
+            Save<Certificate>();
             transaction.Commit();
         }
         private void JobRolePositionCompetencyRatings()
@@ -5087,7 +5087,7 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetencyRating { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161 }
 
             });
-            Save<JobRolePositionCompetencyRating>();
+            Save<CompetencyLevelRequirement>();
             transaction.Commit();
         }
         private void JobRolePositionLocations()
@@ -5666,7 +5666,7 @@ namespace DataModel.SeedData
                     new JobRolePositionLocation { JobGroupId= 2, JobGroupLevelId =  8, JobPositionId =  77, JobLocationRegionId =  4 }
 
             });
-            Save<JobRolePositionLocation>();
+            Save<JobLocationRegion>();
             transaction.Commit();
         }
 
@@ -5754,7 +5754,7 @@ namespace DataModel.SeedData
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId =  7, JobPositionId =  76, JobHLCategoryId =  2 },
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId =  8, JobPositionId =  77, JobHLCategoryId =  2 }
             });
-            Save<JobRolePositionHLCategory>();
+            Save<JobHLCategory>();
             transaction.Commit();
         }
     }
