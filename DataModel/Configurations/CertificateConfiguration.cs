@@ -17,10 +17,10 @@ namespace DataModel.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(b => b.NameEng)
-                .HasMaxLength(500);
+                .HasMaxLength(1000);
 
             builder.Property(b => b.NameFre)
-               .HasMaxLength(500);
+               .HasMaxLength(1000);
 
             builder.Property(b => b.DescEng)
                .HasMaxLength(500);

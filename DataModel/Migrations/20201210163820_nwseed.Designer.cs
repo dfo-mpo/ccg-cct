@@ -4,14 +4,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210163820_nwseed")]
+    partial class nwseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

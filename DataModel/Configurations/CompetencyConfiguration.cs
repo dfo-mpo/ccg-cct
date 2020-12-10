@@ -16,19 +16,19 @@ namespace DataModel.Configurations
 
             builder.Property(b => b.NameEng)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(1000);
 
             builder.Property(b => b.NameFre)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(1000);
 
             builder.Property(b => b.DescEng)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(2500);
 
             builder.Property(b => b.DescFre)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(2500);
         }
     }
 }
