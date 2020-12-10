@@ -65,6 +65,8 @@
 	<Compile Remove="Migrations\20201209191932_RemovedSeedData.Designer.cs" />
 	<Compile Remove="Migrations\20201209192223_ResetMigrations.cs" />
 	<Compile Remove="Migrations\20201209192223_ResetMigrations.Designer.cs" />
+	<Compile Remove="Migrations\20201210170233_seedingmap.cs" />
+	<Compile Remove="Migrations\20201210170233_seedingmap.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
