@@ -1,11 +1,20 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IViewLocalizer Localizer
 @inject IHttpContextAccessor contextAccessor
-@{ 
+@{
 
     var twoLetter = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
     var isEnglish = twoLetter == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues["page"];
+    var routedata = new Dictionary<string, string>
+                           {
+                                {"culture", Localizer["AlternateLanguageKey"].Value },
+                           };
+
+    foreach (var param in Context.Request.QueryString.Value.TrimStart('?').Split('&'))
+    {
+        routedata.Add(param.Split('=')[0], Context.Request.Query[param.Split('=')[0]]);
+    }
 }
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
@@ -55,15 +64,16 @@
                         <ul id="gc-bar" class="list-inline">
                             @if (isEnglish)
                             {
-                <li><a href="http://www.canada.ca/en/index.html" rel="external">Canada.ca</a></li>
+                                <li><a href="http://www.canada.ca/en/index.html" rel="external">Canada.ca</a></li>
                                 <li><a href="http://www.canada.ca/en/services/index.html" rel="external">Services</a></li>
-                                                <li><a href="http://www.canada.ca/en/gov/dept/index.html" rel="external">Departments</a></li>
- }
-                                            else
-                                            {
+                                <li><a href="http://www.canada.ca/en/gov/dept/index.html" rel="external">Departments</a></li>
+                            }
+                            else
+                            {
                                 <li><a href="http://www.canada.ca/fr/index.html" rel="external">Canada.ca</a></li>
-                                                <li><a href="http://www.canada.ca/fr/services/index.html" rel="external">Services</a></li>
-                                                                <li><a href="http://www.canada.ca/fr/gouv/min/index.html" rel="external">Ministères</a></li>}
+                                <li><a href="http://www.canada.ca/fr/services/index.html" rel="external">Services</a></li>
+                                <li><a href="http://www.canada.ca/fr/gouv/min/index.html" rel="external">Ministères</a></li>
+}
                             <li id="wb-lng">
                                 <h2>
                                     @Localizer["Language selection"]
@@ -71,7 +81,7 @@
                                 <ul class="list-inline">
                                     <li>
                                         <a lang="@Localizer["AlternateLanguageKey"]"
-                                           asp-route-culture="@Localizer["AlternateLanguageKey"].Value"
+                                           asp-all-route-data="@routedata"
                                            asp-page="@(page)">@Localizer["AlternateLanguageTitle"]</a>
 
                                     </li>
@@ -128,12 +138,14 @@
                     <ol class="breadcrumb">
                         @if (isEnglish)
                         {
-            <li><a href="https://www.ccg-gcc.gc.ca/index-eng.html">Home</a></li>
-                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-eng.html">College and careers</a></li> }
-                                        else
-                                        {
+                            <li><a href="https://www.ccg-gcc.gc.ca/index-eng.html">Home</a></li>
+                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-eng.html">College and careers</a></li>
+ }
+                        else
+                        {
                             <li><a href="https://www.ccg-gcc.gc.ca/index-fra.html">Accueil</a></li>
-                                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-fra.html">Collège et carrières</a></li>}
+                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-fra.html">Collège et carrières</a></li>
+}
                         @RenderSection("Breadcrumbs", required: false)
                     </ol>
                 </div>

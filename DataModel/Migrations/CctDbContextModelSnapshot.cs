@@ -251,6 +251,26 @@ namespace DataModel.Migrations
                         });
                 });
 
+            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
+                {
+                    b.Property<int>("CompetencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyRatingLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompetencyLevelRequirementId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompetencyId", "CompetencyRatingLevelId", "CompetencyLevelRequirementId");
+
+                    b.HasIndex("CompetencyLevelRequirementId");
+
+                    b.HasIndex("CompetencyRatingLevelId");
+
+                    b.ToTable("CompetencyRatingGroup");
+                });
+
             modelBuilder.Entity("DataModel.CompetencyRatingLevel", b =>
                 {
                     b.Property<int>("Id")
@@ -2403,6 +2423,27 @@ namespace DataModel.Migrations
                             CompetencyLevelRequirementId = 4,
                             CompetencyRatingLevelId = 4
                         });
+                });
+
+            modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
+                {
+                    b.HasOne("DataModel.Competency", "Competency")
+                        .WithMany()
+                        .HasForeignKey("CompetencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyLevelRequirement", "CompetencyLevelRequirement")
+                        .WithMany()
+                        .HasForeignKey("CompetencyLevelRequirementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.CompetencyRatingLevel", "CompetencyRatingLevel")
+                        .WithMany()
+                        .HasForeignKey("CompetencyRatingLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DataModel.CompetencyTypeGroup", b =>

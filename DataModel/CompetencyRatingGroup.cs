@@ -14,7 +14,7 @@ namespace DataModel
         public int CompetencyRatingLevelId { get; set; }
 
         public CompetencyRatingLevel CompetencyRatingLevel { get; set; }
- 
+
         public int CompetencyLevelRequirementId { get; set; }
 
         public CompetencyLevelRequirement CompetencyLevelRequirement { get; set; }

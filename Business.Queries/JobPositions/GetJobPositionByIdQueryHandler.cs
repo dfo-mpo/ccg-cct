@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Business.Queries.Dtos;
+using Business.Dtos.JobPositions;
 using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobPositions
 {
-    public class GetJobPositionByIdQueryHandler
+
+        public class GetJobPositionByIdQuery : IQuery<JobPositionDto>
+        {
+            public int Id { get; set; }
+        }
+    public class GetJobPositionByIdQueryHandler : IQueryHandler<GetJobPositionByIdQuery, JobPositionDto>
     {
         private readonly CctDbContext _db;
 
@@ -20,16 +22,20 @@ namespace Business.Queries.JobPositions
             _db = db;
         }
 
-        public Task<List<JobPositionDto>> HandleAsync(CancellationToken cancellationToken = new CancellationToken())
+        public Task<JobPositionDto> HandleAsync(GetJobPositionByIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return _db.JobGroupPositions
+            return _db.JobGroupPositions.Where(e=>e.JobPositionId==query.Id)
                 .Include(e => e.JobGroup)
                 .Include(e => e.JobPosition)
+                .Include(e => e.JobGroupLevel)
                 .Select(e => new JobPositionDto()
                 {
                     JobGroupId = e.JobGroupId,
+                    JobLevelId = e.JobGroupLevel.Id,
+                    JobLevelValue = e.JobGroupLevel.LevelValue,
                     JobGroupCode = e.JobGroup.Code,
-                    
+                    JobGroupTitleEng = e.JobGroup.NameEng,
+                    JobGroupTitleFre = e.JobGroup.NameFre,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobGroupLevelValue = e.JobGroupLevel.LevelValue,
                     
@@ -37,7 +43,7 @@ namespace Business.Queries.JobPositions
                     JobTitleFre = e.JobPosition.TitleFre,
                     JobTitleEng = e.JobPosition.TitleEng
 
-                }).ToListAsync(cancellationToken);
+                }).FirstOrDefaultAsync(cancellationToken);
         }
     }
 }

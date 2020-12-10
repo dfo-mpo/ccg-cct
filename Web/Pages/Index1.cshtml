@@ -1,0 +1,21 @@
+﻿@page ""
+@model IndexModel
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Welcome"];
+}
+
+
+@section Breadcrumbs {
+
+    <li>@Localizer["Welcome"]</li>
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Localizer["Welcome"]</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+

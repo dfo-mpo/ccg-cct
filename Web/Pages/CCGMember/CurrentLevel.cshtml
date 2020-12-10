@@ -1,0 +1,53 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model Web.Pages.CCGMember.CurrentLevelModel
+@inject IHttpContextAccessor contextAccessor
+@inject IViewLocalizer Localizer
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var id = Model.Id;
+    var levels = Model.JobGroupPositions.Select(e => e.LevelValue).ToList().Distinct();
+    var JobGroupCode = Model.JobGroup.Code;
+    var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<h2><b>@Localizer["h2Text"]</b></h2>
+
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
+<h3><b>@JobGroupName (@JobGroupCode)</b></h3>
+<div class="dropdown">
+    <div class="col-sm-3">
+        <label><b>@Localizer["Level"]</b></label><br />
+        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+            @Localizer["Select Level"]
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            @foreach (var level in levels)
+            {
+                var routedata = new Dictionary<string, string>
+                        {
+                              { "id",  Model.Id.ToString()},
+                              { "level",  level}
+                         };
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1"
+               asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Level"] @level</a>
+        </li>
+    }
+        </ul>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>

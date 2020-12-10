@@ -17,17 +17,22 @@ namespace DataModel.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(b => b.NameEng)
-                .HasMaxLength(500);
+                .HasMaxLength(1000);
 
             builder.Property(b => b.NameFre)
+               .HasMaxLength(1000);
+
+            builder.Property(b => b.DescEng)
+               .HasMaxLength(1000);
+
+            builder.Property(b => b.DescFre)
+              .HasMaxLength(1000);
+              
+            builder.Property(b => b.RequireIndicatorEng)
                .HasMaxLength(500);
 
-            builder.Property(b => b.DescEng);
-
-            builder.Property(b => b.DescFre);
-            builder.Property(b => b.RequireIndicatorEng);
-
-            builder.Property(b => b.RequireIndicatorFre);
+            builder.Property(b => b.RequireIndicatorFre)
+              .HasMaxLength(500);
         }
     } 
 }

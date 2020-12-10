@@ -1,0 +1,269 @@
+﻿@page
+@model Web.Pages.CCGMember.Compare.DeltaModel
+@inject IViewLocalizer Localizer
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var current = Model.CurrentPosition;
+    var objective = Model.ObjectivePosition;
+    var matchingtype1 = Model.MatchingCompetenciesType1;
+    var differingtype1 = Model.DifferingCompetenciesType1;
+    var matchingtype2 = Model.MatchingCompetenciesType2;
+    var differingtype2 = Model.DifferingCompetenciesType2;
+    var matchingtype3 = Model.MatchingCompetenciesType3;
+    var differingtype3 = Model.DifferingCompetenciesType3;
+    var matchingcertificates = Model.MatchingCertificates;
+    var differingcertificates = Model.DifferingCertificates;
+}
+    <section role="contentinfo">
+        <div class="row mrgn-tp-md">
+            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+            <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+        </div>
+
+            <div class="row text-center mrgn-bttm-lg">
+                <h2><b>@Localizer["h2Results"]</b></h2>
+            </div>
+            <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @current.JobGroupCode @current.JobGroupLevelValue - @(isEnglish?current.JobTitleEng:current.JobTitleFre)</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @objective.JobGroupCode @objective.JobGroupLevelValue - @(isEnglish?objective.JobTitleEng:objective.JobTitleFre)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+
+            <table class="table table-responsive table-bordered">
+
+                <tr>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["CERTIFICATIONS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                </tr>
+
+                @if (matchingtype2.Length >= matchingcertificates.Length)
+                {
+                    @for (int i = 0; i < matchingtype2.Length; i++)
+                    {
+                        if (i < matchingcertificates.Length)
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingcertificates[i].NameEng:matchingcertificates[i].NameFre)</td>
+                                <td width="50%">@(isEnglish?matchingtype2[i].CompetencyNameEng:matchingtype2[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@(isEnglish?matchingtype2[i].CompetencyNameEng:matchingtype2[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                    }
+                }
+                else
+                {
+                    @for (int i = 0; i < matchingcertificates.Length; i++)
+                    {
+                        if (i < matchingtype2.Length)
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingcertificates[i].NameEng:matchingcertificates[i].NameFre)</td>
+                                <td width="50%">@(isEnglish?matchingtype2[i].CompetencyNameEng:matchingtype2[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingcertificates[i].NameEng:matchingcertificates[i].NameFre)</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
+                    }
+                }
+                <tr>
+                    <td width="50%"></td>
+                    <td width="50%"></td>
+                </tr>
+                <tr>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                    <th style="background-color:#f2f2f2" width="50%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                </tr>
+                @if (matchingtype1.Length >= matchingtype3.Length)
+                {
+                    @for (int i = 0; i < matchingtype1.Length; i++)
+                    {
+                        if (i < matchingtype3.Length)
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingtype1[i].CompetencyNameEng:matchingtype1[i].CompetencyNameFre)</td>
+                                <td width="50%">@(isEnglish?matchingtype3[i].CompetencyNameEng:matchingtype3[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingtype1[i].CompetencyNameEng:matchingtype1[i].CompetencyNameFre)</td>
+                                <td width="50%">@null</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+                else
+                {
+                    @for (int i = 0; i < matchingtype3.Length; i++)
+                    {
+                        if (i < matchingtype1.Length)
+                        {
+                            <tr>
+                                <td width="50%">@(isEnglish?matchingtype1[i].CompetencyNameEng:matchingtype1[i].CompetencyNameFre)</td>
+                                <td width="50%">@(isEnglish?matchingtype3[i].CompetencyNameEng:matchingtype3[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td width="50%">@null</td>
+                                <td width="50%">@(isEnglish?matchingtype3[i].CompetencyNameEng:matchingtype3[i].CompetencyNameFre)</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="50%"></td>
+                        <td width="50%"></td>
+                    </tr>
+                }
+            </table>
+            <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                </tr>
+                <tbody>
+
+                    @if (differingcertificates.Length == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in differingcertificates)
+                        {
+                            <tr>
+
+                                <td width="70%">@d.NameEng</td>
+                                <td class="text-center bg-success"></td>
+                                <td class="text-center bg-info"></td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (differingtype1.Length == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in differingtype1)
+                        {
+                            <tr>
+                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (differingtype2.Length == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in differingtype2)
+                        {
+                            <tr>
+
+                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+
+                    @if (differingtype3.Length == 0)
+                    {
+                        <tr>
+                            <td width="70%"></td>
+                            <td class="text-center bg-success"></td>
+                            <td class="text-center bg-info"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var d in differingtype3)
+                        {
+                            <tr>
+
+                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
+                                <td class="text-center bg-success">@d.RatingValueCur</td>
+                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td width="70%"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>

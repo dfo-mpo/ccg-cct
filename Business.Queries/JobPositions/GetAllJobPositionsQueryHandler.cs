@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Business.Queries.Dtos;
+using Business.Dtos.JobPositions;
 using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
@@ -31,11 +29,13 @@ namespace Business.Queries.JobPositions
                     JobGroupId = e.JobGroupId,
                     JobGroupCode = e.JobGroup.Code,
                     JobGroupLevelId = e.JobGroupLevelId,
+                    JobGroupLevelValue = e.JobGroupLevel.LevelValue,
+
                     JobTitleId = e.JobPositionId,
-                    JobTitleEng = e.JobPosition.TitleEng,
-                    JobTitleFre = e.JobPosition.TitleFre
+                    JobTitleFre = e.JobPosition.TitleFre,
+                    JobTitleEng = e.JobPosition.TitleEng
+
                 }).ToListAsync(cancellationToken);
         }
     }
 }
-

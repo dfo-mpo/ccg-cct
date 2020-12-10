@@ -18,6 +18,8 @@ namespace DataModel.Tests
         public DbHelper(DbContextOptions<T> options)
         {
             _options = options;
+            _testHttpContextAccessor = new TestHttpContextAccessor();
+
         }
 
         public T GetDbContext()

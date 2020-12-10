@@ -1,0 +1,114 @@
+﻿@page
+@model Web.Pages.CCGMember.DetailsModel
+@inject IViewLocalizer Localizer
+
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var position = Model.Position;
+    var certificates = Model.PositionCertificates;
+    var type1competencyratings = Model.PositionRatings1;
+    var type2competencyratings = Model.PositionRatings2;
+    var type3competencyratings = Model.PositionRatings3;
+}
+
+    <section role="contentinfo">
+        <div class="row mrgn-tp-md">
+            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+            <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+        </div>
+        <h2><b>@Localizer["Current Position Details"]</b></h2>
+
+        <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @position.JobGroupCode-@position.JobGroupLevelValue @(isEnglish?position.JobTitleEng:position.JobTitleFre)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
+                </tr>
+
+                @if (certificates.Length > 0)
+                {
+                    @foreach (var c in certificates)
+                    {
+                        <tr>
+                            <td colspan="2">@(isEnglish?c.NameEng:c.NameFre)</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">@Localizer["No Certifications"]</td>
+                    </tr>
+                }
+                @if (type1competencyratings.Length > 0)
+                {
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                    </tr>
+                    @foreach (var c in type1competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
+                }
+                @if (type2competencyratings.Length > 0)
+                {
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["TECHNICAL ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                    </tr>
+                    @foreach (var c in type2competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
+                }
+                @if (type3competencyratings.Length > 0)
+                {
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="80%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["Level"]</th>
+                    </tr>
+                    @foreach (var c in type3competencyratings)
+                    {
+                        <tr>
+                            <td>@(isEnglish?c.CompetencyNameEng:c.CompetencyNameFre)</td>
+                            <td class="text-center"><a data-toggle="tooltip" title="@(isEnglish?c.RatingDescEng:c.RatingDescFre)">@c.RatingValue</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+<div class="row">
+    <div class="col-lg-12 mrgn-bttm-md">
+        <nav role="navigation" class="mrgn-bttm-lg">
+
+            <h2 class="wb-inv">Document navigation</h2>
+
+            <ul class="pager">
+                @{ 
+                    var routedata = new Dictionary<string, string>
+        {
+           { "id",  Model.Id.ToString()},
+           { "level",  Model.Level}
+        };
+                }
+                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                <li class="next"><a asp-page="SearchType" asp-route-positionid="@position.JobTitleId">@Localizer["Next"]</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+

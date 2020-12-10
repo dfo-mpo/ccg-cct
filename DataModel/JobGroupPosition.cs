@@ -22,18 +22,5 @@ namespace DataModel
 
         public JobPosition JobPosition { get; set; }
 
-        public int JobLocationRegionId { get; set; }
-
-        public JobLocationRegion JobLocationRegion { get; set; }
-
-        public int JobKeyTaskPerLevelId { get; set; }
-
-        public JobKeyTaskPerLevel JobKeyTaskPerLevel { get; set; }
-
-        public int JobCategoryId { get; set; }
-
-        public JobCategory JobCategory { get; set; }
-
-
     }
 }

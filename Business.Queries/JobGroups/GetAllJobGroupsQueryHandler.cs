@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Business.Queries.Dtos;
+using Business.Dtos.JobGroups;
 using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +27,7 @@ namespace Business.Queries.JobGroups
                     Id = e.Id,
                     Code = e.Code,
                     NameEng = e.NameEng,
-                    NameFre = e.NameFre
+                    NameFre = e.NameFre,
 
                 }).ToListAsync(cancellationToken);
         }

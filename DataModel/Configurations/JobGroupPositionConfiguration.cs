@@ -12,7 +12,8 @@ namespace DataModel.Configurations
     {
         public void Configure(EntityTypeBuilder<JobGroupPosition> builder)
         {
-            builder.HasKey(jp => new { jp.JobGroupId, jp.JobGroupLevelId, jp.JobPositionId});
+            builder.HasKey(jp => new { jp.JobGroupId, jp.JobGroupLevelId, jp.JobPositionId });
+
         }
     }
 }
