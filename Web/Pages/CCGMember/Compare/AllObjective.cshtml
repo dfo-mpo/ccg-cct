@@ -3,7 +3,6 @@
 @model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var jobGroups = Model.JobGroups;
     var imagefolder = "~/img/CCGMember/";
 }
 <section role="contentinfo">
@@ -15,10 +14,9 @@
                 <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
             </p>
         </form>
-        <form method="post">
-
-            @if(jobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()))) { 
-             @foreach (var jobgroup in jobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+        <form>
+            @if(Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()))) { 
+             @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
               {
                 var routedata = new Dictionary<string, string>
                          {
@@ -39,7 +37,6 @@
             {
                 <h4>@Localizer["NoResults"]</h4>
             }
-
         </form>
     </div>
 </section>

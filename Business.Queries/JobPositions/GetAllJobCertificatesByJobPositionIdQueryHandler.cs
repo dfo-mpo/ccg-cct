@@ -36,6 +36,7 @@ namespace Business.Queries.JobPositions
                         DescFre = e.Certificate.DescFre,
                         RequireIndicatorEng = e.Certificate.RequireIndicatorEng,
                         RequireIndicatorFre = e.Certificate.RequireIndicatorFre,
+
                     }).ToListAsync(cancellationToken);
             }
         }

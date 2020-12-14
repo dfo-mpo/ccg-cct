@@ -126,6 +126,9 @@
   <data name="Current Position" xml:space="preserve">
     <value>Current Position</value>
   </data>
+  <data name="Current Position Level" xml:space="preserve">
+    <value>Current Position Level</value>
+  </data>
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>DIFFERING COMPETENCIES</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="NoMatch" xml:space="preserve">
     <value>No matching competencies</value>
   </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Position Level</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="Selected Position" xml:space="preserve">
     <value>Selected Position</value>
+  </data>
+  <data name="Selected Position Level" xml:space="preserve">
+    <value>Selected Position Level</value>
   </data>
   <data name="TECHNICAL ELEMENTS" xml:space="preserve">
     <value>TECHNICAL ELEMENTS</value>

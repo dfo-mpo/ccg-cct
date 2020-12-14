@@ -55,7 +55,7 @@
                         else
                         {
                             <tr>
-                                <td width="50%">@null</td>
+                                <td width="50%">&nbsp;</td>
                                 <td width="50%">@(isEnglish?matchingtype2[i].CompetencyNameEng:matchingtype2[i].CompetencyNameFre)</td>
                             </tr>
                         }
@@ -76,14 +76,14 @@
                         {
                             <tr>
                                 <td width="50%">@(isEnglish?matchingcertificates[i].NameEng:matchingcertificates[i].NameFre)</td>
-                                <td width="50%">@null</td>
+                                <td width="50%">&nbsp;</td>
                             </tr>
                         }
                     }
                 }
                 <tr>
-                    <td width="50%"></td>
-                    <td width="50%"></td>
+                    <td width="50%">&nbsp;</td>
+                    <td width="50%">&nbsp;</td>
                 </tr>
                 <tr>
                     <th style="background-color:#f2f2f2" width="50%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
@@ -104,13 +104,13 @@
                         {
                             <tr>
                                 <td width="50%">@(isEnglish?matchingtype1[i].CompetencyNameEng:matchingtype1[i].CompetencyNameFre)</td>
-                                <td width="50%">@null</td>
+                                <td width="50%">&nbsp;</td>
                             </tr>
                         }
                     }
                     <tr>
-                        <td width="50%"></td>
-                        <td width="50%"></td>
+                        <td width="50%">&nbsp;</td>
+                        <td width="50%">&nbsp;</td>
                     </tr>
                 }
                 else
@@ -127,14 +127,14 @@
                         else
                         {
                             <tr>
-                                <td width="50%">@null</td>
+                                <td width="50%">&nbsp;</td>
                                 <td width="50%">@(isEnglish?matchingtype3[i].CompetencyNameEng:matchingtype3[i].CompetencyNameFre)</td>
                             </tr>
                         }
                     }
                     <tr>
-                        <td width="50%"></td>
-                        <td width="50%"></td>
+                        <td width="50%">&nbsp;</td>
+                        <td width="50%">&nbsp;</td>
                     </tr>
                 }
             </table>
@@ -147,12 +147,12 @@
                 </tr>
                 <tbody>
 
-                    @if (differingcertificates.Length == 0)
+                    @if (!differingcertificates.Any())
                     {
                         <tr>
-                            <td width="70%"></td>
-                            <td class="text-center bg-success"></td>
-                            <td class="text-center bg-info"></td>
+                            <td width="70%">&nbsp;</td>
+                            <td class="text-center bg-success">&nbsp;</td>
+                            <td class="text-center bg-info">&nbsp;</td>
                         </tr>
                     }
                     else
@@ -162,15 +162,15 @@
                             <tr>
 
                                 <td width="70%">@d.NameEng</td>
-                                <td class="text-center bg-success"></td>
-                                <td class="text-center bg-info"></td>
+                                <td class="text-center bg-success">&nbsp;</td>
+                                <td class="text-center bg-info">&nbsp;</td>
                             </tr>
                         }
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="70%">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <th style="background-color:#f2f2f2" width="70%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
@@ -178,29 +178,60 @@
                         <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
 
-                    @if (differingtype1.Length == 0)
+                    @if (!differingtype1.Any())
                     {
                         <tr>
-                            <td width="70%"></td>
-                            <td class="text-center bg-success"></td>
-                            <td class="text-center bg-info"></td>
+                            <td width="70%">&nbsp;</td>
+                            <td class="text-center bg-success">&nbsp;</td>
+                            <td class="text-center bg-info">&nbsp;</td>
                         </tr>
                     }
                     else
                     {
                         @foreach (var d in differingtype1)
                         {
+                            var key1 = "a" + d.CompetencyId.ToString();
+                            var key2 = "b" + d.CompetencyId.ToString();
                             <tr>
-                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                                <td>
+                                    <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</a>
+                                    <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish?d.CompetencyDescEng:d.CompetencyDescFre)</p>
+                                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                        </div>
+                                    </section>
+                                </td>
+                                <td class="text-center bg-success">              
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@d.RatingValueCur</abbr></a>
+                                    <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish?d.RatingDescCurEng:d.RatingDescCurFre)</p>
+                                        </div>
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@Localizer["Selected Position Level"]: @d.RatingValueObj</h2>
+                                        </header>
+                                        <div class="modal-body">
+                                            <p>@(isEnglish?d.RatingDescObjEng:d.RatingDescObjFre)</p>
+                                        </div>
+                                    </section>
+                                </td>
+                                <td class="text-center bg-info">
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
+                                </td>
                             </tr>
                         }
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="70%">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <th style="background-color:#f2f2f2" width="70%">@Localizer["TECHNICAL ELEMENTS"]</th>
@@ -208,30 +239,60 @@
                         <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
 
-                    @if (differingtype2.Length == 0)
+                    @if (!differingtype2.Any())
                     {
                         <tr>
-                            <td width="70%"></td>
-                            <td class="text-center bg-success"></td>
-                            <td class="text-center bg-info"></td>
+                            <td width="70%">&nbsp;</td>
+                            <td class="text-center bg-success">&nbsp;</td>
+                            <td class="text-center bg-info">&nbsp;</td>
                         </tr>
                     }
                     else
                     {
                         @foreach (var d in differingtype2)
                         {
+                            var key1 = "c" + d.CompetencyId.ToString();
+                            var key2 = "d" + d.CompetencyId.ToString();
                             <tr>
-
-                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
+                                <td>
+                                    <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</a>
+                                    <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish?d.CompetencyDescEng:d.CompetencyDescFre)</p>
+                                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                        </div>
+                                    </section>
+                                </td>
+                                <td class="text-center bg-success">
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@d.RatingValueCur</abbr></a>
+                                    <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish?d.RatingDescCurEng:d.RatingDescCurFre)</p>
+                                        </div>
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@Localizer["Selected Position Level"]: @d.RatingValueObj</h2>
+                                        </header>
+                                        <div class="modal-body">
+                                            <p>@(isEnglish?d.RatingDescObjEng:d.RatingDescObjFre)</p>
+                                        </div>
+                                    </section>
+                                </td>
+                                <td class="text-center bg-info">
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
+                                </td>
                             </tr>
                         }
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="70%">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <th style="background-color:#f2f2f2" width="70%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
@@ -239,30 +300,60 @@
                         <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
 
-                    @if (differingtype3.Length == 0)
+                    @if (!differingtype3.Any())
                     {
                         <tr>
-                            <td width="70%"></td>
-                            <td class="text-center bg-success"></td>
-                            <td class="text-center bg-info"></td>
+                            <td width="70%">&nbsp;</td>
+                            <td class="text-center bg-success">&nbsp;</td>
+                            <td class="text-center bg-info">&nbsp;</td>
                         </tr>
                     }
                     else
                     {
                         @foreach (var d in differingtype3)
                         {
-                            <tr>
-
-                                <td width="70%">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</td>
-                                <td class="text-center bg-success">@d.RatingValueCur</td>
-                                <td class="text-center bg-info">@d.RatingValueObj</td>
-                            </tr>
-                        }
+                            var key1 = "e" + d.CompetencyId.ToString();
+                            var key2 = "f" + d.CompetencyId.ToString();
+                        <tr>
+                            <td>
+                                <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</a>
+                                <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">@(isEnglish?d.CompetencyNameEng:d.CompetencyNameFre)</h2>
+                                    </header>
+                                    <div class="modal-body ">
+                                        <p>@(isEnglish?d.CompetencyDescEng:d.CompetencyDescFre)</p>
+                                        <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                    </div>
+                                </section>
+                            </td>
+                            <td class="text-center bg-success">
+                                <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@d.RatingValueCur</abbr></a>
+                                <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
+                                    </header>
+                                    <div class="modal-body ">
+                                        <p>@(isEnglish?d.RatingDescCurEng:d.RatingDescCurFre)</p>
+                                    </div>
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">@Localizer["Selected Position Level"]: @d.RatingValueObj</h2>
+                                    </header>
+                                    <div class="modal-body">
+                                        <p>@(isEnglish?d.RatingDescObjEng:d.RatingDescObjFre)</p>
+                                    </div>
+                                </section>
+                            </td>
+                            <td class="text-center bg-info">
+                                <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
+                            </td>
+                        </tr>
+                    }
                     }
                     <tr>
-                        <td width="70%"></td>
-                        <td></td>
-                        <td></td>
+                        <td width="70%">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </tbody>
             </table>

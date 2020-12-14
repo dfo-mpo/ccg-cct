@@ -33,6 +33,7 @@ namespace Business.Queries.Compare
                     orderby obj.CompetencyTypeId
                     select new SharedJobCompetencyRating()
                     {
+                        CompetencyId = pos.CompetencyId,
                         CompetencyDescEng = pos.Competency.DescEng,
                         CompetencyDescFre = pos.Competency.DescFre,
                         RatingValueCur = pos.CompetencyRatingLevel.Value.ToString(),
@@ -42,6 +43,7 @@ namespace Business.Queries.Compare
                         TypeNameEng = pos.CompetencyType.NameEng,
                         TypeNameFre = pos.CompetencyType.NameFre,
                         TypeId = pos.CompetencyType.Id
+
                     }).ToListAsync(cancellationToken);
         }
 

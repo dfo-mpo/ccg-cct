@@ -138,6 +138,9 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>
   </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Position Level</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>

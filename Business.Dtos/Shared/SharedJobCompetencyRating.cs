@@ -1,28 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Business.Dtos.Shared
+﻿namespace Business.Dtos.Shared
 {
     public class SharedJobCompetencyRating
     {
         public int TypeId { get; set; }
-        public string TypeNameEng { get; set; } // ex. Behavioral, knowledge, technical
+        public string TypeNameEng { get; set; }
         public string TypeNameFre { get; set; }
-
+        public int CompetencyId { get; set; }
         public string CompetencyNameEng { get; set; }
-
         public string CompetencyNameFre { get; set; }
-
         public string CompetencyDescEng { get; set; }
-
         public string CompetencyDescFre { get; set; }
-        //public int RatingId { get; set; }
-
-        public string RatingValueCur { get; set; } // ex: 1, 2
-        public string RatingValueObj { get; set; } // ex: 1, 2
-
-
-
+        public string RatingValueCur { get; set; } 
+        public string RatingValueObj { get; set; } 
+        public string RatingDescCurEng { get; set; }
+        public string RatingDescCurFre { get; set; }
+        public string RatingDescObjEng { get; set; }
+        public string RatingDescObjFre { get; set; }
     }
 }

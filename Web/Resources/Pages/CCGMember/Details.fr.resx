@@ -138,6 +138,9 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau du poste</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

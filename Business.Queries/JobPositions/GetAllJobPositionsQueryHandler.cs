@@ -23,6 +23,7 @@ namespace Business.Queries.JobPositions
         {
             return _db.JobGroupPositions
                 .Include(e => e.JobGroup)
+                .Include(e=>e.JobGroupLevel)
                 .Include(e => e.JobPosition)
                 .Select(e => new JobPositionDto()
                 {
@@ -30,7 +31,6 @@ namespace Business.Queries.JobPositions
                     JobGroupCode = e.JobGroup.Code,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobGroupLevelValue = e.JobGroupLevel.LevelValue,
-
                     JobTitleId = e.JobPositionId,
                     JobTitleFre = e.JobPosition.TitleFre,
                     JobTitleEng = e.JobPosition.TitleEng

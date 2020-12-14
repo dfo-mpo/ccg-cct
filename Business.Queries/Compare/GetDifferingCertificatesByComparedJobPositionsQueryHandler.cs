@@ -42,10 +42,8 @@ namespace Business.Queries.Compare
                      RequireIndicatorFre = e.Certificate.RequireIndicatorEng,
                      RequireIndicatorEng = e.Certificate.RequireIndicatorEng,
                      Id = e.CertificateId
-                 }
-                 ).ToListAsync(cancellationToken);
-                
-        }
 
+                 }).ToListAsync(cancellationToken);           
+        }
     }
 }

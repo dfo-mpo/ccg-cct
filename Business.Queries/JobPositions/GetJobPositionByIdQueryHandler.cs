@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobPositions
 {
-
         public class GetJobPositionByIdQuery : IQuery<JobPositionDto>
         {
             public int Id { get; set; }
@@ -37,8 +36,7 @@ namespace Business.Queries.JobPositions
                     JobGroupTitleEng = e.JobGroup.NameEng,
                     JobGroupTitleFre = e.JobGroup.NameFre,
                     JobGroupLevelId = e.JobGroupLevelId,
-                    JobGroupLevelValue = e.JobGroupLevel.LevelValue,
-                    
+                    JobGroupLevelValue = e.JobGroupLevel.LevelValue,                   
                     JobTitleId = e.JobPositionId,
                     JobTitleFre = e.JobPosition.TitleFre,
                     JobTitleEng = e.JobPosition.TitleEng

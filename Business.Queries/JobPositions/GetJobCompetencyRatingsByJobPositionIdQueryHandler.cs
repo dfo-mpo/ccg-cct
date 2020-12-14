@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobPositions
 {
-
     public class GetJobCompetencyRatingsByJobPositionIdQuery : IQuery<List<JobCompetencyRatingDto>>
     {
         public int Id { get; set; }
@@ -27,6 +26,7 @@ namespace Business.Queries.JobPositions
         {
             return _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.Id)
                 .Include(e=>e.Competency)
+                .Include(e=>e.CompetencyType)
                 .Include(e=>e.CompetencyRatingLevel)
                 .Select(e=>new JobCompetencyRatingDto()
                 {

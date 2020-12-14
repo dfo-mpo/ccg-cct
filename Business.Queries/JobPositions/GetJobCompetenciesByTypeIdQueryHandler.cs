@@ -8,8 +8,7 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobPositions
-{
-    
+{  
     public class GetJobCompetenciesByTypeIdQuery : IQuery<List<JobCompetencyRatingDto>>
     {
         public int Id { get; set; }

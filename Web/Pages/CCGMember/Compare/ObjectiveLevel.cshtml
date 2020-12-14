@@ -5,10 +5,6 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var jobGroupPositions = Model.JobGroupPositions;
-    var JobGroupName = isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre;
-    var levels = jobGroupPositions.Select(e => e.LevelValue).ToList().Distinct();
-
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +13,7 @@
 <h2><b>@Localizer["h2Text"]</b></h2>
 
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
-<h3><b>@JobGroupName (@Model.JobGroup.Code)</b></h3>
+<h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
         <label><b>@Localizer["Level"]</b></label><br />
@@ -26,7 +22,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in levels)
+            @foreach (var level in Model.JobGroupPositions.Select(e => e.LevelValue).ToList().Distinct())
             {
                 var data = new Dictionary<string, string>
                  {

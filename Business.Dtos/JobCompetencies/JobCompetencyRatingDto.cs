@@ -4,7 +4,7 @@
     {
         public int JobPositionId { get; set; }
         public int TypeId { get; set; }
-        public string TypeNameEng { get; set; } // ex. Behavioral, knowledge, technical
+        public string TypeNameEng { get; set; }
         public string TypeNameFre { get; set; }
 
         public int CompetencyId { get; set; }
@@ -15,11 +15,10 @@
         public string CompetencyDescEng { get; set; }
 
         public string CompetencyDescFre { get; set; }
-        //public int RatingId { get; set; }
 
-        public int RatingValue { get; set; } // ex: 1, 2
+        public int RatingValue { get; set; } 
 
-        public string RatingNameEng { get; set; } // ex: Novice, Intermediate
+        public string RatingNameEng { get; set; } 
 
         public string RatingNameFre { get; set; }
 

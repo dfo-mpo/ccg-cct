@@ -28,23 +28,29 @@ namespace Business.Queries.Compare
 
         public Task<List<SharedJobCompetencyRating>> HandleAsync(GetDifferingCompetenciesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId)
-                    join obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId)
-                    on pos.CompetencyId equals obj.CompetencyId
-                    where obj.CompetencyRatingLevel.Value != pos.CompetencyRatingLevel.Value
+            return (from obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId)
+                    join pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId)
+                    on obj.CompetencyId equals pos.CompetencyId into currentpositions
+                    from current in currentpositions.DefaultIfEmpty()
                     orderby obj.CompetencyTypeId
                     select new SharedJobCompetencyRating()
                     {
-                        CompetencyDescEng = pos.Competency.DescEng,
-                        CompetencyDescFre = pos.Competency.DescFre,
-                        RatingValueCur = pos.CompetencyRatingLevel.Value.ToString(),
+                        CompetencyId = obj.CompetencyId,
+                        CompetencyDescEng = obj.Competency.DescEng,
+                        CompetencyDescFre = obj.Competency.DescFre,
+                        RatingValueCur = current == null ? "N/A" : current.CompetencyRatingLevel.Value.ToString(),    
                         RatingValueObj = obj.CompetencyRatingLevel.Value.ToString(),
-                        CompetencyNameEng = pos.Competency.NameEng,
-                        CompetencyNameFre = pos.Competency.NameFre,
-                        TypeNameEng = pos.CompetencyType.NameEng,
-                        TypeNameFre = pos.CompetencyType.NameFre,
-                        TypeId = pos.CompetencyType.Id
-                    }).ToListAsync(cancellationToken);
+                        CompetencyNameEng = obj.Competency.NameEng,
+                        CompetencyNameFre = obj.Competency.NameFre,
+                        TypeNameEng = obj.CompetencyType.NameEng,
+                        TypeNameFre = obj.CompetencyType.NameFre,
+                        TypeId = obj.CompetencyType.Id,
+                        RatingDescCurEng = current == null ? "N/A" : current.CompetencyRatingLevel.DescEng,
+                        RatingDescCurFre = current == null ? "N/A" : current.CompetencyRatingLevel.DescFre,
+                        RatingDescObjEng = obj.CompetencyLevelRequirement.DescEng,
+                        RatingDescObjFre = obj.CompetencyRatingLevel.DescFre
+                    
+                    }).Where(e => e.RatingValueCur != e.RatingValueObj).ToListAsync(cancellationToken);
         }
     }
 }
