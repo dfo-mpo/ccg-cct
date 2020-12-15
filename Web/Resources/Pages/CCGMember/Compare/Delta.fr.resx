@@ -144,23 +144,35 @@
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
   </data>
-  <data name="NoCertifications" xml:space="preserve">
-    <value>Pas de certifications différentes</value>
-  </data>
   <data name="NoDiff" xml:space="preserve">
     <value>Pas de compétences différentes</value>
+  </data>
+  <data name="NoDifferingCertifications" xml:space="preserve">
+    <value>Pas de certifications différentes</value>
+  </data>
+  <data name="NoDifferingType1" xml:space="preserve">
+    <value>Aucun élément de connaissance différent</value>
+  </data>
+  <data name="NoDifferingType2" xml:space="preserve">
+    <value>Aucun éléments techniques différents</value>
+  </data>
+  <data name="NoDifferingType3" xml:space="preserve">
+    <value>Aucun élément comportemental différent</value>
   </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Aucune compétence correspondante</value>
   </data>
-  <data name="NoType1Competencies" xml:space="preserve">
-    <value>Aucun élément de connaissance différent</value>
+  <data name="NoMatchingCertificates" xml:space="preserve">
+    <value>Aucun certificat associées</value>
   </data>
-  <data name="NoType2Competencies" xml:space="preserve">
-    <value>Aucun éléments techniques différents</value>
+  <data name="NoMatchingType1" xml:space="preserve">
+    <value>Aucun élément de connaissance associées</value>
   </data>
-  <data name="NoType3Competencies" xml:space="preserve">
-    <value>Aucun élément comportemental différent</value>
+  <data name="NoMatchingType2" xml:space="preserve">
+    <value>Aucun élément technique associées</value>
+  </data>
+  <data name="NoMatchingType3" xml:space="preserve">
+    <value>Aucun élément comportemental associées</value>
   </data>
   <data name="Position Level" xml:space="preserve">
     <value>Niveau du poste</value>

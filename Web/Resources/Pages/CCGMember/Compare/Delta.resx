@@ -144,23 +144,35 @@
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>MATCHING COMPETENCIES</value>
   </data>
-  <data name="NoCertifications" xml:space="preserve">
-    <value>No differing certifications</value>
-  </data>
   <data name="NoDiff" xml:space="preserve">
     <value>No differing competencies</value>
+  </data>
+  <data name="NoDifferingCertifications" xml:space="preserve">
+    <value>No differing certifications</value>
+  </data>
+  <data name="NoDifferingType1" xml:space="preserve">
+    <value>No differing knowledge elements</value>
+  </data>
+  <data name="NoDifferingType2" xml:space="preserve">
+    <value>No differing technical elements</value>
+  </data>
+  <data name="NoDifferingType3" xml:space="preserve">
+    <value>No differing behavioural elements</value>
   </data>
   <data name="NoMatch" xml:space="preserve">
     <value>No matching competencies</value>
   </data>
-  <data name="NoType1Competencies" xml:space="preserve">
-    <value>No differing knowledge elements</value>
+  <data name="NoMatchingCertificates" xml:space="preserve">
+    <value>No matching certificates</value>
   </data>
-  <data name="NoType2Competencies" xml:space="preserve">
-    <value>No differing technical elements</value>
+  <data name="NoMatchingType1" xml:space="preserve">
+    <value>No matching knowledge elements</value>
   </data>
-  <data name="NoType3Competencies" xml:space="preserve">
-    <value>No differing behavioural elements</value>
+  <data name="NoMatchingType2" xml:space="preserve">
+    <value>No matching technical elements</value>
+  </data>
+  <data name="NoMatchingType3" xml:space="preserve">
+    <value>No matching behavioural elements</value>
   </data>
   <data name="Position Level" xml:space="preserve">
     <value>Position Level</value>
