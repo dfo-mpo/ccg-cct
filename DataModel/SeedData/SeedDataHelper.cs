@@ -14,7 +14,7 @@ namespace DataModel.SeedData
         {
             _db = db;
 
-            
+
         }
 
         public void Run()
@@ -48,13 +48,13 @@ namespace DataModel.SeedData
         private void Save<T>() where T : class
         {
             var tableName = _db.Model.FindEntityType(typeof(T)).GetTableName();
-            try 
-            { 
+            try
+            {
                 _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} ON;");
                 _db.SaveChanges();
             }
-            finally 
-            { 
+            finally
+            {
                 _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} OFF;");
             }
 
@@ -109,7 +109,15 @@ namespace DataModel.SeedData
                 new JobGroupLevel() { Id = 6, LevelValue = "06" },
                 new JobGroupLevel() { Id = 7, LevelValue = "07" },
                 new JobGroupLevel() { Id = 8, LevelValue = "08" },
-                new JobGroupLevel() { Id = 9, LevelValue = "09" }
+                new JobGroupLevel() { Id = 9, LevelValue = "09" },
+                new JobGroupLevel() { Id = 10, LevelValue = "MOC-05" },
+                new JobGroupLevel() { Id = 11, LevelValue = "MOC-07" },
+                new JobGroupLevel() { Id = 12, LevelValue = "WOW-09" },
+                new JobGroupLevel() { Id = 13, LevelValue = "WOW-10" },
+                new JobGroupLevel() { Id = 14, LevelValue = "VHE-10" },
+                new JobGroupLevel() { Id = 15, LevelValue = "PCF-06" },
+                new JobGroupLevel() { Id = 16, LevelValue = "PCF-07" },
+                new JobGroupLevel() { Id = 17, LevelValue = "PCF-08" }
             });
             Save<JobGroupLevel>();
             transaction.Commit();
@@ -201,7 +209,15 @@ namespace DataModel.SeedData
                     new JobPosition { Id=  78, TitleEng = "Clerical Workers", TitleFre= "Employé de bureau"},
                     new JobPosition { Id=  79, TitleEng = "Clerical Workers", TitleFre= "Employé de bureau"},
                     new JobPosition { Id=  80, TitleEng = "Administrative Assistant", TitleFre= "Assistant administratif"},
-                    new JobPosition { Id=  81, TitleEng = "Administrative Assistant", TitleFre= "Assistant administratif"}
+                    new JobPosition { Id=  81, TitleEng = "Administrative Assistant", TitleFre= "Assistant administratif"},
+                    new JobPosition { Id=  82, TitleEng = "Machine Operator", TitleFre= "Opérateur"},
+                    new JobPosition { Id=  83, TitleEng = "Machine Operator", TitleFre= "Opérateur"},
+                    new JobPosition { Id=  84, TitleEng = "Carpenter Apprentice", TitleFre= "Apprenti charpentier"},
+                    new JobPosition { Id=  85, TitleEng = "Carpenter", TitleFre= "Charpentier"},
+                    new JobPosition { Id=  86, TitleEng = "Vehicle and Heavy Equipment Maintainer", TitleFre= "Maintenance de véhicules et équipements lourds"},
+                    new JobPosition { Id=  87, TitleEng = "Painters and Construction Finishing", TitleFre= "Peintres et finition de construction"},
+                    new JobPosition { Id=  88, TitleEng = "Painters and Construction Finishing", TitleFre= "Peintres et finition de construction"},
+                    new JobPosition { Id=  89, TitleEng = "Painters and Construction Finishing", TitleFre= "Peintres et finition de construction"}
             });
             Save<JobPosition>();
             transaction.Commit();
@@ -217,7 +233,7 @@ namespace DataModel.SeedData
                 new JobHLCategory() { Id = 1, ValueEng = "Seagoing", ValueFre = "En mer" },
                 new JobHLCategory() { Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre" }
             });
-            Save<JobGroup>();
+            Save<JobHLCategory>();
             transaction.Commit();
         }
 
@@ -261,9 +277,18 @@ namespace DataModel.SeedData
                 new JobRole() { JobGroupId = 12, JobGroupLevelId = 2 },
                 new JobRole() { JobGroupId = 12, JobGroupLevelId = 3 },
                 new JobRole() { JobGroupId = 12, JobGroupLevelId = 4 },
-                new JobRole() { JobGroupId = 12, JobGroupLevelId = 5 }
+                new JobRole() { JobGroupId = 12, JobGroupLevelId = 5 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 10 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 11 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 12 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 13 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 14 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 15 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 16 },
+                new JobRole() { JobGroupId = 8, JobGroupLevelId = 17 }
+
             });
-            Save<JobRole>();
+            Save<JobGroupLevel>();
             transaction.Commit();
         }
 
@@ -353,7 +378,15 @@ namespace DataModel.SeedData
                 new JobGroupPosition { JobGroupId =  12, JobGroupLevelId=  2, JobPositionId=  78  },
                 new JobGroupPosition { JobGroupId =  12, JobGroupLevelId=  3, JobPositionId=  79  },
                 new JobGroupPosition { JobGroupId =  12, JobGroupLevelId=  4, JobPositionId=  80  },
-                new JobGroupPosition { JobGroupId =  12, JobGroupLevelId=  5, JobPositionId=  81  }
+                new JobGroupPosition { JobGroupId =  12, JobGroupLevelId=  5, JobPositionId=  81  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  10, JobPositionId=  82  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  11, JobPositionId=  83  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  12, JobPositionId=  84  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  13, JobPositionId=  85  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  14, JobPositionId=  86  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  15, JobPositionId=  87  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  16, JobPositionId=  88  },
+                new JobGroupPosition { JobGroupId =  8, JobGroupLevelId=  17, JobPositionId=  89  }
             });
             Save<JobLocationRegion>();
             transaction.Commit();
@@ -396,7 +429,17 @@ namespace DataModel.SeedData
                 new Competency { Id =  33, NameEng = "Showing Initiative and Being Action Oriented", NameFre = "Fait preuve d'initiative et est orienté vers l'action", DescEng = "Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.", DescFre =  "Adopte le changement et cherche activement des occasions d'apprendre et de se perfectionner sur les plans professionnel et personnel. Traduit l'orientation en activités de travail concrètes. Cerner les possibilités ou les enjeux et prendre des mesures pour améliorer les résultats de l'organisation, sans y être incité par d'autres."  },
                 new Competency { Id =  34, NameEng = "Apply Safety Considerations", NameFre = "Intègre les considérations relatives à la sécurité", DescEng = "Promotes workplace safety. Follows safety guidelines, procedures, and regulations. Reacts safely and appropriately during emergencies. Integrates health and safety considerations in planning, response, and reviews.", DescFre =  "Favorise la sécurité au travail. Suit les directives, les procédures et les règlements en matière de sécurité. Réagit de manière sûre et appropriée en cas d'urgence. Intégrer les considérations de santé et de sécurité dans la planification, l'intervention et les examens."  },
                 new Competency { Id =  36, NameEng = "Leadership", NameFre = "Leadership", DescEng = "Attracts and mobilizes members and colleagues towards a shared vision and purpose in the best interests of the Canadian Coast Guard and the public it serves. Motivates project members, sets achievable objectives, maintains a positive outlook, takes responsibility, makes decisions, and provides constructive feedback.", DescFre =  "Attire et mobilise les membres et les collègues vers une vision et un but communs dans le meilleur intérêt de la Garde côtière canadienne et du public qu'elle sert. Motiver les membres du projet, fixer des objectifs réalisables, maintenir une attitude positive, prendre des responsabilités, prendre des décisions et fournir une rétroaction constructive."  },
-                new Competency { Id =  37, NameEng = "Canadian Coast Guard Cultural Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne", DescEng = "The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.", DescFre =  "La mesure dans laquelle les membres croient en la mission, le mandat et les valeurs de la Garde côtière et projettent cet engagement par leurs actions et leurs attitudes envers l'organisation et ses intervenants. Les déclarations et la conduite des employés reflètent un enthousiasme naturel pour la Garde côtière, ce qu'elle fait et comment elle est perçue par le public."  }
+                new Competency { Id =  37, NameEng = "Canadian Coast Guard Cultural Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne", DescEng = "The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.", DescFre =  "La mesure dans laquelle les membres croient en la mission, le mandat et les valeurs de la Garde côtière et projettent cet engagement par leurs actions et leurs attitudes envers l'organisation et ses intervenants. Les déclarations et la conduite des employés reflètent un enthousiasme naturel pour la Garde côtière, ce qu'elle fait et comment elle est perçue par le public."  },
+                new Competency { Id =  38, NameEng = "Marine Domain Awareness Knowledge", NameFre = "Connaissance du domaine marin", DescEng = "Having true and timely information about everything on, under, related to, adjacent to, or bordering a sea, ocean, or other navigable waterway. This includes all related activities, infrastructure, shipping, vessels, cartography, and natural phenomena. For marine security, it includes being aware of anything in the marine domain that could threaten Canada's national security. ", DescFre = "Having true and timely information about everything on, under, related to, adjacent to, or bordering a sea, ocean, or other navigable waterway. This includes all related activities, infrastructure, shipping, vessels, cartography, and natural phenomena. For marine security, it includes being aware of anything in the marine domain that could threaten Canada's national security. "  },
+                new Competency { Id =  39, NameEng = "Canal Lock Knowledge", NameFre = "Connaissance de Canal Lock", DescEng = "Knowledge of all facets of the uses of, management, and maintenance of lock operation in the Canadian maritime domain.", DescFre = "Knowledge of all facets of the uses of, management, and maintenance of lock operation in the Canadian maritime domain."},
+                new Competency { Id =  40, NameEng = "Operations and Maintenance", NameFre = "Opérations et maintenance", DescEng = "Performs general labourer duties, building, vessel and grounds maintenance tasks, and transports materials and equipment.", DescFre = "Performs general labourer duties, building, vessel and grounds maintenance tasks, and transports materials and equipment."},
+                new Competency { Id =  41, NameEng = "Heavy Machinery Operation", NameFre = "Opération de machinerie lourde", DescEng = "Repairs, troubleshoots, adjusts, overhauls, and maintains mobile heavy-duty equipment.", DescFre = "Repairs, troubleshoots, adjusts, overhauls, and maintains mobile heavy-duty equipment."  },
+                new Competency { Id =  42, NameEng = "Carpentry", NameFre = "La menuiserie", DescEng = "Applies skills of cutting, shaping, and installing building materials during the construction of buildings, ships, concrete formwork, and other physical structures, including rough and fine work.", DescFre = "Applique des compétences de coupe, de façonnage et d'installation de matériaux de construction lors de la construction de bâtiments, de navires, de coffrages en béton et d'autres structures physiques, y compris le travail grossier et le travail de précision."},
+                new Competency { Id =  43, NameEng = "Engineering Review, Decision Making, and Analysis", NameFre = "Revue technique, prise de décision et analyse", DescEng = "Uses effective approaches with available facts, constraints, and anticipated consequences in marine engineering systems.", DescFre = "Uses effective approaches with available facts, constraints, and anticipated consequences in marine engineering systems."},
+                new Competency { Id =  44, NameEng = "Heavy Machinery Maintenance", NameFre = "Maintenance de machinerie lourde", DescEng = "Repairs, troubleshoots, adjusts, overhauls, and maintains mobile heavy-duty equipment.", DescFre = "Repairs, troubleshoots, adjusts, overhauls, and maintains mobile heavy-duty equipment."},
+                new Competency { Id =  45, NameEng = "Automotive Service", NameFre = "Service automobile", DescEng = "Performs preventative maintenance, diagnoses problems, and repairs vehicle systems including engines, vehicle management, hybrids, steering, braking, tires, wheels, drivetrains, suspension, electrical, electronics, heating, ventilation and air conditioning (HVAC), restraints, trim, and accessories of automotive vehicles and light trucks.", DescFre = "Performs preventative maintenance, diagnoses problems, and repairs vehicle systems including engines, vehicle management, hybrids, steering, braking, tires, wheels, drivetrains, suspension, electrical, electronics, heating, ventilation and air conditioning (HVAC), restraints, trim, and accessories of automotive vehicles and light trucks."},
+                new Competency { Id =  46, NameEng = "Painting and Decorating", NameFre = "Peinture et décoration", DescEng = "Prepares and applies paint or any organic/inorganic coating when applied in the same manner as paints.", DescFre = "Prepares and applies paint or any organic/inorganic coating when applied in the same manner as paints."}
+
             });
             Save<Competency>();
             transaction.Commit();
@@ -449,7 +492,12 @@ namespace DataModel.SeedData
                 new Certificate { Id =  8, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Auditor Training Program", NameFre = "Programme de formation d'auditeur", RequireIndicatorEng = "Auditor Training Program", RequireIndicatorFre = "Programme de formation d'auditeur" },
                 new Certificate { Id =  9, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Safety Management for Industrial Facilities Certificate", NameFre = "Certificat en gestion de la sécurité des installations industrielles", RequireIndicatorEng = "Safety Management for Industrial Facilities Certificate", RequireIndicatorFre = "Certificat en gestion de la sécurité des installations industrielles" },
                 new Certificate { Id =  10, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Occupational Health & Safety Certificate", NameFre = "Certificat de santé et de sécurité au travail", RequireIndicatorEng = "Occupational Health & Safety Certificate", RequireIndicatorFre = "Certificat de santé et de sécurité au travail" },
-                new Certificate { Id =  11, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Accident Investigation Program", NameFre = "Programme d'enquête sur les accidents", RequireIndicatorEng = "Accident Investigation Program", RequireIndicatorFre = "Programme d'enquête sur les accidents" }
+                new Certificate { Id =  11, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Accident Investigation Program", NameFre = "Programme d'enquête sur les accidents", RequireIndicatorEng = "Accident Investigation Program", RequireIndicatorFre = "Programme d'enquête sur les accidents" },
+                new Certificate { Id =  12, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Red Seal Carpentry Certification", NameFre = "Certificat de charpenterie Sceau rouge", RequireIndicatorEng = "Red Seal Carpentry Certification", RequireIndicatorFre = "Certificat de charpenterie Sceau rouge" },
+                new Certificate { Id =  13, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Fall Protection Certificate", NameFre = "Certificat de protection contre les chutes", RequireIndicatorEng = "Fall Protection Certificate", RequireIndicatorFre = "Certificat de protection contre les chutes" },
+                new Certificate { Id =  14, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "SPRAT or IRATA, Level 1", NameFre = "SPRAT ou IRATA Niveau 1", RequireIndicatorEng = "SPRAT or IRATA, Level 1", RequireIndicatorFre = "SPRAT ou IRATA Niveau 1" },
+                new Certificate { Id =  15, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Inter-Provincial Journeyman Certification; Heavy Duty Mechanic or Automotive Mechanic", NameFre = "Certificat interprovincial de compagnon, mécanicien de machinerie lourde ou mécanicien d'automobile", RequireIndicatorEng = "Inter-Provincial Journeyman Certification; Heavy Duty Mechanic or Automotive Mechanic", RequireIndicatorFre = "Certificat interprovincial de compagnon, mécanicien de machinerie lourde ou mécanicien d'automobile" },
+                new Certificate { Id =  16, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Painter and Decorator Certificate", NameFre = "Certificat de peintre et décorateur", RequireIndicatorEng = "Painter and Decorator Certificate", RequireIndicatorFre = "Certificat de peintre et décorateur" }
             });
             Save<Certificate>();
             transaction.Commit();
@@ -492,7 +540,16 @@ namespace DataModel.SeedData
                 new CompetencyTypeGroup { CompetencyId =  33, CompetencyTypeId =  3  },
                 new CompetencyTypeGroup { CompetencyId =  34, CompetencyTypeId =  3  },
                 new CompetencyTypeGroup { CompetencyId =  36, CompetencyTypeId =  3  },
-                new CompetencyTypeGroup { CompetencyId =  37, CompetencyTypeId =  3  }
+                new CompetencyTypeGroup { CompetencyId =  37, CompetencyTypeId =  3  },
+                new CompetencyTypeGroup { CompetencyId =  38, CompetencyTypeId =  1  },
+                new CompetencyTypeGroup { CompetencyId =  39, CompetencyTypeId =  1  },
+                new CompetencyTypeGroup { CompetencyId =  40, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  41, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  42, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  43, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  44, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  45, CompetencyTypeId =  2  },
+                new CompetencyTypeGroup { CompetencyId =  46, CompetencyTypeId =  2  }
             });
             Save<CompetencyType>();
             transaction.Commit();
@@ -559,6 +616,7 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id=  54, DescEng = "Manages medium-risk contracts including governance, risk, performance, and financial management. Purchases general and specialized equipment, materials, land or access rights, or business services for use or for further processing by the Canadian Coast Guard. Interprets and applies the terms and conditions of the contract to varied situations. Manages, or assists in the management of, all procedural aspects of purchasing activities. Adapts contract management practices in changing circumstances whilst maintaining the overall intent of the contract.", DescFre =  "Gère les contrats à risque moyen, y compris la gouvernance, le risque, la performance et la gestion financière. Acheter de l'équipement général et spécialisé, du matériel, des terres ou des droits d'accès, ou des services commerciaux pour l'utilisation ou le traitement ultérieur par la Garde côtière canadienne. Interprète et applique les conditions du contrat à des situations variées. Gérer ou aider à gérer tous les aspects procéduraux des activités d'achat. Adapte les pratiques de gestion des contrats en fonction de l'évolution des circonstances tout en respectant l'intention générale du contrat."  },
                     new CompetencyLevelRequirement { Id=  55, DescEng = "Establishes delivery schedules, monitors progress, and contacts clients and suppliers to resolve problems in a work unit. Negotiates land acquisition or access rights for Coast Guard use, and may conduct field investigations of properties. Reviews and processes claims against suppliers. Monitors contract performance and identifies when corrective action needs to be taken to drive better outcomes. Assesses contract variations, and makes appropriate decisions based on risk. Invites tenders, consults with suppliers, and reviews quotations. Determines or negotiates contract terms and conditions, awards supplier contracts or recommend contract awards. Explores innovative contract management strategies for complex requirements with stakeholders.", DescFre =  "Établit les horaires de livraison, surveille les progrès et contacte les clients et les fournisseurs pour résoudre les problèmes dans une unité de travail. Négocie l'acquisition de terrains ou les droits d'accès pour l'usage de la Garde côtière, et peut mener des enquêtes sur le terrain concernant les propriétés. Examine et traite les réclamations contre les fournisseurs. Surveiller l'exécution des contrats et déterminer quand des mesures correctives doivent être prises pour obtenir de meilleurs résultats. Évalue les variations des contrats et prend les décisions appropriées en fonction des risques. Lance des appels d'offres, consulte les fournisseurs et examine les prix relevés. Détermine ou négocie les conditions des contrats, attribue les contrats des fournisseurs ou recommande l'attribution des contrats. Explore des stratégies novatrices de gestion des contrats pour les besoins complexes avec les parties prenantes."  },
                     new CompetencyLevelRequirement { Id=  56, DescEng = "Plans, organizes, directs, controls, and evaluates the purchasing activities of one or more work units. Identifies vendors of materials, equipment, or supplies. Participates in the development of specifications for equipment, products, or substitute materials. Interprets and advises on the terms and conditions of the contract, and applies to varied and complex situations. Monitors, evaluates and reports on contract milestones, key performance indicators adherence, performance metrics, and outcomes. Oversees the management of contracts and categories, and reports on contract activities that may result in political or public interest. Defines and advises on contract management responsibilities and processes across the Coast Guard. Drives the use of innovative contract management strategies where appropriate to deliver the best outcome and maximize value. Develops purchasing policies and procedures and controls purchasing department budget, when and where applicable.", DescFre =  "Planifie, organise, dirige, contrôle et évalue les activités d'achat d'une ou de plusieurs unités de travail. Identifie les fournisseurs de matériel, d'équipement ou de fournitures. Participe à l'élaboration de spécifications pour les équipements, les produits ou les matériaux de substitution. Interpréte et conseille les termes et conditions du contrat et s'applique à des situations variées et complexes. Surveille et évalue les étapes du contrat, le respect des indicateurs clés de performance, les mesures de performance et les résultats, et en rendre compte. Supervise la gestion des contrats et des catégories, et fait rapport sur les activités du contrat qui peuvent résulter d'un intérêt politique ou public. Défini et conseille sur les responsabilités et les processus de gestion des contrats au sein de la Garde côtière. Dirige l'utilisation de stratégies innovantes de gestion des contrats, le cas échéant, afin d'obtenir les meilleurs résultats et de maximiser la valeur. Élaborer des politiques et des procédures d'achat et contrôler le budget du service des achats, le cas échéant."  },
+
                     new CompetencyLevelRequirement { Id=  57, DescEng = "Coordinates a variety of recruitment, training, performance evaluation, HR systems, and classification activities. Prepares and proofreads forms and documents for and between the workforce management team or clients. Runs reports. Ensures that workforce management-related material is signed, dated, distributed, maintained, and filed appropriately.", DescFre =  "Coordonne diverses activités de recrutement, de formation, d'évaluation des performances, de systèmes RH et de classification. Prépare et corrige des formulaires et des documents pour et entre l'équipe de gestion du personnel ou les clients. Produit des rapports. S'assure que les documents relatifs à la gestion des effectifs sont signés, datés, distribués, mis à jour et classés de manière appropriée."  },
                     new CompetencyLevelRequirement { Id=  58, DescEng = "Compiles, maintains, and processes information relating to recruitment, training, performance evaluation, HR systems, or classification. Facilitates business line, workforce intelligence, succession planning, organizational awareness, and HR management practices. Arranges for advertising or posting job vacancies. Assists in screening of job applicants, and conducting of reference checks, when and where applicable.", DescFre =  "Compile, tenir à jour et traiter les informations relatives au recrutement, à la formation, à l'évaluation des performances, aux systèmes de RH ou à la classification. Facilite les pratiques de gestion des lignes d'activité, des renseignements sur les effectifs, de la planification de la relève, de la sensibilisation à l'organisation et de la gestion des RH. Organise la publication ou l'affichage des offres d'emploi. Aide à la sélection des candidats et à la vérification des références, le cas échéant."  },
                     new CompetencyLevelRequirement { Id=  59, DescEng = "Identifies job vacancies and prospective recruiting requirements. Provides advice to managers related to recruitment, training, or HR systems. Interprets and applies legislation and policies related to workforce management functions. Determines eligibility to entitlements, arranges and delivers member training. Provides information or services such as employee assistance, counselling, and recognition programs, when and where applicable.", DescFre =  "Identifie les offres d'emploi et les besoins de recrutement éventuels. Fournit des conseils aux gestionnaires en matière de recrutement, de formation ou de systèmes de ressources humaines. Interprète et applique la législation et les politiques relatives aux fonctions de gestion des effectifs. Détermine l'admissibilité aux droits, organise et dispense la formation des membres. Fournit des informations ou des services tels que l'aide aux employés, de councelling et des programmes de reconnaissance, le cas échéant."  },
@@ -663,7 +721,61 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id=  158, DescEng = "Expresses pride in the humanitarian and environmental nature of the Coast Guard's mission. Participates in organizational engagement activities. Wears the uniform proudly.", DescFre =  "Exprime sa fierté quant à la nature humanitaire et environnementale de la mission de la Garde côtière. Participer aux activités d'engagement organisationnel. Il porte fièrement l'uniforme."  },
                     new CompetencyLevelRequirement { Id=  159, DescEng = "Expresses pride in the Coast Guard's regional and/or national achievements. Incorporates and models the Coast Guard's ambitious vision and motto in daily practice and supports it within units. Articulates the Coast Guard's vision when providing advice or instructions internally. ", DescFre =  "Exprime sa fierté à l'égard des réalisations régionales ou nationales de la Garde côtière. Intégrer et modeler la vision et la devise ambitieuse de la Garde côtière dans la pratique quotidienne et l'appuyer au sein des unités. Articuler la vision de la Garde côtière lorsqu'elle donne des conseils ou des instructions à l'interne."  },
                     new CompetencyLevelRequirement { Id=  160, DescEng = "Propagates the Coast Guard's vision, mission, mandate, and programs internally and externally as an example of deep pride in the organization. Conveys the importance of the Coast Guard's work to members and stakeholders. Celebrates organizational achievements.", DescFre =  "Propager la vision, la mission, le mandat et les programmes de la Garde côtière à l'interne et à l'externe comme un exemple de fierté profonde envers l'organisation. Transmet l'importance du travail de la Garde côtière aux membres et aux intervenants. Célébrer les réalisations organisationnelles."  },
-                    new CompetencyLevelRequirement { Id=  161, DescEng = "Models organizational pride in the Coast Guard's brand and the jobs it performs. Champions the organization when working collectively with internal and external stakeholders. Promotes organizational achievements and employee engagement events nationally. Strives to hone organizational excellence through celebration and pageantry.", DescFre =  "Donne l'exemple de la fierté organisationnelle à l'égard de l'image de marque de la Garde côtière et des tâches qu'elle accomplit. Se fait le champion de l'organisation lorsqu'elle travaille collectivement avec les intervenants internes et externes. Fait la promotion des réalisations organisationnelles et des activités d'engagement des employés à l'échelle nationale. S'efforce d'affiner l'excellence organisationnelle par la célébration et l'apparat."  }
+                    new CompetencyLevelRequirement { Id=  161, DescEng = "Models organizational pride in the Coast Guard's brand and the jobs it performs. Champions the organization when working collectively with internal and external stakeholders. Promotes organizational achievements and employee engagement events nationally. Strives to hone organizational excellence through celebration and pageantry.", DescFre =  "Donne l'exemple de la fierté organisationnelle à l'égard de l'image de marque de la Garde côtière et des tâches qu'elle accomplit. Se fait le champion de l'organisation lorsqu'elle travaille collectivement avec les intervenants internes et externes. Fait la promotion des réalisations organisationnelles et des activités d'engagement des employés à l'échelle nationale. S'efforce d'affiner l'excellence organisationnelle par la célébration et l'apparat."  },
+
+                    new CompetencyLevelRequirement { Id=  162, DescEng = "Understands primary coastal features, weather, tide, and charts.", DescFre =  "Understands primary coastal features, weather, tide, and charts."  },
+                    new CompetencyLevelRequirement { Id=  163, DescEng = "Understands basic traffic patterns for traffic avoidance, observing and reporting weather conditions, and local tides in immediate surroundings.", DescFre =  "Understands basic traffic patterns for traffic avoidance, observing and reporting weather conditions, and local tides in immediate surroundings."  },
+                    new CompetencyLevelRequirement { Id=  164, DescEng = "Practical knowledge of a range of coastal domain factors including local weather predictability, vessel traffic avoidance in a given charted area, and local tides and currents. ", DescFre =  "Practical knowledge of a range of coastal domain factors including local weather predictability, vessel traffic avoidance in a given charted area, and local tides and currents. "  },
+                    new CompetencyLevelRequirement { Id=  165, DescEng = "Significant knowledge of a regional coastline including weather reporting and patterns, impacts on shipping, vessel traffic patterns and reporting, cartographic and oceanographic factors, and the search net. ", DescFre =  "Significant knowledge of a regional coastline including weather reporting and patterns, impacts on shipping, vessel traffic patterns and reporting, cartographic and oceanographic factors, and the search net. "  },
+                    new CompetencyLevelRequirement { Id=  166, DescEng = "Excellent knowledge of regional and/or national coastal factors including those likely to impact the coast, threats from offshore, natural disasters and their impacts, vessel traffic management, operations of other government vessels, detailed cartography, meteorology, hydrogeology, and oceanography.", DescFre =  "Excellent knowledge of regional and/or national coastal factors including those likely to impact the coast, threats from offshore, natural disasters and their impacts, vessel traffic management, operations of other government vessels, detailed cartography, meteorology, hydrogeology, and oceanography."  },
+
+                    new CompetencyLevelRequirement { Id=  167, DescEng = "Basic knowledge of how the movement of water generates gravity force to lift or lower a vessel in a canal lock.", DescFre =  "Basic knowledge of how the movement of water generates gravity force to lift or lower a vessel in a canal lock."  },
+                    new CompetencyLevelRequirement { Id=  168, DescEng = "Limited knowledge of the major operational components of a canal, such as the bollard, gate, lock, reach, and valve.", DescFre =  "Limited knowledge of the major operational components of a canal, such as the bollard, gate, lock, reach, and valve."  },
+                    new CompetencyLevelRequirement { Id=  169, DescEng = "Practical knowledge of how to signal a canal master, approach a lock reach, navigate a lock, and proceed safely clear of a canal.", DescFre =  "Practical knowledge of how to signal a canal master, approach a lock reach, navigate a lock, and proceed safely clear of a canal."  },
+                    new CompetencyLevelRequirement { Id=  170, DescEng = "Advanced knowledge of canal lock operation from a canal master perspective, including receiving signals of transits, operating the gates, flooding the lock, and troublshooting for current or potential problems.", DescFre =  "Advanced knowledge of canal lock operation from a canal master perspective, including receiving signals of transits, operating the gates, flooding the lock, and troublshooting for current or potential problems."  },
+                    new CompetencyLevelRequirement { Id=  171, DescEng = "Expert knowledge of all facets of canal lock operating, as well as such maintenance functions as ordering and overseeing preventative maintenance of gates, and controls.", DescFre =  "Expert knowledge of all facets of canal lock operating, as well as such maintenance functions as ordering and overseeing preventative maintenance of gates, and controls."  },
+
+                    new CompetencyLevelRequirement { Id=  172, DescEng = "Assists trades staff in performing basic labour activities, when and where applicable. Maintains clean and orderly conditions in all working areas, including shop, vehicle, vessel, and the Canadian Coast Guard's work sites.", DescFre =  "Assists trades staff in performing basic labour activities, when and where applicable. Maintains clean and orderly conditions in all working areas, including shop, vehicle, vessel, and the Canadian Coast Guard's work sites."  },
+                    new CompetencyLevelRequirement { Id=  173, DescEng = "Performs duties such as window mechanism repairs, lubricating doors, tile and carpet removal, painting, boiler tube cleaning, securing buildings, emergency water shut off, roof drain cleaning, ceiling tile replacement, air filter changing, removal of roof debris, replacement of lights, minor driveway and walkway repairs, catch basin maintenance. Loads, transports, and unloads planned furniture, equipment, books, risers and other material requested and approved within vessels and facilities of the Coast Guard. Uses power and hand tools.", DescFre =  "Performs duties such as window mechanism repairs, lubricating doors, tile and carpet removal, painting, boiler tube cleaning, securing buildings, emergency water shut off, roof drain cleaning, ceiling tile replacement, air filter changing, removal of roof debris, replacement of lights, minor driveway and walkway repairs, catch basin maintenance. Loads, transports, and unloads planned furniture, equipment, books, risers and other material requested and approved within vessels and facilities of the Coast Guard. Uses power and hand tools."  },
+                    new CompetencyLevelRequirement { Id=  174, DescEng = "Completes and documents work and/or inspection/test orders. Makes recommendations and determines potential work time for planned equipment moves and maintenance. Operates precision power hand tools, and cleans, maintains, and stores equipment after use.", DescFre =  "Completes and documents work and/or inspection/test orders. Makes recommendations and determines potential work time for planned equipment moves and maintenance. Operates precision power hand tools, and cleans, maintains, and stores equipment after use."  },
+                    new CompetencyLevelRequirement { Id=  175, DescEng = "Performs risk assessment of all assigned projects and maintains risk management protocols at all times. Performs inspections and keeps maintenance records. Operates and maintains power and hand tools, and trains others. ", DescFre =  "Performs risk assessment of all assigned projects and maintains risk management protocols at all times. Performs inspections and keeps maintenance records. Operates and maintains power and hand tools, and trains others. "  },
+                    new CompetencyLevelRequirement { Id=  176, DescEng = "Maintains buildings and grounds. Performs minor construction and renovation projects. Implements vehicle, vessel, and/or building system practices and procedures. Inspects and conducts quality assurance functions.", DescFre =  "Maintains buildings and grounds. Performs minor construction and renovation projects. Implements vehicle, vessel, and/or building system practices and procedures. Inspects and conducts quality assurance functions."  },
+
+                    new CompetencyLevelRequirement { Id=  177, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  178, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  179, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  180, DescEng = "Interprets work orders and technical manuals, and drafts service reports and maintenance logs. Checks bulldozers, cranes, graders, and other heavy construction equipment for proper performance and inspects equipment to detect faults and malfunctions. Diagnoses faults or malfunctions using computerized and other testing equipment to determine extent of repair required. Cleans, lubricates, and performs other routine maintenance work on equipment. Adjusts equipment and repairs or replaces defective parts, components or systems, using hand and power tools. Tests repaired equipment for proper performance and to ensure that work meets manufacturers' specifications. ", DescFre =  "Interprets work orders and technical manuals, and drafts service reports and maintenance logs. Checks bulldozers, cranes, graders, and other heavy construction equipment for proper performance and inspects equipment to detect faults and malfunctions. Diagnoses faults or malfunctions using computerized and other testing equipment to determine extent of repair required. Cleans, lubricates, and performs other routine maintenance work on equipment. Adjusts equipment and repairs or replaces defective parts, components or systems, using hand and power tools. Tests repaired equipment for proper performance and to ensure that work meets manufacturers' specifications. "  },
+                    new CompetencyLevelRequirement { Id=  181, DescEng = "Assists other mechanics with more challenging assignments. Maintains a schedule for preventative maintenance on all equipment. Ensures that equipment meets all government regulations and standards for safety. Stays current with regulations, health and safety procedures, and new technologies. Advises and guides management in best practices, approaches, and strategies to resolve issues or define programs. Provides instruction and training in the proper methods and processes necessary to perform equipment repair, inspection, and preventive maintenance.", DescFre =  "Assists other mechanics with more challenging assignments. Maintains a schedule for preventative maintenance on all equipment. Ensures that equipment meets all government regulations and standards for safety. Stays current with regulations, health and safety procedures, and new technologies. Advises and guides management in best practices, approaches, and strategies to resolve issues or define programs. Provides instruction and training in the proper methods and processes necessary to perform equipment repair, inspection, and preventive maintenance."  },
+
+                    new CompetencyLevelRequirement { Id=  182, DescEng = "Assists carpenters. Interprets simple blueprints and drawings. Uses basic materials and techniques. Sets up and operates hand tools and equipment. Sets up framing using basic joining techniques. Maintains and cleans tools and the site.", DescFre =  "Assists carpenters. Interprets simple blueprints and drawings. Uses basic materials and techniques. Sets up and operates hand tools and equipment. Sets up framing using basic joining techniques. Maintains and cleans tools and the site."  },
+                    new CompetencyLevelRequirement { Id=  183, DescEng = "Performs standard building construction and repair using sketches, working blueprints, and work plans. Uses and maintains tools according to standards. Selects appropriate materials and gear. Assembles items with standard joining, woodworking, and bonding techniques. Works independently on basic jobs.", DescFre =  "Performs standard building construction and repair using sketches, working blueprints, and work plans. Uses and maintains tools according to standards. Selects appropriate materials and gear. Assembles items with standard joining, woodworking, and bonding techniques. Works independently on basic jobs."  },
+                    new CompetencyLevelRequirement { Id=  184, DescEng = "Performs intermediate heavy and light construction and repair. Manages cyclic preventive maintenance on a selected array of machinery, tools, and equipment. Works from sketches, orders, and standard blueprints to independently assemble and repair most basic structures.", DescFre =  "Performs intermediate heavy and light construction and repair. Manages cyclic preventive maintenance on a selected array of machinery, tools, and equipment. Works from sketches, orders, and standard blueprints to independently assemble and repair most basic structures."  },
+                    new CompetencyLevelRequirement { Id=  185, DescEng = "Performs complex construction and repair using the full range of woodworking tools, techniques, and machines. Interprets complex blueprints, drawings, and specifications. Determines layout and work sequence. Assembles items to close tolerance and fit with a wide variety of joining techniques.", DescFre = "Performs complex construction and repair using the full range of woodworking tools, techniques, and machines. Interprets complex blueprints, drawings, and specifications. Determines layout and work sequence. Assembles items to close tolerance and fit with a wide variety of joining techniques." },
+                    new CompetencyLevelRequirement { Id=  186, DescEng = "Develops and implements work schedules. Uses advanced knowledge of wood and other materials and shop mathematics to compute and lay out arcs, tangents, and circles according to complex blueprints. Sets up and operates all precision carpentry and wood working tools and equipment. Finishes products with precise fit, accurate dimensions, and appearance. Determines grade, size and type of lumber.", DescFre =  "Develops and implements work schedules. Uses advanced knowledge of wood and other materials and shop mathematics to compute and lay out arcs, tangents, and circles according to complex blueprints. Sets up and operates all precision carpentry and wood working tools and equipment. Finishes products with precise fit, accurate dimensions, and appearance. Determines grade, size and type of lumber."  },
+
+                    new CompetencyLevelRequirement { Id=  187, DescEng = "Makes recommendations for decision on technical engineering matters.", DescFre =  "Makes recommendations for decision on technical engineering matters."  },
+                    new CompetencyLevelRequirement { Id=  188, DescEng = "Makes recommendations to approve routine engineering/technical designs and/or project/program specifications of other engineers to meet desired compliance with engineering principles, standards, codes, designs, and statutes.", DescFre =  "Makes recommendations to approve routine engineering/technical designs and/or project/program specifications of other engineers to meet desired compliance with engineering principles, standards, codes, designs, and statutes."  },
+                    new CompetencyLevelRequirement { Id=  189, DescEng = "Makes recommendations, and may make decisions on non-engineering and/or program matters or other areas requiring technical engineering expertise. May make final decisions. Provides technical analysis. May serve as a mentor/resource to lower level employees in the area of assignment. May approve moderately complex engineering/technical designs and/or project/program specificiations of other engineers to meet desired compliance with engineering principles, standards, codes, designs, and statutes. May address conflicting design constraints.", DescFre =  "Makes recommendations, and may make decisions on non-engineering and/or program matters or other areas requiring technical engineering expertise. May make final decisions. Provides technical analysis. May serve as a mentor/resource to lower level employees in the area of assignment. May approve moderately complex engineering/technical designs and/or project/program specificiations of other engineers to meet desired compliance with engineering principles, standards, codes, designs, and statutes. May address conflicting design constraints."  },
+                    new CompetencyLevelRequirement { Id=  190, DescEng = "Approves complex or novel engineering/technical designs and/or project/program specifications of other engineers, to meet desired compliance with engineering principles, standards, codes, designs, and statutes. Addresses conflicting design constraints.", DescFre =  "Approves complex or novel engineering/technical designs and/or project/program specifications of other engineers, to meet desired compliance with engineering principles, standards, codes, designs, and statutes. Addresses conflicting design constraints."  },
+                    new CompetencyLevelRequirement { Id=  191, DescEng = "Makes final recommendations and may make decisions that require specialized engineering and/or program knowledge. Decisions may not be technically reviewed. Collaborates with others in finding solutions to controversial or sensitive matters that establish precendents. Technical expert in the area of assignment and may represent the Canadian Coast Guard as an expert.", DescFre =  "Makes final recommendations and may make decisions that require specialized engineering and/or program knowledge. Decisions may not be technically reviewed. Collaborates with others in finding solutions to controversial or sensitive matters that establish precendents. Technical expert in the area of assignment and may represent the Canadian Coast Guard as an expert."  },
+
+                    new CompetencyLevelRequirement { Id=  192, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  193, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  194, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  195, DescEng = "Interprets work orders and technical manuals, and drafts service reports and maintenance logs. Checks bulldozers, cranes, graders, and other heavy construction equipment for proper performance and inspects equipment to detect faults and malfunctions. Diagnoses faults or malfunctions using computerized and other testing equipment to determine extent of repair required. Cleans, lubricates, and performs other routine maintenance work on equipment. Adjusts equipment and repairs or replaces defective parts, components or systems, using hand and power tools. Tests repaired equipment for proper performance and to ensure that work meets manufacturers' specifications.", DescFre =  "Interprets work orders and technical manuals, and drafts service reports and maintenance logs. Checks bulldozers, cranes, graders, and other heavy construction equipment for proper performance and inspects equipment to detect faults and malfunctions. Diagnoses faults or malfunctions using computerized and other testing equipment to determine extent of repair required. Cleans, lubricates, and performs other routine maintenance work on equipment. Adjusts equipment and repairs or replaces defective parts, components or systems, using hand and power tools. Tests repaired equipment for proper performance and to ensure that work meets manufacturers' specifications."  },
+                    new CompetencyLevelRequirement { Id=  196, DescEng = "Assists other mechanics with more challenging assignments. Maintains a schedule for preventative maintenance on all equipment. Ensures that equipment meets all government regulations and standards for safety. Stays current with regulations, health and safety procedures, and new technologies. Advises and guides management in best practices, approaches, and strategies to resolve issues or define programs. Provides instruction and training in the proper methods and processes necessary to perform equipment repair, inspection, and preventive maintenance.", DescFre =  "Assists other mechanics with more challenging assignments. Maintains a schedule for preventative maintenance on all equipment. Ensures that equipment meets all government regulations and standards for safety. Stays current with regulations, health and safety procedures, and new technologies. Advises and guides management in best practices, approaches, and strategies to resolve issues or define programs. Provides instruction and training in the proper methods and processes necessary to perform equipment repair, inspection, and preventive maintenance."  },
+
+                    new CompetencyLevelRequirement { Id=  197, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  198, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  199, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  200, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  201, DescEng = "Reviews manuals, bulletins, and safety documents. Locates data such as classifications, product and material specifications, identification numbers, quantities, and costs. Completes workplace documents such as written explanations to the client, work orders, inspection reports, and incident reports. Analyzes pressure, power, torque, compression, and electrical readings to assess vehicle performance and troubleshoot faults. Takes a variety of measurements using digital and analog equipment. Evaluates the severity of vehicle defects and deficiencies and the quality of repairs. Uses computerized scanning equipment, onboard vehicle diagnostics and hand-held diagnostic tools to gain operational information about vehicles. Repairs damaged vehicles, vessels, including engine repair and body work.", DescFre =  "Reviews manuals, bulletins, and safety documents. Locates data such as classifications, product and material specifications, identification numbers, quantities, and costs. Completes workplace documents such as written explanations to the client, work orders, inspection reports, and incident reports. Analyzes pressure, power, torque, compression, and electrical readings to assess vehicle performance and troubleshoot faults. Takes a variety of measurements using digital and analog equipment. Evaluates the severity of vehicle defects and deficiencies and the quality of repairs. Uses computerized scanning equipment, onboard vehicle diagnostics and hand-held diagnostic tools to gain operational information about vehicles. Repairs damaged vehicles, vessels, including engine repair and body work."  },
+
+                    new CompetencyLevelRequirement { Id=  202, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  203, DescEng = "N/A", DescFre =  "N/A"  },
+                    new CompetencyLevelRequirement { Id=  204, DescEng = "Sands and hydro blasts for cleaning, decorative or preparatory purposes steel, concrete, or wood. Installs rubber, fiberglass, acid resistant or metalized linings to tanks, pipes, or other vessels. Installs all wall coverings on buildings or structure surfaces, when and where applicable. Uses hand tools and measuring equipment. ", DescFre =  "Sands and hydro blasts for cleaning, decorative or preparatory purposes steel, concrete, or wood. Installs rubber, fiberglass, acid resistant or metalized linings to tanks, pipes, or other vessels. Installs all wall coverings on buildings or structure surfaces, when and where applicable. Uses hand tools and measuring equipment."  },
+                    new CompetencyLevelRequirement { Id=  205, DescEng = "Cleans and sands surfaces. Applies drywall and plaster repair and finishing techniques. Applies chemical treatments and wood fillers to a given surface. Applies procedures or treatments to prepare a substrate. Strains, mixes, and thins coatings according to specifications including ratios and induction times. Applies a spray finish using airless equipment according to project specifications. Performs abrasive and hydro blasting. Corrects coating failures. Uses hoisting and lifting equipment.", DescFre =  "Cleans and sands surfaces. Applies drywall and plaster repair and finishing techniques. Applies chemical treatments and wood fillers to a given surface. Applies procedures or treatments to prepare a substrate. Strains, mixes, and thins coatings according to specifications including ratios and induction times. Applies a spray finish using airless equipment according to project specifications. Performs abrasive and hydro blasting. Corrects coating failures. Uses hoisting and lifting equipment."  },
+                    new CompetencyLevelRequirement { Id=  206, DescEng = "Manages workplace hazards while respecting fall protection systems, personal protective equipment (PPE), and fire safety procedures. Uses power, pneumatic tools, and access equipment. Prepares and repairs drywall, plaster, concrete, masonry, metal and wood surfaces. Applies and corrects paint/coating failures. Uses airless, specialty, and thermal spray equipment. Applies caulking, finishes, and graphics. Applies decorative finishes. Interprets drawings and specifications. Identifies standards for application of coatings to metal substrates. Provides guidance on the types and functions of abrasive blasting equipment, on the procedures involved in hydro blasting, the architectural, high performance, and industrial coatings, and on the causes and remedies for given coating failures.", DescFre =  "Manages workplace hazards while respecting fall protection systems, personal protective equipment (PPE), and fire safety procedures. Uses power, pneumatic tools, and access equipment. Prepares and repairs drywall, plaster, concrete, masonry, metal and wood surfaces. Applies and corrects paint/coating failures. Uses airless, specialty, and thermal spray equipment. Applies caulking, finishes, and graphics. Applies decorative finishes. Interprets drawings and specifications. Identifies standards for application of coatings to metal substrates. Provides guidance on the types and functions of abrasive blasting equipment, on the procedures involved in hydro blasting, the architectural, high performance, and industrial coatings, and on the causes and remedies for given coating failures."  }
 
             });
             Save<CompetencyLevelRequirement>();
@@ -835,7 +947,53 @@ namespace DataModel.SeedData
                     new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158  },
                     new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  159  },
                     new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  160  },
-                    new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161  }
+                    new CompetencyRatingGroup { CompetencyId =  37, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  161  },
+
+                    new CompetencyRatingGroup { CompetencyId =  38, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  162  },
+                    new CompetencyRatingGroup { CompetencyId =  38, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  163  },
+                    new CompetencyRatingGroup { CompetencyId =  38, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  164  },
+                    new CompetencyRatingGroup { CompetencyId =  38, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  165  },
+                    new CompetencyRatingGroup { CompetencyId =  38, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  166  },
+                    new CompetencyRatingGroup { CompetencyId =  39, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  167  },
+                    new CompetencyRatingGroup { CompetencyId =  39, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  168  },
+                    new CompetencyRatingGroup { CompetencyId =  39, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  169  },
+                    new CompetencyRatingGroup { CompetencyId =  39, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  170  },
+                    new CompetencyRatingGroup { CompetencyId =  39, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  171  },
+                    new CompetencyRatingGroup { CompetencyId =  40, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  172  },
+                    new CompetencyRatingGroup { CompetencyId =  40, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  173  },
+                    new CompetencyRatingGroup { CompetencyId =  40, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  174  },
+                    new CompetencyRatingGroup { CompetencyId =  40, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  175  },
+                    new CompetencyRatingGroup { CompetencyId =  40, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  176  },
+                    new CompetencyRatingGroup { CompetencyId =  41, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  177  },
+                    new CompetencyRatingGroup { CompetencyId =  41, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  178  },
+                    new CompetencyRatingGroup { CompetencyId =  41, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  179  },
+                    new CompetencyRatingGroup { CompetencyId =  41, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  180  },
+                    new CompetencyRatingGroup { CompetencyId =  41, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  181  },
+                    new CompetencyRatingGroup { CompetencyId =  42, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  182  },
+                    new CompetencyRatingGroup { CompetencyId =  42, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  183  },
+                    new CompetencyRatingGroup { CompetencyId =  42, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  184  },
+                    new CompetencyRatingGroup { CompetencyId =  42, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  185  },
+                    new CompetencyRatingGroup { CompetencyId =  42, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  186  },
+                    new CompetencyRatingGroup { CompetencyId =  43, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  187  },
+                    new CompetencyRatingGroup { CompetencyId =  43, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  188  },
+                    new CompetencyRatingGroup { CompetencyId =  43, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  189  },
+                    new CompetencyRatingGroup { CompetencyId =  43, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  190  },
+                    new CompetencyRatingGroup { CompetencyId =  43, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  191  },
+                    new CompetencyRatingGroup { CompetencyId =  44, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  192  },
+                    new CompetencyRatingGroup { CompetencyId =  44, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  193  },
+                    new CompetencyRatingGroup { CompetencyId =  44, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  194  },
+                    new CompetencyRatingGroup { CompetencyId =  44, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  195  },
+                    new CompetencyRatingGroup { CompetencyId =  44, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  196  },
+                    new CompetencyRatingGroup { CompetencyId =  45, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  197  },
+                    new CompetencyRatingGroup { CompetencyId =  45, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  198  },
+                    new CompetencyRatingGroup { CompetencyId =  45, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  199  },
+                    new CompetencyRatingGroup { CompetencyId =  45, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  200  },
+                    new CompetencyRatingGroup { CompetencyId =  45, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  201  },
+                    new CompetencyRatingGroup { CompetencyId =  46, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  202  },
+                    new CompetencyRatingGroup { CompetencyId =  46, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  203  },
+                    new CompetencyRatingGroup { CompetencyId =  46, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  204  },
+                    new CompetencyRatingGroup { CompetencyId =  46, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  205  },
+                    new CompetencyRatingGroup { CompetencyId =  46, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  206  }
 
             });
             Save<CompetencyLevelRequirement>();
@@ -2285,7 +2443,91 @@ namespace DataModel.SeedData
                     new JobPositionCompetency { JobPositionId = 81, CompetencyId =  33, CompetencyTypeId =  3 },
                     new JobPositionCompetency { JobPositionId = 81, CompetencyId =  34, CompetencyTypeId =  3 },
                     new JobPositionCompetency { JobPositionId = 81, CompetencyId =  36, CompetencyTypeId =  3 },
-                    new JobPositionCompetency { JobPositionId = 81, CompetencyId =  37, CompetencyTypeId =  3 }
+                    new JobPositionCompetency { JobPositionId = 81, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  38, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  39, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  41, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 82, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  38, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  39, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  41, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 83, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  9, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  42, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  43, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 84, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  9, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  42, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  43, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 85, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  44, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  45, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 86, CompetencyId =  37, CompetencyTypeId =  3 },
+
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  46, CompetencyTypeId =  2 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobPositionCompetency { JobPositionId = 87, CompetencyId =  37, CompetencyTypeId =  3 }
 
             });
             Save<CompetencyType>();
@@ -3734,7 +3976,107 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetency { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  33, CompetencyTypeId =  3 },
                     new JobRolePositionCompetency { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  34, CompetencyTypeId =  3 },
                     new JobRolePositionCompetency { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  36, CompetencyTypeId =  3 },
-                    new JobRolePositionCompetency { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  37, CompetencyTypeId =  3 }
+                    new JobRolePositionCompetency { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  38, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  39, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  41, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  38, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  39, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  41, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  9, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  42, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  43, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  9, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  42, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  43, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  10, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  44, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  45, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  46, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  46, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  37, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  1, CompetencyTypeId =  1 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  17, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  40, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  46, CompetencyTypeId =  2 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  26, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  27, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  28, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  33, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  34, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  36, CompetencyTypeId =  3 },
+                    new JobRolePositionCompetency { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  37, CompetencyTypeId =  3 }
             });
             Save<CompetencyType>();
             transaction.Commit();
@@ -3747,7 +4089,15 @@ namespace DataModel.SeedData
             using var transaction = _db.Database.BeginTransaction();
             _db.JobRolePositionCertificates.AddRange(new List<JobRolePositionCertificate>()
             {
-                new JobRolePositionCertificate { JobGroupId = 1, JobGroupLevelId = 3, JobPositionId = 5, CertificateId = 1 }
+                new JobRolePositionCertificate { JobGroupId = 1, JobGroupLevelId = 1, JobPositionId = 5, CertificateId = 1 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CertificateId = 12 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CertificateId = 13 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CertificateId = 14 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CertificateId = 12 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CertificateId = 13 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CertificateId = 14 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 14, JobPositionId = 86, CertificateId = 15 },
+                new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 16, JobPositionId = 88, CertificateId = 16 }
             });
             Save<Certificate>();
             transaction.Commit();
@@ -5197,8 +5547,107 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetencyRating { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  143 },
                     new JobRolePositionCompetencyRating { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  148 },
                     new JobRolePositionCompetencyRating { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  152 },
-                    new JobRolePositionCompetencyRating { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 }
-
+                    new JobRolePositionCompetencyRating { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  38, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  163 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  39, CompetencyTypeId =  1, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  169 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  82 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  173 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  41, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  178 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  127 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  132 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  137 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  142 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  152 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  157 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  3 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  38, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  163 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  39, CompetencyTypeId =  1, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  169 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  83 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  174 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  41, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  179 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  128 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  133 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  138 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  143 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  150 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  153 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  9, CompetencyTypeId =  2, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  42 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  10, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  48 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  83 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  174 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  42, CompetencyTypeId =  2, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  185 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  43, CompetencyTypeId =  2, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  187 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  128 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  133 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  138 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  143 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  153 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  157 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  9, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  44 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  10, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  49 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  83 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  175 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  42, CompetencyTypeId =  2, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  186 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  43, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  188 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  129 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  134 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  139 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  144 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  154 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  10, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  48 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  84 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  176 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  44, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  194 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  45, CompetencyTypeId =  2, CompetencyRatingLevelId =  5, CompetencyLevelRequirementId =  201 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  129 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  134 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  138 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  144 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  153 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  1 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  82 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  173 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  46, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  203 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  127 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  132 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  137 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  142 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  148 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  152 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  157 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  82 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  174 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  46, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  204 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  1, CompetencyLevelRequirementId =  127 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  133 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  138 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  143 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  153 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  1, CompetencyTypeId =  1, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  2 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  17, CompetencyTypeId =  2, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  83 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  40, CompetencyTypeId =  2, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  174 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  46, CompetencyTypeId =  2, CompetencyRatingLevelId =  4, CompetencyLevelRequirementId =  205 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  26, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  128 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  27, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  133 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  28, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  138 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  33, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  144 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  34, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  149 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  36, CompetencyTypeId =  3, CompetencyRatingLevelId =  3, CompetencyLevelRequirementId =  154 },
+                    new JobRolePositionCompetencyRating { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, CompetencyId =  37, CompetencyTypeId =  3, CompetencyRatingLevelId =  2, CompetencyLevelRequirementId =  158 }
             });
             Save<CompetencyLevelRequirement>();
             transaction.Commit();
@@ -5804,8 +6253,33 @@ namespace DataModel.SeedData
                     new JobRolePositionLocation { JobGroupId= 12, JobGroupLevelId =  5, JobPositionId =  81, JobLocationRegionId =  4 },
                     new JobRolePositionLocation { JobGroupId= 12, JobGroupLevelId =  5, JobPositionId =  81, JobLocationRegionId =  5 },
                     new JobRolePositionLocation { JobGroupId= 12, JobGroupLevelId =  5, JobPositionId =  81, JobLocationRegionId =  6 },
-                    new JobRolePositionLocation { JobGroupId= 12, JobGroupLevelId =  5, JobPositionId =  81, JobLocationRegionId =  7 }
-
+                    new JobRolePositionLocation { JobGroupId= 12, JobGroupLevelId =  5, JobPositionId =  81, JobLocationRegionId =  7 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  10, JobPositionId =  82, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  11, JobPositionId =  83, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  12, JobPositionId =  84, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  12, JobPositionId =  84, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  12, JobPositionId =  84, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  12, JobPositionId =  84, JobLocationRegionId =  5 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  13, JobPositionId =  85, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  13, JobPositionId =  85, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  13, JobPositionId =  85, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  13, JobPositionId =  85, JobLocationRegionId =  5 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  14, JobPositionId =  86, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  14, JobPositionId =  86, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  14, JobPositionId =  86, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  14, JobPositionId =  86, JobLocationRegionId =  5 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  15, JobPositionId =  87, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  15, JobPositionId =  87, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  15, JobPositionId =  87, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  15, JobPositionId =  87, JobLocationRegionId =  5 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  16, JobPositionId =  88, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  16, JobPositionId =  88, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  16, JobPositionId =  88, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  16, JobPositionId =  88, JobLocationRegionId =  5 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  17, JobPositionId =  89, JobLocationRegionId =  1 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  17, JobPositionId =  89, JobLocationRegionId =  2 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  17, JobPositionId =  89, JobLocationRegionId =  3 },
+                    new JobRolePositionLocation { JobGroupId= 8, JobGroupLevelId =  17, JobPositionId =  89, JobLocationRegionId =  5 }
             });
             Save<JobLocationRegion>();
             transaction.Commit();
@@ -5897,7 +6371,15 @@ namespace DataModel.SeedData
                 new JobRolePositionHLCategory { JobGroupId = 12, JobGroupLevelId =  2, JobPositionId =  78, JobHLCategoryId =  2 },
                 new JobRolePositionHLCategory { JobGroupId = 12, JobGroupLevelId =  3, JobPositionId =  79, JobHLCategoryId =  2 },
                 new JobRolePositionHLCategory { JobGroupId = 12, JobGroupLevelId =  4, JobPositionId =  80, JobHLCategoryId =  2 },
-                new JobRolePositionHLCategory { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, JobHLCategoryId =  2 }
+                new JobRolePositionHLCategory { JobGroupId = 12, JobGroupLevelId =  5, JobPositionId =  81, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  10, JobPositionId =  82, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  11, JobPositionId =  83, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  12, JobPositionId =  84, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  13, JobPositionId =  85, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  14, JobPositionId =  86, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  15, JobPositionId =  87, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  16, JobPositionId =  88, JobHLCategoryId =  2 },
+                new JobRolePositionHLCategory { JobGroupId = 8, JobGroupLevelId =  17, JobPositionId =  89, JobHLCategoryId =  2 }
             });
             Save<JobHLCategory>();
             transaction.Commit();
