@@ -123,6 +123,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
     <value>Current Position</value>
   </data>
@@ -141,11 +144,23 @@
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>MATCHING COMPETENCIES</value>
   </data>
+  <data name="NoCertifications" xml:space="preserve">
+    <value>No differing certifications</value>
+  </data>
   <data name="NoDiff" xml:space="preserve">
     <value>No differing competencies</value>
   </data>
   <data name="NoMatch" xml:space="preserve">
     <value>No matching competencies</value>
+  </data>
+  <data name="NoType1Competencies" xml:space="preserve">
+    <value>No differing knowledge elements</value>
+  </data>
+  <data name="NoType2Competencies" xml:space="preserve">
+    <value>No differing technical elements</value>
+  </data>
+  <data name="NoType3Competencies" xml:space="preserve">
+    <value>No differing behavioural elements</value>
   </data>
   <data name="Position Level" xml:space="preserve">
     <value>Position Level</value>

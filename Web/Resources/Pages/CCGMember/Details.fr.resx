@@ -123,6 +123,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Détails de la position actuelle</value>
   </data>

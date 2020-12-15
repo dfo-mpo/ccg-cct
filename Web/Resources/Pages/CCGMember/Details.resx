@@ -123,6 +123,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Current Position Details</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
+  </data>
+  <data name="NoType1Competencies" xml:space="preserve">
+    <value>No Behavioural </value>
   </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>

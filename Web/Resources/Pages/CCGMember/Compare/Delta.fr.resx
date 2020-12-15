@@ -123,6 +123,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
     <value>Position actuelle</value>
   </data>
@@ -141,11 +144,23 @@
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
   </data>
+  <data name="NoCertifications" xml:space="preserve">
+    <value>Pas de certifications différentes</value>
+  </data>
   <data name="NoDiff" xml:space="preserve">
     <value>Pas de compétences différentes</value>
   </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Aucune compétence correspondante</value>
+  </data>
+  <data name="NoType1Competencies" xml:space="preserve">
+    <value>Aucun élément de connaissance différent</value>
+  </data>
+  <data name="NoType2Competencies" xml:space="preserve">
+    <value>Aucun éléments techniques différents</value>
+  </data>
+  <data name="NoType3Competencies" xml:space="preserve">
+    <value>Aucun élément comportemental différent</value>
   </data>
   <data name="Position Level" xml:space="preserve">
     <value>Niveau du poste</value>
