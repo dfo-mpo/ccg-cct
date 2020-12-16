@@ -72,10 +72,11 @@
                                 </a>
                                 <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
                                     <header class="modal-header">
-                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue @(isEnglish ? c.RatingNameEng : c.RatingNameFre)</h2>
+                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
                                         <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>
@@ -116,10 +117,11 @@
                                 </a>
                                 <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
                                     <header class="modal-header">
-                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue @(isEnglish ? c.RatingNameEng : c.RatingNameFre)</h2>
+                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
                                         <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>
@@ -160,10 +162,11 @@
                                 </a>
                                 <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
                                     <header class="modal-header">
-                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue @(isEnglish ? c.RatingNameEng : c.RatingNameFre)</h2>
+                                        <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
                                         <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ namespace Web.Pages.CCGMember
 {
     public class DetailsModel : PageModel
     {
+        private readonly ILogger<DetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; }
@@ -27,11 +29,12 @@ namespace Web.Pages.CCGMember
 
         public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
         {
-            //_logger = logger;
+            _logger = logger;
             _jobpositionService = jobcompetencyService;
         }
         public async Task OnGetAsync(int positionid)
         {
+            _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);

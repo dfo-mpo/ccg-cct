@@ -45,10 +45,19 @@ namespace Business.Queries.Compare
                         TypeNameEng = obj.CompetencyType.NameEng,
                         TypeNameFre = obj.CompetencyType.NameFre,
                         TypeId = obj.CompetencyType.Id,
+                        RatingNameCurEng = current == null ? "N/A" : current.CompetencyRatingLevel.NameEng,
+                        RatingNameCurFre = current == null ? "N/A" : current.CompetencyRatingLevel.NameFre,
+                        RatingNameObjEng = obj.CompetencyRatingLevel.NameEng,
+                        RatingNameObjFre = obj.CompetencyRatingLevel.NameFre,
                         RatingDescCurEng = current == null ? "N/A" : current.CompetencyRatingLevel.DescEng,
                         RatingDescCurFre = current == null ? "N/A" : current.CompetencyRatingLevel.DescFre,
-                        RatingDescObjEng = obj.CompetencyLevelRequirement.DescEng,
-                        RatingDescObjFre = obj.CompetencyRatingLevel.DescFre
+                        RatingDescObjEng = obj.CompetencyRatingLevel.DescEng,
+                        RatingDescObjFre = obj.CompetencyRatingLevel.DescFre,
+                        CompetencyLevelReqDescCurEng = current==null ? "N/A":current.CompetencyLevelRequirement.DescEng,
+                        CompetencyLevelReqDescCurFre = current==null ? "N/A":current.CompetencyLevelRequirement.DescFre,
+                        CompetencyLevelReqDescObjEng = obj.CompetencyLevelRequirement.DescEng,
+                        CompetencyLevelReqDescObjFre = obj.CompetencyLevelRequirement.DescFre
+
                     
                     }).Where(e => e.RatingValueCur != e.RatingValueObj).ToListAsync(cancellationToken);
         }

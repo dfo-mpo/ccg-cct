@@ -29,6 +29,7 @@ namespace Business.Queries.JobPositions
                 .Include(e => e.Competency)
                 .Select(e => new JobCompetencyRatingDto()
                 {
+                    TypeId = e.CompetencyTypeId,
                     TypeNameEng = e.CompetencyType.NameEng,
                     TypeNameFre = e.CompetencyType.NameFre,
                     RatingDescFre = e.CompetencyRatingLevel.DescFre,
@@ -42,7 +43,8 @@ namespace Business.Queries.JobPositions
                     RatingNameEng = e.CompetencyRatingLevel.NameEng,
                     RatingNameFre = e.CompetencyRatingLevel.NameFre,
                     RatingValue = e.CompetencyRatingLevel.Value,
-                    TypeId = e.CompetencyTypeId
+                    CompetencyLevelReqDescEng = e.CompetencyLevelRequirement.DescEng,
+                    CompetencyLevelReqDescFre = e.CompetencyLevelRequirement.DescFre
                 })
                 .ToListAsync(cancellationToken);
                            

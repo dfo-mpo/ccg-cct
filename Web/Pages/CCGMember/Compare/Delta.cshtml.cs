@@ -13,6 +13,7 @@ namespace Web.Pages.CCGMember.Compare
 {
     public class DeltaModel : PageModel
     {
+        private readonly ILogger<DeltaModel> _logger;
         private readonly CompareService _compareService;
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
@@ -34,11 +35,13 @@ namespace Web.Pages.CCGMember.Compare
         public JobCertificateDto[] DifferingCertificates { get; set; }
         public DeltaModel(ILogger<DeltaModel> logger, CompareService compareService)
         {
-            //_logger = logger;
+            _logger = logger;
             _compareService = compareService;
         }
         public async Task OnGetAsync(int positionid, int obj)
         {
+            _logger.LogInformation($"Delta page visited at {DateTime.UtcNow.ToLongTimeString()}");
+
             CurrentPosition = await _compareService.GetJobPositionById(positionid);
             ObjectivePosition = await _compareService.GetJobPositionById(obj);
 
