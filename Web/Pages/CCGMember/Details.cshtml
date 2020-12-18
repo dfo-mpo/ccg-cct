@@ -180,18 +180,17 @@
 <div class="row">
     <div class="col-lg-12 mrgn-bttm-md">
         <nav role="navigation" class="mrgn-bttm-lg">
-
             <h2 class="wb-inv">Document navigation</h2>
-
             <ul class="pager">
                 @{ 
-                    var routedata = new Dictionary<string, string>
-        {
-           { "id",  Model.Id.ToString()},
-           { "level",  Model.Level}
-        };
-                }
-                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                    var paramdata = new Dictionary<string, string>
+                           {
+                              { "id",  Model.Id.ToString()},
+                              { "level",  Model.Level},
+                              {"positionid", Model.PositionId.ToString()}
+                            };
+                      }
+                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
                 <li class="next"><a asp-page="SearchType" asp-route-positionid="@Model.Position.JobTitleId">@Localizer["Next"]</a></li>
             </ul>
         </nav>

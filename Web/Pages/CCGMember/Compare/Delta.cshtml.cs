@@ -15,6 +15,14 @@ namespace Web.Pages.CCGMember.Compare
     {
         private readonly ILogger<DeltaModel> _logger;
         private readonly CompareService _compareService;
+        [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int Obj { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PositionId { get; set; }
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
         [BindProperty]

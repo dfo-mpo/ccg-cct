@@ -31,6 +31,13 @@ namespace Web.Data
             }
         }
 
+        public async Task<JobPositionDto> GetJobPositionById(int Id)
+        {
+            string url = $"/api/jobpositions/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobPositionDto>(url);
+        }
+
         public async Task<JobGroupDto[]> GetJobGroups()
         {
             CompareByName comparebyname = new CompareByName();

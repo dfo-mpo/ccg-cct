@@ -43,8 +43,7 @@
         <nav role="navigation" class="mrgn-bttm-lg">
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
-                <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="Compare/SearchType" asp-route-id="@Model.Level">@Localizer["Next"]</a></li>
+                <li class="previous"><a asp-page="AllObjective" asp-route-positionid="@Model.PositionId">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
     </div>

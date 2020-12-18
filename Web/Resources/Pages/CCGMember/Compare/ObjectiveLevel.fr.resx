@@ -123,6 +123,12 @@
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
   <data name="Select Level" xml:space="preserve">
     <value>Sélectionnez un niveau</value>
   </data>

@@ -123,6 +123,9 @@
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
   <data name="Position" xml:space="preserve">
     <value>Position</value>
   </data>

@@ -1,5 +1,4 @@
 ﻿@page
-@using Microsoft.AspNetCore.Http
 @model Web.Pages.CCGMember.Compare.ObjectivePositionModel
 @inject IViewLocalizer Localizer
 @{
@@ -26,7 +25,7 @@
                 var data = new Dictionary<string, string>
                  {
                      { "positionid", Model.PositionId.ToString()},
-                     { "id",  Model.JobGroup.Id.ToString()},
+                     { "id",  Model.Id.ToString()},
                      { "level",  level.ToString() }
                   };
                 <li role="presentation">
@@ -36,36 +35,58 @@
             }
         </ul>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-9">
         <label><b>@Localizer["Position"]</b></label><br />
-        <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-            @Localizer["Select Position"]
-            <span class="caret"></span>
-        </button>
+                  <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                             @(Model.Obj==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
+                         <span class="caret"></span>
+                  </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
             @foreach (var jp in Model.JobGroupPositions)
             {
                 var data = new Dictionary<string, string>
                      {
+                        { "id",  Model.Id.ToString()},
+                        { "level",  Model.Level.ToString() },
                         { "positionid",  Model.PositionId.ToString()},
                         { "obj",  jp.JobTitleId.ToString()}
                      };
-                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="Delta" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
-
+                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
             }
-
         </ul>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-sm-12 mrgn-bttm-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="SearchType">@Localizer["Next"]</a></li>
-            </ul>
-        </nav>
+    <div class="col-md-12 mrgn-tp-md">
+        @{var routedatanext = new Dictionary<string, string>
+         {
+        { "id",  Model.Id.ToString()},
+        { "level",  Model.Level.ToString() },
+        { "positionid",  Model.PositionId.ToString()},
+        { "obj",  Model.ObjectivePosition?.JobTitleId.ToString()}
+        };
+        }
+        @if (Model.Obj != null)
+        {
+            <a class="btn btn-primary" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
+        }
+        @{var routedataprevious = new Dictionary<string, string>
+         {
+        { "id",  Model.Id.ToString()},
+        { "positionid",  Model.PositionId.ToString()}
+        };
+        }
     </div>
-</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>

@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Compare" xml:space="preserve">
+    <value>Compare Positions</value>
+  </data>
   <data name="h2Text" xml:space="preserve">
     <value>Select a level and position</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Level</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="Position" xml:space="preserve">
     <value>Position</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
   </data>
   <data name="Select Position" xml:space="preserve">
     <value>Select Position</value>

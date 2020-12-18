@@ -15,12 +15,10 @@ namespace Web.Pages.CCGMember.Compare
         private readonly JobGroupService _jobcategoryService;
         public JobGroupDto JobGroup { get; set; }
         public JobGroupPositionDto[] JobGroupPositions { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public int Level { get; set; }
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
         public ObjectiveLevelModel(ILogger<ObjectiveLevelModel> logger, JobGroupService jobcategoryService)
