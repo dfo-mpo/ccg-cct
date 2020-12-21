@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Business.Queries.Dtos;
 using CCG.AspNetCore.Business.Interface;
+using Business.Dtos.JobGroups;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 

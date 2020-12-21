@@ -31,13 +31,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business.Commands\Business.Commands.csproj" />
+    <ProjectReference Include="..\Business.Dtos\Business.Dtos.csproj" />
     <ProjectReference Include="..\Business.Queries\Business.Queries.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
