@@ -252,14 +252,9 @@ namespace DataModel.Migrations
                     b.Property<int>("JobPositionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("JobLocationRegionId")
-                        .HasColumnType("int");
-
                     b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId");
 
                     b.HasIndex("JobGroupLevelId");
-
-                    b.HasIndex("JobLocationRegionId");
 
                     b.HasIndex("JobPositionId");
 
@@ -476,9 +471,6 @@ namespace DataModel.Migrations
                     b.Property<int>("JobHLCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("JobCategoryId")
-                        .HasColumnType("int");
-
                     b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "JobHLCategoryId");
 
                     b.HasIndex("JobGroupLevelId");
@@ -564,10 +556,6 @@ namespace DataModel.Migrations
                         .HasForeignKey("JobGroupLevelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DataModel.JobLocationRegion", null)
-                        .WithMany("JobGroupPositions")
-                        .HasForeignKey("JobLocationRegionId");
 
                     b.HasOne("DataModel.JobPosition", "JobPosition")
                         .WithMany()
