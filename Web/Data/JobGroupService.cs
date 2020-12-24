@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
 using System.Collections;
 using Business.Dtos.JobGroups;
 using Business.Dtos.JobPositions;
@@ -61,7 +59,7 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobGroupPositionDto[]>(url);
         }
 
-        public async Task<JobPositionDto[]> GetJobGroupPositionsByLevel(int Id, int level)
+        public async Task<JobPositionDto[]> GetJobGroupPositionsByLevel(int Id, string level)
         {
             string url = $"/api/jobgroups/{Id}/levels/{level}/positions";
             using var httpClient = _clientFactory.CreateClient("api");
