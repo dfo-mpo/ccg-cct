@@ -13,14 +13,6 @@ namespace DataModel.Tests
     {
 
         [Fact]
-        public async Task CanMigration()
-        {
-            var dbHelper = new DbHelper<CctDbContext>();
-            await using var db = dbHelper.GetDbContext();
-            await db.Database.MigrateAsync();
-        }
-
-        [Fact]
         public async Task CanCreate()
         {
             var dbHelper = new DbHelper<CctDbContext>();
