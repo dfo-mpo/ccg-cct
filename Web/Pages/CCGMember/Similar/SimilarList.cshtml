@@ -1,0 +1,32 @@
+﻿@page
+@inject IViewLocalizer Localizer;
+@model Web.Pages.CCGMember.Similar.SimilarListModel
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+}
+<div class="row mrgn-tp-md">
+    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+    <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["SIMILAR POSITIONS"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                <th class="bg-primary" width="75%">@Localizer["POSITIONS"]</th>
+                <th class="bg-primary" width="10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Model.Positions)
+            {
+                <tr>
+                    <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                    <td><a asp-page="SimilarDetails" asp-route-positionid="@Model.PositionId" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
