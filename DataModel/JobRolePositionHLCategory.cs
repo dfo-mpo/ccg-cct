@@ -18,10 +18,8 @@ namespace DataModel
 
         public JobPosition JobPosition { get; set; }
 
-        public int JobCategoryId { get; set; }
+        public int JobHLCategoryId { get; set; }
 
         public JobHLCategory JobHLCategory { get; set; }
-
-        public int JobHLCategoryId { get; set; }
     }
 }

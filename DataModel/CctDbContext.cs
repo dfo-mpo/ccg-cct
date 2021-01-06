@@ -36,20 +36,15 @@ namespace DataModel
         public DbSet<JobRolePositionLocation> JobRolePositionLocations { get; set; }
         public DbSet<JobRolePositionHLCategory> JobRolePositionHLCategories { get; set; }
 
+
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
 
 
         protected override void OnModelCreating(ModelBuilder builder)
-        {           
-           builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
-
-           SeedData(builder);
-        }
-
-        private void SeedData(ModelBuilder builder)
         {
+
             builder.Entity<JobGroup>().HasData(
                             new JobGroup() { Id = 1, Code = "GT", NameEng = "General Technician", NameFre = "Technicien général" },
                             new JobGroup() { Id = 2, Code = "AS", NameEng = "Administrative Services", NameFre = "Services administratif" },
@@ -3478,7 +3473,10 @@ namespace DataModel
                             new JobRolePositionHLCategory() { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, JobHLCategoryId = 2 }
                             );
 
+            builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
+
         }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

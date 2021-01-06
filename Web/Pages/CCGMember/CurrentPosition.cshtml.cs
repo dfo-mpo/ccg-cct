@@ -31,6 +31,7 @@ namespace Web.Pages.CCGMember
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
+
         public async Task OnGetAsync(int id, string level, int positionid)
         {
             _logger.LogInformation($"Current position selection page visited at {DateTime.UtcNow.ToLongTimeString()}");

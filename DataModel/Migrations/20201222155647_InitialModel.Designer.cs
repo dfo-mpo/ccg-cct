@@ -4,14 +4,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201222155647_InitialModel")]
+    partial class InitialModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -474,6 +476,9 @@ namespace DataModel.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("JobHLCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobCategoryId")
                         .HasColumnType("int");
 
                     b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "JobHLCategoryId");

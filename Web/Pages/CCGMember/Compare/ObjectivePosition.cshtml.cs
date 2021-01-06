@@ -33,6 +33,7 @@ namespace Web.Pages.CCGMember.Compare
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
+
         public async Task OnGetAsync(int id, string level, int obj)
         {
             _logger.LogInformation($"Objective positions page visited at {DateTime.UtcNow.ToLongTimeString()}");

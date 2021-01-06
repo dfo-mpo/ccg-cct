@@ -48,6 +48,5 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
         }
-
     }
 }

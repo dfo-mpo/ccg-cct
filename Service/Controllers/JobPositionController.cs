@@ -75,6 +75,5 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
-
     }
 }
