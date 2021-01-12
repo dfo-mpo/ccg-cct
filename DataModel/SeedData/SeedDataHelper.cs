@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataModel.SeedData
@@ -13,60 +14,58 @@ namespace DataModel.SeedData
         public SeedDataHelper(CctDbContext db)
         {
             _db = db;
-
-
         }
 
-        public void Run()
+        public async Task Run()
         {
             // base tables
-            JobGroups();
-            JobGroupLevels();
-            JobPositions();
-            JobHLCategories();
-            Competencies();
-            CompetencyRatingLevel();
-            CompetencyTypes();
-            CompetencyLevelRequirements();
-            Certificates();
+            await JobGroups();
+            await JobGroupLevels();
+            await JobPositions();
+            await JobHLCategories();
+            await Competencies();
+            await CompetencyRatingLevel();
+            await CompetencyTypes();
+            await CompetencyLevelRequirements();
+            await Certificates();
 
             // link tables
-            JobLocationRegions();
-            JobRoles();
-            JobGroupPositions();
-            CompetencyTypeGroups();
-            CompetencyRatingGroups();
-            JobPositionCompetencies();
-            JobRolePositionCompetencies();
-            JobRolePositionCertificates();
-            JobRolePositionCompetencyRatings();
-            JobRolePositionLocations();
-            JobRolePositionHLCategories();
+            await JobLocationRegions();
+            await JobRoles();
+            await JobGroupPositions();
+            await CompetencyTypeGroups();
+            await CompetencyRatingGroups();
+            await JobPositionCompetencies();
+            await JobRolePositionCompetencies();
+            await JobRolePositionCertificates();
+            await JobRolePositionCompetencyRatings();
+            await JobRolePositionLocations();
+            await JobRolePositionHLCategories();
 
         }
 
-        private void Save<T>() where T : class
+        private async Task Save<T>() where T : class
         {
             var tableName = _db.Model.FindEntityType(typeof(T)).GetTableName();
             try
             {
-                _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} ON;");
-                _db.SaveChanges();
+                await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} ON;");
+                await _db.SaveChangesAsync();
             }
             finally
             {
-                _db.Database.ExecuteSqlRaw($"SET IDENTITY_INSERT {tableName} OFF;");
+                await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} OFF;");
             }
 
         }
 
 
-        private void JobGroups()
+        private async Task JobGroups()
         {
-            if (_db.JobGroups.Any()) return;
+            if (await _db.JobGroups.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobGroups.AddRange(new List<JobGroup>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobGroups.AddRangeAsync(new List<JobGroup>()
             {
                 new JobGroup {Id = 1, Code = "GT", NameEng = "General Technician", NameFre = "Technicien général"},
                 new JobGroup {Id = 2, Code = "AS", NameEng = "Administrative Services", NameFre = "Services administratif"},
@@ -91,16 +90,16 @@ namespace DataModel.SeedData
                 new JobGroup {Id = 21, Code = "RO", NameEng = "Radio Operations", NameFre = "Radiotélégraphie"},
                 new JobGroup {Id = 22, Code = "TI", NameEng = "Technical Inspector", NameFre = "Inspecteur technique"}
             });
-            Save<JobGroup>();
-            transaction.Commit();
+            await Save<JobGroup>();
+            await transaction.CommitAsync();
         }
 
-        private void JobGroupLevels()
+        private async Task JobGroupLevels()
         {
-            if (_db.JobGroupLevels.Any()) return;
+            if (await _db.JobGroupLevels.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobGroupLevels.AddRange(new List<JobGroupLevel>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobGroupLevels.AddRangeAsync(new List<JobGroupLevel>()
             {
                 new JobGroupLevel() { Id = 1, LevelValue = "01" },
                 new JobGroupLevel() { Id = 2, LevelValue = "02" },
@@ -184,16 +183,16 @@ namespace DataModel.SeedData
 
 
             });
-            Save<JobGroupLevel>();
-            transaction.Commit();
+            await Save<JobGroupLevel>();
+            await transaction.CommitAsync();
         }
 
-        private void JobPositions()
+        private async Task JobPositions()
         {
-            if (_db.JobPositions.Any()) return;
+            if (await _db.JobPositions.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobPositions.AddRange(new List<JobPosition>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobPositions.AddRangeAsync(new List<JobPosition>()
             {
                     new JobPosition { Id = 1, TitleEng = "Administrative (Admin) or Project Assistant or Executive Assitant / Officer (Aids to Nav. Database, Financial Admin, Scheduling Coordination, Documentation Control, Publication, Technical Business", TitleFre = "Assistant administratif ou de projet / Agent (Données d'aide à la navigation, Administratif financière, planification / Coordination contrôle de document, Publication, Affaires techniques" },
                     new JobPosition { Id = 2, TitleEng = "Administrative / Information Officer", TitleFre = "Agent administratif Services de gestion intégrée des affaires (SGIA)" },
@@ -446,30 +445,30 @@ namespace DataModel.SeedData
                     new JobPosition { Id = 249, TitleEng = "Project Manager Electronic Navigation (E-Nav)", TitleFre = "Gestionnaire de projet, navigation électronique"},
                     new JobPosition { Id = 250, TitleEng = "Manager Marine Navigation Policies", TitleFre = "Gestionnaire, Politiques de navigation maritime"}
             });
-            Save<JobPosition>();
-            transaction.Commit();
+            await Save<JobPosition>();
+            await transaction.CommitAsync();
         }
 
-        private void JobHLCategories()
+        private async Task JobHLCategories()
         {
-            if (_db.JobHLCategories.Any()) return;
+            if (await _db.JobHLCategories.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobHLCategories.AddRange(new List<JobHLCategory>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobHLCategories.AddRangeAsync(new List<JobHLCategory>()
             {
                 new JobHLCategory() { Id = 1, ValueEng = "Seagoing", ValueFre = "En mer" },
                 new JobHLCategory() { Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre" }
             });
-            Save<JobHLCategory>();
-            transaction.Commit();
+            await Save<JobHLCategory>();
+            await transaction.CommitAsync();
         }
 
-        private void JobLocationRegions()
+        private async Task JobLocationRegions()
         {
-            if (_db.JobLocationRegions.Any()) return;
+            if (await _db.JobLocationRegions.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobLocationRegions.AddRange(new List<JobLocationRegion>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobLocationRegions.AddRangeAsync(new List<JobLocationRegion>()
             {
                 new JobLocationRegion { Id = 1, NameEng = "Atlantic", NameFre = "Atlantique" },
                 new JobLocationRegion { Id = 2, NameEng = "Western", NameFre = "Ouest" },
@@ -479,16 +478,16 @@ namespace DataModel.SeedData
                 new JobLocationRegion { Id = 6, NameEng = "CCG College", NameFre = "Collège de la GCC" },
                 new JobLocationRegion { Id = 7, NameEng = "All Regions", NameFre = "Toutes les régions"  }
             });
-            Save<JobLocationRegion>();
-            transaction.Commit();
+            await Save<JobLocationRegion>();
+            await transaction.CommitAsync();
         }
 
-        private void JobRoles()
+        private async Task JobRoles()
         {
-            if (_db.JobRoles.Any()) return;
+            if (await _db.JobRoles.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRoles.AddRange(new List<JobRole>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRoles.AddRangeAsync(new List<JobRole>()
             {
                 new JobRole() { JobGroupId = 1, JobGroupLevelId = 1 },
                 new JobRole() { JobGroupId = 2, JobGroupLevelId = 1 },
@@ -618,16 +617,16 @@ namespace DataModel.SeedData
 
 
             });
-            Save<JobGroupLevel>();
-            transaction.Commit();
+            await Save<JobGroupLevel>();
+            await transaction.CommitAsync();
         }
 
-        private void JobGroupPositions()
+        private async Task JobGroupPositions()
         {
-            if (_db.JobGroupPositions.Any()) return;
+            if (await _db.JobGroupPositions.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobGroupPositions.AddRange(new List<JobGroupPosition>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobGroupPositions.AddRangeAsync(new List<JobGroupPosition>()
             {
                 new JobGroupPosition { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1  },
                 new JobGroupPosition { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 2  },
@@ -880,15 +879,15 @@ namespace DataModel.SeedData
                 new JobGroupPosition { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 249 },
                 new JobGroupPosition { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 250 }
             });
-            Save<JobLocationRegion>();
-            transaction.Commit();
+            await Save<JobLocationRegion>();
+            await transaction.CommitAsync();
         }
-        private void Competencies()
+        private async Task Competencies()
         {
-            if (_db.Competencies.Any()) return;
+            if (await _db.Competencies.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.Competencies.AddRange(new List<Competency>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.Competencies.AddRangeAsync(new List<Competency>()
             {
                 new Competency { Id = 1, NameEng = "Organizational Knowledge", NameFre = "Connaissance de l'organisation", DescEng = "Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.", DescFre = "Connaissance de l'organisation de la Garde côtière canadienne, des partenaires et des relations avec Pêches et Océans Canada (MPO) et d'autres intervenants internes et externes." },
                 new Competency { Id = 2, NameEng = "Program Knowledge and Application", NameFre = "Connaissance et application du programme", DescEng = "Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates:  Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).", DescFre = "Connaissance des programmes que la Garde côtière canadienne gère et soutient. Comprend les services et l'exécution des mandats des programmes :  Recherche et sauvetage (SAR), Déglaçage, Aides à la navigation (AIDNAV), Intervention environnementale (IE), Conservation et protection (C&P du MPO), Océanographie (Sciences du MPO) et Recherche halieutique (Sciences du MPO)." },
@@ -915,7 +914,7 @@ namespace DataModel.SeedData
                 new Competency { Id = 23, NameEng = "Materiel Management", NameFre = "Gestion du matériel", DescEng = "Classifies materiel according to Canadian Coast Guard and Public Services and Procurement Canada (PSPC) directives. Tracks materiel during receipt, storage, issue, and disposal.", DescFre = "Classifie le matériel selon les directives de la Garde côtière canadienne et des Services publics et Approvisionnement Canada (SPAC). Assure le suivi du matériel pendant la réception, l'entreposage, la distribution et l'élimination." },
                 new Competency { Id = 24, NameEng = "Exercise Planning", NameFre = "Planification d'exercices", DescEng = "Plans and develops exercises (simulations of an emergency situation), which includes validating exercise plans, developing member skills, testing them during exercises, and testing established procedures. It includes a visual overview of the exercise, tracks related hours/cost of exercise, assigns responsibilities and logistical tasks.", DescFre = "Planifie et développe des exercices (simulations d'une situation d'urgence), ce qui inclut la validation des plans d'exercices, le développement des compétences des membres, leur mise à l'épreuve lors des exercices et la mise à l'épreuve des procédures établies. Il comprend une vue d'ensemble visuelle de l'exercice, le suivi des heures/coûts de l'exercice, l'attribution des responsabilités et des tâches logistiques. " },
                 new Competency { Id = 25, NameEng = "Adult Teaching", NameFre = "Enseignement aux adultes", DescEng = "Teaching or instructing adults in systematic and sustained self-educating activities so that they may gain new forms of knowledge, skills, attitudes, or values. This includes various forms of specific and generic instruction as required by the Canadian Coast Guard with an emphasis on the needs of adults and the results orientation of the organization.", DescFre = "Enseigner ou instruire des adultes dans des activités d'auto-éducation systématiques et soutenues afin qu'ils puissent acquérir de nouvelles formes de connaissances, de compétences, d'attitudes ou de valeurs. Cela comprend diverses formes d'enseignement spécifique et générique, comme l'exige la Garde côtière canadienne, en mettant l'accent sur les besoins des adultes et l'orientation de l'organisation vers les résultats." },
-                new Competency { Id = 26, NameEng = "Demonstrating Integrity and Respect", NameFre = "Faire preuve d'intégrité et de respect", DescEng = "Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while avoiding conflicts of interest and maintaining political and interpersonal neutrality.", DescFre = "Respecter ses engagements et s'efforcer constamment d'agir dans l'intérêt public en veillant à ce que la confiance du public et la loi ne soient pas violées, tout en évitant les conflits d'intérêts et en maintenant une neutralité politique et interpersonnelle." },
+                new Competency { Id = 26, NameEng = "Demonstrating Integrity and Respect", NameFre = "Faire preuve d'intégrité et de respect", DescEng = "Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while aasync Tasking conflicts of interest and maintaining political and interpersonal neutrality.", DescFre = "Respecter ses engagements et s'efforcer constamment d'agir dans l'intérêt public en veillant à ce que la confiance du public et la loi ne soient pas violées, tout en évitant les conflits d'intérêts et en maintenant une neutralité politique et interpersonnelle." },
                 new Competency { Id = 27, NameEng = "Thinking Things Through", NameFre = "Réflexion approfondie", DescEng = "Plans and adjusts work based on a thorough understanding of the Canadian Coast Guard's priorities. Obtains relevant information, considers all facts, and exercises sound judgement to formulate an opinion and/or make a decision. Analyzes situations and seeks feedback to learn from mistakes.", DescFre = "Planifier et ajuster le travail en fonction d'une compréhension approfondie des priorités de la Garde côtière canadienne. Obtenir l'information pertinente, examiner tous les faits et exercer un jugement éclairé pour formuler une opinion ou prendre une décision. Analyse les situations et cherche à obtenir de la rétroaction pour tirer des leçons des erreurs." },
                 new Competency { Id = 28, NameEng = "Working Effectively With Others", NameFre = "Travailler efficacement avec les autres", DescEng = "Works cooperatively in order to achieve results. Works positively as part of a team and manages internal conflict. Identifies opportunities to work together within the organization to improve team dynamics and develop relationships. Seeks and builds internal/external alliances, collaborations, and partnerships to advance the Canadian Coast Guard's mandate.", DescFre = "Travaille en collaboration afin d'obtenir des résultats. Travaille positivement en équipe et gère les conflits internes. Identifie les occasions de travailler ensemble au sein de l'organisation pour améliorer la dynamique d'équipe et développer les relations. Recherche et établit des alliances, des collaborations et des partenariats internes et externes pour faire progresser le mandat de la Garde côtière canadienne." },
                 new Competency { Id = 33, NameEng = "Showing Initiative and Being Action Oriented", NameFre = "Fait preuve d'initiative et est orienté vers l'action", DescEng = "Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.", DescFre = "Adopte le changement et cherche activement des occasions d'apprendre et de se perfectionner sur les plans professionnel et personnel. Traduit l'orientation en activités de travail concrètes. Cerner les possibilités ou les enjeux et prendre des mesures pour améliorer les résultats de l'organisation, sans y être incité par d'autres." },
@@ -992,15 +991,15 @@ namespace DataModel.SeedData
                  new Competency { Id = 105, NameEng = "Organizational Communications", NameFre = "Communications organisationnelles", DescEng = "Encompasses written, oral, visual, and digital communication (including within a workplace context). Focuses on the study of information and the ways it is created, managed, distributed, and consumed within the CCG.", DescFre = "Encompasses written, oral, visual, and digital communication (including within a workplace context). Focuses on the study of information and the ways it is created, managed, distributed, and consumed within the CCG."},
                  new Competency { Id = 106, NameEng = "Environmental Response (ER)", NameFre = "Intervention environnementale (IE)", DescEng = "Manages a marine pollution response, from assessment to cost recovery. Apply legislative power properly. Understands, choose and applies properly the different CCG roles in an ER incident. Conducts overall and on-water response to a marine pollutant. Establishes and/or use a command structure appropriate to the incident. Uses the formal processes within the command structure. Compiles and assesses information gathered from a variety of sources.", DescFre = "Manages a marine pollution response, from assessment to cost recovery. Apply legislative power properly. Understands, choose and applies properly the different CCG roles in an ER incident. Conducts overall and on-water response to a marine pollutant. Establishes and/or use a command structure appropriate to the incident. Uses the formal processes within the command structure. Compiles and assesses information gathered from a variety of sources."}
             });
-            Save<Competency>();
-            transaction.Commit();
+            await Save<Competency>();
+            await transaction.CommitAsync();
         }
-        private void CompetencyRatingLevel()
+        private async Task CompetencyRatingLevel()
         {
-            if (_db.CompetencyRatingLevels.Any()) return;
+            if (await _db.CompetencyRatingLevels.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.CompetencyRatingLevels.AddRange(new List<CompetencyRatingLevel>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.CompetencyRatingLevels.AddRangeAsync(new List<CompetencyRatingLevel>()
             {
                 new CompetencyRatingLevel { Id = 1, Value = 1, NameEng = "Fundamental Awareness", NameFre = "Conscience fondamentale", DescEng = "(Common knowledge or an understanding of basic techniques and concepts)", DescFre = "(connaissance commune ou compréhension des techniques et concepts de base)" },
                 new CompetencyRatingLevel { Id = 2, Value = 2, NameEng = "Novice", NameFre = "Novice", DescEng = "(A level of experience has been obtained; may need help when performing a task/skill)", DescFre = "(un niveau d'expérience a été obtenu ; peut avoir besoin d'aide pour effectuer une tâche ou acquérir une compétence)" },
@@ -1008,30 +1007,30 @@ namespace DataModel.SeedData
                 new CompetencyRatingLevel { Id = 4, Value = 4, NameEng = "Advanced", NameFre = "Avancé", DescEng = "(Performs the actions associated with this skill without assistance. Able to provide assistance to other colleagues when questions arise regarding this skill)", DescFre = "(effectue les actions associées à cette compétence sans assistance. Capable de fournir une assistance à d'autres collègues lorsque des questions se posent concernant cette compétence)" },
                 new CompetencyRatingLevel { Id = 5, Value = 5, NameEng = "Expert", NameFre = "Expert", DescEng = "(Provides guidance, troubleshoot, and answer questions related to this area of expertise and the field where the skill is used)", DescFre = "(fournit des conseils, dépanne et répond aux questions relatives à ce domaine d'expertise et au domaine dans lequel la compétence est utilisée)"  }
             });
-            Save<CompetencyRatingLevel>();
-            transaction.Commit();
+            await Save<CompetencyRatingLevel>();
+            await transaction.CommitAsync();
         }
-        private void CompetencyTypes()
+        private async Task CompetencyTypes()
         {
-            if (_db.CompetencyTypes.Any()) return;
+            if (await _db.CompetencyTypes.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.CompetencyTypes.AddRange(new List<CompetencyType>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.CompetencyTypes.AddRangeAsync(new List<CompetencyType>()
             {
                 new CompetencyType() { Id = 1, NameEng = "Knowledge Elements", NameFre = "Éléments de connaissance" },
                 new CompetencyType() { Id = 2, NameEng = "Technical Elements", NameFre = "Éléments techniques" },
                 new CompetencyType() { Id = 3, NameEng = "Behavioural Elements", NameFre = "Éléments de comportement" }
 
             });
-            Save<CompetencyType>();
-            transaction.Commit();
+            await Save<CompetencyType>();
+            await transaction.CommitAsync();
         }
-        private void Certificates()
+        private async Task Certificates()
         {
-            if (_db.Certificates.Any()) return;
+            if (await _db.Certificates.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.Certificates.AddRange(new List<Certificate>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.Certificates.AddRangeAsync(new List<Certificate>()
             {
                 new Certificate { Id = 1, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master 150 GT Domestic", NameFre = "Capitaine, jauge brute de 150, navigation intérieure", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" },
                 new Certificate { Id = 2, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master 500 GT", NameFre = "Master 500 GT", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" },
@@ -1122,15 +1121,15 @@ namespace DataModel.SeedData
                 new Certificate { Id = 87, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Chief Mate Near Coastal Certificate", NameFre = "Certificat de second capitaine près du littoral", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" }
 
             });
-            Save<Certificate>();
-            transaction.Commit();
+            await Save<Certificate>();
+            await transaction.CommitAsync();
         }
-        private void CompetencyTypeGroups()
+        private async Task CompetencyTypeGroups()
         {
-            if (_db.CompetencyTypeGroups.Any()) return;
+            if (await _db.CompetencyTypeGroups.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.CompetencyTypeGroups.AddRange(new List<CompetencyTypeGroup>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.CompetencyTypeGroups.AddRangeAsync(new List<CompetencyTypeGroup>()
             {
                 new CompetencyTypeGroup { CompetencyId = 1, CompetencyTypeId = 1  },
                 new CompetencyTypeGroup { CompetencyId = 2, CompetencyTypeId = 1  },
@@ -1234,15 +1233,15 @@ namespace DataModel.SeedData
                 new CompetencyTypeGroup { CompetencyId = 105, CompetencyTypeId = 2  },
                 new CompetencyTypeGroup { CompetencyId = 106, CompetencyTypeId = 2  }
             });
-            Save<CompetencyType>();
-            transaction.Commit();
+            await Save<CompetencyType>();
+            await transaction.CommitAsync();
         }
-        private void CompetencyLevelRequirements()
+        private async Task CompetencyLevelRequirements()
         {
-            if (_db.CompetencyLevelRequirements.Any()) return;
+            if (await _db.CompetencyLevelRequirements.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.CompetencyLevelRequirements.AddRange(new List<CompetencyLevelRequirement>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.CompetencyLevelRequirements.AddRangeAsync(new List<CompetencyLevelRequirement>()
             {
                     new CompetencyLevelRequirement { Id = 1, DescEng = "Basic knowledge of a unit in the Coast Guard organization chart and its reporting relationships.", DescFre = "Connaissance de base d'une unité dans l'organigramme de la Garde côtière et de ses rapports hiérarchiques." },
                     new CompetencyLevelRequirement { Id = 2, DescEng = "Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally.", DescFre = "Connaissance limitée du mandat de la Garde côtière et de ses relations avec Pêches et Océans Canada (MPO). Comprend les directions de l'organisation au niveau régional et/ou national." },
@@ -1320,7 +1319,7 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id = 75, DescEng = "Monitors marine structure projects, when and where applicable. Develops systems and/or processes, guidelines, and policies for identifying, collecting, maintaining, and evaluating real property and accommodations management information. ", DescFre = "Surveille les projets de structures marines, le cas échéant. Élabore des systèmes et/ou des processus, des lignes directrices et des politiques pour identifier, recueillir, maintenir et évaluer les informations relatives à la gestion des biens immobiliers et des locaux." },
                     new CompetencyLevelRequirement { Id = 76, DescEng = "Identifies and implements risk and performance management strategies in assessing and planning real property and/or accommodations management projects. Develops plans and strategies that address the variety and complexity of real property and accommodations management operations, use, and maintenance.", DescFre = "Identifie et met en œuvre des stratégies de gestion des risques et du rendement dans l'évaluation et la planification des projets de gestion des biens immobiliers et/ou des locaux. Élabore des plans et des stratégies qui tiennent compte de la variété et de la complexité des opérations, de l'utilisation et de l'entretien des biens immobiliers et de la gestion des locaux." },
                     new CompetencyLevelRequirement { Id = 77, DescEng = "Describes the basic function of the business’s core systems. Defines objectives and success criteria of the specific role. Identifies sources of existing and potential information relating to the project. Documents consistently.", DescFre = "Décrit la fonction de base des systèmes centraux de l'entreprise. Définit les objectifs et les critères de succès de la fonction spécifique. Identifie les sources d'informations existantes et potentielles relatives au projet. Documente de manière systématique." },
-                    new CompetencyLevelRequirement { Id = 78, DescEng = "Identifies key project milestones and defines project scope. Derives project estimates and quantifies uncertainty. Stores, references, and locates information in an efficient manner appropriate to the role. Validates, refines, and optimizes solution option models. Communicates difficult issues concisely and effectively to supervisors. Identifies potential areas of conflict and works to avoid their occurrence or their impact.", DescFre = "Identifie les étapes clés du projet et définit la portée du projet. Dérive les estimations du projet et quantifie l'incertitude. Stocker, référencer et localiser les informations de manière efficace et adaptée au rôle. Valide, raffine et optimise les modèles d'options de solution. Communique les questions difficiles de manière concise et efficace aux superviseurs. Identifie les zones potentielles de conflit et s'efforce d'éviter leur apparition ou leur impact." },
+                    new CompetencyLevelRequirement { Id = 78, DescEng = "Identifies key project milestones and defines project scope. Derives project estimates and quantifies uncertainty. Stores, references, and locates information in an efficient manner appropriate to the role. Validates, refines, and optimizes solution option models. Communicates difficult issues concisely and effectively to supervisors. Identifies potential areas of conflict and works to aasync Task their occurrence or their impact.", DescFre = "Identifie les étapes clés du projet et définit la portée du projet. Dérive les estimations du projet et quantifie l'incertitude. Stocker, référencer et localiser les informations de manière efficace et adaptée au rôle. Valide, raffine et optimise les modèles d'options de solution. Communique les questions difficiles de manière concise et efficace aux superviseurs. Identifie les zones potentielles de conflit et s'efforce d'éviter leur apparition ou leur impact." },
                     new CompetencyLevelRequirement { Id = 79, DescEng = "Identifies and minimizes risk to ongoing Coast Guard operations. Consistently identifies technology interfaces and focuses on integration aspects of projects. Identifies and defines proposed business benefits. Ensures planning tools and techniques are applied effectively. Through analysis of options, selects the option with the greatest business benefit bearing in mind the Coast Guard objectives. Articulates the vision, objectives, and benefits of a new initiative. Identifies current areas of conflict and seeks to understand apposing points of view. ", DescFre = "Identifie et minimise les risques pour les opérations en cours de la Garde côtière. Identifie de manière cohérente les interfaces technologiques et se concentre sur les aspects d'intégration des projets. Identifie et définit les avantages opérationnels proposés. S'assure que les outils et les techniques de planification sont appliqués efficacement. Par l'analyse des options, sélectionne l'option présentant le plus grand avantage opérationnel en gardant à l'esprit les objectifs de la Garde côtière. Articuler la vision, les objectifs et les avantages d'une nouvelle initiative. Identifie les zones de conflit actuelles et cherche à comprendre les points de vue opposés." },
                     new CompetencyLevelRequirement { Id = 80, DescEng = "Identifies and relays improvement opportunities and industry trends to the organization. Ensures a mechanism is in place to capture project risks, issues, and scope. Follows up with individuals and/or groups to clarify or complete the identified gaps and errors. Employees models to determine and communicate solution options. Makes recommendations with justifications to the appropriate decision making authority.", DescFre = "Identifie et transmet à l'organisation les opportunités d'amélioration et les tendances du monde industriel. S'assure qu'un mécanisme est en place pour saisir les risques, les problèmes et la portée du projet. Assurer un suivi avec des personnes et/ou des groupes pour clarifier ou compléter les lacunes et les erreurs identifiées. Les employés établissent des modèles pour déterminer et communiquer les options de solution. Fait des recommandations avec justifications à l'autorité décisionnelle appropriée." },
                     new CompetencyLevelRequirement { Id = 81, DescEng = "Identifies risks and impacts associated with proposed business options. Forecasts the impact of change. Applies effective influencing strategies.", DescFre = "Identifie les risques et les impacts associés aux options opérationnelles proposées. Prévoit l'impact du changement. Applique des stratégies d'influence efficaces." },
@@ -1377,7 +1376,7 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id = 132, DescEng = "Breaks down concrete problems into parts and organizes information. Recognizes pertinent facts and issues that make up a problem. Asks standard questions and follows first line of investigation to identify the key elements of a situation or problem. Uses known procedures and standard operating models.", DescFre = "Décompose les problèmes concrets en parties et organise l'information. Reconnaît les faits et les enjeux pertinents qui constituent un problème. Poser des questions standard et suivre la première ligne d'investigation pour identifier les éléments clés d'une situation ou d'un problème. Utilise des procédures connues et des modèles d'exploitation normalisés." },
                     new CompetencyLevelRequirement { Id = 133, DescEng = "Researches available options to recommend a solution. Understands the Coast Guard's operational and organizational goals and strategies, and aligns activities towards the vision and strategic imperatives. ", DescFre = "Recherche les options disponibles pour recommander une solution. Comprend les buts et les stratégies opérationnels et organisationnels de la Garde côtière et aligne les activités sur la vision et les impératifs stratégiques." },
                     new CompetencyLevelRequirement { Id = 134, DescEng = "Analyzes multiple causal relationships among several parts of a problem or situation. Anticipates the risks or implications inherent in a suggested plan of action and devises appropriate strategies to mitigate their impact. Makes a well-reasoned response even when faced with incomplete or contradictory information. Synthesizes complex ideas, issues, and observations into a clear understanding. Thinks beyond the work environment and makes decisions in the context of the bigger picture.", DescFre = "Analyse les relations causales multiples entre plusieurs parties d'un problème ou d'une situation. Anticiper les risques ou les implications inhérents à un plan d'action proposé et élaborer des stratégies appropriées pour en atténuer l'impact. Donne une réponse raisonnée, même lorsqu'elle est confrontée à des informations incomplètes ou contradictoires. Synthétise des idées, des questions et des observations complexes en une compréhension claire. Pense au-delà de l'environnement de travail et prend des décisions dans le contexte d'une vue d'ensemble." },
-                    new CompetencyLevelRequirement { Id = 135, DescEng = "Identifies several potential causes of events or multiple-part consequences. Analyzes complex, evolving circumstances and takes corrective action to avoid resource constraints and meet deadlines. Compares and contrasts evidence and information from various sources in a comprehensive and time sensitive manner. Understands program interdependencies and the need to integrate activities across functions/areas related to project planning, program implementation, and evaluation. Creates strategic alignment between cross-functional teams. Thinks laterally about business problems and opportunities; sees how the work and efforts of other Coast Guard teams/functions/operational centres intertwine to meet broad objectives.", DescFre = "Identifie plusieurs causes potentielles d'événements ou de conséquences en plusieurs parties. Analyser les circonstances complexes et changeantes et prendre des mesures correctives pour éviter les contraintes de ressources et respecter les échéances. Comparer et mettre en contraste les données et les renseignements provenant de diverses sources d'une manière exhaustive et dans des délais raisonnables. Comprend les interdépendances des programmes et la nécessité d'intégrer les activités entre les fonctions/domaines liés à la planification des projets, à la mise en œuvre des programmes et à l'évaluation. Crée un alignement stratégique entre les équipes interfonctionnelles. Réfléchit latéralement aux problèmes et aux possibilités d'affaires ; voit comment le travail et les efforts des autres équipes, fonctions et centres opérationnels de la Garde côtière s'entrecroisent pour atteindre les objectifs généraux." },
+                    new CompetencyLevelRequirement { Id = 135, DescEng = "Identifies several potential causes of events or multiple-part consequences. Analyzes complex, evolving circumstances and takes corrective action to aasync Task resource constraints and meet deadlines. Compares and contrasts evidence and information from various sources in a comprehensive and time sensitive manner. Understands program interdependencies and the need to integrate activities across functions/areas related to project planning, program implementation, and evaluation. Creates strategic alignment between cross-functional teams. Thinks laterally about business problems and opportunities; sees how the work and efforts of other Coast Guard teams/functions/operational centres intertwine to meet broad objectives.", DescFre = "Identifie plusieurs causes potentielles d'événements ou de conséquences en plusieurs parties. Analyser les circonstances complexes et changeantes et prendre des mesures correctives pour éviter les contraintes de ressources et respecter les échéances. Comparer et mettre en contraste les données et les renseignements provenant de diverses sources d'une manière exhaustive et dans des délais raisonnables. Comprend les interdépendances des programmes et la nécessité d'intégrer les activités entre les fonctions/domaines liés à la planification des projets, à la mise en œuvre des programmes et à l'évaluation. Crée un alignement stratégique entre les équipes interfonctionnelles. Réfléchit latéralement aux problèmes et aux possibilités d'affaires ; voit comment le travail et les efforts des autres équipes, fonctions et centres opérationnels de la Garde côtière s'entrecroisent pour atteindre les objectifs généraux." },
                     new CompetencyLevelRequirement { Id = 136, DescEng = "Thinks strategically about the range of market and business issues likely to impact the Coast Guard's ability to fulfill its mandate. Uses a sound understanding of the organization's strengths and weaknesses, its key stakeholders, and its long-term organizational strategy to leverage decisions of varying scope.", DescFre = "Réfléchit de façon stratégique à l'éventail des enjeux commerciaux et commerciaux susceptibles d'avoir une incidence sur la capacité de la Garde côtière de remplir son mandat. Utilise une bonne compréhension des forces et des faiblesses de l'organisation, de ses principaux intervenants et de sa stratégie organisationnelle à long terme pour tirer parti des décisions de portée variable." },
                     new CompetencyLevelRequirement { Id = 137, DescEng = "Encourages members of the team to contribute to a process. Listens and asks questions. Expresses appreciation to others who have provided information assistance or support. Deals proactively with interpersonal matters that could affect team performance.", DescFre = "Encourage les membres de l'équipe à contribuer à un processus. Écoute et pose des questions. Remercie les autres personnes qui lui ont fourni de l'information, de l'aide ou du soutien. Traite de façon proactive les questions interpersonnelles qui pourraient avoir une incidence sur le rendement de l'équipe." },
                     new CompetencyLevelRequirement { Id = 138, DescEng = "Solicits opinions and viewpoints of team members. Cultivates personal bonds with colleagues in order to enhance performance throughout the organization. Discusses issues and exchanges information with partners to identify areas of mutual interest and benefit. Draws on other groups to facilitate project execution or persuade others. Manages personal work-life balance and respects the work-life balance of others.", DescFre = "Sollicite les opinions et les points de vue des membres de l'équipe. Cultive des liens personnels avec ses collègues afin d'améliorer la performance dans l'ensemble de l'organisation. Discute des enjeux et échange de l'information avec les partenaires afin de cerner les domaines d'intérêt et d'avantage mutuels. Fait appel à d'autres groupes pour faciliter l'exécution du projet ou en persuader d'autres. Gère l'équilibre travail-vie personnelle et respecte l'équilibre travail-vie personnelle des autres." },
@@ -1405,8 +1404,8 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id = 160, DescEng = "Propagates the Coast Guard's vision, mission, mandate, and programs internally and externally as an example of deep pride in the organization. Conveys the importance of the Coast Guard's work to members and stakeholders. Celebrates organizational achievements.", DescFre = "Propager la vision, la mission, le mandat et les programmes de la Garde côtière à l'interne et à l'externe comme un exemple de fierté profonde envers l'organisation. Transmet l'importance du travail de la Garde côtière aux membres et aux intervenants. Célébrer les réalisations organisationnelles." },
                     new CompetencyLevelRequirement { Id = 161, DescEng = "Models organizational pride in the Coast Guard's brand and the jobs it performs. Champions the organization when working collectively with internal and external stakeholders. Promotes organizational achievements and employee engagement events nationally. Strives to hone organizational excellence through celebration and pageantry.", DescFre = "Donne l'exemple de la fierté organisationnelle à l'égard de l'image de marque de la Garde côtière et des tâches qu'elle accomplit. Se fait le champion de l'organisation lorsqu'elle travaille collectivement avec les intervenants internes et externes. Fait la promotion des réalisations organisationnelles et des activités d'engagement des employés à l'échelle nationale. S'efforce d'affiner l'excellence organisationnelle par la célébration et l'apparat." },
                     new CompetencyLevelRequirement { Id = 162, DescEng = "Understands primary coastal features, weather, tide, and charts.", DescFre = "Comprend les principales caractéristiques côtières, les conditions météorologiques, les marées et les cartes marines."},
-                    new CompetencyLevelRequirement { Id = 163, DescEng = "Understands basic traffic patterns for traffic avoidance, observing and reporting weather conditions, and local tides in immediate surroundings.", DescFre = "Comprend les schémas de circulation de base pour éviter le trafic, observer et signaler les conditions météorologiques et les marées locales dans les environs immédiats."},
-                    new CompetencyLevelRequirement { Id = 164, DescEng = "Practical knowledge of a range of coastal domain factors including local weather predictability, vessel traffic avoidance in a given charted area, and local tides and currents.", DescFre = "Connaissance pratique d'une gamme de facteurs du domaine côtier, y compris la prévisibilité des conditions météorologiques locales, l'évitement du trafic maritime dans une zone cartographiée donnée, et les marées et courants locaux."},
+                    new CompetencyLevelRequirement { Id = 163, DescEng = "Understands basic traffic patterns for traffic aasync Taskance, observing and reporting weather conditions, and local tides in immediate surroundings.", DescFre = "Comprend les schémas de circulation de base pour éviter le trafic, observer et signaler les conditions météorologiques et les marées locales dans les environs immédiats."},
+                    new CompetencyLevelRequirement { Id = 164, DescEng = "Practical knowledge of a range of coastal domain factors including local weather predictability, vessel traffic aasync Taskance in a given charted area, and local tides and currents.", DescFre = "Connaissance pratique d'une gamme de facteurs du domaine côtier, y compris la prévisibilité des conditions météorologiques locales, l'évitement du trafic maritime dans une zone cartographiée donnée, et les marées et courants locaux."},
                     new CompetencyLevelRequirement { Id = 165, DescEng = "Significant knowledge of a regional coastline including weather reporting and patterns, impacts on shipping, vessel traffic patterns and reporting, cartographic and oceanographic factors, and the search net. ", DescFre = "Connaissance approfondie d'un littoral régional, y compris les rapports et les tendances météorologiques, les répercussions sur la navigation, les tendances et les rapports du trafic maritime, les facteurs cartographiques et océanographiques, et le réseau de recherche."},
                     new CompetencyLevelRequirement { Id = 166, DescEng = "Excellent knowledge of regional and/or national coastal factors including those likely to impact the coast, threats from offshore, natural disasters and their impacts, vessel traffic management, operations of other government vessels, detailed cartography, meteorology, hydrogeology, and oceanography.", DescFre = "Excellente connaissance des facteurs côtiers régionaux et/ou nationaux, y compris ceux susceptibles d'avoir une incidence sur la côte, les menaces provenant de la haute mer, les catastrophes naturelles et leurs répercussions, la gestion du trafic maritime, les opérations des autres navires gouvernementaux, la cartographie détaillée, la météorologie, l'hydrogéologie et l'océanographie"},
                     new CompetencyLevelRequirement { Id = 167, DescEng = "Basic knowledge of how the movement of water generates gravity force to lift or lower a vessel in a canal lock.", DescFre = "Basic knowledge of how the movement of water generates gravity force to lift or lower a vessel in a canal lock." },
@@ -1522,7 +1521,7 @@ namespace DataModel.SeedData
                     new CompetencyLevelRequirement { Id = 277, DescEng = "Maintains continuous lookout and reports hazards to the officer of the watch (OOW) that can be an obstacle to navigation such as other ships, debris, and/or floating objects. In case of a person overboard, continuously points out in the direction of the person's location.", DescFre = "Maintains continuous lookout and reports hazards to the officer of the watch (OOW) that can be an obstacle to navigation such as other ships, debris, and/or floating objects. In case of a person overboard, continuously points out in the direction of the person's location." },
                     new CompetencyLevelRequirement { Id = 278, DescEng = "Steers a vessel in open waters. Maintains a steady course, properly executes all rudder and speed orders, and communicates to the officer of the watch (OOW) using navigational terms relating to a vessel's heading. Completes any course change or critical maneuver that is in progress before handing over the helm or turning over the watch. Recognizes irregularities in the ship's maneuvering responses.", DescFre = "Steers a vessel in open waters. Maintains a steady course, properly executes all rudder and speed orders, and communicates to the officer of the watch (OOW) using navigational terms relating to a vessel's heading. Completes any course change or critical maneuver that is in progress before handing over the helm or turning over the watch. Recognizes irregularities in the ship's maneuvering responses." },
                     new CompetencyLevelRequirement { Id = 279, DescEng = "Steers a vessel in open and closed waters under various sea states. Reaches set course based on a vessel's maneuvering characteristics. Anticipates the delay between when the helm is applied and when the ship responds to the rudder. Recognizes navigation rules and aids.", DescFre = "Steers a vessel in open and closed waters under various sea states. Reaches set course based on a vessel's maneuvering characteristics. Anticipates the delay between when the helm is applied and when the ship responds to the rudder. Recognizes navigation rules and aids." },
-                    new CompetencyLevelRequirement { Id = 280, DescEng = "Steers a vessel in any sea conditions including during emergencies. Avoids overcompensating for a ship's movement caused by local conditions, such as wind, swells, currents, or rough seas and recommends different course of action.", DescFre = "Steers a vessel in any sea conditions including during emergencies. Avoids overcompensating for a ship's movement caused by local conditions, such as wind, swells, currents, or rough seas and recommends different course of action." },
+                    new CompetencyLevelRequirement { Id = 280, DescEng = "Steers a vessel in any sea conditions including during emergencies. Aasync Tasks overcompensating for a ship's movement caused by local conditions, such as wind, swells, currents, or rough seas and recommends different course of action.", DescFre = "Steers a vessel in any sea conditions including during emergencies. Aasync Tasks overcompensating for a ship's movement caused by local conditions, such as wind, swells, currents, or rough seas and recommends different course of action." },
                     new CompetencyLevelRequirement { Id = 281, DescEng = "Steers various classes of vessels precisely under all sea state conditions. Trains others in performing those duties using best practices.", DescFre = "Steers various classes of vessels precisely under all sea state conditions. Trains others in performing those duties using best practices."  },
                     new CompetencyLevelRequirement { Id = 282, DescEng = "N/A", DescFre = "N/A" },
                     new CompetencyLevelRequirement { Id = 283, DescEng = "Limited knowledge of common mechanical tools and instruments use, and function of marine engine major systems like ignition, exhaust, cooling and lubricating.", DescFre = "Limited knowledge of common mechanical tools and instruments use, and function of marine engine major systems like ignition, exhaust, cooling and lubricating." },
@@ -1752,15 +1751,15 @@ namespace DataModel.SeedData
 
 
             });
-            Save<CompetencyLevelRequirement>();
-            transaction.Commit();
+            await Save<CompetencyLevelRequirement>();
+            await transaction.CommitAsync();
         }
-        private void CompetencyRatingGroups()
+        private async Task CompetencyRatingGroups()
         {
-            if (_db.CompetencyRatingGroups.Any()) return;
+            if (await _db.CompetencyRatingGroups.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.CompetencyRatingGroups.AddRange(new List<CompetencyRatingGroup>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.CompetencyRatingGroups.AddRangeAsync(new List<CompetencyRatingGroup>()
             {
                     new CompetencyRatingGroup { CompetencyId = 1, CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 1  },
                     new CompetencyRatingGroup { CompetencyId = 1, CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 2  },
@@ -2259,15 +2258,15 @@ namespace DataModel.SeedData
                     new CompetencyRatingGroup { CompetencyId = 106, CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 505  },
                     new CompetencyRatingGroup { CompetencyId = 106, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 506  }
             });
-            Save<CompetencyLevelRequirement>();
-            transaction.Commit();
+            await Save<CompetencyLevelRequirement>();
+            await transaction.CommitAsync();
         }
-        private void JobPositionCompetencies()
+        private async Task JobPositionCompetencies()
         {
-            if (_db.JobPositionCompetencies.Any()) return;
+            if (await _db.JobPositionCompetencies.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobPositionCompetencies.AddRange(new List<JobPositionCompetency>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobPositionCompetencies.AddRangeAsync(new List<JobPositionCompetency>()
             {
                     new JobPositionCompetency { JobPositionId = 1, CompetencyId = 1, CompetencyTypeId = 1 },
                     new JobPositionCompetency { JobPositionId = 1, CompetencyId = 2, CompetencyTypeId = 1 },
@@ -6633,16 +6632,16 @@ namespace DataModel.SeedData
                     new JobPositionCompetency { JobPositionId = 250, CompetencyId = 36, CompetencyTypeId = 3 },
                     new JobPositionCompetency { JobPositionId = 250, CompetencyId = 37, CompetencyTypeId = 3 }
             });
-            Save<CompetencyType>();
-            transaction.Commit();
+            await Save<CompetencyType>();
+            await transaction.CommitAsync();
         }
 
-        private void JobRolePositionCompetencies()
+        private async Task JobRolePositionCompetencies()
         {
-            if (_db.JobRolePositionCompetencies.Any()) return;
+            if (await _db.JobRolePositionCompetencies.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRolePositionCompetencies.AddRange(new List<JobRolePositionCompetency>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRolePositionCompetencies.AddRangeAsync(new List<JobRolePositionCompetency>()
             {
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, CompetencyId = 1, CompetencyTypeId = 1 },
                     new JobRolePositionCompetency { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, CompetencyId = 2, CompetencyTypeId = 1 },
@@ -11002,16 +11001,16 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetency { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 250, CompetencyId = 37, CompetencyTypeId = 3 }
 
             });
-            Save<CompetencyType>();
-            transaction.Commit();
+            await Save<CompetencyType>();
+            await transaction.CommitAsync();
         }
 
-        private void JobRolePositionCertificates()
+        private async Task JobRolePositionCertificates()
         {
-            if (_db.JobRolePositionCertificates.Any()) return;
+            if (await _db.JobRolePositionCertificates.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRolePositionCertificates.AddRange(new List<JobRolePositionCertificate>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRolePositionCertificates.AddRangeAsync(new List<JobRolePositionCertificate>()
             {
                 new JobRolePositionCertificate { JobGroupId = 1, JobGroupLevelId = 1, JobPositionId = 5, CertificateId = 1 },
                 new JobRolePositionCertificate { JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CertificateId = 12 },
@@ -11349,15 +11348,15 @@ namespace DataModel.SeedData
                 new JobRolePositionCertificate { JobGroupId = 20, JobGroupLevelId = 5, JobPositionId = 242, CertificateId = 80 }
 
             });
-            Save<Certificate>();
-            transaction.Commit();
+            await Save<Certificate>();
+            await transaction.CommitAsync();
         }
-        private void JobRolePositionCompetencyRatings()
+        private async Task JobRolePositionCompetencyRatings()
         {
-            if (_db.JobRolePositionCompetencyRatings.Any()) return;
+            if (await _db.JobRolePositionCompetencyRatings.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRolePositionCompetencyRatings.AddRange(new List<JobRolePositionCompetencyRating>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRolePositionCompetencyRatings.AddRangeAsync(new List<JobRolePositionCompetencyRating>()
             {
                     new JobRolePositionCompetencyRating { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, CompetencyId = 1, CompetencyTypeId = 1, CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 1 },
                     new JobRolePositionCompetencyRating { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 3, CompetencyId = 1, CompetencyTypeId = 1, CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 1 },
@@ -15715,15 +15714,15 @@ namespace DataModel.SeedData
                     new JobRolePositionCompetencyRating { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 250, CompetencyId = 37, CompetencyTypeId = 3, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 155 }
 
             });
-            Save<CompetencyLevelRequirement>();
-            transaction.Commit();
+            await Save<CompetencyLevelRequirement>();
+            await transaction.CommitAsync();
         }
-        private void JobRolePositionLocations()
+        private async Task JobRolePositionLocations()
         {
-            if (_db.JobRolePositionLocations.Any()) return;
+            if (await _db.JobRolePositionLocations.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRolePositionLocations.AddRange(new List<JobRolePositionLocation>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRolePositionLocations.AddRangeAsync(new List<JobRolePositionLocation>()
             {
                     new JobRolePositionLocation { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, JobLocationRegionId = 1 },
                     new JobRolePositionLocation { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, JobLocationRegionId = 2 },
@@ -16861,17 +16860,16 @@ namespace DataModel.SeedData
                     new JobRolePositionLocation { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 250, JobLocationRegionId = 4 }
 
             });
-
-            Save<JobLocationRegion>();
-            transaction.Commit();
+            await Save<JobLocationRegion>();
+            await transaction.CommitAsync();
         }
 
-        private void JobRolePositionHLCategories()
+        private async Task JobRolePositionHLCategories()
         {
-            if (_db.JobRolePositionHLCategories.Any()) return;
+            if (await _db.JobRolePositionHLCategories.AnyAsync()) return;
 
-            using var transaction = _db.Database.BeginTransaction();
-            _db.JobRolePositionHLCategories.AddRange(new List<JobRolePositionHLCategory>()
+            using var transaction = await _db.Database.BeginTransactionAsync();
+            await _db.JobRolePositionHLCategories.AddRangeAsync(new List<JobRolePositionHLCategory>()
             {
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 1, JobHLCategoryId = 2 },
                 new JobRolePositionHLCategory { JobGroupId = 2, JobGroupLevelId = 1, JobPositionId = 2, JobHLCategoryId = 2 },
@@ -17124,8 +17122,8 @@ namespace DataModel.SeedData
                 new JobRolePositionHLCategory { JobGroupId = 20, JobGroupLevelId = 6, JobPositionId = 250, JobHLCategoryId = 2 }
 
             });
-            Save<JobHLCategory>();
-            transaction.Commit();
+            await Save<JobHLCategory>();
+            await transaction.CommitAsync();
         }
     }
 }
