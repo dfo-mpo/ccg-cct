@@ -12,7 +12,7 @@ namespace Business.Queries.JobGroups
     public class GetJobPositionsByLevelGroupIdQuery: IQuery<List<JobPositionDto>>
     {
         public int Id { get; set; }
-        public int level { get; set; }
+        public string level { get; set; }
     }
 
     public class GetJobPositionsByLevelGroupIdQueryHandler : IQueryHandler<GetJobPositionsByLevelGroupIdQuery, List<JobPositionDto>>
@@ -26,7 +26,7 @@ namespace Business.Queries.JobGroups
 
         public Task<List<JobPositionDto>> HandleAsync(GetJobPositionsByLevelGroupIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevelId == query.level)
+            return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevel.LevelValue == query.level)
                             .Include(e => e.JobGroup)
                             .Include(e => e.JobGroupLevel)
                             .Include(e=>e.JobPosition)
