@@ -42,36 +42,37 @@ namespace Business.Commands.Admin
 
         private async Task DeleteTables()
         {
-            await DeleteTable<CompetencyRatingGroup>();
-            await DeleteTable<CompetencyTypeGroup>();
-            await DeleteTable<JobGroupPosition>();
-            await DeleteTable<JobPositionCompetency>();
-            await DeleteTable<JobRolePositionCertificate>();
-            await DeleteTable<JobRolePositionCompetency>();
-            await DeleteTable<JobRolePositionCompetencyRating>();
-            await DeleteTable<JobRolePositionHLCategory>();
-            await DeleteTable<JobRolePositionLocation>();
-            await DeleteTable<JobRole>();
+            DeleteTable<CompetencyRatingGroup>();
+            DeleteTable<CompetencyTypeGroup>();
+            DeleteTable<JobGroupPosition>();
+            DeleteTable<JobPositionCompetency>();
+            DeleteTable<JobRolePositionCertificate>();
+            DeleteTable<JobRolePositionCompetency>();
+            DeleteTable<JobRolePositionCompetencyRating>();
+            DeleteTable<JobRolePositionHLCategory>();
+            DeleteTable<JobRolePositionLocation>();
+            DeleteTable<JobRole>();
 
 
-            await DeleteTable<Competency>();
-            await DeleteTable<CompetencyType>();
-            await DeleteTable<Certificate>();
+            DeleteTable<Competency>();
+            DeleteTable<CompetencyType>();
+            DeleteTable<Certificate>();
 
-            await DeleteTable<JobLocationRegion>();
-            await DeleteTable<JobPosition>();
-            await DeleteTable<JobHLCategory>();
-            await DeleteTable<JobGroupLevel>();
-            await DeleteTable<JobGroup>();
-            await DeleteTable<CompetencyLevelRequirement>();
-            await DeleteTable<CompetencyRatingLevel>();
+            DeleteTable<JobLocationRegion>();
+            DeleteTable<JobPosition>();
+            DeleteTable<JobHLCategory>();
+            DeleteTable<JobGroupLevel>();
+            DeleteTable<JobGroup>();
+            DeleteTable<CompetencyLevelRequirement>();
+            DeleteTable<CompetencyRatingLevel>();
+
+            await _db.SaveChangesAsync();
 
         }
 
-        private async Task DeleteTable<T>() where T : class
+        private void DeleteTable<T>() where T : class
         {
-            var tableName = _db.Model.FindEntityType(typeof(T)).GetTableName();
-            await _db.Database.ExecuteSqlRawAsync($"delete from [{tableName}]");
+            _db.RemoveRange(_db.Set<T>());
         }
     }
 }
