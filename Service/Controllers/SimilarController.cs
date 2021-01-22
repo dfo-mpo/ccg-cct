@@ -33,18 +33,18 @@ namespace Service.Controllers
             [FromQuery] int   jobPositionId, 
             [FromQuery] int   jobGroupLevelId,
             [FromQuery] int   jobGroupId,
-            [FromQuery] int[] sameLevels,
-            [FromQuery] int[] higherLevels,
-            [FromQuery] int[] certificates)
+            [FromQuery] int[] sameLevelCompetencyId,
+            [FromQuery] int[] higherLevelCompetencyId,
+            [FromQuery] int[] certificateId)
         {
             var query = new GetAllSimilarPositionsByPositionIdQuery
             {
                 JobGroupId = jobGroupId,
                 JobGroupLevelId = jobGroupLevelId,
                 JobPositionId = jobPositionId,
-                SameLevels = sameLevels,
-                HigherLevels = higherLevels,
-                Certificates = certificates
+                SameLevelCompetencyId = sameLevelCompetencyId,
+                HigherLevelCompetencyId = higherLevelCompetencyId,
+                CertificateId = certificateId
             };
 
             var result = await _queryProvider.ProcessAsync(query);

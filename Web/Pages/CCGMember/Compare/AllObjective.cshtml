@@ -7,31 +7,33 @@
 }
 <section role="contentinfo">
     <div class="col-md-12">
+        <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
         <h2><b>@Localizer["AllPositions"]</b></h2>
         <form>
             <p>
-                <input type="text" asp-for="Filter"/>
+                <input type="text" asp-for="Filter" />
                 <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
             </p>
         </form>
         <form>
-            @if(Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()))) { 
-             @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
-              {
-                var routedata = new Dictionary<string, string>
+            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+            {
+                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+                {
+                    var routedata = new Dictionary<string, string>
                          {
                           { "positionid",  Model.PositionId.ToString()},
                           { "id",  jobgroup.Id.ToString()}
                          };
-                <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
-                    <div class="col-sm-4 mrgn-bttm-md">
-                        <figure>
-                            <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                            <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                        </figure>
-                    </div>
-                </a>
-              }
+                    <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
+                        <div class="col-sm-4 mrgn-bttm-md">
+                            <figure>
+                                <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                            </figure>
+                        </div>
+                    </a>
+                }
             }
             else
             {

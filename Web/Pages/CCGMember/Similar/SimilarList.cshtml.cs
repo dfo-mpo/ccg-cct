@@ -14,7 +14,7 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarListModel> _logger;
         private readonly SimilarService _similarService;
-        public List<JobPositionDto> Positions { get; set; } = new List<JobPositionDto>();
+        public JobPositionDto[] Positions { get; set; }
         public SimilarListModel(ILogger<SimilarListModel> logger, SimilarService similarService)
         {
             _logger = logger;
@@ -23,14 +23,7 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnGet(string id)
         {
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            var similarpositions = await _similarService.GetAllSimilarJobPositionsByPositionId(id);
-            foreach (var p in similarpositions)
-            {
-                var pdto = await _similarService.GetJobPositionById(p.JobTitleId);
-                if (!pdto.Equals(null)) {
-                Positions.Add(pdto);
-                }
-            }         
+            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(id);       
         }
     }
 }

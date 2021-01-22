@@ -123,6 +123,9 @@
   <data name="Back" xml:space="preserve">
     <value>Avant</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Prochain</value>
   </data>

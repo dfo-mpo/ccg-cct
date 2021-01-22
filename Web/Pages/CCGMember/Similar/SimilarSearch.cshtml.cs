@@ -56,21 +56,18 @@ namespace Web.Pages.CCGMember.Similar
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PageSubmit = true;
-            //public IActionResult OnPost(int positionid){ 
+
             foreach (var c in SameLevelCompetencyIds)
             {
-                SameLevels += "&sameLevels=" + c;
+                SameLevels += "&sameLevelCompetencyId=" + c;
             }
 
             foreach (var c in HigherLevelCompetencyIds)
             {
-                HigherLevels += "&higherLevels=" + c;
+                HigherLevels += "&higherLevelCompetencyId=" + c;
             }
 
-            RouteParameter = "jobPositionId="+positionid.ToString() +"&jobGroupLevelId="+Position.JobGroupLevelId.ToString()
-                +"&jobGroupId="+Position.JobGroupId.ToString() +SameLevels + HigherLevels;
-
-            //return RedirectToPage("SimilarList", new { id = routedata }); // not working
+            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}");
         }
     }
 

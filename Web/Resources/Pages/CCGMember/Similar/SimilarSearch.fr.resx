@@ -138,6 +138,9 @@
   <data name="h4Text" xml:space="preserve">
     <value>Sélectionnez tout ou partie des compétences et évaluations ci-dessous pour obtenir des postes similaires à votre poste actuel.</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>

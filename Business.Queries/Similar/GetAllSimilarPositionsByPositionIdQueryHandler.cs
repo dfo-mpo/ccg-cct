@@ -14,15 +14,14 @@ using HybridModelBinding;
 
 namespace Business.Queries.Similar
 {
-    [HybridBindClass(defaultBindingOrder: new[] { Source.Route, Source.QueryString } )]
     public class GetAllSimilarPositionsByPositionIdQuery : IQuery<List<JobPositionDto>>
     {
         public int JobPositionId { get; set; }
         public int JobGroupLevelId { get; set; }
         public int JobGroupId { get; set; }
-        public int[] HigherLevels { get; set; }
-        public int[] SameLevels { get; set; }
-        public int[] Certificates { get; set; }
+        public int[] HigherLevelCompetencyId { get; set; }
+        public int[] SameLevelCompetencyId { get; set; }
+        public int[] CertificateId { get; set; }
     }
 
     public class GetAllSimilarPositionsByPositionIdQueryHandler : IQueryHandler<GetAllSimilarPositionsByPositionIdQuery, List<JobPositionDto>>
@@ -44,8 +43,8 @@ namespace Business.Queries.Similar
             && e.JobGroupId == query.JobGroupId)
             .ToDictionaryAsync(k => k.CompetencyId, v => v.CompetencyRatingLevel.Value);
 
-            var sameLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameLevels.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
-            var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevels.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
+            var sameLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
+            var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
 
             var resultCertificates = (
                     await _db.JobRolePositionCertificates
@@ -60,8 +59,8 @@ namespace Business.Queries.Similar
                      Certificates = g.ToList()
                  })
                 .Where(e =>
-                    !query.Certificates.Any() ||
-                    query.Certificates.All(sl => e.Certificates.Any(cr => cr.CertificateId == sl))
+                    !query.CertificateId.Any() ||
+                    query.CertificateId.All(sl => e.Certificates.Any(cr => cr.CertificateId == sl))
                 )
                 .Select(e => new JobPositionDto()
                 {
@@ -72,13 +71,20 @@ namespace Business.Queries.Similar
 
             var resultCompetencies = (
                     await _db.JobRolePositionCompetencyRatings
+                    .Include(e => e.JobPosition)
+                    .Include(e => e.JobGroupLevel)
+                    .Include(e => e.JobGroup)
                     .Include(e => e.CompetencyRatingLevel).ToListAsync()
                 )
-                .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobPositionId })
+                .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobGroup.Code, e.JobGroupLevel.LevelValue, e.JobPositionId, e.JobPosition.TitleEng, e.JobPosition.TitleFre })
                 .Select(g => new
                 {
+                    JobTitleEng = g.Key.TitleEng,
+                    JobTitleFre = g.Key.TitleFre,
+                    JobGroupCode = g.Key.Code,
                     JobGroupId = g.Key.JobGroupId,
                     JobGroupLevelId = g.Key.JobGroupLevelId,
+                    JobGroupLevel = g.Key.LevelValue,
                     JobPositionId = g.Key.JobPositionId,
                     CompetencyRatings = g.ToList()
                 })
@@ -91,11 +97,15 @@ namespace Business.Queries.Similar
                     !higherLevelCompetencies.Any()
                     || higherLevelCompetencies.All(
                             sl => e.CompetencyRatings.Any(cr => cr.CompetencyRatingLevel.Value > sl.Value
-                                && cr.CompetencyId == sl.Key)))
-
+                                && cr.CompetencyId == sl.Key))
+                 )
                 .Select(e => new JobPositionDto()
                 {
+                    JobTitleEng = e.JobTitleEng,
+                    JobTitleFre = e.JobTitleFre,
                     JobGroupId = e.JobGroupId,
+                    JobGroupCode = e.JobGroupCode,
+                    JobLevelValue = e.JobGroupLevel,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobTitleId = e.JobPositionId,
                 });

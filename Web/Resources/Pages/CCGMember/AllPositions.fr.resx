@@ -159,6 +159,9 @@
   <data name="GT" xml:space="preserve">
     <value>Technicien général</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="Keywords" xml:space="preserve">
     <value>Mots clé(s)</value>
   </data>

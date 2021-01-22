@@ -129,6 +129,9 @@
   <data name="Current Position Details" xml:space="preserve">
     <value>Détails de la position actuelle</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
