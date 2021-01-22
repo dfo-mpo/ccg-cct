@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Business.Dtos.JobGroups;
 using System;
+using System.Collections.Generic;
 
 namespace Web.Pages.CCGMember
 {
@@ -16,6 +17,8 @@ namespace Web.Pages.CCGMember
         
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
+        public List<string> EnglishGroups { get; set; } = new List<string>();
+        public List<string> FrenchGroups { get; set; } = new List<string>();
         public AllPositionsModel(ILogger<AllPositionsModel> logger, JobGroupService jobcategoryService)
         {
             _logger = logger;
@@ -25,6 +28,15 @@ namespace Web.Pages.CCGMember
         {
             _logger.LogInformation($"All positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroups = await _jobgroupService.GetJobGroups();
+            foreach (var jobgroup in JobGroups)
+            {
+                var line = jobgroup.NameEng + ' ' + jobgroup.Code;
+                var fline = jobgroup.NameFre + ' ' + jobgroup.Code;
+                EnglishGroups.Add(line);
+                FrenchGroups.Add(fline);
+            }
+
+
         }
 
     }

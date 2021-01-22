@@ -178,17 +178,4 @@
             </tbody>
         </table>
     </section>
-<div class="row">
-    <div class="col-lg-12 mrgn-bttm-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                @{
-                    var routeprevious = Model.PositionId + '!';
-                }
-                <li class="previous"><a asp-page="SimilarList" asp-route-positionid="@routeprevious">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
 

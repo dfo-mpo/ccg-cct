@@ -24,7 +24,7 @@
                           { "id",  jobgroup.Id.ToString()}
                          };
                 <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
-                    <div class="col-sm-3 mrgn-bttm-md">
+                    <div class="col-sm-4 mrgn-bttm-md">
                         <figure>
                             <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
                             <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>

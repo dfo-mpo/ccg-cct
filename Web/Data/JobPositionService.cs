@@ -42,12 +42,5 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
         }
 
-        public async Task<JobPositionDto[]> GetAllSimilarPositionsByPositionId(int Id, int TypeId)
-        {
-            string url = $"/api/jobpositions/{Id}/{TypeId}/similarpositions";
-            using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
-        }
-
     }
 }

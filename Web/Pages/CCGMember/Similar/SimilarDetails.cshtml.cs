@@ -15,12 +15,6 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarDetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
-        [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public int PositionId { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string Level { get; set; }
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }

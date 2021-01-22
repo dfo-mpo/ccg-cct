@@ -4,7 +4,7 @@
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
-@if (Model.pagesubmit == false)
+@if (Model.PageSubmit == false)
 {
     <section role="contentinfo">
 
@@ -12,17 +12,6 @@
 
         <h4>@Localizer["h4Text"]</h4>
         <hr />
-        <script>
-            function disable(inputvalue) {
-                if (document.getElementById(inputvalue).disabled == false) {
-                    document.getElementById(inputvalue).disabled = true;
-                }
-                else {
-                    document.getElementById(inputvalue).disabled = false;
-                }
-                
-            }
-        </script>
         <form method="post">
             <div class="col-lg-12">
                 <div class="mrgn-bttm-lg">
@@ -101,8 +90,8 @@
                                             </div>
                                         </section>
                                     </td>
-                                    <td class="text-center bg-success"><input id="@c.CompetencyId@c.JobPositionId" onclick="disable(@c.CompetencyId)" name="Type1Same" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                    <td class="text-center bg-success"><input id="@c.CompetencyId" onclick="disable(@c.CompetencyId@c.JobPositionId)" name="Type1Higher" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                    <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                    <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
                                 </tr>
                             }
                         </tbody>
@@ -153,8 +142,8 @@
                                         </div>
                                     </section>
                                 </td>
-                                <td class="text-center bg-success"><input id="@c.CompetencyId@c.JobPositionId" onclick="disable(@c.CompetencyId)" name="Type2Same" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                <td class="text-center bg-success"><input id="@c.CompetencyId" onclick="disable(@c.CompetencyId@c.JobPositionId)" name="Type2Higher" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
                             </tr>
                             }
                         </tbody>
@@ -205,8 +194,8 @@
                                         </div>
                                     </section>
                                 </td>
-                                <td class="text-center bg-success"><input id="@c.CompetencyId@c.JobPositionId" onclick="disable(@c.CompetencyId)" name="Type3Same" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                <td class="text-center bg-success"><input id="@c.CompetencyId" onclick="disable(@c.CompetencyId@c.JobPositionId)" name="Type3Higher" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
                             </tr>
                             }
                         </tbody>
@@ -221,6 +210,6 @@
 else
 {
 <section>
-    <a asp-page="SimilarList" asp-route-id="@Model.routedata" class="btn btn-primary">@Localizer["Submit"]</a>
+    <a asp-page="SimilarList" asp-route-id="@Model.RouteParameter" class="btn btn-primary">@Localizer["Submit"]</a>
 </section>
 }

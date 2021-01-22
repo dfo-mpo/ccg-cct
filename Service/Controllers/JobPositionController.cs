@@ -66,15 +66,5 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
-
-        [HttpGet, Route("{Id}/{TypeId?}/{SameLevels?}/{HigherLevels?}/similarpositions")]
-        [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAllSimilarPositionsByPositionId([FromRoute] GetAllSimilarPositionsByPositionIdQuery query)
-        {
-            var results =
-                await _queryProvider.ProcessAsync(query);
-            return Ok(results);
-        }
-
     }
 }

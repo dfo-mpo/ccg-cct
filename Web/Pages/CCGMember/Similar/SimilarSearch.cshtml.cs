@@ -14,47 +14,28 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarSearchModel> _logger;
         private readonly JobPositionService _jobpositionService;
-        [BindProperty(SupportsGet = true)]
-        public string PositionId { get; set; }
+        [BindProperty]
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        public JobCompetencyRatingDto[] PositionRatings3 { get; set; } 
         [BindProperty]
-        public string EmailAddress { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public Dictionary<string, int> ids { get; set; } = new Dictionary<string, int>();
+        public List<string> SameLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
-        public List<string> Type1Same { get; set; } = new List<string>();
+        public List<string> HigherLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
-        public List<string> Type1Higher { get; set; } = new List<string>();
+        public string SameLevels { get; set; } = string.Empty;
         [BindProperty]
-        public List<string> Type2Same { get; set; } = new List<string>();
+        public string HigherLevels { get; set; } = string.Empty;
         [BindProperty]
-        public List<string> Type2Higher { get; set; } = new List<string>();
+        public string RouteParameter { get; set; } = string.Empty;
         [BindProperty]
-        public List<string> Type3Same { get; set; } = new List<string>();
+        public Boolean PageSubmit { get; set; } = false;
         [BindProperty]
-        public List<string> Type3Higher { get; set; } = new List<string>();
+        public string GroupId { get; set; }
         [BindProperty]
-        public string same1 { get; set; } = string.Empty;
-        [BindProperty]
-        public string same2 { get; set; } = string.Empty;
-        [BindProperty]
-        public string same3 { get; set; } = string.Empty;
-        [BindProperty]
-        public string higher1 { get; set; } = string.Empty;
-        [BindProperty]
-        public string higher2 { get; set; } = string.Empty;
-        [BindProperty]
-        public string higher3 { get; set; } = string.Empty;
-        [BindProperty]
-        public Dictionary<string, string> routenext { get; set; } = new Dictionary<string, string>();
-        [BindProperty]
-        public string routedata { get; set; } = string.Empty;
-        [BindProperty]
-        public Boolean pagesubmit { get; set; } = false;
+        public string GroupLevelId { get; set; }
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -64,46 +45,30 @@ namespace Web.Pages.CCGMember.Similar
         {
             _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            GroupId = Position.JobGroupId.ToString();
+            GroupLevelId = Position.JobGroupLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
             PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
             PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
         }
-        public void OnPost(int positionid)
+        public async Task OnPost(int positionid)
         {
-            pagesubmit = true;
+            Position = await _jobpositionService.GetJobPositionById(positionid);
+            PageSubmit = true;
             //public IActionResult OnPost(int positionid){ 
-            foreach (var c in Type1Same)
+            foreach (var c in SameLevelCompetencyIds)
             {
-                same1 += c + "-";
+                SameLevels += "&sameLevels=" + c;
             }
 
-            foreach (var c in Type2Same)
+            foreach (var c in HigherLevelCompetencyIds)
             {
-                same2 += c + "-";
+                HigherLevels += "&higherLevels=" + c;
             }
 
-            foreach (var c in Type3Same)
-            {
-                same3 += c + "-";
-            }
-
-            foreach (var c in Type1Higher)
-            {
-                higher1 += c + "-";
-            }
-
-            foreach (var c in Type2Higher)
-            {
-                higher2 += c + "-";
-            }
-
-            foreach (var c in Type3Higher)
-            {
-                higher3 += c + "-";
-            }
-
-            routedata = positionid.ToString() + "!" + same1 + "%" + higher1 + "#" + same2 + "%" + higher2 + "#" + same3 + "%" + higher3;
+            RouteParameter = "jobPositionId="+positionid.ToString() +"&jobGroupLevelId="+Position.JobGroupLevelId.ToString()
+                +"&jobGroupId="+Position.JobGroupId.ToString() +SameLevels + HigherLevels;
 
             //return RedirectToPage("SimilarList", new { id = routedata }); // not working
         }

@@ -20,6 +20,6 @@
         public int JobCompetencyTypeId { get; set; }
         public int JobCompetencyId { get; set; }
         public int JobCompetencyRatingValue { get; set; }
-        public int JobPositionId { get; set; }
+        //public int JobPositionId { get; set; }
     }
 }
