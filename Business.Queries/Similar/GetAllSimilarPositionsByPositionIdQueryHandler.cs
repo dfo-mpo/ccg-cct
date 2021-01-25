@@ -10,7 +10,6 @@ using Business.Dtos.JobPositions;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Core;
-using HybridModelBinding;
 
 namespace Business.Queries.Similar
 {
