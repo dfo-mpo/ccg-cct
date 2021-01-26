@@ -4,6 +4,8 @@
     {
         public int JobGroupId { get; set; }
         public int JobLevelId { get; set; }
+        public int JobPositionId { get; set; }
+        public int JobPositionCertificateId { get; set; }
         public string JobLevelValue { get; set; }
         public string JobGroupCode { get; set; }
         public string JobGroupTitleEng { get; set; }
@@ -15,5 +17,8 @@
 
         public string JobTitleFre { get; set; }
         public string JobTitleEng { get; set; }
+        public int JobCompetencyTypeId { get; set; }
+        public int JobCompetencyId { get; set; }
+        public int JobCompetencyRatingValue { get; set; }
     }
 }

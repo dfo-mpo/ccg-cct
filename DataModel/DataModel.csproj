@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20201002132520_Initial.cs" />
     <Compile Remove="Migrations\20201002132520_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20201018004633_crinit.cs" />
+    <Compile Remove="Migrations\20201018004633_crinit.Designer.cs" />
     <Compile Remove="Migrations\20201020045123_ccginitial.cs" />
     <Compile Remove="Migrations\20201020045123_ccginitial.Designer.cs" />
     <Compile Remove="Migrations\20201020045433_ccginitial2.cs" />
