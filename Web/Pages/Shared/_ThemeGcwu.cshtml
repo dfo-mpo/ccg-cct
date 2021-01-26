@@ -103,10 +103,18 @@
             <div class="container">
                 <div class="row">
                     <div id="wb-sttl" class="col-md-5">
-                        <a href="http://wet-boew.github.io/v4.0-ci/index-en.html">
-                            <span>CCG CCT</span>
-                        </a>
-                    </div>
+                        @if (isEnglish)
+                        {
+                            <a href="/en/Mockups/Index">
+                                <span>CCG Career Competency Tool</span>
+                            </a>
+                        }
+                        else {
+                            <a href="/fr/Mockups/Index">
+                                <span>Outil de compétence professionnelle de la GCC</span>
+                            </a> 
+                            }
+                        </div>
                     <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="~/themes-dist-4.0.25-theme-gcwu-fegc/theme-gcwu-fegc/assets/wmms.svg" aria-label="@Localizer["Symbol of the Government of Canada"]"></object>
                     <section id="wb-srch" class="visible-md visible-lg">
                         <h2>
@@ -138,14 +146,12 @@
                     <ol class="breadcrumb">
                         @if (isEnglish)
                         {
-                            <li><a href="https://www.ccg-gcc.gc.ca/index-eng.html">Home</a></li>
-                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-eng.html">College and careers</a></li>
- }
+                            <li><a href="/en/Mockups/Index">Home</a></li>
+                        }
                         else
                         {
-                            <li><a href="https://www.ccg-gcc.gc.ca/index-fra.html">Accueil</a></li>
-                            <li><a href="https://www.ccg-gcc.gc.ca/college-careers-fra.html">Collège et carrières</a></li>
-}
+                            <li><a href="/fr/Mockups/Index">Accueil</a></li>
+                        }
                         @RenderSection("Breadcrumbs", required: false)
                     </ol>
                 </div>

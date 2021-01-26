@@ -117,70 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AdminAS" xml:space="preserve">
+  <data name="AS" xml:space="preserve">
     <value>Administrative Services (AS)</value>
   </data>
   <data name="CatPosition" xml:space="preserve">
     <value>In what field is your current position?</value>
   </data>
-  <data name="ClericalCR" xml:space="preserve">
+  <data name="CR" xml:space="preserve">
     <value>Clerical and Regulatory (CR)</value>
   </data>
-  <data name="ComputerCS" xml:space="preserve">
+  <data name="CS" xml:space="preserve">
     <value>Computer Systems (CS)</value>
   </data>
-  <data name="EconomicsEC" xml:space="preserve">
+  <data name="EC" xml:space="preserve">
     <value>Economics and Social Science Services (EC)</value>
   </data>
-  <data name="EducationED" xml:space="preserve">
+  <data name="ED" xml:space="preserve">
     <value>Education Services (ED)</value>
   </data>
-  <data name="EduSupportEU" xml:space="preserve">
-    <value>Educational Support (EU)</value>
-  </data>
-  <data name="EngineeringENG" xml:space="preserve">
-    <value>Architecture, Engineering (ENG)</value>
-  </data>
-  <data name="EngSciEG" xml:space="preserve">
+  <data name="EG" xml:space="preserve">
     <value>Engineering and Scientific Support (EG)</value>
   </data>
-  <data name="ExecutiveEX" xml:space="preserve">
+  <data name="ENG" xml:space="preserve">
+    <value>Architecture, Engineering (ENG)</value>
+  </data>
+  <data name="EU" xml:space="preserve">
+    <value>Educational Support (EU)</value>
+  </data>
+  <data name="EX" xml:space="preserve">
     <value>Executive Group (EX)</value>
   </data>
-  <data name="GLabourGL" xml:space="preserve">
+  <data name="GL" xml:space="preserve">
     <value>General Labour and Trades (GL)</value>
   </data>
-  <data name="GServicesGS" xml:space="preserve">
+  <data name="GS" xml:space="preserve">
     <value>General Services (GS)</value>
   </data>
-  <data name="GTechnicalGT" xml:space="preserve">
-    <value>General Technical (GT)</value>
+  <data name="GT" xml:space="preserve">
+    <value>General Technician (GT)</value>
   </data>
-  <data name="LibraryLS" xml:space="preserve">
-    <value>Library Science (LS)</value>
-  </data>
-  <data name="LightkeepersLI" xml:space="preserve">
+  <data name="LI" xml:space="preserve">
     <value>Lightkeepers (LI)</value>
   </data>
-  <data name="NursingNU" xml:space="preserve">
+  <data name="LS" xml:space="preserve">
+    <value>Library Science (LS)</value>
+  </data>
+  <data name="NU" xml:space="preserve">
     <value>Nursing (NU)</value>
   </data>
-  <data name="OfficeOE" xml:space="preserve">
+  <data name="OE" xml:space="preserve">
     <value>Office Equipment (OE)</value>
   </data>
-  <data name="ProgramAdminPM" xml:space="preserve">
-    <value>Programme Administration (PM)</value>
-  </data>
-  <data name="PurchasingPG" xml:space="preserve">
+  <data name="PG" xml:space="preserve">
     <value>Purchasing and Supply (PG)</value>
   </data>
-  <data name="RadioRO" xml:space="preserve">
+  <data name="PM" xml:space="preserve">
+    <value>Programme Administration (PM)</value>
+  </data>
+  <data name="RO" xml:space="preserve">
     <value>Radio Operations (RO)</value>
   </data>
-  <data name="ShipCrewSC" xml:space="preserve">
+  <data name="SC" xml:space="preserve">
     <value>Ships' Crews (SC)</value>
   </data>
-  <data name="ShipOfficerSO" xml:space="preserve">
+  <data name="SO" xml:space="preserve">
     <value>Ships' Officers (SO)</value>
+  </data>
+  <data name="TI" xml:space="preserve">
+    <value>Technical Inspection (TI)</value>
   </data>
 </root>
