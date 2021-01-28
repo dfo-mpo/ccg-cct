@@ -1,10 +1,12 @@
 ﻿@page
 @model Web.Pages.Mockups.Eng_OfficerModel
+@inject IViewLocalizer Localizer
+
 @{
 }
 <section role="contentinfo">
     <div class="col-md-12">
-        <h3>What certifications do you currently possess?</h3>
+        <h3>@Localizer["Q1"]</h3>
         <form method="post" action="#">
             <div class="form-group">
                 <select multiple class="form-control maxwidth " id="dt_certifications" name="dt_certifications">
@@ -15,16 +17,16 @@
                 </select>
             </div>
 
-            <h3>What competencies and levels to you currently possess?</h3>
+            <h3>@Localizer["Q2"]</h3>
             <table class="table table-hover table-responsive">
                 <thead>
                     <tr class="bg-primary">
-                        <th style="width:55%">KNOWLEDGE ELEMENTS</th>
-                        <th style="width:9%">Level 1</th>
-                        <th style="width:9%">Level 2</th>
-                        <th style="width:9%">Level 3</th>
-                        <th style="width:9%">Level 4</th>
-                        <th style="width:9%">Level 5</th>
+                        <th style="width:55%">@Localizer["KnowE"]</th>
+                        <th style="width:9%">@Localizer["L1"]</th>
+                        <th style="width:9%">@Localizer["L2"]</th>
+                        <th style="width:9%">@Localizer["L3"]</th>
+                        <th style="width:9%">@Localizer["L4"]</th>
+                        <th style="width:9%">@Localizer["L5"]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,12 +99,12 @@
             <table class="table table-hover table-responsive">
                 <thead>
                     <tr class="bg-primary">
-                        <th style="width:55%">TECHNICAL ELEMENTS</th>
-                        <th style="width:9%">Level 1</th>
-                        <th style="width:9%">Level 2</th>
-                        <th style="width:9%">Level 3</th>
-                        <th style="width:9%">Level 4</th>
-                        <th style="width:9%">Level 5</th>
+                        <th style="width:55%">@Localizer["TechE"]</th>
+                        <th style="width:9%">@Localizer["L1"]</th>
+                        <th style="width:9%">@Localizer["L2"]</th>
+                        <th style="width:9%">@Localizer["L3"]</th>
+                        <th style="width:9%">@Localizer["L4"]</th>
+                        <th style="width:9%">@Localizer["L5"]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,38 +150,71 @@
             <table class="table table-hover table-responsive">
                 <thead>
                     <tr class="bg-primary">
-                        <th>BEHAVIOURAL ELEMENTS</th>
-                        <th class="text-center">SELECT</th>
+                        <th style="width:55%">@Localizer["BehE"]</th>
+                        <th style="width:9%">@Localizer["L1"]</th>
+                        <th style="width:9%">@Localizer["L2"]</th>
+                        <th style="width:9%">@Localizer["L3"]</th>
+                        <th style="width:9%">@Localizer["L4"]</th>
+                        <th style="width:9%">@Localizer["L5"]</th>
                     </tr>
                 </thead>
                 <tbody>
+                <tbody>
                     <tr>
                         <td>Demonstrating Integrity and Respect</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
                     </tr>
                     <tr>
                         <td>Thinking Things Through</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
                     </tr>
                     <tr>
                         <td>Working Effectively With Others</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
                     </tr>
                     <tr>
                         <td>Showing Initiative and Being Action Oriented</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
                     </tr>
                     <tr>
                         <td>Apply Safety Considerations</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
                     </tr>
                     <tr>
                         <td>Leadership</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
                     </tr>
                     <tr>
                         <td>Canadian Coast Guard Cultural Awareness</td>
-                        <td class="text-center"><input type="checkbox" name="Org" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -193,8 +228,8 @@
                 <h2 class="wb-inv">Document navigation</h2>
 
                 <ul class="pager">
-                    <li class="previous"><a href="Ship_Officer" rel="prev">Previous</a></li>
-                    <li class="next"><a href="External_List" rel="next">Next</a></li>
+                    <li class="previous"><a href="Ship_Officer" rel="prev">@Localizer["Previous"]</a></li>
+                    <li class="next"><a href="External_List" rel="next">@Localizer["Next"]</a></li>
                 </ul>
 
             </nav>
