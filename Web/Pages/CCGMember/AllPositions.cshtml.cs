@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Business.Dtos.JobGroups;
 using System;
+using System.Collections.Generic;
 
 namespace Web.Pages.CCGMember
 {

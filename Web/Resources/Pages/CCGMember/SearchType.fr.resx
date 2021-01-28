@@ -123,6 +123,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparer ma position à une autre position</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>Comment souhaitez-vous effectuer votre recherche?</value>
   </data>

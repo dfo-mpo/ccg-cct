@@ -1,7 +1,6 @@
 ﻿@page
-@model Web.Pages.CCGMember.DetailsModel
-@inject IViewLocalizer Localizer
-
+@inject IViewLocalizer Localizer;
+@model Web.Pages.CCGMember.Similar.SimilarDetailsModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
@@ -9,17 +8,16 @@
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
             <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
-            <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
+            <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
         </div>
         <div class="row mrgn-tp-md">
             <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
         </div>
-        <h2><b>@Localizer["Current Position Details"]</b></h2>
 
-        <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
-                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupCode-@Model.Position.JobGroupLevelValue @(isEnglish? Model.Position.JobTitleEng: Model.Position.JobTitleFre)</th>
+                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupCode-@Model.Position.JobGroupLevelValue @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +30,7 @@
                     @foreach (var c in Model.PositionCertificates)
                     {
                         <tr>
-                            <td colspan="2">@(isEnglish?c.NameEng:c.NameFre)</td>
+                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
                         </tr>
                     }
                 }
@@ -78,8 +76,8 @@
                                         <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
+                                        <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
                                             <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>
@@ -123,8 +121,8 @@
                                         <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
+                                        <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
                                             <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>
@@ -168,8 +166,8 @@
                                         <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                     </header>
                                     <div class="modal-body ">
-                                        <p>@(isEnglish?c.RatingNameEng:c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                        <p>@(isEnglish?c.CompetencyLevelReqDescEng:c.CompetencyLevelReqDescFre)<p>
+                                        <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                        <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
                                             <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
                                     </div>
                                 </section>
@@ -180,25 +178,4 @@
             </tbody>
         </table>
     </section>
-<div class="row">
-    <div class="col-lg-12 mrgn-bttm-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                @{ 
-                    var paramdata = new Dictionary<string, string>
-                           {
-                              { "id",  Model.Id.ToString()},
-                              { "level",  Model.Level},
-                              {"positionid", Model.PositionId.ToString()}
-                            };
-                      }
-                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="SearchType" asp-route-positionid="@Model.Position.JobTitleId">@Localizer["Next"]</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
 

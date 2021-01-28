@@ -123,6 +123,9 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtrer</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
+  </data>
   <data name="NoResult" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
   </data>

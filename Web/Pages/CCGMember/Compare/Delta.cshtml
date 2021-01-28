@@ -7,7 +7,10 @@
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
             <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
-            <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+            <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
+        </div>
+        <div class="row mrgn-tp-md">
+            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
         </div>
 
         <div class="row text-center mrgn-bttm-lg">
@@ -122,12 +125,12 @@
                         }
                         else
                         {
-                         @foreach (var c in Model.MatchingCompetenciesType3)
-                         {
-                                  <tr>
-                                     <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
-                                  </tr>
-                         }
+                            @foreach (var c in Model.MatchingCompetenciesType3)
+                            {
+                                <tr>
+                                    <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>
