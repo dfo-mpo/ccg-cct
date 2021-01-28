@@ -117,25 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Allpositions" xml:space="preserve">
-    <value>Tous les postes</value>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>BEHAVIOURAL ELEMENTS</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Avant</value>
+  <data name="CERTIFICATIONS" xml:space="preserve">
+    <value>CERTIFICATIONS</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Prochain</value>
+  <data name="CURRENT LEVEL" xml:space="preserve">
+    <value>CURRENT LEVEL</value>
   </data>
-  <data name="Offshore" xml:space="preserve">
-    <value>Côtier</value>
+  <data name="Current Position Level" xml:space="preserve">
+    <value>Current Position Level</value>
   </data>
-  <data name="Onshore" xml:space="preserve">
-    <value>À terre</value>
+  <data name="h1Text" xml:space="preserve">
+    <value>Similar Position Search</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Quel domaine aimeriez-vous explorer?</value>
+  <data name="h4Text" xml:space="preserve">
+    <value>Select all or some of the competencies and ratings below to obtain positions similar to your current position.</value>
+  </data>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>KNOWLEDGE ELEMENTS</value>
+  </data>
+  <data name="No Certifications Found" xml:space="preserve">
+    <value>No Certifications Found</value>
+  </data>
+  <data name="SAME CERTIFICATIONS" xml:space="preserve">
+    <value>SAME CERTIFICATIONS</value>
+  </data>
+  <data name="SAME ELEMENT" xml:space="preserve">
+    <value>SAME ELEMENT</value>
+  </data>
+  <data name="SAME LEVEL" xml:space="preserve">
+    <value>SAME LEVEL</value>
+  </data>
+  <data name="Search Positions" xml:space="preserve">
+    <value>Search Positions</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>TECHNICAL ELEMENTS</value>
   </data>
 </root>

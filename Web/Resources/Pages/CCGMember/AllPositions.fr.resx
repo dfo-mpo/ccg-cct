@@ -117,46 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Administrative Services" xml:space="preserve">
-    <value>Services administratifs</value>
-  </data>
   <data name="AllPositions" xml:space="preserve">
     <value>Dans quel domaine est votre poste actuel?</value>
   </data>
-  <data name="Computer Systems" xml:space="preserve">
+  <data name="AS" xml:space="preserve">
+    <value>Services administratif</value>
+  </data>
+  <data name="CR" xml:space="preserve">
+    <value>Commis aux écritures et aux règlements</value>
+  </data>
+  <data name="CS" xml:space="preserve">
     <value>Systèmes informatiques</value>
   </data>
-  <data name="Engineering and Scientific Support" xml:space="preserve">
-    <value>Assistance technique et scientifique</value>
+  <data name="EC" xml:space="preserve">
+    <value>Économique et services de sciences sociales</value>
+  </data>
+  <data name="ED" xml:space="preserve">
+    <value>Services de l’enseignement</value>
+  </data>
+  <data name="EG" xml:space="preserve">
+    <value>Soutien technologique et scientifique</value>
+  </data>
+  <data name="ENG" xml:space="preserve">
+    <value>Architecture et Ingénierie</value>
+  </data>
+  <data name="EU" xml:space="preserve">
+    <value>Soutien de l’enseignement</value>
+  </data>
+  <data name="EX" xml:space="preserve">
+    <value>Groupe exécutif</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrer</value>
   </data>
-  <data name="General Labour and Trades" xml:space="preserve">
+  <data name="GL" xml:space="preserve">
     <value>Travail général et métiers</value>
   </data>
-  <data name="General Services" xml:space="preserve">
+  <data name="GS" xml:space="preserve">
     <value>Services généraux</value>
   </data>
-  <data name="General Technical" xml:space="preserve">
-    <value>Technique générale</value>
+  <data name="GT" xml:space="preserve">
+    <value>Technicien général</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Page d'accueil</value>
   </data>
   <data name="Keywords" xml:space="preserve">
     <value>Mots clé(s)</value>
   </data>
+  <data name="LI" xml:space="preserve">
+    <value>Les gardiens de phare</value>
+  </data>
   <data name="Lightkeepers" xml:space="preserve">
     <value>Les gardiens de phare</value>
+  </data>
+  <data name="LS" xml:space="preserve">
+    <value>Bibliothéconomie</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
   </data>
-  <data name="Purchasing and Supply" xml:space="preserve">
+  <data name="NU" xml:space="preserve">
+    <value>Infirmiers</value>
+  </data>
+  <data name="OE" xml:space="preserve">
+    <value>Matériel de bureau</value>
+  </data>
+  <data name="PG" xml:space="preserve">
     <value>Achat et approvisionnement</value>
   </data>
-  <data name="Ships' Crews" xml:space="preserve">
+  <data name="PM" xml:space="preserve">
+    <value>Administration des programmes</value>
+  </data>
+  <data name="RO" xml:space="preserve">
+    <value>Radiotélégraphie</value>
+  </data>
+  <data name="SC" xml:space="preserve">
     <value>Équipages de navires</value>
   </data>
-  <data name="Ships' Officers" xml:space="preserve">
+  <data name="SO" xml:space="preserve">
     <value>Officiers de navire</value>
   </data>
 </root>

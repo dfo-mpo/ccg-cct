@@ -123,11 +123,41 @@
   <data name="AllPositions" xml:space="preserve">
     <value>In what field is your current position?</value>
   </data>
+  <data name="AS" xml:space="preserve">
+    <value>Administrative Services</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>NameEng</value>
+  </data>
   <data name="Computer Systems" xml:space="preserve">
     <value>Computer Systems</value>
   </data>
+  <data name="CR" xml:space="preserve">
+    <value>Clerical and Regulatory</value>
+  </data>
+  <data name="CS" xml:space="preserve">
+    <value>Computer Systems</value>
+  </data>
+  <data name="EC" xml:space="preserve">
+    <value>Economics and Social Science Services</value>
+  </data>
+  <data name="ED" xml:space="preserve">
+    <value>Education Services</value>
+  </data>
+  <data name="EG" xml:space="preserve">
+    <value>Engineering and Scientific Support</value>
+  </data>
+  <data name="ENG" xml:space="preserve">
+    <value>Architecture, Engineering</value>
+  </data>
   <data name="Engineering and Scientific Support" xml:space="preserve">
     <value>Engineering and Scientific Support</value>
+  </data>
+  <data name="EU" xml:space="preserve">
+    <value>Educational Support</value>
+  </data>
+  <data name="EX" xml:space="preserve">
+    <value>Executive Group</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
@@ -141,22 +171,58 @@
   <data name="General Technical" xml:space="preserve">
     <value>General Technical</value>
   </data>
+  <data name="GL" xml:space="preserve">
+    <value>General Labour and Trades</value>
+  </data>
+  <data name="GS" xml:space="preserve">
+    <value>General Services</value>
+  </data>
+  <data name="GT" xml:space="preserve">
+    <value>General Technician</value>
+  </data>
   <data name="Keywords" xml:space="preserve">
     <value>Keyword(s)</value>
+  </data>
+  <data name="LI" xml:space="preserve">
+    <value>Lightkeepers</value>
   </data>
   <data name="Lightkeepers" xml:space="preserve">
     <value>Lightkeepers</value>
   </data>
+  <data name="LS" xml:space="preserve">
+    <value>Library Science</value>
+  </data>
   <data name="NoResults" xml:space="preserve">
     <value>No matching results found</value>
   </data>
+  <data name="NU" xml:space="preserve">
+    <value>Nursing</value>
+  </data>
+  <data name="OE" xml:space="preserve">
+    <value>Office Equipment</value>
+  </data>
+  <data name="PG" xml:space="preserve">
+    <value>Purchasing and Supply</value>
+  </data>
+  <data name="PM" xml:space="preserve">
+    <value>Programme Administration</value>
+  </data>
   <data name="Purchasing and Supply" xml:space="preserve">
     <value>Purchasing and Supply</value>
+  </data>
+  <data name="RO" xml:space="preserve">
+    <value>Radio Operations</value>
+  </data>
+  <data name="SC" xml:space="preserve">
+    <value>Ships' Crews</value>
   </data>
   <data name="Ships' Crews" xml:space="preserve">
     <value>Ships' Crews</value>
   </data>
   <data name="Ships' Officers" xml:space="preserve">
+    <value>Ships' Officers</value>
+  </data>
+  <data name="SO" xml:space="preserve">
     <value>Ships' Officers</value>
   </data>
 </root>

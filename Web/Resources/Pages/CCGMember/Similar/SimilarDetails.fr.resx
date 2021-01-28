@@ -117,25 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Allpositions" xml:space="preserve">
-    <value>Tous les postes</value>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Avant</value>
+  <data name="CERTIFICATIONS" xml:space="preserve">
+    <value>CERTIFICATIONS</value>
+  </data>
+  <data name="DIFFERING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Prochain</value>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
-  <data name="Offshore" xml:space="preserve">
-    <value>Côtier</value>
+  <data name="Level" xml:space="preserve">
+    <value>Niveau</value>
   </data>
-  <data name="Onshore" xml:space="preserve">
-    <value>À terre</value>
+  <data name="MATCHING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES ASSOCIÉES</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Quel domaine aimeriez-vous explorer?</value>
+  <data name="POSITION DETAILS" xml:space="preserve">
+    <value>DÉTAILS DU POSTE</value>
+  </data>
+  <data name="Print PDF" xml:space="preserve">
+    <value>Imprimer PDF</value>
+  </data>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Enregistrer le PDF</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS TECHNIQUES</value>
   </data>
 </root>

@@ -117,25 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Allpositions" xml:space="preserve">
-    <value>Tous les postes</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Avant</value>
-  </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Home</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Prochain</value>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
   </data>
-  <data name="Offshore" xml:space="preserve">
-    <value>Côtier</value>
+  <data name="POSITION DETAILS" xml:space="preserve">
+    <value>POSITION DETAILS</value>
   </data>
-  <data name="Onshore" xml:space="preserve">
-    <value>À terre</value>
+  <data name="Print PDF" xml:space="preserve">
+    <value>Print PDF</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Quel domaine aimeriez-vous explorer?</value>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Save PDF</value>
   </data>
 </root>
