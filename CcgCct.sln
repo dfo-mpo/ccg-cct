@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{B3FBA4E3-085D-4D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{B9554C17-19ED-42EE-A54A-2F885F68DC6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Dtos", "Business.Dtos\Business.Dtos.csproj", "{B04F767B-4A9F-475B-B944-D754B1C8CF3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Dtos", "Business.Dtos\Business.Dtos.csproj", "{B04F767B-4A9F-475B-B944-D754B1C8CF3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
