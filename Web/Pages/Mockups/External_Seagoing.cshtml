@@ -1,17 +1,18 @@
 ﻿@page
 @model Web.Pages.Mockups.External_SeagoingModel
+@inject IViewLocalizer Localizer
 @{
 }
 <section role="contentinfo">
     <div class="col-md-12">
-        <h2>Choose from the two positions below?</h2>
+        <h2>@Localizer["Q1"]</h2>
         <div class="row">
             <div class="col-sm-4">
                 <figure>
                     <a class="nav-link" href="Ship_Officer">
                         <img src="~/img/SO.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                     </a>
-                    <figcaption><h4 class="text-center">Ships' Officer</h4></figcaption>
+                    <figcaption><h4 class="text-center">@Localizer["Officer"]</h4></figcaption>
                 </figure>
             </div>
             <div class="col-sm-4">
@@ -19,7 +20,7 @@
                     <a href="Ship_Crew">
                         <img src="~/img/Ships_Crew.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                     </a>
-                    <figcaption><h4 class="text-center">Ships' Crew</h4></figcaption>
+                    <figcaption><h4 class="text-center">@Localizer["Crew"]</h4></figcaption>
                 </figure>
             </div>
         </div>
