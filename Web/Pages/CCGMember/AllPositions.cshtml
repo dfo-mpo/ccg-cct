@@ -16,9 +16,9 @@
             </p>
         </form>
         <form>
-            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())||e.Code.ToLower().Contains(@Model.Filter.ToLower())))
             {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())))
+                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                 {
                     <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
                         <div class="col-sm-4 mrgn-bttm-md">

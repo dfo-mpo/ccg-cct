@@ -7,6 +7,7 @@ using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Rotativa.AspNetCore;
 using Web.Data;
 
 namespace Web.Pages.CCGMember.Similar
@@ -15,18 +16,21 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarDetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
+        [BindProperty(SupportsGet = true)]
+        public int PositionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
-
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
             _jobpositionService = jobcompetencyService;
         }
-        public async Task OnGetAsync(int positionid)
+        public async Task OnGetAsync(int positionid, int id)
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);

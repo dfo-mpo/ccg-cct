@@ -35,7 +35,9 @@ namespace Service.Controllers
             [FromQuery] int   jobGroupId,
             [FromQuery] int[] sameLevelCompetencyId,
             [FromQuery] int[] higherLevelCompetencyId,
-            [FromQuery] int[] certificateId)
+            [FromQuery] int[] sameorhigherLevelCompetencyId,
+            [FromQuery] int[] certificateId,
+            [FromQuery] double   percentMatch)
         {
             var query = new GetAllSimilarPositionsByPositionIdQuery
             {
@@ -44,7 +46,9 @@ namespace Service.Controllers
                 JobPositionId = jobPositionId,
                 SameLevelCompetencyId = sameLevelCompetencyId,
                 HigherLevelCompetencyId = higherLevelCompetencyId,
-                CertificateId = certificateId
+                SameOrHigherLevelCompetencyId = sameorhigherLevelCompetencyId,
+                CertificateId = certificateId,
+                PercentMatch = percentMatch
             };
 
             var result = await _queryProvider.ProcessAsync(query);

@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization.Routing;
 using Web.Helpers;
 using System.Linq;
+using Rotativa.AspNetCore;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Web
 {
@@ -108,6 +110,7 @@ namespace Web
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
+            RotativaConfiguration.Setup((IHostingEnvironment) env);
         }
     }
 }

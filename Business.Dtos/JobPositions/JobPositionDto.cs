@@ -1,4 +1,7 @@
-﻿namespace Business.Dtos.JobPositions
+﻿using System.Collections.Generic;
+using Business.Dtos.JobCompetencies;
+
+namespace Business.Dtos.JobPositions
 {
     public class JobPositionDto
     {
@@ -15,5 +18,6 @@
 
         public string JobTitleFre { get; set; }
         public string JobTitleEng { get; set; }
+        public List<int> Competencies {get;set;}
     }
 }

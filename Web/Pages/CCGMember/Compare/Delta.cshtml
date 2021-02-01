@@ -10,7 +10,7 @@
             <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
         </div>
         <div class="row mrgn-tp-md">
-            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
+            <a class="btn btn-primary mrgn-lft-md" href="@Url.Action("Delta","ToPdf", new { id = Model.CurrentPosition.JobTitleId, obj = Model.ObjectivePosition.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})">@Localizer["Save PDF"]</a>
         </div>
 
         <div class="row text-center mrgn-bttm-lg">
@@ -362,6 +362,7 @@
             </tbody>
         </table>
     </section>
+@if (Model.Id !=0) {
     <div class="row">
         <div class="col-lg-12 mrgn-bttm-md">
             <nav role="navigation" class="mrgn-bttm-lg">
@@ -381,5 +382,6 @@
                     <li class="previous"><a asp-page="ObjectivePosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
-        </div>
+        </div>   
     </div>
+                        }

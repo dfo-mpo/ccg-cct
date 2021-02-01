@@ -3,17 +3,28 @@
 @model Web.Pages.CCGMember.Similar.SimilarListModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var routedataprevious = new Dictionary<string, string>
+    {
+        {"positionid",Model.PositionId.ToString()},
+        {"RouteParameter", Model.Id },
+        {"pagesubmit", "true" }
+    };
+    var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
 <div class="row mrgn-tp-md">
-    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
     <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
 </div>
 <div class="row mrgn-tp-md">
-    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
+    <nav role="navigation" class="mrgn-bttm-lg">
+        <h2 class="wb-inv">Document navigation</h2>
+        <a class="btn btn-primary mrgn-lft-md" asp-page="SimilarSearch" asp-all-route-data="@routedataprevious">&nbsp;&nbsp;@Localizer["Previous"]&nbsp;&nbsp;</a>     
+    </nav>
+    
 </div>
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@Localizer["SIMILAR POSITIONS"]</h3>
-    <h4>@Model.Positions.Length @Localizer["POSITION(S)"]</h4>
+    <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
     <table class="table table-hover table-responsive table-bordered">
         <thead>
             <tr>
@@ -25,11 +36,17 @@
         <tbody>
             @foreach (var position in Model.Positions)
             {
-                <tr>
-                    <td>@position.JobGroupCode-@position.JobLevelValue</td>
-                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="SimilarDetails" asp-route-positionid="@position.JobTitleId" role="button">@Localizer["More Details"]</a></td>
-                </tr>
+                var routedata = new Dictionary<string, string>
+             {
+        { "positionid",  position.JobTitleId.ToString()},
+        { "id",  Model.PositionId.ToString()}
+        };
+                
+            <tr>
+                <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+            </tr>
             }
         </tbody>
     </table>

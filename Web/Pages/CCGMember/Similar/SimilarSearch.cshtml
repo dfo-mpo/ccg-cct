@@ -208,7 +208,28 @@
 }
 else
 {
-<section>
-    <a asp-page="SimilarList" asp-route-id="@Model.RouteParameter" class="btn btn-primary">@Localizer["Submit"]</a>
+    var RouteParameterNone = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=0" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter40 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=40" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter50 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=50" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter60 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter70 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter80 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() } };
+    var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() } };
+
+    <section>
+    
+        <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Home"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <h4>@Localizer["pageSubmitted"]</h4>
+    <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameterNone" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["None"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter40" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["40%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter50" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["50%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
+        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+    </div>
 </section>
 }

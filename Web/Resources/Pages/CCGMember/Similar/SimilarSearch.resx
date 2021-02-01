@@ -144,6 +144,9 @@
   <data name="No Certifications Found" xml:space="preserve">
     <value>No Certifications Found</value>
   </data>
+  <data name="pageSubmitted" xml:space="preserve">
+    <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
+  </data>
   <data name="SAME CERTIFICATIONS" xml:space="preserve">
     <value>SAME CERTIFICATIONS</value>
   </data>

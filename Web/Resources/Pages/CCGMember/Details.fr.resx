@@ -141,6 +141,9 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="No Certifications" xml:space="preserve">
+    <value>Aucun certificat associées</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>

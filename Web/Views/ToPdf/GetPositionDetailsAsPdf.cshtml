@@ -1,0 +1,119 @@
+﻿@inject Web.Data.JobPositionService _jobpositionService
+@{
+    Layout = "_ThemePdf";
+}
+
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+    var positionid = System.Int32.Parse(ViewData["Id"].ToString());
+    var Position = await _jobpositionService.GetJobPositionById(positionid);
+    var PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
+    var PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
+    var PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
+    var PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+
+    var type1 = isEnglish ? "KNOWLEDGE ELEMENTS" : "ÉLÉMENTS DE CONNAISSANCE";
+    var type2 = isEnglish ? "TECHNICAL ELEMENTS" : "ÉLÉMENTS TECHNIQUES";
+    var type3 = isEnglish ? "BEHAVIOURAL ELEMENTS" : "ÉLÉMENTS COMPORTEMENTAUX";
+    var certifications = "CERTIFICATIONS";
+    var level = isEnglish ? "Level" : "Niveau";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var nocertifications = isEnglish ? "No Certifications" : "Aucun certificat associées";
+}
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<section role="contentinfo">
+    <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="bg-primary" colspan="2">@positiondetails: @Position.JobGroupCode-@Position.JobGroupLevelValue @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="background-color:#f2f2f2" colspan="2">@certifications</th>
+            </tr>
+
+            @if (PositionCertificates.Any())
+            {
+                @foreach (var c in PositionCertificates)
+                {
+                    <tr>
+                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">@nocertifications</td>
+                </tr>
+            }
+            @if (PositionRatings1.Any())
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" width="80%">@type1</th>
+                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
+                </tr>
+                @foreach (var c in PositionRatings1)
+                {
+                    <tr>
+                        <td>
+                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                        </td>
+                        <td class="text-center">
+
+                            @c.RatingValue
+
+                        </td>
+                    </tr>
+                }
+            }
+            @if (PositionRatings2.Any())
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" width="80%">@type2</th>
+                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
+                </tr>
+                @foreach (var c in PositionRatings2)
+                {
+                    <tr>
+                        <td>
+                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+
+
+                        </td>
+                        <td class="text-center">
+                            @c.RatingValue
+
+                        </td>
+                    </tr>
+                }
+            }
+            @if (PositionRatings3.Any())
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" width="80%">@type3</th>
+                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
+                </tr>
+                @foreach (var c in PositionRatings3)
+                {
+                    <tr>
+                        <td>
+
+                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+
+                        </td>
+                        <td class="text-center">
+
+                            @c.RatingValue
+
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</section>
+
