@@ -151,7 +151,7 @@
     <value>Aucune certification trouvée</value>
   </data>
   <data name="None" xml:space="preserve">
-    <value>Nul</value>
+    <value>Aucun, continuer</value>
   </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
