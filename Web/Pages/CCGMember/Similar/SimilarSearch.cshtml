@@ -26,17 +26,18 @@
                             {
                                 @foreach (var c in Model.PositionCertificates)
                                 {
-                                    <tr>
-                                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
-                                    </tr>
+                            <tr>
+                                <td class="bg-warning">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id" type="checkbox"  /></td>
+                            </tr>
                                 }
                             }
                             else
                             {
-                                <tr>
-                                    <td class="bg-warning">@Localizer["No Certifications Found"]</td>
-                                    <td class="text-center bg-warning"><input type="checkbox" name="" value="" /></td>
-                                </tr>
+                        <tr>
+                            <td class="bg-warning">@Localizer["No Certifications Found"]</td>
+                            <td class="text-center bg-warning"><input name="CertificateIds" type="checkbox" disabled="true"/></td>
+                        </tr>
                             }
 
                         </tbody>
@@ -240,12 +241,11 @@ else
     var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() } };
     var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() } };
 
-    <section>
-    
-        <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Home"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
+<section>
+
+    <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Home"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
     <h4>@Localizer["pageSubmitted"]</h4>
     <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
-        <a asp-page="SimilarList" asp-all-route-data="@RouteParameterNone" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["None"]&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter40" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["40%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter50" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["50%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
@@ -253,6 +253,24 @@ else
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    @{
+                        var paramdata = new Dictionary<string, string>
+                                   {
+                              {"positionid", Model.PositionId.ToString()}
+                            };
+                    }
+                    <li class="previous"><a asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
+                    <li class="next"><a asp-page="SimilarList" asp-all-route-data="@RouteParameterNone">@Localizer["Next"]</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </section>
 }

@@ -126,6 +126,12 @@
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
   <data name="Print PDF" xml:space="preserve">
     <value>Imprimer PDF</value>
   </data>

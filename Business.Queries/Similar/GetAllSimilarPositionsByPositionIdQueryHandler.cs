@@ -46,7 +46,7 @@ namespace Business.Queries.Similar
 
             var sameLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
-            var sameorhigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
+            var sameOrHigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var allCurrentCompetencies = allPositionCompetencyRatings.Keys.ToList();
 
             var resultCertificates = (
@@ -54,27 +54,18 @@ namespace Business.Queries.Similar
                     .Include(e => e.Certificate).ToListAsync()
                 )
                 .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobPositionId })
-                .Select(g => new
-                 {
-                     JobGroupId = g.Key.JobGroupId,
-                     JobGroupLevelId = g.Key.JobGroupLevelId,
+                .Select(g => new 
+                {
                      JobPositionId = g.Key.JobPositionId,
-                     Certificates = g.ToList()
+                     Certificates = g.Select(e=>e.CertificateId).ToList()
                  })
                 .Where(e =>
                     query.CertificateId.Any() &&
-                    query.CertificateId.All(sl => e.Certificates.Any(cr => cr.CertificateId == sl))
-                )
-                .Select(e => new JobPositionDto()
-                {
-                    JobGroupId = e.JobGroupId,
-                    JobGroupLevelId = e.JobGroupLevelId,
-                    JobTitleId = e.JobPositionId,
-                })
-                .Where(e => e.JobTitleId != query.JobPositionId);
+                    query.CertificateId.All(sl => e.Certificates.Any(cr => cr == sl))
+                    && e.JobPositionId != query.JobPositionId
+                    );
 
-            var resultCompetencies = (
-                    await _db.JobRolePositionCompetencyRatings
+            return (await _db.JobRolePositionCompetencyRatings
                     .Include(e => e.JobPosition)
                     .Include(e => e.JobGroupLevel)
                     .Include(e => e.JobGroup)
@@ -105,11 +96,15 @@ namespace Business.Queries.Similar
                                 && cr.CompetencyId == sl.Key))
                  )
                 .Where(e =>
-                    !sameorhigherLevelCompetencies.Any()
-                    || sameorhigherLevelCompetencies.All(
+                    !sameOrHigherLevelCompetencies.Any()
+                    || sameOrHigherLevelCompetencies.All(
                             sl => e.CompetencyRatings.Any(cr => cr.RatingValue >= sl.Value
                                 && cr.CompetencyId == sl.Key))
                  )
+                .Where(e => 
+                    !resultCertificates.Any()
+                    || resultCertificates.Any(sl => sl.JobPositionId == e.JobPositionId)
+                )
                 .Select(e => new JobPositionDto()
                 {
                     JobTitleEng = e.JobTitleEng,
@@ -122,10 +117,7 @@ namespace Business.Queries.Similar
                     Competencies = e.CompetencyRatings.Select(e => e.CompetencyId).ToList(),
                 }
                 )
-                .Where(e => allCurrentCompetencies.Intersect(e.Competencies).ToList().Count / Convert.ToDouble(e.Competencies.ToList().Count) >= query.PercentMatch/100)
-                .Where(e=>e.JobTitleId != query.JobPositionId);
-                    
-            return resultCompetencies.Union(resultCertificates).ToList();
+                .Where(e => allCurrentCompetencies.Intersect(e.Competencies).ToList().Count / Convert.ToDouble(e.Competencies.ToList().Count) >= query.PercentMatch / 100 && e.JobTitleId != query.JobPositionId).ToList();           
         }
     }
 }

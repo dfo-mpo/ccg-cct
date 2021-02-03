@@ -21,11 +21,15 @@ namespace Web.Pages.CCGMember.Similar
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; } 
+        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        [BindProperty]
+        public List<string> CertificateIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> SameLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> HigherLevelCompetencyIds { get; set; } = new List<string>();
+        [BindProperty]
+        public string Certificates { get; set; } = string.Empty;
         [BindProperty]
         public string SameLevels { get; set; } = string.Empty;
         [BindProperty]
@@ -61,10 +65,15 @@ namespace Web.Pages.CCGMember.Similar
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PageSubmit = true;
 
+            foreach (var c in CertificateIds)
+            {
+                    Certificates += "&certificateId=" + c;
+            }
+
             foreach (var c in SameLevelCompetencyIds)
             {
                 if (!HigherLevelCompetencyIds.Contains(c)) { 
-                SameLevels += "&sameLevelCompetencyId=" + c;
+                    SameLevels += "&sameLevelCompetencyId=" + c;
                 }
                 else
                 {
@@ -79,7 +88,8 @@ namespace Web.Pages.CCGMember.Similar
                     HigherLevels += "&higherLevelCompetencyId=" + c;
                 }
             }
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}");
+
+            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}{Certificates}");
         }
     }
 

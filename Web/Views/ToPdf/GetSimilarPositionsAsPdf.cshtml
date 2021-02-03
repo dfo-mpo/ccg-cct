@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@inject Web.Data.SimilarService _similarService
 @{
+    Layout = "_ThemePdf";
 }
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+    var Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(ViewData["Id"].ToString());
+    var similarpositions = isEnglish ? "SIMILAR POSITIONS" : "POSITIONS SIMILAIRES";
+    var level = isEnglish ? "Level" : "Niveau";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var positions = isEnglish ? "POSITIONS" : "POSITIONS";
+    var countmessage = Positions.Length != 1 ? "POSITIONS" : "POSITION";
+}
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@similarpositions</h3>
+    <h5>@Positions.Length @countmessage</h5>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="25%">@level</th>
+                <th class="bg-primary" width="75%">@positions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Positions)
+            {
+        <tr>
+            <td>@position.JobGroupCode-@position.JobLevelValue</td>
+            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+
+        </tr>
+    }
+        </tbody>
+    </table>
+</div>

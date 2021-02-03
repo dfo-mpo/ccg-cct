@@ -20,6 +20,15 @@ namespace Web.Pages
             return new Rotativa.AspNetCore.ViewAsPdf("GetPositionDetailsAsPdf", ViewData);
         }
 
+        [Route("SimilarLists")]
+        public ActionResult SimilarList(string id, int positionid, string language)
+        {
+            ViewData["Id"] = id;
+            ViewData["Language"] = language;
+            ViewData["PositionId"] = positionid;
+            return new Rotativa.AspNetCore.ViewAsPdf("GetSimilarPositionsAsPdf", ViewData);
+        }
+
         [Route("Delta")]
         public ActionResult Delta(int id, int obj, string language)
         {

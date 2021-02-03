@@ -147,14 +147,17 @@
   <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
   <data name="No Certifications Found" xml:space="preserve">
     <value>Aucune certification trouvée</value>
   </data>
-  <data name="None" xml:space="preserve">
-    <value>Aucun, continuer</value>
-  </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
   </data>
   <data name="SAME CERTIFICATIONS" xml:space="preserve">
     <value>MÊMES CERTIFICATIONS</value>

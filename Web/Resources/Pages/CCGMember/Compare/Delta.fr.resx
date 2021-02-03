@@ -183,11 +183,8 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Imprimer PDF</value>
-  </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Enregistrer PDF</value>
+    <value>Enregistrer le PDF</value>
   </data>
   <data name="Selected Position" xml:space="preserve">
     <value>Position sélectionnée</value>

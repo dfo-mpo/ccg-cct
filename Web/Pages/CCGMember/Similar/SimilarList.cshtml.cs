@@ -24,11 +24,11 @@ namespace Web.Pages.CCGMember.Similar
             _logger = logger;
             _similarService = similarService;
         }
-        public async Task OnGet(string id, string percentmatch, int positionid)
+        public async Task OnGet(string id, string percentmatch)
         {
-            PositionId = positionid; 
+            var parameters = String.Format($"{id}{percentmatch}");
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(String.Format($"{id}{percentmatch}"));       
+            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(parameters);       
         }
     }
 }
