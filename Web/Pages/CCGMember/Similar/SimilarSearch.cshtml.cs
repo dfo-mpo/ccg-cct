@@ -77,7 +77,7 @@ namespace Web.Pages.CCGMember.Similar
                 }
                 else
                 {
-                    SameOrHigherLevels += "&sameorhigherLevelCompetencyId=" + c;
+                    SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
                 }
             }
 

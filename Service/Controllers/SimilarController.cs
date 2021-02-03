@@ -35,7 +35,7 @@ namespace Service.Controllers
             [FromQuery] int   jobGroupId,
             [FromQuery] int[] sameLevelCompetencyId,
             [FromQuery] int[] higherLevelCompetencyId,
-            [FromQuery] int[] sameorhigherLevelCompetencyId,
+            [FromQuery] int[] sameOrHigherLevelCompetencyId,
             [FromQuery] int[] certificateId,
             [FromQuery] double   percentMatch)
         {
@@ -46,7 +46,7 @@ namespace Service.Controllers
                 JobPositionId = jobPositionId,
                 SameLevelCompetencyId = sameLevelCompetencyId,
                 HigherLevelCompetencyId = higherLevelCompetencyId,
-                SameOrHigherLevelCompetencyId = sameorhigherLevelCompetencyId,
+                SameOrHigherLevelCompetencyId = sameOrHigherLevelCompetencyId,
                 CertificateId = certificateId,
                 PercentMatch = percentMatch
             };
