@@ -20,7 +20,9 @@ namespace Business.Queries.Similar
         public int JobGroupId { get; set; }
         public int[] HigherLevelCompetencyId { get; set; }
         public int[] SameLevelCompetencyId { get; set; }
+        public int[] SameOrHigherLevelCompetencyId { get; set; }
         public int[] CertificateId { get; set; }
+        public double PercentMatch { get; set; }
     }
 
     public class GetAllSimilarPositionsByPositionIdQueryHandler : IQueryHandler<GetAllSimilarPositionsByPositionIdQuery, List<JobPositionDto>>
@@ -33,7 +35,7 @@ namespace Business.Queries.Similar
         }
 
         public async Task<List<JobPositionDto>> HandleAsync(GetAllSimilarPositionsByPositionIdQuery query, CancellationToken cancellationToken = new CancellationToken())
-        {
+        {         
             var allPositionCompetencyRatings = await _db.JobRolePositionCompetencyRatings
             .Include(e => e.CompetencyRatingLevel)
             .Where(e =>
@@ -44,32 +46,26 @@ namespace Business.Queries.Similar
 
             var sameLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
+            var sameOrHigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
+            var allCurrentCompetencies = allPositionCompetencyRatings.Keys.ToList();
 
             var resultCertificates = (
                     await _db.JobRolePositionCertificates
                     .Include(e => e.Certificate).ToListAsync()
                 )
                 .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobPositionId })
-                 .Select(g => new
-                 {
-                     JobGroupId = g.Key.JobGroupId,
-                     JobGroupLevelId = g.Key.JobGroupLevelId,
+                .Select(g => new 
+                {
                      JobPositionId = g.Key.JobPositionId,
-                     Certificates = g.ToList()
+                     Certificates = g.Select(e=>e.CertificateId).ToList()
                  })
                 .Where(e =>
-                    !query.CertificateId.Any() ||
-                    query.CertificateId.All(sl => e.Certificates.Any(cr => cr.CertificateId == sl))
-                )
-                .Select(e => new JobPositionDto()
-                {
-                    JobGroupId = e.JobGroupId,
-                    JobGroupLevelId = e.JobGroupLevelId,
-                    JobTitleId = e.JobPositionId,
-                });
+                    query.CertificateId.Any() &&
+                    query.CertificateId.All(sl => e.Certificates.Any(cr => cr == sl))
+                    && e.JobPositionId != query.JobPositionId
+                    );
 
-            var resultCompetencies = (
-                    await _db.JobRolePositionCompetencyRatings
+            return (await _db.JobRolePositionCompetencyRatings
                     .Include(e => e.JobPosition)
                     .Include(e => e.JobGroupLevel)
                     .Include(e => e.JobGroup)
@@ -85,19 +81,30 @@ namespace Business.Queries.Similar
                     JobGroupLevelId = g.Key.JobGroupLevelId,
                     JobGroupLevel = g.Key.LevelValue,
                     JobPositionId = g.Key.JobPositionId,
-                    CompetencyRatings = g.ToList()
+                    CompetencyRatings = g.Select(e => new JobCompetencyRatingDto { CompetencyId = e.CompetencyId, RatingValue = e.CompetencyRatingLevel.Value }).ToList()
                 })
                 .Where(e =>
                     !sameLevelCompetencies.Any()
                     || sameLevelCompetencies.All(
-                            sl => e.CompetencyRatings.Any(cr => cr.CompetencyRatingLevel.Value == sl.Value
-                                && cr.CompetencyId == sl.Key)))
+                            sl => e.CompetencyRatings.Any(cr => cr.RatingValue == sl.Value
+                                && cr.CompetencyId == sl.Key))
+                 )
                 .Where(e =>
                     !higherLevelCompetencies.Any()
                     || higherLevelCompetencies.All(
-                            sl => e.CompetencyRatings.Any(cr => cr.CompetencyRatingLevel.Value > sl.Value
+                            sl => e.CompetencyRatings.Any(cr => cr.RatingValue > sl.Value
                                 && cr.CompetencyId == sl.Key))
                  )
+                .Where(e =>
+                    !sameOrHigherLevelCompetencies.Any()
+                    || sameOrHigherLevelCompetencies.All(
+                            sl => e.CompetencyRatings.Any(cr => cr.RatingValue >= sl.Value
+                                && cr.CompetencyId == sl.Key))
+                 )
+                .Where(e => 
+                    !resultCertificates.Any()
+                    || resultCertificates.Any(sl => sl.JobPositionId == e.JobPositionId)
+                )
                 .Select(e => new JobPositionDto()
                 {
                     JobTitleEng = e.JobTitleEng,
@@ -107,9 +114,10 @@ namespace Business.Queries.Similar
                     JobLevelValue = e.JobGroupLevel,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobTitleId = e.JobPositionId,
-                });
-
-            return resultCompetencies.Union(resultCertificates).ToList();
+                    Competencies = e.CompetencyRatings.Select(e => e.CompetencyId).ToList(),
+                }
+                )
+                .Where(e => allCurrentCompetencies.Intersect(e.Competencies).ToList().Count / Convert.ToDouble(e.Competencies.ToList().Count) >= query.PercentMatch / 100 && e.JobTitleId != query.JobPositionId).ToList();           
         }
     }
 }

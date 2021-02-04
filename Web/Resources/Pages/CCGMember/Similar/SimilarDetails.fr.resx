@@ -123,6 +123,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Comparer les positions</value>
+  </data>
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
+  </data>
+  <data name="No Certifications" xml:space="preserve">
+    <value>Aucun certificat associées</value>
   </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>

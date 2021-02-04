@@ -16,9 +16,9 @@ namespace Web.Pages.CCGMember.Compare
         private readonly ILogger<DeltaModel> _logger;
         private readonly CompareService _compareService;
         [BindProperty(SupportsGet = true)]
-        public int Id { get; set; }
+        public int Id { get; set; } = 0;
         [BindProperty(SupportsGet = true)]
-        public string Level { get; set; }
+        public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int Obj { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -62,7 +62,7 @@ namespace Web.Pages.CCGMember.Compare
             DifferingCompetenciesType3 = await _compareService.GetDifferingCompetenciesByTypeId(3, positionid, obj);
 
             MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
-            DifferingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
+            DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, obj);
         }
     }
 }

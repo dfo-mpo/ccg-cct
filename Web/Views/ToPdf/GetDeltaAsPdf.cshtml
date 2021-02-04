@@ -1,0 +1,319 @@
+﻿@inject Web.Data.CompareService _compareService
+@{
+    Layout = "_ThemePdf";
+}
+
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+    var positionid = System.Int32.Parse(ViewData["Id"].ToString());
+    var obj = System.Int32.Parse(ViewData["Obj"].ToString());
+    var CurrentPosition = await _compareService.GetJobPositionById(positionid);
+    var ObjectivePosition = await _compareService.GetJobPositionById(obj);
+
+    var MatchingCompetenciesType1 = await _compareService.GetMatchingCompetenciesByTypeId(1, positionid, obj);
+    var MatchingCompetenciesType2 = await _compareService.GetMatchingCompetenciesByTypeId(2, positionid, obj);
+    var MatchingCompetenciesType3 = await _compareService.GetMatchingCompetenciesByTypeId(3, positionid, obj);
+
+    var DifferingCompetenciesType1 = await _compareService.GetDifferingCompetenciesByTypeId(1, positionid, obj);
+    var DifferingCompetenciesType2 = await _compareService.GetDifferingCompetenciesByTypeId(2, positionid, obj);
+    var DifferingCompetenciesType3 = await _compareService.GetDifferingCompetenciesByTypeId(3, positionid, obj);
+
+    var MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
+    var DifferingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
+
+    var type1 = isEnglish ? "KNOWLEDGE ELEMENTS" : "ÉLÉMENTS DE CONNAISSANCE";
+    var type2 = isEnglish ? "TECHNICAL ELEMENTS" : "ÉLÉMENTS TECHNIQUES";
+    var type3 = isEnglish ? "BEHAVIOURAL ELEMENTS" : "ÉLÉMENTS COMPORTEMENTAUX";
+    var CERTIFICATIONS = "CERTIFICATIONS";
+    var level = isEnglish ? "Level" : "Niveau";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var NoCertifications = isEnglish ? "No Certifications" : "Aucun certificat associées";
+    var h2Results = isEnglish ? "Results Comparing Two Positions":"Résultats comparant deux positions";
+    var currentposition = isEnglish  ? "Current Position":"Position actuelle";
+    var NoMatchingCertificates = isEnglish?  "No matching certificates":"Aucun certificat associées";
+    var selectedposition = isEnglish ? "Selected Position":"Position sélectionnée";
+    var NoDifferingCertifications = isEnglish ? "No differing certifications": "Pas de certifications différentes";
+    var NoDifferingType1 = isEnglish ? "No differing knowledge elements": "Aucun élément de connaissance différent";
+    var NoDifferingType2 = isEnglish ? "No differing technical elements": "Aucun éléments techniques différents";
+    var NoDifferingType3 = isEnglish ? "No differing behavioural elements" : "Aucun élément comportemental différent";
+    var NoMatchingType1 = isEnglish?"No matching knowledge elements":"Aucun élément de connaissance associées";
+    var NoMatchingType2 = isEnglish?"No matching technical elements":"Aucun élément technique associées";
+    var NoMatchingType3 = isEnglish ? "No matching behavioural elements" : "Aucun élément comportemental associées";
+    var DIFFERINGCOMPETENCIES = isEnglish ? "DIFFERING COMPETENCIES":"COMPÉTENCES DIFFÉRENTES";
+    var MATCHINGCOMPETENCIES = isEnglish ? "MATCHING COMPETENCIES":"COMPÉTENCES ASSOCIÉES";
+
+
+}
+<section role="contentinfo">
+
+    <div class="row text-center mrgn-bttm-lg">
+        <h2><b>@h2Results</b></h2>
+    </div>
+    <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td class="bg-success" width="50%"><b>@currentposition:</b> @CurrentPosition.JobGroupCode @CurrentPosition.JobGroupLevelValue - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
+                <td class="bg-info" width="50%"><b>@selectedposition:</b> @ObjectivePosition.JobGroupCode @ObjectivePosition.JobGroupLevelValue - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>@MATCHINGCOMPETENCIES</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">@CERTIFICATIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!MatchingCertificates.Any())
+                    {
+                        <tr>
+                            <td>@NoMatchingCertificates</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var c in MatchingCertificates)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">@type2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!MatchingCompetenciesType2.Any())
+                    {
+                        <tr>
+                            <td>@NoMatchingType2</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var c in MatchingCompetenciesType2)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">@type1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!MatchingCompetenciesType1.Any())
+                    {
+                        <tr>
+                            <td>@NoMatchingType1</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var c in MatchingCompetenciesType1)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">@type3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!MatchingCompetenciesType3.Any())
+                    {
+                        <tr>
+                            <td>@NoMatchingType3</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var c in MatchingCompetenciesType3)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3>@DIFFERINGCOMPETENCIES</h3>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th style="background-color:#f2f2f2" width="70%">@CERTIFICATIONS</th>
+                <th class="text-center bg-success">@currentposition</th>
+                <th class="text-center bg-info">@selectedposition</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!DifferingCertificates.Any())
+            {
+                <tr>
+                    <td width="70%">@NoDifferingCertifications</td>
+                    <td class="text-center bg-success">&nbsp;</td>
+                    <td class="text-center bg-info">&nbsp;</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var d in DifferingCertificates)
+                {
+                    <tr>
+                        <td width="70%">@d.NameEng</td>
+                        <td class="text-center bg-success">&nbsp;</td>
+                        <td class="text-center bg-info">&nbsp;</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th style="background-color:#f2f2f2" width="70%">@type1</th>
+                <th class="text-center bg-success">@currentposition</th>
+                <th class="text-center bg-info">@selectedposition</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!DifferingCompetenciesType1.Any())
+            {
+                <tr>
+                    <td width="70%">@NoDifferingType1</td>
+                    <td class="text-center bg-success">&nbsp;</td>
+                    <td class="text-center bg-info">&nbsp;</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var d in DifferingCompetenciesType1)
+                {
+
+                    <tr>
+                        <td>
+                            @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
+                        </td>
+                        <td class="text-center bg-success">
+                          @d.RatingValueCur
+                        </td>
+                        <td class="text-center bg-info">
+                          @d.RatingValueObj
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th style="background-color:#f2f2f2" width="70%">@type2</th>
+                <th class="text-center bg-success">@currentposition</th>
+                <th class="text-center bg-info">@selectedposition</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!DifferingCompetenciesType2.Any())
+            {
+                <tr>
+                    <td width="70%">@NoDifferingType2</td>
+                    <td class="text-center bg-success">&nbsp;</td>
+                    <td class="text-center bg-info">&nbsp;</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var d in DifferingCompetenciesType2)
+                {
+                    <tr>
+                        <td>
+                          @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
+                        </td>
+                        <td class="text-center bg-success">
+                            @d.RatingValueCur
+                        </td>
+                        <td class="text-center bg-info">
+                          @d.RatingValueObj
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th style="background-color:#f2f2f2" width="70%">@type3</th>
+                <th class="text-center bg-success">@currentposition</th>
+                <th class="text-center bg-info">@selectedposition</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!DifferingCompetenciesType3.Any())
+            {
+                <tr>
+                    <td width="70%">@NoDifferingType3</td>
+                    <td class="text-center bg-success">&nbsp;</td>
+                    <td class="text-center bg-info">&nbsp;</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var d in DifferingCompetenciesType3)
+                {
+                    var key1 = "e" + d.CompetencyId.ToString();
+                    var key2 = "f" + d.CompetencyId.ToString();
+                    <tr>
+                        <td>
+                            @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
+                        </td>
+                        <td class="text-center bg-success">
+                           @d.RatingValueCur
+                        </td>
+                        <td class="text-center bg-info">
+                           @d.RatingValueObj
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</section>

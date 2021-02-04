@@ -19,7 +19,8 @@ namespace Web.Data
             {
                 _clientFactory = clientFactory;
             }
-            public async Task<JobPositionDto> GetJobPositionById(int Id)
+
+        public async Task<JobPositionDto> GetJobPositionById(int Id)
             {
                   string url = $"/api/jobpositions/{Id}";
                   using var httpClient = _clientFactory.CreateClient("api");
@@ -30,7 +31,8 @@ namespace Web.Data
                   string url = $"/api/similar/positions?{Parameters}";
                   using var httpClient = _clientFactory.CreateClient("api");
                   return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
-            }
+                  
+        }
 
     }
 }

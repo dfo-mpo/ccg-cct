@@ -141,6 +141,9 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="No Certifications" xml:space="preserve">
+    <value>Aucun certificat associées</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
@@ -149,9 +152,6 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
-  </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Imprimer PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer PDF</value>

@@ -15,15 +15,20 @@ namespace Web.Pages.CCGMember.Similar
         private readonly ILogger<SimilarListModel> _logger;
         private readonly SimilarService _similarService;
         public JobPositionDto[] Positions { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PositionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Id { get; set; }
         public SimilarListModel(ILogger<SimilarListModel> logger, SimilarService similarService)
         {
             _logger = logger;
             _similarService = similarService;
         }
-        public async Task OnGet(string id)
+        public async Task OnGet(string id, string percentmatch)
         {
+            var parameters = String.Format($"{id}{percentmatch}");
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(id);       
+            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(parameters);       
         }
     }
 }

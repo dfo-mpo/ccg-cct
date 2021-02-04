@@ -16,21 +16,29 @@ namespace Web.Pages.CCGMember.Similar
         private readonly JobPositionService _jobpositionService;
         [BindProperty]
         public JobPositionDto Position { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public int PositionId { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; } 
+        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        [BindProperty]
+        public List<string> CertificateIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> SameLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> HigherLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
+        public string Certificates { get; set; } = string.Empty;
+        [BindProperty]
         public string SameLevels { get; set; } = string.Empty;
         [BindProperty]
         public string HigherLevels { get; set; } = string.Empty;
         [BindProperty]
+        public string SameOrHigherLevels { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string RouteParameter { get; set; } = string.Empty;
-        [BindProperty]
+        [BindProperty(SupportsGet =true)]
         public Boolean PageSubmit { get; set; } = false;
         [BindProperty]
         public string GroupId { get; set; }
@@ -53,21 +61,35 @@ namespace Web.Pages.CCGMember.Similar
             PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
         }
         public async Task OnPost(int positionid)
-        {
+        { 
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PageSubmit = true;
 
+            foreach (var c in CertificateIds)
+            {
+                    Certificates += "&certificateId=" + c;
+            }
+
             foreach (var c in SameLevelCompetencyIds)
             {
-                SameLevels += "&sameLevelCompetencyId=" + c;
+                if (!HigherLevelCompetencyIds.Contains(c)) { 
+                    SameLevels += "&sameLevelCompetencyId=" + c;
+                }
+                else
+                {
+                    SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
+                }
             }
 
             foreach (var c in HigherLevelCompetencyIds)
             {
-                HigherLevels += "&higherLevelCompetencyId=" + c;
+                if (!SameLevelCompetencyIds.Contains(c))
+                {
+                    HigherLevels += "&higherLevelCompetencyId=" + c;
+                }
             }
 
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}");
+            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}{Certificates}");
         }
     }
 

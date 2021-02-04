@@ -8,11 +8,8 @@
 
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
-            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+            <a class="btn btn-primary mrgn-lft-md" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})">@Localizer["Save PDF"]</a>
             <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
-        </div>
-        <div class="row mrgn-tp-md">
-            <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Save PDF"]</button>
         </div>
         <h2><b>@Localizer["Current Position Details"]</b></h2>
 
