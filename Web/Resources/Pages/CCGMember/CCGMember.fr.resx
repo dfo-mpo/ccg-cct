@@ -121,13 +121,13 @@
     <value>Tous les postes</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Avant</value>
+    <value>Précédent</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
   </data>
   <data name="Next" xml:space="preserve">
-    <value>Prochain</value>
+    <value>Suivant</value>
   </data>
   <data name="Offshore" xml:space="preserve">
     <value>Côtier</value>

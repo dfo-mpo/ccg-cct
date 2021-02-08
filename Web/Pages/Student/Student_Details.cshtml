@@ -1,0 +1,212 @@
+﻿@page
+@model Web.Pages.Student.Student_DetailsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Student Position Details";
+}
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="#print"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+    <a href="#save"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+</div>
+
+<div class="mrgn-tp-lg">
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" colspan="2">@Localizer["position"]: SC-DED 02 Deckhand</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr><th colspan="2" style="background-color:#f2f2f2">@Localizer["certificates"]</th></tr>
+            <tr><td colspan="2">Restricted Operator Certificate-Maritime Commerical (ROC-MC)</td></tr>
+            <tr><td colspan="2">Marine Emergency Duties - Basic Safety</td></tr>
+            <tr><td colspan="2">Marine Emergency Duties - Survival Craft / Rescue Boats</td></tr>
+            <tr><td colspan="2">Marine Emergency Duties - Proficiency in Advanced Firefighting</td></tr>
+            <tr><td colspan="2">First Aid</td></tr>
+            <tr><td colspan="2">Marine First Aid</td></tr>
+            <tr><td colspan="2">Advanced Marine First Aid</td></tr>
+            <tr><td colspan="2">Bridge Watch Certificate </td></tr>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["knowledge"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["level"]</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Organizational Knowledge</a>
+                    <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Organizational Knowledge</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
+                    <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 1</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Basic knowledge of a unit in the Coast Guard organization chart and its reporting relationships.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Program Knowledge and Application</a>
+                    <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Program Knowledge and Application</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates:  Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#4" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                    <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 2</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                            <p>Limited knowledge of the Coast Guard's functions and the roles and responsibilities of key Coast Guard contacts within a regional organizational setting. Understands some programs and assets well.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["technical"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["level"]</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">Rigging and Lifting</a>
+                    <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Rigging and Lifting</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Executes load-lifting, towing, storing, deployment operations on cargo, nets, and equipment with proper adherence to Occupational Health and Safety (OHS) requirements, signaling and communication protocols with diligent care for equipment.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#6" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
+                    <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 1</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Where assisted or trained, employs safe operating procedures in erecting a temporary jib or derrick for boats or painting or gangway uses. Learns splicing and rigging gear to make slings and tackle. Ties appropriate knots as required.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#7" aria-controls="centred-popup" class="wb-lbx" role="button">Small Boats, Helicopter, Barges, Tackle Operations</a>
+                    <section id="7" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Small Boats, Helicopter, Barges, Tackle Operations</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Practices seamanship in areas such as vessel maintenance, steering, lookout, the use and maintenance of small vessels, helicopter procedures, and tackle use, stowage, and maintenance.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#8" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
+                    <section id="8" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 1</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Paints and stores small vessels and lifesaving equipment. Participates in cargo stowage, cleaning/sanding, and paint evolutions.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#9" aria-controls="centred-popup" class="wb-lbx" role="button">Bridge Watchkeeping Duties</a>
+                    <section id="9" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Bridge Watchkeeping Duties</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Performs helm's person seamanship duties on the bridge of a vessel using bridge steering and propulsion equipment while slipping, underway, and/or docking. Performs duties of a lookout while ship is underway.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#10" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
+                    <section id="10" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 1</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Maintains continuous lookout and reports hazards to the officer of the watch (OOW) that can be an obstacle to navigation such as other ships, debris, and/or floating objects. In case of a person overboard, continuously points out in the direction of the person's location.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#11" aria-controls="centred-popup" class="wb-lbx" role="button">Problem Solving</a>
+                    <section id="11" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Problem Solving</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Defines a problem while determining the cause of the problem and identifying, prioritizing, and selecting alternatives for a solution.</p>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#12" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
+                    <section id="12" class="mfp-hide modal-dialog modal-content overlay-def">
+                        <header class="modal-header">
+                            <h2 class="modal-title">Position Level: 1</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
+                            <p>Recognizes a problem. Solves basic problems by following a set of standard rules and practices. Identifies alternate solutions, based on precedent.</p>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">@Localizer["behavioural"]</th>
+                <th class="text-center" style="background-color:#f2f2f2">@Localizer["level"]</th>
+            </tr>
+            <tr>
+                <td>Demonstrating Integrity and Respect</td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <td>Thinking Things Through</td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <td>Working Effectively With Others</td>
+                <td class="text-center">1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

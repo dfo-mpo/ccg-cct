@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
+
 <h2><b>@Localizer["h2Text"]</b></h2>
 
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
@@ -64,7 +64,7 @@
         <nav role="navigation" class="mrgn-bttm-lg">
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
-                <li class="previous"><a asp-page="CurrentLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
                 @if (Model.PositionId != 0) {
                     var routedatanext = new Dictionary<string, string>
                         {
@@ -72,7 +72,7 @@
                              { "level",  Model.Level.ToString()},
                              { "positionid", Model.PositionId.ToString()}
                          };
-                <li class="next"><a asp-page="Details" asp-all-route-data="routedatanext">@Localizer["Next"]</a></li>
+                <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="Details" asp-all-route-data="routedatanext">@Localizer["Next"]</a></li>
                 }
             </ul>
         </nav>
