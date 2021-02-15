@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../../Index">@Localizer["Home"]</a>
+
 <h2><b>@Localizer["h2Text"]</b></h2>
 
 <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
@@ -58,8 +58,9 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-9 col-lg-offset-3 mrgn-tp-md">
+<div class="row mrgn-tp-lg">
+
+    <div class="col-sm-9 pull-right mrgn-tp-lg">
         @{var routedatanext = new Dictionary<string, string>
          {
         { "id",  Model.Id.ToString()},
@@ -79,14 +80,13 @@
         };
         }
     </div>
+    <div class="col-sm-3 pull-left mrgn-tp-sm">
+        <nav role="navigation" class="mrgn-bttm-lg">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="row">
-        <div class="col-sm-12 mrgn-bttm-md">
-            <nav role="navigation" class="mrgn-bttm-lg">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+</div>
+    
