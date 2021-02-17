@@ -1,0 +1,31 @@
+﻿@page
+@model Web.Pages.Mockups.External.External_CandidateModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "External Candidate";
+}
+
+<section role="contentinfo">
+    
+        <h2>@Localizer["Q1"]</h2>
+      
+            <div class="col-md-6">
+                <figure>
+                    <a class="nav-link" href="External_Shoreside">
+                        <img src="~/img/CCGMember/shoreside.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Shoreside"]</h4></figcaption>
+                </figure>
+            </div>
+            <div class="col-md-6">
+                <figure>
+                    <a href="External_Seagoing">
+                        <img src="~/img/CCGMember/Seagoing.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Seagoing"]</h4></figcaption>
+                </figure>
+            </div>
+   
+   
+</section>
+

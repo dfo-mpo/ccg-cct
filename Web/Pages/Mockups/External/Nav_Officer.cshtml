@@ -1,0 +1,142 @@
+﻿@page
+@model Web.Pages.Mockups.External.Nav_OfficerModel
+@inject IViewLocalizer Localizer
+@{
+}
+
+    <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+        <a href="#print"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+        <a href="#save"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+    </div>
+
+    
+    <div class="mrgn-tp-lg">
+        <h3 class="text-center">@Localizer["CCG POSITIONS"]</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <thead>
+                <tr>
+                    <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                    <th class="bg-primary" width="73%">@Localizer["POSITIONS"]</th>
+                    <th class="bg-primary" width="12%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GT-04</td>
+                    <td>1st Officer Air Cushioned Vehicle</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>GT-05</td>
+                    <td>Commanding Officer Air Cushioned Vehicle</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>GT-06</td>
+                    <td>Officer in Charge Air Cushioned Vehicle</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-02</td>
+                    <td>3rd Officer</td>
+                    <td><a asp-page="Crew_Deckhand" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-03</td>
+                    <td>2nd Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-03</td>
+                    <td>3rd Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-03</td>
+                    <td>Fishing Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-04</td>
+                    <td>2nd Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                <tr>
+                    <td>SO-MAO-04</td>
+                    <td>Small Vessel Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-05</td>
+                    <td>Fishing Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-05</td>
+                    <td>Chief Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-06</td>
+                    <td>Watchkeeping Chief Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-06</td>
+                    <td>Chief Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-06</td>
+                    <td>Fishing Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-07</td>
+                    <td>Chief Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                <tr>
+                    <td>SO-MAO-08</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-09</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-10</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-11</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-12</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+                <tr>
+                    <td>SO-MAO-13</td>
+                    <td>Commanding Officer</td>
+                    <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-lg-12 mrgn-bttm-md">
+                <nav role="navigation" class="mrgn-bttm-lg">
+
+                    <h2 class="wb-inv">Document navigation</h2>
+
+                    <ul class="pager">
+                        <li class="previous"><a href="Ship_Officer" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </div>

@@ -46,14 +46,14 @@
 }
 <section role="contentinfo">
 
-    <div class="row text-center mrgn-bttm-lg">
-        <h2><b>@h2Results</b></h2>
-    </div>
+    
+    <h3 class="text-center">@h2Results</h3>
+
     <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
-                <td class="bg-success" width="50%"><b>@currentposition:</b> @CurrentPosition.JobGroupCode @CurrentPosition.JobGroupLevelValue - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
-                <td class="bg-info" width="50%"><b>@selectedposition:</b> @ObjectivePosition.JobGroupCode @ObjectivePosition.JobGroupLevelValue - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
+                <td class="text-center bg-success" width="50%"><b>@currentposition:</b> @CurrentPosition.JobGroupCode @CurrentPosition.JobGroupLevelValue - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
+                <td class="text-center bg-info" width="50%"><b>@selectedposition:</b> @ObjectivePosition.JobGroupCode @ObjectivePosition.JobGroupLevelValue - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
             </tr>
         </tbody>
     </table>
@@ -172,19 +172,17 @@
 
     <h3>@DIFFERINGCOMPETENCIES</h3>
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th style="background-color:#f2f2f2" width="70%">@CERTIFICATIONS</th>
-                <th class="text-center bg-success">@currentposition</th>
-                <th class="text-center bg-info">@selectedposition</th>
-            </tr>
-        </thead>
+    <table class="table table-bordered table-condensed">
         <tbody>
+            <tr>
+                <td style="background-color:#f2f2f2" width="70%">@CERTIFICATIONS</td>
+                <td class="text-center bg-success">@currentposition</td>
+                <td class="text-center bg-info">@selectedposition</td>
+            </tr>
             @if (!DifferingCertificates.Any())
             {
                 <tr>
-                    <td width="70%">@NoDifferingCertifications</td>
+                    <td class="row">@NoDifferingCertifications</td>
                     <td class="text-center bg-success">&nbsp;</td>
                     <td class="text-center bg-info">&nbsp;</td>
                 </tr>
@@ -194,7 +192,7 @@
                 @foreach (var d in DifferingCertificates)
                 {
                     <tr>
-                        <td width="70%">@d.NameEng</td>
+                        <td class="row">@d.NameEng</td>
                         <td class="text-center bg-success">&nbsp;</td>
                         <td class="text-center bg-info">&nbsp;</td>
                     </tr>
@@ -203,19 +201,17 @@
         </tbody>
     </table>
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th style="background-color:#f2f2f2" width="70%">@type1</th>
-                <th class="text-center bg-success">@currentposition</th>
-                <th class="text-center bg-info">@selectedposition</th>
-            </tr>
-        </thead>
+    <table class="table table-bordered table-condensed">
         <tbody>
+            <tr>
+                <td style="background-color:#f2f2f2" width="70%">@type1</td>
+                <td class="text-center bg-success">@currentposition</td>
+                <td class="text-center bg-info">@selectedposition</td>
+            </tr>
             @if (!DifferingCompetenciesType1.Any())
             {
                 <tr>
-                    <td width="70%">@NoDifferingType1</td>
+                    <td class="row">@NoDifferingType1</td>
                     <td class="text-center bg-success">&nbsp;</td>
                     <td class="text-center bg-info">&nbsp;</td>
                 </tr>
@@ -226,14 +222,14 @@
                 {
 
                     <tr>
-                        <td>
+                        <td class="row">
                             @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
                         </td>
                         <td class="text-center bg-success">
-                          @d.RatingValueCur
+                            @d.RatingValueCur
                         </td>
                         <td class="text-center bg-info">
-                          @d.RatingValueObj
+                            @d.RatingValueObj
                         </td>
                     </tr>
                 }
@@ -241,19 +237,17 @@
         </tbody>
     </table>
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th style="background-color:#f2f2f2" width="70%">@type2</th>
-                <th class="text-center bg-success">@currentposition</th>
-                <th class="text-center bg-info">@selectedposition</th>
-            </tr>
-        </thead>
+    <table class="table table-bordered table-condensed">
         <tbody>
+            <tr>
+                <td style="background-color:#f2f2f2" width="70%">@type2</td>
+                <td class="text-center bg-success">@currentposition</td>
+                <td class="text-center bg-info">@selectedposition</td>
+            </tr>
             @if (!DifferingCompetenciesType2.Any())
             {
                 <tr>
-                    <td width="70%">@NoDifferingType2</td>
+                    <td class="row">@NoDifferingType2</td>
                     <td class="text-center bg-success">&nbsp;</td>
                     <td class="text-center bg-info">&nbsp;</td>
                 </tr>
@@ -263,14 +257,14 @@
                 @foreach (var d in DifferingCompetenciesType2)
                 {
                     <tr>
-                        <td>
-                          @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
+                        <td class="row">
+                            @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
                         </td>
                         <td class="text-center bg-success">
                             @d.RatingValueCur
                         </td>
                         <td class="text-center bg-info">
-                          @d.RatingValueObj
+                            @d.RatingValueObj
                         </td>
                     </tr>
                 }
@@ -278,19 +272,17 @@
         </tbody>
     </table>
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th style="background-color:#f2f2f2" width="70%">@type3</th>
-                <th class="text-center bg-success">@currentposition</th>
-                <th class="text-center bg-info">@selectedposition</th>
-            </tr>
-        </thead>
+    <table class="table table-bordered table-condensed">
         <tbody>
+            <tr>
+                <td style="background-color:#f2f2f2" width="70%">@type3</td>
+                <td class="text-center bg-success">@currentposition</td>
+                <td class="text-center bg-info">@selectedposition</td>
+            </tr>
             @if (!DifferingCompetenciesType3.Any())
             {
                 <tr>
-                    <td width="70%">@NoDifferingType3</td>
+                    <td class="row">@NoDifferingType3</td>
                     <td class="text-center bg-success">&nbsp;</td>
                     <td class="text-center bg-info">&nbsp;</td>
                 </tr>
@@ -302,14 +294,14 @@
                     var key1 = "e" + d.CompetencyId.ToString();
                     var key2 = "f" + d.CompetencyId.ToString();
                     <tr>
-                        <td>
+                        <td class="row">
                             @(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)
                         </td>
                         <td class="text-center bg-success">
-                           @d.RatingValueCur
+                            @d.RatingValueCur
                         </td>
                         <td class="text-center bg-info">
-                           @d.RatingValueObj
+                            @d.RatingValueObj
                         </td>
                     </tr>
                 }

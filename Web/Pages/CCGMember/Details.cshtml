@@ -9,8 +9,8 @@
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
             <div class="col-md-12 mrgn-tp-md">
-                <a href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Save PDF"]"></span> </a>
-                <a href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Print PDF"]"></span> </a>
+                <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
+                <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
             </div>
         </div>
 

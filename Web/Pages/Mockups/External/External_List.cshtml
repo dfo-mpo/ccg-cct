@@ -1,0 +1,64 @@
+﻿@page
+@model Web.Pages.Mockups.External.External_ListModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "External Candidate Position List";
+}
+
+<div class="row mrgn-tp-md">
+    <button class="btn btn-primary mrgn-lft-md" type="button">@Localizer["Print PDF"]</button>
+    <button class="btn btn-primary pull-right mrgn-rght-md" type="button">@Localizer["Save PDF"]</button>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["CCG POSITIONS"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                <th class="bg-primary" width="73%">@Localizer["POSITIONS"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SO-MAO-02</td>
+                <td>3rd Officer</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SO-MAO-03</td>
+                <td>2nd Officer</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SO-MAO-03</td>
+                <td>3rd Officer</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SO-MAO-03</td>
+                <td>Fishing Officer</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SO-MAO-04</td>
+                <td>2nd Officer</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+
+                <h2 class="wb-inv">Document navigation</h2>
+
+                <ul class="pager">
+                    <li class="previous"><a href="Ship_Officer" rel="prev">@Localizer["Previous"]</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+

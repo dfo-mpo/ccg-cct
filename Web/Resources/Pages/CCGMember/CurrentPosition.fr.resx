@@ -120,9 +120,6 @@
   <data name="h2Text" xml:space="preserve">
     <value>Sélectionnez votre niveau et votre position actuels</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
-  </data>
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>
   </data>

@@ -15,13 +15,12 @@
     <h3 class="text-center">@similarpositions</h3>
     <h5>@Positions.Length @countmessage</h5>
     <table class="table table-hover table-responsive table-bordered">
-        <thead>
-            <tr>
-                <th class="bg-primary" width="25%">@level</th>
-                <th class="bg-primary" width="75%">@positions</th>
-            </tr>
-        </thead>
         <tbody>
+            <tr>
+                <td class="bg-primary" width="25%">@level</td>
+                <td class="bg-primary" width="75%">@positions</td>
+            </tr>
+            
             @foreach (var position in Positions)
             {
         <tr>
