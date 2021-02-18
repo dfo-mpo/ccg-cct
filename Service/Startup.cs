@@ -160,7 +160,8 @@ namespace Service
         {
             _container.Register(
                 () => new DbContextOptionsBuilder<CctDbContext>()
-                    .UseSqlServer(Configuration.GetConnectionString("CctDbContext")).Options, Lifestyle.Singleton);
+                    .UseSqlServer(Configuration.GetConnectionString("CctDbContext"), options => options.EnableRetryOnFailure())
+                    .Options, Lifestyle.Singleton);
             _container.Register<DbContext, CctDbContext>(Lifestyle.Scoped);
             _container.Register<CctDbContext>(Lifestyle.Scoped);
             _container.Register(() => _appConfig, Lifestyle.Singleton);

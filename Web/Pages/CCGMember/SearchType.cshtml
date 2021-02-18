@@ -1,8 +1,10 @@
 ﻿@page
 @model Web.Pages.CCGMember.SearchTypeModel
 @inject IViewLocalizer Localizer
+@{
+}
 
-    <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
+
 <h2><b>@Localizer["Question1"]</b></h2>
 <a asp-page="Similar/SimilarSearch" asp-route-positionid="@Model.PositionId">
     <div class="col-sm-4 mrgn-bttm-md">

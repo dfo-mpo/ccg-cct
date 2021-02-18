@@ -7,6 +7,7 @@ using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Rotativa.AspNetCore;
 using Web.Data;
 
 namespace Web.Pages.CCGMember.Similar

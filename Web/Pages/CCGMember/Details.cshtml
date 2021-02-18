@@ -8,9 +8,12 @@
 
     <section role="contentinfo">
         <div class="row mrgn-tp-md">
-            <a class="btn btn-primary mrgn-lft-md" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})">@Localizer["Save PDF"]</a>
-            <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
+            <div class="col-md-12 mrgn-tp-md">
+                <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
+                <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+            </div>
         </div>
+
         <h2><b>@Localizer["Current Position Details"]</b></h2>
 
         <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -190,8 +193,8 @@
                               {"positionid", Model.PositionId.ToString()}
                             };
                       }
-                <li class="previous"><a asp-page="CurrentPosition" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
-                <li class="next"><a asp-page="SearchType" asp-route-positionid="@Model.Position.JobTitleId">@Localizer["Next"]</a></li>
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentPosition" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
+                <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="SearchType" asp-route-positionid="@Model.Position.JobTitleId">@Localizer["Next"]</a></li>
             </ul>
         </nav>
     </div>
