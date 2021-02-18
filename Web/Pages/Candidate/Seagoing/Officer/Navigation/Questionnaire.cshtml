@@ -1,0 +1,298 @@
+﻿@page
+@model Web.Pages.Candidate.Seagoing.Officer.Navigation.QuestionnaireModel
+@inject IViewLocalizer Localizer
+@{ 
+    var routedata = new Dictionary<string, string>
+    {
+        {"Parameters",Model.Parameters },
+        {"Optional", Model.Optional },
+        {"ParametersType2",Model.ParametersType2 },
+        {"Optionaltype2",Model.OptionalType2 },
+        {"ParametersType3",Model.ParametersType3 },
+        {"OptionalType3", Model.OptionalType3 }
+
+    };
+
+}
+
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h3>What certifications do you currently possess?</h3>
+        <form method="post">
+            <div class="form-group">
+                <select multiple class="form-control maxwidth " id="dt_certifications" name="dt_certifications">
+                    <option value="1">Master Mariner</option>
+                    <option value="2">Master Near Coastal</option>
+                    <option value="3">Chief Mate Near Coastal</option>
+                    <option value="4">Master 3000 GT</option>
+                    <option value="5">Master 500 GT</option>
+                    <option value="6">Master 150 GT</option>
+                    <option value="7">Watchkeeping Mate Near Coastal</option>
+                    <option value="8">Fishing Master, Third Class</option>
+                </select>
+            </div>
+
+            <h3>What competencies and levels to you currently possess?</h3>
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th style="width:50%">KNOWLEDGE ELEMENTS</th>
+                        <th style="width:10%">Level 1</th>
+                        <th style="width:10%">Level 2</th>
+                        <th style="width:10%">Level 3</th>
+                        <th style="width:10%">Level 4</th>
+                        <th style="width:10%">Level 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Deck Management Knowledge</a>
+                            <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Deck Management Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>The management of a deck watch to ensure safe rigging, lifting, tackle, small craft, helicopter, and cargo loading operations.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="Deck" value="" /></td>
+                        <td><input type="radio" name="Deck" value="" /></td>
+                        <td><input type="radio" name="Deck" value="" /></td>
+                        <td><input type="radio" name="Deck" value="" /></td>
+                        <td><input type="radio" name="Deck" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#2" aria-controls="centred-popup" class="wb-lbx" role="button">Navigational Equipment Standard Operating Procedures Knowledge</a>
+                            <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Navigational Equipment Standard Operating Procedures Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>Knowledge of the steps and safety regulations in preparing equipment for operation, operating equipment, and monitoring.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="NESOP" value="" /></td>
+                        <td><input type="radio" name="NESOP" value="" /></td>
+                        <td><input type="radio" name="NESOP" value="" /></td>
+                        <td><input type="radio" name="NESOP" value="" /></td>
+                        <td><input type="radio" name="NESOP" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Acts and Regulations Knowledge</a>
+                            <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Acts and Regulations Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>An understanding of the acts and regulations pertinent to operational programs, including their affective clauses, sources, authorities, and impacts on a given program or programs in the Canadian Coast Guard.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="ARK" value="" /></td>
+                        <td><input type="radio" name="ARK" value="" /></td>
+                        <td><input type="radio" name="ARK" value="" /></td>
+                        <td><input type="radio" name="ARK" value="" /></td>
+                        <td><input type="radio" name="ARK" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#4" aria-controls="centred-popup" class="wb-lbx" role="button">Fishing Officer Knowledge</a>
+                            <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
+                                <header class="modal-header">
+                                    <h2 class="modal-title">Fishing Officer Knowledge</h2>
+                                </header>
+                                <div class="modal-body ">
+                                    <p>The body of experiential knowledge including environmental, resource-based, ecosystem, fishing practices, fishing communities and livelihoods, governance and markets, and their dynamic relationships.</p>
+                                    <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                </div>
+                            </section>
+                        </td>
+                        <td><input type="radio" name="FOK" value="" /></td>
+                        <td><input type="radio" name="FOK" value="" /></td>
+                        <td><input type="radio" name="FOK" value="" /></td>
+                        <td><input type="radio" name="FOK" value="" /></td>
+                        <td><input type="radio" name="FOK" value="" /></td>
+                    </tr>
+                    @if (!Model.Parameters.Equals(String.Empty)) {
+                    @foreach (var c in Model.Parameters.Split('%'))
+                    {
+                        if (!c.Equals(String.Empty))
+                        {
+                        <tr>
+                            <td>
+                                <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">@c</a>
+                                <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title">@c</h2>
+                                    </header>
+                                    <div class="modal-body ">
+                                        <p>The body of experiential knowledge including environmental, resource-based, ecosystem, fishing practices, fishing communities and livelihoods, governance and markets, and their dynamic relationships.</p>
+                                        <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                                    </div>
+                                </section>
+                            </td>
+                            <td><input type="radio" name="FOK" value="" /></td>
+                            <td><input type="radio" name="FOK" value="" /></td>
+                            <td><input type="radio" name="FOK" value="" /></td>
+                            <td><input type="radio" name="FOK" value="" /></td>
+                            <td><input type="radio" name="FOK" value="" /></td>
+                        </tr>}
+                        }
+                    }
+                    <tr>
+
+                        <td>Other</td>
+                        <td colspan="4"><input type="text" id="" value="" asp-for="Optional" /></td>
+                        <td><button asp-page="Questionnaire" asp-all-route-data="@routedata">Add</button>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th style="width:50%">TECHNICAL ELEMENTS</th>
+                        <th style="width:10%">Level 1</th>
+                        <th style="width:10%">Level 2</th>
+                        <th style="width:10%">Level 3</th>
+                        <th style="width:10%">Level 4</th>
+                        <th style="width:10%">Level 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bridge Management</td>
+                        <td><input type="radio" name="BM" value="" /></td>
+                        <td><input type="radio" name="BM" value="" /></td>
+                        <td><input type="radio" name="BM" value="" /></td>
+                        <td><input type="radio" name="BM" value="" /></td>
+                        <td><input type="radio" name="BM" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Problem Solving</td>
+                        <td><input type="radio" name="PS" value="" /></td>
+                        <td><input type="radio" name="PS" value="" /></td>
+                        <td><input type="radio" name="PS" value="" /></td>
+                        <td><input type="radio" name="PS" value="" /></td>
+                        <td><input type="radio" name="PS" value="" /></td>
+                    </tr>
+                    @if (!Model.ParametersType2.Equals(String.Empty))
+                    {
+                        @foreach (var c in Model.ParametersType2.Split('%'))
+                        {
+                            if (!c.Equals(String.Empty))
+                            {
+                                <tr>
+                                    <td>@c</td>
+                                    <td><input type="radio" name="PS" value="" /></td>
+                                    <td><input type="radio" name="PS" value="" /></td>
+                                    <td><input type="radio" name="PS" value="" /></td>
+                                    <td><input type="radio" name="PS" value="" /></td>
+                                    <td><input type="radio" name="PS" value="" /></td>
+                                </tr>
+                            }
+                        }}
+                    <tr>
+                        <td>Other</td>
+                        <td colspan="4"><input type="text" id="" value="" asp-for="OptionalType2"  /></td>
+                        <td><button asp-page="Questionnaire" asp-all-route-data="@routedata">Add</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="bg-primary">
+                        <th style="width:50%">BEHAVIOURAL ELEMENTS</th>
+                        <th style="width:10%">Level 1</th>
+                        <th style="width:10%">Level 2</th>
+                        <th style="width:10%">Level 3</th>
+                        <th style="width:10%">Level 4</th>
+                        <th style="width:10%">Level 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Demonstrating Integrity and Respect</td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                        <td><input type="radio" name="DIR" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Thinking Things Through</td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                        <td><input type="radio" name="TTT" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Working Effectively With Others</td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                        <td><input type="radio" name="WEW" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Showing Initiative and Being Action Oriented</td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                        <td><input type="radio" name="SIB" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Apply Safety Considerations</td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                        <td><input type="radio" name="ASC" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Leadership</td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                        <td><input type="radio" name="Lead" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Canadian Coast Guard Cultural Awareness</td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                        <td><input type="radio" name="CCG" value="" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+
+                <h2 class="wb-inv">Document navigation</h2>
+
+                <ul class="pager">
+                    <li class="previous"><a href="Ship_Officer" rel="prev">Previous</a></li>
+                    <li class="next"><a href="External_List" rel="next">Next</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+</section>

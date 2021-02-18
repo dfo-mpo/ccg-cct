@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Compare" xml:space="preserve">
+    <value>Comparer</value>
+  </data>
   <data name="Question1" xml:space="preserve">
-    <value>Which area would you like to explore?</value>
+    <value>Souhaitez-vous comparer ou trouver des postes similaires avec l'organisation à votre poste sélectionné ci-dessous?</value>
   </data>
-  <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
-  </data>
-  <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+  <data name="Similar" xml:space="preserve">
+    <value>Positions Similaire</value>
   </data>
 </root>

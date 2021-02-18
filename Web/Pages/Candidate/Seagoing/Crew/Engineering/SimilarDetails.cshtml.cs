@@ -7,10 +7,12 @@ using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Rotativa.AspNetCore;
 using Web.Data;
 
-namespace Web.Pages.CCGMember.Similar
+namespace Web.Pages.Candidate.Seagoing.Crew.Engineering
 {
+
     public class SimilarDetailsModel : PageModel
     {
         private readonly ILogger<SimilarDetailsModel> _logger;
@@ -38,5 +40,6 @@ namespace Web.Pages.CCGMember.Similar
             PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
             PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
         }
+
     }
 }

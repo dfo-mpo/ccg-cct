@@ -1,0 +1,38 @@
+﻿@page
+@model Web.Pages.Mockups.Ship_CrewModel
+@inject IViewLocalizer Localizer
+@{
+}
+<a class="btn btn-primary pull-right mrgn-rght-md" asp-page="../../../Index">@Localizer["Home"]</a>
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["Q1"]</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <figure>
+                    <a class="nav-link" asp-page="Deck/Questionnaire">
+                        <img src="~/img/CCGMember/SC.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Deck"]</h4></figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <a asp-page="Engineering/Questionnaire">
+                        <img src="~/img/CCGMember/Oiler.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Engineering"]</h4></figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <a asp-page="Logistics/Questionnaire">
+                        <img src="~/img/CCGMember/GS.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Logistics"]</h4></figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+

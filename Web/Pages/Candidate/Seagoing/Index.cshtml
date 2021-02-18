@@ -1,0 +1,28 @@
+﻿@page
+@inject IViewLocalizer Localizer
+@{
+}
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["Q1"]</h2>
+        <div class="row">
+            <div class="col-sm-4">
+                <figure>
+                    <a class="nav-link" asp-page="Officer/Index">
+                        <img src="~/img/CCGMember/SO.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Officer"]</h4></figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-4">
+                <figure>
+                    <a asp-page="Crew/Index">
+                        <img src="~/img/CCGMember/SC.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                    </a>
+                    <figcaption><h4 class="text-center">@Localizer["Crew"]</h4></figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Question1" xml:space="preserve">
-    <value>Which area would you like to explore?</value>
-  </data>
-  <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
-  </data>
-  <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+  <data name="Q1" xml:space="preserve">
+    <value>Please select your preferred field of employment</value>
   </data>
 </root>
