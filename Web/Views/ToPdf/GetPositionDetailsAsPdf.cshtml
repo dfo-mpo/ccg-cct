@@ -16,6 +16,7 @@
     var type2 = isEnglish ? "TECHNICAL ELEMENTS" : "ÉLÉMENTS TECHNIQUES";
     var type3 = isEnglish ? "BEHAVIOURAL ELEMENTS" : "ÉLÉMENTS COMPORTEMENTAUX";
     var certifications = "CERTIFICATIONS";
+    var h2Results = isEnglish ? "Current Position Details" : "Détails de la position actuelle";
     var level = isEnglish ? "Level" : "Niveau";
     var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
     var nocertifications = isEnglish ? "No Certifications" : "Aucun certificat associées";
@@ -24,12 +25,11 @@
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 <section role="contentinfo">
+   
+    <h3 class="text-center">@h2Results</h3>
+
     <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
-        <thead>
-            <tr>
-                <th class="bg-primary" colspan="2">@positiondetails: @Position.JobGroupCode-@Position.JobGroupLevelValue @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</th>
-            </tr>
-        </thead>
+        <caption><h4>@positiondetails: @Position.JobGroupCode-@Position.JobGroupLevelValue @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</h4></caption>
         <tbody>
             <tr>
                 <th style="background-color:#f2f2f2" colspan="2">@certifications</th>

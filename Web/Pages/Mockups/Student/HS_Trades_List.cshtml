@@ -1,0 +1,326 @@
+﻿@page
+@model Web.Pages.Mockups.Student.HS_Trades_ListModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Student Position Results";
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+}
+
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["seagoing"]</h3>
+
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["level"]</th>
+                <th class="bg-primary" width="73%">@Localizer["positions"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SC-DED-02</td>
+                <td>Deckhand</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-ERD-03</td>
+                <td>Oiler</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-STD-01</td>
+                <td>Steward</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-center">@Localizer["shoreside"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["level"]</th>
+                <th class="bg-primary" width="73%">@Localizer["positions"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GL-COI-09</td>
+                <td>Carpenter</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-10</td>
+                <td>Assistant Facility, Manager</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-11</td>
+                <td>Foreperson, Aids to Navigation (AtoN)</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-11</td>
+                <td>Foreperson, Field Shop</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-11</td>
+                <td>Foreperson, Maritime and Civil Infrastructure (MCI)</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-COI-11</td>
+                <td>Foreperson, Production</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-EIM-10</td>
+                <td>Deisel Mechanic and Electrician</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-EIM-11</td>
+                <td>Lamp Technician</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-09</td>
+                <td>Maintenance Mechanic</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-10</td>
+                <td>Painter</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-10</td>
+                <td>Vessel Repair Technician, Mechanic</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-10</td>
+                <td>Welder</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-11</td>
+                <td>Refrigeration Technician</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAM-11</td>
+                <td>Foreperson</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-05</td>
+                <td>General Labourer</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-06</td>
+                <td>Maintenance</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-07</td>
+                <td>Driver/Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-07</td>
+                <td>Supervisor Field Work, Maintenance Assistant</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-08</td>
+                <td>General Labourer/Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-09</td>
+                <td>Welder</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MAN-10</td>
+                <td>Welder</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MDO-03</td>
+                <td>Transportation Driver</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MDO-04</td>
+                <td>Driver</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MDO-05</td>
+                <td>Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MDO-06</td>
+                <td>Heavy Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MDO-07</td>
+                <td>Vessel and Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MOC-05</td>
+                <td>Machine Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-MOC-07</td>
+                <td>Machine Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PCF-06</td>
+                <td>Painters and Construction Finishing</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PCF-07</td>
+                <td>Painters and Construction Finishing</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PCF-08</td>
+                <td>Painters and Construction Finishing</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PRW-08</td>
+                <td>Precision Working</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PRW-09</td>
+                <td>Precision Working</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PRW-10</td>
+                <td>Precision Working</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-PRW-11</td>
+                <td>Precision Working</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-VHE-10</td>
+                <td>Vehicle and Heavy Equipment Maintainer</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-WOW-09</td>
+                <td>Carpenter Apprentice</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GL-WOW-10</td>
+                <td>Carpenter</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GS-FOS-02</td>
+                <td>Cook</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-01</td>
+                <td>Response Specialist Trainee, Print Shop Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-02</td>
+                <td>Assistant Marine Search and Rescue (SAR) Controller</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Officer (Pilot Trainee, Handling Operations)</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Ice Operations, Arctic Field Operations</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Asset Management and Technical Control</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Lightstations</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Research Analyst</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Coordinator Search and Rescue (SAR)</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Marine Trades Instructor</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Environmental (ER) Trainee</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>GT-03</td>
+                <td>Multimedia and Equipment Technician</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>LI-03</td>
+                <td>Lightkeeper</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>PG-01</td>
+                <td>Warehouse Clerk Apprentice</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a href="Highschool" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -13,8 +13,8 @@
 }
 
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-    <a href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
-    <a href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
+    <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
+    <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
 </div>
 
 

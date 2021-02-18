@@ -1,0 +1,37 @@
+﻿@page
+@model Web.Pages.Mockups.Student.IndexModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Students";
+}
+
+<section role="contentinfo">
+    <div class="col-md-12">
+        <h2>@Localizer["Q1"]</h2>
+
+        <div class="col-sm-4">
+            <figure>
+                <a class="nav-link" href="Highschool">
+                    <img src="~/img/Student/Highschool.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center">@Localizer["HighSchool"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-4">
+            <figure>
+                <a href="College">
+                    <img src="~/img/Student/TechCollege.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center">@Localizer["TechCollege"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-4">
+            <figure>
+                <a href="University">
+                    <img src="~/img/Student/University.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center">@Localizer["University"]</h4></figcaption>
+            </figure>
+        </div>
+    </div>
+</section>

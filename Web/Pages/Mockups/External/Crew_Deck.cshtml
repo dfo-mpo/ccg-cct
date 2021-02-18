@@ -1,0 +1,83 @@
+﻿@page
+@model Web.Pages.Mockups.External.Crew_DeckModel
+@inject IViewLocalizer Localizer
+
+@{
+}
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="#print"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+    <a href="#save"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["CCG POSITIONS"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                <th class="bg-primary" width="73%">@Localizer["POSITIONS"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SC-DED-02</td>
+                <td>Deckhand</td>
+                <td><a asp-page="Crew_Deckhand" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-DED-03</td>
+                <td>Leading Deckhand</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-DED-03</td>
+                <td>Twinehand</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-DED-04</td>
+                <td>Bosun's Mate</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-DED-05</td>
+                <td>Boatswain</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            <tr>
+                <td>SC-DED-06</td>
+                <td>Coxwain</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-DED-07</td>
+                <td>Coxwain</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-SPT-03</td>
+                <td>Public Safety Diver/Deckhand</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-SPT-04</td>
+                <td>Public Safety Diver/Leading Deckhand</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+            <tr>
+                <td>SC-SPT-05</td>
+                <td>Operations Specialist Air Cushioned Vehicle</td>
+                <td><a asp-page="External_Details" role="button">@Localizer["More Details"]</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                    <ul class="pager">
+                        <li class="previous"><a href="Ship_Crew" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    </ul>
+            </nav>
+        </div>
+    </div>
+</div>
