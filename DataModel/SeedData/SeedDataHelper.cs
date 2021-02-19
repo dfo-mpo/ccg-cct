@@ -31,20 +31,20 @@ namespace DataModel.SeedData
 
             // link tables
             await AddIfEmpty(JobLocationRegions);
-            await AddIfEmpty(JobRoles);
-            await AddIfEmpty(JobGroupPositions);
-            await AddIfEmpty(CompetencyTypeGroups);
-            await AddIfEmpty(CompetencyRatingGroups);
-            await AddIfEmpty(JobPositionCompetencies);
-            await AddIfEmpty(JobRolePositionCompetencies);
-            await AddIfEmpty(JobRolePositionCertificates);
-            await AddIfEmpty(JobRolePositionCompetencyRatings);
-            await AddIfEmpty(JobRolePositionLocations);
-            await AddIfEmpty(JobRolePositionHLCategories);
+            await AddIfEmpty(JobRoles, false);
+            await AddIfEmpty(JobGroupPositions, false);
+            await AddIfEmpty(CompetencyTypeGroups, false);
+            await AddIfEmpty(CompetencyRatingGroups, false);
+            await AddIfEmpty(JobPositionCompetencies, false);
+            await AddIfEmpty(JobRolePositionCompetencies, false);
+            await AddIfEmpty(JobRolePositionCertificates, false);
+            await AddIfEmpty(JobRolePositionCompetencyRatings, false);
+            await AddIfEmpty(JobRolePositionLocations, false);
+            await AddIfEmpty(JobRolePositionHLCategories, false);
 
         }
 
-        private async Task AddIfEmpty<TModel>(List<TModel> models) where TModel : class
+        private async Task AddIfEmpty<TModel>(List<TModel> models, bool hasIdentityKey = true) where TModel : class
         {
             if (await _db.Set<TModel>().AnyAsync()) return;
             var strategy = _db.Database.CreateExecutionStrategy();
@@ -52,23 +52,30 @@ namespace DataModel.SeedData
             {
                 await using var transaction = await _db.Database.BeginTransactionAsync();
                 await _db.Set<TModel>().AddRangeAsync(models);
-                await Save<TModel>();
+                await Save<TModel>(hasIdentityKey);
                 await transaction.CommitAsync();
             });
         }
 
 
-        private async Task Save<T>() where T : class
+        private async Task Save<T>(bool hasIdentityKey) where T : class
         {
             var tableName = _db.Model.FindEntityType(typeof(T)).GetTableName();
             try
             {
-                await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} ON;");
+                if (hasIdentityKey)
+                {
+                    await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} ON;");
+                }
                 await _db.SaveChangesAsync();
             }
             finally
             {
-                await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} OFF;");
+                if (hasIdentityKey)
+                {
+
+                    await _db.Database.ExecuteSqlRawAsync($"SET IDENTITY_INSERT {tableName} OFF;");
+                }
             }
 
         }
