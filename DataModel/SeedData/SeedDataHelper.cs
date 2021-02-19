@@ -19,39 +19,44 @@ namespace DataModel.SeedData
         public async Task Run()
         {
             // base tables
-            await ExecuteWithStrategy(JobGroups());
-            await ExecuteWithStrategy(JobGroupLevels());
-            await ExecuteWithStrategy(JobPositions());
-            await ExecuteWithStrategy(JobHLCategories());
-            await ExecuteWithStrategy(Competencies());
-            await ExecuteWithStrategy(CompetencyRatingLevel());
-            await ExecuteWithStrategy(CompetencyTypes());
-            await ExecuteWithStrategy(CompetencyLevelRequirements());
-            await ExecuteWithStrategy(Certificates());
+            await AddIfEmpty(JobGroups);
+            await AddIfEmpty(JobGroupLevels);
+            await AddIfEmpty(JobPositions);
+            await AddIfEmpty(JobHLCategories);
+            await AddIfEmpty(Competencies);
+            await AddIfEmpty(CompetencyRatingLevel);
+            await AddIfEmpty(CompetencyTypes);
+            await AddIfEmpty(CompetencyLevelRequirements);
+            await AddIfEmpty(Certificates);
 
             // link tables
-            await ExecuteWithStrategy(JobLocationRegions());
-            await ExecuteWithStrategy(JobRoles());
-            await ExecuteWithStrategy(JobGroupPositions());
-            await ExecuteWithStrategy(CompetencyTypeGroups());
-            await ExecuteWithStrategy(CompetencyRatingGroups());
-            await ExecuteWithStrategy(JobPositionCompetencies());
-            await ExecuteWithStrategy(JobRolePositionCompetencies());
-            await ExecuteWithStrategy(JobRolePositionCertificates());
-            await ExecuteWithStrategy(JobRolePositionCompetencyRatings());
-            await ExecuteWithStrategy(JobRolePositionLocations());
-            await ExecuteWithStrategy(JobRolePositionHLCategories());
+            await AddIfEmpty(JobLocationRegions);
+            await AddIfEmpty(JobRoles);
+            await AddIfEmpty(JobGroupPositions);
+            await AddIfEmpty(CompetencyTypeGroups);
+            await AddIfEmpty(CompetencyRatingGroups);
+            await AddIfEmpty(JobPositionCompetencies);
+            await AddIfEmpty(JobRolePositionCompetencies);
+            await AddIfEmpty(JobRolePositionCertificates);
+            await AddIfEmpty(JobRolePositionCompetencyRatings);
+            await AddIfEmpty(JobRolePositionLocations);
+            await AddIfEmpty(JobRolePositionHLCategories);
 
         }
 
-        private async Task ExecuteWithStrategy(Task transaction)
+        private async Task AddIfEmpty<TModel>(List<TModel> models) where TModel : class
         {
+            if (await _db.Set<TModel>().AnyAsync()) return;
             var strategy = _db.Database.CreateExecutionStrategy();
-            await strategy.ExecuteAsync(async() =>
+            await strategy.ExecuteAsync(async () =>
             {
-                await transaction;
+                await using var transaction = await _db.Database.BeginTransactionAsync();
+                await _db.Set<TModel>().AddRangeAsync(models);
+                await Save<TModel>();
+                await transaction.CommitAsync();
             });
         }
+
 
         private async Task Save<T>() where T : class
         {

@@ -6,12 +6,7 @@ namespace DataModel.SeedData
 {
     public partial class SeedDataHelper
     {
-        private async Task Certificates()
-        {
-            if (await _db.Certificates.AnyAsync()) return;
-
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            await _db.Certificates.AddRangeAsync(new List<Certificate>()
+        public List<Certificate> Certificates = new List<Certificate>()
             {
                 new Certificate { Id = 1, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master, 150 GT", NameFre = "Capitaine, jauge brute de 150", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" },
                 new Certificate { Id = 2, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master, 500 GT", NameFre = "Capitaine, jauge brute de 500", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" },
@@ -113,9 +108,8 @@ namespace DataModel.SeedData
                 new Certificate { Id = 98, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "MELDEV Program, Final Level", NameFre = "Programme PELM, dernier niveau", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" },
                 new Certificate { Id = 99, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Electronic Technologist", NameFre = "Technologue en électronique", RequireIndicatorEng = "lorem ipsum", RequireIndicatorFre = "lorem ipsum" }
 
-            });
-            await Save<Certificate>();
-            await transaction.CommitAsync();
-        }
+            };
+
+        
     }
 }

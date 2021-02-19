@@ -6,12 +6,8 @@ namespace DataModel.SeedData
 {
     public partial class SeedDataHelper
     {
-        private async Task JobRolePositionCompetencyRatings()
-        {
-            if (await _db.JobRolePositionCompetencyRatings.AnyAsync()) return;
-
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            await _db.JobRolePositionCompetencyRatings.AddRangeAsync(new List<JobRolePositionCompetencyRating>()
+        public List<JobRolePositionCompetencyRating> JobRolePositionCompetencyRatings =
+            new List<JobRolePositionCompetencyRating>()
             {
                 new JobRolePositionCompetencyRating
                 {
@@ -35655,9 +35651,6 @@ namespace DataModel.SeedData
                     JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, CompetencyId = 37, CompetencyTypeId = 3,
                     CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 161
                 }
-            });
-            await Save<CompetencyLevelRequirement>();
-            await transaction.CommitAsync();
-        }
+            };
     }
 }

@@ -6,18 +6,11 @@ namespace DataModel.SeedData
 {
     public partial class SeedDataHelper
     {
-        private async Task JobHLCategories()
+        public List<JobHLCategory> JobHLCategories = new List<JobHLCategory>()
         {
-            if (await _db.JobHLCategories.AnyAsync()) return;
+            new JobHLCategory() {Id = 1, ValueEng = "Seagoing", ValueFre = "En mer"},
+            new JobHLCategory() {Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre"}
+        };
 
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            await _db.JobHLCategories.AddRangeAsync(new List<JobHLCategory>()
-            {
-                new JobHLCategory() {Id = 1, ValueEng = "Seagoing", ValueFre = "En mer"},
-                new JobHLCategory() {Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre"}
-            });
-            await Save<JobHLCategory>();
-            await transaction.CommitAsync();
-        }
     }
 }
