@@ -1026,6 +1026,67 @@ namespace DataModel.SeedData
                     "Knowledge of electronic devices designed for use in, or support of, the marine environment.",
                 DescFre =
                     "Connaissance des dispositifs électroniques conçus pour être utilisés dans l’environnement marin ou en appui à celui-ci."
+            },
+
+            new Competency
+            {
+                Id = 126, NameEng = "Create Vision and Strategy",
+                NameFre =
+                    "Créer une vision et une stratégie",
+                DescEng =
+                    "Able to define the future and chart a path forward. Adept at understanding and communicating context, factoring in the economic, social, and political environment. Intellectually agile, able to leverage their deep and broad knowledge, build on diverse ideas and perspectives, and create consensus around compelling visions. Balances organizational and government-wide priorities and improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Capable de définir l'avenir et de tracer la voie à suivre. Adepte de la compréhension et de la communication du contexte, en tenant compte de l'environnement économique, social et politique. Intellectuellement agile, capable de tirer parti de ses connaissances vastes et approfondies, de s'appuyer sur des idées et des perspectives diverses, et de créer un consensus autour de visions convaincantes. Concilie les priorités organisationnelles et pangouvernementales et améliore les résultats pour le Canada et les Canadiens."
+            },
+            new Competency
+            {
+                Id = 127, NameEng = "Mobilize People",
+                NameFre =
+                    "Mobiliser les gens",
+                DescEng =
+                    "Able to inspire and motivate the people they lead. Manages performance, provides constructive and respectful feedback to encourage and enable performance excellence. Leads by example, setting goals for themselves that are more demanding than those that they set for others.",
+                DescFre =
+                    "Capable d'inspirer et de motiver les gens qu'ils dirigent. Gère le rendement, fournit une rétroaction constructive et respectueuse pour encourager et favoriser l'excellence du rendement. Donne l'exemple en se fixant des objectifs plus exigeants que ceux qu'il se fixe pour les autres."
+            },
+            new Competency
+            {
+                Id = 128, NameEng = "Uphold Integrity and Respect",
+                NameFre =
+                    "Respecter l'intégrité et le respect",
+                DescEng =
+                    "Exemplifies ethical practices, professionalism, and personal integrity. Creates respectful and trusting work environments where sound advice is valued. Encourages the expression of diverse opinions and perspectives, while fostering collegiality. Ability to be self-aware and seek out opportunities for personal growth.",
+                DescFre =
+                    "Exemplaire des pratiques éthiques, du professionnalisme et de l'intégrité personnelle. Crée des milieux de travail respectueux et confiants où les conseils judicieux sont valorisés. Encourage l'expression d'opinions et de perspectives diverses, tout en favorisant la collégialité. Capacité d'être conscient de soi et de rechercher des occasions de croissance personnelle."
+            },
+            new Competency
+            {
+                Id = 129, NameEng = "Collaborate with Partners and Stakeholders",
+                NameFre =
+                    "Collaborer avec les partenaires et les intervenants",
+                DescEng =
+                    "Able to deliberate and be resourceful about seeking the widest possible spectrum of perspectives. Demonstrates openness and flexibility to forge consensus and improve outcomes. Brings a whole-of-government perspective to their interactions. Open to alternatives and skillful at managing expectations in negotiating solutions. Shares recognition with their teams and partners.",
+                DescFre =
+                    "Capable de délibérer et de faire preuve d'ingéniosité dans la recherche du plus large éventail possible de points de vue. Faire preuve d'ouverture et de souplesse pour parvenir à un consensus et améliorer les résultats. Apporte une perspective pangouvernementale à leurs interactions. Ouvert aux solutions de rechange et habile à gérer les attentes dans la négociation de solutions. Partage sa reconnaissance avec ses équipes et ses partenaires."
+            },
+            new Competency
+            {
+                Id = 130, NameEng = "Promote Innovation and Guide Change",
+                NameFre =
+                    "Promouvoir l'innovation et orienter le changement",
+                DescEng =
+                    "Leaders have the courage and resilience to challenge convention. They create an environment that supports bold thinking, experimentation and intelligent risk taking. They use setbacks as a valuable source of insight and learning. Leaders take change in their stride, aligning and adjusting milestones and targets to maintain forward momentum.",
+                DescFre =
+                    "Les dirigeants ont le courage et la résilience nécessaires pour contester les conventions. Ils créent un environnement qui favorise la pensée audacieuse, l'expérimentation et la prise de risques intelligente. Ils utilisent les revers comme une source précieuse de compréhension et d'apprentissage. Les leaders prennent le changement à la va-vite, alignant et ajustant les jalons et les objectifs pour maintenir l'élan vers l'avant."
+            },
+            new Competency
+            {
+                Id = 131, NameEng = "Achieve Results",
+                NameFre =
+                    "Obtenir des résultats",
+                DescEng =
+                    "Ability to mobilize and manage resources to deliver on the priorities of the Government of Canada, improve outcomes, and add value. Considers context, risks, and business intelligence to support high-quality and timely decisions. Anticipates, plans, monitors progress, and makes adjustments as needed. Takes personal responsibility for actions and outcomes of their decisions.",
+                DescFre =
+                    "Capacité de mobiliser et de gérer les ressources pour réaliser les priorités du gouvernement du Canada, améliorer les résultats et ajouter de la valeur. Tient compte du contexte, des risques et de l'intelligence d'affaires pour appuyer des décisions de grande qualité et opportunes. Anticiper, planifier, surveiller les progrès et faire les ajustements nécessaires. Assume personnellement la responsabilité des actions et des résultats de ses décision."
             }
         };
     }

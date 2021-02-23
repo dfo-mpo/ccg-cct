@@ -4538,6 +4538,246 @@ namespace DataModel.SeedData
                     "Expert knowledge in identifying complex problems and reviewing related information to develop and evaluate options and implement solutions. ",
                 DescFre =
                     "Connaissance approfondie de la définition de problèmes complexes et de l’examen d’information connexe pour élaborer et évaluer des options et mettre en œuvre des solutions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 602,
+                DescEng =
+                    "Informs analysis with a thorough understanding of the environment. Engages others to translate implementation strategies into concrete objectives. Contributes expertise and insight to the development of organizational strategies. Communicates with clarity and conviction. Implements strategies that respond to organizational priorities that improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Informe l'analyse grâce à une compréhension approfondie de l'environnement. Engage les autres à traduire les stratégies de mise en œuvre en objectifs concrets. Apporter son expertise et sa perspicacité à l'élaboration de stratégies organisationnelles. Communique avec clarté et conviction. Mettre en œuvre des stratégies qui répondent aux priorités organisationnelles et qui améliorent les résultats pour le Canada et les Canadiens."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 603,
+                DescEng =
+                    "Understands the context of, informs stakeholders involved and synthesizes options on key issues in the environment. Engages others to secure commitment to implementation objectives. Contributes expertise and insight to the development of organizational priorities and strategy. Communicates with clarity and conviction. Implements strategies that respond to organizational priorities that improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Comprend le contexte, informe les intervenants concernés et fait la synthèse des options sur les principaux enjeux de l'environnement. Engage les autres à s'engager à atteindre les objectifs de mise en œuvre. Apporter son expertise et sa perspicacité à l'élaboration des priorités et de la stratégie de l'organisation. Communique avec clarté et conviction. Mettre en œuvre des stratégies qui répondent aux priorités organisationnelles et qui améliorent les résultats pour le Canada et les Canadiens."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 604,
+                DescEng =
+                    "Interprets context and identifies implications of key issues in the environment. Engages others to secure commitment to implementation objectives. Contributes expertise and insight to the development of organizational priorities and strategy. Communicates with clarity and conviction. Implements strategies that respond to organizational priorities that improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Interpréter le contexte et déterminer les répercussions des principaux enjeux environnementaux. Engage les autres à s'engager à atteindre les objectifs de mise en œuvre. Apporter son expertise et sa perspicacité à l'élaboration des priorités et de la stratégie de l'organisation. Communique avec clarté et conviction. Mettre en œuvre des stratégies qui répondent aux priorités organisationnelles et qui améliorent les résultats pour le Canada et les Canadiens."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 605,
+                DescEng =
+                    "Frames emerging issues and provides advice that reflects a thorough understanding of the environment. Engages others to develop clear, concise and viable strategies for implementation. Contributes expertise and insight to the development of the departmental vision and strategy. Establishes and communicates organizational priorities aligned with the department's vision and goals. Commits to the implementation of strategies that improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Encadre les nouveaux enjeux et fournit des conseils qui reflètent une compréhension approfondie de l'environnement. Engage les autres à élaborer des stratégies de mise en œuvre claires, concises et viables. Contribuer par son expertise et sa perspicacité à l'élaboration de la vision et de la stratégie ministérielles. Établir et communiquer les priorités organisationnelles qui correspondent à la vision et aux objectifs du Ministère. S'engage à mettre en œuvre des stratégies qui améliorent les résultats pour le Canada et les Canadiens."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 606,
+                DescEng =
+                    "Extracts the key issues from complex, ambiguous, and rapidly changing environments. Considers the impact of the economic, social, and political environment on departmental priorities. Engages others to develop a compelling and responsive vision. Defines and communicates the departmental vision and strategy with a thorough understanding of the internal and external environment. Sets forward-looking goals with a broad perspective and long-term timelines to improve outcomes for Canada and Canadians.",
+                DescFre =
+                    "Extrait les questions clés d'environnements complexes, ambigus et en rapide évolution. Tient compte de l'incidence de l'environnement économique, social et politique sur les priorités ministérielles. Engage les autres à développer une vision convaincante et réceptive. Définir et communiquer la vision et la stratégie du Ministère en ayant une compréhension approfondie de l'environnement interne et externe. Établit des objectifs prospectifs avec une vaste perspective et des échéanciers à long terme afin d'améliorer les résultats pour le Canada et les Canadiens."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 607,
+                DescEng =
+                    "Creates a sense of common purpose and direction in the organization and among colleagues. Sets clear expectations, monitors, and evaluates performance. Invests time and resources to support continuous learning. Gives honest feedback, recognizes performance, and manages non-performance. Engages employees to gather ideas and input to build cohesive teams. Sets challenging goals for self and models dedication and high performance.",
+                DescFre =
+                    "Crée un sentiment d'objectif et d'orientation communs au sein de l'organisation et entre collègues. Établit des attentes claires, surveille et évalue le rendement. Investit du temps et des ressources pour appuyer l'apprentissage continu. Donne une rétroaction honnête, reconnaît le rendement et gère la non-performance. Engage les employés à recueillir des idées et des commentaires pour bâtir des équipes cohésives. Fixe des objectifs stimulants pour soi-même et les modèles de dévouement et de haute performance."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 608,
+                DescEng =
+                    "Creates a sense of common purpose and direction in the organization and among colleagues. Sets clear expectations, develops methods for evaluation, and oversees performance management practices. Commits to the development of organizational and individual talent. Gives honest feedback, recognizes performance, and manages non-performance. Facilitates opportunities for branch-wide feedback and constructive dialogue. Sets challenging goals for self and models dedication and high performance.",
+                DescFre =
+                    "Crée un sentiment d'objectif et d'orientation communs au sein de l'organisation et entre collègues. Établit des attentes claires, élabore des méthodes d'évaluation et supervise les pratiques de gestion du rendement. S'engage à développer les talents organisationnels et individuels. Donne une rétroaction honnête, reconnaît le rendement et gère la non-performance. Facilite les occasions de rétroaction et de dialogue constructif à l'échelle de la direction générale. Fixe des objectifs stimulants pour soi-même et les modèles de dévouement et de haute performance."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 609,
+                DescEng =
+                    "Creates a sense of common purpose and direction in the organization and among colleagues. Sets clear expectations and conducts oversight of performance management practices. Commits to the development of organizational and individual talent. Gives honest feedback, recognizes performance, and manages non-performance. Creates opportunities for open and constructive dialogue. Sets challenging goals for self and models dedication and high performance.",
+                DescFre =
+                    "Crée un sentiment d'objectif et d'orientation communs au sein de l'organisation et entre collègues. Établit des attentes claires et surveille les pratiques de gestion du rendement. S'engage à développer les talents organisationnels et individuels. Donne une rétroaction honnête, reconnaît le rendement et gère la non-performance. Crée des occasions de dialogue ouvert et constructif. Fixe des objectifs stimulants pour soi-même et les modèles de dévouement et de haute performance."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 610,
+                DescEng =
+                    "Creates a sense of common purpose and direction in the organization and among colleagues. Sets and communicates clear performance expectations and exercises rigorous oversight. Identifies, manages, and supports collective and individual talent. Cultivates an environment committed to continuous learning and professional development. Creates a positive environment to encourage open and constructive dialogue. Sets challenging goals for self and models dedication and high performance.",
+                DescFre =
+                    "Crée un sentiment d'objectif et d'orientation communs au sein de l'organisation et entre collègues. Établit et communique des attentes claires en matière de rendement et exerce une surveillance rigoureuse. Identifie, gère et soutient les talents collectifs et individuels. Cultive un environnement engagé envers l'apprentissage continu et le perfectionnement professionnel. Crée un environnement positif pour encourager un dialogue ouvert et constructif. Fixe des objectifs stimulants pour soi-même et les modèles de dévouement et de haute performance."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 611,
+                DescEng =
+                    "Creates a sense of common purpose and direction in the department. Builds accountability and value for people management within the executive community. Creates an environment where rigorous performance management is practiced. Invests time in managing and developing organizational leaders, individually, and collectively. Generates opportunities to engage meaningfully with employees. Builds a commitment to excellence through open and constructive dialogue. Inspires others through personal dedication and actions.",
+                DescFre =
+                    "Crée un sentiment d'objectif et d'orientation communs au sein du ministère. Renforce la responsabilisation et la valeur de la gestion des personnes au sein de la communauté des cadres supérieurs. Crée un environnement où une gestion rigoureuse du rendement est pratiquée. Investit du temps dans la gestion et le perfectionnement des leaders organisationnels, individuellement et collectivement. Génère des occasions de s'engager de façon significative avec les employés. Suscite un engagement envers l'excellence par le biais d'un dialogue ouvert et constructif. Inspire les autres par son dévouement personnel et ses actions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 612,
+                DescEng =
+                    "Values and provides authentic, evidence-based advice in the interest of Canadians. Holds self and the organization to the highest ethical and professional standards. Models commitment to citizen-focused service and the public interest. Creates opportunities that encourage bilingualism and diversity. Implements practices to advance an inclusive, healthy organization, respectful of the diversity of people, and their skills and free from harassment and discrimination. Exemplifies impartial and non-partisan decision-making. Engages in self-reflection and acts upon insights.",
+                DescFre =
+                    "Valorise et fournit des conseils authentiques et fondés sur des données probantes dans l'intérêt des Canadiens. Se tient, ainsi que l'organisation, aux normes éthiques et professionnelles les plus élevées. Donne l'exemple d'un engagement à l'égard d'un service axé sur les citoyens et de l'intérêt public. Crée des possibilités qui favorisent le bilinguisme et la diversité. Mettre en œuvre des pratiques visant à promouvoir une organisation inclusive et saine, respectueuse de la diversité des personnes et de leurs compétences et exempte de harcèlement et de discrimination. Fait preuve d'impartialité et d'impartialité dans la prise de décisions. S'engage dans l'autoréflexion et agit en fonction de ses intuitions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 613,
+                DescEng =
+                    "Values and provides authentic, evidence-based advice in the interest of Canadians. Holds self and the organization to the highest ethical and professional standards. Models commitment to citizen-focused service and the public interest. Creates opportunities that encourage bilingualism and diversity. Develops and implements strategies to foster an inclusive, healthy organization, respectful of the diversity of people, and their skills and free from harassment and discrimination. Exemplifies impartial and non-partisan decision-making. Engages in self-reflection and acts upon insights.",
+                DescFre =
+                    "Valorise et fournit des conseils authentiques et fondés sur des données probantes dans l'intérêt des Canadiens. Se tient, ainsi que l'organisation, aux normes éthiques et professionnelles les plus élevées. Donne l'exemple d'un engagement à l'égard d'un service axé sur les citoyens et de l'intérêt public. Crée des possibilités qui favorisent le bilinguisme et la diversité. Élabore et met en œuvre des stratégies pour favoriser une organisation inclusive et saine, respectueuse de la diversité des personnes et de leurs compétences et exempte de harcèlement et de discrimination. Fait preuve d'impartialité et d'impartialité dans la prise de décisions. S'engage dans l'autoréflexion et agit en fonction de ses intuitions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 614,
+                DescEng =
+                    "Values and provides authentic, evidence-based advice in the interest of Canadians. Holds self and the organization to the highest ethical and professional standards. Models commitment to citizen-focused service and the public interest. Creates opportunities that encourage bilingualism and diversity. Advances strategies to foster an inclusive, healthy organization, respectful of the diversity of people, and their skills and free from harassment and discrimination. Exemplifies impartial and non-partisan decision-making. Engages in self-reflection and acts upon insights.",
+                DescFre =
+                    "Valorise et fournit des conseils authentiques et fondés sur des données probantes dans l'intérêt des Canadiens. Se tient, ainsi que l'organisation, aux normes éthiques et professionnelles les plus élevées. Donne l'exemple d'un engagement à l'égard d'un service axé sur les citoyens et de l'intérêt public. Crée des possibilités qui favorisent le bilinguisme et la diversité. Fait progresser les stratégies visant à favoriser une organisation inclusive et saine, respectueuse de la diversité des personnes et de leurs compétences et exempte de harcèlement et de discrimination. Fait preuve d'impartialité et d'impartialité dans la prise de décisions. S'engage dans l'autoréflexion et agit en fonction de ses intuitions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 615,
+                DescEng =
+                    "Values and provides authentic, evidence-based advice in the interest of Canadians. Holds self and the organization to the highest ethical and professional standards. Models and builds a culture of commitment to citizen-focused service and the public interest. Builds and promotes a bilingual, inclusive, healthy organization respectful of the diversity of people, and their skills and free from harassment and discrimination. Exemplifies impartial and non-partisan decision-making. Engages in self-reflection and acts upon insights.",
+                DescFre =
+                    "Valorise et fournit des conseils authentiques et fondés sur des données probantes dans l'intérêt des Canadiens. Se tient, ainsi que l'organisation, aux normes éthiques et professionnelles les plus élevées. Modélise et bâtit une culture d'engagement à l'égard d'un service axé sur les citoyens et de l'intérêt public. Bâtit et fait la promotion d'une organisation bilingue, inclusive et saine, respectueuse de la diversité des personnes et de leurs compétences, et exempte de harcèlement et de discrimination. Fait preuve d'impartialité et d'impartialité dans la prise de décisions. S'engage dans l'autoréflexion et agit en fonction de ses intuitions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 616,
+                DescEng =
+                    "Values and provides authentic, evidence-based advice in the interest of Canadians. Holds self and the organization to the highest ethical and professional standards. Models and instills commitment to citizen-focused service and the public interest. Builds and promotes a bilingual, inclusive, healthy organization respectful of the diversity of people, and their skills and free from harassment and discrimination. Exemplifies impartial and non-partisan decision-making. Engages in self-reflection and acts upon insights.",
+                DescFre =
+                    "Valorise et fournit des conseils authentiques et fondés sur des données probantes dans l'intérêt des Canadiens. Se tient, ainsi que l'organisation, aux normes éthiques et professionnelles les plus élevées. Donne l'exemple et suscite l'engagement à l'égard d'un service axé sur les citoyens et de l'intérêt public. Bâtit et fait la promotion d'une organisation bilingue, inclusive et saine, respectueuse de la diversité des personnes et de leurs compétences, et exempte de harcèlement et de discrimination. Fait preuve d'impartialité et d'impartialité dans la prise de décisions. S'engage dans l'autoréflexion et agit en fonction de ses intuitions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 617,
+                DescEng =
+                    "Builds and nurtures effective and collaborative networks and relationships with communities of practice, colleagues, and stakeholders. Engages others to support horizontal initiatives. Actively listens to understand the impact of issues and perspectives of others. Implements strategies that enhance collaboration. Acknowledges the contribution of others in achieving objectives.",
+                DescFre =
+                    "Établit et entretient des réseaux et des relations de collaboration efficaces avec les communautés de pratique, les collègues et les intervenants. Engage les autres à appuyer les initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Mettre en œuvre des stratégies qui améliorent la collaboration. Reconnaît la contribution des autres à l'atteinte des objectifs."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 618,
+                DescEng =
+                    "Builds and nurtures effective and collaborative relationships. Explores contingencies and implements strategic alliances with partners and stakeholders. Engages colleagues to contribute to horizontal initiatives. Actively listens to understand the impact of issues and perspectives of others. Identifies opportunities and develops strategies for collaboration. Acknowledges the contribution of others in achieving objectives.",
+                DescFre =
+                    "Bâtit et entretient des relations efficaces et collaboratives. Explorer les éventualités et mettre en œuvre des alliances stratégiques avec des partenaires et des intervenants. Engage les collègues à contribuer aux initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Cerner les possibilités et élaborer des stratégies de collaboration. Reconnaît la contribution des autres à l'atteinte des objectifs."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 619,
+                DescEng =
+                    "Builds and nurtures effective and collaborative relationships. Seeks opportunities to advance strategic alliances with partners and stakeholders. Engages colleagues to contribute to horizontal initiatives. Actively listens to understand the impact of issues and perspectives of others. Identifies opportunities and develops strategies for collaboration. Acknowledges the contribution of others in achieving objectives.",
+                DescFre =
+                    "Bâtit et entretient des relations efficaces et collaboratives. Cherche des occasions de faire progresser les alliances stratégiques avec les partenaires et les intervenants. Engage les collègues à contribuer aux initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Cerner les possibilités et élaborer des stratégies de collaboration. Reconnaît la contribution des autres à l'atteinte des objectifs."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 620,
+                DescEng =
+                    "Builds and nurtures effective and collaborative relationships. Seeks and forms strategic alliances with partners and stakeholders to continuously improve upon results. Engages colleagues to deliver on horizontal initiatives. Actively listens to understand the impact of issues and perspectives of others. Generates support from partners and stakeholders through influence and negotiation. Acknowledges the contribution of others in achieving objectives.",
+                DescFre =
+                    "Bâtit et entretient des relations efficaces et collaboratives. Recherche et forme des alliances stratégiques avec des partenaires et des intervenants afin d'améliorer continuellement les résultats. Engage les collègues à mettre en œuvre des initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Suscite l'appui des partenaires et des intervenants grâce à l'influence et à la négociation. Reconnaît la contribution des autres à l'atteinte des objectifs."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 621,
+                DescEng =
+                    "Builds and nurtures effective and collaborative relationships. Forms strategic alliances with partners and stakeholders to advance government priorities. Takes on accountability for horizontal initiatives. Collaborates with other Deputy Ministers as a community to strengthen public service performance. Advances whole-of-government objectives through influence and negotiation. Acknowledges the contribution of others in achieving objectives.",
+                DescFre =
+                    "Bâtit et entretient des relations efficaces et collaboratives. Recherche et forme des alliances stratégiques avec des partenaires et des intervenants afin d'améliorer continuellement les résultats. Engage les collègues à mettre en œuvre des initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Suscite l'appui des partenaires et des intervenants grâce à l'influence et à la négociation. Reconnaît la contribution des autres à l'atteinte des objectifs."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 622,
+                DescEng =
+                    "Ensures that employees apply sound risk management practices. Identifies opportunities for and barriers to innovation and proposes creative approaches. Implements practices to learn from setbacks and mistakes. Adapts plans and strategies to respond to the scope and pace of change. Demonstrates resilience, composure, and a positive outlook in an environment of uncertainty and ambiguity.",
+                DescFre =
+                    "Veiller à ce que les employés appliquent de saines pratiques de gestion des risques. Identifie les opportunités et les obstacles à l'innovation et propose des approches créatives. Mettre en œuvre des pratiques pour tirer des leçons des échecs et des erreurs. Adapte les plans et les stratégies pour répondre à la portée et au rythme du changement. Fait preuve de résilience, de sang-froid et d'une attitude positive dans un climat d'incertitude et d'ambiguïté."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 623,
+                DescEng =
+                    "Develops and implements sound risk management strategies. Promotes an environment that is open to new initiatives and responsible risk-taking based on sound project management principles. Details lessons learned from setbacks and mistakes to ensure continuous improvement. Explains to and supports employees in adapting to the scope and pace of change. Explores and proposes new ideas and identifies options to maximize potential for innovation. Demonstrates resilience, composure and a positive outlook in an environment of uncertainty and ambiguity.",
+                DescFre =
+                    "Élabore et met en œuvre de saines stratégies de gestion des risques. Favorise un environnement ouvert aux nouvelles initiatives et à la prise de risque responsable, fondé sur des principes de saine gestion de projet. Détaille les leçons tirées des échecs et des erreurs afin d'assurer une amélioration continue. Explique aux employés et les aide à s'adapter à la portée et au rythme du changement. Explorer et proposer de nouvelles idées et identifier des options pour maximiser le potentiel d'innovation. Fait preuve de résilience, de sang-froid et d'une attitude positive dans un climat d'incertitude et d'ambiguïté."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 624,
+                DescEng =
+                    "Develops and implements sound risk management strategies. Fosters an environment that is open to creativity and responsible risk-taking. Learns from setbacks and mistakes to ensure continuous improvement. Engages and supports employees in adapting to the scope and pace of change. Anticipates barriers to new ideas and identifies solutions to maximize potential for innovation. Demonstrates resilience, composure, and a positive outlook in an environment of uncertainty and ambiguity.",
+                DescFre =
+                    "Élabore et met en œuvre de saines stratégies de gestion des risques. Favorise un environnement ouvert à la créativité et à la prise de risque responsable. Apprend des échecs et des erreurs pour assurer une amélioration continue. Engage et aide les employés à s'adapter à la portée et au rythme du changement. Anticiper les obstacles aux nouvelles idées et trouver des solutions pour maximiser le potentiel d'innovation. Fait preuve de résilience, de sang-froid et d'une attitude positive dans un climat d'incertitude et d'ambiguïté."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 625,
+                DescEng =
+                    "Defines and communicates the parameters of acceptable risk. Creates a safe environment for creativity and learns from setbacks and mistakes. Advances and implements strategies that manage the scope and pace of change. Addresses barriers to new ideas and negotiates solutions to maximize potential for innovation. Demonstrates resilience, composure, and a positive outlook in an environment of uncertainty and ambiguity.",
+                DescFre =
+                    "Définit et communique les paramètres du risque acceptable. Crée un environnement sûr pour la créativité et apprend des échecs et des erreurs. Faire progresser et mettre en œuvre des stratégies qui gèrent la portée et le rythme du changement. S'attaque aux obstacles aux nouvelles idées et négocie des solutions pour maximiser le potentiel d'innovation. Fait preuve de résilience, de sang-froid et d'une attitude positive dans un climat d'incertitude et d'ambiguïté."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 626,
+                DescEng =
+                    "Champions a culture that challenges the status quo and encourages responsible risk taking. Encourages experimentation and genuine evaluation of outcomes. Manages the scope and pace of change. Reconciles priorities to achieve broader objectives. Demonstrates resilience, composure, and a positive outlook in an environment of uncertainty and ambiguity.",
+                DescFre =
+                    "Se fait le champion d'une culture qui remet en question le statu quo et encourage la prise de risques responsables. Favorise l'expérimentation et une véritable évaluation des résultats. Gère la portée et le rythme du changement. Concilie les priorités pour atteindre des objectifs plus larges. Fait preuve de résilience, de sang-froid et d'une attitude positive dans un climat d'incertitude et d'ambiguïté."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 627,
+                DescEng =
+                    "Aligns people, work, and systems to achieve program and policy efficiencies and results. Quantifies, monitors, and controls resources and costs. Sets and revises goals and plans to reflect changing priorities or conditions. Delegates responsibility and accountability to appropriate levels. Informs decision-making with sound understanding of context, data, and evidence. Demonstrates and promotes stewardship of financial and organizational resources. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
+                DescFre =
+                    "Harmonise les gens, le travail et les systèmes afin d'atteindre l'efficacité et les résultats des programmes et des politiques. Quantifier, surveiller et contrôler les ressources et les coûts. Établit et révise les objectifs et les plans en fonction de l'évolution des priorités ou des conditions. Délègue la responsabilité et l'obligation de rendre compte aux niveaux appropriés. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Démontrer et promouvoir la gérance des ressources financières et organisationnelles. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 628,
+                DescEng =
+                    "Assimilates financial, material, human, and system resources to improve outcomes and maximize results. Fosters best project management principles with thorough planning, monitoring, and control of resources incorporated. Delegates responsibility and accountability to appropriate levels. Informs decision-making with sound understanding of context, data, and evidence. Demonstrates and promotes stewardship of financial and organizational resources. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
+                DescFre =
+                    "Assimilation des ressources financières, matérielles, humaines et systémiques pour améliorer les résultats et maximiser les résultats. Favorise les meilleurs principes de gestion de projet grâce à une planification, un suivi et un contrôle minutieux des ressources intégrés. Délègue la responsabilité et l'obligation de rendre compte aux niveaux appropriés. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Démontrer et promouvoir la gérance des ressources financières et organisationnelles. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 629,
+                DescEng =
+                    "Implements strategies to align people, work, and systems to improve outcomes and maximize results. Ensures that the pace, scope, and cost of initiatives are planned, monitored, and controlled. Delegates responsibility and accountability to appropriate levels. Informs decision-making with sound understanding of context, data, and evidence. Demonstrates and promotes stewardship of financial and organizational resources. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
+                DescFre =
+                    "Mettre en œuvre des stratégies pour harmoniser les personnes, le travail et les systèmes afin d'améliorer les résultats et de maximiser les résultats. Veiller à ce que le rythme, la portée et le coût des initiatives soient planifiés, surveillés et contrôlés. Délègue la responsabilité et l'obligation de rendre compte aux niveaux appropriés. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Démontrer et promouvoir la gérance des ressources financières et organisationnelles. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 630,
+                DescEng =
+                    "Develops strategies to maximize the effectiveness of resources, improve outcomes, and results. Ensures rigorous planning and implementation to deliver on priorities. Delegates responsibility and accountability to appropriate levels. Informs decision-making with sound understanding of context, data, and evidence. Sets high expectations by exemplifying stewardship of financial and organizational resources. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
+                DescFre =
+                    "Élabore des stratégies pour maximiser l'efficacité des ressources, améliorer les résultats et les résultats. Assurer une planification et une mise en œuvre rigoureuses afin de respecter les priorités. Délègue la responsabilité et l'obligation de rendre compte aux niveaux appropriés. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Fixe des attentes élevées en donnant l'exemple de l'intendance des ressources financières et organisationnelles. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
+            },
+            new CompetencyLevelRequirement
+            {
+                Id = 631,
+                DescEng =
+                    "Sets direction and oversees the implementation of priorities. Builds an effective, sustainable organization through stewardship and governance. Informs decision-making with sound understanding of context, data, and evidence. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
+                DescFre =
+                    "Établit l'orientation et supervise la mise en œuvre des priorités. Bâtit une organisation efficace et durable grâce à l'intendance et à la gouvernance. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
             }
         };
     }

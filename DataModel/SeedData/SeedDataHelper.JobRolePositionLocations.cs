@@ -3529,7 +3529,65 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, JobLocationRegionId = 6},
             new JobRolePositionLocation
-                {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, JobLocationRegionId = 7}
+                {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, JobLocationRegionId = 7},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 2},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 3},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 5},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 4},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 6},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobLocationRegionId = 7},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 2},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 3},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 5},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 4},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 6},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobLocationRegionId = 7},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 2},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 3},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 5},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 4},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 6},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobLocationRegionId = 7},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 2},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 3},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 5},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 4},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 6},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 7},
+            new JobRolePositionLocation
+                {JobGroupId = 16, JobGroupLevelId = 5, JobPositionId = 386, JobLocationRegionId = 4}
         };
     }
 }

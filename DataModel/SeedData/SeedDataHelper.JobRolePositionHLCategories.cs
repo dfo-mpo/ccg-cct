@@ -767,7 +767,17 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory
                 {JobGroupId = 23, JobGroupLevelId = 8, JobPositionId = 380, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
-                {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, JobHLCategoryId = 2}
+                {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 16, JobGroupLevelId = 5, JobPositionId = 386, JobHLCategoryId = 2}
         };
     }
 }
