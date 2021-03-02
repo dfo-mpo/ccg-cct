@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Dtos.JobGroups;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +14,7 @@ namespace Web.Pages.Candidate.Shoreside
         private readonly JobGroupService _jobgroupService;
         public JobGroupDto[] JobGroups { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         public string Filter { get; set; }
         public AllCandidateShoresideModel(ILogger<AllCandidateShoresideModel> logger, JobGroupService jobcategoryService)
         {

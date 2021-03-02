@@ -1,14 +1,12 @@
 ﻿@page
-
 @inject IViewLocalizer Localizer
-@model Web.Pages.CCGMember.AllPositionsModel
+@model Web.Pages.Candidate.Shoreside.AllCandidateShoresideModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
 }
 <section role="contentinfo">
     <div class="col-md-12">
-        <a class="btn btn-primary pull-right mrgn-rght-md" type="button" asp-page="../Index">@Localizer["Home"]</a>
         <h2><b>@Localizer["AllPositions"]</b></h2>
         <form>
             <p>
@@ -17,11 +15,11 @@
             </p>
         </form>
         <form>
-            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+            @if (Model.JobGroups.Any(e => string.IsNullOrEmpty(Model.Filter) || e.NameEng.ToLower().Contains(@Model.Filter) || e.Code.ToLower().Contains(@Model.Filter)))
             {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
                 {
-                    <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
+                    <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
                         <div class="col-sm-4 mrgn-bttm-md">
                             <figure>
                                 <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />

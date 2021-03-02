@@ -42,6 +42,15 @@ namespace Service.Controllers
             return Ok(results);
         }
 
+        [HttpGet, Route("{Id}/jobpositions")]
+        [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobPositionsByGroupId([FromRoute] GetJobPositionsByGroupIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
         [HttpGet, Route("{Id}/levels")]
         [ProducesResponseType(typeof(List<JobGroupPositionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetLevelsById([FromRoute]GetJobGroupPositionsByIdQuery query)

@@ -7,6 +7,7 @@ using Web.Data;
 using Business.Dtos.JobPositions;
 using Business.Dtos.JobCompetencies;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Web.Pages.CCGMember.Similar
 {
@@ -28,16 +29,14 @@ namespace Web.Pages.CCGMember.Similar
         public List<string> SameLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> HigherLevelCompetencyIds { get; set; } = new List<string>();
-        [BindProperty]
-        public string Certificates { get; set; } = string.Empty;
-        [BindProperty]
-        public string SameLevels { get; set; } = string.Empty;
-        [BindProperty]
-        public string HigherLevels { get; set; } = string.Empty;
-        [BindProperty]
-        public string SameOrHigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string RouteParameter { get; set; } = string.Empty;
+        public string Certificates { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string SameLevels { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string HigherLevels { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string SameOrHigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet =true)]
         public Boolean PageSubmit { get; set; } = false;
         [BindProperty]
@@ -51,6 +50,39 @@ namespace Web.Pages.CCGMember.Similar
         }
         public async Task OnGetAsync(int positionid)
         {
+            if(!SameLevels.Equals(string.Empty))
+            {
+                var ids = SameLevels.Split("&sameLevelCompetencyId=");
+                foreach(var id in ids)
+                {
+                    SameLevelCompetencyIds.Add(id);
+                }     
+            }
+            if (!HigherLevels.Equals(string.Empty))
+            {
+                var ids = HigherLevels.Split("&higherLevelCompetencyId=");
+                foreach (var id in ids)
+                {
+                    HigherLevelCompetencyIds.Add(id);
+                }
+            }
+            if (!SameOrHigherLevels.Equals(string.Empty))
+            {
+                var ids = SameOrHigherLevels.Split("&sameOrHigherLevelCompetencyId=");
+                foreach (var id in ids)
+                {
+                    HigherLevelCompetencyIds.Add(id);
+                    SameLevelCompetencyIds.Add(id);
+                }
+            }
+            if (!Certificates.Equals(string.Empty))
+            {
+                var ids = Certificates.Split("&certificateId=");
+                foreach (var id in ids)
+                {
+                    CertificateIds.Add(id);
+                }
+            }
             _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
             GroupId = Position.JobGroupId.ToString();
@@ -64,6 +96,9 @@ namespace Web.Pages.CCGMember.Similar
         { 
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PageSubmit = true;
+            SameLevels = string.Empty;
+            HigherLevels = string.Empty;
+            SameOrHigherLevels = string.Empty;
 
             foreach (var c in CertificateIds)
             {
@@ -72,13 +107,16 @@ namespace Web.Pages.CCGMember.Similar
 
             foreach (var c in SameLevelCompetencyIds)
             {
-                if (!HigherLevelCompetencyIds.Contains(c)) { 
-                    SameLevels += "&sameLevelCompetencyId=" + c;
-                }
-                else
-                {
-                    SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
-                }
+
+                    if (!HigherLevelCompetencyIds.Contains(c))
+                    {
+                        SameLevels += "&sameLevelCompetencyId=" + c;
+                    }
+                    else
+                    {
+                        SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
+                    }
+
             }
 
             foreach (var c in HigherLevelCompetencyIds)
@@ -88,8 +126,6 @@ namespace Web.Pages.CCGMember.Similar
                     HigherLevels += "&higherLevelCompetencyId=" + c;
                 }
             }
-
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}{Certificates}");
         }
     }
 
