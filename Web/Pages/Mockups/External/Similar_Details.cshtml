@@ -1,147 +1,172 @@
 ﻿@page
 @model Web.Pages.Mockups.External.Similar_DetailsModel
+@inject IViewLocalizer Localizer
 @{
 }
 
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-    <a href="#print"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
-    <a href="#save"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
 </div>
 
-<h3 class="text-center">@Localizer["SIMILAR POSITION DETAILS"]</h3>
+<h3 class="text-center">@Localizer["POSITION DETAILS"]</h3>
 
-<div class="mrgn-tp-lg">
-    <table class="table table-hover table-responsive table-bordered">
-        <thead>
-            <tr>
-                <th class="bg-primary" colspan="2">POSITIONS DETAILS: CS-02 Computer Systems</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th style="background-color:#f2f2f2">KNOWLEDGE ELEMENTS</th>
-                <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Organizational Knowledge</a>
-                    <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Organizational Knowledge</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
-                        </div>
-                    </section>
-                </td>
-                <td class="text-center">
-                    <a href="#2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
-                    <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 2</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
-                            <p>Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally. </p>
-                        </div>
-                    </section>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Computer Architecture Knowledge</a>
-                    <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Computer Architecture Knowledge</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>The rules and methods that describe the functionality, organization, and implementation of computer systems and their frameworks. </p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
-                        </div>
-                    </section>
-                </td>
-                <td class="text-center">
-                    <a href="#4" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
-                    <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 2</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
-                            <p>Limited knowledge of determining the needs of the user and designing a product that meets the requirements effectively within economic and technological constraints and the creation of basic models based upon specifications.</p>
-                        </div>
-                    </section>
-                </td>
-            </tr>
-            <tr>
-                <th style="background-color:#f2f2f2">TECHNICAL ELEMENTS</th>
-                <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
-            </tr>
-            <tr>
-                <td>
-                    <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">Application Development/Support and Maintenance</a>
-                    <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Application Development/Support and Maintenance</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>Designs, defines, constructs, enhances, supports, and maintains application software on one or more application platforms.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
-                        </div>
-                    </section>
-                </td>
-                <td class="text-center">
-                    <a href="#6" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
-                    <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
-                        <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 2</h2>
-                        </header>
-                        <div class="modal-body ">
-                            <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
-                            <p>Applies one or more programming languages. Writes or adapts software modules for testing and integration. Understands and employs basic development methods and standards. Tests/debugs program modules. Uses a testing tool and prepares basic test cases. Prepares operational documentation and uses appropriate tools and technologies for developing information technology (IT) systems and services that are barrier-free and accessible.</p>
-                        </div>
-                    </section>
-                </td>
-            </tr>
-            <tr>
-                <td>Infrastructure/Platforms</td>
-                <td class="text-center">2</td>
-            </tr>
-            <tr>
-                <td>Project/Program Management</td>
-                <td class="text-center">3</td>
-            </tr>
-            <tr>
-                <td>Security/Information and Application Protection</td>
-                <td class="text-center">2</td>
-            </tr>
-            <tr>
-                <th style="background-color:#f2f2f2">BEHAVIOURAL ELEMENTS</th>
-                <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
-            </tr>
-            <tr>
-                <td>Demonstrating Integrity and Respect</td>
-                <td class="text-center">2</td>
-            </tr>
-            <tr>
-                <td>Thinking Things Through</td>
-                <td class="text-center">2</td>
-            </tr>
-            <tr>
-                <td>Working Effectively With Others</td>
-                <td class="text-center">2</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-lg-12 mrgn-bttm-md">
-            <nav role="navigation" class="mrgn-bttm-lg">
-                <h2 class="wb-inv">Document navigation</h2>
+    <div class="mrgn-tp-lg">
+        <table class="table table-hover table-responsive table-bordered">
+            <thead>
+                <tr>
+                    <th class="bg-primary" colspan="2"><h4 class="mrgn-tp-0 mrgn-bttm-0">POSITIONS DETAILS: SO-MAO 05 Chief Officer (CCGS Eckaloo/Dumit)</h4></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="2" style="background-color:#f2f2f2">CERTIFICATIONS</th>
+                </tr>
+                <tr>
+                    <td>Restricted Operator Certificate-Maritime Commerical (ROC-MC)</td>
+                </tr>
+                <tr>
+                    <td>General Operators Certificate (GOC)</td>
+                </tr>
+                <tr>
+                    <td>Chief Mate, Near Coastal (or Watchkeeping Mate, Near Coastal for MSPVs)<br /><em style="color:red">Depending on location, voyage and ship class, this certification may be substituded.</em></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <th style="background-color:#f2f2f2">KNOWLEDGE ELEMENTS</th>
+                    <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#1" aria-controls="centred-popup" class="wb-lbx" role="button">Organizational Knowledge</a>
+                        <section id="1" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Organizational Knowledge</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
+                                <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            </div>
+                        </section>
+                    </td>
+                    <td class="text-center">
+                        <a href="#2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                        <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Position Level: 2</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                                <p>Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally. </p>
+                            </div>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#3" aria-controls="centred-popup" class="wb-lbx" role="button">Computer Architecture Knowledge</a>
+                        <section id="3" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Computer Architecture Knowledge</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>The rules and methods that describe the functionality, organization, and implementation of computer systems and their frameworks. </p>
+                                <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            </div>
+                        </section>
+                    </td>
+                    <td class="text-center">
+                        <a href="#4" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                        <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Position Level: 2</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                                <p>Limited knowledge of determining the needs of the user and designing a product that meets the requirements effectively within economic and technological constraints and the creation of basic models based upon specifications.</p>
+                            </div>
+                        </section>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <th style="background-color:#f2f2f2">TECHNICAL ELEMENTS</th>
+                    <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#5" aria-controls="centred-popup" class="wb-lbx" role="button">Application Development/Support and Maintenance</a>
+                        <section id="5" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Application Development/Support and Maintenance</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>Designs, defines, constructs, enhances, supports, and maintains application software on one or more application platforms.</p>
+                                <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            </div>
+                        </section>
+                    </td>
+                    <td class="text-center">
+                        <a href="#6" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 2 Summary">2</abbr></a>
+                        <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
+                            <header class="modal-header">
+                                <h2 class="modal-title">Position Level: 2</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <p>Novice (A level of experience has been obtained; may need help when performing a task/skill)</p>
+                                <p>Applies one or more programming languages. Writes or adapts software modules for testing and integration. Understands and employs basic development methods and standards. Tests/debugs program modules. Uses a testing tool and prepares basic test cases. Prepares operational documentation and uses appropriate tools and technologies for developing information technology (IT) systems and services that are barrier-free and accessible.</p>
+                            </div>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Infrastructure/Platforms</td>
+                    <td class="text-center">2</td>
+                </tr>
+                <tr>
+                    <td>Project/Program Management</td>
+                    <td class="text-center">3</td>
+                </tr>
+                <tr>
+                    <td>Security/Information and Application Protection</td>
+                    <td class="text-center">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <th style="background-color:#f2f2f2">BEHAVIOURAL ELEMENTS</th>
+                    <th class="text-center" style="background-color:#f2f2f2">LEVEL</th>
+                </tr>
+                <tr>
+                    <td>Demonstrating Integrity and Respect</td>
+                    <td class="text-center">2</td>
+                </tr>
+                <tr>
+                    <td>Thinking Things Through</td>
+                    <td class="text-center">2</td>
+                </tr>
+                <tr>
+                    <td>Working Effectively With Others</td>
+                    <td class="text-center">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-lg-12 mrgn-bttm-md">
+                <nav role="navigation" class="mrgn-bttm-lg">
+                    <h2 class="wb-inv">Document navigation</h2>
                     <ul class="pager">
                         <li class="previous"><a href="Similar_List" rel="prev">Previous</a></li>
                     </ul>
-            </nav>
+                </nav>
+            </div>
         </div>
     </div>
-</div>

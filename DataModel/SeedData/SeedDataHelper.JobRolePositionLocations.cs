@@ -1107,14 +1107,6 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 2, JobGroupLevelId = 6, JobPositionId = 61, JobLocationRegionId = 4},
             new JobRolePositionLocation
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, JobLocationRegionId = 1},
-            new JobRolePositionLocation
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, JobLocationRegionId = 2},
-            new JobRolePositionLocation
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, JobLocationRegionId = 5},
-            new JobRolePositionLocation
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, JobLocationRegionId = 3},
-            new JobRolePositionLocation
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 63, JobLocationRegionId = 4},
             new JobRolePositionLocation
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 64, JobLocationRegionId = 4},
@@ -1523,13 +1515,13 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 127, JobLocationRegionId = 5},
             new JobRolePositionLocation
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, JobLocationRegionId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, JobLocationRegionId = 2},
             new JobRolePositionLocation
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, JobLocationRegionId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, JobLocationRegionId = 1},
             new JobRolePositionLocation
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, JobLocationRegionId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, JobLocationRegionId = 3},
             new JobRolePositionLocation
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, JobLocationRegionId = 5},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, JobLocationRegionId = 5},
             new JobRolePositionLocation
                 {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 129, JobLocationRegionId = 2},
             new JobRolePositionLocation

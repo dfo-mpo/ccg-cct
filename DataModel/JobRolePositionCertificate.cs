@@ -24,5 +24,6 @@ namespace DataModel
         public int CertificateId { get; set; }
 
         public Certificate Certificate { get; set; }
+        public int Required { get; set; }
     }
 }

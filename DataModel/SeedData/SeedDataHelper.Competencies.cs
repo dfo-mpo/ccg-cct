@@ -943,150 +943,111 @@ namespace DataModel.SeedData
             {
                 Id = 116, NameEng = "Computer Architecture Knowledge",
                 NameFre = "Connaissances en architecture informatique",
-                DescEng =
-                    "The rules and methods that describe the functionality, organization, and implementation of computer systems.",
-                DescFre =
-                    "Les règles et les méthodes qui décrivent la fonctionnalité, l'organisation et la mise en œuvre des systèmes informatiques et de leurs cadres."
+                DescEng = "The rules and methods that describe the functionality, organization, and implementation of computer systems.",
+                DescFre = "Les règles et les méthodes qui décrivent la fonctionnalité, l'organisation et la mise en œuvre des systèmes informatiques et de leurs cadres."
             },
             new Competency
             {
                 Id = 117, NameEng = "Engineering/Electrical Design, Review, and Analysis",
                 NameFre = "Ingénierie / Conception électrique, examen et analyse",
-                DescEng =
-                    "Identifies, develops, and analyzes the installation process of engineering designs and/or specifications. Plans, identifies, and modifies methods and resources.",
-                DescFre =
-                    "Identifie, développe et analyse le processus d'installation des conceptions et/ou spécifications techniques. Planifie, identifie et modifie les méthodes et les ressources."
+                DescEng = "Identifies, develops, and analyzes the installation process of engineering designs and/or specifications. Plans, identifies, and modifies methods and resources.",
+                DescFre = "Identifie, développe et analyse le processus d'installation des conceptions et/ou spécifications techniques. Planifie, identifie et modifie les méthodes et les ressources."
             },
             new Competency
             {
                 Id = 118, NameEng = "Computer Aided Design and Drafting (CADD)",
                 NameFre = "Conception et dessin assistés par ordinateur (CADD)",
-                DescEng =
-                    "Subfield of engineering which deals with the design and drafting of objects and materials through the use of specialized software that visualizes designs as modular 3D computer models. Used for creating the 3D models complete with detailed documentation such as dimensions, materials used, and even details the design process.",
-                DescFre =
-                    "Subfield of engineering which deals with the design and drafting of objects and materials through the use of specialized software that visualizes designs as modular 3D computer models. Used for creating the 3D models complete with detailed documentation such as dimensions, materials used, and even details the design process."
+                DescEng = "Subfield of engineering which deals with the design and drafting of objects and materials through the use of specialized software that visualizes designs as modular 3D computer models. Used for creating the 3D models complete with detailed documentation such as dimensions, materials used, and even details the design process.",
+                DescFre = "Subfield of engineering which deals with the design and drafting of objects and materials through the use of specialized software that visualizes designs as modular 3D computer models. Used for creating the 3D models complete with detailed documentation such as dimensions, materials used, and even details the design process."
             },
             new Competency
             {
                 Id = 119, NameEng = "Application Development/Support and Maintenance",
                 NameFre = "Développement, soutien et entretien des applications",
-                DescEng =
-                    "Designs, defines, constructs, enhances, supports, and maintains application software on one or more application platforms.",
-                DescFre =
-                    "Conçoit, définit, construit, améliore, soutient et entretient des logiciels d'application sur une ou plusieurs plateformes d'application."
+                DescEng = "Designs, defines, constructs, enhances, supports, and maintains application software on one or more application platforms.",
+                DescFre = "Conçoit, définit, construit, améliore, soutient et entretient des logiciels d'application sur une ou plusieurs plateformes d'application."
             },
             new Competency
             {
                 Id = 120, NameEng = "Infrastructure/Platforms", NameFre = "Infrastructure / Plateformes",
-                DescEng =
-                    "Supports the enterprise computing infrastructure (e.g. enterprise servers, client server, storage devices and systems, hardware, and software) in the provision, management, storage, operation, scheduling, support, and maintenance of the infrastructure.",
-                DescFre =
-                    "Soutient l'infrastructure informatique de l'entreprise (par exemple, les serveurs d'entreprise, le serveur client, les dispositifs et systèmes de stockage, le matériel et les logiciels) dans la fourniture, la gestion, le stockage, l'exploitation, la planification, le soutien et la maintenance de l'infrastructure."
+                DescEng = "Supports the enterprise computing infrastructure (e.g. enterprise servers, client server, storage devices and systems, hardware, and software) in the provision, management, storage, operation, scheduling, support, and maintenance of the infrastructure.",
+                DescFre = "Soutient l'infrastructure informatique de l'entreprise (par exemple, les serveurs d'entreprise, le serveur client, les dispositifs et systèmes de stockage, le matériel et les logiciels) dans la fourniture, la gestion, le stockage, l'exploitation, la planification, le soutien et la maintenance de l'infrastructure."
             },
             new Competency
             {
                 Id = 121, NameEng = "Security/Information and Application Protection",
                 NameFre = "Sécurité / Protection des informations et des applications",
-                DescEng =
-                    "Ensures technical and organizational safeguards to protect the continuity of infrastructure services by the implementation of information technology (IT) security principles, methods, practices, policies, and tools that are used in securing IT resources. This includes information and operations security, physical security, business continuity/disaster recovery planning, methods to deal with security breaches, and security assessment in a technical environment.",
-                DescFre =
-                    "Veille à la mise en place de mesures techniques et organisationnelles pour protéger la continuité des services d'infrastructure par la mise en œuvre des principes, méthodes, pratiques, politiques et outils de sécurité des technologies de l'information (TI) utilisés pour sécuriser les ressources informatiques. Cela comprend la sécurité des informations et des opérations, la sécurité physique, la planification de la continuité des activités/reprise après sinistre, les méthodes pour traiter les infractions à la sécurité et l'évaluation de la sécurité dans un environnement technique."
+                DescEng = "Ensures technical and organizational safeguards to protect the continuity of infrastructure services by the implementation of information technology (IT) security principles, methods, practices, policies, and tools that are used in securing IT resources. This includes information and operations security, physical security, business continuity/disaster recovery planning, methods to deal with security breaches, and security assessment in a technical environment.",
+                DescFre = "Veille à la mise en place de mesures techniques et organisationnelles pour protéger la continuité des services d'infrastructure par la mise en œuvre des principes, méthodes, pratiques, politiques et outils de sécurité des technologies de l'information (TI) utilisés pour sécuriser les ressources informatiques. Cela comprend la sécurité des informations et des opérations, la sécurité physique, la planification de la continuité des activités/reprise après sinistre, les méthodes pour traiter les infractions à la sécurité et l'évaluation de la sécurité dans un environnement technique."
             },
             new Competency
             {
                 Id = 122, NameEng = "Service Management Processes", NameFre = "Processus de gestion des services",
-                DescEng =
-                    "Implements methods, practices, and policies governing the design, development, and use of information technology (IT) support processes designed to keep the IT environment functioning efficiently, effectively, and securely.",
-                DescFre =
-                    "Met en œuvre des méthodes, des pratiques et des politiques régissant la conception, le développement et l'utilisation des processus de soutien des technologies de l'information (TI) conçus pour maintenir le fonctionnement efficace, effectif et sûr de l'environnement informatique."
+                DescEng = "Implements methods, practices, and policies governing the design, development, and use of information technology (IT) support processes designed to keep the IT environment functioning efficiently, effectively, and securely.",
+                DescFre = "Met en œuvre des méthodes, des pratiques et des politiques régissant la conception, le développement et l'utilisation des processus de soutien des technologies de l'information (TI) conçus pour maintenir le fonctionnement efficace, effectif et sûr de l'environnement informatique."
             },
             new Competency
             {
                 Id = 123, NameEng = "Testing", NameFre = "Tests",
-                DescEng =
-                    "Tests software and/or hardware using a systematic approach (i.e. the orderly progression of testing in which software elements, hardware elements or both are combined and tested until the entire system has been integrated).",
-                DescFre =
-                    "Tests de logiciels et/ou de matériel en utilisant une approche systématique (c'est-à-dire la progression ordonnée des tests dans laquelle les éléments logiciels, les éléments matériels ou les deux sont combinés et testés jusqu'à ce que le système entier ait été intégré)."
+                DescEng = "Tests software and/or hardware using a systematic approach (i.e. the orderly progression of testing in which software elements, hardware elements or both are combined and tested until the entire system has been integrated).",
+                DescFre = "Tests de logiciels et/ou de matériel en utilisant une approche systématique (c'est-à-dire la progression ordonnée des tests dans laquelle les éléments logiciels, les éléments matériels ou les deux sont combinés et testés jusqu'à ce que le système entier ait été intégré)."
             },
             new Competency
             {
                 Id = 124, NameEng = "Database Design and Management",
                 NameFre = "Conception et gestion de bases de données",
-                DescEng =
-                    "Applies the methods, practices, and policies that are used in the design and the management of databases in the public sector context.",
-                DescFre =
-                    "Applique les méthodes, pratiques et politiques utilisées dans la conception et la gestion des bases de données dans le contexte du secteur public."
+                DescEng = "Applies the methods, practices, and policies that are used in the design and the management of databases in the public sector context.",
+                DescFre = "Applique les méthodes, pratiques et politiques utilisées dans la conception et la gestion des bases de données dans le contexte du secteur public."
             },
             new Competency
             {
                 Id = 125, NameEng = "Ship or Land-Based Marine Electronic Equipment/Information Systems Knowledge",
-                NameFre =
-                    "Connaissance des équipements électroniques et des systèmes d’information maritimes embarqués ou terrestres",
-                DescEng =
-                    "Knowledge of electronic devices designed for use in, or support of, the marine environment.",
-                DescFre =
-                    "Connaissance des dispositifs électroniques conçus pour être utilisés dans l’environnement marin ou en appui à celui-ci."
+                NameFre = "Connaissance des équipements électroniques et des systèmes d’information maritimes embarqués ou terrestres",
+                DescEng = "Knowledge of electronic devices designed for use in, or support of, the marine environment.",
+                DescFre = "Connaissance des dispositifs électroniques conçus pour être utilisés dans l’environnement marin ou en appui à celui-ci."
             },
 
             new Competency
             {
                 Id = 126, NameEng = "Create Vision and Strategy",
-                NameFre =
-                    "Créer une vision et une stratégie",
-                DescEng =
-                    "Able to define the future and chart a path forward. Adept at understanding and communicating context, factoring in the economic, social, and political environment. Intellectually agile, able to leverage their deep and broad knowledge, build on diverse ideas and perspectives, and create consensus around compelling visions. Balances organizational and government-wide priorities and improve outcomes for Canada and Canadians.",
-                DescFre =
-                    "Capable de définir l'avenir et de tracer la voie à suivre. Adepte de la compréhension et de la communication du contexte, en tenant compte de l'environnement économique, social et politique. Intellectuellement agile, capable de tirer parti de ses connaissances vastes et approfondies, de s'appuyer sur des idées et des perspectives diverses, et de créer un consensus autour de visions convaincantes. Concilie les priorités organisationnelles et pangouvernementales et améliore les résultats pour le Canada et les Canadiens."
+                NameFre = "Créer une vision et une stratégie",
+                DescEng = "Able to define the future and chart a path forward. Adept at understanding and communicating context, factoring in the economic, social, and political environment. Intellectually agile, able to leverage their deep and broad knowledge, build on diverse ideas and perspectives, and create consensus around compelling visions. Balances organizational and government-wide priorities and improve outcomes for Canada and Canadians.",
+                DescFre = "Capable de définir l'avenir et de tracer la voie à suivre. Adepte de la compréhension et de la communication du contexte, en tenant compte de l'environnement économique, social et politique. Intellectuellement agile, capable de tirer parti de ses connaissances vastes et approfondies, de s'appuyer sur des idées et des perspectives diverses, et de créer un consensus autour de visions convaincantes. Concilie les priorités organisationnelles et pangouvernementales et améliore les résultats pour le Canada et les Canadiens."
             },
             new Competency
             {
                 Id = 127, NameEng = "Mobilize People",
-                NameFre =
-                    "Mobiliser les gens",
-                DescEng =
-                    "Able to inspire and motivate the people they lead. Manages performance, provides constructive and respectful feedback to encourage and enable performance excellence. Leads by example, setting goals for themselves that are more demanding than those that they set for others.",
-                DescFre =
-                    "Capable d'inspirer et de motiver les gens qu'ils dirigent. Gère le rendement, fournit une rétroaction constructive et respectueuse pour encourager et favoriser l'excellence du rendement. Donne l'exemple en se fixant des objectifs plus exigeants que ceux qu'il se fixe pour les autres."
+                NameFre = "Mobiliser les gens",
+                DescEng = "Able to inspire and motivate the people they lead. Manages performance, provides constructive and respectful feedback to encourage and enable performance excellence. Leads by example, setting goals for themselves that are more demanding than those that they set for others.",
+                DescFre = "Capable d'inspirer et de motiver les gens qu'ils dirigent. Gère le rendement, fournit une rétroaction constructive et respectueuse pour encourager et favoriser l'excellence du rendement. Donne l'exemple en se fixant des objectifs plus exigeants que ceux qu'il se fixe pour les autres."
             },
             new Competency
             {
                 Id = 128, NameEng = "Uphold Integrity and Respect",
-                NameFre =
-                    "Respecter l'intégrité et le respect",
-                DescEng =
-                    "Exemplifies ethical practices, professionalism, and personal integrity. Creates respectful and trusting work environments where sound advice is valued. Encourages the expression of diverse opinions and perspectives, while fostering collegiality. Ability to be self-aware and seek out opportunities for personal growth.",
-                DescFre =
-                    "Exemplaire des pratiques éthiques, du professionnalisme et de l'intégrité personnelle. Crée des milieux de travail respectueux et confiants où les conseils judicieux sont valorisés. Encourage l'expression d'opinions et de perspectives diverses, tout en favorisant la collégialité. Capacité d'être conscient de soi et de rechercher des occasions de croissance personnelle."
+                NameFre = "Respecter l'intégrité et le respect",
+                DescEng = "Exemplifies ethical practices, professionalism, and personal integrity. Creates respectful and trusting work environments where sound advice is valued. Encourages the expression of diverse opinions and perspectives, while fostering collegiality. Ability to be self-aware and seek out opportunities for personal growth.",
+                DescFre = "Exemplaire des pratiques éthiques, du professionnalisme et de l'intégrité personnelle. Crée des milieux de travail respectueux et confiants où les conseils judicieux sont valorisés. Encourage l'expression d'opinions et de perspectives diverses, tout en favorisant la collégialité. Capacité d'être conscient de soi et de rechercher des occasions de croissance personnelle."
             },
             new Competency
             {
                 Id = 129, NameEng = "Collaborate with Partners and Stakeholders",
-                NameFre =
-                    "Collaborer avec les partenaires et les intervenants",
-                DescEng =
-                    "Able to deliberate and be resourceful about seeking the widest possible spectrum of perspectives. Demonstrates openness and flexibility to forge consensus and improve outcomes. Brings a whole-of-government perspective to their interactions. Open to alternatives and skillful at managing expectations in negotiating solutions. Shares recognition with their teams and partners.",
-                DescFre =
-                    "Capable de délibérer et de faire preuve d'ingéniosité dans la recherche du plus large éventail possible de points de vue. Faire preuve d'ouverture et de souplesse pour parvenir à un consensus et améliorer les résultats. Apporte une perspective pangouvernementale à leurs interactions. Ouvert aux solutions de rechange et habile à gérer les attentes dans la négociation de solutions. Partage sa reconnaissance avec ses équipes et ses partenaires."
+                NameFre = "Collaborer avec les partenaires et les intervenants",
+                DescEng = "Able to deliberate and be resourceful about seeking the widest possible spectrum of perspectives. Demonstrates openness and flexibility to forge consensus and improve outcomes. Brings a whole-of-government perspective to their interactions. Open to alternatives and skillful at managing expectations in negotiating solutions. Shares recognition with their teams and partners.",
+                DescFre = "Capable de délibérer et de faire preuve d'ingéniosité dans la recherche du plus large éventail possible de points de vue. Faire preuve d'ouverture et de souplesse pour parvenir à un consensus et améliorer les résultats. Apporte une perspective pangouvernementale à leurs interactions. Ouvert aux solutions de rechange et habile à gérer les attentes dans la négociation de solutions. Partage sa reconnaissance avec ses équipes et ses partenaires."
             },
             new Competency
             {
                 Id = 130, NameEng = "Promote Innovation and Guide Change",
-                NameFre =
-                    "Promouvoir l'innovation et orienter le changement",
-                DescEng =
-                    "Leaders have the courage and resilience to challenge convention. They create an environment that supports bold thinking, experimentation and intelligent risk taking. They use setbacks as a valuable source of insight and learning. Leaders take change in their stride, aligning and adjusting milestones and targets to maintain forward momentum.",
-                DescFre =
-                    "Les dirigeants ont le courage et la résilience nécessaires pour contester les conventions. Ils créent un environnement qui favorise la pensée audacieuse, l'expérimentation et la prise de risques intelligente. Ils utilisent les revers comme une source précieuse de compréhension et d'apprentissage. Les leaders prennent le changement à la va-vite, alignant et ajustant les jalons et les objectifs pour maintenir l'élan vers l'avant."
+                NameFre = "Promouvoir l'innovation et orienter le changement",
+                DescEng = "Leaders have the courage and resilience to challenge convention. They create an environment that supports bold thinking, experimentation and intelligent risk taking. They use setbacks as a valuable source of insight and learning. Leaders take change in their stride, aligning and adjusting milestones and targets to maintain forward momentum.",
+                DescFre = "Les dirigeants ont le courage et la résilience nécessaires pour contester les conventions. Ils créent un environnement qui favorise la pensée audacieuse, l'expérimentation et la prise de risques intelligente. Ils utilisent les revers comme une source précieuse de compréhension et d'apprentissage. Les leaders prennent le changement à la va-vite, alignant et ajustant les jalons et les objectifs pour maintenir l'élan vers l'avant."
             },
             new Competency
             {
                 Id = 131, NameEng = "Achieve Results",
-                NameFre =
-                    "Obtenir des résultats",
-                DescEng =
-                    "Ability to mobilize and manage resources to deliver on the priorities of the Government of Canada, improve outcomes, and add value. Considers context, risks, and business intelligence to support high-quality and timely decisions. Anticipates, plans, monitors progress, and makes adjustments as needed. Takes personal responsibility for actions and outcomes of their decisions.",
-                DescFre =
-                    "Capacité de mobiliser et de gérer les ressources pour réaliser les priorités du gouvernement du Canada, améliorer les résultats et ajouter de la valeur. Tient compte du contexte, des risques et de l'intelligence d'affaires pour appuyer des décisions de grande qualité et opportunes. Anticiper, planifier, surveiller les progrès et faire les ajustements nécessaires. Assume personnellement la responsabilité des actions et des résultats de ses décision."
+                NameFre = "Obtenir des résultats",
+                DescEng = "Ability to mobilize and manage resources to deliver on the priorities of the Government of Canada, improve outcomes, and add value. Considers context, risks, and business intelligence to support high-quality and timely decisions. Anticipates, plans, monitors progress, and makes adjustments as needed. Takes personal responsibility for actions and outcomes of their decisions.",
+                DescFre = "Capacité de mobiliser et de gérer les ressources pour réaliser les priorités du gouvernement du Canada, améliorer les résultats et ajouter de la valeur. Tient compte du contexte, des risques et de l'intelligence d'affaires pour appuyer des décisions de grande qualité et opportunes. Anticiper, planifier, surveiller les progrès et faire les ajustements nécessaires. Assume personnellement la responsabilité des actions et des résultats de ses décision."
             }
         };
     }

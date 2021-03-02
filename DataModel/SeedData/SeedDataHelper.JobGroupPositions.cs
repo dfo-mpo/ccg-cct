@@ -69,7 +69,6 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 6, JobPositionId = 59},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 6, JobPositionId = 60},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 6, JobPositionId = 61},
-            new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 63},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 64},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 65},
@@ -134,7 +133,7 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 125},
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 126},
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 127},
-            new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128},
+            new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128},
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 129},
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 130},
             new JobGroupPosition {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 131},
@@ -388,11 +387,11 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 23, JobGroupLevelId = 8, JobPositionId = 379},
             new JobGroupPosition {JobGroupId = 23, JobGroupLevelId = 8, JobPositionId = 380},
             new JobGroupPosition {JobGroupId = 23, JobGroupLevelId = 9, JobPositionId = 381},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 1, JobPositionId = 382},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 2, JobPositionId = 383},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 3, JobPositionId = 384},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 5, JobPositionId = 386}
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 84, JobPositionId = 382},
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 85, JobPositionId = 383},
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 86, JobPositionId = 384},
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 87, JobPositionId = 385},
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 88, JobPositionId = 386}
         };
     }
 }

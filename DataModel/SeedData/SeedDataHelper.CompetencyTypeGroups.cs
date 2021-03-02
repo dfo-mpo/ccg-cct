@@ -128,7 +128,10 @@ namespace DataModel.SeedData
             new CompetencyTypeGroup {CompetencyId = 123, CompetencyTypeId = 2},
             new CompetencyTypeGroup {CompetencyId = 124, CompetencyTypeId = 2},
             new CompetencyTypeGroup {CompetencyId = 125, CompetencyTypeId = 1},
-            new CompetencyTypeGroup {CompetencyId = 126, CompetencyTypeId = 4},
+            new CompetencyTypeGroup 
+            {
+                CompetencyId = 126, CompetencyTypeId = 4
+            },
             new CompetencyTypeGroup {CompetencyId = 127, CompetencyTypeId = 4},
             new CompetencyTypeGroup {CompetencyId = 128, CompetencyTypeId = 4},
             new CompetencyTypeGroup {CompetencyId = 129, CompetencyTypeId = 4},

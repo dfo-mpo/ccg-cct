@@ -2157,48 +2157,6 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 6, JobPositionId = 61, CompetencyId = 37, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 1, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 2, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 3, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 4, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 9, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 10, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 11, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 12, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 13, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 15, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 16, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 17, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 18, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 19, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 26, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 27, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 28, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 33, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 34, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 36, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
-                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 62, CompetencyId = 37, CompetencyTypeId = 3},
-            new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 63, CompetencyId = 1, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 63, CompetencyId = 2, CompetencyTypeId = 1},
@@ -4488,57 +4446,61 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 127, CompetencyId = 37, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 1, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 1, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 2, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 2, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 38, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 38, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 64, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 64, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 68, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 68, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 69, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 69, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 3, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 3, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 47, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 47, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 70, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 70, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 4, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 4, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 53, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 59, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 74, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 53, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 55, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 74, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 19, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 55, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 20, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 19, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 18, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 20, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 76, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 18, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 60, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 76, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 77, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 60, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 26, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 77, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 27, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 23, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 28, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 33, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 27, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 34, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 28, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 36, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 33, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 128, CompetencyId = 37, CompetencyTypeId = 3},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 34, CompetencyTypeId = 3},
+            new JobRolePositionCompetency
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 36, CompetencyTypeId = 3},
+            new JobRolePositionCompetency
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 128, CompetencyId = 37, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 129, CompetencyId = 1, CompetencyTypeId = 1},
             new JobRolePositionCompetency
@@ -12934,7 +12896,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 348, CompetencyId = 36, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 348, CompetencyId = 37, CompetencyTypeId = 3},
-
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 349, CompetencyId = 1, CompetencyTypeId = 1},
             new JobRolePositionCompetency

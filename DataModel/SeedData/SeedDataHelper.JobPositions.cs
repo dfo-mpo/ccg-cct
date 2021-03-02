@@ -69,7 +69,6 @@ namespace DataModel.SeedData
             new JobPosition {Id = 59, TitleEng = "Superintendent, Fleet Safety & Security / Marine Security Operations Centre (MSOC) Project Division", TitleFre = "Surintendant, sûreté et sécurité de la flotte / Projet Centre des opérations de la sûreté maritime (COSM)" },
             new JobPosition {Id = 60, TitleEng = "Head Quality Assurance & Academic Excellence", TitleFre = "Chef de l'assurance de la qualité et du cadre d'enseignement" },
             new JobPosition {Id = 61, TitleEng = "Executive Advisor to the Deputy Commissioner", TitleFre = "Conseiller exécutif du commissaire adjoint" },
-            new JobPosition {Id = 62, TitleEng = "Regional Director, Integrated Business Management Services (IBMS)", TitleFre = "Directeur régional Services de gestion intégrée des affaires (SGIA)" },
             new JobPosition {Id = 63, TitleEng = "Operations Personnel Manager", TitleFre = "Gestionnaire personnel des opérations" },
             new JobPosition {Id = 64, TitleEng = "Manager Policy and Standards Operations Personnel", TitleFre = "Gestionnaire politique et normes du personnel des opérations" },
             new JobPosition {Id = 65, TitleEng = "Chief Operating Officer", TitleFre = "Chef de l'exploitation"},
@@ -124,7 +123,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 115, TitleEng = "Engineering Officer Motor Life Boat (MLB)", TitleFre = "Officier mécanicien Bateau de sauvetage (BDS)" },
             new JobPosition {Id = 116, TitleEng = "Fishing Officer", TitleFre = "Agent des pêches"},
             new JobPosition {Id = 117, TitleEng = "2nd Officer (Deck)", TitleFre = "2e officier (pont)"},
-            new JobPosition {Id = 118, TitleEng = "Small Vessel Commanding Officer", TitleFre = "Commandant du petit bâtiment"},
+            new JobPosition {Id = 118, TitleEng = "Officer in Charge 47’ Lifeboat/CCGC Small Vessels ", TitleFre = "Officier responsable 47’ Bateau de sauvetage/petit navire"},
             new JobPosition {Id = 119, TitleEng = "Engineer", TitleFre = "Ingénieur"},
             new JobPosition {Id = 120, TitleEng = "Fishing Officer", TitleFre = "Agent des pêches"},
             new JobPosition {Id = 121, TitleEng = "Logistics Officer", TitleFre = "Officier logistique"},
@@ -134,7 +133,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 125, TitleEng = "Engineering Officer", TitleFre = "Officier d'ingénierie"},
             new JobPosition {Id = 126, TitleEng = "Senior Engineering Officer", TitleFre = "Officier d'ingénierie sénior"},
             new JobPosition {Id = 127, TitleEng = "Chief Officer", TitleFre = "Chef officier"},
-            new JobPosition {Id = 128, TitleEng = "Watchkeeping Chief Officer", TitleFre = "Officier en chef de quart"},
+            new JobPosition {Id = 128, TitleEng = "Chief Officer (CCGS Eckaloo/Dumit)", TitleFre = "Chef Officier (CCGS Eckaloo/Dumit)"},
             new JobPosition {Id = 129, TitleEng = "Logistics Officer", TitleFre = "Officier logistique"},
             new JobPosition {Id = 130, TitleEng = "Chief Officer", TitleFre = "Chef officier"},
             new JobPosition {Id = 131, TitleEng = "Fishing Officer", TitleFre = "Agent des pêches"},
@@ -388,11 +387,11 @@ namespace DataModel.SeedData
             new JobPosition {Id = 379, TitleEng = "Senior Technologist, Telecommunication Network", TitleFre = "Technologue principal, Réseau de télécommunications" },
             new JobPosition {Id = 380, TitleEng = "Production Manager", TitleFre = "Gestionnaire de la production"},
             new JobPosition {Id = 381, TitleEng = "Superintendent", TitleFre = "Surintendant"},
-            new JobPosition {Id = 382, TitleEng = "Director", TitleFre = "Directeur" },
-            new JobPosition {Id = 383, TitleEng = "Senior or Executive Director", TitleFre = "Directeur exécutif principal" },
-            new JobPosition {Id = 384, TitleEng = "Director General", TitleFre = "Directeur général" },
-            new JobPosition {Id = 385, TitleEng = "Assistant/Associate Deputy Minister (ADM) - Deputy Commissioner", TitleFre = "Sous-ministre adjoint/délégué - Sous-commissaire"},
-            new JobPosition {Id = 386, TitleEng = "Deputy Minister - Commissioner", TitleFre = "Sous-ministre - Commissaire"}
+            new JobPosition {Id = 382, TitleEng = "Director / Regional Director", TitleFre = "Directeur / Directeur régional" },
+            new JobPosition {Id = 383, TitleEng = "Executive Director / Senior Director", TitleFre = "Directeur exécutif / Directeur principal" },
+            new JobPosition {Id = 384, TitleEng = "Assistant Commissioner / Director General", TitleFre = "Commissaire adjoint / Directeur général" },
+            new JobPosition {Id = 385, TitleEng = "Deputy Commissioner", TitleFre = "Sous-commissaire"},
+            new JobPosition {Id = 386, TitleEng = "Commissioner", TitleFre = "Commissaire"}
         };
     }
 }

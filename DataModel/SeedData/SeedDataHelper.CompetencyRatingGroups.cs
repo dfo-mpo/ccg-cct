@@ -1190,7 +1190,9 @@ namespace DataModel.SeedData
             new CompetencyRatingGroup
                 {CompetencyId = 125, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 601},
             new CompetencyRatingGroup
-                {CompetencyId = 126, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 602},
+            {
+                CompetencyId = 126, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 602
+            },
             new CompetencyRatingGroup
                 {CompetencyId = 126, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 603},
             new CompetencyRatingGroup

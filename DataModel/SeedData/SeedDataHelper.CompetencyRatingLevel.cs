@@ -41,32 +41,32 @@ namespace DataModel.SeedData
             new CompetencyRatingLevel
             {
                 Id = 6, Value = 1, NameEng = "Director Level", NameFre = "Niveau du directeur",
-                DescEng = " ",
-                DescFre = " "
+                DescEng = "",
+                DescFre = ""
             },
             new CompetencyRatingLevel
             {
                 Id = 7, Value = 2, NameEng = "Senior Director / Executive Director Level", NameFre = "Niveau de directeur principal / directeur exécutif",
-                DescEng = " ",
-                DescFre = " "
+                DescEng = "",
+                DescFre = ""
             },
             new CompetencyRatingLevel
             {
                 Id = 8, Value = 3, NameEng = "Director General Level", NameFre = "Niveau directeur général",
-                DescEng = " ",
-                DescFre = " "
+                DescEng = "",
+                DescFre = ""
             },
             new CompetencyRatingLevel
             {
                 Id = 9, Value = 4, NameEng = "Deputy Commissioner / Assistant Deputy Minister Level", NameFre = "Niveau de sous-commissaire / sous-ministre adjoint",
-                DescEng = " ",
-                DescFre = " "
+                DescEng = "",
+                DescFre = ""
             },
             new CompetencyRatingLevel
             {
                 Id = 10, Value = 5, NameEng = "Commissioner / Deputy Minister Level", NameFre = "Niveau du commissaire / sous-ministre",
-                DescEng = " ",
-                DescFre = " "
+                DescEng = "",
+                DescFre = ""
             }
         };
     }
