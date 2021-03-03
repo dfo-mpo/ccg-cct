@@ -36,20 +36,22 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; } = string.Empty;
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
             _jobpositionService = jobcompetencyService;
         }
-        public async Task OnGetAsync(int positionid)
+        public async Task OnGetAsync(int objectiveid)
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            Position = await _jobpositionService.GetJobPositionById(positionid);
-            PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+            Position = await _jobpositionService.GetJobPositionById(objectiveid);
+            PositionCertificates = await _jobpositionService.GetJobCertificatesById(objectiveid);
+            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(objectiveid, 1);
+            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(objectiveid, 2);
+            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(objectiveid, 3);
         }
     }
 }
