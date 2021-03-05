@@ -237,6 +237,7 @@ namespace DataModel.SeedData
                 {CompetencyId = 23, CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 114},
             new CompetencyRatingGroup
                 {CompetencyId = 23, CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 115},
+
             new CompetencyRatingGroup
                 {CompetencyId = 23, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 116},
             new CompetencyRatingGroup
@@ -1188,7 +1189,69 @@ namespace DataModel.SeedData
             new CompetencyRatingGroup
                 {CompetencyId = 125, CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 600},
             new CompetencyRatingGroup
-                {CompetencyId = 125, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 601}
+                {CompetencyId = 125, CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 601},
+            new CompetencyRatingGroup
+            {
+                CompetencyId = 126, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 602
+            },
+            new CompetencyRatingGroup
+                {CompetencyId = 126, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 603},
+            new CompetencyRatingGroup
+                {CompetencyId = 126, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 604},
+            new CompetencyRatingGroup
+                {CompetencyId = 126, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 605},
+            new CompetencyRatingGroup
+                {CompetencyId = 126, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 606},
+            new CompetencyRatingGroup
+                {CompetencyId = 127, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 607},
+            new CompetencyRatingGroup
+                {CompetencyId = 127, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 608},
+            new CompetencyRatingGroup
+                {CompetencyId = 127, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 609},
+            new CompetencyRatingGroup
+                {CompetencyId = 127, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 610},
+            new CompetencyRatingGroup
+                {CompetencyId = 127, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 611},
+            new CompetencyRatingGroup
+                {CompetencyId = 128, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 612},
+            new CompetencyRatingGroup
+                {CompetencyId = 128, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 613},
+            new CompetencyRatingGroup
+                {CompetencyId = 128, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 614},
+            new CompetencyRatingGroup
+                {CompetencyId = 128, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 615},
+            new CompetencyRatingGroup
+                {CompetencyId = 128, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 616},
+            new CompetencyRatingGroup
+                {CompetencyId = 129, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 617},
+            new CompetencyRatingGroup
+                {CompetencyId = 129, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 618},
+            new CompetencyRatingGroup
+                {CompetencyId = 129, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 619},
+            new CompetencyRatingGroup
+                {CompetencyId = 129, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 620},
+            new CompetencyRatingGroup
+                {CompetencyId = 129, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 621},
+            new CompetencyRatingGroup
+                {CompetencyId = 130, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 622},
+            new CompetencyRatingGroup
+                {CompetencyId = 130, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 623},
+            new CompetencyRatingGroup
+                {CompetencyId = 130, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 624},
+            new CompetencyRatingGroup
+                {CompetencyId = 130, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 625},
+            new CompetencyRatingGroup
+                {CompetencyId = 130, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 626},
+            new CompetencyRatingGroup
+                {CompetencyId = 131, CompetencyRatingLevelId = 6, CompetencyLevelRequirementId = 627},
+            new CompetencyRatingGroup
+                {CompetencyId = 131, CompetencyRatingLevelId = 7, CompetencyLevelRequirementId = 628},
+            new CompetencyRatingGroup
+                {CompetencyId = 131, CompetencyRatingLevelId = 8, CompetencyLevelRequirementId = 629},
+            new CompetencyRatingGroup
+                {CompetencyId = 131, CompetencyRatingLevelId = 9, CompetencyLevelRequirementId = 630},
+            new CompetencyRatingGroup
+                {CompetencyId = 131, CompetencyRatingLevelId = 10, CompetencyLevelRequirementId = 631}
         };
     }
 }

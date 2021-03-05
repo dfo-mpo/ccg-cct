@@ -90,7 +90,12 @@ namespace DataModel.SeedData
             new JobGroupLevel() {Id = 80, LevelValue = "CR-02"},
             new JobGroupLevel() {Id = 81, LevelValue = "CR-03"},
             new JobGroupLevel() {Id = 82, LevelValue = "CR-04"},
-            new JobGroupLevel() {Id = 83, LevelValue = "CR-05"}
+            new JobGroupLevel() {Id = 83, LevelValue = "CR-05"},
+            new JobGroupLevel() {Id = 84, LevelValue = "01"},
+            new JobGroupLevel() {Id = 85, LevelValue = "02"},
+            new JobGroupLevel() {Id = 86, LevelValue = "03"},
+            new JobGroupLevel() {Id = 87, LevelValue = "04"},
+            new JobGroupLevel() {Id = 88, LevelValue = "DM-01"}
         };
     }
 }

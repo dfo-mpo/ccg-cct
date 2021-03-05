@@ -32,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Dtos", "Business.Dtos\Business.Dtos.csproj", "{B04F767B-4A9F-475B-B944-D754B1C8CF3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{2B372B40-9168-4155-B21C-FC27A6ED0510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin", "Admin\Admin.csproj", "{2B372B40-9168-4155-B21C-FC27A6ED0510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

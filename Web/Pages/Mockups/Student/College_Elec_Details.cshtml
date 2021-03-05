@@ -1,19 +1,27 @@
 ﻿@page
-@model Web.Pages.Mockups.Student.Student_DetailsModel
+@model Web.Pages.Mockups.Student.College_Elec_DetailsModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Student Position Details";
+    ViewData["Title"] = "College Position Details";
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
+
+
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
     <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" title="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
     <a href="#"><span class="glyphicon glyphicon-save pull-right" title="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
+</div>
+
+<div class="col-sm-8 col-sm-offset-2 well text-center ">
+    <h4>@Localizer["PDAP"]</h4>
+    <p><a rel="external" target="_blank" href="@Localizer["link"]">@Localizer["link"]</a></p>
 </div>
 
 <div class="mrgn-tp-lg">
     <table class="table table-hover table-responsive table-bordered">
         <thead>
             <tr>
-                <th class="bg-primary" colspan="2">@Localizer["position"]: CR-02 Clerical and Regulatory</th>
+                <th class="bg-primary" colspan="2"><h4 class="mrgn-bttm-0 mrgn-tp-0">@Localizer["position"]: EL-04 MELDEV Advanced</h4></th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +48,7 @@
                         </header>
                         <div class="modal-body ">
                             <p>Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["close"]</button>
                         </div>
                     </section>
                 </td>
@@ -48,7 +56,7 @@
                     <a href="#2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
                     <section id="2" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 1</h2>
+                            <h2 class="modal-title">@Localizer["poslevel"]: 1</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
@@ -66,7 +74,7 @@
                         </header>
                         <div class="modal-body ">
                             <p>Understanding of administrative procedures and processes in one or more area of responsibility.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["close"]</button>
                         </div>
                     </section>
                 </td>
@@ -74,7 +82,7 @@
                     <a href="#4" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
                     <section id="4" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 1</h2>
+                            <h2 class="modal-title">@Localizer["poslevel"]: 1</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
@@ -102,7 +110,7 @@
                         </header>
                         <div class="modal-body ">
                             <p>Provides a high standard of service to Canadian Coast Guard members and other stakeholders.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["close"]</button>
                         </div>
                     </section>
                 </td>
@@ -110,7 +118,7 @@
                     <a href="#6" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
                     <section id="6" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 1</h2>
+                            <h2 class="modal-title">@Localizer["poslevel"]: 1</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
@@ -128,7 +136,7 @@
                         </header>
                         <div class="modal-body ">
                             <p>Integrates various ideas, intentions, and information to form effective goals, objectives, timelines, action plans, and solutions.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["close"]</button>
                         </div>
                     </section>
                 </td>
@@ -136,7 +144,7 @@
                     <a href="#8" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
                     <section id="8" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 1</h2>
+                            <h2 class="modal-title">@Localizer["poslevel"]: 1</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
@@ -156,14 +164,15 @@
         </thead>
         <tbody>
             <tr>
-                <td><a href="#9" aria-controls="centred-popup" class="wb-lbx" role="button">Demonstrating Integrity and Respect</a>
+                <td>
+                    <a href="#9" aria-controls="centred-popup" class="wb-lbx" role="button">Demonstrating Integrity and Respect</a>
                     <section id="9" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
                             <h2 class="modal-title">Demonstrating Integrity and Respect</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while avoiding conflicts of interest and maintaining political and interpersonal neutrality.</p>
-                            <button class="btn btn-primary popup-modal-dismiss" type="button">Close</button>
+                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["close"]</button>
                         </div>
                     </section>
                 </td>
@@ -171,7 +180,7 @@
                     <a href="#10" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level 1 Summary">1</abbr></a>
                     <section id="10" class="mfp-hide modal-dialog modal-content overlay-def">
                         <header class="modal-header">
-                            <h2 class="modal-title">Position Level: 1</h2>
+                            <h2 class="modal-title">@Localizer["poslevel"]: 1</h2>
                         </header>
                         <div class="modal-body ">
                             <p>Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)</p>
@@ -212,7 +221,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a href="HS_Admin_List" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a href="College_Electronic_List" class="btn btn-default" type="button" rel="prev">@Localizer["previous"]</a></li>
                 </ul>
             </nav>
         </div>

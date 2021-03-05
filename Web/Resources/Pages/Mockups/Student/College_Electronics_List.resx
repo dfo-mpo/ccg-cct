@@ -121,9 +121,9 @@
     <value>LEVEL</value>
   </data>
   <data name="link" xml:space="preserve">
-    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
   </data>
-  <data name="More Details" xml:space="preserve">
+  <data name="moredetails" xml:space="preserve">
     <value>More Details</value>
   </data>
   <data name="PDAP" xml:space="preserve">
@@ -132,7 +132,7 @@
   <data name="positions" xml:space="preserve">
     <value>POSITIONS</value>
   </data>
-  <data name="Previous" xml:space="preserve">
+  <data name="previous" xml:space="preserve">
     <value>Previous</value>
   </data>
   <data name="print" xml:space="preserve">

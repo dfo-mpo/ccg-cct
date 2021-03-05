@@ -117,29 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="level" xml:space="preserve">
-    <value>LEVEL</value>
-  </data>
-  <data name="link" xml:space="preserve">
-    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
-  </data>
-  <data name="More Details" xml:space="preserve">
+  <data name="moredetails" xml:space="preserve">
     <value>More Details</value>
   </data>
-  <data name="PDAP" xml:space="preserve">
-    <value>Professional Development Apprenticeship Programs (PDAP)</value>
-  </data>
-  <data name="positions" xml:space="preserve">
+  <data name="position" xml:space="preserve">
     <value>POSITIONS</value>
   </data>
-  <data name="Previous" xml:space="preserve">
+  <data name="previous" xml:space="preserve">
     <value>Previous</value>
   </data>
   <data name="print" xml:space="preserve">
-    <value>Print PDF</value>
+    <value>Print to PDF</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save PDF</value>
+    <value>Save as PDF</value>
   </data>
   <data name="seagoing" xml:space="preserve">
     <value>SEAGOING POSITIONS</value>
