@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
-namespace Web.Pages.Student
+namespace Web.Pages.Mockups.Student
 {
     public class Student_ListModel : PageModel
     {
