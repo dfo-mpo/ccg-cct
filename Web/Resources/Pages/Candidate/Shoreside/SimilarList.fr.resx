@@ -117,40 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>BEHAVIOURAL ELEMENTS</value>
+  <data name="LEVEL" xml:space="preserve">
+    <value>NIVEAU</value>
   </data>
-  <data name="h3Q1Text" xml:space="preserve">
-    <value>What certifications do you currently possess?</value>
+  <data name="More Details" xml:space="preserve">
+    <value>Plus de détails</value>
   </data>
-  <data name="h3Q2Text" xml:space="preserve">
-    <value>What competencies and levels to you currently possess?</value>
-  </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>KNOWLEDGE ELEMENTS</value>
-  </data>
-  <data name="Level 1" xml:space="preserve">
-    <value>Level 1</value>
-  </data>
-  <data name="Level 2" xml:space="preserve">
-    <value>Level 2</value>
-  </data>
-  <data name="Level 3" xml:space="preserve">
-    <value>Level 3</value>
-  </data>
-  <data name="Level 4" xml:space="preserve">
-    <value>Level 4</value>
-  </data>
-  <data name="Level 5" xml:space="preserve">
-    <value>Level 5</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>TECHNICAL ELEMENTS</value>
+  <data name="POSITION DETAILS" xml:space="preserve">
+    <value>DÉTAILS DU POSTE</value>
   </data>
 </root>

@@ -136,7 +136,7 @@
     <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
   <data name="h2Results" xml:space="preserve">
-    <value>Résultats comparant deux positions</value>
+    <value>Résultats comparant les deux positions</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
@@ -182,9 +182,6 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
-  </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Imprimer PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer le PDF</value>

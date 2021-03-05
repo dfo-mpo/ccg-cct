@@ -26,21 +26,14 @@ namespace Web.Pages.CCGMember.Compare
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
         [BindProperty]
-        public SharedJobCompetencyRating[] MatchingCompetenciesType1 { get; set; }
+        public List<SharedJobCompetencyRating[]> MatchingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
         [BindProperty]
-        public SharedJobCompetencyRating[] DifferingCompetenciesType1 { get; set; }
-        [BindProperty]
-        public SharedJobCompetencyRating[] MatchingCompetenciesType2 { get; set; }
-        [BindProperty]
-        public SharedJobCompetencyRating[] DifferingCompetenciesType2 { get; set; }
-        [BindProperty]
-        public SharedJobCompetencyRating[] MatchingCompetenciesType3 { get; set; }
-        [BindProperty]
-        public SharedJobCompetencyRating[] DifferingCompetenciesType3 { get; set; }
+        public List<SharedJobCompetencyRating[]> DifferingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
         [BindProperty]
         public JobCertificateDto[] MatchingCertificates { get; set; }
         [BindProperty]
         public JobCertificateDto[] DifferingCertificates { get; set; }
+
         public DeltaModel(ILogger<DeltaModel> logger, CompareService compareService)
         {
             _logger = logger;
@@ -53,16 +46,24 @@ namespace Web.Pages.CCGMember.Compare
             CurrentPosition = await _compareService.GetJobPositionById(positionid);
             ObjectivePosition = await _compareService.GetJobPositionById(obj);
 
-            MatchingCompetenciesType1 = await _compareService.GetMatchingCompetenciesByTypeId(1, positionid, obj);
-            MatchingCompetenciesType2 = await _compareService.GetMatchingCompetenciesByTypeId(2, positionid, obj);
-            MatchingCompetenciesType3 = await _compareService.GetMatchingCompetenciesByTypeId(3, positionid, obj);
-
-            DifferingCompetenciesType1 = await _compareService.GetDifferingCompetenciesByTypeId(1, positionid, obj);
-            DifferingCompetenciesType2 = await _compareService.GetDifferingCompetenciesByTypeId(2, positionid, obj);
-            DifferingCompetenciesType3 = await _compareService.GetDifferingCompetenciesByTypeId(3, positionid, obj);
-
             MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
             DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, obj);
+
+            var CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
+            foreach(var competencytype in CompetencyTypes)
+            {
+                var matchingcompetencies = await _compareService.GetMatchingCompetenciesByTypeId(competencytype.Id, positionid, obj);
+                if(!matchingcompetencies.Equals(null))
+                {
+                    MatchingCompetencies.Add(matchingcompetencies);
+                }
+                var differingcomptencies = await _compareService.GetDifferingCompetenciesByTypeId(competencytype.Id, positionid, obj);
+                if (!differingcomptencies.Equals(null))
+                {
+                    DifferingCompetencies.Add(differingcomptencies);
+                }
+            }
+        
         }
     }
 }

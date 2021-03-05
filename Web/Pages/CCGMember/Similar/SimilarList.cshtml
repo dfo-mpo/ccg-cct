@@ -6,54 +6,72 @@
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid",Model.PositionId.ToString()},
-        {"RouteParameter", Model.Id },
-        {"pagesubmit", "true" }
+        {"id", Model.Id.ToString() },
+        {"pagesubmit", "true" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"percentmatch", Model.PercentMatch },
+        {"previouspage", Model.PreviousPage },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails }
     };
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
+    <section>
+        <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+            <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
+            <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+        </div>
 
-<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-    <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
-    <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
-</div>
 
-
-    <div class="mrgn-tp-lg">
-        <h3 class="text-center">@Localizer["SIMILAR POSITIONS"]</h3>
-        <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
-        <table class="table table-hover table-responsive table-bordered">
-            <thead>
-                <tr>
-                    <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
-                    <th class="bg-primary" width="75%">@Localizer["POSITIONS"]</th>
-                    <th class="bg-primary" width="13%"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var position in Model.Positions)
-                {
-                    var routedata = new Dictionary<string, string>
-                 {
-        { "positionid",  position.JobTitleId.ToString()},
-        { "id",  Model.PositionId.ToString()}
+        <div class="mrgn-tp-lg">
+            <h3 class="text-center">@Localizer["SIMILAR POSITIONS"]</h3>
+            <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
+            <table class="table table-hover table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                        <th class="bg-primary" width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var position in Model.Positions)
+                    {
+                        var routedata = new Dictionary<string, string>
+                         {
+        {"objectiveid",  position.JobTitleId.ToString()},
+        {"positionid",  Model.PositionId.ToString()},
+        {"id", Model.Id.ToString() },
+        {"pagesubmit", "true" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"percentmatch", Model.PercentMatch },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspage", Model.PreviousPage }
         };
 
-            <tr>
-                <td>@position.JobGroupCode-@position.JobLevelValue</td>
-                <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
-            </tr>
-        }
-            </tbody>
-        </table>
-    </div>
+                <tr>
+                    <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                </tr>
+            }
+                </tbody>
+            </table>
+        </div>
 
-    <div class="row mrgn-tp-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="SimilarSearch" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-    </div>
-
+        <div class="row mrgn-tp-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>

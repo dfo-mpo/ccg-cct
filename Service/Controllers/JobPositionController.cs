@@ -39,6 +39,21 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+        [HttpGet, Route("IdValues")]
+        [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByIdValues(
+
+          [FromQuery] int[] positionId)
+            {
+            var query = new GetJobPositionByIdValuesQuery
+            {
+                Id = positionId,
+ 
+            };
+
+            var result = await _queryProvider.ProcessAsync(query);
+            return Ok(result);
+        }
 
         [HttpGet, Route("{Id}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyRatingDto>), StatusCodes.Status200OK)]

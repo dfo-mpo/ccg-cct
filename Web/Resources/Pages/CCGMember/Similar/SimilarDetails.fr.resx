@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
-  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
@@ -129,14 +126,8 @@
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
-  </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS DE CONNAISSANCE</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>Niveau</value>
+  <data name="LEVEL" xml:space="preserve">
+    <value>NIVEAU</value>
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
@@ -147,13 +138,10 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Imprimer PDF</value>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau du poste</value>
   </data>
-  <data name="Save PDF" xml:space="preserve">
-    <value>Enregistrer le PDF</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS TECHNIQUES</value>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
   </data>
 </root>

@@ -3,11 +3,18 @@
 @model Web.Pages.CCGMember.Similar.SimilarSearchModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var paramdataprevious = new Dictionary<string, string>
+                           {
+                            {"positionid", Model.PositionId.ToString()},
+                            {"id", Model.Id.ToString() },
+                            {"previouspagesimilar", Model.PreviousPageSimilar },
+                            {"previouspage",Model.PreviousPage }
+                           };
 }
-@if (Model.PageSubmit == false)
+@if (!Model.PageSubmit)
 {
     <section role="contentinfo">
-        
+
         <h1>@Localizer["h1Text"]</h1>
         <h4>@Localizer["h4Text"]</h4>
         <hr />
@@ -28,7 +35,14 @@
                                 {
                                     <tr>
                                         <td class="bg-warning">@(isEnglish ? c.NameEng : c.NameFre)</td>
-                                        <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id" type="checkbox" /></td>
+                                        @if (Model.CertificateIds.Contains(c.Id.ToString()))
+                                        {
+                                            <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" checked="true" /></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" /></td>
+                                        }
                                     </tr>
                                 }
                             }
@@ -43,19 +57,19 @@
                         </tbody>
                     </table>
                 </div>
-
+                @foreach(var competencytype in Model.PositionCompetencyRatings) {
                 <div class="mrgn-bttm-lg">
                     <table class="table dataTable table-responsive">
                         <thead>
                             <tr class="bg-success">
-                                <th width="55%">@Localizer["KNOWLEDGE ELEMENTS"]</th>
+                                <th width="55%">@(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
                                 <th class="text-center" width="15%">@Localizer["CURRENT LEVEL"]</th>
                                 <th class="text-center" width="15%">@Localizer["SAME LEVEL"]</th>
                                 <th class="text-center" width="15%">@Localizer["HIGHER LEVEL"]</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var c in Model.PositionRatings1)
+                            @foreach (var c in competencytype)
                             {
                                 var key1 = "a" + c.CompetencyId.ToString();
                                 var key2 = "b" + c.CompetencyId.ToString();
@@ -90,14 +104,28 @@
                                             </div>
                                         </section>
                                     </td>
-                                    <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                    @if (Model.SameLevelCompetencyIds.Contains(c.CompetencyId.ToString()))
+                                    {
+                                        <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" checked="true" /></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                    }
                                     @{ if (c.RatingValue > 4)
                                         {
                                             <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" disabled="true" /></td>
                                         }
                                         else
                                         {
-                                            <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                            @if (Model.HigherLevelCompetencyIds.Contains(c.CompetencyId.ToString()))
+                                            {
+                                                <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" checked="true" /></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
+                                            }
                                         }
                                     }
                                 </tr>
@@ -105,149 +133,53 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="mrgn-bttm-lg">
-                    <table class="table dataTable table-responsive">
-                        <thead>
-                            <tr class="bg-success">
-                                <th width="55%">@Localizer["TECHNICAL ELEMENTS"]</th>
-                                <th class="text-center" width="15%">@Localizer["CURRENT LEVEL"]</th>
-                                <th class="text-center" width="15%">@Localizer["SAME LEVEL"]</th>
-                                <th class="text-center" width="15%">@Localizer["HIGHER LEVEL"]</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var c in Model.PositionRatings2)
-                            {
-                                var key1 = "c" + c.CompetencyId.ToString();
-                                var key2 = "d" + c.CompetencyId.ToString();
-                                <tr>
-                                    <td class="bg-success">
-                                        <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                        </a>
-                                        <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">
-                                                    @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                                </h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
-                                                <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center bg-success">
-                                        <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @c.RatingValue Summary">@c.RatingValue</abbr></a>
-                                        <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@Localizer["Current Position Level"]: @c.RatingValue</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                                <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                    @{ if (c.RatingValue > 4)
-                                        {
-                                            <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" disabled="true" /></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                        }
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mrgn-bttm-lg">
-                    <table class="table dataTable table-responsive">
-                        <thead>
-                            <tr class="bg-success">
-                                <th width="55%">@Localizer["BEHAVIOURAL ELEMENTS"]</th>
-                                <th class="text-center" width="15%">@Localizer["CURRENT LEVEL"]</th>
-                                <th class="text-center" width="15%">@Localizer["SAME LEVEL"]</th>
-                                <th class="text-center" width="15%">@Localizer["HIGHER LEVEL"]</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var c in Model.PositionRatings3)
-                            {
-                                var key1 = "e" + c.CompetencyId.ToString();
-                                var key2 = "f" + c.CompetencyId.ToString();
-                                <tr>
-                                    <td class="bg-success">
-                                        <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                        </a>
-                                        <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">
-                                                    @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                                </h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
-                                                <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center bg-success">
-                                        <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @c.RatingValue Summary">@c.RatingValue</abbr></a>
-                                        <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@Localizer["Current Position Level"]: @c.RatingValue</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                                <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center bg-success"><input name="SameLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                    @{ if (c.RatingValue > 4)
-                                        {
-                                            <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" disabled="true" /></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="text-center bg-success"><input name="HigherLevelCompetencyIds" value="@c.CompetencyId.ToString()" type="checkbox" /></td>
-                                        }
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+            }
+            </div> 
             <button class="btn btn-primary pull-right">@Localizer["Search Positions"]</button>
         </form>
         <br />
+        <div class="row">
+            <div class="col-lg-12 mrgn-tp-md">
+                <nav role="navigation" class="mrgn-bttm-lg">
+                    <h2 class="wb-inv">Document navigation</h2>
+                    <ul class="pager">
+                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageSimilar" asp-all-route-data="@paramdataprevious">@Localizer["Previous"]</a></li>     
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </section>
-}
-else
-{
-    var RouteParameterNone = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=0" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter40 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=40" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter50 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=50" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter60 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter70 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter80 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() } };
-    var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() } };
+   }
+    else
+      {
+                        var RouteParameterNone = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=0" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter50 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=50" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter60 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                        var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
 
 <section>
 
     
     <h4>@Localizer["pageSubmitted"]</h4>
     <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
-        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter40" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["40%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter50" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["50%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
@@ -263,9 +195,16 @@ else
                 <ul class="pager">
                     @{
                         var paramdata = new Dictionary<string, string>
-                                   {
-                              {"positionid", Model.PositionId.ToString()}
-                            };
+                           {
+                            {"positionid", Model.PositionId.ToString()},
+                            {"id", Model.Id },
+                            {"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },
+                            {"certificates", Model.Certificates },
+                            {"previouspagesimilar", Model.PreviousPageSimilar },
+                            {"previouspage",Model.PreviousPage }
+                           };
                     }
                     <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
                     <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="SimilarList" asp-all-route-data="@RouteParameterNone">@Localizer["Next"]</a></li>

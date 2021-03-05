@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS DE COMPORTEMENT</value>
-  </data>
-  <data name="h3Q1Text" xml:space="preserve">
-    <value>Quelles certifications possédez-vous actuellement?</value>
-  </data>
-  <data name="h3Q2Text" xml:space="preserve">
-    <value>Quelles compétences et quels niveaux possédez-vous actuellement?</value>
-  </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS DE CONNAISSANCE</value>
-  </data>
-  <data name="Level 1" xml:space="preserve">
-    <value>Niveau 1</value>
-  </data>
-  <data name="Level 2" xml:space="preserve">
-    <value>Niveau 2</value>
-  </data>
-  <data name="Level 3" xml:space="preserve">
-    <value>Niveau 3</value>
-  </data>
-  <data name="Level 4" xml:space="preserve">
-    <value>Niveau 4</value>
-  </data>
-  <data name="Level 5" xml:space="preserve">
-    <value>Niveau 5</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Suivant</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS TECHNIQUES</value>
-  </data>
 </root>

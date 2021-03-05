@@ -20,6 +20,12 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobPositionDto>(url);
         }
+        public async Task<JobPositionDto[]> GetJobPositionByIdValues(string Parameters)
+        {
+            string url = $"/api/jobpositions/IdValues?{Parameters}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+        }
 
         public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatings(int Id)
         {
@@ -41,6 +47,14 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificateDto[]>(url);
         }
+
+        public async Task<JobCompetencyDto[]> GetAllJobCompetencyTypes()
+        {
+            string url = $"/api/jobcompetency/types";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
+        }
+
 
     }
 }

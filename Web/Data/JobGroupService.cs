@@ -68,5 +68,12 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
         }
 
+        public async Task<JobPositionDto[]> GetJobPositionsByGroupId(int Id)
+        {
+            string url = $"/api/jobgroups/{Id}/jobpositions";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+        }
+
     }
 }

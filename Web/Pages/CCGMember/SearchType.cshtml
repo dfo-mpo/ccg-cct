@@ -2,6 +2,11 @@
 @model Web.Pages.CCGMember.SearchTypeModel
 @inject IViewLocalizer Localizer
 @{
+    var paramdata = new Dictionary<string, string>
+                           {
+                            {"positionid", Model.PositionId.ToString()},
+                            {"previouspagesimilar", "../SearchType" }
+                           };
 }
 
 

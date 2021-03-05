@@ -1,0 +1,44 @@
+﻿@page
+@model Web.Pages.Candidate.Seagoing.Crew.Engineering.PositionListModel
+@inject IViewLocalizer Localizer
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
+}
+
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+    <a href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["POSITION RESULTS"]</h3>
+    <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
+                <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                <th class="bg-primary" width="10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Model.Positions)
+            {
+                var routedata = new Dictionary<string, string>
+                 {
+                    {"previouspage", "../Crew/Engineering/PositionList" },
+                    { "positionid",  position.JobTitleId.ToString()},
+                 };
+
+        <tr>
+            <td>@position.JobGroupCode-@position.JobLevelValue</td>
+            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+            <td><a asp-page="../../Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+        </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+
+
