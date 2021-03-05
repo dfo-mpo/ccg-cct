@@ -6,8 +6,7 @@ using Microsoft.Extensions.Logging;
 using Web.Data;
 using Business.Dtos.JobPositions;
 using Business.Dtos.JobCompetencies;
-
-
+using System.Collections.Generic;
 
 namespace Web.Pages.CCGMember
 {
@@ -26,6 +25,8 @@ namespace Web.Pages.CCGMember
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        [BindProperty]
+        public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
 
         public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
         {
@@ -37,9 +38,15 @@ namespace Web.Pages.CCGMember
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
+            {
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
+            }
         }
         }
 

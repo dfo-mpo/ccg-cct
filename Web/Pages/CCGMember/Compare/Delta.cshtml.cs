@@ -29,7 +29,6 @@ namespace Web.Pages.CCGMember.Compare
         public List<SharedJobCompetencyRating[]> MatchingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
         [BindProperty]
         public List<SharedJobCompetencyRating[]> DifferingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
-        public JobCompetencyDto[] CompetencyTypes { get; set; }
         [BindProperty]
         public JobCertificateDto[] MatchingCertificates { get; set; }
         [BindProperty]
@@ -50,7 +49,7 @@ namespace Web.Pages.CCGMember.Compare
             MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
             DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, obj);
 
-            CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
+            var CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
             foreach(var competencytype in CompetencyTypes)
             {
                 var matchingcompetencies = await _compareService.GetMatchingCompetenciesByTypeId(competencytype.Id, positionid, obj);

@@ -34,9 +34,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
         [BindProperty]
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        public List<JobCompetencyRatingDto[]> PositionCompetencyRatings = new List<JobCompetencyRatingDto[]>(){};
         public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -44,6 +42,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
         }
         public async Task OnGetAsync(int positionid)
         {
+            _logger.LogInformation($"Candidate Seagoing details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             if (!Certificates.Equals(string.Empty))
             {
                 var ids = Certificates.Split("&certificateId=");
@@ -52,14 +51,19 @@ namespace Web.Pages.Candidate.Seagoing.Common
                     CertificateIds.Add(id);
                 }
             }
-            _logger.LogInformation($"Seagoing Crew Engineering Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
             Level = Position.JobGroupLevelId;
             GroupId = Position.JobGroupId;
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
+            {
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
+            }
             RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}");
         }
 

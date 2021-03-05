@@ -20,9 +20,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet =true)]
         public int PositionId { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        [BindProperty]
+        public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
         [BindProperty]
         public List<string> CertificateIds { get; set; } = new List<string>();
         [BindProperty]
@@ -37,10 +36,14 @@ namespace Web.Pages.CCGMember.Similar
         public string HigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageSimilar { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet =true)]
         public Boolean PageSubmit { get; set; } = false;
-        [BindProperty]
-        public string GroupId { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public string Id { get; set; } = string.Empty;
         [BindProperty]
         public string GroupLevelId { get; set; }
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
@@ -85,12 +88,18 @@ namespace Web.Pages.CCGMember.Similar
             }
             _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            GroupId = Position.JobGroupId.ToString();
+            Id = Position.JobGroupId.ToString();
             GroupLevelId = Position.JobGroupLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
+            {
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
+            }
         }
         public async Task OnPost(int positionid)
         { 

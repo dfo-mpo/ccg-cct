@@ -16,6 +16,8 @@ namespace Web.Pages.Candidate.Shoreside
         private readonly ILogger<SimilarDetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
         [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty]
         public List<string> CertificateIds { get; set; } = new List<string>();
@@ -34,9 +36,8 @@ namespace Web.Pages.Candidate.Shoreside
         [BindProperty]
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
+        [BindProperty]
+        public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -57,9 +58,15 @@ namespace Web.Pages.Candidate.Shoreside
             Level = Position.JobGroupLevelId;
             GroupId = Position.JobGroupId;
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-            PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-            PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-            PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
+            {
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
+            }
             RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}");
         }
 

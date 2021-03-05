@@ -135,6 +135,9 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>Souhaitez-vous comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous?</value>
   </data>

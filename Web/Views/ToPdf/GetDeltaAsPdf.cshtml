@@ -58,13 +58,14 @@
         <div class="row col-lg-12">
             <h3>@MATCHINGCOMPETENCIES</h3>
         </div>
+        matchingcompetencies = true;
         <div class="col-md-6">
             <table class="table table-responsive table-bordered">
                 <tbody>
                     <tr>
                         <th style="background-color:#f2f2f2">@CERTIFICATIONS</th>
                     </tr>
-                    @foreach (var c in Model.MatchingCertificates)
+                    @foreach (var c in MatchingCertificates)
                     {
                         <tr>
                             <td>@(isEnglish ? c.NameEng : c.NameFre)</td>

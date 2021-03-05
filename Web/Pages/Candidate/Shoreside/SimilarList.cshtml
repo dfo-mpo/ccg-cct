@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th class="bg-primary" width="15%">@Localizer["LEVEL"]</th>
-                <th class="bg-primary" width="75%">@Localizer["POSITIONS"]</th>
+                <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
                 <th class="bg-primary" width="10%"></th>
             </tr>
         </thead>
@@ -28,7 +28,8 @@
                 var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "SimilarList" },
-                    { "positionid",  position.JobTitleId.ToString()},
+                    {"id", Model.Id },
+                    {"positionid",  position.JobTitleId.ToString()},
                  };
 
                 <tr>

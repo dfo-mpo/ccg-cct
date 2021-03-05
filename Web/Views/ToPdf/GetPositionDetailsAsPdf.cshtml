@@ -1,4 +1,5 @@
 ﻿@inject Web.Data.JobPositionService _jobpositionService
+@using Business.Dtos.JobCompetencies
 @{
     Layout = "_ThemePdf";
 }
@@ -8,13 +9,17 @@
     var positionid = System.Int32.Parse(ViewData["Id"].ToString());
     var Position = await _jobpositionService.GetJobPositionById(positionid);
     var PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
-    var PositionRatings1 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 1);
-    var PositionRatings2 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 2);
-    var PositionRatings3 = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, 3);
+    List<JobCompetencyRatingDto[]> PositionCompetencyRatings = new List<JobCompetencyRatingDto[]>();
+    var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+    foreach (var competencytype in CompetencyTypes)
+    {
+        var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+        if (!competencies.Equals(null))
+        {
+            PositionCompetencyRatings.Add(competencies);
+        }
+    }
 
-    var type1 = isEnglish ? "KNOWLEDGE ELEMENTS" : "ÉLÉMENTS DE CONNAISSANCE";
-    var type2 = isEnglish ? "TECHNICAL ELEMENTS" : "ÉLÉMENTS TECHNIQUES";
-    var type3 = isEnglish ? "BEHAVIOURAL ELEMENTS" : "ÉLÉMENTS COMPORTEMENTAUX";
     var certifications = isEnglish ? "CERTIFICATIONS" : "ATTESTATIONS";
     var h2Results = isEnglish ? "Current Position Details" : "Détails de la position actuelle";
     var level = isEnglish ? "Level" : "Niveau";
@@ -50,14 +55,15 @@
                     <td colspan="2">@nocertifications</td>
                 </tr>
             }
-            @if (PositionRatings1.Any())
+            @if (PositionCompetencyRatings.Any())
             {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@type1</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
-                </tr>
-                @foreach (var c in PositionRatings1)
+                @foreach (var competencytype in PositionCompetencyRatings)
                 {
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="80%">@(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
+                    </tr>
+                    @foreach(var c in competencytype) {
                     <tr>
                         <td>
                             @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
@@ -68,50 +74,8 @@
 
                         </td>
                     </tr>
-                }
-            }
-            @if (PositionRatings2.Any())
-            {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@type2</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
-                </tr>
-                @foreach (var c in PositionRatings2)
-                {
-                    <tr>
-                        <td>
-                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-
-
-                        </td>
-                        <td class="text-center">
-                            @c.RatingValue
-
-                        </td>
-                    </tr>
-                }
-            }
-            @if (PositionRatings3.Any())
-            {
-                <tr>
-                    <th style="background-color:#f2f2f2" width="80%">@type3</th>
-                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
-                </tr>
-                @foreach (var c in PositionRatings3)
-                {
-                    <tr>
-                        <td>
-
-                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-
-                        </td>
-                        <td class="text-center">
-
-                            @c.RatingValue
-
-                        </td>
-                    </tr>
-                }
+                } 
+              }
             }
         </tbody>
     </table>

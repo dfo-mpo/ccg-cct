@@ -6,20 +6,23 @@
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid",Model.PositionId.ToString()},
+        {"id", Model.Id.ToString() },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
         {"certificates", Model.Certificates },
         {"sameorhigherlevels", Model.SameOrHigherLevels },
         {"percentmatch", Model.PercentMatch },
-        {"previouspage", Model.PreviousPage }
+        {"previouspage", Model.PreviousPage },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails }
     };
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
     <section>
         <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-            <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
-            <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.Id, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+            <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
+            <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
         </div>
 
 
@@ -30,7 +33,7 @@
                 <thead>
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
-                        <th class="bg-primary" width="75%">@Localizer["POSITIONS"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
                         <th class="bg-primary" width="13%"></th>
                     </tr>
                 </thead>
@@ -41,12 +44,14 @@
                          {
         {"objectiveid",  position.JobTitleId.ToString()},
         {"positionid",  Model.PositionId.ToString()},
+        {"id", Model.Id.ToString() },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
         {"certificates", Model.Certificates },
         {"sameorhigherlevels", Model.SameOrHigherLevels },
         {"percentmatch", Model.PercentMatch },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspage", Model.PreviousPage }
         };

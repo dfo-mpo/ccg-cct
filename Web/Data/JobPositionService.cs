@@ -50,7 +50,7 @@ namespace Web.Data
 
         public async Task<JobCompetencyDto[]> GetAllJobCompetencyTypes()
         {
-            string url = $"/api/jobcomptency/types";
+            string url = $"/api/jobcompetency/types";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
         }

@@ -21,7 +21,7 @@ namespace Web.Pages.CCGMember.Similar
         public string RouteParameter { get; set; }
         public JobPositionDto Position { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -35,19 +35,18 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string PreviousPageSimilar { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; } = string.Empty;
         public SimilarListModel(ILogger<SimilarListModel> logger, SimilarService similarService)
         {
             _logger = logger;
             _similarService = similarService;
         }
-        public async Task OnGet(string id, string percentmatch, int positionid)
+        public async Task OnGet(string percentmatch, int positionid)
         {
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            PositionId = positionid;
             Position = await _similarService.GetJobPositionById(PositionId);
-            Id = id;
-            PercentMatch = percentmatch;
             RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}{Certificates}{PercentMatch}");
             Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);       
         }
