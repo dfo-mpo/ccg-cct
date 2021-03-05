@@ -1,0 +1,66 @@
+﻿@page
+@model Admin.Pages.Certificates.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].NameEng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].NameFre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].DescEng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].DescFre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].RequireIndicatorEng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate[0].RequireIndicatorFre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Certificate) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEng)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameFre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescEng)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescFre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequireIndicatorEng)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequireIndicatorFre)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
