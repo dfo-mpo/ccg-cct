@@ -1,13 +1,15 @@
 ﻿@page
-@model Web.Pages.Mockups.Student.HS_Computer_ListModel
+@model Web.Pages.Mockups.Student.Student_ListModel
 @inject IViewLocalizer Localizer
 @{
+    ViewData["Title"] = "Student Position Results";
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
+
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
     <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" title="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
     <a href="#"><span class="glyphicon glyphicon-save pull-right" title="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
 </div>
-
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@Localizer["seagoing"]</h3>
 
@@ -39,14 +41,24 @@
         </thead>
         <tbody>
             <tr>
-                <td>CS-01</td>
-                <td>Programmer</td>
-                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+                <td>CR-04</td>
+                <td>Clerical and Regulatory</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
             </tr>
             <tr>
-                <td>RO-03</td>
-                <td>Marine Communications and Traffic Services (MCTS) - <a rel="external" target="_blank" href="@Localizer["link"]">@Localizer["PDAP"]</a></td>
-                <td><a asp-page="HS_MCTS_Details" role="button">@Localizer["More Details"]</a></td>
+                <td>PG-01</td>
+                <td>Warehouse Clerk Apprentice</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+            <tr>
+                <td>OE-DEO-01</td>
+                <td>Office Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+            <tr>
+                <td>OE-DEO-02</td>
+                <td>Duplicating Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
             </tr>
         </tbody>
     </table>
@@ -56,7 +68,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a href="Highschool" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a href="College" class="btn btn-default" type="button" rel="prev">@Localizer["previous"]</a></li>
                 </ul>
             </nav>
         </div>
