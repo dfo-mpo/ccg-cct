@@ -14,6 +14,7 @@ namespace Web.Pages.Student.College
         private readonly ILogger<GeographicalInformationModel> _logger;
         private readonly JobGroupService _jobgroupService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
+        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         public GeographicalInformationModel(ILogger<GeographicalInformationModel> logger, JobGroupService jobgroupService)

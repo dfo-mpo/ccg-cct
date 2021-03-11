@@ -21,13 +21,34 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td>No seagoing positions available</td>
-                <td></td>
-            </tr>
+            @if (Model.SeagoingPositions.Any())
+            {
+                @foreach (var position in Model.SeagoingPositions)
+                {
+                    var routedata = new Dictionary<string, string>
+                 {
+                    {"previouspage", "../../../Student/College/SocialScience" },
+                    { "positionid",  position.JobTitleId.ToString()},
+                 };
+
+                    <tr>
+                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                        <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td></td>
+                    <td>@Localizer["noseagoing"]</td>
+                    <td></td>
+                </tr>
+            }
         </tbody>
     </table>
+
 
     <h3 class="text-center">@Localizer["shoreside"]</h3>
     <table class="table table-hover table-responsive table-bordered">
@@ -40,18 +61,29 @@
         </thead>
 
         <tbody>
-            @foreach (var position in Model.ShoreSidePositions)
+            @if (Model.ShoreSidePositions.Any())
             {
-                var routedata = new Dictionary<string, string>
+                @foreach (var position in Model.ShoreSidePositions)
+                {
+                    var routedata = new Dictionary<string, string>
                  {
-                    {"previouspage", "../Crew/Engineering/PositionList" },
+                    {"previouspage", "../../Student/College/SocialScience" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };
 
+                    <tr>
+                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                        <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
                 <tr>
-                    <td>@position.JobGroupCode-@position.JobLevelValue</td>
-                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                    <td></td>
+                    <td>@Localizer["noshoreside"]</td>
+                    <td></td>
                 </tr>
             }
         </tbody>
@@ -62,7 +94,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a href="College" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a asp-page="AllPositions" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>

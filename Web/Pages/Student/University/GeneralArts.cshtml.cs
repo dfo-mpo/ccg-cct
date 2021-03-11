@@ -14,6 +14,7 @@ namespace Web.Pages.Student.University
         private readonly ILogger<GeneralArtsModel> _logger;
         private readonly JobGroupService _jobgroupService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
+        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         public GeneralArtsModel(ILogger<GeneralArtsModel> logger, JobGroupService jobgroupService)

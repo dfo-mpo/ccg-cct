@@ -14,6 +14,7 @@ namespace Web.Pages.Student.HighSchool
         private readonly ILogger<ComputerModel> _logger;
         private readonly JobGroupService _jobgroupService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
+        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         public ComputerModel(ILogger<ComputerModel> logger, JobGroupService jobgroupService)

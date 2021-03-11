@@ -15,6 +15,7 @@ namespace Web.Pages.Student.University
         private readonly ILogger<ComputerScienceModel> _logger;
         private readonly JobGroupService _jobgroupService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
+        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         public ComputerScienceModel(ILogger<ComputerScienceModel> logger, JobGroupService jobgroupService)

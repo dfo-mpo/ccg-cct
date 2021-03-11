@@ -14,8 +14,11 @@ namespace Web.Pages.Candidate.Shoreside.Compare
         private readonly JobGroupService _jobgroupService;
         public JobGroupDto[] JobGroups { get; set; }
         [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
         public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobGroupService jobgroupService)

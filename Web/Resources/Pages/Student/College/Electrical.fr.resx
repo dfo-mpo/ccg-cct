@@ -118,27 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="level" xml:space="preserve">
-    <value>LEVEL</value>
+    <value>NIVEAU</value>
   </data>
   <data name="More Details" xml:space="preserve">
-    <value>More Details</value>
+    <value>Plus de détails</value>
+  </data>
+  <data name="noseagoing" xml:space="preserve">
+    <value>Aucune position en mer disponible</value>
+  </data>
+  <data name="noshoreside" xml:space="preserve">
+    <value>Aucune position à terre disponible</value>
   </data>
   <data name="position" xml:space="preserve">
-    <value>POSITION</value>
+    <value>POSTE</value>
   </data>
   <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Précédent</value>
   </data>
   <data name="print" xml:space="preserve">
-    <value>Print this page</value>
+    <value>Imprimer cette page</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save this page</value>
+    <value>Sauvegarder cette page</value>
   </data>
   <data name="seagoing" xml:space="preserve">
-    <value>SEAGOING POSITIONS</value>
+    <value>POSITIONS EN MER</value>
   </data>
   <data name="shoreside" xml:space="preserve">
-    <value>SHORESIDE POSITIONS</value>
+    <value>POSITIONS  À TERRE</value>
   </data>
 </root>

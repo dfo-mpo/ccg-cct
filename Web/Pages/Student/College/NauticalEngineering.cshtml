@@ -26,8 +26,8 @@
                 @foreach (var position in Model.SeagoingPositions)
                 {
                     var routedata = new Dictionary<string, string>
-                         {
-                    {"previouspage", "../Crew/Engineering/PositionList" },
+                 {
+                    {"previouspage", "../../../Student/College/NauticalEngineering" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };
 
@@ -66,15 +66,15 @@
                 @foreach (var position in Model.ShoreSidePositions)
                 {
                     var routedata = new Dictionary<string, string>
-                         {
-                    {"previouspage", "../Crew/Engineering/PositionList" },
+                 {
+                    {"previouspage", "../../Student/College/NauticalEngineering" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };
 
                     <tr>
                         <td>@position.JobGroupCode-@position.JobLevelValue</td>
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-                        <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                        <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
                 }
             }
@@ -94,7 +94,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a href="College" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a asp-page="AllPositions" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>

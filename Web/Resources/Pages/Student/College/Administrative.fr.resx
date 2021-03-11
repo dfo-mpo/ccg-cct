@@ -123,6 +123,12 @@
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="noseagoing" xml:space="preserve">
+    <value>Aucune position en mer disponible</value>
+  </data>
+  <data name="noshoreside" xml:space="preserve">
+    <value>Aucune position à terre disponible</value>
+  </data>
   <data name="position" xml:space="preserve">
     <value>POSTE</value>
   </data>
