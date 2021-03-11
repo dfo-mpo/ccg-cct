@@ -1,0 +1,86 @@
+﻿@page
+@model Web.Pages.Student.College.AllPositionsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "AllPositions";
+}
+
+<section role="contentinfo">
+
+    <h2>@Localizer["Q1"]</h2>
+
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="Administrative">
+                <img src="~/img/CCGMember/AS.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["admin"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="Computer">
+                <img src="~/img/CCGMember/CS.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["computer"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="Cook">
+                <img src="~/img/CCGMember/GS.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["cook"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="Electrical">
+                <img src="~/img/CCGMember/GT.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["electrical"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="Electronics">
+                <img src="~/img/CCGMember/EL.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["electronics"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="GeographicalInformation">
+                <img src="~/img/Student/geo.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["geo"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="NauticalDeck">
+                <img src="~/img/CCGMember/SC.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["deck"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a asp-page="NauticalEngineering">
+                <img src="~/img/CCGMember/Officer-Eng.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["engineering"]</h5></figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-4">
+        <figure>
+            <a class="nav-link" asp-page="Trades">
+                <img src="~/img/CCGMember/GL.jpg" alt="Photo of" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+            </a>
+            <figcaption class="text-center"><h5>@Localizer["trades"]</h5></figcaption>
+        </figure>
+    </div>
+
+</section>
+

@@ -1,0 +1,93 @@
+﻿@page
+@model Web.Pages.Student.University.AllPositionsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "AllPositions";
+}
+
+    <section role="contentinfo">
+
+        <h2>@Localizer["Q1"]</h2>
+
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <a href="@Localizer["link"]" target="_blank">
+                        <img src="~/img/Student/CCGCollege.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["ccgcollege"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <a asp-page="Business">
+                        <img src="~/img/CCGMember/AS.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["business"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <a asp-page="ComputerScience">
+                        <img src="~/img/CCGMember/CS.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["computer"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <a asp-page="Engineering">
+                        <img src="~/img/CCGMember/ENG.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["engineering"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;line-height: 1.0">
+                <div class="img-container">
+                    <a asp-page="GeneralArts">
+                        <img src="~/img/CCGMember/PM.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6  mrgn-tp-0 mrgn-bttm-0">@Localizer["arts"]<br /><small>@Localizer["language"]</small></h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <a asp-page="Sciences">
+                        <img src="~/img/CCGMember/NU.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["sciences"]</h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top; line-height:1.0">
+                <div class="img-container">
+                    <a asp-page="SocialScience">
+                        <img src="~/img/CCGMember/EC.jpg" alt="Photo of" class="img-responsive" />
+                    </a>
+                </div>
+                <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-0 mrgn-bttm-0">@Localizer["social"]<br /><small>@Localizer["economics"]</small></h4></figcaption>
+            </figure>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a href="Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </section>
+

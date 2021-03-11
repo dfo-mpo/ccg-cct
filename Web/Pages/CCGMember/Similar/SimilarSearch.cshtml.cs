@@ -53,7 +53,8 @@ namespace Web.Pages.CCGMember.Similar
         }
         public async Task OnGetAsync(int positionid)
         {
-            if(!SameLevels.Equals(string.Empty))
+            _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            if (!SameLevels.Equals(string.Empty))
             {
                 var ids = SameLevels.Split("&sameLevelCompetencyId=");
                 foreach(var id in ids)
@@ -86,7 +87,7 @@ namespace Web.Pages.CCGMember.Similar
                     CertificateIds.Add(id);
                 }
             }
-            _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
+
             Position = await _jobpositionService.GetJobPositionById(positionid);
             Id = Position.JobGroupId.ToString();
             GroupLevelId = Position.JobGroupLevelId.ToString();
