@@ -23,6 +23,21 @@ namespace Web.Pages.CCGMember.Compare
         public int Obj { get; set; }
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
+
+
+
+        [BindProperty(SupportsGet = true)]
+        public string PercentMatch { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SameLevels { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string HigherLevels { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SameOrHigherLevels { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Certificates { get; set; }
+
+
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
         [BindProperty]
@@ -33,7 +48,16 @@ namespace Web.Pages.CCGMember.Compare
         public JobCertificateDto[] MatchingCertificates { get; set; }
         [BindProperty]
         public JobCertificateDto[] DifferingCertificates { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageSimilar { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDelta { get; set; }
         public DeltaModel(ILogger<DeltaModel> logger, CompareService compareService)
         {
             _logger = logger;

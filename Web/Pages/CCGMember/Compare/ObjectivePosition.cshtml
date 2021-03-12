@@ -26,6 +26,9 @@
                  {
                      { "positionid", Model.PositionId.ToString()},
                      { "id",  Model.Id.ToString()},
+                     {"previouspage", Model.PreviousPage },
+                     {"previouspagedetails", Model.PreviousPageDetails },
+                     {"previouspagecompare", Model.PreviousPageCompare },
                      { "level",  level.ToString() }
                   };
                 <li role="presentation">
@@ -49,6 +52,9 @@
                      {
                         { "id",  Model.Id.ToString()},
                         { "level",  Model.Level.ToString() },
+                        {"previouspage", Model.PreviousPage },
+                        {"previouspagedetails", Model.PreviousPageDetails },
+                        {"previouspagecompare", Model.PreviousPageCompare },
                         { "positionid",  Model.PositionId.ToString()},
                         { "obj",  jp.JobTitleId.ToString()}
                      };
@@ -62,8 +68,12 @@
 
     <div class="col-sm-9 pull-right mrgn-tp-lg">
         @{var routedatanext = new Dictionary<string, string>
-         {
+        {
         { "id",  Model.Id.ToString()},
+        {"previouspage", Model.PreviousPage },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspagecompare", Model.PreviousPageCompare },
+        {"previouspagedelta", "ObjectivePosition" },
         { "level",  Model.Level.ToString() },
         { "positionid",  Model.PositionId.ToString()},
         { "obj",  Model.ObjectivePosition?.JobTitleId.ToString()}
@@ -76,7 +86,10 @@
         @{var routedataprevious = new Dictionary<string, string>
          {
         { "id",  Model.Id.ToString()},
-        { "positionid",  Model.PositionId.ToString()}
+        { "positionid",  Model.PositionId.ToString()},
+        {"previouspage", Model.PreviousPage },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspagecompare", Model.PreviousPageCompare },
         };
         }
     </div>

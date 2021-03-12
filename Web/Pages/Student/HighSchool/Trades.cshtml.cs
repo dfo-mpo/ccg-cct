@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +24,7 @@ namespace Web.Pages.Student.HighSchool
         }
         public async Task OnGet(string positionids)
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"High School Student Trades positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
             //All General Labour and Trades (GL)

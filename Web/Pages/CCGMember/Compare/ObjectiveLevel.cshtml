@@ -5,6 +5,14 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var routedata = new Dictionary<string, string>
+                 {
+                       {"positionid",  Model.PositionId.ToString() },
+                       {"previouspage", Model.PreviousPage },
+                       {"previouspagedetails", Model.PreviousPageDetails },
+                       {"previouspagecompare", Model.PreviousPageCompare },
+                       { "id",  Model.Id.ToString()}
+                  };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -28,6 +36,9 @@
                  {
                        {"positionid",  Model.PositionId.ToString() },
                        { "id",  Model.Id.ToString()},
+                       {"previouspage", Model.PreviousPage },
+                       {"previouspagedetails", Model.PreviousPageDetails },
+                       {"previouspagecompare", Model.PreviousPageCompare },
                        { "level",  level}
                   };
                 <li role="presentation">
@@ -43,7 +54,7 @@
         <nav role="navigation" class="mrgn-bttm-lg">
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
-                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="AllObjective" asp-route-positionid="@Model.PositionId">@Localizer["Previous"]</a></li>
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
     </div>

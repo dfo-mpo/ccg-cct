@@ -6,7 +6,18 @@
     var routedata = new Dictionary<string, string>
     {
         {"positionid" , Model.PositionId.ToString()},
-        { "obj",  Model.ObjectiveId.ToString()}
+        { "obj",  Model.ObjectiveId.ToString()},
+        {"id", Model.Id.ToString() },
+        {"pagesubmit", "true" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"percentmatch", Model.PercentMatch },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspage", Model.PreviousPage},
+        {"previouspagedelta", "../Similar/SimilarDetails" }
 
     };
     var routedataprevious = new Dictionary<string, string>

@@ -18,6 +18,12 @@ namespace Web.Pages.CCGMember.Compare
 
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
         public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobGroupService jobgroupService)
         {
             _logger = logger;

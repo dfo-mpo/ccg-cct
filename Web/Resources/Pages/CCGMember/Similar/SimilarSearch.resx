@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>BEHAVIOURAL ELEMENTS</value>
-  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
@@ -137,9 +134,6 @@
   </data>
   <data name="h4Text" xml:space="preserve">
     <value>Select all or some of the competencies and ratings below to obtain positions similar to your current position.</value>
-  </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>KNOWLEDGE ELEMENTS</value>
   </data>
   <data name="No Certifications Found" xml:space="preserve">
     <value>No Certifications Found</value>
@@ -161,8 +155,5 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>TECHNICAL ELEMENTS</value>
   </data>
 </root>

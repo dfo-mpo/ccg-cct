@@ -25,7 +25,7 @@ namespace Web.Pages.Student.College
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"College Student Cook positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
             //General Services GS-02
@@ -47,7 +47,7 @@ namespace Web.Pages.Student.College
                 }
             }
             //Ship's Crew STD-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-01"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-03"))
             {
                 if (!position.Equals(null))
                 {

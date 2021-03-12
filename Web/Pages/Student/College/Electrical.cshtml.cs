@@ -25,7 +25,7 @@ namespace Web.Pages.Student.College
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Student College Electrical positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"College Student Electrical positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
             //Engineering and Scientific Support EG-02 to EG-05

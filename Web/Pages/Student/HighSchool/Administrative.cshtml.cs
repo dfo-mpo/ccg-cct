@@ -24,7 +24,7 @@ namespace Web.Pages.Student.HighSchool
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"High School Student Administrative positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
           
             //Clerical and Regulatory CR-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(12, "03"))

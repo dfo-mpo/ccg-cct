@@ -24,7 +24,7 @@ namespace Web.Pages.Student.College
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"Seagoing Crew Engineering similar positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Architecture, Engineering ENG-02
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(11, "02"))

@@ -14,7 +14,7 @@
                                  {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
                                  {"id", Model.Id.ToString() },
                                  {"positionid", Model.PositionId.ToString()},
-                                 {"previouspage",Model.PreviousPage }
+                                 {"previouspage", Model.PreviousPage },
                             };
 }
 
@@ -125,7 +125,7 @@
                 <nav role="navigation" class="mrgn-bttm-lg">
                     <h2 class="wb-inv">Document navigation</h2>
                     <ul class="pager">
-                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" asp-route-id="@Model.Id.ToString()">@Localizer["Previous"]</a></li>
+                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
                     </ul>
                 </nav>
             </div>

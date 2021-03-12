@@ -117,55 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CERTIFICATIONS" xml:space="preserve">
-    <value>ATTESTATIONS</value>
+  <data name="level" xml:space="preserve">
+    <value>LEVEL</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Fermer</value>
+  <data name="More Details" xml:space="preserve">
+    <value>More Details</value>
   </data>
-  <data name="CURRENT LEVEL" xml:space="preserve">
-    <value>NIVEAU ACTUEL</value>
+  <data name="noseagoing" xml:space="preserve">
+    <value>No seagoing positions available</value>
   </data>
-  <data name="Current Position Level" xml:space="preserve">
-    <value>Niveau de poste actuel</value>
+  <data name="noshoreside" xml:space="preserve">
+    <value>No shore side positions available</value>
   </data>
-  <data name="h1Text" xml:space="preserve">
-    <value>Recherche de position similaire</value>
-  </data>
-  <data name="h4Text" xml:space="preserve">
-    <value>Sélectionnez tout ou partie des compétences et évaluations ci-dessous pour obtenir des postes similaires à votre poste actuel.</value>
-  </data>
-  <data name="HIGHER LEVEL" xml:space="preserve">
-    <value>NIVEAU SUPÉRIEUR</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>Suivant</value>
-  </data>
-  <data name="No Certifications Found" xml:space="preserve">
-    <value>Aucune certification trouvée</value>
-  </data>
-  <data name="pageSubmitted" xml:space="preserve">
-    <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
+  <data name="position" xml:space="preserve">
+    <value>POSITION</value>
   </data>
   <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
+    <value>Previous</value>
   </data>
-  <data name="SAME CERTIFICATIONS" xml:space="preserve">
-    <value>MÊMES CERTIFICATIONS</value>
+  <data name="print" xml:space="preserve">
+    <value>Print this page</value>
   </data>
-  <data name="SAME ELEMENT" xml:space="preserve">
-    <value>MÊME ÉLÉMENT</value>
+  <data name="save" xml:space="preserve">
+    <value>Save this page</value>
   </data>
-  <data name="SAME LEVEL" xml:space="preserve">
-    <value>MÊME NIVEAU</value>
+  <data name="seagoing" xml:space="preserve">
+    <value>SEAGOING POSITIONS</value>
   </data>
-  <data name="Search Positions" xml:space="preserve">
-    <value>Rechercher des postes</value>
-  </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Soumettre</value>
+  <data name="shoreside" xml:space="preserve">
+    <value>SHORESIDE POSITIONS</value>
   </data>
 </root>

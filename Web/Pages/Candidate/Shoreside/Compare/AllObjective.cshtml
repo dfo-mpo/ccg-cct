@@ -31,6 +31,8 @@
                         var routedata = new Dictionary<string, string>
                              {
                           { "positionid",  Model.PositionId.ToString()},
+                           {"previouspagecompare", "../../Candidate/Shoreside/Compare/AllObjective" },
+                           {"previouspage", Model.PreviousPage},
                           { "id",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="../../../CCGMember/Compare/ObjectiveLevel" asp-all-route-data="routedata">

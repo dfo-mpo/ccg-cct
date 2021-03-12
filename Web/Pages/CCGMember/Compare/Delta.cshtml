@@ -178,7 +178,7 @@
             }
         }
     </section>
-@if (Model.Id !=0) {
+
     <div class="row">
         <div class="col-lg-12 mrgn-bttm-md">
             <nav role="navigation" class="mrgn-bttm-lg">
@@ -190,14 +190,27 @@
                         var routedata = new Dictionary<string, string>
                     {
                         { "positionid",  Model.PositionId.ToString()},
-                        { "obj",  Model.Obj.ToString() },
+                        { "objectiveid",  Model.Obj.ToString() },
                         { "id",  Model.Id.ToString()},
-                        { "level",  Model.Level.ToString() }
+                        { "level",  Model.Level.ToString() },
+
+                               
+        {"pagesubmit", "true" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"percentmatch", Model.PercentMatch },
+
+                        {"previouspagesimilar", Model.PreviousPageSimilar },
+                        {"previouspagecompare", Model.PreviousPageCompare },
+                        {"previouspagedetails", Model.PreviousPageDetails },
+                        {"previouspage", Model.PreviousPage}
                     };
                     }
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="ObjectivePosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>   
     </div>
-                        }
+                        

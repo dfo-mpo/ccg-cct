@@ -27,6 +27,12 @@ namespace Web.Pages.CCGMember.Compare
         public string Obj { get; set; } = null;
         public JobGroupPositionDto[] JobGroupLevels { get; set; }
         public JobPositionDto[] JobGroupPositions { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
 
         public ObjectivePositionModel(ILogger<ObjectivePositionModel> logger, JobGroupService jobcategoryService)
         {
