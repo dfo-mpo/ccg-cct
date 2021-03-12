@@ -10,9 +10,9 @@ namespace DataModel.SeedData
         {
             new Competency
             {
-                Id = 1, NameEng = "Organizational Knowledge", NameFre = "Connaissance de l'organisation",
+                Id = 1, NameEng = "Organizational Knowledge", NameFre = "Connaissances organisationnelles",
                 DescEng = "Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.",
-                DescFre = "Connaissance de l’organisation de la Garde côtière canadienne, de ses partenaires et des relations avec le ministère des Pêches et des Océans (MPO) et d’autres intervenants internes et externes."
+                DescFre = "Connaissance de l'organisation GCC, de ses partenaires et des relations avec le ministère des pêches et océans (MPO) et d'autres intervenants internes et externes."
             },
             new Competency
             {
@@ -130,8 +130,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 21, NameEng = "Maritime Security Operations Centre (MSOC)",
-                NameFre = "Centre des opérations de la sûreté maritime (COSM)",
+                Id = 21, NameEng = "Maritime Security Operations Centre (MSOC)", NameFre = "Centre des opérations de la sûreté maritime (COSM)",
                 DescEng = "Analyzes and gathers information to produce intelligence-driven products in collaboration with interdepartmental partners. Compiles data and information gathered from surveillance activities, intelligence investigations, security events, or incidents.",
                 DescFre = "Analyse et rassemble les informations pour produire des produits axés sur le renseignement en collaboration avec des partenaires interministériels. Compile les données et les informations recueillies lors d'activités de surveillance, d'enquêtes en matière de renseignement, d'événements de sûreté ou d'incidents."
             },
@@ -161,55 +160,49 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 26, NameEng = "Demonstrating Integrity and Respect",
-                NameFre = "Faire preuve d'intégrité et de respect",
-                DescEng = "Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while aasync Tasking conflicts of interest and maintaining political and interpersonal neutrality.",
-                DescFre = "Respecter ses engagements et s’efforcer de toujours agir dans l’intérêt public en s’assurant de ne pas trahir la confiance du public, en évitant les conflits d’intérêts et en conservant une neutralité politique et interpersonnelle."
+                Id = 26, NameEng = "Demonstrating Integrity and Respect", NameFre = "Faire preuve d'intégrité et de respect",
+                DescEng = "Honours commitments and consistently strives to act in the public interest by ensuring that public trust and the law are not violated, while avoiding conflicts of interest and maintaining political and interpersonal neutrality.",
+                DescFre = "Respecter ses engagements et s'efforcer constamment d'agir dans l'intérêt public en veillant à ce que la confiance du public et la loi ne soient pas violées, tout en évitant les conflits d'intérêts et en maintenant une neutralité politique et interpersonnelle."
             },
             new Competency
             {
                 Id = 27, NameEng = "Thinking Things Through", NameFre = "Mener une réflexion approfondie",
                 DescEng = "Plans and adjusts work based on a thorough understanding of the Canadian Coast Guard's priorities. Obtains relevant information, considers all facts, and exercises sound judgement to formulate an opinion and/or make a decision. Analyzes situations and seeks feedback to learn from mistakes.",
-                DescFre = "Planifier et adapter le travail en fonction d’une compréhension approfondie des priorités de la Garde côtière canadienne. Obtenir des informations pertinentes, examiner tous les faits et faire preuve de discernement pour formuler une opinion et/ou prendre une décision. Analyser les situations et chercher à obtenir une rétroaction afin d’apprendre de ses erreurs."
+                DescFre = "Planifier et ajuster le travail en fonction d'une compréhension approfondie des priorités de la Garde côtière canadienne. Obtenir l'information pertinente, examiner tous les faits et exercer un jugement éclairé pour formuler une opinion ou prendre une décision. Analyse les situations et cherche à obtenir de la rétroaction pour tirer des leçons des erreurs."
             },
             new Competency
             {
-                Id = 28, NameEng = "Working Effectively With Others",
-                NameFre = "Travailler efficacement avec les autres",
+                Id = 28, NameEng = "Working Effectively With Others", NameFre = "Travailler efficacement avec les autres",
                 DescEng = "Works cooperatively in order to achieve results. Works positively as part of a team and manages internal conflict. Identifies opportunities to work together within the organization to improve team dynamics and develop relationships. Seeks and builds internal/external alliances, collaborations, and partnerships to advance the Canadian Coast Guard's mandate.",
-                DescFre = "Travailler en coopération afin d’obtenir des résultats. Travailler en ayant une attitude positive en tant que membre d’une équipe et gérer les conflits internes. Cibler les possibilités de travailler ensemble au sein de l’organisation pour améliorer la dynamique d’équipe et solidifier les relations. Chercher et établir des alliances, des collaborations et des partenariats internes et externes pour faire progresser la réalisation du mandat de la Garde côtière canadienne."
+                DescFre = "Travaille en collaboration afin d'obtenir des résultats. Travaille positivement en équipe et gère les conflits internes. Identifie les occasions de travailler ensemble au sein de l'organisation pour améliorer la dynamique d'équipe et développer les relations. Recherche et établit des alliances, des collaborations et des partenariats internes et externes pour faire progresser le mandat de la Garde côtière canadienne."
             },
             new Competency
             {
-                Id = 33, NameEng = "Showing Initiative and Being Action Oriented",
-                NameFre = "Faire preuve d’initiative et être orienté vers l’action",
+                Id = 33, NameEng = "Showing Initiative and Being Action Oriented", NameFre = "Faire preuve d’initiative et être orienté vers l’action",
                 DescEng = "Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.",
-                DescFre = "Être ouvert au changement et rechercher activement des possibilités d’apprentissage et de perfectionnement professionnel et personnel. Transposer les orientations en activités de travail concrètes. Cerner les occasions ou les questions et prendre des mesures pour améliorer les résultats organisationnels de sa propre initiative."
+                DescFre = "Adopte le changement et cherche activement des occasions d'apprendre et de se perfectionner sur les plans professionnel et personnel. Traduit l'orientation en activités de travail concrètes. Cerner les possibilités ou les enjeux et prendre des mesures pour améliorer les résultats de l'organisation, sans y être incité par d'autres."
             },
             new Competency
             {
-                Id = 34, NameEng = "Apply Safety Considerations",
-                NameFre = "Considérations relatives à la sécurité",
+                Id = 34, NameEng = "Apply Safety Considerations", NameFre = "Intègre les considérations relatives à la sécurité",
                 DescEng = "Promotes workplace safety. Follows safety guidelines, procedures, and regulations. Reacts safely and appropriately during emergencies. Integrates health and safety considerations in planning, response, and reviews.",
-                DescFre = "Promouvoir la sécurité sur le lieu de travail. Respecter les directives, les procédures et les règlements de sécurité. Réagir de manière sûre et appropriée en cas d’urgence. Intégrer les considérations de santé et de sécurité dans la planification, l’intervention et les examens."
+                DescFre = "Favorise la sécurité au travail. Suit les directives, les procédures et les règlements en matière de sécurité. Réagit de manière sûre et appropriée en cas d'urgence. Intégrer les considérations de santé et de sécurité dans la planification, l'intervention et les examens."
             },
             new Competency
             {
                 Id = 36, NameEng = "Leadership", NameFre = "Leadership",
                 DescEng = "Attracts and mobilizes members and colleagues towards a shared vision and purpose in the best interests of the Canadian Coast Guard and the public it serves. Motivates project members, sets achievable objectives, maintains a positive outlook, takes responsibility, makes decisions, and provides constructive feedback.",
-                DescFre = "Attirer et mobiliser les membres et les collègues vers l’atteinte d’une vision et d’un objectif communs dans l’intérêt supérieur de la Garde côtière canadienne et du public qu’elle sert. Motiver les membres des projets, fixer des objectifs réalisables, maintenir une attitude positive, prendre des responsabilités, prendre des décisions et donner de la rétroaction constructive."
+                DescFre = "Attire et mobilise les membres et les collègues vers une vision et un but communs dans le meilleur intérêt de la Garde côtière canadienne et du public qu'elle sert. Motiver les membres du projet, fixer des objectifs réalisables, maintenir une attitude positive, prendre des responsabilités, prendre des décisions et fournir une rétroaction constructive."
             },
             new Competency
             {
-                Id = 37, NameEng = "Canadian Coast Guard Cultural Awareness",
-                NameFre = "Connaissance de la culture de la Garde côtière canadienne",
+                Id = 37, NameEng = "Canadian Coast Guard Cultural Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne",
                 DescEng = "The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.",
-                DescFre = "Mesure dans laquelle les membres croient en la mission, au mandat et aux valeurs de la Garde côtière et projettent cet engagement par leurs actions et leur attitude envers l’organisation et ses parties prenantes. Les déclarations et le comportement des employés reflètent un enthousiasme naturel pour la Garde côtière, ses activités et la façon dont elle est perçue par le public."
+                DescFre = "La mesure dans laquelle les membres croient en la mission, le mandat et les valeurs de la Garde côtière et projettent cet engagement par leurs actions et leurs attitudes envers l'organisation et ses intervenants. Les déclarations et la conduite des employés reflètent un enthousiasme naturel pour la Garde côtière, ce qu'elle fait et comment elle est perçue par le public."
             },
             new Competency
             {
-                Id = 38, NameEng = "Marine Domain Awareness Knowledge",
-                NameFre = "Connaissances sur la sensibilisation au domaine marin",
+                Id = 38, NameEng = "Marine Domain Awareness Knowledge", NameFre = "Connaissances sur la sensibilisation au domaine marin",
                 DescEng = "Having true and timely information about everything on, under, related to, adjacent to, or bordering a sea, ocean, or other navigable waterway. This includes all related activities, infrastructure, shipping, vessels, cartography, and natural phenomena. For marine security, it includes being aware of anything in the marine domain that could threaten Canada's national security.",
                 DescFre = "Disposer d'informations vraies et à jour sur tout ce qui se trouve sur, sous, en dessous, en relation avec, à proximité ou en bordure d'une mer, d'un océan ou d'un autre cours d'eau navigable. Cela comprend toutes les activités connexes, l'infrastructure, le transport maritime, les navires, la cartographie et les phénomènes naturels. En ce qui concerne la sécurité maritime, il s'agit d'être au courant de tout ce qui, dans le domaine maritime, pourrait menacer la sécurité nationale du Canada."
             },
@@ -239,8 +232,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 43, NameEng = "Electrical Review, Decision Making, and Analysis",
-                NameFre = "Examen, processus décisionnel et analyse électriques",
+                Id = 43, NameEng = "Electrical Review, Decision Making, and Analysis", NameFre = "Examen, processus décisionnel et analyse électriques",
                 DescEng = "Ability to use effective approaches with available facts, constraints, and anticipated consequences in marine electrical systems.",
                 DescFre = "Être en mesure d’utiliser des méthodes efficaces selon les faits disponibles, les restrictions et les répercussions prévues à l’égard des systèmes électriques maritimes."
             },
@@ -516,8 +508,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 89, NameEng = "Operate and Maintain Lighthouse (LI) Equipment",
-                NameFre = "Fonctionnement et entretien de l’équipement des phares (groupe LI)",
+                Id = 89, NameEng = "Operate and Maintain Lighthouse (LI) Equipment", NameFre = "Fonctionnement et entretien de l’équipement des phares (groupe LI)",
                 DescEng = "Manages the full spectrum of lighthouse equipment operation and maintenance under the department's responsibility.",
                 DescFre = "Gérer l’ensemble des activités de fonctionnement et d’entretien de l’équipement des phares qui relèvent du ministère."
             },
@@ -547,7 +538,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 94, NameEng = "Electrical Review, Decision Making and Analysis", NameFre = "Examen, prise de décision et analyse en matière d'électricité",
+                Id = 94, NameEng = "Electrical/Electronic Review, Decision Making and Analysis", NameFre = "Examen, prise de décision et analyse en matière d'électrique/électronique",
                 DescEng = "Uses effective approaches with available facts, constraints, and anticipated consequences in marine electrical systems.",
                 DescFre = "Utiliser des approches efficaces en utilisant les faits disponibles, les contraintes et les conséquences prévues dans les systèmes électriques marins."
             },
@@ -655,9 +646,9 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 112, NameEng = "Electronic Principles and Circuits Knowledge", NameFre = "Connaissance des principes et des circuits électroniques",
+                Id = 112, NameEng = "Electronic Principles and Circuits Knowledge", NameFre = "Connaissance des principes et circuits électroniques",
                 DescEng = "Concepts and operational function of components that underpin the understanding of how electronic environments are developed, assembled, and tested.",
-                DescFre = "Concepts et fonction opérationnelle des composantes qui sous-tendent la compréhension de la façon dont les environnements électroniques sont élaborés, mis sur pied et mis à l’essai."
+                DescFre = "Concepts et fonction opérationnelle des composants qui sous-tendent la compréhension de la façon dont les environnements électroniques sont développés, assemblés et testés."
             },
             new Competency
             {
@@ -673,14 +664,14 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 115, NameEng = "Naval Architecture Knowledge", NameFre = "Connaissance de l'architecture navale",
+                Id = 115, NameEng = "Naval Architecture Knowledge", NameFre = "Connaissances en génie de la construction navale",
                 DescEng = "The discipline dealing with the design, construction, maintenance, and operation of marine vessels and structures.",
-                DescFre = "Il s’agit de la discipline relative à la conception, à la construction, à l’entretien et à l’exploitation de navires et de structures maritimes."
+                DescFre = "La discipline traitant de la conception, de la construction, de l'entretien et de l'exploitation des bâtiments et des structures maritimes."
             },
             new Competency
             {
-                Id = 116, NameEng = "Computer Architecture Knowledge", NameFre = "Connaissances en architecture informatique",
-                DescEng = "The rules and methods that describe the functionality, organization, and implementation of computer systems.",
+                Id = 116, NameEng = "Computer Architecture Knowledge", NameFre = "Connaissance de l'architecture informatique",
+                DescEng = "The rules and methods that describe the functionality, organization, and implementation of computer systems and their frameworks.",
                 DescFre = "Les règles et les méthodes qui décrivent la fonctionnalité, l'organisation et la mise en œuvre des systèmes informatiques et de leurs cadres."
             },
             new Competency
@@ -709,8 +700,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 121, NameEng = "Security/Information and Application Protection",
-                NameFre = "Sécurité / Protection des informations et des applications",
+                Id = 121, NameEng = "Security/Information and Application Protection", NameFre = "Sécurité / Protection des informations et des applications",
                 DescEng = "Ensures technical and organizational safeguards to protect the continuity of infrastructure services by the implementation of information technology (IT) security principles, methods, practices, policies, and tools that are used in securing IT resources. This includes information and operations security, physical security, business continuity/disaster recovery planning, methods to deal with security breaches, and security assessment in a technical environment.",
                 DescFre = "Veille à la mise en place de mesures techniques et organisationnelles pour protéger la continuité des services d'infrastructure par la mise en œuvre des principes, méthodes, pratiques, politiques et outils de sécurité des technologies de l'information (TI) utilisés pour sécuriser les ressources informatiques. Cela comprend la sécurité des informations et des opérations, la sécurité physique, la planification de la continuité des activités/reprise après sinistre, les méthodes pour traiter les infractions à la sécurité et l'évaluation de la sécurité dans un environnement technique."
             },
@@ -728,8 +718,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 124, NameEng = "Database Design and Management",
-                NameFre = "Conception et gestion de bases de données",
+                Id = 124, NameEng = "Database Design and Management", NameFre = "Conception et gestion de bases de données",
                 DescEng = "Applies the methods, practices, and policies that are used in the design and the management of databases in the public sector context.",
                 DescFre = "Applique les méthodes, pratiques et politiques utilisées dans la conception et la gestion des bases de données dans le contexte du secteur public."
             },
@@ -776,6 +765,12 @@ namespace DataModel.SeedData
                 Id = 131, NameEng = "Achieve Results", NameFre = "Obtenir des résultats",
                 DescEng = "Ability to mobilize and manage resources to deliver on the priorities of the Government of Canada, improve outcomes, and add value. Considers context, risks, and business intelligence to support high-quality and timely decisions. Anticipates, plans, monitors progress, and makes adjustments as needed. Takes personal responsibility for actions and outcomes of their decisions.",
                 DescFre = "Capacité de mobiliser et de gérer les ressources pour réaliser les priorités du gouvernement du Canada, améliorer les résultats et ajouter de la valeur. Tient compte du contexte, des risques et de l'intelligence d'affaires pour appuyer des décisions de grande qualité et opportunes. Anticiper, planifier, surveiller les progrès et faire les ajustements nécessaires. Assume personnellement la responsabilité des actions et des résultats de ses décision."
+            },
+            new Competency
+            {
+                Id = 132, NameEng = "Electrical Design and Analysis", NameFre = "Conception et analyse électriques et technique",
+                DescEng = "Drafting, analyzing, and developing specification documentation, schematics, and wiring diagrams.",
+                DescFre = "Rédaction, analyse et développement de la documentation de spécification, des schémas et des schémas de câblage. "
             }
         };
     }
