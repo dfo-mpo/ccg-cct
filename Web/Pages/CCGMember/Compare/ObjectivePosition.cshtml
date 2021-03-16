@@ -16,7 +16,7 @@
     <div class="col-sm-3">
         <label><b>@Localizer["Level"]</b></label><br />
         <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-            @Model.JobGroup.Code @Model.Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Model.JobGroup.Code @Model.LevelObj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -28,8 +28,9 @@
                      { "id",  Model.Id.ToString()},
                      {"previouspage", Model.PreviousPage },
                      {"previouspagedetails", Model.PreviousPageDetails },
+                     {"level", Model.Level.ToString() },
                      {"previouspagecompare", Model.PreviousPageCompare },
-                     { "level",  level.ToString() }
+                     { "levelobj",  level.ToString() }
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"
@@ -52,6 +53,7 @@
                      {
                         { "id",  Model.Id.ToString()},
                         { "level",  Model.Level.ToString() },
+                        {"levelobj", Model.LevelObj.ToString() },
                         {"previouspage", Model.PreviousPage },
                         {"previouspagedetails", Model.PreviousPageDetails },
                         {"previouspagecompare", Model.PreviousPageCompare },
@@ -75,6 +77,7 @@
         {"previouspagecompare", Model.PreviousPageCompare },
         {"previouspagedelta", "ObjectivePosition" },
         { "level",  Model.Level.ToString() },
+         {"levelobj", Model.LevelObj.ToString() },
         { "positionid",  Model.PositionId.ToString()},
         { "obj",  Model.ObjectivePosition?.JobTitleId.ToString()}
         };
@@ -86,6 +89,8 @@
         @{var routedataprevious = new Dictionary<string, string>
          {
         { "id",  Model.Id.ToString()},
+        {"level", Model.Level.ToString() },
+         {"levelobj", Model.LevelObj.ToString() },
         { "positionid",  Model.PositionId.ToString()},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },

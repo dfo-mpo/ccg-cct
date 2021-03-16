@@ -23,6 +23,10 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SameLevels { get; set; }

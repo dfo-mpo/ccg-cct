@@ -1,0 +1,94 @@
+﻿@inject Web.Data.JobPositionService _jobpositionService
+@{
+    Layout = "_ThemePdf";
+}
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+    var shoresidePositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["shoresideId"].ToString());
+    var seagoingPositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["seagoingId"].ToString());
+    var seagoingtitle = isEnglish ? "SEAGOING POSITIONS" : "POSITIONS EN MER";
+    var shoresidetitle = isEnglish ? "SHORESIDE POSITIONS" : "POSITIONS À TERRE";
+    var level = isEnglish ? "Level" : "Niveau";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var positions = isEnglish ? "POSITION" : "POSTE";
+    var noshoreside = isEnglish ? "No shore side positions available" : "Aucune position à terre disponible";
+    var noseagoing = isEnglish ? "No seagoing positions available" : "Aucune position en mer disponible";
+}
+
+<div class="mrgn-tp-lg">
+    @if (seagoingPositions.Any())
+    {
+        <h3 class="text-center">@seagoingtitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+
+                @foreach (var position in seagoingPositions)
+                {
+                    <tr>
+                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-center">@seagoingtitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@noseagoing</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
+<div class="mrgn-tp-lg">
+    @if (shoresidePositions.Any())
+    {
+        <h3 class="text-center">@shoresidetitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+
+                @foreach (var position in shoresidePositions)
+                {
+                    <tr>
+                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-center">@seagoingtitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@noshoreside</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>

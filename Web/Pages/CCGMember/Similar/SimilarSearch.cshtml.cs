@@ -44,8 +44,8 @@ namespace Web.Pages.CCGMember.Similar
         public Boolean PageSubmit { get; set; } = false;
         [BindProperty(SupportsGet =true)]
         public string Id { get; set; } = string.Empty;
-        [BindProperty]
-        public string GroupLevelId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -89,8 +89,8 @@ namespace Web.Pages.CCGMember.Similar
             }
 
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            Id = Position.JobGroupId.ToString();
-            GroupLevelId = Position.JobGroupLevelId.ToString();
+            //Id = Position.JobGroupId.ToString();
+            //Level = Position.JobGroupLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)

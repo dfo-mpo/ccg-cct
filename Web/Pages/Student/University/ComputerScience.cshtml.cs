@@ -18,6 +18,10 @@ namespace Web.Pages.Student.University
         public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ShoresidePositionIds { get; set; } = "&PositionId=";
+        [BindProperty(SupportsGet = true)]
+        public string SeagoingPositionIds { get; set; } = "&PositionId=";
         public ComputerScienceModel(ILogger<ComputerScienceModel> logger, JobGroupService jobgroupService)
         {
             _logger = logger;
@@ -32,6 +36,7 @@ namespace Web.Pages.Student.University
             {
                 if (!position.Equals(null))
                 {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
                     ShoreSidePositions.Add(position);
                 }
             }
@@ -39,6 +44,7 @@ namespace Web.Pages.Student.University
             {
                 if (!position.Equals(null))
                 {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
                     ShoreSidePositions.Add(position);
                 }
             }

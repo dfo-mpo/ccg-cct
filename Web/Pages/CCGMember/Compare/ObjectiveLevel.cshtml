@@ -11,7 +11,9 @@
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
-                       { "id",  Model.Id.ToString()}
+                       { "id",  Model.Id.ToString()},
+                       {"level", Model.Level.ToString() },
+                      // {"levelobj", Model.LevelObj.ToString() },
                   };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -39,7 +41,8 @@
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
-                       { "level",  level}
+                       { "level",  Model.Level.ToString()},
+                       { "levelobj",  level.ToString() }
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"

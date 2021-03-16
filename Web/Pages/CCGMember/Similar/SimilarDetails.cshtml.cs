@@ -20,6 +20,10 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
         public int ObjectiveId { get; set; }
@@ -52,6 +56,7 @@ namespace Web.Pages.CCGMember.Similar
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(objectiveid);
+            LevelObj = Position.JobLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(objectiveid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)

@@ -16,7 +16,7 @@ namespace Web.Pages.CCGMember.Compare
         private readonly ILogger<DeltaModel> _logger;
         private readonly CompareService _compareService;
         [BindProperty(SupportsGet = true)]
-        public int Id { get; set; } = 0;
+        public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
@@ -24,7 +24,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
 
-
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; } = string.Empty;
 
         [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }

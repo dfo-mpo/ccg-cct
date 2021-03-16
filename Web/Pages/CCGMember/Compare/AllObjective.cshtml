@@ -2,16 +2,19 @@
 @inject IViewLocalizer Localizer
 @model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @{
-    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var imagefolder = "~/img/CCGMember/";
-    var routedataprevious = new Dictionary<string, string>
+        var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+        var imagefolder = "~/img/CCGMember/";
+        var routedataprevious = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
-                  };
-}
+                          { "id",  Model.Id.ToString()},
+                          { "level",  Model.Level},
+                            };
+    }
+
     <section role="contentinfo">
         <div class="col-md-12">
 
@@ -30,6 +33,7 @@
                      var routedata = new Dictionary<string, string>
                          {
                           { "positionid",  Model.PositionId.ToString()},
+                          { "level",  Model.Level},
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },

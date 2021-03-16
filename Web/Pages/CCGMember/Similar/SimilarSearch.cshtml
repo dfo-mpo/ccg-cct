@@ -7,6 +7,7 @@
                            {
                             {"positionid", Model.PositionId.ToString()},
                             {"id", Model.Id.ToString() },
+                            {"level", Model.Level.ToString() },
                             {"previouspagesimilar", Model.PreviousPageSimilar },
                             {"previouspage",Model.PreviousPage }
                            };
@@ -154,25 +155,25 @@
     else
       {
                         var RouteParameterNone = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=0" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },  {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter50 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=50" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },  {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter60 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
 
 <section>
@@ -198,6 +199,7 @@
                            {
                             {"positionid", Model.PositionId.ToString()},
                             {"id", Model.Id },
+                            {"level", Model.Level.ToString() },
                             {"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },
