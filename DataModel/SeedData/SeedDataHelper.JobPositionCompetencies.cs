@@ -2801,7 +2801,7 @@ namespace DataModel.SeedData
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 78, CompetencyTypeId = 2},
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 25, CompetencyTypeId = 2},
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 9, CompetencyTypeId = 2},
-            new JobPositionCompetency {JobPositionId = 151, CompetencyId = 79, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 151, CompetencyId = 117, CompetencyTypeId = 2},
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 80, CompetencyTypeId = 2},
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 54, CompetencyTypeId = 2},
             new JobPositionCompetency {JobPositionId = 151, CompetencyId = 26, CompetencyTypeId = 3},

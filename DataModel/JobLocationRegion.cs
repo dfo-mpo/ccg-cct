@@ -14,6 +14,6 @@ namespace DataModel
 
         public string NameFre { get; set; }
 
-        public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
+        public virtual ICollection<JobRolePositionLocation> JobRolePositionLocations { get; set; }
     }
 }

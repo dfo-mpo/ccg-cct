@@ -5581,7 +5581,7 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 9, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 79, CompetencyTypeId = 2},
+                {JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 117, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 80, CompetencyTypeId = 2},
             new JobRolePositionCompetency

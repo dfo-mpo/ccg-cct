@@ -6,23 +6,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace DataModel
 {
-    public class Certificate
+    public class CertificateDescription
     {
-
         public int Id { get; set; }
-
-        public string NameEng { get; set; }
-
-        public string NameFre { get; set; }
-
-        public string DescEng { get; set; }
+        
+		public string DescEng { get; set; }
 
         public string DescFre { get; set; }
-        
-       public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+
 
     }
 }

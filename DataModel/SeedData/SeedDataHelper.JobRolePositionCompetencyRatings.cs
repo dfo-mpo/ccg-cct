@@ -13949,8 +13949,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 79, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 370
+                    JobGroupId = 10, JobGroupLevelId = 46, JobPositionId = 151, CompetencyId = 117, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 560
                 },
                 new JobRolePositionCompetencyRating
                 {

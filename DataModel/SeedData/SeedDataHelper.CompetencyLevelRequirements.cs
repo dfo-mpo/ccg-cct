@@ -1109,31 +1109,31 @@ namespace DataModel.SeedData
             {
                 Id = 187,
                 DescEng = "Aware of routine electrical (or electronic) processes or other areas requiring technical expertise. Conducts analysis based on standardized flowchart.",
-                DescFre = "Formuler des recommandations en vue de la prise de décisions sur des questions liées à l’application technique."
+                DescFre = "Conscient des processus électriques (ou électroniques) courants ou de tout autre domaine requérant une expertise technique. Effectue une analyse basée sur un organigramme normalisé."
             },
             new CompetencyLevelRequirement
             {
                 Id = 188,
                 DescEng = "Makes recommendations on routine/technical designs and/or program/project specifications to meet desired compliance with electrical engineering principles, standards, codes, designs, and statutes when and where applicable.",
-                DescFre = "Formuler des recommandations en vue d’approuver des avant-projets techniques ou de génie courants ou les spécifications d’autres ingénieurs pour un projet ou un programme afin de se conformer aux principes, aux normes, aux codes, aux plans et aux lois techniques."
+                DescFre = "Fait des recommandations sur les conceptions de routine/techniques et/ou les spécifications de programme/projet afin d'être conforme aux  principes, aux normes, aux codes et à la conception et statuts du génie électrique, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 189,
                 DescEng = "Makes decisions on non-routine and/or program matters requiring technical expertise when and where applicable. Provides technical analysis. Serves as a mentor/resource to lower level employees in the area of assignment when and where applicable. Addresses conflicting design constraints when and where applicable.",
-                DescFre = "Formuler des recommandations et, le cas échéant, prendre des décisions sur des questions qui ne sont pas liées au domaine technique ou à un programme ou dans d’autres domaines exigeant un savoir-faire en application technique. Prendre des décisions définitives, le cas échéant. Fournir une analyse technique. Agir à titre de mentor ou de ressource pour des employés subalternes dans la zone d’affectation, le cas échéant. Approuver, le cas échéant, des avant-projets techniques ou de génie moyennement complexes ou les spécifications d’autres ingénieurs pour un projet ou un programme afin de se conformer aux principes, aux normes, aux codes, aux plans et aux lois techniques. Remédier aux contraintes de conception contradictoires, le cas échéant."
+                DescFre = "Prend des décisions sur des questions non routinières et/ou relatives au programme nécessitant une expertise technique, le cas échéant. Fournit une analyse technique. Sert de mentor/ressource aux employés de niveau inférieur dans le domaine des affectations, le cas échéant. Résout les contraintes de conception contradictoires, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 190,
                 DescEng = "Approves complex or new electrical engineering / technical designs and/or program/project specifications to meet desired compliance with principles, standards, codes, designs, and statutes. Reviews stock replenishment requisitions to ensure the items in current use and quantities ordered are realistic.",
-                DescFre = "Approuver des conceptions techniques ou de génie complexes ou nouvelles ou les spécifications d’autres ingénieurs pour un projet ou un programme afin de se conformer aux principes, aux normes, aux codes, aux conceptions et aux lois techniques. Remédier aux contraintes de conception contradictoires."
+                DescFre = "Approuve les conceptions électriques/techniques complexes  ou nouvelles et/ou les spécifications de programme/projet afin d'être conforme aux principes, aux normes, aux codes, à la conception et statuts souhaités. Examine les demandes de réapprovisionnement en matériel pour s'assurer que les articles actuellement utilisés et les quantités commandées sont réalistes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 191,
                 DescEng = "Makes final recommendations for specialized electrical engineering and/or program areas. Represents the CCG as an expert in electrical review and design.",
-                DescFre = "Formuler des recommandations finales et, le cas échéant, prendre des décisions qui exigent des connaissances spécialisées en génie ou des connaissances du programme. Les décisions pourraient ne pas faire l’objet d’un examen technique. Collaborer avec les autres pour trouver des solutions à des questions controversées ou délicates qui créent des précédents. Agir à titre d’expert technique dans la zone d’affectation et, le cas échéant, représenter la GCC à titre d’expert."
+                DescFre = "Fait des recommandations finales dans les domaines spécialisés du génie électrique et/ou du programme. Représente la GCC en tant qu'expert en révision et en conception électrique."
             },
             new CompetencyLevelRequirement {Id = 192, DescEng = "N/A", DescFre = "S. O."},
             new CompetencyLevelRequirement {Id = 193, DescEng = "N/A", DescFre = "S. O."},
@@ -2541,25 +2541,25 @@ namespace DataModel.SeedData
             {
                 Id = 442,
                 DescEng = "Performs routine electrical and/or electronic maintenance. Conducts analysis based on standardized flowchart.",
-                DescFre = "Effectuer l’entretien électrique et/ou électronique de routine. Effectue l’analyse en s’appuyant sur un organigramme normalisé."
+                DescFre = "Effectue la maintenance électrique et/ou électronique de routine. Effectue des analyses sur la base d'un organigramme standardisé."
             },
             new CompetencyLevelRequirement
             {
                 Id = 443,
                 DescEng = "Recommends approaches on routine technical work, designs, and engineering change proposals (ECP) to meet desired compliance with electrical engineering principles, standards, codes, designs, and statutes, when and where applicable.",
-                DescFre = "Recommander des approches concernant les travaux techniques de routine, les conceptions et les propositions de modifications techniques (PMT) afin d’atteindre la conformité souhaitée avec les principes, les normes, les codes, les conceptions et les lois du génie électrique, le cas échéant."
+                DescFre = "Recommande des approches pour les travaux techniques de routine, les conceptions et les propositions de modifications mécanique afin d'atteindre la conformité souhaitée avec les principes, les normes, les codes, les conceptions et les statuts du génie électrique, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 444,
                 DescEng = "Makes decisions on non-routine and/or program matters requiring electrical and/or electronic technical expertise. Provides technical analysis. Mentors lower level members in the area of assignment. Reviews stock replenishment requisitions to ensure the items in current use and quantities ordered are realistic.",
-                DescFre = "Prendre des décisions sur des questions non routinières et/ou des questions relatives aux programmes qui nécessitent une expertise technique en électrique ou en électronique. Fournir une analyse technique. Encadrer les membres subalternes dans le secteur d’affectation. Examiner les demandes de réapprovisionnement des stocks pour s’assurer que les articles en cours d’utilisation et les quantités commandées sont réalistes."
+                DescFre = "Prend des décisions sur des questions non routinières et/ou de programme nécessitant une expertise technique électrique et/ou électronique. Fournit une analyse technique. Encadre les membres de niveau inférieur dans la zone d'affectation. Examine les demandes de réapprovisionnement des stocks pour s'assurer que les articles utilisés et les quantités commandées sont réalistes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 445,
                 DescEng = "Approves complex or new electrical engineering/technical designs and/or project/program specifications to meet desired compliance with principles, standards, codes, designs, and statutes. Addresses conflicting design constraints, when and where applicable.",
-                DescFre = "Approuver les conceptions techniques ou d’ingénierie électrique complexes ou nouvelles et/ou les spécifications de projets/programmes pour répondre à la conformité souhaitée aux principes, normes, codes, conceptions et lois. Aborder des contraintes de conception conflictuelles, le cas échéant."
+                DescFre = "Approuve les conceptions techniques ou d'ingénierie électrique complexes ou nouvelles et/ou les spécifications de projets/programmes pour répondre à la conformité souhaitée aux principes, normes, codes, conceptions et statuts. Traite les contraintes de conception contradictoires, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
@@ -3660,7 +3660,7 @@ namespace DataModel.SeedData
             {
                 Id = 636,
                 DescEng = "Develops high-level reports. Attends design and engineering meetings, develops schedules, and considers resource allocations and conducts model manipulation. Provides feedback and communicates with design authority.",
-                DescFre = "Développe des rapports de haut niveau. Assiste aux réunions de conception et d’ingénierie, élabore des calendriers, examiner les affectations de ressources et procède à la manipulation des modèles. Fournit des commentaires et communique avec l'autorité en matière de conception. "
+                DescFre = "Développe des rapports de haut niveau. Assiste aux réunions de conception et d’ingénierie, élabore des calendriers, examiner les affectations de ressources et procède à la manipulation des modèles. Fournit des commentaires et communique avec l'autorité en matière de conception."
             }
         };
     }

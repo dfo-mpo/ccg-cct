@@ -16,12 +16,24 @@ namespace DataModel.Migrations
                     NameFre = table.Column<string>(maxLength: 1000, nullable: true),
                     DescEng = table.Column<string>(maxLength: 1000, nullable: true),
                     DescFre = table.Column<string>(maxLength: 1000, nullable: true),
-                    RequireIndicatorEng = table.Column<string>(maxLength: 500, nullable: true),
-                    RequireIndicatorFre = table.Column<string>(maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Certificates", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CertificateDescriptions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DescEng = table.Column<string>(maxLength: 1000, nullable: true),
+                    DescFre = table.Column<string>(maxLength: 1000, nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CertificateDescriptions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -241,7 +253,6 @@ namespace DataModel.Migrations
                     JobGroupId = table.Column<int>(nullable: false),
                     JobGroupLevelId = table.Column<int>(nullable: false),
                     JobPositionId = table.Column<int>(nullable: false),
-                    JobLocationRegionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,12 +269,6 @@ namespace DataModel.Migrations
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JobGroupPositions_JobLocationRegions_JobLocationRegionId",
-                        column: x => x.JobLocationRegionId,
-                        principalTable: "JobLocationRegions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_JobGroupPositions_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
@@ -310,11 +315,12 @@ namespace DataModel.Migrations
                     JobGroupId = table.Column<int>(nullable: false),
                     JobGroupLevelId = table.Column<int>(nullable: false),
                     JobPositionId = table.Column<int>(nullable: false),
-                    CertificateId = table.Column<int>(nullable: false)
+                    CertificateId = table.Column<int>(nullable: false),
+                    CertificateDescriptionId = table.Column<int>(nullable:false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobRolePositionCertificates", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CertificateId });
+                    table.PrimaryKey("PK_JobRolePositionCertificates", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.CertificateId, x.CertificateDescriptionId });
                     table.ForeignKey(
                         name: "FK_JobRolePositionCertificates_Certificates_CertificateId",
                         column: x => x.CertificateId,
@@ -337,6 +343,12 @@ namespace DataModel.Migrations
                         name: "FK_JobRolePositionCertificates_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobRolePositionCertificates_CertificateDescriptions_CertificateDescriptionId",
+                        column: x => x.CertificateDescriptionId,
+                        principalTable: "CertificateDescriptions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -453,7 +465,6 @@ namespace DataModel.Migrations
                     JobGroupLevelId = table.Column<int>(nullable: false),
                     JobPositionId = table.Column<int>(nullable: false),
                     JobHLCategoryId = table.Column<int>(nullable: false),
-                    JobCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -543,11 +554,6 @@ namespace DataModel.Migrations
                 column: "JobGroupLevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobGroupPositions_JobLocationRegionId",
-                table: "JobGroupPositions",
-                column: "JobLocationRegionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_JobGroupPositions_JobPositionId",
                 table: "JobGroupPositions",
                 column: "JobPositionId");
@@ -576,6 +582,11 @@ namespace DataModel.Migrations
                 name: "IX_JobRolePositionCertificates_JobPositionId",
                 table: "JobRolePositionCertificates",
                 column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobRolePositionCertificates_CertificateDescriptionId",
+                table: "JobRolePositionCertificates",
+                column: "CertificateDescriptionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobRolePositionCompetencies_CompetencyId",

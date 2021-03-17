@@ -730,7 +730,6 @@ namespace DataModel.SeedData
             },
 
             new Competency
-
             {
                 Id = 126, NameEng = "Create Vision and Strategy", NameFre = "Créer une vision et une stratégie",
                 DescEng = "Able to define the future and chart a path forward. Adept at understanding and communicating context, factoring in the economic, social, and political environment. Intellectually agile, able to leverage their deep and broad knowledge, build on diverse ideas and perspectives, and create consensus around compelling visions. Balances organizational and government-wide priorities and improve outcomes for Canada and Canadians.",
@@ -770,7 +769,7 @@ namespace DataModel.SeedData
             {
                 Id = 132, NameEng = "Electrical Design and Analysis", NameFre = "Conception et analyse électriques et technique",
                 DescEng = "Drafting, analyzing, and developing specification documentation, schematics, and wiring diagrams.",
-                DescFre = "Rédaction, analyse et développement de la documentation de spécification, des schémas et des schémas de câblage. "
+                DescFre = "Rédaction, analyse et développement de la documentation de spécification, des schémas et des schémas de câblage."
             }
         };
     }
