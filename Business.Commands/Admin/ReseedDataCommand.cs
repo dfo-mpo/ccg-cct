@@ -19,7 +19,7 @@ namespace Business.Commands.Admin
     {
         public ReseedDataCommandValidator()
         {
-            
+
         }
     }
 
@@ -57,6 +57,7 @@ namespace Business.Commands.Admin
             DeleteTable<Competency>();
             DeleteTable<CompetencyType>();
             DeleteTable<Certificate>();
+            DeleteTable<CertificateDescription>();
 
             DeleteTable<JobLocationRegion>();
             DeleteTable<JobPosition>();
@@ -76,3 +77,4 @@ namespace Business.Commands.Admin
         }
     }
 }
+

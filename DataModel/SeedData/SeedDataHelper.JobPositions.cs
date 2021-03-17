@@ -123,7 +123,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 115, TitleEng = "Engineering Officer Motor Life Boat (MLB)", TitleFre = "Officier mécanicien Bateau de sauvetage (BDS)" },
             new JobPosition {Id = 116, TitleEng = "Fishing Officer", TitleFre = "Agent des pêches"},
             new JobPosition {Id = 117, TitleEng = "2nd Officer (Deck)", TitleFre = "2e officier (pont)"},
-            new JobPosition {Id = 118, TitleEng = "Officer in Charge 47’ Lifeboat/CCGC Small Vessels ", TitleFre = "Officier responsable 47’ Bateau de sauvetage/petit navire"},
+            new JobPosition {Id = 118, TitleEng = "Officer in Charge 47’ Lifeboat/CCGC Small Vessels", TitleFre = "Officier responsable 47’ Bateau de sauvetage/petit navire"},
             new JobPosition {Id = 119, TitleEng = "Engineer", TitleFre = "Ingénieur"},
             new JobPosition {Id = 120, TitleEng = "Fishing Officer", TitleFre = "Agent des pêches"},
             new JobPosition {Id = 121, TitleEng = "Logistics Officer", TitleFre = "Officier logistique"},
