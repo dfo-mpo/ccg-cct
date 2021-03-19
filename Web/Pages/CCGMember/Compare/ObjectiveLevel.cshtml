@@ -13,16 +13,13 @@
                        {"previouspagecompare", Model.PreviousPageCompare },
                        { "id",  Model.Id.ToString()},
                        {"level", Model.Level.ToString() },
-                      // {"levelobj", Model.LevelObj.ToString() },
                   };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
 <h2><b>@Localizer["h2Text"]</b></h2>
 
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
 <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
@@ -52,6 +49,9 @@
         </ul>
     </div>
 </div>
+
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
+
 <div class="row">
     <div class="col-lg-12 mrgn-bttm-md">
         <nav role="navigation" class="mrgn-bttm-lg">

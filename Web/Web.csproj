@@ -145,7 +145,6 @@
   <ItemGroup>
     <Folder Include="Pages\Mockups\Students\" />
     <Folder Include="Properties\" />
-    <Folder Include="wwwroot\img\Student\" />
   </ItemGroup>
 
   <ItemGroup>

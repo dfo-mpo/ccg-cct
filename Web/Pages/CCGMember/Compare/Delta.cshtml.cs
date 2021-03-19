@@ -20,13 +20,11 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public int Obj { get; set; }
+        public int ObjectiveId { get; set; }
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public string LevelObj { get; set; } = string.Empty;
-
         [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -37,8 +35,6 @@ namespace Web.Pages.CCGMember.Compare
         public string SameOrHigherLevels { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
-
-
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
         [BindProperty]
@@ -64,25 +60,25 @@ namespace Web.Pages.CCGMember.Compare
             _logger = logger;
             _compareService = compareService;
         }
-        public async Task OnGetAsync(int positionid, int obj)
+        public async Task OnGetAsync(int positionid, int objectiveid)
         {
             _logger.LogInformation($"Delta page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             CurrentPosition = await _compareService.GetJobPositionById(positionid);
-            ObjectivePosition = await _compareService.GetJobPositionById(obj);
+            ObjectivePosition = await _compareService.GetJobPositionById(objectiveid);
 
-            MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
-            DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, obj);
+            MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, objectiveid);
+            DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, objectiveid);
 
             var CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
             foreach(var competencytype in CompetencyTypes)
             {
-                var matchingcompetencies = await _compareService.GetMatchingCompetenciesByTypeId(competencytype.Id, positionid, obj);
+                var matchingcompetencies = await _compareService.GetMatchingCompetenciesByTypeId(competencytype.Id, positionid, objectiveid);
                 if(!matchingcompetencies.Equals(null))
                 {
                     MatchingCompetencies.Add(matchingcompetencies);
                 }
-                var differingcomptencies = await _compareService.GetDifferingCompetenciesByTypeId(competencytype.Id, positionid, obj);
+                var differingcomptencies = await _compareService.GetDifferingCompetenciesByTypeId(competencytype.Id, positionid, objectiveid);
                 if (!differingcomptencies.Equals(null))
                 {
                     DifferingCompetencies.Add(differingcomptencies);

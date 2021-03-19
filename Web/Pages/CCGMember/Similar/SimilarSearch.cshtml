@@ -154,9 +154,6 @@
    }
     else
       {
-                        var RouteParameterNone = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=0" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
-                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },  {"level", Model.Level.ToString() },
-                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
                         var RouteParameter50 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=50" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },  {"level", Model.Level.ToString() },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
@@ -181,8 +178,6 @@
     
     <h4>@Localizer["pageSubmitted"]</h4>
     <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
-        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter50" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["50%"]&nbsp;&nbsp;&nbsp;</a>
-        <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
@@ -208,9 +203,7 @@
                             {"previouspage",Model.PreviousPage }
                            };
                     }
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
-                    <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="SimilarList" asp-all-route-data="@RouteParameterNone">@Localizer["Next"]</a></li>
-                </ul>
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>                </ul>
             </nav>
         </div>
     </div>

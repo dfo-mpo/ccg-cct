@@ -7,10 +7,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+@if (!string.IsNullOrEmpty(Model.ObjectiveId))
+{
+    var routedatanext = new Dictionary<string, string>
+{
+        {"id",  Model.Id.ToString()},
+        {"previouspage", Model.PreviousPage },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspagecompare", Model.PreviousPageCompare },
+        {"previouspagedelta", "ObjectivePosition" },
+        {"level",  Model.Level.ToString() },
+        {"levelobj", Model.LevelObj.ToString() },
+        {"positionid",  Model.PositionId.ToString()},
+        {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
+        };
 
+<a class="btn btn-primary pull-right" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
+}
 <h2><b>@Localizer["h2Text"]</b></h2>
-
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
 <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
@@ -24,13 +38,13 @@
             {
                 var data = new Dictionary<string, string>
                  {
-                     { "positionid", Model.PositionId.ToString()},
-                     { "id",  Model.Id.ToString()},
+                     {"positionid", Model.PositionId.ToString()},
+                     {"id",  Model.Id.ToString()},
                      {"previouspage", Model.PreviousPage },
                      {"previouspagedetails", Model.PreviousPageDetails },
                      {"level", Model.Level.ToString() },
                      {"previouspagecompare", Model.PreviousPageCompare },
-                     { "levelobj",  level.ToString() }
+                     {"levelobj",  level.ToString() }
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"
@@ -41,57 +55,39 @@
     </div>
     <div class="col-sm-9">
         <label><b>@Localizer["Position"]</b></label><br />
-                  <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-                             @(Model.Obj==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
-                         <span class="caret"></span>
-                  </button>
+        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+            @(Model.ObjectiveId==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
+            <span class="caret"></span>
+        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
             @foreach (var jp in Model.JobGroupPositions)
             {
                 var data = new Dictionary<string, string>
                      {
-                        { "id",  Model.Id.ToString()},
-                        { "level",  Model.Level.ToString() },
+                        {"id",  Model.Id.ToString()},
+                        {"level",  Model.Level.ToString() },
                         {"levelobj", Model.LevelObj.ToString() },
                         {"previouspage", Model.PreviousPage },
                         {"previouspagedetails", Model.PreviousPageDetails },
                         {"previouspagecompare", Model.PreviousPageCompare },
-                        { "positionid",  Model.PositionId.ToString()},
-                        { "obj",  jp.JobTitleId.ToString()}
+                        {"positionid",  Model.PositionId.ToString()},
+                        {"objectiveid",  jp.JobTitleId.ToString()}
                      };
                 <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
             }
         </ul>
     </div>
 </div>
-
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
 <div class="row mrgn-tp-lg">
-
     <div class="col-sm-9 pull-right mrgn-tp-lg">
-        @{var routedatanext = new Dictionary<string, string>
-        {
-        { "id",  Model.Id.ToString()},
-        {"previouspage", Model.PreviousPage },
-        {"previouspagedetails", Model.PreviousPageDetails },
-        {"previouspagecompare", Model.PreviousPageCompare },
-        {"previouspagedelta", "ObjectivePosition" },
-        { "level",  Model.Level.ToString() },
-         {"levelobj", Model.LevelObj.ToString() },
-        { "positionid",  Model.PositionId.ToString()},
-        { "obj",  Model.ObjectivePosition?.JobTitleId.ToString()}
-        };
-        }
-        @if (Model.Obj != null)
-        {
-            <a class="btn btn-primary" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
-        }
         @{var routedataprevious = new Dictionary<string, string>
-         {
+        {
         { "id",  Model.Id.ToString()},
         {"level", Model.Level.ToString() },
-         {"levelobj", Model.LevelObj.ToString() },
-        { "positionid",  Model.PositionId.ToString()},
+        {"levelobj", Model.LevelObj.ToString() },
+        {"positionid",  Model.PositionId.ToString()},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspagecompare", Model.PreviousPageCompare },
@@ -107,4 +103,4 @@
         </nav>
     </div>
 </div>
-    
+
