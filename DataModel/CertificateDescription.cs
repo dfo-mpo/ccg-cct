@@ -11,11 +11,12 @@ namespace DataModel
     public class CertificateDescription
     {
         public int Id { get; set; }
-        public string DescEng { get; set; }
+        
+		public string DescEng { get; set; }
 
         public string DescFre { get; set; }
 
-        public virtual ICollection<Certificate> Certificates { get; set; }
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
 
     }

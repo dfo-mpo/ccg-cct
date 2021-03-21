@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-    
+
     public class CertificateDescriptionConfiguration : IEntityTypeConfiguration<CertificateDescription>
     {
-       
+
         public void Configure(EntityTypeBuilder<CertificateDescription> builder)
         {
             builder.HasKey(x => x.Id);
@@ -22,5 +22,6 @@ namespace DataModel.Configurations
             builder.Property(b => b.DescFre)
                .HasMaxLength(1000);
         }
-    } 
+    }
 }
+

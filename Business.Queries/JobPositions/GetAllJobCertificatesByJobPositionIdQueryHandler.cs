@@ -27,15 +27,14 @@ namespace Business.Queries.JobPositions
             {
                 return _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.Id)
                     .Include(e => e.Certificate)
+                    .Include(e => e.CertificateDescription)
                     .Select(e => new JobCertificateDto()
                     {
                         Id = e.CertificateId,
                         NameEng = e.Certificate.NameEng,
                         NameFre = e.Certificate.NameFre,
-                        DescEng = e.Certificate.DescEng,
-                        DescFre = e.Certificate.DescFre,
-                        RequireIndicatorEng = e.Certificate.RequireIndicatorEng,
-                        RequireIndicatorFre = e.Certificate.RequireIndicatorFre,
+                        DescEng = e.CertificateDescription.DescEng,
+                        DescFre = e.CertificateDescription.DescFre,
                         
 
                     }).ToListAsync(cancellationToken);

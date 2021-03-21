@@ -25,12 +25,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Certificate[0].DescFre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].RequireIndicatorEng)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].RequireIndicatorFre)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -48,12 +42,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DescFre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequireIndicatorEng)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequireIndicatorFre)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

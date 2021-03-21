@@ -34,11 +34,9 @@ namespace Business.Queries.Compare
                     {
                         NameEng = pos.Certificate.NameEng,
                         NameFre = pos.Certificate.NameFre,
-                        DescEng = pos.Certificate.DescEng,
-                        DescFre = pos.Certificate.DescFre,
+                        DescEng = pos.CertificateDescription.DescEng,
+                        DescFre = pos.CertificateDescription.DescFre,
                         Id =  pos.CertificateId,
-                        RequireIndicatorEng = pos.Certificate.RequireIndicatorEng,
-                        RequireIndicatorFre = pos.Certificate.RequireIndicatorFre  
                         
                     }).ToListAsync(cancellationToken);
         }

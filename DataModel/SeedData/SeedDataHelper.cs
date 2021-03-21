@@ -28,9 +28,10 @@ namespace DataModel.SeedData
             await AddIfEmpty(CompetencyTypes);
             await AddIfEmpty(CompetencyLevelRequirements);
             await AddIfEmpty(Certificates);
+            await AddIfEmpty(CertificateDescriptions);
+            await AddIfEmpty(JobLocationRegions);
 
             // link tables
-            await AddIfEmpty(JobLocationRegions);
             await AddIfEmpty(JobRoles, false);
             await AddIfEmpty(JobGroupPositions, false);
             await AddIfEmpty(CompetencyTypeGroups, false);
