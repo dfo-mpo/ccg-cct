@@ -120,8 +120,14 @@
   <data name="level" xml:space="preserve">
     <value>LEVEL</value>
   </data>
+  <data name="link" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>More Details</value>
+  </data>
+  <data name="PDAP" xml:space="preserve">
+    <value>Professional Development Apprenticeship Programs (PDAP)</value>
   </data>
   <data name="positions" xml:space="preserve">
     <value>POSITIONS</value>
@@ -130,10 +136,10 @@
     <value>Previous</value>
   </data>
   <data name="print" xml:space="preserve">
-    <value>Print this page</value>
+    <value>Print PDF</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save this page</value>
+    <value>Save PDF</value>
   </data>
   <data name="seagoing" xml:space="preserve">
     <value>SEAGOING POSITIONS</value>

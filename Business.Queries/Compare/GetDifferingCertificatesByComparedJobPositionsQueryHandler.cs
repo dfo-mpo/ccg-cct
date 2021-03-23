@@ -33,14 +33,13 @@ namespace Business.Queries.Compare
                 .Where(e => e.JobPositionId == query.ObjectiveId)
                 .Where(e=>!currentcertificates.Contains(e.CertificateId))
                  .Include(e => e.Certificate) 
+                 .Include(e=>e.CertificateDescription)
                  .Select(e => new JobCertificateDto()
                  {
                      NameEng = e.Certificate.NameEng,
                      NameFre = e.Certificate.NameFre,
-                     DescEng = e.Certificate.DescEng,
-                     DescFre = e.Certificate.DescFre,
-                     RequireIndicatorFre = e.Certificate.RequireIndicatorEng,
-                     RequireIndicatorEng = e.Certificate.RequireIndicatorEng,
+                     DescEng = e.CertificateDescription.DescEng,
+                     DescFre = e.CertificateDescription.DescFre,
                      Id = e.CertificateId
 
                  }).ToListAsync(cancellationToken);           

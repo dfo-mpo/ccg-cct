@@ -22,13 +22,7 @@ namespace DataModel
 
         public string DescFre { get; set; }
         
-        public string RequireIndicatorEng { get; set; }
-
-        public string RequireIndicatorFre { get; set; }
-
-        //public virtual ICollection<JobPositionCertificate> JobPositionCertificates { get; set; }
-
-        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+       public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
 }

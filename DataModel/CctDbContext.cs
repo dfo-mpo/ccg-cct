@@ -38,6 +38,7 @@ namespace DataModel
 
 
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<CertificateDescription> CertificateDescriptions { get; set; }
         public DbSet<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
 

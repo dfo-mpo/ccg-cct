@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Mockups\Students\**" />
+    <Content Remove="Pages\Mockups\Students\**" />
+    <EmbeddedResource Remove="Pages\Mockups\Students\**" />
+    <None Remove="Pages\Mockups\Students\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Pages\Index1.cshtml.cs" />
 
   </ItemGroup>
@@ -143,7 +150,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Mockups\Students\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

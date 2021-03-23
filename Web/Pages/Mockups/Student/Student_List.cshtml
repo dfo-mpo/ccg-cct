@@ -1,0 +1,76 @@
+﻿@page
+@model Web.Pages.Mockups.Student.Student_ListModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Student Position Results";
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+}
+
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" title="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-save pull-right" title="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
+</div>
+<div class="mrgn-tp-lg">
+    <h3 class="text-center">@Localizer["seagoing"]</h3>
+
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["level"]</th>
+                <th class="bg-primary" width="73%">@Localizer["positions"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No seagoing positions available</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-center">@Localizer["shoreside"]</h3>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-primary" width="15%">@Localizer["level"]</th>
+                <th class="bg-primary" width="73%">@Localizer["positions"]</th>
+                <th class="bg-primary" width="12%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CR-04</td>
+                <td>Clerical and Regulatory</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+            <tr>
+                <td>PG-01</td>
+                <td>Warehouse Clerk Apprentice</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+            <tr>
+                <td>OE-DEO-01</td>
+                <td>Office Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+            <tr>
+                <td>OE-DEO-02</td>
+                <td>Duplicating Equipment Operator</td>
+                <td><a asp-page="Student_Details" role="button">@Localizer["moredetails"]</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-12 mrgn-bttm-md">
+            <nav role="navigation" class="mrgn-bttm-lg">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a href="College" class="btn btn-default" type="button" rel="prev">@Localizer["previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

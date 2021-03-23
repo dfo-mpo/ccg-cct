@@ -4,9 +4,10 @@
 @{
 }
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-    <a href="#print"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
-    <a href="#save"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" title="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
+    <a href="#"><span class="glyphicon glyphicon-save pull-right" title="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
 </div>
+
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@Localizer["seagoing"]</h3>
 
@@ -43,9 +44,9 @@
                 <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
             </tr>
             <tr>
-                <td>RO-03 (PDAP)</td>
-                <td>Marine Communications and Traffic Services (MCTS)</td>
-                <td><a asp-page="Student_Details" role="button">@Localizer["More Details"]</a></td>
+                <td>RO-03</td>
+                <td>Marine Communications and Traffic Services (MCTS) - <a rel="external" target="_blank" href="@Localizer["link"]">@Localizer["PDAP"]</a></td>
+                <td><a asp-page="HS_MCTS_Details" role="button">@Localizer["More Details"]</a></td>
             </tr>
         </tbody>
     </table>
