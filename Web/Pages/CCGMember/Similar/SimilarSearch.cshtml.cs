@@ -27,6 +27,8 @@ namespace Web.Pages.CCGMember.Similar
         public List<string> SameLevelCompetencyIds { get; set; } = new List<string>();
         [BindProperty]
         public List<string> HigherLevelCompetencyIds { get; set; } = new List<string>();
+        [BindProperty]
+        public List<string> RequiredCompetencyIds { get; set; } = new List<string>();
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
@@ -40,6 +42,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet =true)]
+        public Boolean PageEdit { get; set; } = false;
+        [BindProperty(SupportsGet = true)]
         public Boolean PageSubmit { get; set; } = false;
         [BindProperty(SupportsGet =true)]
         public string Id { get; set; } = string.Empty;
@@ -47,6 +51,8 @@ namespace Web.Pages.CCGMember.Similar
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string AddedCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public List<int> PositionCompetencyValues { get; set; } = new List<int>();
         [BindProperty]
         public List<int> AddedCompetencyValues { get; set; } = new List<int>();
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
@@ -152,6 +158,124 @@ namespace Web.Pages.CCGMember.Similar
                 }
             }
         }
+        public void OnPostCompetency(string competencyid)
+        {
+
+            PageSubmit = true;
+            PageEdit = true;
+            AddedCompetencies += "&addedCompetencyId=" + competencyid;
+
+            foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
+            {
+                if (!string.IsNullOrEmpty(added))
+                {
+                    int number;
+                    bool success = Int32.TryParse(added, out number);
+                    if (success)
+                    {
+                        AddedCompetencyValues.Add(number);
+
+                    }
+
+                }
+            }
+
+        }
+        public void OnPostDelete(int competencyid)
+        {
+
+            PageSubmit = true;
+            PageEdit = true;
+            foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
+            {
+                if (!string.IsNullOrEmpty(added))
+                {
+                    int number;
+                    bool success = Int32.TryParse(added, out number);
+                    if (success)
+                    {
+                        AddedCompetencyValues.Add(number);
+                    }
+                }
+            }
+            AddedCompetencyValues.Remove(competencyid);
+            AddedCompetencies = string.Empty;
+            foreach (var id in AddedCompetencyValues)
+            {
+                AddedCompetencies += "&addedCompetencyId=" + id.ToString();
+            }
+        }
+        public async Task OnPostEdit(int positionid)
+        {
+            Position = await _jobpositionService.GetJobPositionById(positionid);
+            PositionId = positionid;
+            PageSubmit = true;
+            SameLevels = string.Empty;
+            HigherLevels = string.Empty;
+            SameOrHigherLevels = string.Empty;
+
+            foreach (var c in CertificateIds)
+            {
+                Certificates += "&certificateId=" + c;
+            }
+
+            foreach (var c in SameLevelCompetencyIds)
+            {
+
+                if (!HigherLevelCompetencyIds.Contains(c))
+                {
+                    SameLevels += "&sameLevelCompetencyId=" + c;
+                }
+                else
+                {
+                    SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
+                }
+
+            }
+
+            foreach (var c in HigherLevelCompetencyIds)
+            {
+                if (!SameLevelCompetencyIds.Contains(c))
+                {
+                    HigherLevels += "&higherLevelCompetencyId=" + c;
+                }
+            }
+            PageSubmit = true;
+            PageEdit = true;
+            Position = await _jobpositionService.GetJobPositionById(positionid);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
+            {
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
+            }
+            foreach (var c in PositionCompetencyRatings)
+            {
+                foreach (var r in c)
+                {
+                    PositionCompetencyValues.Add(r.CompetencyId);
+                }
+            }
+            foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
+            {
+                if (!string.IsNullOrEmpty(added))
+                {
+                    int number;
+                    bool success = Int32.TryParse(added, out number);
+                    if (success)
+                    {
+                        AddedCompetencyValues.Add(number);
+
+                    }
+
+                }
+            }
+
+        }
+
     }
 
 }

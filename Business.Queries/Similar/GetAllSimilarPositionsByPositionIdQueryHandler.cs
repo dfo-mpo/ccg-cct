@@ -14,8 +14,6 @@ namespace Business.Queries.Similar
     public class GetAllSimilarPositionsByPositionIdQuery : IQuery<List<JobPositionDto>>
     {
         public int JobPositionId { get; set; }
-        public int JobGroupLevelId { get; set; }
-        public int JobGroupId { get; set; }
         public int[] HigherLevelCompetencyId { get; set; }
         public int[] SameLevelCompetencyId { get; set; }
         public int[] SameOrHigherLevelCompetencyId { get; set; }
@@ -39,8 +37,6 @@ namespace Business.Queries.Similar
             .Include(e => e.CompetencyRatingLevel)
             .Where(e =>
             e.JobPositionId == query.JobPositionId
-            //&& e.JobGroupLevelId == query.JobGroupLevelId
-            //&& e.JobGroupId == query.JobGroupId
             )
             .ToDictionaryAsync(k => k.CompetencyId, v => v.CompetencyRatingLevel.Value);
 

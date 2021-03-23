@@ -132,6 +132,9 @@
   <data name="h1Text" xml:space="preserve">
     <value>Similar Position Search</value>
   </data>
+  <data name="h2Text" xml:space="preserve">
+    <value>Select a competency to add to your current profile</value>
+  </data>
   <data name="h4Text" xml:space="preserve">
     <value>Select all or some of the competencies and ratings below to obtain positions similar to your current position.</value>
   </data>

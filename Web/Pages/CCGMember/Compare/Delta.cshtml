@@ -136,6 +136,7 @@
                             var key1 = "a" + d.CompetencyId.ToString();
                             var key2 = "b" + d.CompetencyId.ToString();
                             var currentrating = d.RatingValueCur;
+                            var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
                             if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
                             {
                                     currentrating = Localizer["Added"].Value;
