@@ -117,25 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LEVEL" xml:space="preserve">
-    <value>NIVEAU</value>
-  </data>
-  <data name="More Details" xml:space="preserve">
-    <value>Plus de détails</value>
-  </data>
-  <data name="POSITION" xml:space="preserve">
-    <value>POSTE</value>
-  </data>
-  <data name="POSITION DETAILS" xml:space="preserve">
-    <value>DÉTAILS DU POSTE</value>
-  </data>
-  <data name="POSITION RESULTS" xml:space="preserve">
-    <value>RÉSULTATS DE POSITION</value>
-  </data>
-  <data name="POSITIONS" xml:space="preserve">
-    <value>POSTES</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
+  <data name="h2Text" xml:space="preserve">
+    <value>Select a competency to add to your profile</value>
   </data>
 </root>

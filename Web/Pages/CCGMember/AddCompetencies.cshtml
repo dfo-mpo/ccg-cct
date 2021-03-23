@@ -1,0 +1,133 @@
+﻿@page
+@model Web.Pages.CCGMember.AddCompetenciesModel
+@inject Web.Data.JobCompetencyService _jobcompetencyService
+@inject IViewLocalizer Localizer
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var routedataclear = new Dictionary<string, string>
+                 {
+                            {"previouspagedetails", Model.PreviousPageDetails },
+                            {"previouspagesimilar", Model.PreviousPageSimilar },
+                            {"previouspage",Model.PreviousPage },
+                            {"positionid", Model.PositionId.ToString()},
+                            { "id",  Model.Id},
+                            { "level",  Model.Level},
+                            {"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },
+                            {"certificates", Model.Certificates },
+                         };
+    var routedatanext = new Dictionary<string, string>
+                 {
+                            {"previouspagedetails", Model.PreviousPageDetails },
+                            {"previouspagesimilar", Model.PreviousPageSimilar },
+                            {"previouspage",Model.PreviousPage },
+                            {"positionid", Model.PositionId.ToString()},
+                            { "id",  Model.Id},
+                            { "level",  Model.Level},
+                            {"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },
+                            {"addedcompetencies",Model.AddedCompetencies},
+                            {"certificates", Model.Certificates },
+                         };
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div class="col-md-12">
+    <div class="col-md-9">
+        <a class="btn btn-primary pull-left" type="button" asp-all-route-data="routedataclear" asp-page="AddCompetencies">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Clear List"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary mrgn-rght-md pull-right" type="button" asp-all-route-data="routedatanext" asp-page="Similar/SimilarSearch">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Return"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </div>
+</div>
+<div class="mrgn-tp-xl">
+    <div class="col-md-12">
+        <h2><b>@Localizer["h2Text"]</b></h2>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <form method="post">
+        <div class="col-md-7">
+            @if (Model.AddedCompetencyValues.Count < 30)
+            {
+                <div class="dropdown mrgn-bttm-md">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                        @Localizer["Select Competency"]
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        @foreach (var competency in await _jobcompetencyService.GetAllJobCompetencies())
+                        {
+                            @if (!Model.AddedCompetencyValues.Contains(competency.Id) && !Model.PositionCompetencyValues.Contains(competency.Id))
+                            {
+                                var routedata = new Dictionary<string, string>
+                                                                              {
+                              {"previouspagedetails", Model.PreviousPageDetails },
+                              {"previouspagesimilar", Model.PreviousPageSimilar },
+                              {"previouspage",Model.PreviousPage },
+                              {"positionid", Model.PositionId.ToString()},
+                              { "id",  Model.Id.ToString()},
+                              { "level",  Model.Level},
+                              {"higherlevels", Model.HigherLevels },
+                              {"samelevels", Model.SameLevels },
+                              {"sameorhigherlevels", Model.SameOrHigherLevels },
+                              {"addedcompetencies",Model.AddedCompetencies},
+                              {"certificates", Model.Certificates },
+                              { "competencyid",  competency.Id.ToString()}
+                         };
+                                <li role="presentation">
+                                    <button class="btn btn-link text-left"
+                                            asp-page-handler="competency" asp-all-route-data="@routedata">
+                                        @(isEnglish?competency.NameEng:competency.NameFre)
+                                    </button>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                </div> }
+            else
+            {
+                <div>
+                    <h4>@Localizer["LimitReached"]</h4>
+                </div>
+            }
+        </div>
+        <div class="col-lg-5">
+            <table class="table">
+                @foreach (var added in Model.AddedCompetencyValues)
+                {
+
+                    var c = await _jobcompetencyService.GetJobCompetencyById(added);
+                    var routedata = new Dictionary<string, string>
+                                             {
+                              {"previouspagedetails", Model.PreviousPageDetails },
+                              {"previouspagesimilar", Model.PreviousPageSimilar },
+                              {"previouspage",Model.PreviousPage },
+                              {"positionid", Model.PositionId.ToString()},
+                              { "id",  Model.Id.ToString()},
+                              { "level",  Model.Level.ToString()},
+                              {"higherlevels", Model.HigherLevels },
+                              {"samelevels", Model.SameLevels },
+                              {"sameorhigherlevels", Model.SameOrHigherLevels },
+                              {"addedcompetencies",Model.AddedCompetencies},
+                              {"certificates", Model.Certificates },
+                              { "competencyid",  c.Id.ToString()}
+                         };
+                    <tr class="bg-success mrgn-bttm-0">
+                        <td width="90%">@c.NameEng</td>
+                        <td><button asp-page-handler="delete" asp-all-route-data="@routedata">@Localizer["Delete"]</button></td>
+                    </tr>
+
+
+
+                }
+            </table>
+        </div>
+    </form>
+</div>

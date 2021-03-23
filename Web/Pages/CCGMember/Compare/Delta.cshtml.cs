@@ -34,6 +34,10 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string AddedCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public List<int> AddedCompetencyId { get; set; } = new List<int>() { };
+        [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
@@ -84,7 +88,20 @@ namespace Web.Pages.CCGMember.Compare
                     DifferingCompetencies.Add(differingcomptencies);
                 }
             }
-        
+
+            foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
+            {
+                if (!string.IsNullOrEmpty(added))
+                {
+                    int number;
+                    bool success = Int32.TryParse(added, out number);
+                    if (success)
+                    {
+                        AddedCompetencyId.Add(number);
+                    }
+                }
+            }
+
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobPositions;
-using Business.Dtos.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Rotativa.AspNetCore;
 using Web.Data;
 
 namespace Web.Pages.CCGMember.Similar
@@ -39,6 +36,8 @@ namespace Web.Pages.CCGMember.Similar
         public string HigherLevels { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string AddedCompetencies { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         [BindProperty(SupportsGet = true)]

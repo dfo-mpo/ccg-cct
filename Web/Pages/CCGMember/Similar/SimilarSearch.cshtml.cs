@@ -7,7 +7,6 @@ using Web.Data;
 using Business.Dtos.JobPositions;
 using Business.Dtos.JobCompetencies;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Web.Pages.CCGMember.Similar
 {
@@ -46,6 +45,10 @@ namespace Web.Pages.CCGMember.Similar
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string AddedCompetencies { get; set; } = string.Empty;
+        [BindProperty]
+        public List<int> AddedCompetencyValues { get; set; } = new List<int>();
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -87,10 +90,20 @@ namespace Web.Pages.CCGMember.Similar
                     CertificateIds.Add(id);
                 }
             }
+            foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
+            {
+                if (!string.IsNullOrEmpty(added))
+                {
+                    int number;
+                    bool success = Int32.TryParse(added, out number);
+                    if (success)
+                    {
+                        AddedCompetencyValues.Add(number);
+                    }
 
+                }
+            }
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            //Id = Position.JobGroupId.ToString();
-            //Level = Position.JobGroupLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)
@@ -105,10 +118,12 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnPost(int positionid)
         { 
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            PositionId = positionid;
             PageSubmit = true;
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
+
 
             foreach (var c in CertificateIds)
             {

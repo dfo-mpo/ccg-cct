@@ -123,6 +123,9 @@
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>Veuillez sélectionner votre domaine d'emploi préféré</value>
   </data>

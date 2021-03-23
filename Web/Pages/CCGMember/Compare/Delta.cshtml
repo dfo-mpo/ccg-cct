@@ -135,6 +135,11 @@
                         {
                             var key1 = "a" + d.CompetencyId.ToString();
                             var key2 = "b" + d.CompetencyId.ToString();
+                            var currentrating = d.RatingValueCur;
+                            if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
+                            {
+                                    currentrating = Localizer["Added"].Value;
+                            }
                             <tr>
                                 <td>
                                     <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
@@ -149,7 +154,7 @@
                                     </section>
                                 </td>
                                 <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@d.RatingValueCur</abbr></a>
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
                                     <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
@@ -199,6 +204,7 @@
                         {"higherlevels", Model.HigherLevels },
                         {"certificates", Model.Certificates },
                         {"sameorhigherlevels", Model.SameOrHigherLevels },
+                        {"addedcompetencies",Model.AddedCompetencies},
                         {"percentmatch", Model.PercentMatch },
                         {"previouspagesimilar", Model.PreviousPageSimilar },
                         {"previouspagecompare", Model.PreviousPageCompare },

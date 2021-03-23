@@ -8,8 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobPositions;
 using System;
-using Microsoft.AspNetCore.Mvc;
-using Core;
 
 namespace Business.Queries.Similar
 {
@@ -21,6 +19,7 @@ namespace Business.Queries.Similar
         public int[] HigherLevelCompetencyId { get; set; }
         public int[] SameLevelCompetencyId { get; set; }
         public int[] SameOrHigherLevelCompetencyId { get; set; }
+        public int[] AddedCompetencyId { get; set; }
         public int[] CertificateId { get; set; }
         public double PercentMatch { get; set; }
     }
@@ -40,15 +39,16 @@ namespace Business.Queries.Similar
             .Include(e => e.CompetencyRatingLevel)
             .Where(e =>
             e.JobPositionId == query.JobPositionId
-            && e.JobGroupLevelId == query.JobGroupLevelId
-            && e.JobGroupId == query.JobGroupId)
+            //&& e.JobGroupLevelId == query.JobGroupLevelId
+            //&& e.JobGroupId == query.JobGroupId
+            )
             .ToDictionaryAsync(k => k.CompetencyId, v => v.CompetencyRatingLevel.Value);
 
             var sameLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var sameOrHigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
-            var allCurrentCompetencies = allPositionCompetencyRatings.Keys.ToList();
-
+            var allPositionCompetencies = allPositionCompetencyRatings.Keys.ToList();
+            var allCurrentCompetencies = allPositionCompetencies.Union(query.AddedCompetencyId.ToList()).ToList();
             var resultCertificates = (
                     await _db.JobRolePositionCertificates
                     .Include(e => e.Certificate).ToListAsync()

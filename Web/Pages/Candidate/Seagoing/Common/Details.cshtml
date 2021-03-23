@@ -66,15 +66,17 @@
                     {
                         @foreach (var competencytype in Model.PositionCompetencyRatings)
                         {
+                            if (competencytype.Any())
+                            {
                             <tr>
                                 <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
                                 <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                             </tr>
 
-                            foreach (var c in competencytype)
-                            {
-                                var key1 = "a" + c.CompetencyId.ToString();
-                                var key2 = "b" + c.CompetencyId.ToString();
+                                foreach (var c in competencytype)
+                                {
+                                    var key1 = "a" + c.CompetencyId.ToString();
+                                    var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
                                     <td>
                                         <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
@@ -108,9 +110,10 @@
                                         </section>
                                     </td>
                                 </tr>
+                                    }
+                                }
                             }
                         }
-                    }
                 </tbody>
             </table>
         </form>
