@@ -9,7 +9,7 @@ namespace DataModel.SeedData
         public List<Certificate> Certificates = new List<Certificate>()
             {
                 new Certificate { Id = 1, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master, 150 GT, Domestic", NameFre = "Capitaine, jauge brute de 150, navigation intérieure" },
-                new Certificate { Id = 2, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master 500GT, Domestic", NameFre = "Capitaine, jauge brute de 500, navigation intérieure" },
+                new Certificate { Id = 2, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Master 500 GT, Domestic", NameFre = "Capitaine, jauge brute de 500, navigation intérieure" },
                 new Certificate { Id = 3, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Inter-Provincial Journeyman Certification; Heavy Duty Mechanic", NameFre = "Certificat interprovincial de compagnon, mécanicien de machinerie lourde" },
                 new Certificate { Id = 4, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Inter-Provincial Journeyman Certification; Automotive Mechanic", NameFre = "Certificat interprovincial de compagnon, mécanicien d'automobile" },
                 new Certificate { Id = 5, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Marine First Aid", NameFre = "Premiers soins en mer" },
@@ -31,7 +31,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 21, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Diver Certification Board of Canada (DCBC) Restricted Surface Supplied Diver Certification", NameFre = "Conseil Canadien de certification en plongée – Système de distribution d’air restreinte en surface" },
                 new Certificate { Id = 22, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "First Aid", NameFre = "Premiers soins" },
                 new Certificate { Id = 23, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "CCG Medic-A Certificate", NameFre = "Formation Medic-A GCC" },
-                new Certificate { Id = 24, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "OEM Maintenance Qualification; Technician", NameFre = "Certification du maintenance du Fabricants d’équipement d’origine (FEO)" },
+                new Certificate { Id = 24, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "OEM Maintenance Qualification; Technician", NameFre = "Certification du maintenance du fabricants d’équipement d’origine (FEO)" },
                 new Certificate { Id = 25, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Food Safety Training", NameFre = "Formation en sécurité alementaire" },
                 new Certificate { Id = 26, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Ship's Cook or Provincial Standard (Red Seal)", NameFre = "Cuisinier/cuisinère de navire ou Normes provinciales (Sceau roude)" },
                 new Certificate { Id = 27, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Restricted Operator Certificate-Maritime Commerical (ROC-MC)", NameFre = "Certificat restreint d’opérateur - commercial maritime (CRO-CM)" },
@@ -79,7 +79,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 69, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Inter-Provincial Journeyman Certification; Heavy Duty Mechanic, Automotive Mechanic or Fourth Class Engineer - Motor (or higher)", NameFre = "Certificat interprovincial de compagnon ; mécanicien de machinerie lourde, mécanicien d'automobile ou mécanicien-moteur de quatrième classe (ou plus)" },
                 new Certificate { Id = 70, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Marine Service Technician Certificate", NameFre = "Certificat de technicien d'entretien maritime" },
                 new Certificate { Id = 71, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Composites Technician Certification", NameFre = "Certification des techniciens en composites" },
-                new Certificate { Id = 72, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Diesel Mechanic or Mechanical Technician or Outboard Motors Mechanical degree", NameFre = "Technicien mécanicien diesel ou mécanicien ou moteur hors-bord Diplôme en mécanique" },
+                new Certificate { Id = 72, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Diesel Mechanic or Mechanical Technician or Outboard Motors Mechanical degree", NameFre = "Technicien mécanicien diesel ou mécanicien ou moteur hors-bord diplôme en mécanique" },
                 new Certificate { Id = 73, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Welder Fabricator Certificate", NameFre = "Certificat de soudeurs-fabricants" },
                 new Certificate { Id = 74, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Heavy Duty Mechanic Certification", NameFre = "Certificat de mécanicien de machinerie lourde" },
                 new Certificate { Id = 75, DescEng = "lorem ipsum", DescFre = "lorem ipsum", NameEng = "Red Seal Electrical Trade Certification or Marine Electrician", NameFre = "Certificat de compétence en électricité Sceau rouge ou électricien de marine" },
