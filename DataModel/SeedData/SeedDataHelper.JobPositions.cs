@@ -231,7 +231,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 223, TitleEng = "Foreperson", TitleFre = "Contremaître"},
             new JobPosition {Id = 224, TitleEng = "Assistant Librarian", TitleFre = "Bibliothécaire adjoint"},
             new JobPosition {Id = 225, TitleEng = "Policy Assistant", TitleFre = "Adjoint chargé des politiques"},
-            new JobPosition {Id = 226, TitleEng = "Economic and Policy Analyst", TitleFre = "Analyste des politiques économiques" },
+            new JobPosition {Id = 226, TitleEng = "Economic Policy Analyst", TitleFre = "Analyste des politiques économiques" },
             new JobPosition {Id = 227, TitleEng = "Researcher and Analyst", TitleFre = "Chercheur et analyste"},
             new JobPosition {Id = 228, TitleEng = "Policy/Economic Analyst", TitleFre = "Analyste politique / économique"},
             new JobPosition {Id = 229, TitleEng = "Negotiator/Analyst", TitleFre = "Négociateur / analyste"},
