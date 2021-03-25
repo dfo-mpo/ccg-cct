@@ -11,31 +11,31 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 1,
-                DescEng = "Basic knowledge of a unit in the Coast Guard organization chart and its reporting relationships.",
+                DescEng = "Basic understanding of the CCG and its role as a program facilitator.",
                 DescFre = "Compréhension de base de la GCC et de son rôle en tant que facilitateur de programmes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 2,
-                DescEng = "Limited knowledge of the Coast Guard's mandate and its relationship with Fisheries and Oceans Canada (DFO). Understands the organization's directorates regionally and/or nationally.",
+                DescEng = "Understands the duties of the CCG and the roles and responsibilities of key contacts in the CCG’s regional organization. Has a good understanding of certain programs and assets.",
                 DescFre = "Comprend les fonctions de la GCC ainsi que les rôles et les responsabilités des principales personnes ressources de l'organisation régionale de la GCC. A une bonne compréhension de certains programmes et actifs."
             },
             new CompetencyLevelRequirement
             {
                 Id = 3,
-                DescEng = "Practical knowledge of the Coast Guard and Fisheries and Oceans Canada (DFO) organizations, and of the Coast Guard as a special operating agency. Understands a program and its linkages to other programs and directorates regionally and/or nationally.",
+                DescEng = "Good understanding of programs within a regional or national organizational framework. Understands most programs and associated assets. Identifies contacts for other programs. Understands partners’ roles and responsibilities.",
                 DescFre = "Bonne compréhension des programmes  dans un cadre organisationnel régional ou national. Comprend la plupart des programmes et des actifs associés. Identifie les personnes ressources pour d'autres programmes. Comprend les rôles et les responsabilités des partenaires."
             },
             new CompetencyLevelRequirement
             {
                 Id = 4,
-                DescEng = "Advanced knowledge of the Coast Guard and Fisheries and Oceans Canada (DFO) organizations, directorates and associated programs and relations regionally and nationally.",
+                DescEng = "Advanced knowledge of programs and their impact on relations with the public and partners regionally and/or nationally. Extensive knowledge of all CCG programs, as well as regional and national capacity and asset condition. Participates in program planning.",
                 DescFre = "Connaissance avancée des programmes et de leurs impacts sur les relations avec le public et les partenaires, au niveau régional et / ou national. Connaissance approfondie de tous les programmes de la GCC, ainsi que de la capacité et de l'état des actifs au niveau régional et national. Participe à la planification des programmes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 5,
-                DescEng = "Expert knowledge of the Coast Guard and Fisheries and Oceans Canada (DFO) organizations and their interdependencies with other internal (includes other government departments) and external (includes industry and other governments) organizations. Expertise in providing advice and guidance to stakeholders about the organization and its capabilities.",
+                DescEng = "Extensive knowledge of all CCG programs, their delivery methods and timelines both regionally and nationally. Assesses stakeholder expectations and needs for the CCG and other departments in planning and exercises. Establishes internal and external relationships. Suggests potential improvements, changes or opportunities for program expansion.",
                 DescFre = "Connaissance approfondie de tous les programmes de la GCC, de leurs modes de livraison et de leurs échéanciers aux niveaux régional et national. Évalue les attentes et les besoins des intervenants pour la GCC et les autres ministères dans la planification et les exercices. Établit des relations à l'interne et à l'externe. Suggère des améliorations potentielles, des changements ou des opportunités d'expansion des programmes."
             },
             new CompetencyLevelRequirement
@@ -251,92 +251,92 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 42,
-                DescEng = "Participates in project/program support activities.",
-                DescFre = "Participer à des activités de soutien aux projets et aux programmes."
+                DescEng = "Understands the fundamentals of program and/or project goals, participants’ roles and the importance of project management principles. Willingness to participate in program/project support activities.",
+                DescFre = "Comprend les principes fondamentaux des objectifs du programme et/ou du projet, les rôles des participants et l'importance des principes de gestion. Volonté de participer à des activités de soutien."
             },
             new CompetencyLevelRequirement
             {
                 Id = 43,
-                DescEng = "Respects project/program goals, participants' roles, and the importance of project management principles. Participates in project support activities (i.e. gathering needed information). Participates with others in small and well defined components of the project/program.",
-                DescFre = "Respecter les objectifs du projet ou du programme, le rôle des participants et l’importance des principes de gestion de projet. Participer aux activités de soutien du projet (p. ex. recueillir les informations nécessaires). Participer avec d’autres personnes à des aspects limités et bien définis de projets et de programmes."
+                DescEng = "Comprehends program and/or project goals, participants’ roles, and the importance of program/project management principles. Able to participate in program/project support activities (i.e. gathering needed information). Able to participate, under supervision, with others in small and well defined components of the program/project.",
+                DescFre = "Comprend les objectifs du programme et/ou du projet, les rôles des participants et l'importance des principes de gestion du programme/projet. Capable de participer à des activités d’appui (c’est-à-dire la collecte des informations nécessaires). Participe, sous supervision, avec d’autres personnes à des composantes petites et bien définies du programme/projet."
             },
             new CompetencyLevelRequirement
             {
                 Id = 44,
-                DescEng = "Actively promotes project goals, participants' roles, and the importance of project management principles, such as time, cost, and quality management. Participates, with minimal supervision, with others in all aspects of project or program. Seeks advice and guidance for more complex components of the project/program.",
-                DescFre = "Promouvoir activement les buts du projet, les rôles des participants et l’importance des principes de gestion du projet, comme la gestion du temps, des coûts et de la qualité. Collaborer avec d’autres personnes à tous les aspects du projet ou du programme en ayant une supervision minimale. Demander des conseils et des orientations concernant les éléments plus complexes du projet ou du programme."
+                DescEng = "Knowledge of program and/or project goals, participants’ roles, and the importance of management principles, such as time, cost, and quality management. Participates, with minimal supervision, in individual programs or projects. Will seek advice and guidance for more complex components of the program/project.",
+                DescFre = "Connaissance des objectifs du programme et/ou du projet, des rôles des participants et de l’importance des principes de gestion, tels que la gestion du temps, des coûts et de la qualité. Participe avec un minimum de supervision à des programmes ou projets individuels. Demandes conseil et avis pour des composants plus complexes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 45,
-                DescEng = "Leads projects and/or programs. Leads project/program support activities, taking the initiative to gather additional information, keep documentation organized, and identify process improvements, when and where applicable. Provides advice to others who seek assistance within the project/program scope.",
-                DescFre = "Diriger des projets ou des programmes. Diriger des activités de soutien aux projets et aux programmes, en prenant l’initiative de recueillir des informations supplémentaires, de garder la documentation classée et de cibler les améliorations à apporter aux processus, le cas échéant. Donner des conseils aux autres personnes qui demandent de l’aide dans le cadre du projet ou du programme."
+                DescEng = "Extensive practical experience in leading projects and/or programs. Leads program/project support activities, taking the initiative to gather additional information, keep documentation organized, and identify process improvements when needed. Actively participates in all projects and provides advice to others who seek assistance. Able to train and advise anyone seeking guidance on basic to complex projects.",
+                DescFre = "Vaste expérience pratique de la direction d’un programme et/ou d’un projet. Dirige les activités de soutien des programmes/projets, en prenant l'initiative de rassembler des informations supplémentaires, de garder la documentation organisée et d'identifier les améliorations de processus au besoin. Participe activement à tous les projets et fournit des conseils à ceux qui cherchent de l'aide. Capable de former et de conseiller toute personne à la recherche de conseils sur des projets simples ou complexes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 46,
-                DescEng = "Responsibly delivers on the established mandate of a project/program. Directs teams to complete activities in accordance with current policies and practices. Provides accurate and timely recommendations to clients. Trains and advises anyone seeking guidance on basic to complex elements of project/program.",
-                DescFre = "S’acquitter de manière responsable du mandat établi d’un projet ou d’un programme. Diriger les équipes pour qu’elles réalisent les activités conformément aux politiques et aux pratiques en vigueur. Formuler des recommandations exactes et pertinentes à la clientèle. Donner de la formation et des conseils à toute personne souhaitant obtenir des conseils sur les éléments de base ou les éléments complexes d’un projet ou d’un programme."
+                DescEng = "Responsible for program and/or project delivery, directs teams to complete activities to current policies and practices. Interfaces with internal and external program/project clients, providing accurate information and managing the consultation.",
+                DescFre = "Responsable de la livraison du programme et / ou du projet, dirige les équipes pour mener à bien les activités conformément aux politiques et pratiques en vigueur. Interfaces avec les clients internes et externes du programme/projet, fournissant des informations précises et gérant la consultation."
             },
             new CompetencyLevelRequirement
             {
                 Id = 47,
-                DescEng = "Monitors the quality and timeliness of individual responsibilities using the available resources, searching for clarity as needed.",
-                DescFre = "Surveiller si chacun s’acquitte de ses responsabilités individuelles de façon adéquate et dans le respect des délais, en utilisant les ressources disponibles et en obtenant des éclaircissements au besoin."
+                DescEng = "Understands basic techniques for planning and organizing his or her own activities. Willingness to clarify priorities as needed. Understands the importance of monitoring the quality and timeliness of his or her own work and using the resources immediately available to him or her.",
+                DescFre = "Comprend les techniques de base pour planifier et organiser ses propres activités. Volonté de clarifier les priorités au besoin. Comprend l'importance de surveiller la qualité et la rapidité d'exécution de son propre travail et d'utiliser les ressources disponibles à sa disposition immédiate."
             },
             new CompetencyLevelRequirement
             {
                 Id = 48,
-                DescEng = "Plans and organizes individual responsibilities to accomplish pre-determined standards or procedures. Monitors the quality and timeliness of work while leveraging the resources at immediate disposal.",
-                DescFre = "Planifier et organiser l’exécution de responsabilités individuelles en fonction de normes ou de procédures prédéterminées. S’assurer de produire un travail de qualité et de respecter les délais en utilisant correctement les ressources mises à sa disposition."
+                DescEng = "Ability to plan and organize his or her own activities to comply with predetermined standards or procedures. Seeks to clarify priorities as needed. Able to monitor the quality and timelines of his or her own work. Able to use the resources immediately available to him or her responsibly.",
+                DescFre = "Aptitude à planifier et à organiser ses propres activités afin de respecter des normes ou des procédures prédéterminées. Cherche à clarifier les priorités au besoin. Capable de surveiller la qualité et la rapidité de son propre travail. Capable d'utiliser de manière responsable les ressources à sa disposition immédiate."
             },
             new CompetencyLevelRequirement
             {
                 Id = 49,
-                DescEng = "Plans and organizes activities efficiently. Monitors the quality and timeliness of unit workloads. Uses available resources and seeks assistance to clarify priorities, when and where required. Reports on results to promote accountability.",
-                DescFre = "Planifier et organiser les activités de manière efficace. Surveiller la qualité et la rapidité de l’exécution de la charge de travail de l’unité. Utiliser les ressources disponibles et demander de l’aide pour clarifier les priorités au besoin. Rendre compte des résultats pour promouvoir la responsabilité."
+                DescEng = "Strong ability to plan and organize activities effectively. Monitors the quality and timeliness of others’ work as well as his or her own. Uses available resources and seeks assistance to clarify priorities as needed. Reports results to promote accountability.",
+                DescFre = "Capacité forte de planifier et organiser des activités efficacement. Surveille la qualité et la rapidité de son travail et de celui des autres. Utilise les ressources disponibles et demande de l'aide pour clarifier les priorités au besoin. Fait rapport des résultats pour promouvoir la responsabilité."
             },
             new CompetencyLevelRequirement
             {
                 Id = 50,
-                DescEng = "Efficiently plans and organizes activities for a unit. Establishes goals and objectives and anticipates obstacles realistically. Determines priorities and allocates resources effectively. Assists others and gives guidance as required.",
-                DescFre = "Planifier et organiser efficacement les activités d’une unité. Établir des buts et des objectifs et prévoir les obstacles de manière réaliste. Déterminer les priorités et affecter les ressources de manière efficace. Aider les autres et leur donner des conseils au besoin."
+                DescEng = "Experience in effectively planning and organizing activities for a department or unit. Sets goals and objectives and realistically anticipates obstacles. Determines priorities and allocates resources effectively. Effectively manages time to meet schedules and deadlines. Willingness to help others and give advice if asked.",
+                DescFre = "Expérience dans la planification et l'organisation efficaces d'activités pour un département ou une unité. Établit les buts et objectifs et anticipe les obstacles de manière réaliste. Détermine les priorités et alloue les ressources efficacement. Gère efficacement le temps pour respecter les calendriers et les échéances. Volonté d'aider les autres et de donner des conseils si demandé."
             },
             new CompetencyLevelRequirement
             {
                 Id = 51,
-                DescEng = "Plans and organizes effectively while managing multiple demands and competing priorities. Influences processes and courses of action. Provides guidance and advice on a project or program area.",
-                DescFre = "Planifier et organiser efficacement tout en gérant des demandes multiples et des priorités incompatibles. Orienter les processus et les lignes de conduite. Donner des orientations et des conseils sur un projet ou un secteur de programme."
+                DescEng = "Expert in planning and organization, can effectively manage several competing requests and priorities. Influences processes and actions. Is consulted on a complex project, provides advice and suggests directions.",
+                DescFre = "Expert en planification et en organisation, peut efficacement gérer plusieurs demandes et priorités concurrentes. Influence sur les processus et les actions. Est consulté sur un projet complexe, fournit des conseils et propose des directions."
             },
             new CompetencyLevelRequirement
             {
                 Id = 52,
-                DescEng = "Administers low-risk contracts. Monitors inventory levels of materials, equipment, and stock using manual or computerized inventory systems. Prepares requisition orders to replenish materials, equipment, and stock. Maintains stock rotation, disposes of and accounts for outdated stock. Enters data for production scheduling, stock replenishment, relocation, and inventory adjustments. Maintains a contractor database, insurance requirements, and pricing accuracy. ",
-                DescFre = "Administrer les contrats à faible risque. Surveiller les inventaires de matériaux, d’équipements et de stocks à l’aide de systèmes d’inventaire manuels ou informatisés. Préparer les demandes de réapprovisionnement en matériaux, en équipements et en stocks. Assurer la rotation des stocks, éliminer et comptabiliser les stocks périmés. Saisir les données relatives à la programmation de la production, au réapprovisionnement en stocks, au déplacement et aux rajustements des stocks. Tenir à jour une base de données sur les entrepreneurs, les exigences en matière d’assurance et l’exactitude des prix."
+                DescEng = "Reviews orders for accuracy and verifies that materials, equipment and stock are not available from current inventories. Procures quotes from catalogues and suppliers, obtains price quotations and prepares purchase orders. Calculates the cost of orders and charges or transfers invoices to the appropriate accounts. Processes purchases within the limits of purchasing power. Prepares and manages purchase files, reports and price lists.",
+                DescFre = "Examine les commandes pour en vérifier l'exactitude et vérifier que le matériel, l'équipement et les stocks ne sont pas disponibles à partir des inventaires en cours. Procure des offres de prix auprès de catalogues et de fournisseurs, obtenir des offres de prix et préparer des commandes d'achat. Calcule le coût des commandes et charge ou transfère les factures aux comptes appropriés. Traite les achats dans les limites du pouvoir d'achat. Prépare et gère les fichiers d’achat, les rapports et les listes de prix."
             },
             new CompetencyLevelRequirement
             {
                 Id = 53,
-                DescEng = "Monitors and reports on contract milestones and outcomes. Completes price variations in accordance with predetermined processes. Sources and obtains price quotations from catalogues and suppliers, and prepares purchase orders. Calculates cost of orders and charges or forwards invoices to appropriate accounts. Prepares and maintains purchasing files, reports, and price lists. Assesses requirements of clients and develops specifications for equipment, materials, and supplies to be purchased.",
-                DescFre = "Surveiller les jalons de l’exécution des contrats et en rendre compte. Traiter les variations de prix selon des processus déterminés au préalable. Obtenir des propositions de prix dans les catalogues et auprès des fournisseurs et préparer les bons de commande. Calculer le coût des commandes et imputer les factures aux comptes appropriés ou les acheminer aux responsables des comptes appropriés. Préparer et tenir à jour des dossiers d’achat, des rapports et des listes de prix. Évaluer les besoins de clients et préciser les spécifications de l’équipement, du matériel et des fournitures à acheter."
+                DescEng = "Monitors inventory levels of materials, equipment and stock using manual or computerized inventory systems. Prepares orders to replenish materials, equipment and inventory. Maintains inventory turnover, disposes of and accounts for obsolete inventory. Enters data for production planning, replenishment/stock replenishment and inventory adjustments.",
+                DescFre = "Surveille les niveaux de stocks de matériaux, d'équipements et de stocks à l'aide de systèmes d'inventaire manuels ou informatisés. Prépare les commandes pour réapprovisionner les matériaux, l'équipement et les stocks. Maintient la rotation des stocks, élimine et comptabilise les stocks obsolètes. Saisir des données pour la planification de la production, le réapprovisionnement / réapprovisionnement des stocks et les ajustements d’inventaire."
             },
             new CompetencyLevelRequirement
             {
                 Id = 54,
-                DescEng = "Manages medium-risk contracts including governance, risk, performance, and financial management. Purchases general and specialized equipment, materials, land or access rights, or business services for use or for further processing by the Canadian Coast Guard. Interprets and applies the terms and conditions of the contract to varied situations. Manages, or assists in the management of, all procedural aspects of purchasing activities. Adapts contract management practices in changing circumstances whilst maintaining the overall intent of the contract.",
-                DescFre = "Gère les contrats à risque moyen, en ce qui concerne notamment la gouvernance, le risque, l’exécution et la gestion financière. Acheter de l’équipement général et spécialisé, du matériel, des terrains ou des droits d’accès ou des services opérationnels qui sont utilisés ou transformés par la Garde côtière canadienne. Interpréter les modalités du contrat et les appliquer à des situations variées. Gérer ou aider à gérer tous les aspects procéduraux des activités d’achat. Adapter les pratiques de gestion des contrats en fonction de l’évolution des circonstances tout en préservant l’intention générale du contrat."
+                DescEng = "Purchases general and specialized equipment, materials, land or access rights, or commercial services for use or further processing by the CCG. Assesses client needs and develops specifications for equipment, materials and supplies to be purchased. Issues calls for tenders, consults suppliers and reviews quotes. Determines or negotiates contract terms and conditions, awards contracts to suppliers or recommends contract awards. Prepares and/or manages documents to procure goods and/or services contracts, including Requests for Proposals (RFPs) and/or Requests for Quotation (RFQs).",
+                DescFre = "Achète de l'équipement général et spécialisé, du matériel, des terrains ou des droits d'accès, ou des services commerciaux, pour utilisation ou transformation ultérieure par la GCC. Évalue les besoins des clients et élabore des spécifications pour l'équipement, les matériaux et les fournitures à acheter. Invite à soumissionner, consulte les fournisseurs et examine les devis. Détermine ou négocie les termes et conditions des contrats, attribue les contrats des fournisseurs ou recommande des attributions de contrats. Préparer et / ou gérer des documents pour l’achat de marchés de biens et / ou de services, y compris des demandes de propositions (RFP) et / ou des demandes de devis (RFQ)."
             },
             new CompetencyLevelRequirement
             {
                 Id = 55,
-                DescEng = "Establishes delivery schedules, monitors progress, and contacts clients and suppliers to resolve problems in a work unit. Negotiates land acquisition or access rights for Coast Guard use, and may conduct field investigations of properties. Reviews and processes claims against suppliers. Monitors contract performance and identifies when corrective action needs to be taken to drive better outcomes. Assesses contract variations, and makes appropriate decisions based on risk. Invites tenders, consults with suppliers, and reviews quotations. Determines or negotiates contract terms and conditions, awards supplier contracts or recommend contract awards. Explores innovative contract management strategies for complex requirements with stakeholders.",
-                DescFre = "Établir les calendriers de livraison, surveiller l’exécution des contrats et communiquer avec les clients et les fournisseurs pour résoudre les problèmes dans une unité de travail. Négocier l’acquisition de terrains ou les droits d’accès pour l’usage de la Garde côtière; il faut parfois se rendre sur place pour inspecter les propriétés. Examiner et traiter les réclamations contre des fournisseurs. Surveiller l’exécution des contrats et déterminer quand des mesures correctives doivent être prises pour obtenir de meilleurs résultats. Évalue les dérogations aux contrats et prendre les décisions appropriées en fonction du risque. Solliciter des soumissions, consulter des fournisseurs et examiner les devis. Déterminer ou négocier les modalités de contrats, accorder des contrats aux fournisseurs ou recommander leur attribution. Explorer des stratégies innovantes de gestion de contrats auprès des intervenants pour satisfaire aux exigences complexes."
+                DescEng = "Establishes the logistics of delivery schedules, monitors progress and contacts clients and suppliers to resolve issues. Negotiates land acquisition or access rights for the CCG’s use and may conduct field investigations of properties. Evaluates offers, costs and quality of goods or services. Review and process claims against suppliers. May provide training and advice to others.",
+                DescFre = "Établit la logistique des calendriers de livraison, surveille les progrès et contacte les clients et les fournisseurs pour résoudre les problèmes. Négocie les droits d’acquisition des terres ou les droits d’accès à l’usage de la GCC et peut mener des enquêtes sur le terrain des propriétés. Évalue les offres, les coûts et la qualité des biens ou des services. Examiner et traiter les réclamations contre les fournisseurs. Peut fournir une formation et des conseils aux autres."
             },
             new CompetencyLevelRequirement
             {
                 Id = 56,
-                DescEng = "Plans, organizes, directs, controls, and evaluates the purchasing activities of one or more work units. Identifies vendors of materials, equipment, or supplies. Participates in the development of specifications for equipment, products, or substitute materials. Interprets and advises on the terms and conditions of the contract, and applies to varied and complex situations. Monitors, evaluates and reports on contract milestones, key performance indicators adherence, performance metrics, and outcomes. Oversees the management of contracts and categories, and reports on contract activities that may result in political or public interest. Defines and advises on contract management responsibilities and processes across the Coast Guard. Drives the use of innovative contract management strategies where appropriate to deliver the best outcome and maximize value. Develops purchasing policies and procedures and controls purchasing department budget, when and where applicable.",
-                DescFre = "Planifier, organiser, diriger, contrôler et évaluer les activités d’achat d’une ou de plusieurs unités de travail. Cibler les fournisseurs de matériaux, d’équipements ou de fournitures. Participer à l’élaboration de spécifications pour les équipements, les produits ou des matériaux de substitution. Interpréter les modalités de marchés, donner des conseils sur ces modalités et les appliquer à des situations variées et complexes. Surveiller et évaluer l’exécution de jalons de contrats, le respect des indicateurs clés de rendement, des mesures de rendement et des résultats et en rendre compte. Surveiller la gestion des contrats et des catégories et produire des rapports sur les activités liées aux contrats qui peuvent susciter l’intérêt des milieux politiques ou du public. Définir les responsabilités et les processus de gestion des contrats au sein de la Garde côtière et formuler des conseils à ce sujet. Encourager l’utilisation de stratégies innovantes de gestion des contrats, le cas échéant, pour obtenir les meilleurs résultats et optimiser l’utilisation des ressources. Élaborer des politiques et des procédures d’achat et contrôler le budget du service des achats, le cas échéant."
+                DescEng = "Plans, organizes, directs, oversees and evaluates the purchasing activities of the organizational unit. Develops purchasing policies and procedures and oversees the budget of the purchasing department. Identifies vendors of materials, equipment or supplies. Negotiates or supervises the negotiation of purchase contracts. Participates in developing specifications for alternative equipment, products or materials.",
+                DescFre = "Planifie, organise, dirige, contrôle et évalue les activités d'achat du service organisationnel. Développe les politiques et procédures d'achat et contrôle le budget du département des achats. Identifie les vendeurs de matériel, d'équipement ou de fournitures. Négocie ou supervise la négociation des contrats d'achat. Participe à l'élaboration de spécifications pour l'équipement, les produits ou les matériaux de substitution."
             },
             new CompetencyLevelRequirement
             {
@@ -641,32 +641,32 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 107,
-                DescEng = "Reports and logs observed non-conformities.",
-                DescFre = "Signaler et consigner les non-conformités observées."
+                DescEng = "Understands the basic concept of the CCG’s quality assurance systems. The reports observed demonstrate non-compliance.",
+                DescFre = "Comprend le concept de base des systèmes d’assurance de la qualité de la Garde côtière canadienne. Les rapports observé démontrent des non-conformités."
             },
             new CompetencyLevelRequirement
             {
                 Id = 108,
-                DescEng = "Participates in reviews and drafts quality assurance reports. Researches and compares findings against standard operating procedures or design specifications.",
-                DescFre = "Participer aux examens et rédiger des rapports sur l’assurance de la qualité. Effectuer des recherches et comparer les résultats avec les procédures opérationnelles normalisées ou les normes de conception."
+                DescEng = "Participates in reviews and prepares quality assurance (QA) reports. Researches and compares results against standard operating procedures or design specifications.",
+                DescFre = "Participer aux révisions et rédige des rapports d’assurance de la qualité (AQ). Recherche et compare les résultats par rapport aux procédures d’exploitation normalisées ou aux spécifications de conception."
             },
             new CompetencyLevelRequirement
             {
                 Id = 109,
-                DescEng = "Implements the Canadian Coast Guard's quality assurance program. Interprets a wide variety of data and makes recommendations. Formulates recommendations for, or where appropriate, develops options to resolve non-conformities.",
-                DescFre = "Mettre en œuvre le programme d’assurance qualité de la Garde côtière canadienne. Interpréter une grande variété de données et formuler des recommandations. Formuler des recommandations ou, le cas échéant, élaborer des options pour résoudre les non-conformités."
+                DescEng = "Implements the CCG’s quality assurance system. Interprets a wide variety of data and makes recommendations. Makes recommendations or, when required, develops options for resolving instances of non-compliance.",
+                DescFre = "Met en œuvre le système d’assurance de la qualité de la Garde côtière canadienne. Interprète une grande variété de données et fait des recommandations. Formule des recommandations ou, le cas échéant, élabore des options pour résoudre les non-conformités."
             },
             new CompetencyLevelRequirement
             {
                 Id = 110,
-                DescEng = "Defines and articulates parameters and desired objectives, encouraging others to adopt and deliver on those objectives. Applies the constraints within which information can or cannot be shared. Assists in developing quality assurance (QA) programs. Provides summary reports detailing QA findings.",
-                DescFre = "Définir et articuler les paramètres et les objectifs souhaités en encourageant les autres à adopter et à atteindre ces objectifs. Mettre en pratique les contraintes dans le cadre desquelles les informations peuvent ou non être communiquées. Contribuer à l’élaboration de programmes d’assurance de la qualité (AQ). Fournir des rapports de synthèse qui décrivent les résultats de l’AQ."
+                DescEng = "Defines and articulates desired parameters and objectives, encouraging others to adopt and achieve them. Applies constraints within which information may or may not be shared. Fully grasps procedural and resource requirements. Strikes a balance between compliance and flexibility. Helps develop QA programs.",
+                DescFre = "Définit et énonce les paramètres et les objectifs souhaités, en encourageant les autres à les adopter et à les atteindre. Applique les contraintes à l’intérieur desquelles l’information peut ou ne peut pas être partagée. Maîtrise les exigences en matière de procédures et de ressources. Équilibre entre conformité et flexibilité. Aide à élaborer des programmes d’AQ."
             },
             new CompetencyLevelRequirement
             {
                 Id = 111,
-                DescEng = "Champions the Coast Guard's quality assurance (QA) program and systems. Develops creative and innovative programs, projects, and activities. Advises stakeholders on QA protocols and best practices.",
-                DescFre = "Promouvoir le programme et les systèmes d’assurance de la qualité (AQ) de la Garde côtière. Élaborer des programmes, des projets et des activités créatifs et innovants. Conseiller les intervenants sur les protocoles d’assurance de la qualité et les pratiques exemplaires."
+                DescEng = "Champions the CCG’s QA systems. Anticipates potential challenges and opportunities through a detailed understanding of the internal and external environment as well as regional and national contexts. Develops creative and innovative programs, projects and activities.",
+                DescFre = "Championne les systèmes d’AQ de la Garde côtière canadienne.  Anticipe les défis et les opportunités potentiels par une compréhension détaillée de l’environnement interne et externe, et des contextes régionaux et nationaux. Élaborer des programmes, des projets et des activités créatifs et novateurs."
             },
             new CompetencyLevelRequirement
             {
@@ -1108,31 +1108,31 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 187,
-                DescEng = "Aware of routine electrical (or electronic) processes or other areas requiring technical expertise. Conducts analysis based on standardized flowchart.",
+                DescEng = "Aware of common electrical (or electronic) processes or any other area requiring technical expertise. Performs an analysis based on a standard flowchart.",
                 DescFre = "Conscient des processus électriques (ou électroniques) courants ou de tout autre domaine requérant une expertise technique. Effectue une analyse basée sur un organigramme normalisé."
             },
             new CompetencyLevelRequirement
             {
                 Id = 188,
-                DescEng = "Makes recommendations on routine/technical designs and/or program/project specifications to meet desired compliance with electrical engineering principles, standards, codes, designs, and statutes when and where applicable.",
+                DescEng = "Makes recommendations on routine/technical designs and/or program/project specifications to comply with principles, standards, codes and electrical engineering design and statutes, as required.",
                 DescFre = "Fait des recommandations sur les conceptions de routine/techniques et/ou les spécifications de programme/projet afin d'être conforme aux  principes, aux normes, aux codes et à la conception et statuts du génie électrique, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 189,
-                DescEng = "Makes decisions on non-routine and/or program matters requiring technical expertise when and where applicable. Provides technical analysis. Serves as a mentor/resource to lower level employees in the area of assignment when and where applicable. Addresses conflicting design constraints when and where applicable.",
+                DescEng = "Makes decisions on non-routine and/or program-related matters requiring technical expertise, as required. Provides technical analysis. Serves as a mentor/resource for lower-level employees for assignments, as required. Resolves conflicting design constraints, as required.",
                 DescFre = "Prend des décisions sur des questions non routinières et/ou relatives au programme nécessitant une expertise technique, le cas échéant. Fournit une analyse technique. Sert de mentor/ressource aux employés de niveau inférieur dans le domaine des affectations, le cas échéant. Résout les contraintes de conception contradictoires, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 190,
-                DescEng = "Approves complex or new electrical engineering / technical designs and/or program/project specifications to meet desired compliance with principles, standards, codes, designs, and statutes. Reviews stock replenishment requisitions to ensure the items in current use and quantities ordered are realistic.",
-                DescFre = "Approuve les conceptions électriques/techniques complexes  ou nouvelles et/ou les spécifications de programme/projet afin d'être conforme aux principes, aux normes, aux codes, à la conception et statuts souhaités. Examine les demandes de réapprovisionnement en matériel pour s'assurer que les articles actuellement utilisés et les quantités commandées sont réalistes."
+                DescEng = "Approves complex or new electrical/technical designs and/or program/project specifications to comply with desired principles, standards, codes, design and statutes. Reviews equipment replenishment requests to ensure that the items currently in use and the quantities ordered are realistic.",
+                DescFre = "Approuve les conceptions électriques/techniques complexes ou nouvelles et/ou les spécifications de programme/projet afin d'être conforme aux principes, aux normes, aux codes, à la conception et statuts souhaités. Examine les demandes de réapprovisionnement en matériel pour s'assurer que les articles actuellement utilisés et les quantités commandées sont réalistes."
             },
             new CompetencyLevelRequirement
             {
                 Id = 191,
-                DescEng = "Makes final recommendations for specialized electrical engineering and/or program areas. Represents the CCG as an expert in electrical review and design.",
+                DescEng = "Makes final recommendations in the specialized areas of electrical engineering and/or the program. Represents the CCG as an expert in electrical overhaul and design.",
                 DescFre = "Fait des recommandations finales dans les domaines spécialisés du génie électrique et/ou du programme. Représente la GCC en tant qu'expert en révision et en conception électrique."
             },
             new CompetencyLevelRequirement {Id = 192, DescEng = "N/A", DescFre = "S. O."},
@@ -1365,7 +1365,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 239,
-                DescEng = "Performs all four phases of life cycle materiel management, including assessing and planning materiel requirements, acquiring materiel resources, operating and using, maintaining, and disposing of materiel. Implements the concepts of the Policy Framework for the Management of Assets and Acquired Services. ",
+                DescEng = "Performs all four phases of life cycle materiel management, including assessing and planning materiel requirements, acquiring materiel resources, operating and using, maintaining, and disposing of materiel. Implements the concepts of the Policy Framework for the Management of Assets and Acquired Services.",
                 DescFre = "Effectuer les quatre phases de la gestion du cycle de vie du matériel, y compris l’évaluation et la planification des besoins en matériel, l’acquisition des ressources matérielles, l’exploitation et l’utilisation, l’entretien et l’élimination du matériel. Mettre en œuvre les concepts du Cadre de politique sur la gestion des actifs et services acquis."
             },
             new CompetencyLevelRequirement
@@ -1413,32 +1413,32 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 247,
-                DescEng = "Recognizes a problem. Solves basic problems by following a set of standard rules and practices. Identifies alternate solutions, based on precedent.",
-                DescFre = "Reconnaît un problème. Résout les problèmes de base en suivant un ensemble de règles et de pratiques standard. Identifie des solutions alternatives, basées sur des précédents."
+                DescEng = "Able to recognize a problem. Able to solve basic problems by following a set of standard rules and practices. Understands how to find alternative solutions based on precedents.",
+                DescFre = "Capable de reconnaître un problème. Capable de résoudre des problèmes de base en suivant un ensemble de règles et de pratiques normalisées. Comprend comment trouver d’autres solutions, en se fondant sur les précédents."
             },
             new CompetencyLevelRequirement
             {
                 Id = 248,
-                DescEng = "Recognizes and identifies a problem based on a range of clear factors. Identifies, with some assistance, optimal solutions based on weighing the advantages and disadvantages of alternative approaches.",
-                DescFre = "Reconnaît et identifie un problème sur la base d'une série de facteurs clairs. Identifie, avec une certaine assistance, des solutions optimales basées sur l'évaluation des avantages et des désavantages des approches alternatives."
+                DescEng = "Recognizes and identifies a problem based on a clear set of factors. Able to identify, with some assistance, optimal solutions based on weighing the advantages and disadvantages of alternative approaches.",
+                DescFre = "Reconnaît et identifie un problème sur la base d’une série de facteurs clairs. Capable d’identifier, avec une certaine assistance, les solutions optimales basées sur la pondération des avantages et des inconvénients des  approches alternatives."
             },
             new CompetencyLevelRequirement
             {
                 Id = 249,
-                DescEng = "Identifies, defines, solves, and prioritizes standard problems without causing other unanticipated problems. Identifies root causes, sets goals, and identifies constraints. Conducts impact analyses and identifies possible consequences of actions and decisions.",
-                DescFre = "Identifie, définit, résout et priorise les problèmes standards sans causer d'autres problèmes imprévus. Identifie les causes fondamentales, fixe des objectifs et identifie les contraintes. Effectue des analyses d'impact et identifie les conséquences possibles des actions et des décisions."
+                DescEng = "Experienced in identifying, defining, solving and prioritizing standard problems without causing other unanticipated problems. Identifies root causes, sets goals and identifies constraints. Conducts impact analysis and identifies possible consequences of actions/decisions.",
+                DescFre = "Expérimenté dans l’identification, la définition, la résolution et le classement par ordre de priorité des problèmes standard sans causer d’autres problèmes imprévus. Identifie les causes profondes, fixe des objectifs et identifie les contraintes. Effectue une analyse d’impact et identifie les conséquences possibles des actions ou des décisions."
             },
             new CompetencyLevelRequirement
             {
                 Id = 250,
-                DescEng = "Finds workable solutions to increasingly complex and multi-dimensional problems by either intuition or a systematic approach. Generates and assesses options and develops standards to evaluate different intended results offered by alternatives. Advises on best practices. Conducts monitoring and testing of solutions after implementation.",
-                DescFre = "Trouve des solutions pratiques à des problèmes de plus en plus complexes et multidimensionnels, soit par intuition, soit par une approche systématique. Génère et évalue les options et élabore des normes pour évaluer les différents résultats attendus offerts par les alternatives. Donne des conseils sur les meilleures pratiques. Effectue le suivi et la mise à l'essai des solutions après leur mise en œuvre."
+                DescEng = "Experienced in finding workable solutions to increasingly complex and multi-dimensional problems by either intuition or systematic approach. Generates and assesses alternative solutions and develops standards to evaluate different intended results offered by alternatives. Provides training and advises on best practices. Conducts monitoring and testing of solutions after implementation.",
+                DescFre = "Expérimenté dans la recherche de solutions réalisables à des problèmes de plus en plus complexes et multidimensionnels soit par intuition ou par approche systématique. Génère et évalue des solutions de rechange et élabore des normes pour évaluer les différents résultats visés par les solutions de rechange.  Offre une formation et des conseils sur les pratiques exemplaires. Effectue la surveillance et met à l’essai les solutions après leur mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
                 Id = 251,
-                DescEng = "Revises and amends problem solving models, flowcharts, and cause and effect diagrams. Advises on multiple alternatives and expected results. Evaluates effectiveness and efficiency of solutions following implementation.",
-                DescFre = "Révise et modifie les modèles de résolution de problèmes, les organigrammes et les diagrammes de cause à effet. Donne des conseils sur les multiples alternatives et les résultats attendus. Évalue l'efficacité et l'efficience des solutions après leur mise en œuvre."
+                DescEng = "Revises and amends problem solving models, flowcharts, and cause and effect diagrams. Advises on multiple alternatives and expected results based on extensive experience. Evaluates effectiveness and efficiency of solution after implementation.",
+                DescFre = "Révise et modifie les modèles de résolution de problèmes, les organigrammes et les diagrammes de cause à effet.  Donne des conseils sur de multiples solutions de rechange et sur les résultats escomptés sur la base d'une vaste expérience. Évalue l’efficacité et l’efficience de la solution après sa mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
@@ -2885,31 +2885,31 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 507,
-                DescEng = "Basic understanding of the fundamental principles of hydraulic engineering including fluid mechanics, fluid flow, behavior of real fluids, hydrology, pipelines, open channel hydraulics, mechanics of sediment transport, physical modeling, hydraulic machines, and drainage hydraulics.",
+                DescEng = "Basic understanding of the fundamental principles of hydraulic engineering including fluid mechanics, fluid flow, real-fluid behaviour, hydrology, pipelines, open channel hydraulics, sediment transport mechanics, physical modeling, hydraulic machinery and hydraulic drainage.",
                 DescFre = "Compréhension de base des principes fondamentaux du génie hydraulique, y compris la mécanique des fluides, l'écoulement des fluides, le comportement des fluides réels, l'hydrologie, les pipelines, l'hydraulique à canal ouvert, la mécanique du transport des sédiments, la modélisation physique, les machines hydrauliques et le drainage hydraulique."
             },
             new CompetencyLevelRequirement
             {
                 Id = 508,
-                DescEng = "Limited knowledge of the application of equations developed from the principles of fluid dynamics and fluid mechanics in relations to water flowing in an isolated environment (pipe, pump) and/or in an open channel (river, lake, ocean).",
+                DescEng = "Limited knowledge of the application of equations developed from the principles of fluid dynamics and fluid mechanics in relation to water flowing in an isolated environment (pipe, pump) and/or in an open channel (river, lake, ocean).",
                 DescFre = "Connaissance limitée de l'application des équations développées à partir des principes de la dynamique des fluides et de la mécanique des fluides en relation avec l'eau s'écoulant dans un environnement isolé (conduite, pompe) et/ou dans un canal ouvert (rivière, lac, océan)."
             },
             new CompetencyLevelRequirement
             {
                 Id = 509,
-                DescEng = "Practical knowledge of hydraulic engineers designs, including hydraulic structures such as dams, levees, water distribution networks, water collection networks, sewage collection networks, storm water management, and sediment transport.",
+                DescEng = "Working knowledge of the design of hydraulic structures including but not limited to dams, dykes, water distribution networks, water collection networks, wastewater collection networks, stormwater management and sediment transport.",
                 DescFre = "Connaissance pratique de la conception d'ouvrages hydrauliques tels que barrages, digues, réseaux de distribution d'eau, réseaux de collecte d'eau, réseaux de collecte d'eaux usées, gestion des eaux pluviales et transport de sédiments, entre autres."
             },
             new CompetencyLevelRequirement
             {
                 Id = 510,
-                DescEng = "Advanced knowledge of the application of hydrological statistics and risk analysis, reservoir system analysis, planning analysis and real-time water control management. Knowledge of new and emerging technologies, flood risk management, and eco-hydraulics.",
+                DescEng = "Advanced knowledge of the application of hydrological statistics and risk analysis, reservoir system analysis, planning analysis and real-time water control management. Knowledge of new and emerging technologies, flood risk management and ecohydraulics.",
                 DescFre = "Connaissance avancée de l'application des statistiques hydrologiques et de l'analyse des risques, de l'analyse des systèmes de réservoirs, de l'analyse de la planification et de la gestion en temps réel du contrôle de l'eau. Connaissance des technologies nouvelles et émergentes, de la gestion des risques d'inondation et de l'écohydraulique."
             },
             new CompetencyLevelRequirement
             {
                 Id = 511,
-                DescEng = "Expert knowledge in providing support for decision making at all levels including governance and policy through to management of operations. Knowledge of sustainable development and optimization of water resources management, and flow processes.",
+                DescEng = "Specialized knowledge to support decision-making at all levels, from governance and policy to operations management. Knowledge of sustainable development and optimization of water resource management and flow processes. ",
                 DescFre = "Connaissances spécialisées en matière de soutien à la prise de décisions à tous les niveaux, y compris la gouvernance et les politiques, jusqu'à la gestion des opérations. Connaissance du développement durable et de l'optimisation de la gestion des ressources en eau et des processus d'écoulement."
             },
             new CompetencyLevelRequirement
@@ -3035,32 +3035,32 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 532,
-                DescEng = "Basic knowledge of concepts and components in an electronic environment and how they interrelate.",
+                DescEng = "Basic knowledge of concepts and components in an electronic environment and how they are inter-related.",
                 DescFre = "Connaissance de base des concepts et des composants dans un environnement électronique et de leur interrelation."
             },
             new CompetencyLevelRequirement
             {
                 Id = 533,
-                DescEng = "Limited knowledge in analyzing basic concepts of electronics and the behaviour of electronic systems. Understands the operational function of electronic components in a practical context.",
+                DescEng = "Limited knowledge of the analysis of basic electronics concepts and the behaviour of electronic systems. Understands the operational function of electronic components in a practical context.",
                 DescFre = "Connaissances limitées dans l'analyse des concepts de base de l'électronique et du comportement des systèmes électroniques. Comprend la fonction opérationnelle des composants électroniques dans un contexte pratique."
             },
             new CompetencyLevelRequirement
             {
                 Id = 534,
-                DescEng = "Practical knowledge of advanced concepts and components in electronic environments, including power and heat dissipation, analogue and digital signals, time constant, amplification, logical and/or truth tables, bistable, monostable and astable, parallels or series.",
-                DescFre = "Connaissance pratique des concepts et composants avancés dans les environnements électroniques, y compris la dissipation d'énergie et de chaleur, les signaux analogiques et numériques, la constante de temps, l'amplification, les tables logiques et/ou de vérité, bistable, monostable et astable, les parallèles ou séries. "
+                DescEng = "Working knowledge of advanced concepts and components in electronic environments, including energy and thermal dissipation; analog and digital signals; the time constant; amplification, logic and/or truth tables; bistable, monostable and astable circuits; and parallels and series circuits.",
+                DescFre = "Connaissance pratique des concepts et composants avancés dans les environnements électroniques, y compris la dissipation d'énergie et de chaleur, les signaux analogiques et numériques, la constante de temps, l'amplification, les tables logiques et/ou de vérité, bistable, monostable et astable, les parallèles ou séries."
             },
             new CompetencyLevelRequirement
             {
                 Id = 535,
-                DescEng = "Advanced knowledge of electronic software program development using advanced concepts, such as variables, binary notation (bits, bytes, and words), logical structuring of software programs. Understands advanced calculations, including power rating, parallels or series, and time constant, based on parameters important in the behaviour of real circuits. Knowledge of capacity related to different electronic components.",
+                DescEng = "Advanced knowledge of electronic software development using advanced concepts such as variables, binary notation (bits, bytes and words) and the logical structure of software. Understands advanced calculations, including power rating, parallel or series circuits and the time constant, based on important parameters in side circuit behaviour. Knowledge of capacities related to different electronic components.",
                 DescFre = "Connaissance avancée du développement de logiciels électroniques utilisant des concepts avancés, tels que les variables, la notation binaire (bits, octets et mots), la structuration logique des logiciels. Comprend les calculs avancés, y compris la puissance nominale, les parallèles ou les séries, et la constante de temps, basés sur des paramètres importants dans le comportement des circuits réels. Connaissance des capacités liées aux différents composants électroniques."
             },
             new CompetencyLevelRequirement
             {
                 Id = 536,
-                DescEng = "Expert knowledge of significant concepts used in the design and construction of electronic environments and complex hardware concepts. Expertise at performing complex calculations.",
-                DescFre = "Connaissance approfondie des concepts importants utilisés dans la conception et la construction d'environnements électroniques et de concepts matériels complexes. Expertise dans la réalisation de calculs complexes. "
+                DescEng = "Extensive knowledge of important concepts used in the design and construction of electronic environments and complex hardware concepts. Expertise in doing complex calculations. ",
+                DescFre = "Connaissance approfondie des concepts importants utilisés dans la conception et la construction d'environnements électroniques et de concepts matériels complexes. Expertise dans la réalisation de calculs complexes."
             },
             new CompetencyLevelRequirement
             {
@@ -3095,152 +3095,152 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 542,
-                DescEng = "Understands the basic engineering concepts, practices, and theories.",
-                DescFre = "Comprend les concepts, les pratiques et les théories de base de l'ingénierie. "
+                DescEng = "Applies basic circuit analysis methods to solve electrical design problems.",
+                DescFre = "Applique des méthodes d'analyse de circuit de base pour résoudre les problèmes de conception électrique."
             },
             new CompetencyLevelRequirement
             {
                 Id = 543,
-                DescEng = "Working level understanding of the organizational and business objectives of section/specialty involved in the design/development/review/permitting, construction, maintenance, operations, or repair of, projects/sites and their potential environmental and safety impacts.",
-                DescFre = "Compréhension, au niveau opérationnel, des objectifs organisationnels et opérationnels de la section ou de la spécialité concernée par la conception, l'élaboration, l'examen ou l'autorisation, la construction, l'entretien, l'exploitation ou la réparation des projets ou des sites et de leurs incidences potentielles sur l'environnement et la sécurité."
+                DescEng = "Analyzes engineering projects for electrical specifications. Provides ideas and criticism, conducts research, plans methods and identifies resources.",
+                DescFre = "Analyse les projets d'ingénierie pour les spécifications électriques. Fournit des idées et des critiques, mène des recherches, planifie des méthodes et identifie des ressources."
             },
             new CompetencyLevelRequirement
             {
                 Id = 544,
-                DescEng = "Practical understanding of concepts, practices, and theories used in the engineering specialty areas of technological, logistical, and material resources of a production system with an emphasis on efficiency, productivity, and quality.",
-                DescFre = "Compréhension pratique des concepts, des pratiques et des théories utilisés dans les domaines de spécialité de l'ingénierie des ressources technologiques, logistiques et matérielles d'un système de production, l'accent étant mis sur l'efficacité, la productivité et la qualité."
+                DescEng = "Develops project management schedules. Designs electrical circuits or diagrams according to project specifications. Conducts testing. Provides test results. Provides and develops fastening concepts.",
+                DescFre = "Élabore des calendriers de gestion de projet. Conçoit des circuits électriques ou des graphiques selon les spécifications du projet. Effectue des tests. Fournit les résultats des tests. Fournit et développe des concepts de fixation."
             },
             new CompetencyLevelRequirement
             {
                 Id = 545,
-                DescEng = "Thorough knowledge of internal organizational structure, business needs/objectives, budget, planning, legal/public relations considerations, and/or other related engineering factors. Knowledge of designing and managing complex engineering systems over their life cycles to best optimize for maximum productivity, quality, and efficiency.",
-                DescFre = "Connaissance approfondie de la structure organisationnelle interne, des besoins/objectifs opérationnels, du budget, de la planification, des considérations juridiques/de relations publiques et/ou d'autres facteurs techniques connexes. Connaissance de la conception et de la gestion de systèmes d'ingénierie complexes tout au long de leur cycle de vie pour optimiser au mieux la productivité, la qualité et l'efficacité maximales."
+                DescEng = "Designs and develops product concepts based on research and development. Analyzes data and prepares reports including material and budgetary elements. Develops preliminary evaluations of diagrams. Understands and teaches standards for drawings and plans.",
+                DescFre = "Conçoit et développe des concepts de produits basés sur la recherche et le développement. Analyse les données et élabore des rapports comprenant des éléments matériels et budgétaires. Élabore des examens préliminaires des graphiques. Comprend et enseigne les dessins et les normes de plans."
             },
             new CompetencyLevelRequirement
             {
                 Id = 546,
-                DescEng = "Expert level of understanding of the application of advanced analytical methods in the engineering discipline. Expertise in the evaluation of a ship's performance during trials, alongside and at sea, and change designs to meet national and international standards.",
-                DescFre = "Niveau expert de compréhension de l'application des méthodes analytiques avancées dans la discipline du génie. Expertise dans l'évaluation de la performance d'un navire lors d'essais, en mer et en mer, et dans la modification de sa conception pour répondre aux normes nationales et internationales. "
+                DescEng = "Develops high-level reports. Attends design and engineering meetings, develops schedules, reviews resource allocations and performs model manipulation. Provides comments and communicates with the design authority.",
+                DescFre = "Développe des rapports de haut niveau. Assiste aux réunions de conception et d’ingénierie, élabore des calendriers, examiner les affectations de ressources et procède à la manipulation des modèles. Fournit des commentaires et communique avec l'autorité en matière de conception."
             },
             new CompetencyLevelRequirement
             {
                 Id = 547,
-                DescEng = "Basic knowledge of vessel structural design, drawing and modeling, and rules and regulations for construction and classification.",
+                DescEng = "Basic knowledge of designing, drawing and modelling ship structure and of construction and classification rules and regulations.",
                 DescFre = "Connaissance de base de la conception, du dessin et de la modélisation de la structure des navires, et des règles et règlements de construction et de classification."
             },
             new CompetencyLevelRequirement
             {
                 Id = 548,
-                DescEng = "Knowledge of preliminary design stages including all factors like safety, strength of structure, hydrodynamics, and ship arrangement.",
+                DescEng = "Knowledge of the preliminary design stages, including all factors such as safety, structural resistance, hydrodynamics and ship arrangement.",
                 DescFre = "Connaissance des étapes de conception préliminaire, y compris tous les facteurs tels que la sécurité, la résistance de la structure, l'hydrodynamique et la disposition du navire."
             },
             new CompetencyLevelRequirement
             {
                 Id = 549,
-                DescEng = "Intermediate knowledge of basic and applied research, design, development, design evaluation, and calculations during all stages of the life of a marine vessel. Formulation of safety regulations and damage control rules, and the approval and certification of ship designs to meet statutory and non-statutory requirements.",
+                DescEng = "Intermediate knowledge of basic and applied research, design, development, design evaluation and calculations at all stages of a marine vessel’s life. Develops safety regulations and damage control rules, and approves and certifies vessel designs to meet statutory and non-statutory requirements.",
                 DescFre = "Connaissance intermédiaire de la recherche fondamentale et appliquée, de la conception, du développement, de l'évaluation de la conception et des calculs à toutes les étapes de la vie d'un navire marin. Formulation des règlements de sécurité et des règles de contrôle des avaries, et approbation et certification des conceptions de navires pour répondre aux exigences statutaires et non statutaires."
             },
             new CompetencyLevelRequirement
             {
                 Id = 550,
-                DescEng = "Advanced knowledge of research elements to predict the performance of a marine vessel including static stability (intact and damaged), dynamic stability, resistance, powering, hull development, structural analysis, green water modelling, and slamming analysis. Cutting edge knowledge of detailed designing, construction, trials, operation and maintenance, launching and dry-docking activities.",
+                DescEng = "Extensive knowledge of the research elements for predicting marine vessel performance, including static stability (intact and damaged), dynamic stability, resistance, power, hull development, structural analysis, green water modelling and slamming analysis. Advanced knowledge of detailed design, construction, testing, operation and maintenance, launching activities and dry-docking.",
                 DescFre = "Connaissance approfondie des éléments de recherche pour prédire les performances d'un navire marin, y compris la stabilité statique (intacte et endommagée), la stabilité dynamique, la résistance, l'alimentation, le développement de la coque, l'analyse structurelle, la modélisation de l'eau verte et l'analyse du claquement. Connaissance de pointe de la conception détaillée, de la construction, des essais, de l'exploitation et de la maintenance, des activités de lancement et de mise en cale sèche."
             },
             new CompetencyLevelRequirement
             {
                 Id = 551,
-                DescEng = "Expert knowledge and experience in economic, environmentally sound and seaworthy ship building design.",
+                DescEng = "Extensive knowledge and experience in economical, environmentally friendly and seaworthy shipbuilding design.",
                 DescFre = "Connaissance approfondie et expérience de la conception de construction navale économique, respectueuse de l'environnement et navigable."
             },
             new CompetencyLevelRequirement
             {
                 Id = 552,
-                DescEng = "Basic knowledge of computer fundamentals and understand computer applications. Understanding of architectural principles, specifications, and models.",
+                DescEng = "Basic IT knowledge and understanding of IT applications. Understanding of architectural principles, specifications and models.",
                 DescFre = "Connaissances de base en informatique et compréhension des applications informatiques. Compréhension des principes architecturaux, des spécifications et des modèles."
             },
             new CompetencyLevelRequirement
             {
                 Id = 553,
-                DescEng = "Limited knowledge of determining the needs of the user and designing a product that meets the requirements effectively within economic and technological constraints and the creation of basic models based upon specifications.",
+                DescEng = "Limited knowledge of how to determine user needs and design a product that effectively meets requirements within economic and technological constraints and how to create basic models based on specifications.",
                 DescFre = "Connaissance limitée de la détermination des besoins de l'utilisateur et de la conception d'un produit qui répond efficacement aux exigences dans le respect des contraintes économiques et technologiques et de la création de modèles de base basés sur des spécifications."
             },
             new CompetencyLevelRequirement
             {
                 Id = 554,
-                DescEng = "Practical knowledge of the capabilities and programming models of a computer and the structure and behavior of electronic circuits and digital logic circuits. Knowledge of a variety of analytical techniques to solve problems and adjusting work procedures for maximum efficiency. Knowledge of the production of analytic and candidate design models to be used for further analysis (e.g. telecommunications, networks).",
+                DescEng = "Working knowledge of the capabilities and programming models of a computer as well as the structure and behaviour of electronic circuits and digital logic circuits. Knowledge of a variety of analytical techniques to solve problems and adjust work procedures for maximum efficiency. Knowledge of how to produce analytical models and candidate design models to be used for further analysis (e.g. telecommunications, networks).",
                 DescFre = "Connaissance pratique des capacités et des modèles de programmation d'un ordinateur ainsi que de la structure et du comportement des circuits électroniques et des circuits logiques numériques. Connaissance d'une variété de techniques analytiques pour résoudre des problèmes et ajuster les procédures de travail pour une efficacité maximale. Connaissance de la production de modèles analytiques et de modèles de conception candidats à utiliser pour des analyses plus poussées (p. ex. télécommunications, réseaux)."
             },
             new CompetencyLevelRequirement
             {
                 Id = 555,
-                DescEng = "Advanced knowledge of detailed analyses of a computer's organization to optimize performance-based products in a cost-efficient manner. Knowledge of complex circuits and electronic design automation (EDA) systems such as application-specific integrated circuits, microprocessors, and programmable logic devices. Significant knowledge of new requirements and makes design recommendations. Understands validation processes after implementation. Knowledge of metadata models at the enterprise level, information models, and the interoperability model.",
+                DescEng = "Extensive knowledge of detailed analyses of computer organization to optimize performance-based products in a cost-effective manner. Knowledge of complex circuits and electronic design automation (EDA) systems such as integrated circuits, microprocessors and application-specific programmable logic devices. Extensive knowledge of new requirements and able to develop design recommendations. Understands post-implementation validation processes. Knowledge of metadata models at the enterprise level, information models and the interoperability model.",
                 DescFre = "Connaissance approfondie des analyses détaillées de l'organisation d'un ordinateur afin d'optimiser les produits basés sur la performance d'une manière rentable. Connaissance des circuits complexes et des systèmes d'automatisation de la conception électronique (EDA) tels que les circuits intégrés, les microprocesseurs et les dispositifs logiques programmables spécifiques aux applications. Connaissance approfondie des nouvelles exigences et formulation de recommandations de conception. Comprend les processus de validation après la mise en œuvre. Connaissance des modèles de métadonnées au niveau de l'entreprise, des modèles d'information et du modèle d'interopérabilité."
             },
             new CompetencyLevelRequirement
             {
                 Id = 556,
-                DescEng = "Expert knowledge in the optimization of the entire architectural process including instruction set design, functional organization, logic design, and implementation. Expert understanding of how to use and implement newest computer technologies. Expertise in how architecture relates to the organization's vision, how new business fits in the current business lines, the integration of business and technology, and relates government priorities to target architectures. Understands Treasury Board standards (e.g. ISO, WC3 Quality standards) and governance issues.",
+                DescEng = "Expert knowledge in optimizing the entire architectural process, including instruction set design, functional organization, logical design and implementation. Expert understanding of how to use and implement the latest IT technologies. Expertise in how the architecture relates to the organization’s vision, how new activities fit into existing business lines, of business and technology integration, and of the link between government priorities and target architectures. Understands Treasury Board standards (e.g. ISO and WC3 quality standards) and governance issues.",
                 DescFre = "Connaissances expertes dans l'optimisation de l'ensemble du processus architectural, y compris la conception du jeu d'instructions, l'organisation fonctionnelle, la conception logique et la mise en œuvre. Compréhension experte de la façon d'utiliser et de mettre en œuvre les technologies informatiques les plus récentes. Expertise sur la façon dont l'architecture est liée à la vision de l'organisation, la façon dont les nouvelles activités s'intègrent aux secteurs d'activité actuels, l'intégration des activités et de la technologie, et le lien entre les priorités gouvernementales et les architectures cibles. Comprend les normes du Conseil du Trésor (p. ex. normes de qualité ISO, WC3) et les questions de gouvernance."
             },
             new CompetencyLevelRequirement
             {
                 Id = 557,
-                DescEng = "Applies engineering sciences to assist in the design of engineering/electrical projects. Solves or assists in solving defined problems in drafting an engineering project proposal. Makes recommendations for decisions on technical engineering/electrical matters.",
-                DescFre = "Appliquer les sciences du génie pour appuyer la conception de projets techniques ou électriques. Résoudre ou aider à résoudre des problèmes définis dans le cadre de la rédaction d’une proposition de projet technique. Formuler des recommandations en vue de la prise de décisions sur des questions liées à l’application technique ou à l’électricité."
+                DescEng = "Applies engineering science to help create a design, solve a defined problem or prepare an engineering project proposal.",
+                DescFre = "Applique les sciences de l'ingénierie pour contribuer à la création d'une conception, à la résolution d'un problème défini ou à la rédaction d'une proposition de projet d'ingénierie."
             },
             new CompetencyLevelRequirement
             {
                 Id = 558,
-                DescEng = "Applies engineering sciences to moderately complex services of creative work as consultation, investigation, evaluation, and design of engineering/electrical projects. Provides drawing input and reviews. Researches, collects and/or analyzes information/data which contributes to engineering/electrical decisions.",
-                DescFre = "Appliquer les sciences du génie à des services moyennement complexes de création intellectuelle comme les consultations, les investigations, les évaluations et les avant-projets de projets techniques ou électriques. Fournir un avis sur les dessins et les examiner. Rechercher, recueillir ou analyser les renseignements ou les données qui contribuent à la prise de décisions techniques ou électriques."
+                DescEng = "Applies engineering science to moderately complex services or creative work, such as consulting, investigation, evaluation, planning and design for engineering projects. Provides comments and analyses on drawings. Defines problems, conducts research, plans methods and identifies resources.",
+                DescFre = "Applique les sciences de l'ingénierie à des services moyennement complexes ou à des travaux créatifs tels que la consultation, l'investigation, l'évaluation, la planification et la conception de projets d'ingénierie. Fournit des commentaires et des analyses sur les dessins. Définit les problèmes, effectue des recherches, planifie des méthodes et identifie des ressources."
             },
             new CompetencyLevelRequirement
             {
                 Id = 559,
-                DescEng = "Creates engineering/electrical designs and/or project/program specifications to meet desired compliance with engineering/electrical principles, standards, statutes, codes, regulations, and design. Defines problems, conducts research, plans methods, and identifies resources. Provides technical analysis.",
-                DescFre = "Élaborer des avant-projets techniques ou électriques ou des spécifications techniques ou électriques pour un projet ou un programme afin de se conformer aux principes, aux normes, aux lois, aux codes, aux règlements et aux plans techniques ou électriques. Définir des problèmes, mener des travaux de recherche, planifier des méthodes et déterminer des ressources. Fournir une analyse technique."
+                DescEng = "Creates technical designs and/or program/project specifications to comply with technical principles, standards, statutes, codes, regulations and technical designs. Researches, collects and/or analyzes information/data used for technical decision making. Evaluates projects and ensures that they comply with specifications and/or design standards.",
+                DescFre = "Crée des conceptions techniques et/ou des spécifications de programme/projet afin de respecter les principes techniques, normes, statuts, codes, réglementations et les conceptions techniques. Recherche, collecte et/ou analyse des informations/données qui contribuent à la prise de décisions techniques. Évalue les projets et s'assure qu'ils respectent les spécifications et/ou les normes de conception."
             },
             new CompetencyLevelRequirement
             {
                 Id = 560,
-                DescEng = "Approves complex or new engineering/technical designs and/or project/program specifications to meet desired compliance with principles, standards, codes, designs, and statutes. Addresses conflicting design constraints, when and where applicable.",
-                DescFre = "Approuver des avant-projets techniques ou de génie complexes ou nouveaux ou les spécifications pour un projet ou un programme afin de se conformer aux principes, aux normes, aux codes, aux plans et aux lois. Remédier aux contraintes de conception contradictoires, le cas échéant."
+                DescEng = "Able to approve other engineers’ engineering designs and/or program/project specifications. Analyzes information/data used in technical decision making. Evaluates and ensures that projects comply with specifications and/or design standards. Ensures that client relationships are proactively developed by continuously improving the level of service provided in accordance with the service provider contract and standard industry practices.",
+                DescFre = "Peut approuver des conceptions techniques et/ou des spécifications de programme/projet d'autres ingénieurs. Analyse les informations/données qui contribuent à la prise de décisions techniques. Évalue et s'assure que les projets respectent les spécifications et/ou les normes de conception. S'assure que les relations avec les clients sont développées de manière proactive en améliorant continuellement le niveau de service fourni conformément au contrat de fournisseurs de service et aux pratiques standard de l'industrie."
             },
             new CompetencyLevelRequirement
             {
                 Id = 561,
-                DescEng = "Approves final proposals for large scale engineering and/or program areas. Represents the Canadian Coast Guard as an expert in engineering/electrical review and design. Ensures that client relationships are pro-actively developed by continually improving the level of service provided in accordance with the provision of service agreement and industry standard practices.",
-                DescFre = "Approuver les propositions finales pour des domaines techniques ou de programme d’envergure. Représenter la GCC à titre d’expert en examen et en conception technique ou électrique. S’assurer que les relations avec la clientèle sont créées en amont en améliorant sans cesse le niveau de service offert conformément à la disposition sur les accords de service et aux pratiques courantes de l’industrie."
+                DescEng = "Approves all designs, design changes and engineering projects. Examines and/or analyzes information/data used in technical decision making. Evaluates and ensures that projects comply with specifications and/or design standards.",
+                DescFre = "Approuve toutes les conceptions, les modifications de conception et les projets d'ingénierie. Examine et/ou analyse les informations/données qui contribuent à la prise de décisions techniques. Évalue et s'assure que les projets respectent les spécifications et/ou les normes de conception."
             },
             new CompetencyLevelRequirement
             {
                 Id = 562,
-                DescEng = "Controls display in drawings. Create basic drawings.",
-                DescFre = "Contrôler l’affichage des dessins. Créer des dessins de base."
+                DescEng = "Knowledge of the various visual reference commands in AutoCAD.",
+                DescFre = "Connaissance des différentes commandes de référence visuelle d'AutoCAD."
             },
             new CompetencyLevelRequirement
             {
                 Id = 563,
-                DescEng = "Creates AutoCAD drawing files. Saves AutoCAD drawing files in proper format. Operates the AutoCAD visual reference commands including: Zoom extent, drawing LIMITS, status bar, GRID display, and PAN real time. Executes line commands including: format, units setup, LINE command, coordinates, interactive input method, SNAP option, and world space.",
-                DescFre = "Créer des fichiers de dessin AutoCAD. Enregistrer dans le format approprié des fichiers de dessin AutoCAD. Exécuter les commandes de référence visuelle d’AutoCAD, notamment : l’utilisation du zoom, les LIMITES du dessin, la barre d’état, l’affichage de la GRILLE et le panoramique (PAN) en temps réel. Exécuter les commandes de la ligne de commande, notamment : le format, les paramètres des unités, la commande LIGNE, les coordonnées, la méthode interactive de saisie, l’option RESOL et l’espace univers."
+                DescEng = "Recognizes different line commands. Selects the CIRCLE command required for a specific purpose. Provides a reminder on the ARC command. Explains the ERASE command. Describes the selection window. Explains basic Z-coordinate terminology.",
+                DescFre = "Reconnaît les différentes commandes de ligne. Choisit la commande de cercle requise pour un but spécifique. Rappelle la commande ARC. Explique la commande ERASE. Décrit la fenêtre de sélection. Explique les terminologies de base des coordonnées Z."
             },
             new CompetencyLevelRequirement
             {
                 Id = 564,
-                DescEng = "Uses circle commands. Defines positions using the basic entry methods. Uses different options to draw 3D basic ribbons. Recognizes the steps of executing pull down menus. Executes the steps to apply 3D Modelling panels. Identifies options for 3D modelling pull down menus. Draws 2D solids and 3D faces. Draws edges. Explores different methods to add/edit materials to 3D drawings. Drafts moderate-to-complex 2D drawings, charts, schedules. Prepares as-built drawings based on field red-line markups. Develops designs and layouts requiring theoretical and practical design knowledge in a specialized field.",
-                DescFre = "Utiliser les commandes CERCLE. Définir des positions au moyen des méthodes de base de saisie. Utiliser diverses options pour dessiner des rubans de base à trois dimensions. Reconnaître les étapes pour exécuter des menus déroulants. Exécuter les étapes pour appliquer des panneaux de modélisation à trois dimensions. Définir les options pour exécuter des menus déroulants de modélisation à trois dimensions. Dessiner des solides bidimensionnels et des faces tridimensionnelles. Dessiner des arêtes. Explorer diverses méthodes pour ajouter ou modifier des matériaux aux dessins à trois dimensions. Réaliser des dessins, des cartes et des nomenclatures à deux dimensions de complexité moyenne à élevée. Préparer des dessins reflétant une construction réelle sur la base de balises annotées sur le terrain. Élaborer des plans et des dispositions qui nécessitent des connaissances théoriques et pratiques en matière de conception dans un domaine spécialisé."
+                DescEng = "Is familiar with the basic 3D interface in AutoCAD. Explains how to draw basic 3D ribbons using different tools. Identifies different drop-down menu options. Provides a reminder of good knowledge of the 3D modeling interface. Recognizes different options in the 3D modeling drop-down menus. Applies/configures materials.",
+                DescFre = "Se familiarise avec l'interface de base de la 3D dans AutoCAD. Explique comment dessiner des rubans de base en 3D à l'aide de différents outils. Identifie différentes options de menus déroulants. Rappelle une bonne connaissance de l'interface de modélisation 3D. Reconnaît différentes options dans les menus déroulants de la modélisation 3D. Appliquer/configurer les matériaux."
             },
             new CompetencyLevelRequirement
             {
                 Id = 565,
-                DescEng = "Applies the thickness command at command prompt with different values or modify general properties of an object. Executes the 'Elev' command at command prompt with different values. Identifies different styles including: display of edges and shading (visual styles) in the viewport. Draws basic 3D surfaces. Categorizes points and spot lights.",
-                DescFre = "Appliquer la commande d’épaisseur à l’invite de commande au moyen de diverses valeurs ou modifier les propriétés générales d’un objet. Exécuter la commande d’élévation (ELEV) à l’invite de commande au moyen de diverses valeurs. Définir divers styles, notamment l’affichage des arêtes et de l’ombrage (styles visuels) dans la fenêtre de présentation. Dessiner des surfaces tridimensionnelles de base. Catégoriser les sources ponctuelles et les sources dirigées."
+                DescEng = "Introduces thickness and elevation. Explains how to run the “thickness” command using the command prompt. Explains how to adjust object elevation. Visualizes the model by being able to define different styles. Explains how to manage different styles using different options. Defines different visual functions (hide, grid). Defines the user coordinate system. Executes the rendering. Applies lights.",
+                DescFre = "Introduit l'épaisseur et l'élévation. Explique comment exécuter la commande “thickness” à l'invite de commande. Explique comment régler l'élévation de l'objet. Visualise le modèle en étant capable de définir différents styles. Explique comment gérer différents styles en utilisant différentes options. Définit différentes fonctions visuelles (masquer, grille). Définit le système de coordonnées utilisateur. Exécute le rendu. Applique des lumières."
             },
             new CompetencyLevelRequirement
             {
                 Id = 566,
-                DescEng = "Develops Surfaces. Creates 3D solid or surfaces in the space between several cross sections. Builds surface networks. Creates a blend surface between two existing surfaces. Creates 2D or 'flattened' representations of all 3D objects in the current view using 'flatshot' command. Explains render command. Recognizes environmental features. Assures that work complies with the accuracy level and time constraints required for the assignment. Potentially directs work for a small number of drafters, providing guidance and instruction on work methods, and checks finished work.Ability to meet safety requirements and attend site visits.",
-                DescFre = "Concevoir des surfaces. Créer des solides ou des surfaces à trois dimensions dans l’espace se trouvant entre plusieurs coupes transversales. Concevoir des surfaces de réseau. Créer une surface de fusion entre deux surfaces existantes. Créer des représentations bidimensionnelles ou « aplanies » de tous les objets tridimensionnels dans la vue au moyen de la commande d’aplanissement (APLANIRGEOM). Expliquer la commande RENDU. Reconnaître les fonctionnalités de l’environnement. Veiller à ce que le travail respecte les contraintes de temps et le degré d’exactitude requis pour la tâche. Diriger, éventuellement, les travaux d’un petit nombre de dessinateurs, leur donner des conseils et des instructions sur les méthodes de travail et vérifier les produits finis. Être en mesure de satisfaire aux exigences relatives à la sécurité et assister aux visites des sites."
+                DescEng = "Is familiar with 3D orbit. Performs 3D navigation. Operates 3D objects. Identifies different primitive mesh options. Explains the process for editing existing meshes. Understands complex 3D surfaces. Describes surface associativity. Creates solids. Modifies 3D objects. Develops composite 3D solids. Modifies solid faces. Modifies solids. Navigates through section objects. Merges flat objects.",
+                DescFre = "Se familiarise avec l'orbite 3D. Effectue la navigation 3D. Fait fonctionner des objets 3D. Identifie différentes options primitives de maillage. Explique le processus d'édition des maillages existants. Comprend les surfaces 3D complexes. Décrit l'associativité de surface. Crée des solides. Modifie les objets 3D. Développe des composites solides 3D. Modifie les faces pleines. Modifie les solides. Navigue dans les objets de section. Fusionne des objets plats."
             },
             new CompetencyLevelRequirement
             {
@@ -3631,36 +3631,6 @@ namespace DataModel.SeedData
                 Id = 631,
                 DescEng = "Sets direction and oversees the implementation of priorities. Builds an effective, sustainable organization through stewardship and governance. Informs decision-making with sound understanding of context, data, and evidence. Makes challenging decisions and takes action at the opportune time. Takes ownership and acknowledges impact and outcome of decisions.",
                 DescFre = "Établit l'orientation et supervise la mise en œuvre des priorités. Bâtit une organisation efficace et durable grâce à l'intendance et à la gouvernance. Éclaire la prise de décision grâce à une bonne compréhension du contexte, des données et des éléments probants. Prend des décisions difficiles et prend des mesures au moment opportun. S'approprier et reconnaître l'impact et les résultats des décisions."
-            },
-            new CompetencyLevelRequirement
-            {
-                Id = 632,
-                DescEng = "Applies basic circuit analysis methods to solve electrical design problems.",
-                DescFre = "Applique des méthodes d'analyse de circuit de base pour résoudre les problèmes de conception électrique."
-            },
-            new CompetencyLevelRequirement
-            {
-                Id = 633,
-                DescEng = "Analyzes engineering projects for electrical specifications. Provides drawing input and reviews, conducts research, plans methods, and identifies resources.",
-                DescFre = "Analyse les projets d'ingénierie pour les spécifications électriques. Fournit des idées et des critiques, mène des recherches, planifie des méthodes et identifie des ressources."
-            },
-            new CompetencyLevelRequirement
-            {
-                Id = 634,
-                DescEng = "Develops project management schedules. Designs electrical circuitry or boards to project specifications. Conducts product testing. Provides test results. Provides and develops fixturing concepts.",
-                DescFre = "Élabore des calendriers de gestion de projet. Conçoit des circuits électriques ou des graphiques selon les spécifications du projet. Effectue des tests. Fournit les résultats des tests. Fournit et développe des concepts de fixation."
-            },
-            new CompetencyLevelRequirement
-            {
-                Id = 635,
-                DescEng = "Designs and develops product concepts based on research and development. Analyzes data and develops reports including materiel and budgetary elements. Conducts preliminary drawing reviews. Understands and teaches drawings and blueprint standards.",
-                DescFre = "Conçoit et développe des concepts de produits basés sur la recherche et le développement. Analyse les données et élabore des rapports comprenant des éléments matériels et budgétaires. Élabore des examens préliminaires des graphiques. Comprend et enseigne les dessins et les normes de plans."
-            },
-            new CompetencyLevelRequirement
-            {
-                Id = 636,
-                DescEng = "Develops high-level reports. Attends design and engineering meetings, develops schedules, and considers resource allocations and conducts model manipulation. Provides feedback and communicates with design authority.",
-                DescFre = "Développe des rapports de haut niveau. Assiste aux réunions de conception et d’ingénierie, élabore des calendriers, examiner les affectations de ressources et procède à la manipulation des modèles. Fournit des commentaires et communique avec l'autorité en matière de conception."
             }
         };
     }

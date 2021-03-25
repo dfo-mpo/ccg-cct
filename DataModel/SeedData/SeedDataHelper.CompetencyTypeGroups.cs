@@ -116,7 +116,7 @@ namespace DataModel.SeedData
             new CompetencyTypeGroup {CompetencyId = 111, CompetencyTypeId = 1},
             new CompetencyTypeGroup {CompetencyId = 112, CompetencyTypeId = 1},
             new CompetencyTypeGroup {CompetencyId = 113, CompetencyTypeId = 2},
-            new CompetencyTypeGroup {CompetencyId = 114, CompetencyTypeId = 1},
+            new CompetencyTypeGroup {CompetencyId = 114, CompetencyTypeId = 2},
             new CompetencyTypeGroup {CompetencyId = 115, CompetencyTypeId = 1},
             new CompetencyTypeGroup {CompetencyId = 116, CompetencyTypeId = 1},
             new CompetencyTypeGroup {CompetencyId = 117, CompetencyTypeId = 2},
@@ -133,8 +133,7 @@ namespace DataModel.SeedData
             new CompetencyTypeGroup {CompetencyId = 128, CompetencyTypeId = 4},
             new CompetencyTypeGroup {CompetencyId = 129, CompetencyTypeId = 4},
             new CompetencyTypeGroup {CompetencyId = 130, CompetencyTypeId = 4},
-            new CompetencyTypeGroup {CompetencyId = 131, CompetencyTypeId = 4},
-            new CompetencyTypeGroup {CompetencyId = 132, CompetencyTypeId = 2},
+            new CompetencyTypeGroup {CompetencyId = 131, CompetencyTypeId = 4}
         };
     }
 }

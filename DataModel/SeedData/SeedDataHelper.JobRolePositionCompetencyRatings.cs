@@ -29971,13 +29971,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 328, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 328, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -29986,8 +29981,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 328, CompetencyId = 132, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 632
+                    JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 328, CompetencyId = 114, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30071,13 +30066,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 329, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 2, JobPositionId = 329, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30162,13 +30152,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 330, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 330, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30277,13 +30262,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 331, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 331, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30382,13 +30362,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 332, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 332, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30492,13 +30467,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 333, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 333, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30507,8 +30477,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 333, CompetencyId = 132, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 634
+                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 333, CompetencyId = 114, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30602,13 +30572,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 334, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 544
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 3, JobPositionId = 334, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30712,11 +30677,6 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 335, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 335, CompetencyId = 115, CompetencyTypeId = 1,
                     CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
                 },
@@ -30817,13 +30777,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 336, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 336, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30832,8 +30787,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 336, CompetencyId = 132, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 635
+                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 336, CompetencyId = 114, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -30924,11 +30879,6 @@ namespace DataModel.SeedData
                 {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 337, CompetencyId = 1, CompetencyTypeId = 1,
                     CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 3
-                },
-                new JobRolePositionCompetencyRating
-                {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 337, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31029,11 +30979,6 @@ namespace DataModel.SeedData
                 {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 338, CompetencyId = 1, CompetencyTypeId = 1,
                     CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 3
-                },
-                new JobRolePositionCompetencyRating
-                {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 338, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31142,13 +31087,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 339, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 339, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 550
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31252,13 +31192,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 340, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 340, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 550
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31362,13 +31297,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 341, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 341, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31467,8 +31397,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 342, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
+                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 342, CompetencyId = 115, CompetencyTypeId = 1,
+                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31567,13 +31497,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 343, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 343, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 550
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31672,8 +31597,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 344, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
+                    JobGroupId = 11, JobGroupLevelId = 4, JobPositionId = 344, CompetencyId = 115, CompetencyTypeId = 1,
+                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31774,11 +31699,6 @@ namespace DataModel.SeedData
                 {
                     JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 345, CompetencyId = 1, CompetencyTypeId = 1,
                     CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 4
-                },
-                new JobRolePositionCompetencyRating
-                {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 345, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 546
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -31892,8 +31812,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 346, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
+                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 346, CompetencyId = 115, CompetencyTypeId = 1,
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32002,8 +31922,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 347, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
+                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 347, CompetencyId = 115, CompetencyTypeId = 1,
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32102,13 +32022,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 348, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 348, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32217,13 +32132,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 349, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 546
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 349, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 549
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 551
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32237,8 +32147,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 349, CompetencyId = 132, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 635
+                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 349, CompetencyId = 114, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 545
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32332,13 +32242,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 350, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 350, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32432,13 +32337,8 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 351, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 543
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 5, JobPositionId = 351, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 2, CompetencyLevelRequirementId = 548
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32547,38 +32447,48 @@ namespace DataModel.SeedData
                 },
                 new JobRolePositionCompetencyRating
                 {
-                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 114, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 542
-                },
-                new JobRolePositionCompetencyRating
-                {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 115, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 547
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 547
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 116, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 552
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 556
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 107, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 507
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 511
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 112, CompetencyTypeId = 1,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 532
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 536
+                },
+                new JobRolePositionCompetencyRating
+                {
+                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 117, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 561
+                },
+                new JobRolePositionCompetencyRating
+                {
+                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 114, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 546
+                },
+                new JobRolePositionCompetencyRating
+                {
+                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 43, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 191
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 53, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 239
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 241
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 9, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 44
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 46
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32588,27 +32498,37 @@ namespace DataModel.SeedData
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 11, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 54
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 56
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 22, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 109
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 111
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 55, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 250
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 251
+                },
+                new JobRolePositionCompetencyRating
+                {
+                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 118, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 566
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 19, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 95
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 96
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 18, CompetencyTypeId = 2,
-                    CompetencyRatingLevelId = 3, CompetencyLevelRequirementId = 89
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 91
+                },
+                new JobRolePositionCompetencyRating
+                {
+                    JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 119, CompetencyTypeId = 2,
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 571
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32618,7 +32538,7 @@ namespace DataModel.SeedData
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 27, CompetencyTypeId = 3,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 135
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 136
                 },
                 new JobRolePositionCompetencyRating
                 {
@@ -32633,12 +32553,12 @@ namespace DataModel.SeedData
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 34, CompetencyTypeId = 3,
-                    CompetencyRatingLevelId = 1, CompetencyLevelRequirementId = 147
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 151
                 },
                 new JobRolePositionCompetencyRating
                 {
                     JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 36, CompetencyTypeId = 3,
-                    CompetencyRatingLevelId = 4, CompetencyLevelRequirementId = 155
+                    CompetencyRatingLevelId = 5, CompetencyLevelRequirementId = 156
                 },
                 new JobRolePositionCompetencyRating
                 {
