@@ -17,29 +17,37 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string Level { get; set; }
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; }
         [BindProperty(SupportsGet = true)]
         public JobPositionDto ObjectivePosition { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string Obj { get; set; } = null;
+        public string ObjectiveId { get; set; } = null;
         public JobGroupPositionDto[] JobGroupLevels { get; set; }
         public JobPositionDto[] JobGroupPositions { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
 
         public ObjectivePositionModel(ILogger<ObjectivePositionModel> logger, JobGroupService jobcategoryService)
         {
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
-        public async Task OnGetAsync(int id, string level, int obj)
+        public async Task OnGetAsync(int id, string levelobj, int objectiveid)
         {
             _logger.LogInformation($"Objective positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroup = await _jobcategoryService.GetJobGroupById(id);
             JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
-            ObjectivePosition = obj==0 ? null : await _jobcategoryService.GetJobPositionById(obj);           
+            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, levelobj);
+            ObjectivePosition = objectiveid==0 ? null : await _jobcategoryService.GetJobPositionById(objectiveid);           
         }
     }
 }

@@ -16,11 +16,19 @@ namespace Web.Pages.CCGMember.Compare
         public JobGroupDto JobGroup { get; set; }
         public JobGroupPositionDto[] JobGroupPositions { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int Level { get; set; }
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; }
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         public ObjectiveLevelModel(ILogger<ObjectiveLevelModel> logger, JobGroupService jobcategoryService)
         {
             _logger = logger;

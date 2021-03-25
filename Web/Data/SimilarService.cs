@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Business.Dtos.JobPositions;
-using Business.Dtos.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Business.Dtos.JobCompetencies;
 
 namespace Web.Data
 {

@@ -9,8 +9,12 @@ namespace Web.Pages.CCGMember
 {
     public class SearchTypeModel : PageModel
     {
-        [BindProperty(SupportsGet =true)]
+        [BindProperty(SupportsGet = true)]
+        public string Id { get; set; }
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; }
         public void OnGet()
         {
 

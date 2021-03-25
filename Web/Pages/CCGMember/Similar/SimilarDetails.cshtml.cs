@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobPositions;
-using Business.Dtos.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Rotativa.AspNetCore;
 using Web.Data;
 
 namespace Web.Pages.CCGMember.Similar
@@ -19,6 +16,10 @@ namespace Web.Pages.CCGMember.Similar
         private readonly JobPositionService _jobpositionService;
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -36,6 +37,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string AddedCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; }
@@ -52,6 +55,7 @@ namespace Web.Pages.CCGMember.Similar
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(objectiveid);
+            LevelObj = Position.JobLevelId.ToString();
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(objectiveid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +21,10 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SameLevels { get; set; }
@@ -30,6 +32,8 @@ namespace Web.Pages.CCGMember.Similar
         public string HigherLevels { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string AddedCompetencies { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; } 
         [BindProperty(SupportsGet = true)]
@@ -43,11 +47,11 @@ namespace Web.Pages.CCGMember.Similar
             _logger = logger;
             _similarService = similarService;
         }
-        public async Task OnGet(string percentmatch, int positionid)
+        public async Task OnGet(int positionid)
         {
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _similarService.GetJobPositionById(PositionId);
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{SameLevels}{HigherLevels}{SameOrHigherLevels}{Certificates}{PercentMatch}");
+            RouteParameter = String.Format($"jobPositionId={positionid}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
             Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);       
         }
     }

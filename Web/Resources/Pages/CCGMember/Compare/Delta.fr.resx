@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
+  <data name="Added" xml:space="preserve">
+    <value>Ajouté</value>
   </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
@@ -140,9 +140,6 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
-  </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS DE CONNAISSANCE</value>
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
@@ -191,8 +188,5 @@
   </data>
   <data name="Selected Position Level" xml:space="preserve">
     <value>Niveau de position sélectionné</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS TECHNIQUES</value>
   </data>
 </root>

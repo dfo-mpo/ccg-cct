@@ -37,6 +37,15 @@ namespace Web.Pages
             return new Rotativa.AspNetCore.ViewAsPdf("GetSimilarPositionsCandidateAsPdf", ViewData);
         }
 
+        [Route("StudentPositionsList")]
+        public ActionResult StudentPositionsList(string shoresideIds, string seagoingIds, string language)
+        {
+            ViewData["shoresideId"] = shoresideIds;
+            ViewData["seagoingId"] = seagoingIds;
+            ViewData["Language"] = language;
+            return new Rotativa.AspNetCore.ViewAsPdf("GetStudentPositionsAsPdf", ViewData);
+        }
+
         [Route("Delta")]
         public ActionResult Delta(int id, int obj, string language)
         {

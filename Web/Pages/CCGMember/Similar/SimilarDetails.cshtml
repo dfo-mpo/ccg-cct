@@ -6,18 +6,34 @@
     var routedata = new Dictionary<string, string>
     {
         {"positionid" , Model.PositionId.ToString()},
-        { "obj",  Model.ObjectiveId.ToString()}
+        {"objectiveid",  Model.ObjectiveId.ToString()},
+        {"id", Model.Id.ToString() },
+        {"level", Model.Level.ToString() },
+        {"levelObj", Model.LevelObj },
+        {"pagesubmit", "true" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"addedcompetencies",Model.AddedCompetencies},
+        {"percentmatch", Model.PercentMatch },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails },
+        {"previouspage", Model.PreviousPage},
+        {"previouspagedelta", "../Similar/SimilarDetails" }
 
     };
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid", Model.PositionId.ToString()},
         {"id", Model.Id.ToString() },
+        {"level", Model.Level.ToString() },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
         {"certificates", Model.Certificates },
         {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"addedcompetencies",Model.AddedCompetencies},
         {"percentmatch", Model.PercentMatch },
         {"previouspagesimilar", Model.PreviousPageSimilar },
         {"previouspagedetails", Model.PreviousPageDetails },
@@ -68,11 +84,13 @@
                 {
                     @foreach (var competencytype in Model.PositionCompetencyRatings)
                     {
+                        if (competencytype.Any()) 
+                        { 
                         <tr>
                             <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
                             <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                         </tr>
-
+                       
                         foreach (var c in competencytype)
                         {
                             var key1 = "a" + c.CompetencyId.ToString();
@@ -110,6 +128,7 @@
                                     </section>
                                 </td>
                             </tr>
+                            }
                         }
                     }
                 }

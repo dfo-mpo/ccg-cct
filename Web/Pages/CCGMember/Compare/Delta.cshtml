@@ -135,6 +135,12 @@
                         {
                             var key1 = "a" + d.CompetencyId.ToString();
                             var key2 = "b" + d.CompetencyId.ToString();
+                            var currentrating = d.RatingValueCur;
+                            var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
+                            if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
+                            {
+                                    currentrating = Localizer["Added"].Value;
+                            }
                             <tr>
                                 <td>
                                     <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
@@ -149,7 +155,7 @@
                                     </section>
                                 </td>
                                 <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@d.RatingValueCur</abbr></a>
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
                                     <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
@@ -178,7 +184,7 @@
             }
         }
     </section>
-@if (Model.Id !=0) {
+
     <div class="row">
         <div class="col-lg-12 mrgn-bttm-md">
             <nav role="navigation" class="mrgn-bttm-lg">
@@ -189,15 +195,27 @@
                     @{
                         var routedata = new Dictionary<string, string>
                     {
-                        { "positionid",  Model.PositionId.ToString()},
-                        { "obj",  Model.Obj.ToString() },
-                        { "id",  Model.Id.ToString()},
-                        { "level",  Model.Level.ToString() }
+                        {"positionid",  Model.PositionId.ToString()},
+                        {"objectiveid",  Model.ObjectiveId.ToString() },
+                        {"id",  Model.Id.ToString()},
+                        {"level",  Model.Level.ToString() },
+                        {"levelobj", Model.LevelObj.ToString() },
+                        {"pagesubmit", "true" },
+                        {"samelevels" , Model.SameLevels},
+                        {"higherlevels", Model.HigherLevels },
+                        {"certificates", Model.Certificates },
+                        {"sameorhigherlevels", Model.SameOrHigherLevels },
+                        {"addedcompetencies",Model.AddedCompetencies},
+                        {"percentmatch", Model.PercentMatch },
+                        {"previouspagesimilar", Model.PreviousPageSimilar },
+                        {"previouspagecompare", Model.PreviousPageCompare },
+                        {"previouspagedetails", Model.PreviousPageDetails },
+                        {"previouspage", Model.PreviousPage}
                     };
                     }
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="ObjectivePosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>   
     </div>
-                        }
+                        
