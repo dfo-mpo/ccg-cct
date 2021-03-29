@@ -14,10 +14,19 @@ namespace Web.Pages.CCGMember.Compare
         private readonly JobGroupService _jobgroupService;
         public JobGroupDto[] JobGroups { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string Id { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageCompare { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; }
         public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobGroupService jobgroupService)
         {
             _logger = logger;

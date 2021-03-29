@@ -10,7 +10,6 @@
 
 <h2><b>@Localizer["h2Text"]</b></h2>
 
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
 <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
     <div class="col-sm-3">
@@ -55,6 +54,9 @@
         </ul>
     </div>
 </div>
+
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
+
 @{var routedataprevious = new Dictionary<string, string>
 {
     { "id",  Model.Id.ToString()},

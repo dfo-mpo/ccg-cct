@@ -151,7 +151,6 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="wwwroot\img\Student\" />
   </ItemGroup>
 
   <ItemGroup>

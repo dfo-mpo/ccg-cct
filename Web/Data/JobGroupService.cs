@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
 using System.Collections;
 using Business.Dtos.JobGroups;
 using Business.Dtos.JobPositions;
@@ -26,8 +24,8 @@ namespace Web.Data
                 JobGroupDto jb1 = o1 as JobGroupDto;
                 JobGroupDto jb2 = o2 as JobGroupDto;
                 if (System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en")
-                { return String.Compare(jb1.NameEng, jb2.NameEng); }
-                else { return String.Compare(jb1.NameFre, jb2.NameFre); }
+                { return string.Compare(jb1.NameEng, jb2.NameEng); }
+                else { return string.Compare(jb1.NameFre, jb2.NameFre); }
             }
         }
 

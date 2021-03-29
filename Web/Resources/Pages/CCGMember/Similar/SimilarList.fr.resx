@@ -129,6 +129,12 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>POSTE</value>
+  </data>
+  <data name="POSITIONS" xml:space="preserve">
+    <value>POSTES</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

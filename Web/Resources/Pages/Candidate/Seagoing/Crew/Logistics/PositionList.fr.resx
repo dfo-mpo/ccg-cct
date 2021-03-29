@@ -123,10 +123,19 @@
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>POSTE</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
   <data name="POSITION RESULTS" xml:space="preserve">
     <value>RÉSULTATS DE POSITION</value>
+  </data>
+  <data name="POSITIONS" xml:space="preserve">
+    <value>POSTES</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
   </data>
 </root>

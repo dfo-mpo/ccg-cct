@@ -27,6 +27,8 @@ namespace Web.Pages.Candidate.Shoreside
         public string Certificates { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageList { get; set; } = string.Empty;
         [BindProperty]
         public int Level { get; set; }
         [BindProperty]

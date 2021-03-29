@@ -50,9 +50,19 @@ namespace Web.Data
 
         public async Task<JobCompetencyDto[]> GetAllJobCompetencyTypes()
         {
-            string url = $"/api/jobcompetency/types";
+            string url = $"/api/jobcompetencies/types";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
+        }
+        public async Task<JobCompetencyDto[]> GetJobCompetenciesByTypeId(int? TypeId)
+        {
+            if (TypeId.HasValue)
+            {
+                string url = $"/api/jobcompetencies/{TypeId}/jobcompetencies";
+                using var httpClient = _clientFactory.CreateClient("api");
+                return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
+            }
+            else return new JobCompetencyDto[] { };
         }
 
 
