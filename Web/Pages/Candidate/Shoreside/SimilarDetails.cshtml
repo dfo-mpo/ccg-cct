@@ -42,7 +42,7 @@
                 <tbody>
                     <tr>
                         <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
-                       
+
                     </tr>
                     @if (Model.PositionCertificates.Any())
                     {
@@ -50,8 +50,22 @@
                         {
                             if (Model.CertificateIds.Contains(c.Id.ToString()))
                             {
+                                var key = "c" + c.Id.ToString();
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                    <td>
+                                        <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
+                                            @(isEnglish ? c.NameEng : c.NameFre)
+                                        </a>
+                                        <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
+                                                <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
+                                    </td>
                                 </tr>
                             }
                             else

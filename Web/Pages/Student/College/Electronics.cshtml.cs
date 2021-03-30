@@ -28,44 +28,10 @@ namespace Web.Pages.Student.College
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"College Student Electronics positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Architecture, Engineering ENG-02
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(11, "02"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-
-            //Engineering and Scientific Support EG-02 to EG-05
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "02"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "03"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "04"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "05"))
+            //Electronics EL
+            foreach (var position in await _jobgroupService.GetJobPositionsByGroupId(23))
             {
                 if (!position.Equals(null))
                 {

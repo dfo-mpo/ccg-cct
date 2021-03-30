@@ -27,6 +27,7 @@ namespace Service.Controllers
         public async Task<IActionResult> GetAllSimilarPositionsByPositionId(
             
             [FromQuery] int   jobPositionId, 
+            [FromQuery] int[] requiredCompetencyId,
             [FromQuery] int[] sameLevelCompetencyId,
             [FromQuery] int[] higherLevelCompetencyId,
             [FromQuery] int[] sameOrHigherLevelCompetencyId,
@@ -37,6 +38,7 @@ namespace Service.Controllers
             var query = new GetAllSimilarPositionsByPositionIdQuery
             {
                 JobPositionId = jobPositionId,
+                RequiredCompetencyId = requiredCompetencyId,
                 SameLevelCompetencyId = sameLevelCompetencyId,
                 HigherLevelCompetencyId = higherLevelCompetencyId,
                 SameOrHigherLevelCompetencyId = sameOrHigherLevelCompetencyId,

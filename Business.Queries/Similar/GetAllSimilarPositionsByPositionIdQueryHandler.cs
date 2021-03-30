@@ -14,6 +14,7 @@ namespace Business.Queries.Similar
     public class GetAllSimilarPositionsByPositionIdQuery : IQuery<List<JobPositionDto>>
     {
         public int JobPositionId { get; set; }
+        public int[] RequiredCompetencyId { get; set; }
         public int[] HigherLevelCompetencyId { get; set; }
         public int[] SameLevelCompetencyId { get; set; }
         public int[] SameOrHigherLevelCompetencyId { get; set; }
@@ -44,7 +45,7 @@ namespace Business.Queries.Similar
             var higherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.HigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var sameOrHigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var allPositionCompetencies = allPositionCompetencyRatings.Keys.ToList();
-            var allCurrentCompetencies = allPositionCompetencies.Union(query.AddedCompetencyId.ToList()).ToList();
+            var allCurrentCompetencies = allPositionCompetencies.Union(query.AddedCompetencyId.ToList());
             var resultCertificates = (
                     await _db.JobRolePositionCertificates
                     .Include(e => e.Certificate).ToListAsync()
@@ -79,6 +80,10 @@ namespace Business.Queries.Similar
                     JobPositionId = g.Key.JobPositionId,
                     CompetencyRatings = g.Select(e => new JobCompetencyRatingDto { CompetencyId = e.CompetencyId, RatingValue = e.CompetencyRatingLevel.Value }).ToList()
                 })
+                .Where(e=>
+                    !query.RequiredCompetencyId.Any()
+                    ||e.CompetencyRatings.Any(s=>query.RequiredCompetencyId.Contains(s.CompetencyId))
+                 )
                 .Where(e =>
                     !sameLevelCompetencies.Any()
                     || sameLevelCompetencies.All(
