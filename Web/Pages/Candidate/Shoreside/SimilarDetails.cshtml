@@ -24,6 +24,17 @@
             <a href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
             <a href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
         </div>
+        <br />
+        @if (Model.Position.JobTitleEng.Contains("MELDEV") || Model.Position.JobTitleEng.Contains("MCTS"))
+        {
+            <div class="col-md-offset-2 col-md-8" style="background-color:#f2f2f2; padding-bottom:25px;">
+                <div class="text-center">
+                    <h4>@Localizer["PDAPText"]</h4>
+                    @{var url = Model.Position.JobTitleEng.Contains("MELDEV") ? Localizer["MELDEVUrl"] : Localizer["MCTSUrl"]; }
+                    <a href="@url">@url</a>
+                </div>
+            </div>
+        }
         <form asp-all-route-data="RouteParameter" method="post">
             <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
                 <div class="col-md-9"><h3>@Localizer["Question1"]</h3></div>
@@ -86,6 +97,7 @@
                     {
                         @foreach (var competencytype in Model.PositionCompetencyRatings)
                         {
+                            if (competencytype.Any()) { 
                             <tr>
                                 <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
                                 <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
@@ -128,6 +140,7 @@
                                         </section>
                                     </td>
                                 </tr>
+                                }
                             }
                         }
                     }

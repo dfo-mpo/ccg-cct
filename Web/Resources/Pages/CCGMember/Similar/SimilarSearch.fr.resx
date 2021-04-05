@@ -120,11 +120,11 @@
   <data name="Add Element" xml:space="preserve">
     <value>Ajouter un élément</value>
   </data>
+  <data name="ADDED ELEMENTS" xml:space="preserve">
+    <value>ÉLÉMENTS AJOUTÉS</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
-  </data>
-  <data name="Clear List" xml:space="preserve">
-    <value>Effacer tout</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
@@ -136,7 +136,7 @@
     <value>Niveau de poste actuel</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Effacer</value>
+    <value>Supprimer</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Éditer</value>
@@ -171,8 +171,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Rafraîchir</value>
+  </data>
   <data name="SAME CERTIFICATION" xml:space="preserve">
-    <value>MÊMES ATTESTATION</value>
+    <value>MÊME ATTESTATION</value>
   </data>
   <data name="SAME ELEMENT" xml:space="preserve">
     <value>MÊME ÉLÉMENT</value>

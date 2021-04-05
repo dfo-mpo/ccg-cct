@@ -30,8 +30,8 @@ namespace Web.Pages.Student.College
         {
             _logger.LogInformation($"College Student Electronics positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Electronics EL
-            foreach (var position in await _jobgroupService.GetJobPositionsByGroupId(23))
+            //Electronics EL-04
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(23, "04"))
             {
                 if (!position.Equals(null))
                 {
