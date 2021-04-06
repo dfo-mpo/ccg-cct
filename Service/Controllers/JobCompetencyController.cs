@@ -64,5 +64,32 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
+        [HttpGet, Route("types/{TypeId}")]
+        [ProducesResponseType(typeof(List<JobCompetencyTypeDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllCompetenciesByTypeId([FromRoute] GetJobCompetencyTypeByIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("{TypeId}/jobcompetencies")]
+        [ProducesResponseType(typeof(List<JobCompetencyDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllCompetenciesByTypeId([FromRoute] GetAllJobCompetenciesByTypeIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("{Id}")]
+        [ProducesResponseType(typeof(JobCompetencyDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobCompetencyById([FromRoute] GetJobCompetencyByIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
     }
 }

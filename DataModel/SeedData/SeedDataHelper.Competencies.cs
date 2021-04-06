@@ -11,8 +11,8 @@ namespace DataModel.SeedData
             new Competency
             {
                 Id = 1, NameEng = "Organizational Knowledge", NameFre = "Connaissances organisationnelles",
-                DescEng = "Knowledge of the Canadian Coast Guard organization, partners, and relationships with Fisheries and Oceans Canada (DFO), and other internal and external stakeholders.",
-                DescFre = "Connaissance de l'organisation GCC, de ses partenaires et des relations avec le ministère des pêches et océans (MPO) et d'autres intervenants internes et externes."
+                DescEng = "Knowledge of the Canadian Coast Guard organization, its partners, and relationships with the Department of Fisheries and Oceans (DFO) and other internal and external stakeholders.",
+                DescFre = "Connaissance de l'organisation de la Garde côtière canadienne, de ses partenaires et des relations avec le ministère des pêches et océans (MPO) et d'autres intervenants internes et externes."
             },
             new Competency
             {
@@ -58,21 +58,21 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 9, NameEng = "Project/Program Management", NameFre = "Gestion de projet et de programme",
-                DescEng = "Manages a project or program while respecting procedures, operations, policies, and legislation, including inter-relationships with other departments, agencies, or the private sector. Project management involves effectively participating and/or integrating all aspects of a given finite project, ensuring that work progresses towards achieving goals and objectives. Program management involves effectively managing an ongoing activity line.",
-                DescFre = "Gérer un projet ou un programme tout en respectant les procédures, les opérations, les politiques et les lois, notamment sur le plan des relations avec d’autres ministères, d’autres organismes ou le secteur privé. La gestion de projet suppose une participation efficace ou l’intégration de tous les aspects d’un projet fini donné, en veillant à ce que le travail progresse vers la réalisation de buts et d’objectifs. La gestion de programme consiste à gérer efficacement un secteur d’activité permanent."
+                Id = 9, NameEng = "Project/Program Management", NameFre = "Gestion de projet / programme",
+                DescEng = "Program management is the management of a program or part of a programme and/or a series of projects, involving in-depth and extensive knowledge of areas such as procedures, operations, policies and other departments, agencies or the private sector, as well as specialized technical knowledge of programs. Project management involves effectively integrating and/or participating in all aspects of a finished project, ensuring that work progresses towards the achievement of goals and objectives.",
+                DescFre = "La gestion de programme est la gestion d’un programme ou d’une partie d’un programme et/ou d’une série de projets, comprenant une connaissance approfondie et étendue des domaines tels que les procédures, les opérations, les politiques et la d’autres ministères, d’organismes ou du secteur privé ainsi que des connaissances techniques spécialisées en matière de programmes. La gestion de projet implique de participer et/ou d’intégrer efficacement tous les aspects d’un projet fini, en veillant à ce que les travaux progressent dans la réalisation des buts et objectifs."
             },
             new Competency
             {
-                Id = 10, NameEng = "Planning and Prioritizing", NameFre = "Planification et établissement des priorités",
-                DescEng = "Integrates various ideas, intentions, and information to form effective goals, objectives, timelines, action plans, and solutions.",
-                DescFre = "Intégrer diverses idées, intentions et informations pour former des buts, des objectifs, des calendriers, des plans d’action et des solutions efficaces."
+                Id = 10, NameEng = "Planning and Priority Setting", NameFre = "Planification et établissement de priorités",
+                DescEng = "Logically integrates various ideas, intentions and information to define goals, objectives, schedules, action plans and effective solutions.",
+                DescFre = "Intègre diverses idées, intentions et informations pour former des buts, objectifs, calendriers, plans d'action et solutions efficaces."
             },
             new Competency
             {
                 Id = 11, NameEng = "Procurement and Purchasing", NameFre = "Approvisionnement et achats",
-                DescEng = "Manages the process of selecting vendors, establishing payment terms, strategic vetting, selection, the negotiation of contracts, and actual purchasing of goods.",
-                DescFre = "Gérer le processus de sélection des fournisseurs, d’établissement des modalités de paiement, d’examen stratégique, de sélection, de négociation des contrats et d’achat des marchandises."
+                DescEng = "Ability to manage the process of selecting suppliers, establishing terms of payment, implementing strategic validation, making selections, negotiating contracts and purchasing goods.",
+                DescFre = "Aptitude à gérer le processus de sélection des fournisseurs, l'établissement des conditions de paiement, de validation stratégique, de sélection, de négociation de contrats et d'achat de biens."
             },
             new Competency
             {
@@ -137,8 +137,8 @@ namespace DataModel.SeedData
             new Competency
             {
                 Id = 22, NameEng = "Quality Assurance (QA)", NameFre = "Assurance de la qualité (AQ)",
-                DescEng = "Plans and carries out systematic activities implemented within the quality management system.",
-                DescFre = "Planifier et réaliser des activités systématiques mises en œuvre dans le cadre du système de gestion de la qualité."
+                DescEng = "All planned and systematic activities implemented within the quality system that can be demonstrated to provide assurance that a product or service will meet quality requirements.",
+                DescFre = "Toutes les activités planifiées et systématiques mises en œuvre dans le système de qualité qui peuvent être démontrées pour donner l’assurance qu’un produit ou un service répondra aux exigences de qualité."
             },
             new Competency
             {
@@ -232,9 +232,9 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 43, NameEng = "Electrical Review, Decision Making, and Analysis", NameFre = "Examen, processus décisionnel et analyse électriques",
-                DescEng = "Ability to use effective approaches with available facts, constraints, and anticipated consequences in marine electrical systems.",
-                DescFre = "Être en mesure d’utiliser des méthodes efficaces selon les faits disponibles, les restrictions et les répercussions prévues à l’égard des systèmes électriques maritimes."
+                Id = 43, NameEng = "Electrical Analysis, Decision-Making and Evaluation", NameFre = "Examen, prise de décision et analyse de l’électricité",
+                DescEng = "Ability to use effective approaches with the facts, constraints and predicted consequences available for marine electrical systems.",
+                DescFre = "Aptitude à utiliser des approches efficaces avec les faits, les contraintes et les conséquences prévues disponibles pour les systèmes électriques marins."
             },
             new Competency
             {
@@ -292,8 +292,8 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 53, NameEng = "Life Cycle Asset Management", NameFre = "Gestion du cycle de vie des biens",
-                DescEng = "Employs an integrated approach to optimizing the life cycle of the Canadian Coast Guard’s assets beginning at conceptual design, continuing through shut down, and decommissioning/disposal.",
+                Id = 53, NameEng = "Life Cycle Asset Management", NameFre = "Gestion du cycle de vie des actifs",
+                DescEng = "Employs an integrated approach to optimizing the life cycle of the Canadian Coast Guard’s assets beginning at conceptual design, continuing through shut down, and decommissioning/disposal. ",
                 DescFre = "Employer une approche intégrée pour optimiser le cycle de vie des actifs de la Garde côtière canadienne, depuis la conception, en passant par l’arrêt, la mise hors service et l’élimination."
             },
             new Competency
@@ -304,9 +304,9 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 55, NameEng = "Problem Solving", NameFre = "Résolution de problèmes",
-                DescEng = "Defines a problem while determining the cause of the problem and identifying, prioritizing, and selecting alternatives for a solution.",
-                DescFre = "Définit un problème tout en déterminant la cause du problème et en identifiant, priorisant et sélectionnant des solutions de rechange."
+                Id = 55, NameEng = "Problem Solving", NameFre = "Résolution de problème",
+                DescEng = "Defining a problem, determining the cause of the problem, identifying alternative solutions, prioritizing and selecting them to find a solution, and implementing a solution.",
+                DescFre = "Il s’agit de définir un problème, de déterminer la cause du problème, d’identifier des solutions de rechange, de les classer par ordre de priorité et de les choisir afin de trouver une solution, et de mettre en œuvre une solution."
             },
             new Competency
             {
@@ -616,8 +616,8 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 107, NameEng = "Hydraulic Engineering Knowledge", NameFre = "Connaissances en génie hydraulique",
-                DescEng = "Knowledge of the application of the principles of fluid mechanics related to the collection, storage, control, transport, regulation, measurement, and use of water.",
+                Id = 107, NameEng = "Knowledge of Hydraulic Engineering", NameFre = "Connaissances en génie hydraulique",
+                DescEng = "Knowledge of the application of fluid mechanics principles related to water collection, storage, control, transport, regulation, measurement and use.",
                 DescFre = "Connaissance de l'application des principes de la mécanique des fluides liés à la collecte, au stockage, au contrôle, au transport, à la régulation, à la mesure et à l'utilisation de l'eau."
             },
             new Competency
@@ -646,8 +646,8 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 112, NameEng = "Electronic Principles and Circuits Knowledge", NameFre = "Connaissance des principes et circuits électroniques",
-                DescEng = "Concepts and operational function of components that underpin the understanding of how electronic environments are developed, assembled, and tested.",
+                Id = 112, NameEng = "Knowledge of Electronic Principles and Circuits", NameFre = "Connaissance des principes et circuits électroniques",
+                DescEng = "Concepts and operational function of components underlying the understanding of how electronic environments are developed, assembled and tested.",
                 DescFre = "Concepts et fonction opérationnelle des composants qui sous-tendent la compréhension de la façon dont les environnements électroniques sont développés, assemblés et testés."
             },
             new Competency
@@ -658,33 +658,33 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 114, NameEng = "Engineering Shipbuilding Knowledge", NameFre = "Connaissances en génie de la construction navale",
-                DescEng = "Knowledge of the components of marine engineering manufacturing process, from supply chain to assembly line operations. best optimized for maximum productivity, quality, and efficiency.",
-                DescFre = "Connaissance des composantes du processus de fabrication du génie maritime, le cas échéant, de la chaîne d'approvisionnement aux opérations de la chaîne d'assemblage, qui sont optimisées pour une productivité, une qualité et une efficacité maximales."
+                Id = 114, NameEng = "Electrical and Technical Design and Analysis", NameFre = "Conception et analyse électriques et technique",
+                DescEng = "Preparing, analyzing and developing specification documentation, schematics and wiring diagrams.",
+                DescFre = "Rédaction, analyse et développement de la documentation de spécification, des schémas et des schémas de câblage."
             },
             new Competency
             {
-                Id = 115, NameEng = "Naval Architecture Knowledge", NameFre = "Connaissances en génie de la construction navale",
-                DescEng = "The discipline dealing with the design, construction, maintenance, and operation of marine vessels and structures.",
+                Id = 115, NameEng = "Knowledge of Shipbuilding Engineering", NameFre = "Connaissances en génie de la construction navale",
+                DescEng = "The discipline involving the design, construction, maintenance and operation of vessels and marine structures.",
                 DescFre = "La discipline traitant de la conception, de la construction, de l'entretien et de l'exploitation des bâtiments et des structures maritimes."
             },
             new Competency
             {
-                Id = 116, NameEng = "Computer Architecture Knowledge", NameFre = "Connaissance de l'architecture informatique",
-                DescEng = "The rules and methods that describe the functionality, organization, and implementation of computer systems and their frameworks.",
+                Id = 116, NameEng = "Knowledge of IT Architecture", NameFre = "Connaissance de l'architecture informatique",
+                DescEng = "The rules and methods that describe the functionality, organisation and implementation of IT systems and their frameworks.",
                 DescFre = "Les règles et les méthodes qui décrivent la fonctionnalité, l'organisation et la mise en œuvre des systèmes informatiques et de leurs cadres."
             },
             new Competency
             {
-                Id = 117, NameEng = "Engineering/Electrical Design, Review, and Analysis", NameFre = "Ingénierie / Conception électrique, examen et analyse",
-                DescEng = "Identifies, develops, and analyzes the installation process of engineering designs and/or specifications. Plans, identifies, and modifies methods and resources.",
-                DescFre = "Identifie, développe et analyse le processus d'installation des conceptions et/ou spécifications techniques. Planifie, identifie et modifie les méthodes et les ressources."
+                Id = 117, NameEng = "Technical Design, Analysis and Schematics", NameFre = "Conception technique, analyse et schémas",
+                DescEng = "Identifies, develops, analyzes and oversees the development and installation of engineering designs and/or specifications; plans and modifies methods. Identifies and plans resource requirements.",
+                DescFre = "Identifie, développe, analyse et supervise le développement et l'installation de conceptions d'ingénierie et/ou de spécifications; planifie et modifie les méthodes. Identifie et planifie les besoins en ressources."
             },
             new Competency
             {
                 Id = 118, NameEng = "Computer Aided Design and Drafting (CADD)", NameFre = "Conception et dessin assistés par ordinateur (CDAO)",
-                DescEng = "Subfield of engineering which deals with the design and drafting of objects and materials through the use of specialized software that visualizes designs as modular 3D computer models. Used for creating the 3D models complete with detailed documentation such as dimensions, materials used, and even details the design process.",
-                DescFre = "Il s’agit d’un sous-domaine du génie qui porte sur la conception et le dessin d’objets et de matériaux au moyen de logiciels spécialisés qui permettent de visualiser des plans en tant que modèles informatiques modulaires à trois dimensions. Ce sous-domaine sert à créer des modèles à trois dimensions ainsi que des documents détaillés sur les dimensions, les matériaux utilisés et même le processus de conception."
+                DescEng = "Knowledge of commercial Computer Aided Design (CAD) and drafting software application as used in the CCG for drafting and designing products and tools for marine operations.",
+                DescFre = "Connaissance de la conception assistée par ordinateur (CAO) commerciale et de l'application logicielle de dessin telle qu'elle est utilisée à la Garde côtière canadienne pour la rédaction et la conception de produits et d'outils pour les opérations maritimes."
             },
             new Competency
             {
@@ -764,12 +764,6 @@ namespace DataModel.SeedData
                 Id = 131, NameEng = "Achieve Results", NameFre = "Obtenir des résultats",
                 DescEng = "Ability to mobilize and manage resources to deliver on the priorities of the Government of Canada, improve outcomes, and add value. Considers context, risks, and business intelligence to support high-quality and timely decisions. Anticipates, plans, monitors progress, and makes adjustments as needed. Takes personal responsibility for actions and outcomes of their decisions.",
                 DescFre = "Capacité de mobiliser et de gérer les ressources pour réaliser les priorités du gouvernement du Canada, améliorer les résultats et ajouter de la valeur. Tient compte du contexte, des risques et de l'intelligence d'affaires pour appuyer des décisions de grande qualité et opportunes. Anticiper, planifier, surveiller les progrès et faire les ajustements nécessaires. Assume personnellement la responsabilité des actions et des résultats de ses décision."
-            },
-            new Competency
-            {
-                Id = 132, NameEng = "Electrical Design and Analysis", NameFre = "Conception et analyse électriques et technique",
-                DescEng = "Drafting, analyzing, and developing specification documentation, schematics, and wiring diagrams.",
-                DescFre = "Rédaction, analyse et développement de la documentation de spécification, des schémas et des schémas de câblage."
             }
         };
     }
