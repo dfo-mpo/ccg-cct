@@ -159,6 +159,9 @@
   <data name="Search Positions" xml:space="preserve">
     <value>Search Positions</value>
   </data>
+  <data name="SeeAll" xml:space="preserve">
+    <value>See All Positions</value>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>

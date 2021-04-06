@@ -385,19 +385,22 @@ else if (Model.PageEdit)
             </nav>
         </div>
     </div>
-}
-else
-{
-    var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                                                }
+                                                else
+                                                {
+                                                    var RouteParameter = new Dictionary<string, string> {{ "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-    var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                                                    var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-    var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                                                    var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-    var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                                                    var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+                            {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
+                            {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
+                                                    var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
 
@@ -410,6 +413,7 @@ else
             <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
             <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
             <a asp-page="SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["SeeAll"]&nbsp;&nbsp;&nbsp;</a>
         </div>
 
         <div class="row">
