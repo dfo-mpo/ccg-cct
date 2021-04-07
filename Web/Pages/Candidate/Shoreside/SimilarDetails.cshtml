@@ -53,7 +53,6 @@
                 <tbody>
                     <tr>
                         <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
-
                     </tr>
                     @if (Model.PositionCertificates.Any())
                     {
@@ -63,7 +62,7 @@
                             {
                                 var key = "c" + c.Id.ToString();
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
                                             @(isEnglish ? c.NameEng : c.NameFre)
                                         </a>

@@ -186,9 +186,6 @@
   <data name="Search Positions" xml:space="preserve">
     <value>Rechercher des postes</value>
   </data>
-  <data name="SeeAll" xml:space="preserve">
-    <value>Voir toutes les positions</value>
-  </data>
   <data name="Select Competency" xml:space="preserve">
     <value>Sélectionnez une compétence</value>
   </data>
