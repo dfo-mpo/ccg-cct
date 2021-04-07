@@ -81,7 +81,7 @@
                             else
                             {
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
                                 </tr>
                             }
                         }
@@ -89,7 +89,7 @@
                     else
                     {
                         <tr>
-                            <td>@Localizer["No Certifications Found"]</td>
+                            <td colspan="2">@Localizer["No Certifications Found"]</td>
                         </tr>
                     }
                     @if (Model.PositionCompetencyRatings.Any())
