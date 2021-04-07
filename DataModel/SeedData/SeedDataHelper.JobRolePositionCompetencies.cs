@@ -2267,6 +2267,8 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 65, CompetencyId = 19, CompetencyTypeId = 2},
             new JobRolePositionCompetency
+                {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 65, CompetencyId = 25, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 65, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 65, CompetencyId = 27, CompetencyTypeId = 3},
@@ -2905,6 +2907,8 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CompetencyId = 79, CompetencyTypeId = 2},
             new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CompetencyId = 91, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 12, JobPositionId = 84, CompetencyId = 27, CompetencyTypeId = 3},
@@ -2932,6 +2936,8 @@ namespace DataModel.SeedData
                 {JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CompetencyId = 42, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CompetencyId = 79, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CompetencyId = 91, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 13, JobPositionId = 85, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
@@ -3634,7 +3640,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 10, JobGroupLevelId = 34, JobPositionId = 109, CompetencyId = 2, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 34, JobPositionId = 109, CompetencyId = 38, CompetencyTypeId = 1},
-
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 34, JobPositionId = 109, CompetencyId = 66, CompetencyTypeId = 1},
             new JobRolePositionCompetency
@@ -4146,7 +4151,7 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 121, CompetencyId = 47, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 121, CompetencyId = 70, CompetencyTypeId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 121, CompetencyId = 3, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 37, JobPositionId = 121, CompetencyId = 4, CompetencyTypeId = 1},
             new JobRolePositionCompetency
@@ -4552,8 +4557,6 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 130, CompetencyId = 64, CompetencyTypeId = 1},
             new JobRolePositionCompetency
-                {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 130, CompetencyId = 65, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 130, CompetencyId = 68, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 38, JobPositionId = 130, CompetencyId = 69, CompetencyTypeId = 1},
@@ -4847,7 +4850,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 10, JobGroupLevelId = 39, JobPositionId = 136, CompetencyId = 67, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 39, JobPositionId = 136, CompetencyId = 3, CompetencyTypeId = 1},
-
             new JobRolePositionCompetency
                 {JobGroupId = 10, JobGroupLevelId = 39, JobPositionId = 136, CompetencyId = 47, CompetencyTypeId = 1},
             new JobRolePositionCompetency
@@ -6059,10 +6061,6 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 4, JobGroupLevelId = 48, JobPositionId = 169, CompetencyId = 11, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 4, JobGroupLevelId = 48, JobPositionId = 169, CompetencyId = 18, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 4, JobGroupLevelId = 48, JobPositionId = 169, CompetencyId = 19, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
                 {JobGroupId = 4, JobGroupLevelId = 48, JobPositionId = 169, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 4, JobGroupLevelId = 48, JobPositionId = 169, CompetencyId = 27, CompetencyTypeId = 3},
@@ -6673,9 +6671,7 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 21, JobGroupLevelId = 4, JobPositionId = 190, CompetencyId = 28, CompetencyTypeId = 3},
             new JobRolePositionCompetency
-
-            {
-                JobGroupId = 21, JobGroupLevelId = 4, JobPositionId = 190, CompetencyId = 33, CompetencyTypeId = 3},
+                {JobGroupId = 21, JobGroupLevelId = 4, JobPositionId = 190, CompetencyId = 33, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 21, JobGroupLevelId = 4, JobPositionId = 190, CompetencyId = 34, CompetencyTypeId = 3},
             new JobRolePositionCompetency
@@ -6817,8 +6813,6 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 57, JobPositionId = 194, CompetencyId = 91, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 8, JobGroupLevelId = 57, JobPositionId = 194, CompetencyId = 87, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 57, JobPositionId = 194, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 57, JobPositionId = 194, CompetencyId = 27, CompetencyTypeId = 3},
@@ -6892,8 +6886,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 8, JobGroupLevelId = 59, JobPositionId = 197, CompetencyId = 18, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 59, JobPositionId = 197, CompetencyId = 91, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 8, JobGroupLevelId = 59, JobPositionId = 197, CompetencyId = 87, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 59, JobPositionId = 197, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
@@ -7177,8 +7169,6 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 66, JobPositionId = 207, CompetencyId = 17, CompetencyTypeId = 2},
             new JobRolePositionCompetency
-                {JobGroupId = 8, JobGroupLevelId = 66, JobPositionId = 207, CompetencyId = 41, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 66, JobPositionId = 207, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 66, JobPositionId = 207, CompetencyId = 27, CompetencyTypeId = 3},
@@ -7198,8 +7188,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 8, JobGroupLevelId = 67, JobPositionId = 208, CompetencyId = 40, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 67, JobPositionId = 208, CompetencyId = 17, CompetencyTypeId = 2},
-            new JobRolePositionCompetency
-                {JobGroupId = 8, JobGroupLevelId = 67, JobPositionId = 208, CompetencyId = 41, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 67, JobPositionId = 208, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
@@ -7395,6 +7383,10 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 75, JobPositionId = 216, CompetencyId = 91, CompetencyTypeId = 2},
             new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 75, JobPositionId = 216, CompetencyId = 9, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 75, JobPositionId = 216, CompetencyId = 10, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 75, JobPositionId = 216, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 75, JobPositionId = 216, CompetencyId = 27, CompetencyTypeId = 3},
@@ -7420,6 +7412,10 @@ namespace DataModel.SeedData
                 {JobGroupId = 8, JobGroupLevelId = 76, JobPositionId = 217, CompetencyId = 94, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 76, JobPositionId = 217, CompetencyId = 91, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 76, JobPositionId = 217, CompetencyId = 9, CompetencyTypeId = 2},
+            new JobRolePositionCompetency
+                {JobGroupId = 8, JobGroupLevelId = 76, JobPositionId = 217, CompetencyId = 10, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 8, JobGroupLevelId = 76, JobPositionId = 217, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency
@@ -9506,7 +9502,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 1, JobGroupLevelId = 2, JobPositionId = 273, CompetencyId = 60, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 1, JobGroupLevelId = 2, JobPositionId = 273, CompetencyId = 113, CompetencyTypeId = 2},
-
             new JobRolePositionCompetency
                 {JobGroupId = 1, JobGroupLevelId = 2, JobPositionId = 273, CompetencyId = 55, CompetencyTypeId = 2},
             new JobRolePositionCompetency
@@ -10309,8 +10304,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 293, CompetencyId = 93, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 293, CompetencyId = 68, CompetencyTypeId = 1},
-            new JobRolePositionCompetency
-                {JobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 293, CompetencyId = 71, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 293, CompetencyId = 4, CompetencyTypeId = 1},
             new JobRolePositionCompetency
@@ -12999,12 +12992,6 @@ namespace DataModel.SeedData
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 107, CompetencyTypeId = 1},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 112, CompetencyTypeId = 1},
-             new JobRolePositionCompetency
-                {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 117, CompetencyTypeId = 2},
-              new JobRolePositionCompetency
-                {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 114, CompetencyTypeId = 2},
-               new JobRolePositionCompetency
-                {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 43, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 53, CompetencyTypeId = 2},
             new JobRolePositionCompetency
@@ -13017,14 +13004,10 @@ namespace DataModel.SeedData
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 22, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 55, CompetencyTypeId = 2},
-             new JobRolePositionCompetency
-                {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 118, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 19, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 18, CompetencyTypeId = 2},
-             new JobRolePositionCompetency
-                {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 119, CompetencyTypeId = 2},
             new JobRolePositionCompetency
                 {JobGroupId = 11, JobGroupLevelId = 6, JobPositionId = 352, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency

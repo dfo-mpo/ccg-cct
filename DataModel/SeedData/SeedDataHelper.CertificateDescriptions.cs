@@ -8,7 +8,7 @@ namespace DataModel.SeedData
     {
         public List<CertificateDescription> CertificateDescriptions = new List<CertificateDescription>()
             {
-                new CertificateDescription { Id = 1, DescEng = "lorem ipsum", DescFre ="lorem ipsum"},
+                new CertificateDescription { Id = 1, DescEng = "", DescFre =""},
                 new CertificateDescription { Id = 2, DescEng = "with Limited Contiguous Endorsement", DescFre ="avec Attestation de voyage limité, contiguës"},
                 new CertificateDescription { Id = 3, DescEng = "with Master 150GT, Domestic", DescFre ="avec Capitaine, jauge brute de 150, navigation intérieure"},
                 new CertificateDescription { Id = 4, DescEng = "and Unlimited ACV Endorsement", DescFre ="et Attestation de VCA illimité"},
