@@ -88,6 +88,33 @@ namespace Web.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Photo of a group of individuals.
+        /// </summary>
+        public static string PhotoExternal {
+            get {
+                return ResourceManager.GetString("PhotoExternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo of a Canadian Coast Guard member.
+        /// </summary>
+        public static string PhotoMember {
+            get {
+                return ResourceManager.GetString("PhotoMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo of students graduating.
+        /// </summary>
+        public static string PhotoStudents {
+            get {
+                return ResourceManager.GetString("PhotoStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To begin, tell us who you are.
         /// </summary>
         public static string Question1 {

@@ -129,6 +129,18 @@
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
   </data>
+  <data name="PhotoAdmin" xml:space="preserve">
+    <value>Photo du personnel administratif travaillant à son bureau</value>
+  </data>
+  <data name="PhotoCollege" xml:space="preserve">
+    <value>Photo du Collège de la Garde côtière canadienne</value>
+  </data>
+  <data name="PhotoComputer" xml:space="preserve">
+    <value>Photo de systèmes informatiques</value>
+  </data>
+  <data name="PhotoTrades" xml:space="preserve">
+    <value>Photo d'un soudeur au travail</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

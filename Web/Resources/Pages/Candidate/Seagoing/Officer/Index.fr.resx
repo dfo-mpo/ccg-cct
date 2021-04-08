@@ -129,6 +129,12 @@
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
   </data>
+  <data name="PhotoEng" xml:space="preserve">
+    <value>Photo d'un officier du génie de la Garde côtière canadienne</value>
+  </data>
+  <data name="PhotoNav" xml:space="preserve">
+    <value>Photo d'un officier de navigation de la Garde côtière canadienne</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
