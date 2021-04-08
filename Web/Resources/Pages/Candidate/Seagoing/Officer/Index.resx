@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Details" xml:space="preserve">
+    <value>Such details may be found in Canada’s Marine Personnel Regulations:</value>
+  </data>
   <data name="Eng" xml:space="preserve">
     <value>Engineering</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf</value>
   </data>
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Please select your preferred field of employment</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Seagoing navigation and engineering officers have additional requirements associated with a matrix of certification (i.e. completed training in a recognized institution), sea time (i.e. time logged at sea), and ship class (i.e. vessel size, power, type).</value>
   </data>
 </root>

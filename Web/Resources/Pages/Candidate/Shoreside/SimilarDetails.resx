@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>Would you like to compare or find similar positions within the organization to your selected position below?</value>
   </data>

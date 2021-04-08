@@ -32,7 +32,7 @@ namespace Web.Pages.Student.College
             _logger.LogInformation($"College Student Electrical positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
-            //Engineering and Scientific Support EG-02 to EG-05
+            //All Engineering and Scientific Support EG
             foreach (var position in await _jobgroupService.GetJobPositionsByGroupId(6))
             {
                 if (!position.Equals(null))

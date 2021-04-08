@@ -1,8 +1,5 @@
 ﻿@page
-@model IndexModel
 @inject IViewLocalizer Localizer
-@{
-}
 
 <div class="text-left">
     <h1 class="display-4">@Localizer["IndexTitle"]</h1>
@@ -16,19 +13,19 @@
 <div class="container">
     <div class="row">
         <a asp-page="CCGMember/AllPositions">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="~/img/CCG-employee.png" class="img-responsive" />
                 <h3 style="text-align:center">@Localizer["CCGMember"]</h3>
             </div>
         </a>
         <a asp-page="Candidate/Index">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="~/img/external candidates.png" class="img-responsive" />
                 <h3 style="text-align:center">@Localizer["ExternalCandidate"]</h3>
             </div>
         </a>
         <a asp-page="Student/Index">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="~/img/Students.png" class="img-responsive" />
                 <h3 style="text-align:center">@Localizer["Student"]</h3>
             </div>

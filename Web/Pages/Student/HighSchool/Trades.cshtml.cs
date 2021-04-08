@@ -86,6 +86,8 @@ namespace Web.Pages.Student.HighSchool
                     ShoreSidePositions.Add(position);
                 }
             }
+
+            //Lightkeepers LI-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(5, "03"))
             {
                 if (!position.Equals(null))

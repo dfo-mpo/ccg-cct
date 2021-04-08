@@ -153,6 +153,9 @@
   <data name="Question2" xml:space="preserve">
     <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
   </data>
+  <data name="SAME CERTIFICATION" xml:space="preserve">
+    <value>MÊME ATTESTATION</value>
+  </data>
   <data name="SELECT" xml:space="preserve">
     <value>SÉLECTIONNER</value>
   </data>

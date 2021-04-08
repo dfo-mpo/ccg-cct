@@ -138,14 +138,17 @@
   <data name="h4Text" xml:space="preserve">
     <value>Select all or some of the competencies and ratings below to obtain positions similar to your current position.</value>
   </data>
+  <data name="LimitReached" xml:space="preserve">
+    <value>Limit has been reached.</value>
+  </data>
   <data name="No Certifications Found" xml:space="preserve">
     <value>No Certifications Found</value>
   </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
   </data>
-  <data name="SAME CERTIFICATIONS" xml:space="preserve">
-    <value>SAME CERTIFICATIONS</value>
+  <data name="SAME CERTIFICATION" xml:space="preserve">
+    <value>SAME CERTIFICATION</value>
   </data>
   <data name="SAME ELEMENT" xml:space="preserve">
     <value>SAME ELEMENT</value>

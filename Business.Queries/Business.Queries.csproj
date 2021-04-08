@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Similar\GetAllSimilarPositionsByCompetencyCertificateIdQueryHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Business.Dtos\Business.Dtos.csproj" />
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>

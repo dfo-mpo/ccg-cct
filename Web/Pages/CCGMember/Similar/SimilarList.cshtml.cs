@@ -35,6 +35,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedCompetencies { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string RequiredCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; } 
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
@@ -51,7 +53,7 @@ namespace Web.Pages.CCGMember.Similar
         {
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _similarService.GetJobPositionById(PositionId);
-            RouteParameter = String.Format($"jobPositionId={positionid}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
+            RouteParameter = String.Format($"jobPositionId={positionid}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
             Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);       
         }
     }

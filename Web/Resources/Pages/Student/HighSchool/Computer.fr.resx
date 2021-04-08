@@ -120,6 +120,9 @@
   <data name="level" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="noshoreside" xml:space="preserve">
     <value>Aucune position à terre disponible</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
   </data>
   <data name="position" xml:space="preserve">
     <value>POSTE</value>
