@@ -72,7 +72,7 @@ namespace DataModel.SeedData
             {
                 Id = 12,
                 DescEng = "Understands basic administrative tasks and rules as they relate to a position. Recognizes the need to have supervisor approve requests where applicable.",
-                DescFre = "Comprend les tâches et les règles administratives de base liées à un poste. Reconnaît la nécessité de faire approuver les demandes par le superviseur, s'il y a lieu. "
+                DescFre = "Comprend les tâches et les règles administratives de base liées à un poste. Reconnaît la nécessité de faire approuver les demandes par le superviseur, s'il y a lieu."
             },
             new CompetencyLevelRequirement
             {
@@ -125,7 +125,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 21,
-                DescEng = "Expert knowledge of the Incident Command System (ICS) and identifying new possibilities/capabilities to improve the existing systems and practices. Expertise in drafting/review of acts, regulations, and frameworks, and emergency management policies and directions. ",
+                DescEng = "Expert knowledge of the Incident Command System (ICS) and identifying new possibilities/capabilities to improve the existing systems and practices. Expertise in drafting/review of acts, regulations, and frameworks, and emergency management policies and directions.",
                 DescFre = "Connaissance approfondie du Système de commandement du lieu de l'incident (SCI) et identification de nouvelles possibilités/capacités pour améliorer les systèmes et pratiques existants. Expertise dans la rédaction et l'examen des lois, des règlements et des cadres, ainsi que des politiques et des orientations en matière de gestion des urgences."
             },
             new CompetencyLevelRequirement
@@ -137,7 +137,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 23,
-                DescEng = "Limited knowledge of the Canadian Coast Guard's documentation covering policies and directives related to crewing profile, rotation regulations, leave, medical fitness and training, and certification for seagoing personnel. ",
+                DescEng = "Limited knowledge of the Canadian Coast Guard's documentation covering policies and directives related to crewing profile, rotation regulations, leave, medical fitness and training, and certification for seagoing personnel.",
                 DescFre = "Connaissance limitée de la documentation de la Garde côtière canadienne couvrant les politiques et directives relatives aux profils d'armements en équipage, aux règlements de rotation, aux congés, à l'aptitude médicale, à la formation et à la certification du personnel navigant."
             },
             new CompetencyLevelRequirement
@@ -155,7 +155,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 26,
-                DescEng = "Expert knowledge in strategic guidance related to the seagoing personnel management doctrine. Expertise in recommending, drafting, and implementation of policies related to the management of seagoing personnel. ",
+                DescEng = "Expert knowledge in strategic guidance related to the seagoing personnel management doctrine. Expertise in recommending, drafting, and implementation of policies related to the management of seagoing personnel.",
                 DescFre = "Connaissances spécialisées en matière d'orientation stratégique liée à la doctrine de gestion du personnel navigant. Expertise en matière de recommandation, de rédaction et de mise en œuvre de politiques liées à la gestion du personnel navigant."
             },
             new CompetencyLevelRequirement
@@ -198,25 +198,25 @@ namespace DataModel.SeedData
             {
                 Id = 33,
                 DescEng = "Limited knowledge of determining training elements including terminal objectives, training structure and outline, brief description of the training, and the method of delivery.",
-                DescFre = "Connaissance limitée de la définition d’éléments de la formation, y compris les objectifs terminaux, la structure et le plan de la formation, le résumé de la formation et la méthode de prestation."
+                DescFre = "Connaissance limitée de la détermination des éléments de formation, y compris les objectifs de l'aérogare, la structure et le plan de la formation, une brève description de la formation et la méthode de prestation."
             },
             new CompetencyLevelRequirement
             {
                 Id = 34,
                 DescEng = "Practical knowledge in developing enabling objectives. Understands the development of course materials and curriculum including the instructor lesson plan, participant handouts, assessments, and selected media such as PowerPoint presentations, video, or audio, etc.",
-                DescFre = "Connaissances pratiques en matière d’élaboration d’objectifs de base. Comprendre l’élaboration du matériel de cours et du programme d’études, y compris le plan de cours de l’instructeur, les documents distribués aux participants, les évaluations et certains supports tels que les présentations PowerPoint, la vidéo ou l’audio, etc."
+                DescFre = "Connaissances pratiques dans l'élaboration d'objectifs habilitants. Comprend l'élaboration du matériel didactique et du programme d'études, y compris le plan de leçon de l'instructeur, les documents à distribuer aux participants, les évaluations et certains médias comme les présentations PowerPoint, la vidéo ou l'audio, etc."
             },
             new CompetencyLevelRequirement
             {
                 Id = 35,
                 DescEng = "Advanced knowledge in identifying methods and activities for presenting new information. Knowledge of setting aims and learning objectives. Understanding of the design strategy, for the development of new courses. Knowledge of making course modifications based on feedback.",
-                DescFre = "Connaissances avancées de l’identification des méthodes et des activités de présentation de nouvelles informations. Connaissance de l’établissement de buts et d’objectifs d’apprentissage. Compréhension de la stratégie de conception pour le développement de nouveaux cours. Connaissance de la façon d’apporter des modifications à des cours en fonction de la rétroaction."
+                DescFre = "Connaissances avancées dans l'identification de méthodes et d'activités pour la présentation de nouvelles informations. Connaissance de l'établissement des buts et des objectifs d'apprentissage. Compréhension de la stratégie de conception, pour le développement de nouveaux cours. Connaissance de la modification des cours en fonction des commentaires reçus."
             },
             new CompetencyLevelRequirement
             {
                 Id = 36,
                 DescEng = "Expert knowledge of evaluating training results to determine whether the sessions led to required changes in behaviour for the participants. Knowledge in redefining course development, materials, and instructional methods. Understanding of briefing senior management regarding issues, trends, suggestions, and areas of improvement based on evaluation, including trends related to diversity and generational issues.",
-                DescFre = "Connaissance approfondie de l’évaluation des résultats de la formation pour déterminer si les séances ont mené aux changements de comportement exigés des participants. Connaissances des méthodes de redéfinition de la conception de cours, de matériel et de méthodes d’enseignement. Compréhension de la façon d’informer la haute direction concernant des problèmes et des tendances et de lui faire part de suggestions et d’aspects à améliorer fondés sur l’évaluation, y compris les tendances liées à la diversité et aux questions générationnelles."
+                DescFre = "Connaissance experte de l'évaluation des résultats de la formation afin de déterminer si les séances ont entraîné les changements de comportement requis pour les participants. Connaissance de la redéfinition de l'élaboration des cours, du matériel didactique et des méthodes d'enseignement. Compréhension de l'information donnée à la haute direction sur les enjeux, les tendances, les suggestions et les domaines à améliorer en fonction de l'évaluation, y compris les tendances liées à la diversité et aux questions générationnelles."
             },
             new CompetencyLevelRequirement
             {
@@ -258,7 +258,7 @@ namespace DataModel.SeedData
             {
                 Id = 43,
                 DescEng = "Comprehends program and/or project goals, participants’ roles, and the importance of program/project management principles. Able to participate in program/project support activities (i.e. gathering needed information). Able to participate, under supervision, with others in small and well defined components of the program/project.",
-                DescFre = "Comprend les objectifs du programme et/ou du projet, les rôles des participants et l'importance des principes de gestion du programme/projet. Capable de participer à des activités d’appui (c’est-à-dire la collecte des informations nécessaires). Participe, sous supervision, avec d’autres personnes à des composantes petites et bien définies du programme/projet."
+                DescFre = "Comprend les objectifs du programme et/ou du projet, les rôles des participants et l'importance des principes de gestion du programme/projet. Capable de participer à des activités d’appui (c’est-à-dire la collecte des informations nécessaires). Participe, sous supervision, avec d’autres personnes à des composantes petites et bien définies du programme/projet.",
             },
             new CompetencyLevelRequirement
             {
@@ -359,7 +359,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 60,
-                DescEng = "Implements and evaluates workforce management policies, programs, and procedures. Working closely with clients or the workforce management team, collaborates in developing the merit criteria, assessment tools, and employment equity programs, offering strategic staffing ideas and assisting with performance management or disability files according to portfolio. Provides advice on the interpretation of policies, staffing, training, and benefits programs. Maintains workforce management information and related records systems. Hires and oversees training of staff. Co-ordinates employee performance appraisal programs. ",
+                DescEng = "Implements and evaluates workforce management policies, programs, and procedures. Working closely with clients or the workforce management team, collaborates in developing the merit criteria, assessment tools, and employment equity programs, offering strategic staffing ideas and assisting with performance management or disability files according to portfolio. Provides advice on the interpretation of policies, staffing, training, and benefits programs. Maintains workforce management information and related records systems. Hires and oversees training of staff. Co-ordinates employee performance appraisal programs.",
                 DescFre = "Met en œuvre et évalue les politiques, programmes et procédures de gestion des effectifs. Travaille en étroite collaboration avec les clients ou l'équipe de gestion des effectifs, collabore à l'élaboration des critères de mérite, des outils d'évaluation et des programmes d'équité en matière d'emploi, propose des idées stratégiques de dotation en personnel et aide à la gestion des performances ou des dossiers d'invalidité selon le portefeuille. Fournit des conseils sur l'interprétation des politiques, la dotation en personnel, la formation et les programmes d'avantages sociaux. Tient à jour les informations sur la gestion des effectifs et les systèmes de dossiers connexes. Engage et supervise la formation du personnel. Coordonne les programmes d'évaluation de la performance des employés."
             },
             new CompetencyLevelRequirement
@@ -377,7 +377,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 63,
-                DescEng = "Monitors project/program expenditures and individual expenses for reporting purposes. Identifies wasteful financial practices or opportunities for greater efficiencies. Tracks and files variation reports. ",
+                DescEng = "Monitors project/program expenditures and individual expenses for reporting purposes. Identifies wasteful financial practices or opportunities for greater efficiencies. Tracks and files variation reports.",
                 DescFre = "Surveille les dépenses des projets/programmes et les dépenses individuelles à des fins d'établissement de rapports. Identifie les pratiques financières inutiles ou les possibilités d'amélioration de l'efficacité. Suivre et classer les rapports de variation."
             },
             new CompetencyLevelRequirement
@@ -390,7 +390,7 @@ namespace DataModel.SeedData
             {
                 Id = 65,
                 DescEng = "Analyzes broad accounting and financial records to ensure accuracy and compliance with established accounting standards and procedures. Plans, organizes, and administers financial tracking and reconciliation systems for Canadian Coast Guard programs and business lines. Prepares detailed reports and conducts audits to improve organizational financial management practices. Provides guidance to management. Designs, operates, and monitors rigorous systems for Financial Information Management, internal audit, and evaluation.",
-                DescFre = "Analyse les documents comptables et financiers généraux afin de garantir l'exactitude et la conformité aux normes et procédures comptables établies. Planifie, organise et administre les systèmes de suivi et de rapprochement financier pour les programmes et les secteurs d'activité de la Garde côtière canadienne. Prépare des rapports détaillés et effectue des vérifications pour améliorer les pratiques de gestion financière de l'organisation. Fournir des conseils à la direction. Concevoir, exploiter et surveiller des systèmes rigoureux de gestion de l'information financière, de vérification interne et d'évaluation."
+                DescFre = "Analyse les documents comptables et financiers généraux afin de garantir l'exactitude et la conformité aux normes et procédures comptables établies. Planifie, organise et administre les systèmes de suivi et de rapprochement financier pour les programmes et les secteurs d'activité de la Garde côtière canadienne. Prépare des rapports détaillés et effectue des vérifications pour améliorer les pratiques de gestion financière de l'organisation. Fournir des conseils à la direction. Concevoir, exploiter et surveiller des systèmes rigoureux de gestion de l'information financière, de vérification interne et d'évaluation.",
             },
             new CompetencyLevelRequirement
             {
@@ -449,7 +449,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 75,
-                DescEng = "Monitors marine structure projects, when and where applicable. Develops systems and/or processes, guidelines, and policies for identifying, collecting, maintaining, and evaluating real property and accommodations management information. ",
+                DescEng = "Monitors marine structure projects, when and where applicable. Develops systems and/or processes, guidelines, and policies for identifying, collecting, maintaining, and evaluating real property and accommodations management information.",
                 DescFre = "Surveille les projets de structures marines, le cas échéant. Élabore des systèmes et/ou des processus, des lignes directrices et des politiques pour identifier, recueillir, maintenir et évaluer les informations relatives à la gestion des biens immobiliers et des locaux."
             },
             new CompetencyLevelRequirement
@@ -473,7 +473,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 79,
-                DescEng = "Identifies and minimizes risk to ongoing Coast Guard operations. Consistently identifies technology interfaces and focuses on integration aspects of projects. Identifies and defines proposed business benefits. Ensures planning tools and techniques are applied effectively. Through analysis of options, selects the option with the greatest business benefit bearing in mind the Coast Guard objectives. Articulates the vision, objectives, and benefits of a new initiative. Identifies current areas of conflict and seeks to understand apposing points of view. ",
+                DescEng = "Identifies and minimizes risk to ongoing Coast Guard operations. Consistently identifies technology interfaces and focuses on integration aspects of projects. Identifies and defines proposed business benefits. Ensures planning tools and techniques are applied effectively. Through analysis of options, selects the option with the greatest business benefit bearing in mind the Coast Guard objectives. Articulates the vision, objectives, and benefits of a new initiative. Identifies current areas of conflict and seeks to understand apposing points of view.",
                 DescFre = "Identifie et minimise les risques pour les opérations en cours de la Garde côtière. Identifie de manière cohérente les interfaces technologiques et se concentre sur les aspects d'intégration des projets. Identifie et définit les avantages opérationnels proposés. S'assure que les outils et les techniques de planification sont appliqués efficacement. Par l'analyse des options, sélectionne l'option présentant le plus grand avantage opérationnel en gardant à l'esprit les objectifs de la Garde côtière. Articuler la vision, les objectifs et les avantages d'une nouvelle initiative. Identifie les zones de conflit actuelles et cherche à comprendre les points de vue opposés."
             },
             new CompetencyLevelRequirement
@@ -492,91 +492,91 @@ namespace DataModel.SeedData
             {
                 Id = 82,
                 DescEng = "Employs a fair and non-partisan approach in the delivery of services. Supports others in managing their tasks/responsibilities by providing timely information or resources. Accurately determines where to direct inquiries.",
-                DescFre = "Adopter une approche équitable et non partisane dans la prestation des services. Aider les autres à gérer leurs tâches et leurs responsabilités en leur fournissant des informations ou des ressources en temps utile. Déterminer avec précision où diriger les demandes de renseignements."
+                DescFre = "Adopte une approche équitable et non partisane dans la prestation des services. soutient les autres dans la gestion de leurs tâches/responsabilités en leur fournissant des informations ou des ressources en temps utile. Détermine avec précision où diriger les demandes de renseignements."
             },
             new CompetencyLevelRequirement
             {
                 Id = 83,
-                DescEng = "Establishes and maintains electronic and paper filing systems so that information can be readily retrieved. Actively promotes services to existing and potential clients. Anticipates potential problems and initiates ways of improving standards. Complies with existing quality standards, procedures, guidelines, and service agreements. Asks questions in order to clarify the needs and requirements associated with initial client requests. ",
-                DescFre = "Établir et tenir des systèmes de classement des dossiers électroniques et papier afin que l’information soit facilement accessible. Promouvoir activement les services auprès des clients existants et éventuels. Prévoir les problèmes possibles et prendre les moyens d’améliorer les normes. Respecter les normes de qualité, les procédures, les lignes directrices et les ententes de service existantes. Poser des questions afin d’obtenir des éclaircissements sur les besoins et les exigences associés aux demandes initiales des clients."
+                DescEng = "Establishes and maintains electronic and paper filing systems so that information can be readily retrieved. Actively promotes services to existing and potential clients. Anticipates potential problems and initiates ways of improving standards. Complies with existing quality standards, procedures, guidelines, and service agreements. Asks questions in order to clarify the needs and requirements associated with initial client requests.",
+                DescFre = "Établit et maintient des systèmes de classement électronique et papier afin que les informations puissent être facilement retrouvées. Promouvoir activement les services auprès des clients existants et potentiels. Anticipe les problèmes potentiels et met en place des moyens d'améliorer les normes. Respecte les normes de qualité, les procédures, les lignes directrices et les accords de service existants. Poser des questions afin de clarifier les besoins et les exigences associés aux demandes initiales des clients."
             },
             new CompetencyLevelRequirement
             {
                 Id = 84,
                 DescEng = "Applies due diligence and sound judgment when responding to requests and dealing with confidential information. Quickly and effectively solves client’s problems including complaints. Serves Coast Guard clients with the understanding that service is a core principle of the organization.",
-                DescFre = "Faire preuve de diligence raisonnable et d’un bon jugement lorsqu’il répond aux demandes et gère des renseignements confidentiels. Régler rapidement et efficacement les problèmes des clients, y compris les plaintes. Servir les clients de la Garde côtière en sachant que le service est un principe fondamental de l’organisation."
+                DescFre = "Fait preuve de diligence et de discernement lorsqu'il répond aux demandes et traite des informations confidentielles. Résout rapidement et efficacement les problèmes des clients, y compris les plaintes. Sert les clients de la Garde côtière en sachant que le service est un principe fondamental de l'organisation."
             },
             new CompetencyLevelRequirement
             {
                 Id = 85,
-                DescEng = "Develops standards of service delivery beyond those generally accepted. Promotes innovative measures to address client service needs. Deals with stakeholders professionally while representing the Coastg Guard. ",
-                DescFre = "Élaborer des normes de prestation de services plus rigoureuses que les normes généralement acceptées. Promouvoir des mesures innovantes pour répondre aux besoins des clients en matière de service. Traiter avec les intervenants de manière professionnelle tout en représentant la Garde côtière."
+                DescEng = "Develops standards of service delivery beyond those generally accepted. Promotes innovative measures to address client service needs. Deals with stakeholders professionally while representing the Coastg Guard.",
+                DescFre = "Développe des normes de prestation de services au-delà de celles généralement acceptées. Promeut des mesures innovantes pour répondre aux besoins des clients en matière de service. Traite avec les parties prenantes de manière professionnelle tout en représentant la Garde côtière."
             },
             new CompetencyLevelRequirement
             {
                 Id = 86,
                 DescEng = "Strategically and systematically evaluates opportunities within a sector, field, or area to improve client service in a non-partisan manner. Develops and implements creative and innovative ways of meeting client needs, whether in the regions or in headquarters.",
-                DescFre = "Évaluer de manière stratégique et systématique les possibilités d’améliorer le service à la clientèle dans un secteur, un domaine ou une région de manière non partisane. Élaborer et mettre en œuvre des moyens originaux et innovants de répondre aux besoins des clients, que ce soit dans les régions ou à l’administration centrale."
+                DescFre = "Évalue de manière stratégique et systématique les possibilités d'améliorer le service à la clientèle dans un secteur, un domaine ou une région de manière non partisane. Développe et met en œuvre des moyens créatifs et innovants pour répondre aux besoins des clients, que ce soit dans les régions ou à l'administration centrale."
             },
             new CompetencyLevelRequirement
             {
                 Id = 87,
                 DescEng = "Identifies irregular workforce management practices. Seeks advice when workforce management issues arise.",
-                DescFre = "Reconnaître les pratiques irrégulières de gestion de l’effectif. Demander des conseils lorsque des problèmes de gestion de l’effectif se posent."
+                DescFre = "Identifie les pratiques irrégulières de gestion de l'effectif. Demande des conseils lorsque des problèmes de gestion des effectifs se posent."
             },
             new CompetencyLevelRequirement
             {
                 Id = 88,
                 DescEng = "Provides basic HR-related information to colleagues, members, and others. Identifies deviations in applications of HR procedures or validates them with the competent authority. Supervises a small unit and conducts performance management input.",
-                DescFre = "Fournir des informations de base sur les ressources humaines aux collègues, aux membres du personnel et à d’autres personnes. Reconnaître les dérogations aux procédures de RH ou les valider auprès de l’autorité compétente. Superviser une petite unité et contribuer à la gestion du rendement."
+                DescFre = "Fournit des informations de base sur les ressources humaines aux collègues, aux membres et à d'autres personnes. Identifie les écarts dans l'application des procédures de RH ou les valide auprès de l'autorité compétente. Supervise une petite unité et apporte sa contribution à la gestion des performances."
             },
             new CompetencyLevelRequirement
             {
                 Id = 89,
-                DescEng = "Addresses standard workforce management issues within areas of responsibility (AOR). Supervises or manages staff (operational or administrative). Provides performance feedback. Aligns workforce management practices to audit results and findings, when and where applicable. Provides on-the-job training and makes training and development recommendations. Participates on staffing boards and provides input into statements of merit criteria, when and where required.",
-                DescFre = "Traiter de questions courantes de gestion de l’effectif dans ses secteurs de responsabilité. Superviser ou gérer du personnel (opérationnel ou administratif). Donner de la rétroaction sur le rendement. Harmoniser les pratiques de gestion de l’effectif avec les résultats et les conclusions des audits, le cas échéant. Donner de la formation en cours d’emploi et formuler des recommandations en matière de formation et de perfectionnement. Participer aux commissions de dotation en personnel et contribuer à la production des énoncés des critères de mérite, lorsque cela est nécessaire."
+                DescEng = "Experienced in identifying, defining, solving and prioritizing standard problems without causing other unanticipated problems. Identifies root causes, sets goals and identifies constraints. Conducts impact analysis and identifies possible consequences of actions/decisions.",
+                DescFre = "Expérience de la détection, de la définition, de la résolution et de la hiérarchisation de problèmes courants sans générer d’autres problèmes imprévus. Définit les causes profondes des problèmes, fixe des objectifs et repère les contraintes. Réalise des analyses d’impact et détermine quelles sont les conséquences possibles des mesures ou des décisions prises."
             },
             new CompetencyLevelRequirement
             {
                 Id = 90,
-                DescEng = "Manages a unit. Participates on staffing boards and drafts statements of merit criteria, and, where applicable, conducts assessments. Manages unit member performance, including the development of objectives, learning plans, talent management and action plans, and dealing with disciplinary matters. Analyzes and forecasts workforce management needs and initiates required succession planning processes. Approves training requests by considering value for money.",
-                DescFre = "Gérer une unité. Participer aux commissions de dotation en personnel et rédiger des énoncés des critères de mérite et, au besoin, procéder à des évaluations. Gérer le rendement des membres de l’unité, ce qui comprend l’élaboration d’objectifs, de plans d’apprentissage, de gestion des talents et de plans d’action, et s’occuper des questions de discipline. Analyser et prévoir les besoins en matière de gestion des effectifs et lancer les processus de planification de la relève nécessaires. Approuver les demandes de formation en tenant compte du rapport qualité-prix."
+                DescEng = "Experienced in finding workable solutions to increasingly complex and multi-dimensional problems by either intuition or systematic approach. Generates and assesses alternative solutions and develops standards to evaluate different intended results offered by alternatives.  Provides training and advises on best practices. Conducts monitoring and testing of solutions after implementation.",
+                DescFre = "Expérience de la recherche de solutions viables à des problèmes de plus en plus complexes et multidimensionnels, que ce soit de façon intuitive ou au moyen d’une approche systématique. Génère et évalue des solutions de rechange, et établit des normes pour évaluer les différents résultats escomptés desdites solutions. Donne de la formation et formule des conseils à l’égard des pratiques exemplaires. Effectue le suivi et la mise à l’essai des solutions après leur mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
                 Id = 91,
-                DescEng = "Manages several units or projects. Develops complex workforce management plans that capitalize on recruitment, performance management, etc. Exercises an influence on Canadian Coast Guard workforce management strategic planning and development, succession planning, and other workforce management areas. Contributes to linking policies and systems to performance management processes, competencies, and performance outcomes in support of broader organizational goals. Ensures alignment of workforce management plans with the objectives of the Coast Guard's overall program strategy.",
-                DescFre = "Gérer plusieurs unités ou projets. Élaborer des plans complexes de gestion des effectifs qui tirent parti du recrutement, de la gestion du rendement, etc. Exercer une influence sur la planification et le développement stratégiques de la gestion des effectifs de la Garde côtière canadienne, la planification de la relève et d’autres domaines de la gestion des effectifs. Contribuer à lier les politiques et les systèmes aux processus de gestion du rendement, aux compétences et aux résultats en matière de rendement pour soutenir les objectifs organisationnels généraux. Veiller à l’harmonisation des plans de gestion des effectifs avec les objectifs de la stratégie globale du programme de la Garde côtière."
+                DescEng = "Revises and amends problem solving models / flowcharts / cause and effect diagrams.  Advises on multiple alternatives and expected results based on extensive experience. Evaluates effectiveness and efficiency of solution after implementation.",
+                DescFre = "Révise et modifie les modèles de résolution de problèmes, les organigrammes et les diagrammes cause-effet. Formule des conseils à l’égard des différentes solutions possibles et des résultats escomptés en s’appuyant sur une expérience approfondie. Évalue l’efficacité et l’efficience de la solution après sa mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
                 Id = 92,
                 DescEng = "Prepares and processes bills, invoices, accounts payable and receivable. Enters data into financial tracking systems according to established procedures.",
-                DescFre = "Préparer et traiter des factures, des comptes fournisseurs et des comptes clients. Saisir les données dans les systèmes de suivi financier selon les procédures établies."
+                DescFre = "Prépare et traite les factures, les comptes fournisseurs et les comptes clients. Saisit les données dans les systèmes de suivi financier conformément aux procédures établies."
             },
             new CompetencyLevelRequirement
             {
                 Id = 93,
                 DescEng = "Maintains Coast Guard unit assets and property (e.g. office equipment, vehicles, information databases, etc.). Updates budgets and projections. Purchases with credit cards when required. Runs salary and Operations and Maintenance (O&M) reports and statements for managers. Makes budget entries and reconciles accounts with rationales. Tracks and analyzes unit cash flow.",
-                DescFre = "Gérer les biens et les actifs de l’unité de la Garde côtière (par exemple, le matériel de bureau, les véhicules et les bases de données d’information) Mettre à jour des budgets et des projections. Procéder à des achats par carte de crédit au besoin. Produire des rapports et des relevés sur les salaires et les dépenses de fonctionnement et d’entretien (F et E) pour les gestionnaires. Remplir des postes budgétaires et effectuer le rapprochement des comptes et des justifications. Suivre et analyser les flux monétaires de l’unité."
+                DescFre = "Gère les actifs et les biens de l'unité de la Garde côtière (par exemple, le matériel de bureau, les véhicules, les bases de données d'information, etc.). Il met à jour les budgets et les projections. Effectue les achats par carte de crédit lorsque cela est nécessaire. Gère les salaires et les rapports et relevés de fonctionnement et d'entretien (F&E) pour les gestionnaires. Effectue des entrées budgétaires et rapproche les comptes avec les justifications. Suivre et analyser les flux de trésorerie des unités."
             },
             new CompetencyLevelRequirement
             {
                 Id = 94,
-                DescEng = "Articulates the processes by which financial resources are identified, obtained, allocated, managed and accounted for. Makes sound financial decisions after having analyzed their impact on the organization and operations within the scope of fiscal responsibilities. Monitors the use of Coast Guard financial resources and budgets by employees, suppliers, partners or others. Complies with legislation, policies and practices applicable to the appropriate and effective use of financial resources. Takes a significant role in preparing budgets and forecasts for projects and initiatives.",
-                DescFre = "Décrire les processus selon lesquels les ressources sont déterminées, obtenues, attribuées, gérées et justifiées. Prendre des décisions financières appropriées après avoir analysé leur incidence sur l’organisation et les opérations dans le cadre de ses responsabilités financières. Surveiller l’utilisation des ressources financières et des budgets de la Garde côtière par les employés, les fournisseurs, les partenaires ou autres. Observer les lois, les politiques et les pratiques qui s’appliquent à l’utilisation appropriée et efficace des ressources. Jouer un rôle important dans la préparation des budgets et des prévisions des projets et des initiatives."
+                DescEng = "Experienced in identifying, defining, solving and prioritizing standard problems without causing other unanticipated problems. Identifies root causes, sets goals and identifies constraints. Conducts impact analysis and identifies possible consequences of actions/decisions.",
+                DescFre = "Expérience de la détection, de la définition, de la résolution et de la hiérarchisation de problèmes courants sans générer d’autres problèmes imprévus. Définit les causes profondes des problèmes, fixe des objectifs et repère les contraintes. Réalise des analyses d’impact et détermine quelles sont les conséquences possibles des mesures ou des décisions prises."
             },
             new CompetencyLevelRequirement
             {
                 Id = 95,
-                DescEng = "Ensures adequate internal control systems over the Coast Guard's financial assets, investments, liabilities, revenues, and expenditures. Manages financial and accounting responsibilities for large programs or multiple business lines. Identifies additional or alternative financial resources and opportunities for funding organization-wide projects, programs, research centers and/or services, etc. Acts on audit, evaluation, and other objective financial performance information. Sets up and manages income and expenditure monitoring systems and keeps these systems under close review and makes improvements where relevant. Uses delegated authority to purchase supplies for the work group. Performs a variety of financial management practices such as: budgeting, forecasting, cost benefits, risk analysis. ",
-                DescFre = "Veiller à ce que des systèmes de contrôle interne adéquats encadrent les actifs financiers, les investissements, les passifs, les recettes et les dépenses de la Garde côtière. Gérer les responsabilités financières et comptables de programmes importants ou de multiples secteurs d’activité. Cibler des ressources et des possibilités financières supplémentaires ou de rechange en vue du financement de projets, de programmes, de centres et/ou services de recherche, entre autres, à l’échelle de l’organisation. Donner suite aux vérifications, aux évaluations et à d’autres informations objectives sur le rendement financier. Mettre en place et gérer des systèmes de contrôle des recettes et des dépenses, les surveiller de près et les améliorer au besoin. Utiliser ses pouvoirs délégués pour acheter des fournitures pour le groupe de travail. Utiliser différentes pratiques de gestion financière telles que la budgétisation, la prévision, l’analyse coût-avantage et l’analyse des risques."
+                DescEng = "Experienced in finding workable solutions to increasingly complex and multi-dimensional problems by either intuition or systematic approach. Generates and assesses alternative solutions and develops standards to evaluate different intended results offered by alternatives. Provides training and advises on best practices. Conducts monitoring and testing of solutions after implementation.",
+                DescFre = "Expérience de la recherche de solutions viables à des problèmes de plus en plus complexes et multidimensionnels, que ce soit de façon intuitive ou au moyen d’une approche systématique. Génère et évalue des solutions de rechange, et établit des normes pour évaluer les différents résultats escomptés desdites solutions. Donne de la formation et formule des conseils à l’égard des pratiques exemplaires. Effectue le suivi et la mise à l’essai des solutions après leur mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
                 Id = 96,
-                DescEng = "Ensures framework is in place for sound financial planning, management, control and reporting (i.e. spanning pay, capital, Operations and Maintenance [O&M] costs and revenues). Ensures processes and infrastructure provide managers with integrated financial and non-financial performance information, a mature approach to risk management, appropriate control systems, and a shared set of values and ethics. ",
-                DescFre = "S’assurer que le cadre est en place pour une planification et une gestion financières saines, un contrôle des finances rigoureux et des rapports financiers solides (c’est-à-dire couvrant les salaires, les immobilisations, les coûts de fonctionnement et d’entretien [F et E] et les recettes). Veiller à ce que des processus et des infrastructures fournissent aux gestionnaires des renseignements financiers et autres sur le rendement, une approche réfléchie en matière de gestion du risque, des mécanismes de contrôle adéquats et un ensemble commun de valeurs et de principes éthiques."
+                DescEng = "Revises and amends problem solving models, flowcharts, and cause and effect diagrams. Advises on multiple alternatives and expected results based on extensive experience. Evaluates effectiveness and efficiency of solution after implementation.",
+                DescFre = "Révise et modifie les modèles de résolution de problèmes, les organigrammes et les diagrammes cause-effet. Formule des conseils à l’égard des différentes solutions possibles et des résultats escomptés en s’appuyant sur une expérience approfondie. Évalue l’efficacité et l’efficience de la solution après sa mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
@@ -605,7 +605,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 101,
-                DescEng = "Manages the logistics department as a logistics officer. Consults with the chief cook and steward in all matters pertaining to shipboard hotel provisions and systems. Consults with shoreside stakeholders and conducts logistics audits and training at sea and ashore. ",
+                DescEng = "Manages the logistics department as a logistics officer. Consults with the chief cook and steward in all matters pertaining to shipboard hotel provisions and systems. Consults with shoreside stakeholders and conducts logistics audits and training at sea and ashore.",
                 DescFre = "Gère le département logistique en tant qu'officier de logistique. Consulte le chef cuisinier et le steward pour tout ce qui concerne les dispositions et les systèmes hôteliers à bord du navire. Consulte les parties prenantes à terre et effectue des audits logistiques et des formations en mer et à terre."
             },
             new CompetencyLevelRequirement
@@ -623,8 +623,8 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 104,
-                DescEng = "Applies various constraints imposed by legislation and agreements by considering information sharing limitations when distributing products and/or information. Provides regular vessel tracking updates to partners as required. Analyzes information to contribute to products such as threat/risk assessments. Compiles and filters data received from partners for duplicates and unknowns. ",
-                DescFre = "Applique diverses contraintes imposées par la législation et les accords en tenant compte des limites du partage des informations lors de la distribution des produits et/ou des informations. Fournit aux partenaires des mises à jour régulières sur le suivi des navires, selon les besoins. Analyse les informations pour contribuer aux produits tels que les évaluations des menaces/risques. Compile et filtre les données reçues des partenaires pour détecter les doublons et les inconnues. "
+                DescEng = "Applies various constraints imposed by legislation and agreements by considering information sharing limitations when distributing products and/or information. Provides regular vessel tracking updates to partners as required. Analyzes information to contribute to products such as threat/risk assessments. Compiles and filters data received from partners for duplicates and unknowns.",
+                DescFre = "Applique diverses contraintes imposées par la législation et les accords en tenant compte des limites du partage des informations lors de la distribution des produits et/ou des informations. Fournit aux partenaires des mises à jour régulières sur le suivi des navires, selon les besoins. Analyse les informations pour contribuer aux produits tels que les évaluations des menaces/risques. Compile et filtre les données reçues des partenaires pour détecter les doublons et les inconnues."
             },
             new CompetencyLevelRequirement
             {
@@ -653,7 +653,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 109,
-                DescEng = "Implements the CCG’s quality assurance system. Interprets a wide variety of data and makes recommendations. Makes recommendations or, when required, develops options for resolving instances of non-compliance.",
+                DescEng = "Implements the CCG’s quality assurance system. Interprets a wide variety of data and makes recommendations. Makes recommendations or, when required, develops options for resolving instances of non-compliance. ",
                 DescFre = "Met en œuvre le système d’assurance de la qualité de la Garde côtière canadienne. Interprète une grande variété de données et fait des recommandations. Formule des recommandations ou, le cas échéant, élabore des options pour résoudre les non-conformités."
             },
             new CompetencyLevelRequirement
@@ -707,10 +707,8 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 118,
-                DescEng =
-                    "Participates in and validates discussion-based exercises in talking through plan finalization.",
-                DescFre =
-                    "Participe à des exercices basés sur la discussion et les valider en parlant de la finalisation du plan."
+                DescEng = "Participates in and validates discussion-based exercises in talking through plan finalization.",
+                DescFre = "Participe à des exercices basés sur la discussion et les valider en parlant de la finalisation du plan."
             },
             new CompetencyLevelRequirement
             {
@@ -721,7 +719,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 120,
-                DescEng = "Produces and validates live exercises in order to help participants develop skills  and confidence, testing logistics and physical capabilities, and providing experience of what it would be like to use a plan or procedure in real life. ",
+                DescEng = "Produces and validates live exercises in order to help participants develop skills  and confidence, testing logistics and physical capabilities, and providing experience of what it would be like to use a plan or procedure in real life.",
                 DescFre = "Produit et valide des exercices en direct afin d'aider les participants à développer leurs compétences et leur confiance, en mettant à l'épreuve leurs capacités logistiques et physiques, et en leur donnant une expérience de ce que serait l'utilisation d'un plan ou d'une procédure dans la vie réelle."
             },
             new CompetencyLevelRequirement
@@ -751,7 +749,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 125,
-                DescEng = "Participates in professional development networks and learning communities. Shares content and pedagogical resources with program staff in collaborative professional development projects. Refines instructional practices through reflection on experience, evidence, and data. Designs instruction to build learners’ subject matter of expertise skills (i.e. marine skills in the Coast Guard). ",
+                DescEng = "Participates in professional development networks and learning communities. Shares content and pedagogical resources with program staff in collaborative professional development projects. Refines instructional practices through reflection on experience, evidence, and data. Designs instruction to build learners’ subject matter of expertise skills (i.e. marine skills in the Coast Guard).",
                 DescFre = "Participe à des réseaux de développement professionnel et à des communautés d'apprentissage. Partage le contenu et les ressources pédagogiques avec le personnel du programme dans le cadre de projets de développement professionnel collaboratifs. Raffine les pratiques pédagogiques par une réflexion sur l'expérience, les faits et les données. Conçoit l'enseignement de manière à renforcer les compétences des apprenants en matière d'expertise (c'est-à-dire les compétences maritimes de la Garde côtière)."
             },
             new CompetencyLevelRequirement
@@ -1353,62 +1351,62 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 237,
-                DescEng = "Uses the of basics of the life cycle asset management program in daily activities. Performs routine asset management tasks. Manages the life cycle of tackle books, safety equipment, charts, etc. when and where applicable.",
-                DescFre = "Utiliser les bases du programme de gestion du cycle de vie des actifs dans les activités quotidiennes. Effectuer des tâches de routine en matière de gestion des actifs. Gérer le cycle de vie des livres sur l’outillage, des équipements de sécurité, des cartes, etc. le cas échéant."
+                DescEng = "Understands the fundamentals of project goals, participants’ roles and the importance of project management principles. Willingness to participate in project support activities.",
+                DescFre = "Comprend les principes fondamentaux qui sous-tendent les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet. Est disposé à participer aux activités de soutien du projet."
             },
             new CompetencyLevelRequirement
             {
                 Id = 238,
-                DescEng = "Advises and follows the Government of Canada's Controlled Goods Directive, directives on fleet management, the Policy on Management of Materiel, and the Directive on Disposal of Surplus Materiel, when and where applicable.",
-                DescFre = "Suivre la Directive sur les marchandises contrôlées du gouvernement du Canada, les directives sur la gestion de flotte, la Politique sur la gestion du matériel et la Directive sur l’aliénation du matériel en surplus, le cas échéant et formuler des conseils à ce sujet."
+                DescEng = "Comprehends project goals, participants’ roles, and the importance of project management principles. Able to participate in project support activities (i.e. gathering needed information). Able to participate, under supervision, with others in small and well defined components of the project.",
+                DescFre = "Comprend les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet. Capacité à participer aux activités de soutien du projet (p. ex. recueillir les renseignements nécessaires). Capacité à participer, avec d’autres personnes et sous supervision, à la réalisation de petites tâches bien définies qui se rapportent au projet."
             },
             new CompetencyLevelRequirement
             {
                 Id = 239,
-                DescEng = "Performs all four phases of life cycle materiel management, including assessing and planning materiel requirements, acquiring materiel resources, operating and using, maintaining, and disposing of materiel. Implements the concepts of the Policy Framework for the Management of Assets and Acquired Services.",
-                DescFre = "Effectuer les quatre phases de la gestion du cycle de vie du matériel, y compris l’évaluation et la planification des besoins en matériel, l’acquisition des ressources matérielles, l’exploitation et l’utilisation, l’entretien et l’élimination du matériel. Mettre en œuvre les concepts du Cadre de politique sur la gestion des actifs et services acquis."
+                DescEng = "Knowledge of project goals, participants’ roles, and the importance of project management principles, such as time, cost, and quality management. Participates, with minimal supervision, with others in all projects. Will seek advice and guidance for more complex components of the project.",
+                DescFre = "Comprend les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet, comme la gestion du temps, des coûts et de la qualité. Participe à tous les projets, en collaboration avec d’autres personnes et avec un minimum de supervision. Demande des conseils et des directives pour les éléments plus complexes du projet."
             },
             new CompetencyLevelRequirement
             {
                 Id = 240,
-                DescEng = "Manages a risk-based and complexity-based approach to processes, systems, capacity, resourcing, oversight, and reporting to promote the attainment of program outcomes. Advises and guides decisions on life cycle asset management within their area of concern.",
-                DescFre = "Gérer une approche axée sur le risque et la complexité en ce qui concerne les processus, les systèmes, la capacité, le ressourcement, la surveillance et l’établissement de rapports, à l’appui des résultats des programmes. Formuler des conseils et orienter les décisions sur la gestion du cycle de vie des actifs dans son domaine de compétence."
+                DescEng = "Extensive practical experience in leading projects and programs. Leads project support activities, taking the initiative to gather additional information, keep documentation organized, and identify process improvements when needed. Actively participates in all projects and provides advice to others who seek assistance.",
+                DescFre = "Vaste expérience pratique en gestion de projets et de programmes. Dirige les activités de soutien au projet en prenant l’initiative de recueillir des renseignements supplémentaires, de veiller au classement de la documentation et de cibler les améliorations à apporter aux processus. Participe activement à tous les projets et donne des conseils aux personnes qui demandent de l’aide."
             },
             new CompetencyLevelRequirement
             {
                 Id = 241,
-                DescEng = "Implements an effective management framework, including departmental procedures, processes, and systems. Manages based on the principles of value for money acquisition of assets, effective management and usage of these assets, and effective disposal of such assets. Advises and guides decisions on life cycle asset management within the Coast Guard from a regional and/or national perspective.",
-                DescFre = "Mettre en œuvre un cadre de gestion efficace, y compris des procédures, des processus et des systèmes ministériels. Gérer en fonction des principes d’optimisation des ressources pour l’acquisition de biens, la gestion et l’utilisation efficaces de ces biens et leur cession efficace. Formuler des conseils et orienter les décisions relatives à la gestion du cycle de vie des biens au sein de la Garde côtière dans une perspective régionale ou nationale."
+                DescEng = "Responsible for project delivery, directs teams to complete activities to current policies and practices. Provides accurate and timely recommendations to client. Able to train and advise anyone seeking guidance on basic to complex projects.",
+                DescFre = "Est responsable de l’exécution du projet et dirige les équipes pour mener les activités à bien conformément aux politiques et aux pratiques en vigueur. Fournit au client des recommandations précises et opportunes. Est capable de former et de conseiller toute personne souhaitant obtenir des conseils à l’égard de projets simples ou complexes.",
             },
             new CompetencyLevelRequirement
             {
                 Id = 242,
                 DescEng = "Observes an issue or problem, gathers information, and reports on its expected versus actual functionality.",
-                DescFre = "Observer un problème ou une question, recueillir des informations et rendre compte de sa fonctionnalité prévue par rapport à sa fonctionnalité réelle."
+                DescFre = "Observe une question ou un problème, recueille des informations et rend compte de sa fonctionnalité prévue par rapport à sa fonctionnalité réelle."
             },
             new CompetencyLevelRequirement
             {
                 Id = 243,
                 DescEng = "Gathers information on an observed issue or problem. Considers the difference between expected and actual functionality, looks at special circumstances to diagnose it, and attempts various fixes and tests for confirmation before reporting.",
-                DescFre = "Recueillir des informations sur un problème ou une question observés. Examiner l’écart entre la fonctionnalité attendue et la fonctionnalité réelle, examiner les circonstances particulières pour trouver la cause de l’écart et tenter d’apporter diverses corrections et procéder à des tests à des fins de confirmation avant de faire un rapport."
+                DescFre = "Recueille des informations sur un problème ou une question observés. Examine la différence entre la fonctionnalité attendue et la fonctionnalité réelle, examine les circonstances particulières pour la diagnostiquer, et tente diverses corrections et tests pour confirmation avant de faire un rapport."
             },
             new CompetencyLevelRequirement
             {
                 Id = 244,
                 DescEng = "Interprets data and accurately determines essential elements of an issue or problem. Applies various problem isolation techniques to determine causes. Tests equipment under multiple settings to confirm it is restored to working state.",
-                DescFre = "Interpréter des données et déterminer avec précision les éléments essentiels d’une question ou d’un problème. Mettre en pratique diverses techniques d’isolement des problèmes pour en déterminer les causes. Mettre à l’essai l’équipement sous plusieurs paramètres pour confirmer qu’il est remis en état de fonctionnement."
+                DescFre = "Interprète les données et détermine avec précision les éléments essentiels d'une question ou d'un problème. Applique diverses techniques d'isolement des problèmes pour en déterminer les causes. Teste l'équipement sous plusieurs paramètres pour confirmer qu'il est remis en état de marche."
             },
             new CompetencyLevelRequirement
             {
                 Id = 245,
                 DescEng = "Interprets data from many sources to determine essential elements of a problem. Recognizes a problem at the earliest stages, pinpoints problem sources, and uses corrective actions to restore a system to working state. Uses data interpretation to recommend preventative measures that will prevent further failure.",
-                DescFre = "Interpréter des données provenant de nombreuses sources pour déterminer les éléments essentiels d’un problème. Reconnaître un problème dès le début, cerner les sources du problème et prendre des mesures correctives pour remettre un système en état de fonctionnement. Utiliser l’interprétation des données pour recommander des mesures préventives qui empêcheront toute nouvelle défaillance."
+                DescFre = "Interprète des données provenant de nombreuses sources pour déterminer les éléments essentiels d'un problème. Reconnaît un problème dès les premières étapes, identifie les sources du problème et utilise des actions correctives pour rétablir un système en état de fonctionnement. Utilise l'interprétation des données pour recommander des mesures préventives qui empêcheront toute nouvelle défaillance."
             },
             new CompetencyLevelRequirement
             {
                 Id = 246,
                 DescEng = "Uses data interpretation and accuracy in determining essential elements of an issue or problem. Consults, and provides training on, trends to prevent future issues and presents these and related items to units and stakeholders.",
-                DescFre = "S’appuyer sur l’interprétation et la précision des données pour déterminer les éléments essentiels d’une question ou d’un problème. Procéder à des consultations et donner de la formation sur les tendances afin de prévenir les problèmes futurs et présenter ces tendances et les éléments qui s’y rapportent aux unités et aux intervenants."
+                DescFre = "Utilise l'interprétation et la précision des données pour déterminer les éléments essentiels d'une question ou d'un problème. Consulte et fournit une formation sur les tendances afin de prévenir les problèmes futurs et présente ces éléments et d'autres éléments connexes aux unités et aux parties prenantes."
             },
             new CompetencyLevelRequirement
             {
@@ -1551,8 +1549,8 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 270,
-                DescEng = "Practical knowledge of the development of incidents and tactical responses between and among all participants in a number of real incidents of varying size and complexity, and exercises.",
-                DescFre = "Connaissance pratique de l’élaboration d’interventions en cas d’incident et d’ordre tactique par l’ensemble des participants dans le cadre d’un certain nombre d’incidents réels d’envergure et de complexité variées et d’exercices."
+                DescEng = "Advanced knowledge of all elements of the Search and Rescue (SAR) system, the tactical responses by all the participants, strategic elements in long term searches and search planning, and instructing others in SAR systems roles and responsibilities.",
+                DescFre = "Connaissance approfondie de tous les éléments du système de R-S, des réponses tactiques de tous les participants, des éléments stratégiques des recherches à long terme et de la planification des recherches, et formation des autres sur les rôles et les responsabilités des systèmes de R-S."
             },
             new CompetencyLevelRequirement
             {
@@ -1913,7 +1911,7 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 331,
-                DescEng = "Expert program knowledge in implementing new possibilities /capabilities to improve the existing systems and practices. Knowledge of creating program procedures.",
+                DescEng = "Expert program knowledge in implementing new possibilities/capabilities to improve the existing systems and practices. Knowledge of creating program procedures.",
                 DescFre = "Connaissance experte du programme dans la mise en œuvre de nouvelles possibilités/capacités pour améliorer les systèmes et les pratiques existants. Connaissance de la création des procédures du programme."
             },
             new CompetencyLevelRequirement
@@ -2964,7 +2962,7 @@ namespace DataModel.SeedData
             {
                 Id = 520,
                 DescEng = "Integrates the acquisition, processing, analysis, display, and management of spatial information, using various geographic information systems (GIS), photogrammetry, and remote sensing equipment. Identifies, formulates, and solves a wide range of technical problems. Provides expertise in boundary and land surveying, subdivision, and plat creation, control surveys, and construction surveys.",
-                DescFre = "Integrates the acquisition, processing, analysis, display, and management of spatial information, using various geographic information systems (GIS), photogrammetry, and remote sensing equipment. Identifies, formulates, and solves a wide range of technical problems. Provides expertise in boundary and land surveying, subdivision, and plat creation, control surveys, and construction surveys. "
+                DescFre = "Intègre l’acquisition, le traitement, l’analyse, l’affichage et la gestion de données spatiales en utilisant divers systèmes d’information géographique (SIG), la photogrammétrie et du matériel de télédétection. Détecte, énonce et résout un large éventail de problèmes techniques. Fournit une expertise en ce qui a trait à l’arpentage des limites et des terrains, au morcellement des terres, à la création de plans cadastraux, ainsi qu’à la réalisation de levés de contrôle et de levés de construction."
             },
             new CompetencyLevelRequirement
             {
@@ -3257,20 +3255,20 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 569,
-                DescEng = "Works in several programming environments with comfort in various hardware and software interfaces. Writes original multi-module/complex programs or applies reusable modules. Designs, tests, and integrates software modules and resolves programming errors using various debugging tools and techniques. Provides support, guidance, and production assurance for common problems. Conducts impact analyses for proposed changes to or problems with the system. Prepares technical documentation (e.g. user guides, technical specifications). Undertakes routine analysis and works with designers and analysts to clarify and improve specifications or to identify alternative programming solutions.",
-                DescFre = "Fonctionne dans plusieurs environnements de programmation avec aisance dans diverses interfaces matérielles et logicielles. Écrit des programmes originaux multi-modules/complexes ou applique des modules réutilisables. Conçoit, teste et intègre des modules logiciels et résout les erreurs de programmation en utilisant divers outils et techniques de débogage. Fournir un soutien, des conseils et une assurance de production pour les problèmes courants. Effectue des analyses d'impact pour les changements proposés ou les problèmes liés au système. Prépare la documentation technique (par exemple, les guides d'utilisation, les spécifications techniques). Effectue des analyses de routine et travaille avec des concepteurs et des analystes pour clarifier et améliorer les spécifications ou pour identifier des solutions de programmation alternatives."
+                DescEng = "Experienced in identifying, defining, solving and prioritizing standard problems without causing other unanticipated problems. Identifies root causes, sets goals and identifies constraints. Conducts impact analysis and identifies possible consequences of actions/decisions.",
+                DescFre = "Expérience de la détection, de la définition, de la résolution et de la hiérarchisation de problèmes courants sans générer d’autres problèmes imprévus. Définit les causes profondes des problèmes, fixe des objectifs et repère les contraintes. Réalise des analyses d’impact et détermine quelles sont les conséquences possibles des mesures ou des décisions prises."
             },
             new CompetencyLevelRequirement
             {
                 Id = 570,
-                DescEng = "Manages software construction, testing, infrastructure, configuration, a wide range of system development methodologies, and operating standards on behalf of the Canadian Coast Guard. Analyzes how a change would affect multiple applications and users. Makes recommendations/decisions in application and program design, standards, and program enhancements, including those related to privacy, accessibility for persons with disabilities, usability and inter-operability. Debugs very complex or urgent problems. Analyzes and models business functions, processes, and information flow within or between systems. Provides guidance/mentors on programming practices and techniques to individuals.",
-                DescFre = "Gère la construction, les tests, l'infrastructure, la configuration des logiciels, un large éventail de méthodologies de développement de systèmes et les normes d'exploitation au nom de la Garde côtière canadienne. Analyse la manière dont un changement affecterait de multiples applications et utilisateurs. Formule des recommandations/décisions concernant la conception des applications et des programmes, les normes et les améliorations des programmes, y compris celles liées à la confidentialité, à l'accessibilité pour les personnes ayant des incapacités, à la convivialité et à l'interopérabilité. Débogage de problèmes très complexes ou urgents. Analyse et modélise les fonctions, les processus et les flux d'informations au sein des systèmes ou entre eux. Fournit des conseils/mentors sur les pratiques et techniques de programmation aux individus."
+                DescEng = "Experienced in finding workable solutions to increasingly complex and multi-dimensional problems by either intuition or systematic approach. Generates and assesses alternative solutions and develops standards to evaluate different intended results offered by alternatives. Provides training and advises on best practices. Conducts monitoring and testing of solutions after implementation.",
+                DescFre = "Expérience de la recherche de solutions viables à des problèmes de plus en plus complexes et multidimensionnels, que ce soit de façon intuitive ou au moyen d’une approche systématique. Génère et évalue des solutions de rechange, et établit des normes pour évaluer les différents résultats escomptés desdites solutions. Donne de la formation et formule des conseils à l’égard des pratiques exemplaires. Effectue le suivi et la mise à l’essai des solutions après leur mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
                 Id = 571,
-                DescEng = "Provides effective strategic direction to enterprise-wide application design. Guides and oversees multiple-concurrent software construction projects. Works with users at all levels to define system requirements and specify appropriate system environments to meet operational needs and system requirements. Presents software construction disciplines to peers in public forums. Develops policy and standards for software construction on behalf of the Coast Guard.",
-                DescFre = "Fournit une orientation stratégique efficace pour la conception d'applications à l'échelle de l'entreprise. Guide et supervise de multiples projets de construction de logiciels simultanés. Travaille avec les utilisateurs à tous les niveaux pour définir les exigences du système et spécifier les environnements système appropriés pour répondre aux besoins opérationnels et aux exigences du système. Présente les disciplines de construction de logiciels à ses pairs dans des forums publics. Élabore des politiques et des normes pour la construction de logiciels au nom de la Garde côtière."
+                DescEng = "Revises and amends problem solving models, flowcharts, and cause and effect diagrams. Advises on multiple alternatives and expected results based on extensive experience. Evaluates effectiveness and efficiency of solution after implementation.",
+                DescFre = "Révise et modifie les modèles de résolution de problèmes, les organigrammes et les diagrammes cause-effet. Formule des conseils à l’égard des différentes solutions possibles et des résultats escomptés en s’appuyant sur une expérience approfondie. Évalue l’efficacité et l’efficience de la solution après sa mise en œuvre."
             },
             new CompetencyLevelRequirement
             {
@@ -3569,8 +3567,8 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 621,
-                DescEng = "Builds and nurtures effective and collaborative relationships. Forms strategic alliances with partners and stakeholders to advance government priorities. Takes on accountability for horizontal initiatives. Collaborates with other Deputy Ministers as a community to strengthen public service performance. Advances whole-of-government objectives through influence and negotiation. Acknowledges the contribution of others in achieving objectives.",
-                DescFre = "Bâtit et entretient des relations efficaces et collaboratives. Recherche et forme des alliances stratégiques avec des partenaires et des intervenants afin d'améliorer continuellement les résultats. Engage les collègues à mettre en œuvre des initiatives horizontales. Écoute activement pour comprendre l'impact des enjeux et des points de vue des autres. Suscite l'appui des partenaires et des intervenants grâce à l'influence et à la négociation. Reconnaît la contribution des autres à l'atteinte des objectifs."
+                DescEng = "Builds and nurtures effective and collaborative relationships. Forms strategic alliances with partners and stakeholders to advance government priorities. Engages colleagues to deliver on horizontal initiatives. Collaborates with other Deputy Ministers as a community to strengthen public service performance. Advances whole-of-government objectives through influence and negotiation. Acknowledges the contribution of others in achieving objectives.",
+                DescFre = "Bâtit et entretient des relations efficaces et collaboratives. Forme des alliances stratégiques avec des partenaires et des intervenants pour faire avancer les priorités du gouvernement. Engage les collègues à mettre en œuvre des initiatives horizontales. Collabore avec d'autres sous-ministres en tant que communauté pour renforcer le rendement de la fonction publique. Suscite l'appui des partenaires et des intervenants grâce à l'influence et à la négociation. Reconnaît la contribution des autres à l'atteinte des objectifs."
             },
             new CompetencyLevelRequirement
             {

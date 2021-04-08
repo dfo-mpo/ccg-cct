@@ -34,7 +34,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 5, NameEng = "Seagoing Personnel Management", NameFre = "Connaissance de la gestion du personnel navigant",
+                Id = 5, NameEng = "Seagoing Personnel Management Knowledge", NameFre = "Connaissance de la gestion du personnel navigant",
                 DescEng = "Knowledge of policies and directives on the management and administration of workforce management (HR) issues affecting seagoing personnel.",
                 DescFre = "Connaissance des politiques et directives relatives à la gestion et à l'administration des questions de gestion des effectifs (RH) touchant le personnel navigant."
             },
@@ -46,9 +46,9 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 7, NameEng = "Knowledge of Systems Approach to Training", NameFre = "Connaissance de l’approche systémique en formation",
+                Id = 7, NameEng = "Knowledge of Systems Approach to Training", NameFre = "Connaissance de l'approche systémique de la formation",
                 DescEng = "Knowledge of the step by step process of analysis, design, development, implementation, and evaluation in the course of delivering training. May also be referred to as Instructional Systems Design, or ISD.",
-                DescFre = "Connaissance de chaque étape du processus d’analyse, de conception, de développement, de mise en œuvre et d’évaluation dans le cadre de la prestation de la formation. On peut également parler de conception de matériel pédagogique."
+                DescFre = "Connaissance du processus étape par étape d'analyse, de conception, d'élaboration, de mise en œuvre et d'évaluation dans le cadre de la prestation de la formation. On peut aussi parler de conception de systèmes d'enseignement, ou DSI."
             },
             new Competency
             {
@@ -108,7 +108,7 @@ namespace DataModel.SeedData
             {
                 Id = 17, NameEng = "Support Services", NameFre = "Services de soutien",
                 DescEng = "Provides a high standard of service to Canadian Coast Guard members and other stakeholders.",
-                DescFre = "Fournir un service de haute qualité aux membres de la Garde côtière canadienne et aux autres intervenants."
+                DescFre = "Fournit un service de haute qualité aux membres de la Garde côtière canadienne et aux autres parties prenantes."
             },
             new Competency
             {
@@ -118,9 +118,9 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 19, NameEng = "Financial Management for Supervisors/Managers", NameFre = "Gestion financière pour les superviseurs/gestionnaires",
+                Id = 19, NameEng = "Financial Management for Supervisors/Managers", NameFre = "Gestion financière pour les superviseurs et les gestionnaires",
                 DescEng = "Applies the rules, policies, regulations, and procedures of the Financial Administration Act as they apply to the Canadian Coast Guard as well as the organization's financial assets and management procedures (including related procurement rules) such as: financial authority level and approval process, financial accounting procedures, public accountability, budgeting, projecting, monitoring, reporting, financial auditing, etc.",
-                DescFre = "Appliquer les règles, les politiques, les règlements et les procédures de la Loi sur la gestion des finances publiques qui s’appliquent à la Garde côtière canadienne ainsi que les procédures de gestion des actifs financiers et de l’organisation (y compris les règles de passation de marchés connexes) telles que le niveau de pouvoir financier et le processus d’approbation, les procédures de comptabilité financière, l’obligation de rendre des comptes au public, la budgétisation, la projection, la surveillance, la présentation de rapports, la vérification financière, etc."
+                DescFre = "Applique les règles, politiques, règlements et procédures de la Loi sur I' administration financière tels qu'ils s'appliquent à la Garde côtière canadienne ainsi que les actifs financiers et les procédures de gestion de l'organisation (y compris les règles d'approvisionnement connexes) tels que : le niveau d'autorité financière et le processus d'approbation, les procédures de comptabilité financière, la responsabilité publique, la budgétisation, la projection, la surveillance, la présentation de rapports, la vérification financière, etc."
             },
             new Competency
             {
@@ -166,7 +166,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 27, NameEng = "Thinking Things Through", NameFre = "Mener une réflexion approfondie",
+                Id = 27, NameEng = "Thinking Things Through", NameFre = "Réflexion approfondie",
                 DescEng = "Plans and adjusts work based on a thorough understanding of the Canadian Coast Guard's priorities. Obtains relevant information, considers all facts, and exercises sound judgement to formulate an opinion and/or make a decision. Analyzes situations and seeks feedback to learn from mistakes.",
                 DescFre = "Planifier et ajuster le travail en fonction d'une compréhension approfondie des priorités de la Garde côtière canadienne. Obtenir l'information pertinente, examiner tous les faits et exercer un jugement éclairé pour formuler une opinion ou prendre une décision. Analyse les situations et cherche à obtenir de la rétroaction pour tirer des leçons des erreurs."
             },
@@ -178,7 +178,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 33, NameEng = "Showing Initiative and Being Action Oriented", NameFre = "Faire preuve d’initiative et être orienté vers l’action",
+                Id = 33, NameEng = "Showing Initiative and Being Action Oriented", NameFre = "Fait preuve d'initiative et est orienté vers l'action",
                 DescEng = "Embraces change and actively looks for opportunities to learn and develop professionally and personally. Translates direction into concrete work activities. Identifies opportunities or issues, and takes action to enhance organizational results, without being prompted by others.",
                 DescFre = "Adopte le changement et cherche activement des occasions d'apprendre et de se perfectionner sur les plans professionnel et personnel. Traduit l'orientation en activités de travail concrètes. Cerner les possibilités ou les enjeux et prendre des mesures pour améliorer les résultats de l'organisation, sans y être incité par d'autres."
             },
@@ -214,7 +214,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 40, NameEng = "Operations and Maintenance.", NameFre = "Exploitation et maintenance",
+                Id = 40, NameEng = "Operations and Maintenance", NameFre = "Exploitation et maintenance",
                 DescEng = "Performs general labourer duties, building, vessel and grounds maintenance tasks, and transports materials and equipment.",
                 DescFre = "Exécute des tâches de manœuvre générale, des tâches d'entretien des bâtiments, des navires et des terrains, et transporte des matériaux et des équipements."
             },
@@ -276,7 +276,7 @@ namespace DataModel.SeedData
             {
                 Id = 50, NameEng = "Technical Maintenance of Diving Equipment", NameFre = "Entretien technique de l’équipement de plongée",
                 DescEng = "Repairs and conducts preventative maintenance of diving equipment. Maintains dive computers and instruments in accordance with all manufacturer's recommendations and owner's manuals.",
-                DescFre = "Entretien technique de l’équipement de plongée : Procéder à la réparation et à l’entretien préventif de l’équipement de plongée. Entretenir les ordinateurs et les instruments de plongée conformément à toutes les recommandations du fabricant et au manuel d’utilisation."
+                DescFre = "Procéder à la réparation et à l’entretien préventif de l’équipement de plongée. Entretenir les ordinateurs et les instruments de plongée conformément à toutes les recommandations du fabricant et au manuel d’utilisation."
             },
             new Competency
             {
@@ -300,7 +300,7 @@ namespace DataModel.SeedData
             {
                 Id = 54, NameEng = "Troubleshooting", NameFre = "Dépannage",
                 DescEng = "Employs a systematic approach to problems in order to find and correct issues with Canadian Coast Guard assets (e.g. land based, sea based, structural, electronic, etc.).",
-                DescFre = "Employer une méthode systématique pour aborder les problèmes afin de trouver et de corriger les problèmes liés aux actifs de la Garde côtière canadienne (par exemple, les actifs terrestres, maritimes, structurels, électroniques)."
+                DescFre = "Emploie une approche systématique des problèmes afin de trouver et de corriger les problèmes liés aux biens de la Garde côtière canadienne (par exemple, à terre, en mer, structurels, électroniques, etc.)"
             },
             new Competency
             {
@@ -491,7 +491,7 @@ namespace DataModel.SeedData
             new Competency
             {
                 Id = 86, NameEng = "Physical Education", NameFre = "Éducation physique",
-                DescEng = "Physical Education: Develops students' physical competence and knowledge of movement and safety, and their ability to use these to perform in a wide range of activities associated with the development of an active and healthy lifestyle.",
+                DescEng = "Develops students' physical competence and knowledge of movement and safety, and their ability to use these to perform in a wide range of activities associated with the development of an active and healthy lifestyle.",
                 DescFre = "Développe les compétences physiques et les connaissances des élèves en matière de mouvement et de sécurité, ainsi que leur capacité à les utiliser pour effectuer un large éventail d'activités associées au développement d'un mode de vie actif et sain."
             },
             new Competency
