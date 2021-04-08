@@ -30,11 +30,11 @@ namespace Service.Controllers
         }
 
         [HttpGet, Route("types")]
-        [ProducesResponseType(typeof(JobCompetencyDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(JobCompetencyTypeDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllTypes()
         {
             var results =
-                await _queryProvider.ProcessAsync<GetAllJobCompetencyTypesQueryHandler, List<JobCompetencyDto>>();
+                await _queryProvider.ProcessAsync<GetAllJobCompetencyTypesQueryHandler, List<JobCompetencyTypeDto>>();
             return Ok(results);
         }
 

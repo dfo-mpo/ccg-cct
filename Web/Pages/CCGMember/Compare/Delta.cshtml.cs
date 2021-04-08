@@ -36,6 +36,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string AddedCompetencies { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string RequiredCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public List<int> AddedCompetencyId { get; set; } = new List<int>() { };
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }

@@ -28,7 +28,7 @@ namespace Web.Pages.Student.College
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"Seagoing Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"College Student Nautical Deck positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Seagoing
             //Ship's Officer MAO-02 to MAO-03

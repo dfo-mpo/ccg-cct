@@ -38,6 +38,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string RequiredCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string PreviousPageSimilar { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
@@ -51,8 +53,6 @@ namespace Web.Pages.CCGMember.Similar
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string AddedCompetencies { get; set; } = string.Empty;
-        [BindProperty(SupportsGet = true)]
-        public List<int> PositionCompetencyValues { get; set; } = new List<int>();
         [BindProperty]
         public List<int> AddedCompetencyValues { get; set; } = new List<int>();
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, JobPositionService jobcompetencyService)
@@ -96,6 +96,14 @@ namespace Web.Pages.CCGMember.Similar
                     CertificateIds.Add(id);
                 }
             }
+            if (!RequiredCompetencies.Equals(string.Empty))
+            {
+                var ids = RequiredCompetencies.Split("&requiredCompetencyId=");
+                foreach (var id in ids)
+                {
+                    RequiredCompetencyIds.Add(id);
+                }
+            }
             foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
             {
                 if (!string.IsNullOrEmpty(added))
@@ -124,18 +132,21 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnPost(int positionid)
         { 
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            PositionId = positionid;
             PageSubmit = true;
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
-
+            RequiredCompetencies = string.Empty;
+            Certificates = string.Empty;
 
             foreach (var c in CertificateIds)
             {
                     Certificates += "&certificateId=" + c;
             }
-
+            foreach (var c in RequiredCompetencyIds)
+            {
+                RequiredCompetencies += "&requiredCompetencyId=" + c;
+            }
             foreach (var c in SameLevelCompetencyIds)
             {
 
@@ -147,9 +158,7 @@ namespace Web.Pages.CCGMember.Similar
                     {
                         SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
                     }
-
             }
-
             foreach (var c in HigherLevelCompetencyIds)
             {
                 if (!SameLevelCompetencyIds.Contains(c))
@@ -181,6 +190,12 @@ namespace Web.Pages.CCGMember.Similar
             }
 
         }
+        public void OnPostClear()
+        {
+            PageSubmit = true;
+            PageEdit = true;
+            AddedCompetencies =string.Empty;
+        }
         public void OnPostDelete(int competencyid)
         {
 
@@ -208,20 +223,23 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnPostEdit(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            PositionId = positionid;
             PageSubmit = true;
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
+            RequiredCompetencies = string.Empty;
+            Certificates = string.Empty;
 
             foreach (var c in CertificateIds)
             {
                 Certificates += "&certificateId=" + c;
             }
-
+            foreach (var c in RequiredCompetencyIds)
+            {
+                RequiredCompetencies += "&requiredCompetencyId=" + c;
+            }
             foreach (var c in SameLevelCompetencyIds)
             {
-
                 if (!HigherLevelCompetencyIds.Contains(c))
                 {
                     SameLevels += "&sameLevelCompetencyId=" + c;
@@ -230,9 +248,7 @@ namespace Web.Pages.CCGMember.Similar
                 {
                     SameOrHigherLevels += "&sameOrHigherLevelCompetencyId=" + c;
                 }
-
             }
-
             foreach (var c in HigherLevelCompetencyIds)
             {
                 if (!SameLevelCompetencyIds.Contains(c))
@@ -250,13 +266,6 @@ namespace Web.Pages.CCGMember.Similar
                 if (!competencies.Equals(null))
                 {
                     PositionCompetencyRatings.Add(competencies);
-                }
-            }
-            foreach (var c in PositionCompetencyRatings)
-            {
-                foreach (var r in c)
-                {
-                    PositionCompetencyValues.Add(r.CompetencyId);
                 }
             }
             foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))

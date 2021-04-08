@@ -30,6 +30,7 @@ namespace Web.Pages.Student.University
         {
             _logger.LogInformation($"University Student Social Science positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
+            //Shoreside
             //Economics and Social Science Services EC-01 to EC-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(13, "01"))
             {
@@ -66,24 +67,6 @@ namespace Web.Pages.Student.University
                 }
             }
 
-            //Programme Administration PM-03 to PM-04
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(20, "03"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(20, "04"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-
             //Administrative Services AS-02 to AS-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(2, "02"))
             {
@@ -94,6 +77,24 @@ namespace Web.Pages.Student.University
                 }
             }
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(2, "03"))
+            {
+                if (!position.Equals(null))
+                {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    ShoreSidePositions.Add(position);
+                }
+            }
+
+            //Programme Administration PM-03 to PM-04
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(20, "03"))
+            {
+                if (!position.Equals(null))
+                {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    ShoreSidePositions.Add(position);
+                }
+            }
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(20, "04"))
             {
                 if (!position.Equals(null))
                 {

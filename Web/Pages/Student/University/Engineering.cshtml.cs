@@ -28,8 +28,9 @@ namespace Web.Pages.Student.University
         }
         public async Task OnGet()
         {
-            _logger.LogInformation($"University Student Engineering positions page  Crew Engineering similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"University Student Engineering positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
+            //Shoreside
             //Architecture, Engineering ENG-02
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(11, "02"))
             {
@@ -74,6 +75,7 @@ namespace Web.Pages.Student.University
                 }
             }
 
+            //Seagoing
             //Ship's Officer MAO-02 to MAO-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(10, "MAO-02"))
             {

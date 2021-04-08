@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Business.Dtos.JobCompetencies;
 
 namespace Business.Dtos.JobPositions
 {

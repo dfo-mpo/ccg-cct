@@ -3,6 +3,9 @@
 @inject IViewLocalizer Localizer
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var pdapText = string.Empty;
+    var pdapUrl = Localizer["MCTSUrl"];
+    var space = string.Empty;
 }
 
     <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
@@ -70,10 +73,14 @@
                     {"previouspage", "../../Student/HighSchool/Computer" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };
-
+                    if (position.JobGroupId == 21)
+                    {
+                        pdapText = Localizer["PDAPText"].Value;
+                        space = " - ";
+                    }
                     <tr>
                         <td>@position.JobGroupCode-@position.JobLevelValue</td>
-                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)@space<a href=@pdapUrl>@pdapText</a></td>
                         <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
                 }

@@ -30,6 +30,7 @@ namespace Web.Pages.Student.University
         {
             _logger.LogInformation($"University Student General Arts positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
+            //Shoreside
             //Administrative Services AS-01 to AS-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(2, "01"))
             {

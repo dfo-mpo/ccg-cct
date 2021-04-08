@@ -120,6 +120,9 @@
   <data name="level" xml:space="preserve">
     <value>LEVEL</value>
   </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>More Details</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="noshoreside" xml:space="preserve">
     <value>No shore side positions available</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
   </data>
   <data name="position" xml:space="preserve">
     <value>POSITION</value>

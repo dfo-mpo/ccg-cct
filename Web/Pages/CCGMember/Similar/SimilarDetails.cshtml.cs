@@ -39,6 +39,8 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedCompetencies { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string RequiredCompetencies { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; }
