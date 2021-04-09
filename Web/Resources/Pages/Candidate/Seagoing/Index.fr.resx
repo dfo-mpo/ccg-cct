@@ -123,6 +123,12 @@
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
   </data>
+  <data name="PhotoCrew" xml:space="preserve">
+    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
+  </data>
+  <data name="PhotoOfficer" xml:space="preserve">
+    <value>Photo d'un officier de la Garde côtière canadienne</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

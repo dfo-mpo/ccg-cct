@@ -129,6 +129,12 @@
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
   </data>
+  <data name="PhotoEng" xml:space="preserve">
+    <value>Photo of a Canadian Coast Guard engineering officer</value>
+  </data>
+  <data name="PhotoNav" xml:space="preserve">
+    <value>Photo of a Canadian Coast Guard navigation officer</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>Please select your preferred field of employment</value>
   </data>
