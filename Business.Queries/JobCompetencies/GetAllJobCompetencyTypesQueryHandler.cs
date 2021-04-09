@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobCompetencies
 {
-    public class GetAllJobCompetencyTypesQueryHandler : IQueryHandler<List<JobCompetencyDto>>
+    public class GetAllJobCompetencyTypesQueryHandler : IQueryHandler<List<JobCompetencyTypeDto>>
     {
         private readonly CctDbContext _db;
 
@@ -18,10 +18,10 @@ namespace Business.Queries.JobCompetencies
             _db = db;
         }
 
-        public Task<List<JobCompetencyDto>> HandleAsync(CancellationToken cancellationToken = new CancellationToken())
+        public Task<List<JobCompetencyTypeDto>> HandleAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             return _db.CompetencyTypes
-                .Select(e => new JobCompetencyDto()
+                .Select(e => new JobCompetencyTypeDto()
                 {
                     Id = e.Id,
                     NameEng = e.NameEng,

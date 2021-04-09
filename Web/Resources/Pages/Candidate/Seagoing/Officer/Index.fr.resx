@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Details" xml:space="preserve">
+    <value>Ces détails peuvent être trouvés dans le Règlement sur le personnel maritime du Canada:</value>
+  </data>
   <data name="Eng" xml:space="preserve">
     <value>Ingénierie</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf</value>
   </data>
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
@@ -128,5 +134,8 @@
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Veuillez sélectionner votre domaine d'emploi préféré</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Les officiers de la navigation maritime et du génie ont des exigences supplémentaires associées à une matrice de certification (c'est-à-dire une formation terminée dans une institution reconnue), le temps de mer (c'est-à-dire le temps enregistré en mer) et la classe du navire (c'est-à-dire la taille, la puissance, le type du navire).</value>
   </data>
 </root>

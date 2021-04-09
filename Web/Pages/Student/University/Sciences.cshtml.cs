@@ -30,6 +30,18 @@ namespace Web.Pages.Student.University
         {
             _logger.LogInformation($"University Student Sciences positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
+            //Shoreside
+            //Nursing NUCHN-03
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(18, "03"))
+            {
+                if (!position.Equals(null))
+                {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    ShoreSidePositions.Add(position);
+                }
+            }
+
+            //Seagoing
             //Ship's Officer MAO-02 to MAO-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(10, "MAO-02"))
             {
