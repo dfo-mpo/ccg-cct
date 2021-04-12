@@ -7,8 +7,9 @@
     {
         {"positionid" , Model.PositionId.ToString()},
         {"objectiveid",  Model.ObjectiveId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id},
+        {"idObj", Model.IdObj},
+        {"level", Model.Level},
         {"levelObj", Model.LevelObj },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
@@ -27,8 +28,8 @@
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid", Model.PositionId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id},
+        {"level", Model.Level},
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
@@ -71,21 +72,9 @@
                 {
                     @foreach (var c in Model.PositionCertificates)
                     {
-                        var key = "c" + c.Id.ToString();
                         <tr>
                             <td colspan="2">
-                                <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                    @(isEnglish ? c.NameEng : c.NameFre)
-                                </a>
-                                <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
-                                    </header>
-                                    <div class="modal-body ">
-                                        <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
-                                        <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                    </div>
-                                </section>
+                                @(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)
                             </td>
                         </tr>
                     }

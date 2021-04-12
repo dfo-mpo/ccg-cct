@@ -46,6 +46,7 @@ namespace Business.Queries.Similar
             var sameOrHigherLevelCompetencies = allPositionCompetencyRatings.Where(e => query.SameOrHigherLevelCompetencyId.Any(sl => sl == e.Key)).ToDictionary(k => k.Key, v => v.Value);
             var allPositionCompetencies = allPositionCompetencyRatings.Keys.ToList();
             var allCurrentCompetencies = allPositionCompetencies.Union(query.AddedCompetencyId.ToList());
+            double margin = 0.00;
             var resultCertificates = (
                     await _db.JobRolePositionCertificates
                     .Include(e => e.Certificate).ToListAsync()
@@ -118,7 +119,7 @@ namespace Business.Queries.Similar
                     Competencies = e.CompetencyRatings.Select(e => e.CompetencyId).ToList(),
                 }
                 )
-                .Where(e => allCurrentCompetencies.Intersect(e.Competencies).ToList().Count / Convert.ToDouble(e.Competencies.ToList().Count) >= query.PercentMatch / 100 && e.JobTitleId != query.JobPositionId).ToList();           
+                .Where(e => allCurrentCompetencies.Intersect(e.Competencies).ToList().Count / Convert.ToDouble(e.Competencies.ToList().Count) >= (query.PercentMatch - margin) / 100 && e.JobTitleId != query.JobPositionId).ToList();           
         }
     }
 }

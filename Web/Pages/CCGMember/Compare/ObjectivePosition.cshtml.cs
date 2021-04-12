@@ -19,6 +19,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string IdObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string LevelObj { get; set; }
@@ -41,12 +43,12 @@ namespace Web.Pages.CCGMember.Compare
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
-        public async Task OnGetAsync(int id, string levelobj, int objectiveid)
+        public async Task OnGetAsync(int idobj, string levelobj, int objectiveid)
         {
             _logger.LogInformation($"Objective positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            JobGroup = await _jobcategoryService.GetJobGroupById(id);
-            JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, levelobj);
+            JobGroup = await _jobcategoryService.GetJobGroupById(idobj);
+            JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(idobj);
+            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(idobj, levelobj);
             ObjectivePosition = objectiveid==0 ? null : await _jobcategoryService.GetJobPositionById(objectiveid);           
         }
     }

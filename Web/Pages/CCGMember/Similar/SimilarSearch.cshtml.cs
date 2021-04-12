@@ -142,7 +142,7 @@ namespace Web.Pages.CCGMember.Similar
             foreach (var c in CertificateIds)
             {
                     Certificates += "&certificateId=" + c;
-            }
+            }   
             foreach (var c in RequiredCompetencyIds)
             {
                 RequiredCompetencies += "&requiredCompetencyId=" + c;

@@ -11,8 +11,9 @@
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
-                       { "id",  Model.Id.ToString()},
-                       {"level", Model.Level.ToString() },
+                       { "id",  Model.Id},
+                       { "idobj",  Model.IdObj},
+                       {"level", Model.Level },
                   };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -34,12 +35,13 @@
                 var data = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
-                       { "id",  Model.Id.ToString()},
+                       { "id",  Model.Id},
+                       { "idobj",  Model.IdObj},
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
-                       { "level",  Model.Level.ToString()},
-                       { "levelobj",  level.ToString() }
+                       { "level",  Model.Level},
+                       { "levelobj",  level }
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"

@@ -186,4 +186,7 @@
   <data name="Selected Position Level" xml:space="preserve">
     <value>Selected Position Level</value>
   </data>
+  <data name="Similar" xml:space="preserve">
+    <value>Similar Positions</value>
+  </data>
 </root>

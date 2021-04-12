@@ -30,8 +30,9 @@ namespace Web.Pages.Student.College
         {
             _logger.LogInformation($"College Student Computer positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Computer Systems CS-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(3, "01"))
+            //Shoreside
+            //Engineering and Scientific Support EG-04 
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "04"))
             {
                 if (!position.Equals(null))
                 {
@@ -39,9 +40,8 @@ namespace Web.Pages.Student.College
                     ShoreSidePositions.Add(position);
                 }
             }
-
-            //Engineering and Scientific Support EG-04 
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "04"))
+            //Computer Systems CS-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(3, "01"))
             {
                 if (!position.Equals(null))
                 {

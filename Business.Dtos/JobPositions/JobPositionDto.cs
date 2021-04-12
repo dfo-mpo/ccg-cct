@@ -15,6 +15,7 @@ namespace Business.Dtos.JobPositions
         public int JobTitleId { get; set; }
         public string JobTitleFre { get; set; }
         public string JobTitleEng { get; set; }
-        public List<int> Competencies {get;set;}
+        public List<int> Competencies { get; set; }
+        public List<int> Certificates { get; set; }
     }
 }

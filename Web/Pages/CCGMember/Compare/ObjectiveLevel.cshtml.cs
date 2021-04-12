@@ -29,16 +29,18 @@ namespace Web.Pages.CCGMember.Compare
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string IdObj { get; set; } = string.Empty;
         public ObjectiveLevelModel(ILogger<ObjectiveLevelModel> logger, JobGroupService jobcategoryService)
         {
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
-        public async Task OnGetAsync(int id)
+        public async Task OnGetAsync(int idobj)
         {
             _logger.LogInformation($"Objective levels page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            JobGroup = await _jobcategoryService.GetJobGroupById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
+            JobGroup = await _jobcategoryService.GetJobGroupById(idobj);
+            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(idobj);
         }
     }
 }

@@ -32,8 +32,8 @@ namespace Web.Pages.Student.College
             _logger.LogInformation($"College Student Electrical positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
-            //All Engineering and Scientific Support EG
-            foreach (var position in await _jobgroupService.GetJobPositionsByGroupId(6))
+            //General Labor and Trades EIM-10
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(8, "EIM-10"))
             {
                 if (!position.Equals(null))
                 {
@@ -42,8 +42,8 @@ namespace Web.Pages.Student.College
                 }
             }
 
-            //General Labor and Trades EIM-10
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(8, "EIM-10"))
+            //All Engineering and Scientific Support EG
+            foreach (var position in await _jobgroupService.GetJobPositionsByGroupId(6))
             {
                 if (!position.Equals(null))
                 {

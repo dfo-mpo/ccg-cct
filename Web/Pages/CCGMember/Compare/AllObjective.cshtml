@@ -37,7 +37,8 @@
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
-                          { "id",  jobgroup.Id.ToString()}
+                          { "id",  Model.Id},
+                          { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
                             <div class="col-sm-4 mrgn-bttm-md">

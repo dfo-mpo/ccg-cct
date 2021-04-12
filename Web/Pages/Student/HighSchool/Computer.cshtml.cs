@@ -30,8 +30,8 @@ namespace Web.Pages.Student.HighSchool
         {
             _logger.LogInformation($"High School Student Computer positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Computer Systems CS-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(3, "01"))
+            //Radio Operators RO-03
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(21, "03"))
             {
                 if (!position.Equals(null))
                 {
@@ -40,8 +40,8 @@ namespace Web.Pages.Student.HighSchool
                 }
             }
 
-            //Radio Operators RO-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(21, "03"))
+            //Computer Systems CS-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(3, "01"))
             {
                 if (!position.Equals(null))
                 {

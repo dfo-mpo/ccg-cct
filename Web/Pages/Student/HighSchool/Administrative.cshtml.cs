@@ -51,8 +51,8 @@ namespace Web.Pages.Student.HighSchool
                 }
             }
 
-            //Purchasing and Supply PG-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(7, "01"))
+            //Office Equipement OE-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "01"))
             {
                 if (!position.Equals(null))
                 {
@@ -61,8 +61,8 @@ namespace Web.Pages.Student.HighSchool
                 }
             }
 
-            //Office Equipement OE-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "01"))
+            //Purchasing and Supply PG-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(7, "01"))
             {
                 if (!position.Equals(null))
                 {

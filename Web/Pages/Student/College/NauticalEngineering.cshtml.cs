@@ -31,16 +31,7 @@ namespace Web.Pages.Student.College
         {
             _logger.LogInformation($"College Student Nautical Engineering positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Architecture, Engineering ENG-02
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(11, "02"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-
+            //Shoreside
             //Engineering and Scientific Support EG-02 to EG-05
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "02"))
             {
@@ -67,6 +58,16 @@ namespace Web.Pages.Student.College
                 }
             }
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "05"))
+            {
+                if (!position.Equals(null))
+                {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    ShoreSidePositions.Add(position);
+                }
+            }
+
+            //Architecture, Engineering ENG-02
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(11, "02"))
             {
                 if (!position.Equals(null))
                 {

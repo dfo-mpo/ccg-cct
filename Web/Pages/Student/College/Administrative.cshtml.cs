@@ -30,6 +30,7 @@ namespace Web.Pages.Student.College
         {
             _logger.LogInformation($"College Administrative positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");       
 
+            //Shoreside
             //Clerical and Regulatory CR-04
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(12, "04"))
             {
@@ -39,17 +40,6 @@ namespace Web.Pages.Student.College
                     ShoreSidePositions.Add(position);
                 }
             }
-
-            //Purchasing and Supply PG-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(7, "01"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
-
             //Office Equipement OE-01 to OE-02
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "01"))
             {
@@ -60,6 +50,15 @@ namespace Web.Pages.Student.College
                 }
             }
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "02"))
+            {
+                if (!position.Equals(null))
+                {
+                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    ShoreSidePositions.Add(position);
+                }
+            }
+            //Purchasing and Supply PG-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(7, "01"))
             {
                 if (!position.Equals(null))
                 {

@@ -15,12 +15,12 @@ namespace Web.Pages.CCGMember
         private readonly JobGroupService _jobcategoryService;
         public JobGroupDto JobGroup { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         [BindProperty(SupportsGet = true)]
-        public string Level { get; set; }
+        public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public int PositionId { get; set; } = 0;
+        public int PositionId { get; set; } 
         public JobPositionDto Position { get; set; }
 
         public JobGroupPositionDto[] JobGroupLevels { get; set; }

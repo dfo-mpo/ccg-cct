@@ -10,7 +10,6 @@ using Web.Data;
 
 namespace Web.Pages.Candidate.Seagoing.Common
 {
-
     public class DetailsModel : PageModel
     {
         private readonly ILogger<DetailsModel> _logger;

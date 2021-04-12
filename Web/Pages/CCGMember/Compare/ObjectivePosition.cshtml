@@ -11,13 +11,14 @@
 {
     var routedatanext = new Dictionary<string, string>
 {
-        {"id",  Model.Id.ToString()},
+        {"id",  Model.Id},
+        {"idobj",  Model.IdObj},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspagecompare", Model.PreviousPageCompare },
         {"previouspagedelta", "ObjectivePosition" },
-        {"level",  Model.Level.ToString() },
-        {"levelobj", Model.LevelObj.ToString() },
+        {"level",  Model.Level},
+        {"levelobj", Model.LevelObj},
         {"positionid",  Model.PositionId.ToString()},
         {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
         };
@@ -39,12 +40,13 @@
                 var data = new Dictionary<string, string>
                  {
                      {"positionid", Model.PositionId.ToString()},
-                     {"id",  Model.Id.ToString()},
+                     { "id",  Model.Id},
+                     { "idobj",  Model.IdObj},
                      {"previouspage", Model.PreviousPage },
                      {"previouspagedetails", Model.PreviousPageDetails },
-                     {"level", Model.Level.ToString() },
+                     {"level", Model.Level},
                      {"previouspagecompare", Model.PreviousPageCompare },
-                     {"levelobj",  level.ToString() }
+                     {"levelobj",  level}
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"
@@ -65,9 +67,10 @@
             {
                 var data = new Dictionary<string, string>
                      {
-                        {"id",  Model.Id.ToString()},
-                        {"level",  Model.Level.ToString() },
-                        {"levelobj", Model.LevelObj.ToString() },
+                        { "id",  Model.Id},
+                        { "idobj",  Model.IdObj},
+                        {"level",  Model.Level},
+                        {"levelobj", Model.LevelObj},
                         {"previouspage", Model.PreviousPage },
                         {"previouspagedetails", Model.PreviousPageDetails },
                         {"previouspagecompare", Model.PreviousPageCompare },
@@ -84,7 +87,8 @@
     <div class="col-sm-9 pull-right mrgn-tp-lg">
         @{var routedataprevious = new Dictionary<string, string>
         {
-        { "id",  Model.Id.ToString()},
+        { "id",  Model.Id},
+        { "idobj",  Model.IdObj},
         {"level", Model.Level.ToString() },
         {"levelobj", Model.LevelObj.ToString() },
         {"positionid",  Model.PositionId.ToString()},

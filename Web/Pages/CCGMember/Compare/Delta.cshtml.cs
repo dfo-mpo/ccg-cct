@@ -18,6 +18,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string IdObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int ObjectiveId { get; set; }
@@ -52,7 +54,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty]
         public JobCertificateDto[] DifferingCertificates { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageCompare { get; set; }
         [BindProperty(SupportsGet = true)]

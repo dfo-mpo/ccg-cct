@@ -4,7 +4,7 @@
 
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var RouteParameter = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{ "previouspage",Model.PreviousPage} };
+    var RouteParameter = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() }, { "previouspage", Model.PreviousPage } };
     var routedata = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "groupid", Model.GroupId.ToString() }, { "level", Model.Level.ToString() } };
     var routedatacompare = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "previouspage", Model.PreviousPage }, { "previouspagedetails", "../../Candidate/Seagoing/Common/Details" } };
 }
@@ -42,29 +42,18 @@
                         {
                             if (Model.CertificateIds.Contains(c.Id.ToString()))
                             {
-                                var key = "c" + c.Id.ToString();
                                 <tr>
                                     <td>
-                                        <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                            @(isEnglish ? c.NameEng : c.NameFre)
-                                        </a>
-                                        <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
-                                                <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
+                                        @(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)
                                     </td>
-                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td>
+                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" />
+                                    </td>
                                 </tr>
                             }
                             else
                             {
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)   </td>
                                     <td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td>
                                 </tr>
                             }
@@ -138,12 +127,12 @@
                     <ul class="pager">
                         @{
                             var paramdata = new Dictionary<string, string>
-                                                                                   {
+                                                                                               {
                               {"positionid", Model.PositionId.ToString()},
                               {"certificates", Model.Certificates }
                             };
                         }
-                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" >@Localizer["Previous"]</a></li>
+                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage">@Localizer["Previous"]</a></li>
                     </ul>
                 </nav>
             </div>
@@ -151,20 +140,23 @@
     </section>
                             }
                             else
-                            {
-                                var RouteParameter70 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
+                            {                               
+                                    var RouteParameter60 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() },
                             {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
-                                var RouteParameter80 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
+                                    var RouteParameter70 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
                             {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
-                                var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
+                                    var RouteParameter80 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
                             {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
-                                var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
+                                    var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
+                            {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
+                                    var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
                             {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
 
     <section>
 
         <h4>@Localizer["Question2"]</h4>
         <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
+            <a asp-page="../../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
             <a asp-page="../../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
             <a asp-page="../../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
             <a asp-page="../../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
@@ -178,7 +170,7 @@
                     <ul class="pager">
                         @{
                             var paramdata = new Dictionary<string, string>
-                            {
+                                        {
                               {"positionid", Model.PositionId.ToString()},
                               {"certificates", Model.Certificates },
                               {"previouspage",Model.PreviousPage },
@@ -190,7 +182,7 @@
                 </nav>
             </div>
         </div>
-    </section>
+    </section>                    
 }
 
 

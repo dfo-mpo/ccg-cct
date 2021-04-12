@@ -5,10 +5,10 @@
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var paramdataprevious = new Dictionary<string, string>
-   {
+{
                             {"positionid", Model.PositionId.ToString()},
-                            {"id", Model.Id.ToString() },
-                            {"level", Model.Level.ToString() },
+                            {"id", Model.Id},
+                            {"level", Model.Level},
                             {"previouspagesimilar", Model.PreviousPageSimilar },
                             {"previouspage",Model.PreviousPage },
                             {"higherlevels", Model.HigherLevels },
@@ -108,32 +108,20 @@
                             {
                                 @foreach (var c in Model.PositionCertificates)
                                 {
-                                    var key = "c" + c.Id.ToString();
-                                    <tr>
-                                        <td class="bg-warning">
-                                            <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                                @(isEnglish ? c.NameEng : c.NameFre)
-                                            </a>
-                                            <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                                <header class="modal-header">
-                                                    <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
-                                                </header>
-                                                <div class="modal-body ">
-                                                    <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                                </div>
-                                            </section>
-                                        </td>
+                            <tr>
+                                <td class="bg-warning">
+                                    @(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)          
+                                </td>
 
-                                        @if (Model.CertificateIds.Contains(c.Id.ToString()))
-                                        {
-                                            <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" checked="true" /></td>
-                                        }
-                                        else
-                                        {
-                                            <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" /></td>
-                                        }
-                                    </tr>
+                                @if (Model.CertificateIds.Contains(c.Id.ToString()))
+                                {
+                                    <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" checked="true" /></td>
+                                }
+                                else
+                                {
+                                    <td class="text-center bg-warning"><input name="CertificateIds" value="@c.Id.ToString()" type="checkbox" /></td>
+                                }
+                            </tr>
                                 }
                             }
                             else
@@ -287,7 +275,7 @@ else if (Model.PageEdit)
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <div class="mrgn-tp-xl">
         <form method="post">
-            <div class="col-md-12">
+            <div class="col-md-12 mrgn-bttm-xl">
                 <div class="col-md-9">
                     <button class="btn btn-primary pull-left" asp-all-route-data="routedataclear" asp-page-handler="clear" formmethod="post">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Refresh"]&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
@@ -295,7 +283,7 @@ else if (Model.PageEdit)
                     <a class="btn btn-primary mrgn-rght-md pull-right" type="button" asp-all-route-data="routedatanext" asp-page="SimilarSearch">&nbsp;&nbsp;&nbsp;&nbsp;@Localizer["Submit"]&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
             </div>
-            <div class="col-md-12 mrgn-bttm-lg">
+            <div class="col-md-12 mrgn-bttm-xl">
                 <h2><b>@Localizer["h2Text"]</b></h2>
             </div>
             <div class="col-md-7">
@@ -312,12 +300,12 @@ else if (Model.PageEdit)
                                 @if (!Model.AddedCompetencyValues.Contains(competency.Id))
                                 {
                                     var routedata = new Dictionary<string, string>
-                                                                                                              {
+                                                                                                                              {
                               {"requiredcompetencies", Model.RequiredCompetencies },
                               {"previouspagesimilar", Model.PreviousPageSimilar },
                               {"previouspage",Model.PreviousPage },
                               {"positionid", Model.PositionId.ToString()},
-                              { "id",  Model.Id.ToString()},
+                              { "id",  Model.Id},
                               { "level",  Model.Level},
                               {"higherlevels", Model.HigherLevels },
                               {"samelevels", Model.SameLevels },
@@ -329,7 +317,7 @@ else if (Model.PageEdit)
                                     <li role="presentation">
                                         <button class="btn btn-link text-left"
                                                 asp-page-handler="competency" asp-all-route-data="@routedata">
-                                            @(isEnglish?competency.NameEng:competency.NameFre)
+                                            @(isEnglish ? competency.NameEng : competency.NameFre)
                                         </button>
                                     </li>
                                 }
@@ -351,13 +339,13 @@ else if (Model.PageEdit)
 
                         var c = await _jobcompetencyService.GetJobCompetencyById(added);
                         var routedata = new Dictionary<string, string>
-                                                             {
+                                                                     {
                               {"requiredcompetencies", Model.RequiredCompetencies },
                               {"previouspagesimilar", Model.PreviousPageSimilar },
                               {"previouspage",Model.PreviousPage },
                               {"positionid", Model.PositionId.ToString()},
-                              { "id",  Model.Id.ToString()},
-                              { "level",  Model.Level.ToString()},
+                              { "id",  Model.Id},
+                              { "level",  Model.Level},
                               {"higherlevels", Model.HigherLevels },
                               {"samelevels", Model.SameLevels },
                               {"sameorhigherlevels", Model.SameOrHigherLevels },
@@ -366,7 +354,7 @@ else if (Model.PageEdit)
                               { "competencyid",  c.Id.ToString()}
                          };
                         <tr class="bg-success mrgn-bttm-0">
-                            <td width="90%">@(isEnglish?c.NameEng:c.NameFre)</td>
+                            <td width="90%">@(isEnglish ? c.NameEng : c.NameFre)</td>
                             <td><button asp-page-handler="delete" asp-all-route-data="@routedata">@Localizer["Delete"]</button></td>
                         </tr>
 
@@ -385,48 +373,48 @@ else if (Model.PageEdit)
             </nav>
         </div>
     </div>
-                                                }
-                                                else
-                                                {
-                                                    var RouteParameter60 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+}
+else
+{
+        var RouteParameter60 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=60" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-                                                    var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+        var RouteParameter70 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-                                                    var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+        var RouteParameter80 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-                                                    var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+        var RouteParameter90 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
-                                                    var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
+        var RouteParameter100 = new Dictionary<string, string> {{ "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },{"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },{"certificates", Model.Certificates },{"id", Model.Id },      {"level", Model.Level.ToString() }, {"addedcompetencies",Model.AddedCompetencies},   {"requiredcompetencies", Model.RequiredCompetencies },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage } };
 
-    <section>
+        <section>
 
 
-        <h4>@Localizer["pageSubmitted"]</h4>
-        <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
-            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
-            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
-            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
-            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
-            <a asp-page="SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
-        </div>
+            <h4>@Localizer["pageSubmitted"]</h4>
+            <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
+                <a asp-page="SimilarList" asp-all-route-data="@RouteParameter60" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["60%"]&nbsp;&nbsp;&nbsp;</a>
+                <a asp-page="SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
+                <a asp-page="SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
+                <a asp-page="SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
+                <a asp-page="SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+            </div>
 
-        <div class="row">
-            <div class="col-lg-12 mrgn-tp-md">
-                <nav role="navigation" class="mrgn-bttm-lg">
-                    <h2 class="wb-inv">Document navigation</h2>
-                    <ul class="pager">
-                        @{
-                            var paramdata = new Dictionary<string, string>
-                                                   {
+            <div class="row">
+                <div class="col-lg-12 mrgn-tp-md">
+                    <nav role="navigation" class="mrgn-bttm-lg">
+                        <h2 class="wb-inv">Document navigation</h2>
+                        <ul class="pager">
+                            @{
+                                var paramdata = new Dictionary<string, string>
+                                                                           {
                             {"positionid", Model.PositionId.ToString()},
                             {"id", Model.Id },
-                            {"level", Model.Level.ToString() },
+                            {"level", Model.Level },
                             {"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },
@@ -436,11 +424,13 @@ else if (Model.PageEdit)
                             {"previouspage",Model.PreviousPage },
                             {"requiredcompetencies", Model.RequiredCompetencies },
                            };
-                        }
-                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
-                    </ul>
-                </nav>
+                            }
+                            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarSearch" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 }
+    
+

@@ -15,16 +15,13 @@ namespace Web.Pages.CCGMember
         private readonly ILogger<DetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
         [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string Level { get; set; }
+        public string Level { get; set; } = string.Empty;
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
-        public JobCompetencyRatingDto[] PositionRatings3 { get; set; }
         [BindProperty]
         public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
 

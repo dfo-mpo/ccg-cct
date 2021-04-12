@@ -98,6 +98,15 @@ namespace Web.Pages.Student.HighSchool
             }
 
             //Seagoing
+            //Ship's Crew STD-01
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-01"))
+            {
+                if (!position.Equals(null))
+                {
+                    SeagoingPositionIds += String.Format($"&PositionId={position.JobTitleId}");
+                    SeagoingPositions.Add(position);
+                }
+            }
             //Ship's Crew DED-02
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "DED-02"))
             {
@@ -109,15 +118,6 @@ namespace Web.Pages.Student.HighSchool
             }
             //Ship's Crew ERD-03
             foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "ERD-03"))
-            {
-                if (!position.Equals(null))
-                {
-                    SeagoingPositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    SeagoingPositions.Add(position);
-                }
-            }
-            //Ship's Crew STD-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-01"))
             {
                 if (!position.Equals(null))
                 {

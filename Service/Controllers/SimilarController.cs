@@ -35,7 +35,7 @@ namespace Service.Controllers
             [FromQuery] int[] certificateId,
             [FromQuery] double   percentMatch)
         {
-            var query = new GetAllSimilarPositionsByPositionIdQuery
+            var query = new GetAllSimilarPositionsByJobPositionIdQuery
             {
                 JobPositionId = jobPositionId,
                 RequiredCompetencyId = requiredCompetencyId,
