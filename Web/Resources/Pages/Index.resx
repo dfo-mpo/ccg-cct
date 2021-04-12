@@ -126,6 +126,15 @@
   <data name="IndexTitle" xml:space="preserve">
     <value>Career Competency Tool</value>
   </data>
+  <data name="PhotoExternal" xml:space="preserve">
+    <value>Photo of a group of individuals</value>
+  </data>
+  <data name="PhotoMember" xml:space="preserve">
+    <value>Photo of a Canadian Coast Guard member</value>
+  </data>
+  <data name="PhotoStudents" xml:space="preserve">
+    <value>Photo of students graduating</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>To begin, tell us who you are</value>
   </data>
