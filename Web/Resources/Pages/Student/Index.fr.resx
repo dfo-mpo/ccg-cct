@@ -120,6 +120,15 @@
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
   </data>
+  <data name="PhotoHS" xml:space="preserve">
+    <value>Photo d'élèves du secondaire dans le couloir</value>
+  </data>
+  <data name="PhotoTC" xml:space="preserve">
+    <value>Photo de deux étudiants travaillant sur un projet</value>
+  </data>
+  <data name="PhotoU" xml:space="preserve">
+    <value>Photo d'étudiants assis à une table dans le salon des étudiants</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>Quel est votre niveau académique?</value>
   </data>
