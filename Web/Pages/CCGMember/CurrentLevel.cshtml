@@ -12,7 +12,7 @@
 
 <h3><b>@(isEnglish? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
-    <div class="col-sm-3">
+    <div class="col-sm-3 mrgn-bttm-md">
         <label><b>@Localizer["Level"]</b></label><br />
         <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
             @Localizer["Select Level"]
@@ -30,11 +30,11 @@
             <a role="menuitem" tabindex="-1"
                asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Level"] @level</a>
         </li>
-    }
+            }
         </ul>
     </div>
-    </div>
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /></figure>
+</div>
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /></figure>
     <div class="row">
         <div class="col-lg-12 mrgn-bttm-md">
             <nav role="navigation" class="mrgn-bttm-lg">

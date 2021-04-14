@@ -123,6 +123,12 @@
   <data name="Compare" xml:space="preserve">
     <value>Compare my position to another position</value>
   </data>
+  <data name="PhotoCompare" xml:space="preserve">
+    <value>Photo of two job positions within the Canadian Coast Guard</value>
+  </data>
+  <data name="PhotoSimilar" xml:space="preserve">
+    <value>Photo of four job positions within the Canadian Coast Guard</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>How would you like to perform your search?</value>
   </data>

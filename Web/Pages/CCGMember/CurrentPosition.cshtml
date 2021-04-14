@@ -12,7 +12,7 @@
 
 <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
 <div class="dropdown">
-    <div class="col-sm-3">
+    <div class="col-sm-3 mrgn-bttm-md">
         <label><b>@Localizer["Level"]</b></label><br />
         <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
             @Model.JobGroup.Code @Model.Level  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -33,7 +33,7 @@
 }
         </ul>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9 mrgn-bttm-md">
         <label><b>@Localizer["Position"]</b></label><br />
         <button class="dropdown-toggle" id="menu1" type="button" width="100%" data-toggle="dropdown">
             @(Model.PositionId == 0 ? Localizer["Select Position"].Value : (isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre))
@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="Photo of " class="img-responsive thumbnail mrgn-bttm-sm" /> </figure>
+<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /> </figure>
 
 @{var routedataprevious = new Dictionary<string, string>
 {
