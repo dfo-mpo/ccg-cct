@@ -1,0 +1,50 @@
+﻿@page
+@model Admin.Pages.Competencies.Knowledge.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Competency</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Competency.Id" />
+            <div class="form-group">
+                <label asp-for="Competency.NameEng" class="control-label"><b>Name English</b></label>
+                <input asp-for="Competency.NameEng" class="form-control" />
+                <span asp-validation-for="Competency.NameEng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.NameFre" class="control-label"><b>Name French</b></label>
+                <input asp-for="Competency.NameFre" class="form-control" />
+                <span asp-validation-for="Competency.NameFre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.DescEng" class="control-label"><b>Description English</b></label>
+                <textarea asp-for="Competency.DescEng" class="form-control" rows="6" cols="50"></textarea>
+                <span asp-validation-for="Competency.DescEng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.DescFre" class="control-label"><b>Description French</b></label>
+                <textarea asp-for="Competency.DescFre" class="form-control" rows="6" cols="50"></textarea>
+                <span asp-validation-for="Competency.DescFre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
