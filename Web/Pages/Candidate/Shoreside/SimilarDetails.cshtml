@@ -21,8 +21,8 @@
     <section role="contentinfo">
 
         <div class="col-md-12 mrgn-tp-md mrgn-bttm-md pull-right">
-            <a href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
-            <a href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
+            <a target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
+            <a target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
         </div>
         <br />
         @if (Model.Position.JobTitleEng.Contains("MELDEV") || Model.Position.JobTitleEng.Contains("MCTS"))

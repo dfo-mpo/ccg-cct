@@ -1,0 +1,46 @@
+﻿@page
+@model Admin.Pages.Competencies.Knowledge.IndexModel
+@{
+    ViewData["Title"] = "Knowledge";
+}
+
+<h1>Competencies</h1>
+
+<p>
+    <a asp-page="/Competencies/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th><b>Name English</b></th>
+            <th><b>Name French</b></th>
+            <th><b>Description English</b></th>
+            <th><b>Description French</b></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Competency)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameFre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescFre)
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
