@@ -7,8 +7,8 @@
 }
 
 <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-    <a href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
-    <a href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
+    <a target="_blank" href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="Print document"></span> </a>
+    <a target="_blank" href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="Save document"></span> </a>
 </div>
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</h3>

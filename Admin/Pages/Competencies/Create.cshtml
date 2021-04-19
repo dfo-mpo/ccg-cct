@@ -1,0 +1,57 @@
+﻿@page
+@model Admin.Pages.Competencies.CreateModel
+@{
+    ViewData["Title"] = "Create New Competency";
+}
+
+<h1>Create a new Competency</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="radio" id="knowledge" name="competency" value="1">
+                <label class="h5 mr-md-3" for="knowledge">Knowledge</label>
+                <input type="radio" id="technical" name="competency" value="2">
+                <label class="h5 mr-md-3" for="technical">Technical</label>
+                <input type="radio" id="behavioural" name="competency" value="3">
+                <label class="h5 mr-md-3" for="behavioural">Behavioural</label>
+                <input type="radio" id="executive" name="competency" value="4">
+                <label class="h5 mr-md-3" for="executive">Executive</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.NameEng" class="control-label"><b>Name English</b></label>
+                <input asp-for="Competency.NameEng" class="form-control" />
+                <span asp-validation-for="Competency.NameEng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.NameFre" class="control-label"><b>Name French</b></label>
+                <input asp-for="Competency.NameFre" class="form-control" />
+                <span asp-validation-for="Competency.NameFre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.DescEng" class="control-label"><b>Description English</b></label>
+                <textarea asp-for="Competency.DescEng" class="form-control" rows="6" cols="50"></textarea>
+                <span asp-validation-for="Competency.DescEng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Competency.DescFre" class="control-label"><b>Description French</b></label>
+                <textarea asp-for="Competency.DescFre" class="form-control" rows="6" cols="50"></textarea>
+                <span asp-validation-for="Competency.DescFre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

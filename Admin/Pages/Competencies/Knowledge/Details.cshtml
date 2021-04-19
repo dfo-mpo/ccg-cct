@@ -1,0 +1,42 @@
+﻿@page
+@model Admin.Pages.Competencies.Knowledge.DetailsModel
+@{
+    ViewData["Title"] = "Knowledge Details";
+}
+
+<h1>Knowledge Details</h1>
+
+<div style="margin-top:55px;">
+    <h4>@Html.DisplayFor(model => model.Competency.NameEng) / @Html.DisplayFor(model => model.Competency.NameFre)</h4>
+    <hr />
+    <dl class="row border-bottom">
+        <dt class="col-md-2">
+           Name English 
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.NameEng)
+        </dd>
+        <dt class="col-md-2">
+           Name French
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.NameFre)
+        </dd>
+        <dt class="col-md-2">
+           Description English
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.DescEng)
+        </dd>
+        <dt class="col-md-2">
+           Description French
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.DescFre)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Competency.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -132,6 +132,9 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo de diverses carrières au sein de la Garde côtière canadienne</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

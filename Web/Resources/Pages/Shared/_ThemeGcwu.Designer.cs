@@ -151,6 +151,15 @@ namespace Web.Resources.Pages.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Career Competency Tool.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are here:.
         /// </summary>
         public static string You_are_here_ {
