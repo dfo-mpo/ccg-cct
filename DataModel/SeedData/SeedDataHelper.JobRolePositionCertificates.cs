@@ -427,9 +427,9 @@ namespace DataModel.SeedData
             new JobRolePositionCertificate
                 {JobGroupId = 10, JobGroupLevelId = 41, JobPositionId = 140, CertificateId = 39, CertificateDescriptionId = 12},
             new JobRolePositionCertificate
-                {JobGroupId = 10, JobGroupLevelId = 41, JobPositionId = 141, CertificateId = 32, CertificateDescriptionId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 41, JobPositionId = 141, CertificateId = 32, CertificateDescriptionId = 5},
             new JobRolePositionCertificate
-                {JobGroupId = 10, JobGroupLevelId = 41, JobPositionId = 141, CertificateId = 33, CertificateDescriptionId = 1},
+                {JobGroupId = 10, JobGroupLevelId = 41, JobPositionId = 141, CertificateId = 33, CertificateDescriptionId = 5},
             new JobRolePositionCertificate
                 {JobGroupId = 10, JobGroupLevelId = 42, JobPositionId = 142, CertificateId = 27, CertificateDescriptionId = 1},
             new JobRolePositionCertificate
@@ -927,7 +927,11 @@ namespace DataModel.SeedData
             new JobRolePositionCertificate
                 {JobGroupId = 16, JobGroupLevelId = 87, JobPositionId = 385, CertificateId = 101, CertificateDescriptionId = 1},
             new JobRolePositionCertificate
-                {JobGroupId = 16, JobGroupLevelId = 88, JobPositionId = 386, CertificateId = 101, CertificateDescriptionId = 1}
+                {JobGroupId = 16, JobGroupLevelId = 88, JobPositionId = 386, CertificateId = 101, CertificateDescriptionId = 1},
+            new JobRolePositionCertificate
+                {JobGroupId = 8, JobGroupLevelId = 10, JobPositionId = 387, CertificateId = 20, CertificateDescriptionId = 1},
+            new JobRolePositionCertificate
+                {JobGroupId = 8, JobGroupLevelId = 11, JobPositionId = 388, CertificateId = 20, CertificateDescriptionId = 1}
         };
     }
 }

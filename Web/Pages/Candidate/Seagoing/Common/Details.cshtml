@@ -44,27 +44,14 @@
                             {
                                 var key = "c" + c.Id.ToString();
                                 <tr>
-                                    <td>
-                                        <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                            @(isEnglish ? c.NameEng : c.NameFre)
-                                        </a>
-                                        <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
-                                                <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
+                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                                     <td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td>
                                 </tr>
                             }
                             else
                             {
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                                     <td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td>
                                 </tr>
                             }

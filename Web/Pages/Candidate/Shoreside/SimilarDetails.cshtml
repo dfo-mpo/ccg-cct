@@ -31,7 +31,7 @@
                 <div class="text-center">
                     <h4>@Localizer["PDAPText"]</h4>
                     @{var url = Model.Position.JobTitleEng.Contains("MELDEV") ? Localizer["MELDEVUrl"] : Localizer["MCTSUrl"]; }
-                    <a href="@url">@url</a>
+                    <a href="@url" target="_blank">@url</a>
                 </div>
             </div>
         }

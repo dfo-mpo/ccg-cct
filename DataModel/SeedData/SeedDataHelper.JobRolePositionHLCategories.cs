@@ -157,8 +157,6 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory
                 {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 76, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
-                {JobGroupId = 2, JobGroupLevelId = 8, JobPositionId = 77, JobHLCategoryId = 2},
-            new JobRolePositionHLCategory
                 {JobGroupId = 2, JobGroupLevelId = 80, JobPositionId = 78, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
                 {JobGroupId = 2, JobGroupLevelId = 81, JobPositionId = 79, JobHLCategoryId = 2},
@@ -775,7 +773,11 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory
                 {JobGroupId = 16, JobGroupLevelId = 4, JobPositionId = 385, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
-                {JobGroupId = 16, JobGroupLevelId = 5, JobPositionId = 386, JobHLCategoryId = 2}
+                {JobGroupId = 16, JobGroupLevelId = 5, JobPositionId = 386, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 8, JobGroupLevelId = 10, JobPositionId = 387, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory
+                {JobGroupId = 8, JobGroupLevelId = 11, JobPositionId = 388, JobHLCategoryId = 2}
         };
     }
 }

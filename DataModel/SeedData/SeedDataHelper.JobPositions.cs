@@ -82,7 +82,6 @@ namespace DataModel.SeedData
             new JobPosition {Id = 74, TitleEng = "Manager Fleet Investment", TitleFre = "Gestionnaire investissement de la flotte" },
             new JobPosition {Id = 75, TitleEng = "Manager, Incident Management", TitleFre = "Gestionnaire gestion des incidents" },
             new JobPosition {Id = 76, TitleEng = "Senior Advisor Maritime Security", TitleFre = "Conseiller principal sécurité maritime" },
-            new JobPosition {Id = 77, TitleEng = "Director, Safety and Security", TitleFre = "Directeur sûreté et sécurité"},
             new JobPosition {Id = 78, TitleEng = "Clerical Administrator", TitleFre = "Commis-administrateur"},
             new JobPosition {Id = 79, TitleEng = "Clerical Administrator", TitleFre = "Commis-administrateur"},
             new JobPosition {Id = 80, TitleEng = "Administrative Assistant", TitleFre = "Assistant administratif"},
@@ -391,7 +390,9 @@ namespace DataModel.SeedData
             new JobPosition {Id = 383, TitleEng = "Executive Director / Senior Director", TitleFre = "Directeur exécutif / Directeur principal" },
             new JobPosition {Id = 384, TitleEng = "Assistant Commissioner / Director General", TitleFre = "Commissaire adjoint / Directeur général" },
             new JobPosition {Id = 385, TitleEng = "Deputy Commissioner", TitleFre = "Sous-commissaire"},
-            new JobPosition {Id = 386, TitleEng = "Commissioner", TitleFre = "Commissaire"}
+            new JobPosition {Id = 386, TitleEng = "Commissioner", TitleFre = "Commissaire"},
+            new JobPosition {Id = 387, TitleEng = "Lockperson", TitleFre = "Éclusier"},
+            new JobPosition {Id = 388, TitleEng = "Lockmaster", TitleFre = "Maître-éclusiers"}
         };
     }
 }
