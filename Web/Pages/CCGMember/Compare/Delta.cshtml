@@ -43,7 +43,7 @@
                         @foreach (var c in Model.MatchingCertificates)
                         {
                             <tr>
-                                <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                                <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                             </tr>
                         }
 
@@ -103,20 +103,7 @@
                     {
                         var key = "c" + d.Id.ToString();
                         <tr>
-                            <td>
-                                <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                    @(isEnglish ? d.NameEng : d.NameFre)
-                                </a>
-                                <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">@(isEnglish ? d.NameEng : d.NameFre)</h2>
-                                    </header>
-                                    <div class="modal-body ">
-                                        <p>@(isEnglish ? d.DescEng : d.DescFre)</p>
-                                        <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                    </div>
-                                </section>
-                            </td>
+                            <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
                             <td class="text-center bg-success">&nbsp;</td>
                             <td class="text-center bg-info">&nbsp;</td>
                         </tr>

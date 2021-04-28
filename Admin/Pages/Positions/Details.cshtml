@@ -1,0 +1,239 @@
+﻿@page
+@model Admin.Pages.Positions.DetailsModel
+@{
+    ViewData["Title"] = "Position Details";
+}
+
+<h1>Position Details / Détails du poste</h1>
+
+<div style="margin-top:55px;">
+    <h4>@Html.DisplayFor(model => model.JobPosition.TitleEng) <br /><br /> @Html.DisplayFor(model => model.JobPosition.TitleFre)</h4>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th colspan="2" style="background-color:#f2f2f2">CLASSIFICATION & LEVEL / CLASSIFICATION ET NIVEAU</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Administrative Services (AS&CR) Level 01 / Services administratif (AS&CR) Niveau  01
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" style="background-color:#f2f2f2">CERTIFICATIONS / ATTESTATIONS</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    No Certifications / Aucun certificat associées
+                </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">KNOWLEDGE ELEMENTS / ÉLÉMENTS DE CONNAISSANCE</th>
+                <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
+            </tr>
+            <tr>
+                <td style="width:70%;">
+                    <div class="accordion" id="compOne">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Organizational Knowledge / Connaissances organisationnelles
+                        </button>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
+                            <div class="card-body">
+                                <p>
+                                    <b>English Description</b><br />
+                                    Knowledge of the Canadian Coast Guard organization, its partners, and relationships with the Department of Fisheries and Oceans (DFO) and other internal and external stakeholders.
+                                </p>
+                                <p>
+                                    <b>French Description</b><br />
+                                    Connaissance de l'organisation de la Garde côtière canadienne, de ses partenaires et des relations avec le ministère des pêches et océans (MPO) et d'autres intervenants internes et externes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="accordion" id="levelOne">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapselevelOne" aria-expanded="false" aria-controls="collapselevelOne">
+                            1
+                        </button>
+                        <div id="collapselevelOne" class="collapse" aria-labelledby="headingFour" data-parent="#levelOne">
+                            <div class="card-body text-left">
+                                <p>
+                                    <b>English Description</b><br />
+                                    Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)<br /><br />
+                                    Basic understanding of the CCG and its role as a program facilitator.
+                                </p>
+                                <p>
+                                    <b>French Description</b><br />
+                                    Sensibilisation fondamentale (Connaissance courante ou compréhension des techniques et concepts de base)<br /><br />
+                                    Compréhension de base de la GCC et de son rôle en tant que facilitateur de programmes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="mrgn-bttm-md">
+                        <details class="brdr-0">
+                            <summary class="btn-link">Program Knowledge and Application / Connaissance et application du programme</summary>
+                            <div class="col-auto">
+                                <div class="accordion" id="wb-auto-1">
+                                    <p>
+                                        <b>English Description</b><br />
+                                        Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates:  Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).
+                                    </p>
+                                    <p>
+                                        <b>French Description</b><br />
+                                        Connaissance des programmes que la Garde côtière canadienne gère et soutient. Comprend les services et l'exécution des mandats des programmes :  Recherche et sauvetage (SAR), Déglaçage, Aides à la navigation (AIDNAV), Intervention environnementale (IE), Conservation et protection (C&P du MPO), Océanographie (Sciences du MPO) et Recherche halieutique (Sciences du MPO).
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="mrgn-bttm-md">
+                        <details class="brdr-0">
+                            <summary class="btn-link">2</summary>
+                            <div class="col-auto">
+                                <div class="accordion" id="wb-auto-1">
+                                    <p class="text-left">
+                                        <b>English Description</b><br />
+                                        Novice (A level of experience has been obtained; may need help when performing a task/skill)<br /><br />
+                                        Limited knowledge of the Coast Guard's functions and the roles and responsibilities of key Coast Guard contacts within a regional organizational setting. Understands some programs and assets well.
+                                    </p>
+                                    <p class="text-left">
+                                        <b>French Description</b><br />
+                                        Novice (Un niveau d'expérience a été acquis; peut avoir besoin d'aide lors de l'exécution d'une tâche ou d'une compétence)<br /><br />
+                                        Connaissance limitée des fonctions de la Garde côtière et des rôles et responsabilités des principaux contacts de la Garde côtière dans un cadre organisationnel régional. Comprend bien certains programmes et actifs.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="mrgn-bttm-md">
+                        <details class="brdr-0">
+                            <summary class="btn-link">Administrative Knowledge / Connaissances en administration</summary>
+                            <div class="col-auto">
+                                <div class="accordion" id="wb-auto-1">
+                                    <p>
+                                        <b>English Description</b><br />
+                                        Understanding of administrative procedures and processes in one or more area of responsibility.
+                                    </p>
+                                    <p>
+                                        <b>French Description</b><br />
+                                        Compréhension des procédures et processus administratifs dans un ou plusieurs domaines de responsabilité.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="mrgn-bttm-md">
+                        <details class="brdr-0">
+                            <summary class="btn-link">2</summary>
+                            <div class="col-auto">
+                                <div class="accordion" id="wb-auto-1">
+                                    <p class="text-left">
+                                        <b>English Description</b><br />
+                                        Novice (A level of experience has been obtained; may need help when performing a task/skill)<br /><br />
+                                        Recognizes when administration requirements are met. Understands systems and software pertaining to administrative functions and where applicable, the shipboard logistics functions in the performance of duties.
+                                    </p>
+                                    <p class="text-left">
+                                        <b>French Description</b><br />
+                                        Novice (Un niveau d'expérience a été acquis; peut avoir besoin d'aide lors de l'exécution d'une tâche ou d'une compétence)<br /><br />
+                                        Reconnaît quand les exigences administratives sont satisfaites. Comprend les systèmes et les logiciels relatifs aux fonctions administratives et, s'il y a lieu, aux fonctions logistiques à bord du navire dans l'exécution des tâches.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">TECHNICAL ELEMENTS / ÉLÉMENTS TECHNIQUES</th>
+                <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
+            </tr>
+            <tr>
+                <td><div class="accordion" id="levelTwo">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapselevelTwo" aria-expanded="false" aria-controls="collapselevelOne">
+                            Project/Program Management / Gestion de projet / programme
+                        </button>
+                        <div id="collapselevelTwo" class="collapse" aria-labelledby="headingFour" data-parent="#levelTwo">
+                            <div class="card-body">
+                                <p>
+                                    <b>English Description</b><br />
+                                    Program management is the management of a program or part of a programme and/or a series of projects, involving in-depth and extensive knowledge of areas such as procedures, operations, policies and other departments, agencies or the private sector, as well as specialized technical knowledge of programs. Project management involves effectively integrating and/or participating in all aspects of a finished project, ensuring that work progresses towards the achievement of goals and objectives.
+                                </p>
+                                <p>
+                                    <b>French Description</b><br />
+                                    La gestion de programme est la gestion d’un programme ou d’une partie d’un programme et/ou d’une série de projets, comprenant une connaissance approfondie et étendue des domaines tels que les procédures, les opérations, les politiques et la d’autres ministères, d’organismes ou du secteur privé ainsi que des connaissances techniques spécialisées en matière de programmes. La gestion de projet implique de participer et/ou d’intégrer efficacement tous les aspects d’un projet fini, en veillant à ce que les travaux progressent dans la réalisation des buts et objectifs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <td>Planning and Priority Setting / Planification et établissement de priorités</td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <td>Financial Management for Specialists / Gestion financière pour les spécialistes</td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <td>Support Services / Services de soutien</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Materiel Management / Gestion du matériel</td>
+                <td class="text-center">1</td>
+            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2">BEHAVIOURAL ELEMENTS / ÉLÉMENTS DE COMPORTEMENT</th>
+                <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
+            </tr>
+            <tr>
+                <td>Demonstrating Integrity and Respect / Faire preuve d'intégrité et de respect</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Thinking Things Through / Réflexion approfondie</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Working Effectively With Others / Travailler efficacement avec les autres</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Showing Initiative and Being Action Oriented / Fait preuve d'initiative et est orienté vers l'action</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Apply Safety Considerations / Intègre les considérations relatives à la sécurité</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Leadership / Leadership</td>
+                <td class="text-center">2</td>
+            </tr>
+            <tr>
+                <td>Canadian Coast Guard Cultural Awareness / Sensibilisation à la culture de la Garde côtière canadienne</td>
+                <td class="text-center">2</td>
+            </tr>
+                        </tbody>
+                    </table>
+                </div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JobPosition.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

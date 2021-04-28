@@ -1,0 +1,207 @@
+﻿@page
+@model Web.Pages.Mockups.Admin.Index1Model
+@{
+}
+<section role="contentinfo">
+
+    <div class="row mrgn-bttm-lg">
+        <h2 class="text-center">Administration Section</h2>
+    </div>
+
+    <div class="form-group col-md-12 mrgn-bttm-md">
+        <form class="form-inline" method="get" action="#">
+            <table class="table table-responsive table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="background-color:#f2f2f2">CLASSIFICATION & LEVEL / CLASSIFICATION ET NIVEAU</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group col-md-3">
+                                <label for="jobgroup"><b>Classification Group</b></label><br />
+                                <select class="form-control dropdown-toggle mrgn-bttm-md" id="jobgroup" name="jobgroup" required="required" data-column="7">
+                                    <option value="">Select Group</option>
+                                    <option value="AS">(AS & CR)</option>
+                                    <option value="ENG">(ENG)</option>
+                                    <option value="CS">(CS)</option>
+                                    <option value="EC">(EC)</option>
+                                    <option value="ED">(ED)</option>
+                                    <option value="EU">(EU)</option>
+                                    <option value="EL">(EL)</option>
+                                    <option value="EG">(EG)</option>
+                                    <option value="EX">(EX)</option>
+                                    <option value="GL">(GL)</option>
+                                    <option value="GS">(GS)</option>
+                                    <option value="GT">(GT)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="grouptitle"><b>Classification Title</b></label><br />
+                                <select class="form-control dropdown-toggle mrgn-bttm-md" id="grouptitle" name="grouptitle" required="required" data-column="7">
+                                    <option value="">Select Title</option>
+                                    <option value="AS">Administrative Services</option>
+                                    <option value="ENG">Architecture, Engineering</option>
+                                    <option value="CS">Computer Systems</option>
+                                    <option value="EC">Economics and Social Science Services</option>
+                                    <option value="ED">Education Services</option>
+                                    <option value="EU">Educational Support</option>
+                                    <option value="EL">Electronics</option>
+                                    <option value="EG">Engineering and Scientific Support</option>
+                                    <option value="EX">Executive Group</option>
+                                    <option value="GL">General Labour and Trades</option>
+                                    <option value="GS">General Services</option>
+                                    <option value="GT">General Technician</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 mrgn-bttm-md">
+                                <label for="level">Level</label><br />
+                                <select class="form-control dropdown-toggle mrgn-bttm-md" id="level" required="required" name="level" data-column="4">
+                                    <option value="">Select Level</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <div class="form-group col-md-6 mrgn-bttm-md">
+                            <details class="brdr-0">
+                                <summary class="btn btn-primary text-center">Create a new classification and level</summary>
+                                <div class="well row">
+                                    <div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl" id="wb-auto-4">
+
+                                        <fieldset>
+                                            <legend><span class="field-name">New Classification</span></legend>
+                                            <div class="form-group">
+                                                <label for="code">Abbreviation</label><br />
+                                                <input type="text" name="class" class="form-control mrgn-bttm-md" id="code" data-column="3" required="required" placeholder="Abbreviation" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="level">Selectable Levels</label><br />
+                                                <input type="text" class="form-control mrgn-bttm-md" id="level" data-column="3" required="required" placeholder="Levels" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="NameEng">English Classification</label><br />
+                                                <input type="text" class="form-control mrgn-bttm-md" id="NameEng" data-column="6" required="required" placeholder="Eng Classification" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="NameFre">French Classification</label><br />
+                                                <input type="text" class="form-control mrgn-bttm-md" id="NameFre" data-column="6" required="required" placeholder="Fre Classification" />
+                                            </div>
+                                            <div class="form">
+                                                <label for="browse">Image</label>
+                                                <input class="form-control mrgn-bttm-md" type="file" name="browse" data-column="6" value="Browse" />
+                                            </div>
+                                        </fieldset>
+                                        <button type="submit" class="btn btn-primary">Add</button>
+
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <table class="table table-responsive table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="background-color:#f2f2f2">POSITION / POSTE</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <label for="engpos"><span class="field-name">English Position Title</span></label>
+                                    <input class="form-control mrgn-bttm-md" type="text" id="engpos" name="engpos" size="100" />
+                                </div>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <label for="frepos"><span class="field-name">French Position Title</span></label>
+                                    <input class="form-control mrgn-bttm-md" type="text" id="frepos" name="frepos" size="100" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            
+                                <details class="brdr-0">
+                                    <summary class="btn-link text-center">Add a new position</summary>
+                                    <div class="well row">
+                                        <div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl" id="wb-auto-4">
+                                            <fieldset>
+                                                <legend><span class="field-name">New Position</span></legend>
+                                                <div class="form-group">
+                                                    <label for="EngPos">English Position</label><br />
+                                                    <input type="text" class="form-control mrgn-bttm-md" id="EngPos" data-column="6" placeholder="English Position" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FrePos">French Position</label><br />
+                                                    <input type="text" class="form-control mrgn-bttm-md" id="FrePos" data-column="6" placeholder="French Position" />
+                                                </div>
+                                            </fieldset>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </details>
+                            
+                            
+                                <details class="brdr-0">
+                                    <summary class="btn-link text-center">Edit position</summary>
+                                    <div class="well row">
+                                        <div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl" id="wb-auto-4">
+                                            <fieldset>
+                                                <legend><span class="field-name">New Position</span></legend>
+                                                <div class="form-group">
+                                                    <label for="EngPos">English Position</label><br />
+                                                    <input type="text" class="form-control mrgn-bttm-md" id="EngPos" data-column="6" placeholder="English Position" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FrePos">French Position</label><br />
+                                                    <input type="text" class="form-control mrgn-bttm-md" id="FrePos" data-column="6" placeholder="French Position" />
+                                                </div>
+                                            </fieldset>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </details>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <h3 property="name" id="wb-cont" dir="ltr">Certification</h3>
+                <div class="col-lg-4 mrgn-rght-lg">
+                    <div class="form-group">
+                        <label for="availablecert"><span class="field-name">Choose all that apply</span></label><br />
+                        <textarea class="form-control mrgn-bttm-md" type="text" id="availablecert" name="availablecert" rows="6" cols="45" /></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="selectedcert"><span class="field-name">French Position Title</span></label>
+                        <textarea class="form-control mrgn-bttm-md" type="text" id="selectedcert" name="selectedcert" rows="6" cols="45" /></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</section>

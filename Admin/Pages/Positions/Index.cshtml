@@ -1,0 +1,44 @@
+﻿@page
+@model Admin.Pages.Positions.IndexModel
+@{
+    ViewData["Title"] = "Positions";
+}
+
+<h1>Positions</h1>
+
+<p>
+    <a asp-page="#">Create New</a>
+</p>
+        
+<p>
+    <label name="Filter" class="control-label"><b>Filter</b></label>
+    <input name="Filter" class="form-control" />
+</p>
+        
+<table class="table">
+    <thead>
+        <tr>
+            <th width="42%"><b>Title English</b></th>
+            <th width="42%"><b>Title French</b></th>
+            <th width="16%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.JobPosition)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleFre)
+                </td>
+                <td>
+                    <a asp-page="Create" asp-route-id="@item.Id">Create</a> |
+                    <a asp-page="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

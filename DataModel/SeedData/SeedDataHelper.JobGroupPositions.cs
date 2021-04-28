@@ -82,7 +82,6 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 74},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 75},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 7, JobPositionId = 76},
-            new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 8, JobPositionId = 77},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 80, JobPositionId = 78},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 81, JobPositionId = 79},
             new JobGroupPosition {JobGroupId = 2, JobGroupLevelId = 82, JobPositionId = 80},
@@ -391,7 +390,9 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 85, JobPositionId = 383},
             new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 86, JobPositionId = 384},
             new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 87, JobPositionId = 385},
-            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 88, JobPositionId = 386}
+            new JobGroupPosition {JobGroupId = 16, JobGroupLevelId = 88, JobPositionId = 386},
+            new JobGroupPosition {JobGroupId = 8, JobGroupLevelId = 10, JobPositionId = 387},
+            new JobGroupPosition {JobGroupId = 8, JobGroupLevelId = 11, JobPositionId = 388}
         };
     }
 }
