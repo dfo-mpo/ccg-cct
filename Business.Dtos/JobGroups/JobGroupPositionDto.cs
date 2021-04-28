@@ -4,6 +4,6 @@
     {
         public int JobId { get; set; }
         public int LevelId { get; set; }
-        public string LevelValue { get; set; }
+        public int LevelValue { get; set; }
     }
 }

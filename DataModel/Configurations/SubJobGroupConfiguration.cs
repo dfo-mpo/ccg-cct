@@ -7,14 +7,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-   public class JobGroupConfiguration : IEntityTypeConfiguration<JobGroup>
+    public class SubJobGroupConfiguration : IEntityTypeConfiguration<SubJobGroup>
     {
-        public void Configure(EntityTypeBuilder<JobGroup> builder)
+        public void Configure(EntityTypeBuilder<SubJobGroup> builder)
         {
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey(b => new {b.Id, b.JobGroupId});
+
             builder.Property(b => b.Code)
-                .IsRequired() 
+                .IsRequired()
                 .HasMaxLength(250);
             builder.Property(b => b.NameEng)
                 .IsRequired()
@@ -25,3 +26,4 @@ namespace DataModel.Configurations
         }
     }
 }
+

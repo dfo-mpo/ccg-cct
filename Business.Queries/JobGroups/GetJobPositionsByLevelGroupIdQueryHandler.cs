@@ -12,7 +12,7 @@ namespace Business.Queries.JobGroups
     public class GetJobPositionsByLevelGroupIdQuery: IQuery<List<JobPositionDto>>
     {
         public int Id { get; set; }
-        public string level { get; set; }
+        public int level { get; set; }
     }
 
     public class GetJobPositionsByLevelGroupIdQueryHandler : IQueryHandler<GetJobPositionsByLevelGroupIdQuery, List<JobPositionDto>>

@@ -16,6 +16,8 @@ namespace DataModel
             AzureAccessTokenService.AddAccessToken(Database.GetDbConnection() as SqlConnection);
         }
         public DbSet<JobGroup> JobGroups { get; set; }
+
+        public DbSet<SubJobGroup> SubJobGroups { get; set; }
         public DbSet<JobGroupLevel> JobGroupLevels { get; set; }
         public DbSet<JobRole> JobRoles { get; set; }
         public DbSet<JobPosition> JobPositions { get; set; }
@@ -36,17 +38,14 @@ namespace DataModel
         public DbSet<JobRolePositionLocation> JobRolePositionLocations { get; set; }
         public DbSet<JobRolePositionHLCategory> JobRolePositionHLCategories { get; set; }
 
-
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<CertificateDescription> CertificateDescriptions { get; set; }
         public DbSet<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
         }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
