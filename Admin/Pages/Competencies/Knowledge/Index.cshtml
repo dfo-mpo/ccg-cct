@@ -1,19 +1,33 @@
 ﻿@page
 @model Admin.Pages.Competencies.Knowledge.IndexModel
 @{
-    ViewData["Title"] = "Knowledge";
+    ViewData["Title"] = "Competencies";
 }
 
 <h1>Competencies</h1>
 
 <p>
-    <a asp-page="/Competencies/Create">Create New</a>
+    <a class="btn btn-dark" asp-page="/Competencies/Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <h6>
+            Find Competency:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to Full List</a>
+        </h6>
+    </div>
+</form>
+
+<hr />
+
 <table class="table">
     <thead>
         <tr>
-            <th><b>Name English</b></th>
-            <th><b>Name French</b></th>
+            <th><b>Competency English</b></th>
+            <th><b>Competency French</b></th>
             <th><b>Description English</b></th>
             <th><b>Description French</b></th>
             <th></th>

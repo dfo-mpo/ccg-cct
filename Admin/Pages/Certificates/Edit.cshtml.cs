@@ -29,7 +29,7 @@ namespace Admin.Pages.Certificates
                 return NotFound();
             }
 
-            Certificate = await _context.Certificates.FirstOrDefaultAsync(m => m.Id == id);
+            Certificate = await _context.Certificates.FindAsync(id);
 
             if (Certificate == null)
             {
@@ -40,37 +40,25 @@ namespace Admin.Pages.Certificates
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var certificateToUpdate = await _context.Certificates.FindAsync(id);
+
+            if (certificateToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Certificate).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<Certificate>(
+                certificateToUpdate,
+                "certificate",
+                s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre ))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CertificateExists(Certificate.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool CertificateExists(int id)
-        {
-            return _context.Certificates.Any(e => e.Id == id);
+            return Page();
         }
     }
 }

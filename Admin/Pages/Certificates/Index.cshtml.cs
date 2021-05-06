@@ -18,11 +18,23 @@ namespace Admin.Pages.Certificates
             _context = context;
         }
 
-        public IList<Certificate> Certificate { get;set; }
+        public string CurrentFilter { get; set; }
 
-        public async Task OnGetAsync()
+        public IList<Certificate> Certificates { get;set; }
+
+        public async Task OnGetAsync(string searchString)
         {
-            Certificate = await _context.Certificates.ToListAsync();
+            CurrentFilter = searchString;
+
+            IQueryable<Certificate> certificatesIQ = from s in _context.Certificates
+                                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                certificatesIQ = certificatesIQ.Where(s => s.NameEng.Contains(searchString)
+                                       || s.NameFre.Contains(searchString));
+            }
+            
+            Certificates = await certificatesIQ.AsNoTracking().ToListAsync();
         }
     }
 }
