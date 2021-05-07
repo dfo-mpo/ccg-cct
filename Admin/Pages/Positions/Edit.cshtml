@@ -22,16 +22,36 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div class="form-group">
+                            <div class="form-group m-2">
                                 <label class="control-label"><b>Title English</b></label>
-                                <textarea class="form-control" />@Html.DisplayFor(model => model.JobPosition.TitleEng)</textarea>
+                                <textarea class="form-control" required>@Html.DisplayFor(model => model.JobPosition.TitleEng)</textarea>
                                 <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group m-2">
                                 <label class="control-label"><b>Title French</b></label>
-                                <textarea class="form-control" />@Html.DisplayFor(model => model.JobPosition.TitleFre)</textarea>
+                                <textarea class="form-control" required>@Html.DisplayFor(model => model.JobPosition.TitleFre)</textarea>
                                 <span asp-validation-for="JobPosition.TitleFre" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">AREA / DOMAINE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2">
+                                <label class="mr-3" for="Shoreside">Shore side / À terre</label>
+                                <input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1">
+                                <label class="mr-3" for="Seagoing">Seagoing / En mer</label>
                             </div>
                         </td>
                     </tr>
@@ -48,10 +68,10 @@
                     <tr>
                         <td>
                             <div class="row">
-                                <div class="dropdown col-8 m-3">
+                                <div class="dropdown col-8 m-1">
                                     <label class="control-label"><b>Classification</b></label><br />
                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
-                                        <option value="AS">(AS-CR) Administrative Servives / Services administratif</option>
+                                        <option value="AS">(AS-CR) Administrative Services / Services administratif</option>
                                         <option value="ENG">(ENG) Architecture, Engineering / Architecture et Ingénierie</option>
                                         <option value="CS">(CS) Computer Systems / Systèmes d'ordinateurs</option>
                                         <option value="EC">(EC) Economics and Social Science Services / Économique et services de sciences sociales</option>
@@ -64,8 +84,7 @@
                                         <option value="GT">(GT) General Technician / General Technician</option>
                                     </select>
                                 </div>
-
-                                <div class="dropdown col-3 m-3">
+                                <div class="dropdown col-3 m-1">
                                     <label class="control-label"><b>Level/Niveau</b></label><br />
                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
                                         <option value="01">01</option>
@@ -95,17 +114,16 @@
                                 <div class="col-9 m-auto">
                                     CERTIFICATIONS / ATTESTATIONS
                                 </div>
-                                    <div class="dropdown col-3 text-right">
-                                        <div class="accordion" id="compOne">
-                                            <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                ADD
-                                            </button>
-                                            |
-                                            <a href="/Certificates/Create" class="btn btn-dark" type="button">
-                                                CREATE NEW
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="col-3 text-right">
+                                    <!-- Button trigger modal add certificate -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcert">
+                                        ADD
+                                    </button>
+                                    |
+                                    <a href="/Certificates/Create" class="btn btn-dark" type="button">
+                                        CREATE NEW
+                                    </a>
+                                </div>
                             </div>
                         </th>
                     </tr>
@@ -113,11 +131,68 @@
                 <tbody>
                     <tr>
                         <td>
+                            <!-- Modal Add Certificate -->
+                            <div class="modal fade bd-modal-xl" id="addcert" tabindex="-1" role="dialog" aria-labelledby="addcert" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="Title">ADD A CERTIFICATE</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body" style="background-color:#f2f2f2;">
+                                                <div class="mb-3">
+                                                    <label class="control-label"><b>Certificates</b></label><br />
+                                                    <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class" required>
+                                                        <option value="1">Master, 150 GT, Domestic / Capitaine, jauge brute de 150, navigation intérieure</option>
+                                                        <option value="2">Master 500 GT, Domestic / Capitaine, jauge brute de 500, navigation intérieure</option>
+                                                        <option value="3">Inter-Provincial Journeyman Certification; Heavy Duty Mechanic / Certificat interprovincial de compagnon, mécanicien de machinerie lourde</option>
+                                                        <option value="4">Inter-Provincial Journeyman Certification; Automotive Mechanic / Certificat interprovincial de compagnon, mécanicien d'automobile</option>
+                                                        <option value="5">Marine First Aid / Premiers soins en mer</option>
+                                                        <option value="6">Marine Certificate / Certificat de navigation</option>
+                                                        <option value="7">CCG Logistics Officer Certificate / Certificat d'officier de logistique de la GCC</option>
+                                                        <option value="8">Auditor Training Program / Programme de formation d'auditeur</option>
+                                                        <option value="9">Safety Management for Industrial Facilities Certificate / Certificat en gestion de la sécurité des installations industrielles</option>
+                                                        <option value="10">Occupational Health & Safety Certificate / Certificat de santé et de sécurité au travail</option>
+                                                        <option value="11">Accident Investigation Program / Programme d'enquête sur les accidents</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="control-label"><b>Description</b></label><br />
+                                                    <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class" required>
+                                                        <option value="1"></option>
+                                                        <option value="2">with Limited Contiguous Endorsement / avec Attestation de voyage limité, contiguës</option>
+                                                        <option value="3">with Master 150GT, Domestic / avec Capitaine, jauge brute de 150, navigation intérieure</option>
+                                                        <option value="4">and Unlimited ACV Endorsement / et Attestation de VCA illimité</option>
+                                                        <option value="5">(Depending on location, voyage and ship class this certificate may be substituted) / (Selon l'emplacement, le voyage et la classe du navire, ce certificat peut être remplacé)</option>
+                                                        <option value="6">(Dependant on position and training course) / (Dépend du poste et du cours de formation)</option>
+                                                        <option value="7">(Depending on background and shop specialty this certificate may be substituted) / (Selon l'expérience et la spécialité de l'atelier, ce certificat peut être remplacé)</option>
+                                                        <option value="8">(Depending on background and shop specialty these certificates may be substituted) / (Selon les antécédents et la spécialité de l'atelier, ces certificats peuvent être remplacés)</option>
+                                                        <option value="9">(Depending on location these certificates may be substituted) / (Selon l'emplacement, ces certificats peuvent être remplacés)</option>
+                                                        <option value="10">(under training) / (en formation)</option>
+                                                        <option value="11">(or Watchkeeping Mate, Near Coastal for MSPVs) / (ou Officier de pont de quart, à proximité du littoral pour NHRH)</option>
+                                                        <option value="12">(or Master 3000GT for Great Lakes/Mackenzie River) / (ou Capitaine, jauge brute de 3 000 pour les Grands Lacs et la rivière Mackenzie)</option>
+                                                        <option value="13">(or Master Mariner depending on voyage) / (ou Capitaine au long cours, selon le voyage)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-9 m-auto">No Certifications / Aucun certificat associées</div>
-                                <div class="dropdown col-3">
-                                    <div class="accordion text-right" id="compTwo">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <div class="col-3">
+                                    <div class="text-right">
+                                        <!-- Button trigger modal edit certificate -->
+                                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editcert">
                                             EDIT
                                         </button>
                                         |
@@ -127,61 +202,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="dropdown col-12">
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingFour" data-parent="#compTwo">
-                                    <div class="card-body" style="background-color:#f2f2f2;">
-                                        <div class="dropdown" style="margin-bottom:15px;">
-                                            <label class="control-label"><b>Certificates</b></label><br />
-                                            <textarea class="form-control" />Master 150 GT, Domestic / Capitaine, jauge brute de 150, navigation intérieure</textarea>
+
+                            <!-- Modal Edit Certificate -->
+                            <div class="modal fade bd-modal-xl" id="editcert" tabindex="-1" role="dialog" aria-labelledby="editcert" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="Title">EDIT CERTIFICATE</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                        <div class="dropdown" style="margin-bottom:15px;">
-                                            <label class="control-label"><b>Description</b></label><br />
-                                            <textarea class="form-control" />with Limited Contiguous Endorsement / avec Attestation de voyage limité, contiguës</textarea>
+                                        <div class="modal-body">
+                                            <div class="card-body" style="background-color:#f2f2f2;">
+                                                <div class="form-group mb-3">
+                                                    <label class="control-label"><b>Certificate</b></label><br />
+                                                    <textarea class="form-control">Master, 150 GT, Domestic / Capitaine, jauge brute de 150, navigation intérieure</textarea>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="control-label"><b>Description</b></label><br />
+                                                    <textarea class="form-control">with Limited Contiguous Endorsement / avec Attestation de voyage limité, contiguës</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
                                         </div>
-                                        <button class="btn btn-primary" type="button">SAVE</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dropdown col-12">
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
-                                    <div class="card-body" style="background-color:#f2f2f2;">
-                                        <div class="dropdown" style="margin-bottom:15px;">
-                                            <label class="control-label"><b>Certificates</b></label><br />
-                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
-                                                <option value="1">Master, 150 GT, Domestic / Capitaine, jauge brute de 150, navigation intérieure</option>
-                                                <option value="2">Master 500 GT, Domestic / Capitaine, jauge brute de 500, navigation intérieure</option>
-                                                <option value="3">Inter-Provincial Journeyman Certification; Heavy Duty Mechanic / Certificat interprovincial de compagnon, mécanicien de machinerie lourde</option>
-                                                <option value="4">Inter-Provincial Journeyman Certification; Automotive Mechanic / Certificat interprovincial de compagnon, mécanicien d'automobile</option>
-                                                <option value="5">Marine First Aid / Premiers soins en mer</option>
-                                                <option value="6">Marine Certificate / Certificat de navigation</option>
-                                                <option value="7">CCG Logistics Officer Certificate / Certificat d'officier de logistique de la GCC</option>
-                                                <option value="8">Auditor Training Program / Programme de formation d'auditeur</option>
-                                                <option value="9">Safety Management for Industrial Facilities Certificate / Certificat en gestion de la sécurité des installations industrielles</option>
-                                                <option value="10">Occupational Health & Safety Certificate / Certificat de santé et de sécurité au travail</option>
-                                                <option value="11">Accident Investigation Program / Programme d'enquête sur les accidents</option>
-                                            </select>
-                                        </div>
-                                        <div class="dropdown" style="margin-bottom:15px;">
-                                            <label class="control-label"><b>Description</b></label><br />
-                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
-                                                <option value="2">with Limited Contiguous Endorsement / avec Attestation de voyage limité, contiguës</option>
-                                                <option value="3">with Master 150GT, Domestic / avec Capitaine, jauge brute de 150, navigation intérieure</option>
-                                                <option value="4">and Unlimited ACV Endorsement / et Attestation de VCA illimité</option>
-                                                <option value="5">(Depending on location, voyage and ship class this certificate may be substituted) / (Selon l'emplacement, le voyage et la classe du navire, ce certificat peut être remplacé)</option>
-                                                <option value="6">(Dependant on position and training course) / (Dépend du poste et du cours de formation)</option>
-                                                <option value="7">(Depending on background and shop specialty this certificate may be substituted) / (Selon l'expérience et la spécialité de l'atelier, ce certificat peut être remplacé)</option>
-                                                <option value="8">(Depending on background and shop specialty these certificates may be substituted) / (Selon les antécédents et la spécialité de l'atelier, ces certificats peuvent être remplacés)</option>
-                                                <option value="9">(Depending on location these certificates may be substituted) / (Selon l'emplacement, ces certificats peuvent être remplacés)</option>
-                                                <option value="10">(under training) / (en formation)</option>
-                                                <option value="11">(or Watchkeeping Mate, Near Coastal for MSPVs) / (ou Officier de pont de quart, à proximité du littoral pour NHRH)</option>
-                                                <option value="12">(or Master 3000GT for Great Lakes/Mackenzie River) / (ou Capitaine, jauge brute de 3 000 pour les Grands Lacs et la rivière Mackenzie)</option>
-                                                <option value="13">(or Master Mariner depending on voyage) / (ou Capitaine au long cours, selon le voyage)</option>
-                                            </select>
-                                        </div>
-                                        <button class="btn btn-primary" type="button">SAVE</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- End Modal Edit Certificate -->
                         </td>
                     </tr>
                 </tbody>
@@ -189,7 +240,6 @@
 
             <table class="table table-bordered">
                 <tr>
-                    
                     <th colspan="3" style="background-color:#f2f2f2">
                         <div class="row">
                             <div class="col-6 m-auto">
@@ -198,71 +248,79 @@
                             <div class="col-3 text-center m-auto">
                                 LEVEL / NIVEAU
                             </div>
-                            <div class="dropdown col-3 text-right">
-                                <div class="accordion" id="comp5">
-                                    <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseOne">
-                                        ADD
-                                    </button>
-                                    |
-                                    <a href="/Competencies/Create" class="btn btn-dark" type="button">
-                                        CREATE NEW
-                                    </a>
-                                </div>
+                            <div class="col-3 text-right">
+                                <!-- Button trigger modal add knowledge -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addknow">
+                                    ADD
+                                </button>
+                                |
+                                <a href="/Competencies/Create" class="btn btn-dark" type="button">
+                                    CREATE NEW
+                                </a>
                             </div>
                         </div>
                     </th>
                 </tr>
                 <tr>
                     <td colspan="3">
-
-                        <div id="collapseFive" class="collapse" data-parent="#comp5">
-                            <div class="card-body" style="background-color:#f2f2f2;">
-                                <div class="row">
-                                    <div class="col-7 dropdown" style="margin-bottom:15px;">
-                                        <label class="control-label"><b>Knowledge Elements / Éléments de connaissance</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
-                                            <option value="1">Organizational Knowledge / Connaissances organisationnelles</option>
-                                            <option value="2">Program Knowledge and Application / Connaissance et application du programme</option>
-                                            <option value="3">Administrative Knowledge / Connaissances en administration</option>
-                                            <option value="4">Incident Command System (ICS) Knowledge / Connaissance des systèmes de commandement des incidents (SCI)</option>
-                                            <option value="5">Seagoing Personnel Management Knowledge / Connaissance de la gestion du personnel navigant</option>
-                                            <option value="6">Maritime Security (MSOC) Knowledge / Connaissance du Centre des opérations de la sûreté maritime (COSM)</option>
-                                            <option value="7">Knowledge of Systems Approach to Training / Connaissance de l'approche systémique de la formation</option>
-                                            <option value="8">Knowledge of Specialized Fields / Connaissance des domaines spécialisés</option>
-                                            <option value="9">Project/Program Management / Gestion de projet / programme</option>
-                                            <option value="10">Planning and Priority Setting / Planification et établissement de priorités</option>
-                                            <option value="11">Procurement and Purchasing / Approvisionnement et achats</option>
-                                        </select>
+                        <!-- Modal Add Knowledge -->
+                        <div class="modal fade bd-modal-xl" id="addknow" tabindex="-1" role="dialog" aria-labelledby="addknow" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Title">ADD A KNOWLEDGE ELEMENT</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="col-2 dropdown" style="margin-bottom:15px;">
-                                        <label class="control-label"><b>Level</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
-                                            <option value="2">01</option>
-                                            <option value="3">02</option>
-                                            <option value="4">03</option>
-                                            <option value="5">04</option>
-                                            <option value="6">05</option>
-                                            <option value="7">06</option>
-                                            <option value="8">07</option>
-                                            <option value="9">08</option>
-                                            <option value="10">09</option>
-                                            <option value="11">10</option>
-                                            <option value="12">11</option>
-                                            <option value="13">12</option>
-                                        </select>
+                                    <div class="modal-body">
+                                        <div class="card-body" style="background-color:#f2f2f2;">
+                                            <div class="row">
+                                                <div class="col-9 mb-3">
+                                                    <label class="control-label"><b>Knowledge Elements / Éléments de connaissance</b></label><br />
+                                                    <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
+                                                        <option value="1">Organizational Knowledge / Connaissances organisationnelles</option>
+                                                        <option value="2">Program Knowledge and Application / Connaissance et application du programme</option>
+                                                        <option value="3">Administrative Knowledge / Connaissances en administration</option>
+                                                        <option value="4">Incident Command System (ICS) Knowledge / Connaissance des systèmes de commandement des incidents (SCI)</option>
+                                                        <option value="5">Seagoing Personnel Management Knowledge / Connaissance de la gestion du personnel navigant</option>
+                                                        <option value="6">Maritime Security (MSOC) Knowledge / Connaissance du Centre des opérations de la sûreté maritime (COSM)</option>
+                                                        <option value="7">Knowledge of Systems Approach to Training / Connaissance de l'approche systémique de la formation</option>
+                                                        <option value="8">Knowledge of Specialized Fields / Connaissance des domaines spécialisés</option>
+                                                        <option value="9">Project/Program Management / Gestion de projet / programme</option>
+                                                        <option value="10">Planning and Priority Setting / Planification et établissement de priorités</option>
+                                                        <option value="11">Procurement and Purchasing / Approvisionnement et achats</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-2 mb-3">
+                                                    <label class="control-label"><b>Level</b></label><br />
+                                                    <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
+                                                        <option value="1">01</option>
+                                                        <option value="2">02</option>
+                                                        <option value="3">03</option>
+                                                        <option value="4">04</option>
+                                                        <option value="5">05</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="button">SAVE</button>
                             </div>
                         </div>
-
+                        <!-- End Modal Add Knowledge -->
+                        <!-- Knowledge Description 1 Accordion -->
                         <div class="row">
                             <div class="col-6">
-                                <div class="accordion" id="compFour">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="accordion" id="compOne">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                         Organizational Knowledge / Connaissances organisationnelles
                                     </button>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#compFour">
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
                                         <div class="card-body">
                                             <p>
                                                 <b>English Description</b><br />
@@ -277,11 +335,11 @@
                                 </div>
                             </div>
                             <div class="col-3 text-center m-auto">
-                                <div class="accordion" id="compFour">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapselevelOne">
+                                <div class="accordion" id="compOne">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
                                         1
                                     </button>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#compFour">
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
                                         <div class="card-body align-text-top text-left">
                                             <p>
                                                 <b>English Description</b><br />
@@ -297,45 +355,110 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="dropdown col-3 text-right">
-                                <div class="accordion" id="comp6">
-                                    <a href="/Competencies/Knowledge/Edit?id=1" class="btn btn-link" type="button">
-                                        EDIT
-                                    </a>
-                                    |
-                                    <a href="#" class="btn btn-link" type="button">
-                                        REMOVE
-                                    </a>
+
+                            <div class="col-3 text-right">
+                                <!-- Button trigger modal edit competency -->
+                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editcomp1">
+                                    EDIT
+                                </button>
+                                |
+                                <a href="#" class="btn btn-link" type="button">
+                                    REMOVE
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal Edit Competency #1 -->
+                        <div class="modal fade bd-modal-xl" id="editcomp1" tabindex="-1" role="dialog" aria-labelledby="editcomp1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Title">EDIT COMPETENCY</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body" style="background-color:#f2f2f2;">
+                                            <div class="row">
+                                                <div class="col-6 mb-3">
+                                                    <label class="control-label"><b>English Competency</b></label><br />
+                                                    <textarea class="form-control">Organizational Knowledge</textarea>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <label class="control-label"><b>French Competency</b></label><br />
+                                                    <textarea class="form-control">Connaissances organisationnelles</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>English Competency Description</b></label><br />
+                                                <textarea class="form-control">Knowledge of the Canadian Coast Guard organization, its partners, and relationships with the Department of Fisheries and Oceans (DFO) and other internal and external stakeholders.</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>French Competency Description</b></label><br />
+                                                <textarea class="form-control">Connaissance de l'organisation de la Garde côtière canadienne, de ses partenaires et des relations avec le ministère des pêches et océans (MPO) et d'autres intervenants internes et externes.</textarea>
+                                            </div>
+                                            <hr />
+                                            <div class="col-2 mb-3">
+                                                <label class="control-label"><b>Level / Niveau</b></label><br />
+                                                <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
+                                                    <option value="1">01</option>
+                                                    <option value="2">02</option>
+                                                    <option value="3">03</option>
+                                                    <option value="4">04</option>
+                                                    <option value="5">05</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>English Level Description</b></label><br />
+                                                <textarea class="form-control">Fundamental Awareness (Common knowledge or an understanding of basic techniques and concepts)
+Basic understanding of the CCG and its role as a program facilitator.</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>French Level Description</b></label><br />
+                                                <textarea class="form-control">Sensibilisation fondamentale (Connaissance courante ou compréhension des techniques et concepts de base)
+Compréhension de base de la GCC et de son rôle en tant que facilitateur de programmes.</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+                        <!-- End Modal Edit Competency #1 -->
                         <hr />
+                        <!-- Knowledge Description 2 Accordion -->
                         <div class="row">
                             <div class="col-6">
-                                <div class="accordion" id="comp6">
-                                    <button class="btn btn-link collapsed text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <div class="accordion" id="compTwo">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Program Knowledge and Application / Connaissance et application du programme
                                     </button>
-                                    <div id="collapseSix" class="collapse" aria-labelledby="headingFour" data-parent="#comp6">
-                                        <div class="card-body text-left">
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#compTwo">
+                                        <div class="card-body">
                                             <p>
                                                 <b>English Description</b><br />
-                                                Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates:  Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).
+                                                Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates: Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).
                                             </p>
                                             <p>
                                                 <b>French Description</b><br />
-                                                Connaissance des programmes que la Garde côtière canadienne gère et soutient. Comprend les services et l'exécution des mandats des programmes :  Recherche et sauvetage (SAR), Déglaçage, Aides à la navigation (AIDNAV), Intervention environnementale (IE), Conservation et protection (C&P du MPO), Océanographie (Sciences du MPO) et Recherche halieutique (Sciences du MPO).
+                                                Connaissance des programmes que la Garde côtière canadienne gère et soutient. Comprend les services et l'exécution des mandats des programmes : Recherche et sauvetage (SAR), Déglaçage, Aides à la navigation (AIDNAV), Intervention environnementale (IE), Conservation et protection (C&P du MPO), Océanographie (Sciences du MPO) et Recherche halieutique (Sciences du MPO).
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 text-center">
-                                <div class="accordion" id="comp6">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            <div class="col-3 text-center m-auto">
+                                <div class="accordion" id="compTwo">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapselevelTwo">
                                         2
                                     </button>
-                                    <div id="collapseSix" class="collapse" aria-labelledby="headingFour" data-parent="#comp6">
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#compTwo">
                                         <div class="card-body align-text-top text-left">
                                             <p>
                                                 <b>English Description</b><br />
@@ -351,74 +474,82 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-3 text-right">
-                                <div id="comp6">
-                                    <a href="/Competencies/Knowledge/Edit?id=2" class="btn btn-link" type="button">
-                                        EDIT
-                                    </a>
-                                    |
-                                    <a href="#" class="btn btn-link" type="button">
-                                        REMOVE
-                                    </a>
-                                </div>
+                                <!-- Button trigger modal edit 2 competency -->
+                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editcomp2">
+                                    EDIT
+                                </button>
+                                |
+                                <a href="#" class="btn btn-link" type="button">
+                                    REMOVE
+                                </a>
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="accordion" id="comp7">
-                                    <button class="btn btn-link collapsed text-left" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                        Administrative Knowledge / Connaissances en administration
-                                    </button>
-                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingFour" data-parent="#comp7">
-                                        <div class="card-body text-left">
-                                            <p>
-                                                <b>English Description</b><br />
-                                                Understanding of administrative procedures and processes in one or more area of responsibility.
-                                            </p>
-                                            <p>
-                                                <b>French Description</b><br />
-                                                Compréhension des procédures et processus administratifs dans un ou plusieurs domaines de responsabilité.
-                                            </p>
-                                        </div>
+
+                        <!-- Modal Edit Competency #2 -->
+                        <div class="modal fade bd-modal-xl" id="editcomp2" tabindex="-1" role="dialog" aria-labelledby="editcomp2" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Title">EDIT COMPETENCY</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-center">
-                                <div class="accordion" id="comp7">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                        2
-                                    </button>
-                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingFour" data-parent="#comp7">
-                                        <div class="card-body align-text-top text-left">
-                                            <div class="card-body text-left">
-                                                <p>
-                                                    <b>English Description</b><br />
-                                                    Novice (A level of experience has been obtained; may need help when performing a task/skill)<br /><br />
-                                                    Recognizes when administration requirements are met. Understands systems and software pertaining to administrative functions and where applicable, the shipboard logistics functions in the performance of duties.
-                                                </p>
-                                                <p>
-                                                    <b>French Description</b><br />
-                                                    Novice (Un niveau d'expérience a été acquis; peut avoir besoin d'aide lors de l'exécution d'une tâche ou d'une compétence)<br /><br />
-                                                    Reconnaît quand les exigences administratives sont satisfaites. Comprend les systèmes et les logiciels relatifs aux fonctions administratives et, s'il y a lieu, aux fonctions logistiques à bord du navire dans l'exécution des tâches.
-                                                </p>
+                                    <div class="modal-body">
+                                        <div class="card-body" style="background-color:#f2f2f2;">
+                                            <div class="row">
+                                                <div class="col-6 mb-3">
+                                                    <label class="control-label"><b>English Competency</b></label><br />
+                                                    <textarea class="form-control">Program Knowledge and Application</textarea>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <label class="control-label"><b>French Competency</b></label><br />
+                                                    <textarea class="form-control">Connaissance et application du programme</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>English Competency Description</b></label><br />
+                                                <textarea class="form-control">Knowledge of the programs the Canadian Coast Guard manages and supports. Understands the services and delivery of program mandates: Search and Rescue (SAR), Icebreaking (IB), Aids to Navigation (AtoN), Environmental Response (ER), Conservation and Protection (DFO C&P), Oceanography (DFO Science) and Fisheries Research (DFO Science).</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>French Competency Description</b></label><br />
+                                                <textarea class="form-control">Connaissance des programmes que la Garde côtière canadienne gère et soutient. Comprend les services et l'exécution des mandats des programmes : Recherche et sauvetage (SAR), Déglaçage, Aides à la navigation (AIDNAV), Intervention environnementale (IE), Conservation et protection (C&P du MPO), Océanographie (Sciences du MPO) et Recherche halieutique (Sciences du MPO).</textarea>
+                                            </div>
+                                            <hr />
+                                            <div class="col-2 mb-3">
+                                                <label class="control-label"><b>Level / Niveau</b></label><br />
+                                                <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="class">
+                                                    <option value="1">01</option>
+                                                    <option value="2" selected>02</option>
+                                                    <option value="3">03</option>
+                                                    <option value="4">04</option>
+                                                    <option value="5">05</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>English Level Description</b></label><br />
+                                                <textarea class="form-control">Novice (A level of experience has been obtained; may need help when performing a task/skill)
+Limited knowledge of the Coast Guard's functions and the roles and responsibilities of key Coast Guard contacts within a regional organizational setting. Understands some programs and assets well.</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="control-label"><b>French Level Description</b></label><br />
+                                                <textarea class="form-control">Novice (Un niveau d'expérience a été acquis; peut avoir besoin d'aide lors de l'exécution d'une tâche ou d'une compétence)
+Connaissance limitée des fonctions de la Garde côtière et des rôles et responsabilités des principaux contacts de la Garde côtière dans un cadre organisationnel régional. Comprend bien certains programmes et actifs.</textarea>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-right">
-                                <div id="comp7">
-                                    <a href="/Competencies/Knowledge/Edit?id=3" class="btn btn-link" type="button">
-                                        EDIT
-                                    </a>
-                                    |
-                                    <a href="#" class="btn btn-link" type="button">
-                                        REMOVE
-                                    </a>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+                        <!-- End Modal Edit Competency #2 -->
                     </td>
                 </tr>
             </table>

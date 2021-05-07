@@ -28,17 +28,23 @@ namespace Admin.Pages.Certificates
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
+
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyCertificate = new Certificate();
+
+            if (await TryUpdateModelAsync<Certificate>(
+                emptyCertificate,
+                "certificate",   // Prefix for form value.
+                s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre))
             {
-                return Page();
+                _context.Certificates.Add(emptyCertificate);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Certificates.Add(Certificate);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
+        
     }
 }

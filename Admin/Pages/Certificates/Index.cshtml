@@ -2,53 +2,50 @@
 @model Admin.Pages.Certificates.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Certificates";
 }
 
-<h1>Index</h1>
+<h2>Certificates</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-dark" asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <h6>
+            Find certificates:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to Full List</a>
+        </h6>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].NameEng)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].NameFre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].DescEng)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Certificate[0].DescFre)
-            </th>
+            <th>Certificate English</th>
+            <th>Certificate French</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Certificate) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameEng)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameFre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescEng)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescFre)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Certificates)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameFre)
+                </td>
+                <td style="width:15%">
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

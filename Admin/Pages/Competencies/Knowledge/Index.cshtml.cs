@@ -18,11 +18,22 @@ namespace Admin.Pages.Competencies.Knowledge
             _context = context;
         }
 
+        public string CurrentFilter { get; set; }
+
         public IList<Competency> Competency { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            Competency = await _context.Competencies.ToListAsync();
+            CurrentFilter = searchString;
+
+            IQueryable<Competency> competenciesIQ = from s in _context.Competencies
+                                                    select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                competenciesIQ = competenciesIQ.Where(s => s.NameEng.Contains(searchString)
+                                       || s.NameFre.Contains(searchString));
+            }
+                Competency = await competenciesIQ.AsNoTracking().ToListAsync();
+            }
         }
     }
-}
