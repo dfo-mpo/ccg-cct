@@ -42,6 +42,10 @@ namespace DataModel
         public DbSet<CertificateDescription> CertificateDescriptions { get; set; }
         public DbSet<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
+        public DbSet<SearchPercentage> SearchPercentages { get; set; }
+
+        public DbSet<SimilarSearchResults> SimilarSearchResults { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(CctDbContext).Assembly);
