@@ -44,7 +44,7 @@ namespace DataModel
 
         public DbSet<SearchPercentage> SearchPercentages { get; set; }
 
-        public DbSet<SimilarSearchResults> SimilarSearchResults { get; set; }
+        public DbSet<SimilarSearchResultsTable> SimilarSearchResultsTables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

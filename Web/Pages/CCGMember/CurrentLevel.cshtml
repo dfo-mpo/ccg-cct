@@ -21,10 +21,10 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in Model.JobGroupPositions.Select(e => e.LevelValue).ToList().Distinct())
             {
-                var routedata = new Dictionary<string, int>
+                var routedata = new Dictionary<string, string>
                         {
                               { "id",  Model.Id.ToString()},
-                              { "level",  level}
+                              { "level",  level.ToString()}
                          };
         <li role="presentation">
             <a role="menuitem" tabindex="-1"

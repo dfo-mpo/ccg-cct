@@ -6,6 +6,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Migrations\20210512162456_new-model-tables.cs" />
+	  <Compile Remove="Migrations\20210512162456_new-model-tables.Designer.cs" />
+	  <Compile Remove="Migrations\20210512181511_newtables-migration.cs" />
+	  <Compile Remove="Migrations\20210512181511_newtables-migration.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
 			<PrivateAssets>all</PrivateAssets>

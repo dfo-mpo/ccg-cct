@@ -31,6 +31,7 @@ namespace DataModel.SeedData
             await AddIfEmpty(CertificateDescriptions);
             await AddIfEmpty(JobLocationRegions);
 
+
             // link tables
             await AddIfEmpty(JobRoles, false);
             await AddIfEmpty(JobGroupPositions, false);
@@ -42,6 +43,7 @@ namespace DataModel.SeedData
             await AddIfEmpty(JobRolePositionCompetencyRatings, false);
             await AddIfEmpty(JobRolePositionLocations, false);
             await AddIfEmpty(JobRolePositionHLCategories, false);
+            
 
         }
 

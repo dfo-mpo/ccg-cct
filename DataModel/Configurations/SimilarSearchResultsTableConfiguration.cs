@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-    public class SimilarSearchResultsConfiguration : IEntityTypeConfiguration<SimilarSearchResults>
+    public class SimilarSearchResultsTableConfiguration : IEntityTypeConfiguration<SimilarSearchResultsTable>
     {
-        public void Configure(EntityTypeBuilder<SimilarSearchResults> builder)
+        public void Configure(EntityTypeBuilder<SimilarSearchResultsTable> builder)
         {
             builder.HasKey(jr => new { jr.JobGroupId, jr.JobGroupLevelId, jr.JobPositionId, jr.SearchPercentageId });
         }

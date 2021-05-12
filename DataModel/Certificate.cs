@@ -22,7 +22,8 @@ namespace DataModel
 
         public string DescFre { get; set; }
         
-       public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+        public int Active { get; set; }
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
 }

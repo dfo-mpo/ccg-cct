@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataModel
 {
-    public class SimilarSearchResults
+    public class SimilarSearchResultsTable
     {
         public int JobGroupId { get; set; }
         public JobGroup JobGroup { get; set; }

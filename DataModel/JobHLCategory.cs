@@ -12,6 +12,7 @@ namespace DataModel
 
         public string ValueFre { get; set; }
 
+        public int Active { get; set; }
         public virtual ICollection<JobRolePositionHLCategory> JobRolePositionHLCategory { get; set; }
     }
 

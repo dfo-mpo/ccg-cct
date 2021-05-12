@@ -12,6 +12,8 @@ namespace DataModel
 
         public int LevelValue { get; set; }  // ex. "01", "02"
 
+        public int Active { get; set; }
+
         public virtual ICollection<JobRole> JobRoles { get; set; }
 
         public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }
