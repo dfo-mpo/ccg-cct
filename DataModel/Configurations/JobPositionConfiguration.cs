@@ -14,6 +14,9 @@ namespace DataModel.Configurations
 
             builder.HasKey(x => x.Id);
 
+            builder.Property(b => b.Active)
+               .IsRequired();
+
             builder.Property(b => b.TitleEng)
                 .IsRequired()
                 .HasMaxLength(3000);

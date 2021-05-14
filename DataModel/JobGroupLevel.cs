@@ -12,7 +12,7 @@ namespace DataModel
 
         public int LevelValue { get; set; }  // ex. "01", "02"
 
-        public int Active { get; set; }
+        public int Active { get; set; } // ex : 0 = Level deleted, 1 = Level active
 
         public virtual ICollection<JobRole> JobRoles { get; set; }
 

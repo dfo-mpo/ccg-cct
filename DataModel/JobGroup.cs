@@ -16,7 +16,7 @@ namespace DataModel
 
         public string NameFre { get; set; } // ex. Services administratifs
 
-        public int Active { get; set; }
+        public int Active { get; set; } //   ex : 0 = Jobgroup deleted, 1 = Jobgroup active
 
         public virtual ICollection<SubJobGroup> SubJobGroups { get; set; }
 

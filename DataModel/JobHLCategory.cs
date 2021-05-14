@@ -12,7 +12,7 @@ namespace DataModel
 
         public string ValueFre { get; set; }
 
-        public int Active { get; set; }
+        public int Active { get; set; }  // ex : 0 = HLCategory deleted, 1 = HLCategory active
         public virtual ICollection<JobRolePositionHLCategory> JobRolePositionHLCategory { get; set; }
     }
 

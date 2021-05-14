@@ -18,6 +18,9 @@ namespace DataModel.Configurations
                 .IsRequired()
                 .HasMaxLength(1000);
 
+            builder.Property(b => b.Active)
+               .IsRequired();
+
             builder.Property(b => b.NameFre)
                 .IsRequired()
                 .HasMaxLength(1000);
