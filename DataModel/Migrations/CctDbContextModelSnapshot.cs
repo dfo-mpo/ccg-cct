@@ -235,6 +235,22 @@ namespace DataModel.Migrations
 
                     b.ToTable("JobGroups");
                 });
+                
+            modelBuilder.Entity("DataModel.SubJobGroup", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<string>("SubCode")
+                    .HasColumnType("nvarchar(250)")
+                    .HasMaxLength(250);
+
+                b.HasKey("Id");
+
+                b.ToTable("SubJobGroups");
+            });
 
             modelBuilder.Entity("DataModel.JobGroupLevel", b =>
                 {
@@ -557,28 +573,6 @@ namespace DataModel.Migrations
                     b.HasIndex("SubJobGroupId");
 
                     b.ToTable("JobRolePositionLocations");
-                });
-
-            modelBuilder.Entity("DataModel.SubJobGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("JobGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SubCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobGroupId");
-
-                    b.ToTable("SubJobGroups");
                 });
 
             modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
