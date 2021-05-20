@@ -5,6 +5,12 @@ using CCG.AspNetCore.Data.Interface;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using DataModel.Configurations;
+using DataModel.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
+using System.Data;
+
 namespace DataModel.Configurations
 {
 
@@ -12,7 +18,7 @@ namespace DataModel.Configurations
     {
         public void Configure(EntityTypeBuilder<JobGroupPosition> builder)
         {
-            builder.HasKey(jp => new { jp.JobGroupId, jp.JobGroupLevelId, jp.JobPositionId });
+           builder.HasKey(jp => jp.Id);
 
         }
     }

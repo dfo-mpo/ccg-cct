@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class NewDataModel : Migration
+    public partial class NewDatamodel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,8 @@ namespace DataModel.Migrations
                     NameEng = table.Column<string>(maxLength: 1000, nullable: true),
                     NameFre = table.Column<string>(maxLength: 1000, nullable: true),
                     DescEng = table.Column<string>(maxLength: 1000, nullable: true),
-                    DescFre = table.Column<string>(maxLength: 1000, nullable: true)
+                    DescFre = table.Column<string>(maxLength: 1000, nullable: true),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +46,8 @@ namespace DataModel.Migrations
                     NameEng = table.Column<string>(maxLength: 1000, nullable: false),
                     NameFre = table.Column<string>(maxLength: 1000, nullable: false),
                     DescEng = table.Column<string>(maxLength: 2500, nullable: false),
-                    DescFre = table.Column<string>(maxLength: 2500, nullable: false)
+                    DescFre = table.Column<string>(maxLength: 2500, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,7 +105,8 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LevelValue = table.Column<int>(maxLength: 250, nullable: false)
+                    LevelValue = table.Column<int>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,7 +121,8 @@ namespace DataModel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(maxLength: 250, nullable: false),
                     NameEng = table.Column<string>(maxLength: 500, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 500, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 500, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,7 +136,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ValueEng = table.Column<string>(maxLength: 250, nullable: false),
-                    ValueFre = table.Column<string>(maxLength: 250, nullable: false)
+                    ValueFre = table.Column<string>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -146,7 +151,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameEng = table.Column<string>(maxLength: 250, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 250, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,7 +166,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TitleEng = table.Column<string>(maxLength: 3000, nullable: false),
-                    TitleFre = table.Column<string>(maxLength: 3000, nullable: false)
+                    TitleFre = table.Column<string>(maxLength: 3000, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,19 +203,19 @@ namespace DataModel.Migrations
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_CompetencyRatingGroups_CompetencyLevelRequirements_CompetencyLevelRequirementId",
                         column: x => x.CompetencyLevelRequirementId,
                         principalTable: "CompetencyLevelRequirements",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_CompetencyRatingGroups_CompetencyRatingLevels_CompetencyRatingLevelId",
                         column: x => x.CompetencyRatingLevelId,
                         principalTable: "CompetencyRatingLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,13 +233,13 @@ namespace DataModel.Migrations
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_CompetencyTypeGroups_CompetencyTypes_CompetencyTypeId",
                         column: x => x.CompetencyTypeId,
                         principalTable: "CompetencyTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,65 +257,35 @@ namespace DataModel.Migrations
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRoles_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SubJobGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
-                    JobGroupId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(maxLength: 250, nullable: false),
                     NameEng = table.Column<string>(maxLength: 500, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 500, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 500, nullable: false),
+                    JobGroupId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubJobGroups", x => new { x.Id, x.JobGroupId });
+                    table.PrimaryKey("PK_SubJobGroups", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SubJobGroups_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JobGroupPositions",
-                columns: table => new
-                {
-                    JobGroupId = table.Column<int>(nullable: false),
-                    JobGroupLevelId = table.Column<int>(nullable: false),
-                    JobPositionId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JobGroupPositions", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId });
-                    table.ForeignKey(
-                        name: "FK_JobGroupPositions_JobGroups_JobGroupId",
-                        column: x => x.JobGroupId,
-                        principalTable: "JobGroups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JobGroupPositions_JobGroupLevels_JobGroupLevelId",
-                        column: x => x.JobGroupLevelId,
-                        principalTable: "JobGroupLevels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JobGroupPositions_JobPositions_JobPositionId",
-                        column: x => x.JobPositionId,
-                        principalTable: "JobPositions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -327,19 +304,19 @@ namespace DataModel.Migrations
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobPositionCompetencies_CompetencyTypes_CompetencyTypeId",
                         column: x => x.CompetencyTypeId,
                         principalTable: "CompetencyTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobPositionCompetencies_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -360,31 +337,31 @@ namespace DataModel.Migrations
                         column: x => x.CertificateDescriptionId,
                         principalTable: "CertificateDescriptions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCertificates_Certificates_CertificateId",
                         column: x => x.CertificateId,
                         principalTable: "Certificates",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCertificates_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCertificates_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCertificates_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -405,31 +382,31 @@ namespace DataModel.Migrations
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencies_CompetencyTypes_CompetencyTypeId",
                         column: x => x.CompetencyTypeId,
                         principalTable: "CompetencyTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencies_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencies_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencies_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -452,43 +429,43 @@ namespace DataModel.Migrations
                         column: x => x.CompetencyId,
                         principalTable: "Competencies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_CompetencyLevelRequirements_CompetencyLevelRequirementId",
                         column: x => x.CompetencyLevelRequirementId,
                         principalTable: "CompetencyLevelRequirements",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_CompetencyRatingLevels_CompetencyRatingLevelId",
                         column: x => x.CompetencyRatingLevelId,
                         principalTable: "CompetencyRatingLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_CompetencyTypes_CompetencyTypeId",
                         column: x => x.CompetencyTypeId,
                         principalTable: "CompetencyTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionCompetencyRatings_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -508,25 +485,25 @@ namespace DataModel.Migrations
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionHLCategories_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionHLCategories_JobHLCategories_JobHLCategoryId",
                         column: x => x.JobHLCategoryId,
                         principalTable: "JobHLCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionHLCategories_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -546,63 +523,117 @@ namespace DataModel.Migrations
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionLocations_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionLocations_JobLocationRegions_JobLocationRegionId",
                         column: x => x.JobLocationRegionId,
                         principalTable: "JobLocationRegions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_JobRolePositionLocations_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SimilarSearchResultsTables",
+                name: "JobGroupPositions",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubJobGroupId = table.Column<int>(nullable: false),
                     JobGroupId = table.Column<int>(nullable: false),
                     JobGroupLevelId = table.Column<int>(nullable: false),
-                    JobPositionId = table.Column<int>(nullable: false),
-                    SearchPercentageId = table.Column<int>(nullable: false)
+                    JobPositionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SimilarSearchResultsTables", x => new { x.JobGroupId, x.JobGroupLevelId, x.JobPositionId, x.SearchPercentageId });
+                    table.PrimaryKey("PK_JobGroupPositions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SimilarSearchResultsTables_JobGroups_JobGroupId",
+                        name: "FK_JobGroupPositions_JobGroups_JobGroupId",
                         column: x => x.JobGroupId,
                         principalTable: "JobGroups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_SimilarSearchResultsTables_JobGroupLevels_JobGroupLevelId",
+                        name: "FK_JobGroupPositions_JobGroupLevels_JobGroupLevelId",
                         column: x => x.JobGroupLevelId,
                         principalTable: "JobGroupLevels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_SimilarSearchResultsTables_JobPositions_JobPositionId",
+                        name: "FK_JobGroupPositions_JobPositions_JobPositionId",
                         column: x => x.JobPositionId,
                         principalTable: "JobPositions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_SimilarSearchResultsTables_SearchPercentages_SearchPercentageId",
+                        name: "FK_JobGroupPositions_SubJobGroups_SubJobGroupId",
+                        column: x => x.SubJobGroupId,
+                        principalTable: "SubJobGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobGroupPositionSearchPercentages",
+                columns: table => new
+                {
+                    JobGroupPositionId = table.Column<int>(nullable: false),
+                    SearchPercentageId = table.Column<int>(nullable: false),
+                    JobGroupId = table.Column<int>(nullable: false),
+                    SubJobGroupId = table.Column<int>(nullable: false),
+                    JobGroupLevelId = table.Column<int>(nullable: false),
+                    JobPositionId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobGroupPositionSearchPercentages", x => new { x.JobGroupPositionId, x.JobGroupId, x.SubJobGroupId, x.JobGroupLevelId, x.JobPositionId, x.SearchPercentageId });
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_JobGroups_JobGroupId",
+                        column: x => x.JobGroupId,
+                        principalTable: "JobGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_JobGroupLevels_JobGroupLevelId",
+                        column: x => x.JobGroupLevelId,
+                        principalTable: "JobGroupLevels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_JobGroupPositions_JobGroupPositionId",
+                        column: x => x.JobGroupPositionId,
+                        principalTable: "JobGroupPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_JobPositions_JobPositionId",
+                        column: x => x.JobPositionId,
+                        principalTable: "JobPositions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_SearchPercentages_SearchPercentageId",
                         column: x => x.SearchPercentageId,
                         principalTable: "SearchPercentages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_JobGroupPositionSearchPercentages_SubJobGroups_SubJobGroupId",
+                        column: x => x.SubJobGroupId,
+                        principalTable: "SubJobGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -621,6 +652,11 @@ namespace DataModel.Migrations
                 column: "CompetencyTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositions_JobGroupId",
+                table: "JobGroupPositions",
+                column: "JobGroupId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JobGroupPositions_JobGroupLevelId",
                 table: "JobGroupPositions",
                 column: "JobGroupLevelId");
@@ -629,6 +665,36 @@ namespace DataModel.Migrations
                 name: "IX_JobGroupPositions_JobPositionId",
                 table: "JobGroupPositions",
                 column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositions_SubJobGroupId",
+                table: "JobGroupPositions",
+                column: "SubJobGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositionSearchPercentages_JobGroupId",
+                table: "JobGroupPositionSearchPercentages",
+                column: "JobGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositionSearchPercentages_JobGroupLevelId",
+                table: "JobGroupPositionSearchPercentages",
+                column: "JobGroupLevelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositionSearchPercentages_JobPositionId",
+                table: "JobGroupPositionSearchPercentages",
+                column: "JobPositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositionSearchPercentages_SearchPercentageId",
+                table: "JobGroupPositionSearchPercentages",
+                column: "SearchPercentageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobGroupPositionSearchPercentages_SubJobGroupId",
+                table: "JobGroupPositionSearchPercentages",
+                column: "SubJobGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobPositionCompetencies_CompetencyId",
@@ -746,21 +812,6 @@ namespace DataModel.Migrations
                 column: "JobGroupLevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SimilarSearchResultsTables_JobGroupLevelId",
-                table: "SimilarSearchResultsTables",
-                column: "JobGroupLevelId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SimilarSearchResultsTables_JobPositionId",
-                table: "SimilarSearchResultsTables",
-                column: "JobPositionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SimilarSearchResultsTables_SearchPercentageId",
-                table: "SimilarSearchResultsTables",
-                column: "SearchPercentageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_SubJobGroups_JobGroupId",
                 table: "SubJobGroups",
                 column: "JobGroupId");
@@ -775,7 +826,7 @@ namespace DataModel.Migrations
                 name: "CompetencyTypeGroups");
 
             migrationBuilder.DropTable(
-                name: "JobGroupPositions");
+                name: "JobGroupPositionSearchPercentages");
 
             migrationBuilder.DropTable(
                 name: "JobPositionCompetencies");
@@ -799,10 +850,10 @@ namespace DataModel.Migrations
                 name: "JobRoles");
 
             migrationBuilder.DropTable(
-                name: "SimilarSearchResultsTables");
+                name: "JobGroupPositions");
 
             migrationBuilder.DropTable(
-                name: "SubJobGroups");
+                name: "SearchPercentages");
 
             migrationBuilder.DropTable(
                 name: "CertificateDescriptions");
@@ -835,7 +886,7 @@ namespace DataModel.Migrations
                 name: "JobPositions");
 
             migrationBuilder.DropTable(
-                name: "SearchPercentages");
+                name: "SubJobGroups");
 
             migrationBuilder.DropTable(
                 name: "JobGroups");

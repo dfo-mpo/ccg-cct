@@ -12,9 +12,9 @@ namespace DataModel
 
         public string Code { get; set; } // ex: MOC, WOW, 
 
-        public string NameEng { get; set; } // 
+        public string NameEng { get; set; } 
 
-        public string NameFre { get; set; } // 
+        public string NameFre { get; set; }  
 
         public int JobGroupId { get; set; }
         public JobGroup JobGroup { get; set; }

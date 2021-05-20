@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    [Migration("20210512181729_NewDataModel")]
-    partial class NewDataModel
+    [Migration("20210520155017_NewDatamodel")]
+    partial class NewDatamodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace DataModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.Property<string>("DescEng")
                         .HasColumnType("nvarchar(1000)")
@@ -74,6 +77,9 @@ namespace DataModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.Property<string>("DescEng")
                         .IsRequired()
@@ -217,6 +223,9 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
@@ -244,6 +253,9 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.Property<int>("LevelValue")
                         .HasColumnType("int")
                         .HasMaxLength(250);
@@ -255,6 +267,11 @@ namespace DataModel.Migrations
 
             modelBuilder.Entity("DataModel.JobGroupPosition", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("JobGroupId")
                         .HasColumnType("int");
 
@@ -264,13 +281,55 @@ namespace DataModel.Migrations
                     b.Property<int>("JobPositionId")
                         .HasColumnType("int");
 
-                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId");
+                    b.Property<int>("SubJobGroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobGroupId");
 
                     b.HasIndex("JobGroupLevelId");
 
                     b.HasIndex("JobPositionId");
 
+                    b.HasIndex("SubJobGroupId");
+
                     b.ToTable("JobGroupPositions");
+                });
+
+            modelBuilder.Entity("DataModel.JobGroupPositionSearchPercentage", b =>
+                {
+                    b.Property<int>("JobGroupPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubJobGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobGroupLevelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobPositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SearchPercentageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobGroupPositionId", "JobGroupId", "SubJobGroupId", "JobGroupLevelId", "JobPositionId", "SearchPercentageId");
+
+                    b.HasIndex("JobGroupId");
+
+                    b.HasIndex("JobGroupLevelId");
+
+                    b.HasIndex("JobPositionId");
+
+                    b.HasIndex("SearchPercentageId");
+
+                    b.HasIndex("SubJobGroupId");
+
+                    b.ToTable("JobGroupPositionSearchPercentages");
                 });
 
             modelBuilder.Entity("DataModel.JobHLCategory", b =>
@@ -279,6 +338,9 @@ namespace DataModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.Property<string>("ValueEng")
                         .IsRequired()
@@ -302,6 +364,9 @@ namespace DataModel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.Property<string>("NameEng")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
@@ -323,6 +388,9 @@ namespace DataModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.Property<string>("TitleEng")
                         .IsRequired()
@@ -541,43 +609,20 @@ namespace DataModel.Migrations
                     b.ToTable("SearchPercentages");
                 });
 
-            modelBuilder.Entity("DataModel.SimilarSearchResultsTable", b =>
-                {
-                    b.Property<int>("JobGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JobGroupLevelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JobPositionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SearchPercentageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JobGroupId", "JobGroupLevelId", "JobPositionId", "SearchPercentageId");
-
-                    b.HasIndex("JobGroupLevelId");
-
-                    b.HasIndex("JobPositionId");
-
-                    b.HasIndex("SearchPercentageId");
-
-                    b.ToTable("SimilarSearchResultsTables");
-                });
-
             modelBuilder.Entity("DataModel.SubJobGroup", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JobGroupId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
+
+                    b.Property<int>("JobGroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NameEng")
                         .IsRequired()
@@ -589,7 +634,7 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.HasKey("Id", "JobGroupId");
+                    b.HasKey("Id");
 
                     b.HasIndex("JobGroupId");
 
@@ -649,6 +694,51 @@ namespace DataModel.Migrations
                     b.HasOne("DataModel.JobPosition", "JobPosition")
                         .WithMany()
                         .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.SubJobGroup", "SubJobGroup")
+                        .WithMany()
+                        .HasForeignKey("SubJobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataModel.JobGroupPositionSearchPercentage", b =>
+                {
+                    b.HasOne("DataModel.JobGroup", "JobGroup")
+                        .WithMany()
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
+                        .WithMany()
+                        .HasForeignKey("JobGroupLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobGroupPosition", "JobGroupPosition")
+                        .WithMany()
+                        .HasForeignKey("JobGroupPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.JobPosition", "JobPosition")
+                        .WithMany()
+                        .HasForeignKey("JobPositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.SearchPercentage", "SearchPercentage")
+                        .WithMany()
+                        .HasForeignKey("SearchPercentageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataModel.SubJobGroup", "SubJobGroup")
+                        .WithMany()
+                        .HasForeignKey("SubJobGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -850,33 +940,6 @@ namespace DataModel.Migrations
                     b.HasOne("DataModel.JobPosition", "JobPosition")
                         .WithMany()
                         .HasForeignKey("JobPositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DataModel.SimilarSearchResultsTable", b =>
-                {
-                    b.HasOne("DataModel.JobGroup", "JobGroup")
-                        .WithMany()
-                        .HasForeignKey("JobGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataModel.JobGroupLevel", "JobGroupLevel")
-                        .WithMany()
-                        .HasForeignKey("JobGroupLevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataModel.JobPosition", "JobPosition")
-                        .WithMany()
-                        .HasForeignKey("JobPositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataModel.SearchPercentage", "SearchPercentage")
-                        .WithMany()
-                        .HasForeignKey("SearchPercentageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

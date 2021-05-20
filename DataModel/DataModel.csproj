@@ -10,6 +10,20 @@
 	  <Compile Remove="Migrations\20210512162456_new-model-tables.Designer.cs" />
 	  <Compile Remove="Migrations\20210512181511_newtables-migration.cs" />
 	  <Compile Remove="Migrations\20210512181511_newtables-migration.Designer.cs" />
+	  <Compile Remove="Migrations\20210514170010_newdatamodel.cs" />
+	  <Compile Remove="Migrations\20210514170010_newdatamodel.Designer.cs" />
+	  <Compile Remove="Migrations\20210515075720_NewTableMigrate.cs" />
+	  <Compile Remove="Migrations\20210515075720_NewTableMigrate.Designer.cs" />
+	  <Compile Remove="Migrations\20210517153058_InitialResetModel.cs" />
+	  <Compile Remove="Migrations\20210517153058_InitialResetModel.Designer.cs" />
+	  <Compile Remove="Migrations\20210517155700_NewDataModel1.cs" />
+	  <Compile Remove="Migrations\20210517155700_NewDataModel1.Designer.cs" />
+	  <Compile Remove="Migrations\20210517155905_TestDataModel.cs" />
+	  <Compile Remove="Migrations\20210517155905_TestDataModel.Designer.cs" />
+	  <Compile Remove="Migrations\20210517214754_SetNewDataModel.cs" />
+	  <Compile Remove="Migrations\20210517214754_SetNewDataModel.Designer.cs" />
+	  <Compile Remove="Migrations\20210520154825_newModel.cs" />
+	  <Compile Remove="Migrations\20210520154825_newModel.Designer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

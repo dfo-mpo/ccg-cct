@@ -3,6 +3,7 @@ using DataModel.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DataModel
 {
@@ -44,7 +45,7 @@ namespace DataModel
 
         public DbSet<SearchPercentage> SearchPercentages { get; set; }
 
-        public DbSet<SimilarSearchResultsTable> SimilarSearchResultsTables { get; set; }
+        public DbSet<JobGroupPositionSearchPercentage> JobGroupPositionSearchPercentages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -12,7 +12,7 @@ namespace DataModel.Configurations
         public void Configure(EntityTypeBuilder<SubJobGroup> builder)
         {
 
-            builder.HasKey(b => new {b.Id, b.JobGroupId});
+            builder.HasKey(b => b.Id);
 
             builder.Property(b => b.Code)
                 .IsRequired()
