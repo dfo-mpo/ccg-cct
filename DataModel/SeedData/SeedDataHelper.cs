@@ -19,6 +19,7 @@ namespace DataModel.SeedData
         public async Task Run()
         {
             // base tables
+            
             await AddIfEmpty(JobGroups);
             await AddIfEmpty(JobGroupLevels);
             await AddIfEmpty(JobPositions);
@@ -30,8 +31,10 @@ namespace DataModel.SeedData
             await AddIfEmpty(Certificates);
             await AddIfEmpty(CertificateDescriptions);
             await AddIfEmpty(JobLocationRegions);
+            await AddIfEmpty(SubJobGroups);
 
             // link tables
+
             await AddIfEmpty(JobRoles, false);
             await AddIfEmpty(JobGroupPositions, false);
             await AddIfEmpty(CompetencyTypeGroups, false);
@@ -42,6 +45,8 @@ namespace DataModel.SeedData
             await AddIfEmpty(JobRolePositionCompetencyRatings, false);
             await AddIfEmpty(JobRolePositionLocations, false);
             await AddIfEmpty(JobRolePositionHLCategories, false);
+            
+
 
         }
 

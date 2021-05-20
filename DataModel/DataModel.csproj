@@ -6,6 +6,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Migrations\20210518165542_SubJobGroup.cs" />
+	  <Compile Remove="Migrations\20210518165542_SubJobGroup.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
 			<PrivateAssets>all</PrivateAssets>

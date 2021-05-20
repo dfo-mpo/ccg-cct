@@ -16,6 +16,8 @@ namespace DataModel
 
         public string NameFre { get; set; } // ex. Services administratifs
 
+        public virtual ICollection<SubJobGroup> SubJobGroups { get; set; }
+
         public virtual ICollection<JobRole> JobRoles { get; set; }
 
         public virtual ICollection<JobGroupPosition> JobGroupPositions { get; set; }

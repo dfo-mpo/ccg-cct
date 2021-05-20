@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class InitialModel : Migration
+    public partial class SubJobGroup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -344,7 +344,7 @@ namespace DataModel.Migrations
                     JobGroupLevelId = table.Column<int>(nullable: false),
                     JobPositionId = table.Column<int>(nullable: false),
                     CertificateId = table.Column<int>(nullable: false),
-                    CertificateDescriptionId = table.Column<int>(nullable:false)
+                    CertificateDescriptionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -833,12 +833,6 @@ namespace DataModel.Migrations
 
             migrationBuilder.DropTable(
                 name: "JobGroupLevels");
-            
-            migrationBuilder.DropTable(
-                name: "SearchPercentages");
-
-            migrationBuilder.DropTable(
-                name: "SimilarSearchResults");
         }
     }
 }

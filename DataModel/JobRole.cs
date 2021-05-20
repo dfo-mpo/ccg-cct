@@ -12,9 +12,14 @@ namespace DataModel
 
         public JobGroup JobGroup { get; set; } // ex:  AS, GT
 
+        public int SubJobGroupId { get; set; }
+
+        public SubJobGroup SubJobGroup { get; set; } // ex:  MOC, VHE, WOW
+
         public int JobGroupLevelId { get; set; }
 
         public JobGroupLevel JobGroupLevel { get; set; } // ex: 01, 02
+
 
     }
 }

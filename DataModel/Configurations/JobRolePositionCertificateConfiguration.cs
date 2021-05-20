@@ -12,7 +12,7 @@ namespace DataModel.Configurations
     {
         public void Configure(EntityTypeBuilder<JobRolePositionCertificate> builder)
         {
-            builder.HasKey(jp => new {jp.JobGroupId, jp.JobGroupLevelId, jp.JobPositionId, jp.CertificateId, jp.CertificateDescriptionId });
+            builder.HasKey(jp => new {jp.JobGroupId, jp.SubJobGroupId, jp.JobGroupLevelId, jp.JobPositionId, jp.CertificateId, jp.CertificateDescriptionId });
         }
     }
 }
