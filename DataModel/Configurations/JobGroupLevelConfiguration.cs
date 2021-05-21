@@ -16,7 +16,10 @@ namespace DataModel.Configurations
 
             builder.Property(b => b.LevelValue)
                 .IsRequired()
-                .HasMaxLength(250);
+            .HasMaxLength(250);
+
+            builder.Property(b => b.Active)
+               .IsRequired();
         }
     }
 }

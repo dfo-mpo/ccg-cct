@@ -44,6 +44,9 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Certificates");
@@ -95,6 +98,9 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -233,26 +239,32 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("JobGroups");
                 });
-            
+
             modelBuilder.Entity("DataModel.SubJobGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("SubCode")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                b.Property<string>("SubCode")
+                    .HasColumnType("nvarchar(250)")
+                    .HasMaxLength(250);
 
-                    b.HasKey("Id");
+                b.Property<int>("Active")
+                        .HasColumnType("int");
 
-                   b.ToTable("SubJobGroups");
-                });
+                b.HasKey("Id");
+
+                b.ToTable("SubJobGroups");
+            });
 
             modelBuilder.Entity("DataModel.JobGroupLevel", b =>
                 {
@@ -265,6 +277,9 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -313,6 +328,9 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("JobHLCategories");
@@ -335,6 +353,9 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("JobLocationRegions");
@@ -356,6 +377,9 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(3000)")
                         .HasMaxLength(3000);
+
+                    b.Property<int>("Active")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -576,8 +600,6 @@ namespace DataModel.Migrations
 
                     b.ToTable("JobRolePositionLocations");
                 });
-
-            
 
             modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
                 {

@@ -14,6 +14,8 @@ namespace DataModel
 
         public string TitleFre { get; set; }
 
+        public int Active { get; set; } // ex : 0 = Position deleted, 1 = Position active
+
         public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
         public virtual ICollection<JobPositionCompetency> JobPositionCompetencies { get; set; }

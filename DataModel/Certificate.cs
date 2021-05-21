@@ -14,15 +14,17 @@ namespace DataModel
 
         public int Id { get; set; }
 
-        public string NameEng { get; set; }
+        public string NameEng { get; set; } // ex : Master 150 GT Domestic
 
         public string NameFre { get; set; }
 
         public string DescEng { get; set; }
 
         public string DescFre { get; set; }
-        
-       public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+
+        public int Active { get; set; } // ex : 0 = certificate deleted, 1 = certificate active
+
+        public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
     }
 }

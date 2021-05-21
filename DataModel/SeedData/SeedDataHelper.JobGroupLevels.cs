@@ -8,19 +8,19 @@ namespace DataModel.SeedData
     {
         public List<JobGroupLevel> JobGroupLevels = new List<JobGroupLevel>()
         {
-            new JobGroupLevel() {Id = 1, LevelValue = "01"},
-            new JobGroupLevel() {Id = 2, LevelValue = "02"},
-            new JobGroupLevel() {Id = 3, LevelValue = "03"},
-            new JobGroupLevel() {Id = 4, LevelValue = "04"},
-            new JobGroupLevel() {Id = 5, LevelValue = "05"},
-            new JobGroupLevel() {Id = 6, LevelValue = "06"},
-            new JobGroupLevel() {Id = 7, LevelValue = "07"},
-            new JobGroupLevel() {Id = 8, LevelValue = "08"},
-            new JobGroupLevel() {Id = 9, LevelValue = "09"},
-            new JobGroupLevel() {Id = 10, LevelValue = "10"},
-            new JobGroupLevel() {Id = 11, LevelValue = "11"},
-            new JobGroupLevel() {Id = 12, LevelValue = "12"},
-            new JobGroupLevel() {Id = 13, LevelValue = "13"}
+            new JobGroupLevel() {Id = 1, LevelValue = "01", Active = 1 },
+            new JobGroupLevel() {Id = 2, LevelValue = "02", Active = 1 },
+            new JobGroupLevel() {Id = 3, LevelValue = "03", Active = 1 },
+            new JobGroupLevel() {Id = 4, LevelValue = "04", Active = 1 },
+            new JobGroupLevel() {Id = 5, LevelValue = "05", Active = 1 },
+            new JobGroupLevel() {Id = 6, LevelValue = "06", Active = 1 },
+            new JobGroupLevel() {Id = 7, LevelValue = "07", Active = 1 },
+            new JobGroupLevel() {Id = 8, LevelValue = "08", Active = 1 },
+            new JobGroupLevel() {Id = 9, LevelValue = "09", Active = 1 },
+            new JobGroupLevel() {Id = 10, LevelValue = "10", Active = 1 },
+            new JobGroupLevel() {Id = 11, LevelValue = "11", Active = 1 },
+            new JobGroupLevel() {Id = 12, LevelValue = "12", Active = 1 },
+            new JobGroupLevel() {Id = 13, LevelValue = "13", Active = 1 }
         };
     }
 }

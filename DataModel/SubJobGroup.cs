@@ -12,5 +12,7 @@ namespace DataModel
 
         public string SubCode { get; set; } // ex: MOC, WOW, 
 
+        public int Active { get; set; } // ex : 0 = SubCode deleted, 1 = SubCode active
+
     }
 }
