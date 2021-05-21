@@ -19,6 +19,8 @@ namespace DataModel
 
         public string DescFre { get; set; }
 
+        public int Active { get; set; } // ex : 0 = competency deleted, 1 = competency active
+
         public virtual ICollection<JobRolePositionCompetencyRating> JobRolePositionCompetencyRatings { get; set; }
 
         public virtual ICollection<CompetencyTypeGroup> CompetencyTypeGroups { get; set; }

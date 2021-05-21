@@ -7,19 +7,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataModel.Configurations
 {
-    public class JobGroupLevelConfiguration : IEntityTypeConfiguration<JobGroupLevel>
+    public class SubJobGroupConfiguration : IEntityTypeConfiguration<SubJobGroup>
     {
-        public void Configure(EntityTypeBuilder<JobGroupLevel> builder)
+        public void Configure(EntityTypeBuilder<SubJobGroup> builder)
         {
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(b => b.LevelValue)
-                .IsRequired()
-            .HasMaxLength(250);
+            builder.Property(b => b.SubCode)
+                .HasMaxLength(250);
 
             builder.Property(b => b.Active)
                .IsRequired();
         }
     }
 }
+

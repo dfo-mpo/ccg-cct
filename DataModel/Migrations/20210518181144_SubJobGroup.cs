@@ -2,7 +2,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class InitialModel : Migration
+    public partial class SubJobGroup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,6 +16,7 @@ namespace DataModel.Migrations
                     NameFre = table.Column<string>(maxLength: 1000, nullable: true),
                     DescEng = table.Column<string>(maxLength: 1000, nullable: true),
                     DescFre = table.Column<string>(maxLength: 1000, nullable: true),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +46,8 @@ namespace DataModel.Migrations
                     NameEng = table.Column<string>(maxLength: 1000, nullable: false),
                     NameFre = table.Column<string>(maxLength: 1000, nullable: false),
                     DescEng = table.Column<string>(maxLength: 2500, nullable: false),
-                    DescFre = table.Column<string>(maxLength: 2500, nullable: false)
+                    DescFre = table.Column<string>(maxLength: 2500, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,7 +105,8 @@ namespace DataModel.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LevelValue = table.Column<string>(maxLength: 250, nullable: false)
+                    LevelValue = table.Column<string>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,7 +121,8 @@ namespace DataModel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(maxLength: 250, nullable: false),
                     NameEng = table.Column<string>(maxLength: 500, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 500, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 500, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,6 +136,7 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubCode = table.Column<string>(maxLength: 250, nullable: true),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,7 +150,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ValueEng = table.Column<string>(maxLength: 250, nullable: false),
-                    ValueFre = table.Column<string>(maxLength: 250, nullable: false)
+                    ValueFre = table.Column<string>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -159,7 +165,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameEng = table.Column<string>(maxLength: 250, nullable: false),
-                    NameFre = table.Column<string>(maxLength: 250, nullable: false)
+                    NameFre = table.Column<string>(maxLength: 250, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -173,7 +180,8 @@ namespace DataModel.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TitleEng = table.Column<string>(maxLength: 3000, nullable: false),
-                    TitleFre = table.Column<string>(maxLength: 3000, nullable: false)
+                    TitleFre = table.Column<string>(maxLength: 3000, nullable: false),
+                    Active = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -344,7 +352,7 @@ namespace DataModel.Migrations
                     JobGroupLevelId = table.Column<int>(nullable: false),
                     JobPositionId = table.Column<int>(nullable: false),
                     CertificateId = table.Column<int>(nullable: false),
-                    CertificateDescriptionId = table.Column<int>(nullable:false)
+                    CertificateDescriptionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -833,12 +841,6 @@ namespace DataModel.Migrations
 
             migrationBuilder.DropTable(
                 name: "JobGroupLevels");
-            
-            migrationBuilder.DropTable(
-                name: "SearchPercentages");
-
-            migrationBuilder.DropTable(
-                name: "SimilarSearchResults");
         }
     }
 }

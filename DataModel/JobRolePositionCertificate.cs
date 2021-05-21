@@ -13,6 +13,10 @@ namespace DataModel
 
         public JobGroup JobGroup { get; set; }
 
+        public int SubJobGroupId { get; set; }
+
+        public SubJobGroup SubJobGroup { get; set; }
+
         public int JobGroupLevelId { get; set; }
 
         public JobGroupLevel JobGroupLevel { get; set; }

@@ -21,6 +21,9 @@ namespace DataModel.Configurations
             builder.Property(b => b.NameFre)
                 .IsRequired()
                 .HasMaxLength(250);
+
+            builder.Property(b => b.Active)
+               .IsRequired();
         }
     }
 }

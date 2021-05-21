@@ -13,7 +13,7 @@ namespace DataModel.Configurations
         public void Configure(EntityTypeBuilder<JobRolePositionCompetencyRating> builder)
         {
 
-            builder.HasKey(cgr => new { cgr.JobGroupId, cgr.JobGroupLevelId, cgr.JobPositionId, cgr.CompetencyId, cgr.CompetencyTypeId, cgr.CompetencyRatingLevelId, cgr.CompetencyLevelRequirementId });
+            builder.HasKey(cgr => new { cgr.JobGroupId, cgr.SubJobGroupId, cgr.JobGroupLevelId, cgr.JobPositionId, cgr.CompetencyId, cgr.CompetencyTypeId, cgr.CompetencyRatingLevelId, cgr.CompetencyLevelRequirementId });
 
         }
     }

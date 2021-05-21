@@ -8,8 +8,8 @@ namespace DataModel.SeedData
     {
         public List<JobHLCategory> JobHLCategories = new List<JobHLCategory>()
         {
-            new JobHLCategory() {Id = 1, ValueEng = "Seagoing", ValueFre = "En mer"},
-            new JobHLCategory() {Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre"}
+            new JobHLCategory() {Id = 1, ValueEng = "Seagoing", ValueFre = "En mer", Active = 1 },
+            new JobHLCategory() {Id = 2, ValueEng = "Shoreside", ValueFre = "Sur terre", Active = 1 }
         };
 
     }

@@ -16,6 +16,7 @@ namespace DataModel
             AzureAccessTokenService.AddAccessToken(Database.GetDbConnection() as SqlConnection);
         }
         public DbSet<JobGroup> JobGroups { get; set; }
+        public DbSet<SubJobGroup> SubJobGroups { get; set; }
         public DbSet<JobGroupLevel> JobGroupLevels { get; set; }
         public DbSet<JobRole> JobRoles { get; set; }
         public DbSet<JobPosition> JobPositions { get; set; }

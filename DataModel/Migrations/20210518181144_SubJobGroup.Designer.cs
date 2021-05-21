@@ -4,14 +4,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataModel.Migrations
 {
     [DbContext(typeof(CctDbContext))]
-    partial class CctDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210518181144_SubJobGroup")]
+    partial class SubJobGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -597,28 +599,6 @@ namespace DataModel.Migrations
                     b.HasIndex("SubJobGroupId");
 
                     b.ToTable("JobRolePositionLocations");
-                });
-
-            modelBuilder.Entity("DataModel.SubJobGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("JobGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SubCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobGroupId");
-
-                    b.ToTable("SubJobGroups");
                 });
 
             modelBuilder.Entity("DataModel.CompetencyRatingGroup", b =>
