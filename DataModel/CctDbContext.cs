@@ -37,10 +37,11 @@ namespace DataModel
         public DbSet<JobRolePositionLocation> JobRolePositionLocations { get; set; }
         public DbSet<JobRolePositionHLCategory> JobRolePositionHLCategories { get; set; }
 
-
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<CertificateDescription> CertificateDescriptions { get; set; }
         public DbSet<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
+
+        public DbSet<SimilarJobGroupSearch> SimilarJobGroupSearches { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
