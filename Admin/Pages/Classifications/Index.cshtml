@@ -1,10 +1,10 @@
 ﻿@page
-@model Admin.Pages.Positions.IndexModel
+@model Admin.Pages.Classifications.IndexModel
 @{
-    ViewData["Title"] = "Positions";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Positions</h1>
+<h1>Classifications</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -24,19 +24,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.JobPositions)
+        @foreach (var item in Model.JobGroups)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.JobTitleEng)
+                    @Html.DisplayFor(modelItem => item.NameEng)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.JobTitleFre)
+                    @Html.DisplayFor(modelItem => item.NameFre)
                 </td>
                 <td>
-                    <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a>
+                    <a asp-page="Details" asp-route-id="@item.Id">Details</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+

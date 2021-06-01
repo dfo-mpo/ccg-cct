@@ -52,7 +52,7 @@ namespace DataModel
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CCT;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=LAPTOP-81CBV0VK\\SQLEXPRESS;Database=CCT4;Trusted_Connection=True;");
             optionsBuilder.EnableSensitiveDataLogging();
         }
     }

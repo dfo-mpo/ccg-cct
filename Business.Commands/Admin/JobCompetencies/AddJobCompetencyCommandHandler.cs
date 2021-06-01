@@ -13,6 +13,7 @@ namespace Business.Commands.Admin.JobCompetencies
         public string NameFre { get; set; }
         public string DescEng { get; set; }
         public string DescFre { get; set; }
+        public int TypeId { get; set; }
         public string Level1DescEng { get; set; }
         public string Level1DescFre { get; set; }
         public string Level2DescEng { get; set; }
@@ -79,6 +80,7 @@ namespace Business.Commands.Admin.JobCompetencies
                 DescEng = command.Level5DescEng,
                 DescFre = command.Level5DescFre
             };
+
             await _db.Competencies.AddAsync(newCompetency, cancellationToken);
             await _db.CompetencyLevelRequirements.AddAsync(lr1, cancellationToken);
             await _db.CompetencyLevelRequirements.AddAsync(lr2, cancellationToken);
@@ -86,34 +88,41 @@ namespace Business.Commands.Admin.JobCompetencies
             await _db.CompetencyLevelRequirements.AddAsync(lr4, cancellationToken);
             await _db.CompetencyLevelRequirements.AddAsync(lr5, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
+            var execlevelinc = command.TypeId == 4 ? 5 : 0;
+            var typegroup = new CompetencyTypeGroup()
+            {
+                CompetencyId = newCompetency.Id,
+                CompetencyTypeId = command.TypeId
+            };
+            await _db.CompetencyTypeGroups.AddAsync(typegroup, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {
                 CompetencyId = newCompetency.Id,
-                CompetencyRatingLevelId = 1,
+                CompetencyRatingLevelId = 1 + execlevelinc,
                 CompetencyLevelRequirementId = lr1.Id
             }, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {
                 CompetencyId = newCompetency.Id,
-                CompetencyRatingLevelId = 2,
+                CompetencyRatingLevelId = 2 + execlevelinc,
                 CompetencyLevelRequirementId = lr2.Id
             }, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {
                 CompetencyId = newCompetency.Id,
-                CompetencyRatingLevelId = 3,
+                CompetencyRatingLevelId = 3 + execlevelinc,
                 CompetencyLevelRequirementId = lr3.Id
             }, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {
                 CompetencyId = newCompetency.Id,
-                CompetencyRatingLevelId = 4,
+                CompetencyRatingLevelId = 4 + execlevelinc,
                 CompetencyLevelRequirementId = lr4.Id
             }, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {
                 CompetencyId = newCompetency.Id,
-                CompetencyRatingLevelId = 5,
+                CompetencyRatingLevelId = 5 + execlevelinc,
                 CompetencyLevelRequirementId = lr5.Id
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);

@@ -13,6 +13,7 @@ namespace Business.Commands.Admin.JobPositions
         public int CompetencyId { get; set; }
         public int CompetencyTypeId { get; set; }
         public int JobGroupId { get; set; }
+        public int SubJobGroupId { get; set; }
         public int JobGroupLevelId { get; set; }
         public int CompetencyRatingLevelId { get; set; }
         public int CompetencyLevelRequirementId { get; set; }
@@ -48,7 +49,8 @@ namespace Business.Commands.Admin.JobPositions
                 CompetencyId = command.CompetencyId,
                 CompetencyTypeId = command.CompetencyTypeId,
                 JobGroupId = command.JobGroupId,
-                JobGroupLevelId = command.JobGroupLevelId
+                JobGroupLevelId = command.JobGroupLevelId,
+                SubJobGroupId = command.SubJobGroupId,
             }, cancellationToken);
             await _db.JobRolePositionCompetencyRatings.AddAsync(new JobRolePositionCompetencyRating()
             {
@@ -58,7 +60,8 @@ namespace Business.Commands.Admin.JobPositions
                 JobGroupId = command.JobGroupId,
                 JobGroupLevelId = command.JobGroupLevelId,
                 CompetencyRatingLevelId = command.CompetencyRatingLevelId,
-                CompetencyLevelRequirementId = command.CompetencyLevelRequirementId
+                CompetencyLevelRequirementId = command.CompetencyLevelRequirementId,
+                SubJobGroupId = command.SubJobGroupId
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
         }

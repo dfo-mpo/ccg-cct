@@ -6,29 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
-using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using Admin.Data;
 
-namespace Admin.Pages.Certificates
+namespace Admin.Pages.Competencies
 {
-    public class IndexModel : PageModel
+    public class ListModel : PageModel
     {
         private readonly DataModel.CctDbContext _context;
-
         private readonly JobCompetencyService _jobCompetencyService;
 
-        public IndexModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService)
+        public ListModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService)
         {
             _context = context;
             _jobCompetencyService = jobCompetencyService;
         }
+
         public string CurrentFilter { get; set; }
 
-        public IList<JobCertificateDto> Certificates { get; set; }
+        public JobCompetencyDto[] Competencies { get; set; }
+        public JobCompetencyTypeDto Type { get; set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(int typeId)
         {
-            Certificates = await _jobCompetencyService.GetJobCertificates();
+            Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
+            Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);         
+
         }
     }
 }

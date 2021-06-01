@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 
-namespace Admin.Pages.Competencies.Knowledge
+namespace Admin.Pages.Competencies
 {
     public class EditModel : PageModel
     {

@@ -9,32 +9,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Queries.JobGroups
 {
-    public class GetJobGroupPositionsByIdQuery : IQuery<List<JobGroupPositionDto>>
+    public class GetSubGroupLevelsByIdQuery : IQuery<List<JobGroupPositionDto>>
     {
         public int Id { get; set; }
     }
 
-    public class GetJobGroupPositionsByIdQueryHandler : IQueryHandler<GetJobGroupPositionsByIdQuery, List<JobGroupPositionDto>>
+    public class GetSubGroupLevelsByIdQueryHandler : IQueryHandler<GetSubGroupLevelsByIdQuery, List<JobGroupPositionDto>>
     {
         private readonly CctDbContext _db;
 
-        public GetJobGroupPositionsByIdQueryHandler(CctDbContext db)
+        public GetSubGroupLevelsByIdQueryHandler(CctDbContext db)
         {
             _db = db;
         }
 
-        public Task<List<JobGroupPositionDto>> HandleAsync(GetJobGroupPositionsByIdQuery query, CancellationToken cancellationToken = new CancellationToken())
+        public Task<List<JobGroupPositionDto>> HandleAsync(GetSubGroupLevelsByIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
             return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id)
                 .Include(e => e.JobGroupLevel)
                 .Include(e => e.SubJobGroup)
-                .Select(e=> new JobGroupPositionDto(){
-                    JobId = e.JobPositionId,
+                .Select(e => new JobGroupPositionDto()
+                {
                     LevelId = e.JobGroupLevelId,
                     LevelValue = e.JobGroupLevel.LevelValue,
                     SubGroupCode = e.SubJobGroup.SubCode,
-                    LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + ' ' + e.JobGroupLevel.LevelValue:e.SubJobGroup.SubCode + ' ' + e.JobGroupLevel.LevelValue
-            })
+                    JobGroupId = e.JobGroupId,
+                    SubJobGroupId = e.SubJobGroupId,
+                    LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + ' ' + e.JobGroupLevel.LevelValue : e.SubJobGroup.SubCode + ' ' + e.JobGroupLevel.LevelValue
+                }).Distinct()
                 .ToListAsync(cancellationToken);
         }
     }

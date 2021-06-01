@@ -26,7 +26,7 @@ namespace Web.Pages.CCGMember
         {
             _logger.LogInformation($"Current level page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroup = await _jobcategoryService.GetJobGroupById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
+            JobGroupPositions = await _jobcategoryService.GetSubGroupLevelsByGroupId(id);
         }
 
     }

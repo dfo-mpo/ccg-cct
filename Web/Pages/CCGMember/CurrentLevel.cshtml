@@ -19,16 +19,18 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in Model.JobGroupPositions.Select(e => e.LevelValue).ToList().Distinct())
+            @foreach (var level in Model.JobGroupPositions.ToList())
             {
                 var routedata = new Dictionary<string, string>
                         {
                               { "id",  Model.Id.ToString()},
-                              { "level",  level}
+                              { "level", level.LevelValue},
+                              {"levelcode", level.LevelCode },
+                              {"subgroupcode", level.SubGroupCode }
                          };
         <li role="presentation">
             <a role="menuitem" tabindex="-1"
-               asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Level"] @level</a>
+               asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode</a>
         </li>
             }
         </ul>

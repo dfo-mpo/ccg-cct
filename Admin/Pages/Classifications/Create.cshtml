@@ -1,0 +1,196 @@
+﻿@page
+@model Admin.Pages.Classifications.CreateModel
+@{
+
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    ViewData["Title"] = "Edit";
+    var routedata = new Dictionary<string, string> {
+        {"id", Model.Id.ToString() },
+        {"titleeng",Model.TitleEng },
+        {"titlefre",Model.TitleFre },
+        {"jobgroupid",Model.JobGroupId.ToString() },
+        {"addedcertificateids", Model.AddedCertificateIds },
+        {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds }
+    };
+}
+
+<h1>Create</h1>
+
+<h4>CLASSIFICATION</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="JobPosition.Id" />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">CLASSIFICATION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group m-2">
+                                <label class="control-label"><b>Name English</b></label>
+                                <textarea class="form-control" name="titleEng" required>@Model.TitleEng</textarea>
+                                <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group m-2">
+                                <label class="control-label"><b>Name French</b></label>
+                                <textarea class="form-control" name="titleFre" required>@Model.TitleFre</textarea>
+                                <span asp-validation-for="JobPosition.TitleFre" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group m-2">
+                                <label class="control-label"><b>Code</b></label>
+                                <textarea class="form-control" name="code" required>@Model.TitleFre</textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="3" style="background-color:#f2f2f2">
+                        <div class="row">
+                            <div class="col-6 m-auto">
+                                SUBGROUPS / SOUS-GROUPES
+                            </div>
+                            <div class="col-3 text-center m-auto">
+                                LEVEL / NIVEAU
+                            </div>
+                            <div class="col-3 text-right">
+                                <!-- Button trigger modal add knowledge -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addknow">
+                                    ADD
+                                </button>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+
+                        <!-- Modal Add Knowledge -->
+                        <div class="modal fade bd-modal-xl" id="addknow" tabindex="-1" role="dialog" aria-labelledby="addknow" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Title">ADD A SUBGROUP</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body" style="background-color:#f2f2f2;">
+                                            <div class="row">
+                                                <div class="form-group col-6xl;mb-3">
+                                                    <label class="control-label"><b>Code</b></label>
+                                                    <textarea class="form-control" name="titleEng" required>@Model.TitleEng</textarea>
+                                                    <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary text-left" asp-page-handler="knowledge" asp-all-route-data="@routedata">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Modal Add Knowledge -->
+                        <!-- Knowledge Description 1 Accordion -->
+                        @foreach (var competency in Model.AddedKnowledgeCompetencies)
+                        {
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="accordion" id="compOne">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            @competency.CompetencyNameEng / @competency.CompetencyNameFre
+                                        </button>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                            <div class="card-body">
+                                                <p>
+                                                    <b>English Description</b><br />
+                                                    @competency.CompetencyDescEng
+                                                </p>
+                                                <p>
+                                                    <b>French Description</b><br />
+                                                    @competency.CompetencyDescFre
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center m-auto">
+                                    <div class="accordion" id="compOne">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
+                                            @competency.RatingValue
+                                        </button>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                            <div class="card-body align-text-top text-left">
+                                                <p>
+                                                    <b>English Description</b><br />
+                                                    @competency.RatingNameEng @competency.RatingDescEng
+                                                    <br /><br />
+                                                    @competency.CompetencyLevelReqDescEng
+                                                </p>
+                                                <p>
+                                                    <b>French Description</b><br />
+                                                    @competency.RatingNameFre @competency.RatingDescFre
+                                                    <br /><br />
+                                                    @competency.CompetencyLevelReqDescFre
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-3 text-right">
+                                    <!-- Button trigger modal edit competency -->
+                                    @{
+                                        var routedataremove = new Dictionary<string, string> {
+                                        {"id", Model.Id.ToString() },
+                                        {"titleeng",Model.TitleEng },
+                                        {"titlefre",Model.TitleFre },
+                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                        {"addedcertificateids", Model.AddedCertificateIds },
+                                        {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
+                                        {"competencyId", competency.CompetencyId.ToString() }
+                                };
+                                    }
+                                    <button class="btn btn-link" asp-page-handler="delete" asp-all-route-data="@routedataremove">REMOVE</button>
+                                </div>
+                            </div>
+
+                        }
+                        <!-- End Modal Edit Competency #1 -->
+                        <hr />
+                        <!-- Knowledge Description 2 Accordion -->
+                        <!-- End Modal Edit Competency #2 -->
+                    </td>
+                </tr>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

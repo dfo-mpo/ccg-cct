@@ -12,6 +12,7 @@ namespace Business.Commands.Admin.JobGroups
         public int JobPositionId { get; set; }
         public int JobGroupId { get; set; }
         public int JobGroupLevelId { get; set; }
+        public int SubJobGroupId { get; set; }
     }
 
     public class AddJobGroupPositionCommandValidator : AbstractCommandValidator<AddJobGroupPositionCommand>
@@ -35,7 +36,8 @@ namespace Business.Commands.Admin.JobGroups
             {
                 JobPositionId = command.JobPositionId,
                 JobGroupId = command.JobGroupId,
-                JobGroupLevelId = command.JobGroupLevelId
+                JobGroupLevelId = command.JobGroupLevelId,
+                SubJobGroupId = command.SubJobGroupId
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
         }
