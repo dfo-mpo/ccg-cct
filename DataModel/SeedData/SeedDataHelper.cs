@@ -32,6 +32,7 @@ namespace DataModel.SeedData
             await AddIfEmpty(CertificateDescriptions);
             await AddIfEmpty(JobLocationRegions);
             await AddIfEmpty(SubJobGroups);
+            await AddIfEmpty(SearchSimilarJobs);
 
             // link tables
 

@@ -30,6 +30,8 @@ namespace DataModel
         public DbSet<JobHLCategory> JobHLCategories { get; set; }
         public DbSet<JobLocationRegion> JobLocationRegions { get; set; }
 
+        public DbSet<SearchSimilarJob> SearchSimilarJobs { get; set; }
+
         public DbSet<JobGroupPosition> JobGroupPositions { get; set; }
         public DbSet<JobPositionCompetency> JobPositionCompetencies { get; set; }
         public DbSet<JobRolePositionCompetency> JobRolePositionCompetencies { get; set; }
