@@ -124,6 +124,11 @@ namespace Admin.Data
             Array.Sort(list, comparebyname);
             return list;
         }
+        public async Task<JobCertificateDto[]> GetAllJobCertificateDescriptions()
+        {
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates/certificatedescriptions");
+        }
         public async Task<JobCompetencyTypeDto> GetJobCompetencyTypeById(int TypeId)
         {
             string url = $"/api/jobcompetencies/types/{TypeId}";
@@ -139,10 +144,27 @@ namespace Admin.Data
         }
         public async Task PostJobRolePositionCompetency(object Parameters)
         {
-            string url = $"/api/jobpositions/addrolejobpositioncompetency?";
+            string url = $"/api/jobpositions/addjobrolepositioncompetency?";
             using var httpClient = _clientFactory.CreateClient("api");
             await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
-
+        }
+        public async Task PostJobRolePositionLocation(object Parameters)
+        {
+            string url = $"/api/jobpositions/addjobrolepositionlocation?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task PostJobRolePositionCertificate(object Parameters)
+        {
+            string url = $"/api/jobpositions/addjobrolepositioncertificate?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task PostJobRolePositionHLCategory(object Parameters)
+        {
+            string url = $"/api/jobpositions/addjobrolepositionhlcategory?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
         }
         public async Task PostJobGroupPosition(object Parameters)
         {
@@ -164,6 +186,12 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobGroupPositionDto[]>(url);
         }
+        public async Task<int> PostJobPositionGetId(string TitleEng, string TitleFre)
+        {
+            string url = $"/api/jobpositions/postjobpositionreturnid/{TitleEng}/{TitleFre}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<int>(url);
+        }
         public async Task<JobGroupPositionDto[]> GetSubGroupLevelsByGroupId(int Id)
         {
             CompareByLevelCode comparebyname = new CompareByLevelCode();
@@ -174,9 +202,9 @@ namespace Admin.Data
             return list;
 
         }
-        public async Task<int> GetJobPositionIdByTitle(string title)
+        public async Task<int> GetJobPositionIdByTitle(string Title)
         {
-            string url = $"/api/jobpositions/getjobpositionid/{title}";
+            string url = $"/api/jobpositions/getjobpositionid/{Title}";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<int>(url);
         }

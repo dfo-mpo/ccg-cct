@@ -42,7 +42,8 @@ namespace Business.Commands.Admin.JobCertificates
                 NameEng = command.NameEng,
                 NameFre = command.NameFre,
                 DescEng = command.DescEng,
-                DescFre = command.DescFre
+                DescFre = command.DescFre,
+                Active = 1
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
         }

@@ -13,6 +13,7 @@ namespace Business.Commands.Admin.JobPositions
         public int CertificateId { get; set; }
         public int JobGroupId { get; set; }
         public int JobGroupLevelId { get; set; }
+        public int SubJobGroupId { get; set; }
         public int CertificateDescriptionId { get; set; }
     }
 
@@ -39,6 +40,7 @@ namespace Business.Commands.Admin.JobPositions
                 JobPositionId = command.JobPositionId,
                 CertificateId = command.CertificateId,
                 JobGroupId = command.JobGroupId,
+                SubJobGroupId = command.SubJobGroupId,
                 JobGroupLevelId = command.JobGroupLevelId,
                 CertificateDescriptionId = command.CertificateDescriptionId
             }, cancellationToken);

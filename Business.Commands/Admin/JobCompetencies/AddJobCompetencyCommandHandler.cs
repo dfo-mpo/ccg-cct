@@ -53,12 +53,13 @@ namespace Business.Commands.Admin.JobCompetencies
                 NameEng = command.NameEng,
                 NameFre = command.NameFre,
                 DescEng = command.DescEng,
-                DescFre = command.DescFre
+                DescFre = command.DescFre,
+                Active = 1
             };
             var lr1 = new CompetencyLevelRequirement()
             {
                 DescEng = command.Level1DescEng,
-                DescFre = command.Level1DescFre
+                DescFre = command.Level1DescFre,
             };
             var lr2 = new CompetencyLevelRequirement()
             {
@@ -105,7 +106,7 @@ namespace Business.Commands.Admin.JobCompetencies
             {
                 CompetencyId = newCompetency.Id,
                 CompetencyRatingLevelId = 2 + execlevelinc,
-                CompetencyLevelRequirementId = lr2.Id
+                CompetencyLevelRequirementId = lr2.Id,
             }, cancellationToken);
             await _db.CompetencyRatingGroups.AddAsync(new CompetencyRatingGroup()
             {

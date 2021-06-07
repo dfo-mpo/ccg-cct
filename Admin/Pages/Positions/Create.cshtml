@@ -8,7 +8,13 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
-        {"jobgroupid",Model.JobGroupId.ToString() },
+        {"levelcode", Model.LevelCode },
+        {"levelvalue", Model.LevelValue },
+        {"jobhlcategory", Model.JobHLCategory },
+        {"regionids", Model.RegionIds },
+        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+        { "jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -19,6 +25,12 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"levelcode", Model.LevelCode },
+        {"levelvalue", Model.LevelValue },
+        {"jobhlcategory", Model.JobHLCategory },
+        {"regionids", Model.RegionIds },
+                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
@@ -31,7 +43,13 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"levelcode", Model.LevelCode },
+        {"levelvalue", Model.LevelValue },
+        {"regionids", Model.RegionIds },
+        {"jobhlcategory", Model.JobHLCategory },
         {"jobgroupid",Model.JobGroupId.ToString() },
+                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -43,6 +61,12 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"levelcode", Model.LevelCode },
+        {"levelvalue", Model.LevelValue },
+        {"regionids", Model.RegionIds },
+        {"jobhlcategory", Model.JobHLCategory },
+                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
@@ -55,6 +79,12 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"levelcode", Model.LevelCode },
+        {"levelvalue", Model.LevelValue },
+        {"regionids", Model.RegionIds },
+        {"jobhlcategory", Model.JobHLCategory },
+                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
@@ -109,9 +139,15 @@
                     <tr>
                         <td>
                             <div class="form-group">
-                                <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2">
+                                @if (Model.JobHLCategory == "2" || string.IsNullOrEmpty(Model.JobHLCategory))
+                                {<input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2" checked="true">}
+                                else
+                                { <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2">}
                                 <label class="mr-3" for="Shoreside">Shore side / À terre</label>
-                                <input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1">
+                                @if (Model.JobHLCategory == "1")
+                                {<input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="1" checked="true">}
+                                else
+                                { <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="1">}
                                 <label class="mr-3" for="Seagoing">Seagoing / En mer</label>
                             </div>
                         </td>
@@ -133,9 +169,14 @@
                             <label class="mr-3" for="Shoreside">All Regions / Toutes les régions</label>
                         </td>
                         <!--input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1"-->
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="7" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(7.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="7" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="7" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
 
@@ -144,50 +185,79 @@
                             <label class="mr-3" for="Shoreside">Atlantic / Atlantique</label>
                         </td>
                         <!--input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1"-->
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="1" type="checkbox" />
-
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(1.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="1" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="1" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
                         <td>
                             <label class="mr-3" for="Shoreside">Central / Centre</label>
                         </td>
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="5" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(5.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="5" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="5" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
                         <td>
                             <label class="mr-3" for="Shoreside">Western / Ouest</label>
                         </td>
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="2" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(2.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="2" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="2" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
                         <td>
                             <label class="mr-3" for="Shoreside">Arctic / Arctique</label>
                         </td>
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="3" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(3.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="3" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="3" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
                         <td>
                             <label class="mr-3" for="Shoreside">National Headquarters / Siège national</label>
                         </td>
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="4" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(4.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="4" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="4" type="checkbox" /></td>
+                        }
                     </tr>
                     <tr>
                         <td>
                             <label class="mr-3" for="Shoreside">CCG College / Collège de la GCC</label>
                         </td>
-                        <td class="text-center">
-                            <input name="SelectedRegionIds" value="6" type="checkbox" />
-                        </td>
+                        @if (Model.RegionIds.Split("-").ToList().Contains(6.ToString()))
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="6" type="checkbox" checked="true" /></td>
+                        }
+                        else
+                        {
+                            <td class="text-center"><input name="SelectedRegionIds" value="6" type="checkbox" /></td>
+                        }
                     </tr>
                 </tbody>
             </table>
@@ -217,7 +287,13 @@
                                                         {"id", Model.Id.ToString() },
                                                         {"titleeng",Model.TitleEng },
                                                         {"titlefre",Model.TitleFre },
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"regionids", Model.RegionIds },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                                         {"jobgroupid",jobgroup.Id.ToString() },
+                                                        {"jobhlcategory", Model.JobHLCategory },
                                                         {"addedcertificateids", Model.AddedCertificateIds },
                                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
                                                         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -238,12 +314,12 @@
                                                                                             <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="LevelValue">
                                                                                                 @if (Model.JobGroupPositions.Select(e => e.LevelCode).ToList().Distinct().Contains(Model.LevelCode))
                                                                                                 {
-                                                                                                    <option selected>@Model.LevelCode</option>
+                                                                                                    <option value = "@Model.SubJobGroupId/@Model.JobGroupLevelId/@Model.LevelCode" selected>@Model.LevelCode</option>
                                                                                                 }
 
                                                                                                 @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
                                                                                                 {
-                                                                                                    <option value="@level.SubJobGroupId/@level.LevelId">
+                                                                                                    <option value="@level.SubJobGroupId/@level.LevelId/@level.LevelCode">
                                                                                                         @level.LevelCode
                                                                                                     </option>
                                                                                                 }
@@ -299,21 +375,12 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="control-label"><b>Description</b></label><br />
-                                                    <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="CertificateDescriptionId" required>
-                                                        <option value="1"></option>
-                                                        <option value="2">with Limited Contiguous Endorsement / avec Attestation de voyage limité, contiguës</option>
-                                                        <option value="3">with Master 150GT, Domestic / avec Capitaine, jauge brute de 150, navigation intérieure</option>
-                                                        <option value="4">and Unlimited ACV Endorsement / et Attestation de VCA illimité</option>
-                                                        <option value="5">(Depending on location, voyage and ship class this certificate may be substituted) / (Selon l'emplacement, le voyage et la classe du navire, ce certificat peut être remplacé)</option>
-                                                        <option value="6">(Dependant on position and training course) / (Dépend du poste et du cours de formation)</option>
-                                                        <option value="7">(Depending on background and shop specialty this certificate may be substituted) / (Selon l'expérience et la spécialité de l'atelier, ce certificat peut être remplacé)</option>
-                                                        <option value="8">(Depending on background and shop specialty these certificates may be substituted) / (Selon les antécédents et la spécialité de l'atelier, ces certificats peuvent être remplacés)</option>
-                                                        <option value="9">(Depending on location these certificates may be substituted) / (Selon l'emplacement, ces certificats peuvent être remplacés)</option>
-                                                        <option value="10">(under training) / (en formation)</option>
-                                                        <option value="11">(or Watchkeeping Mate, Near Coastal for MSPVs) / (ou Officier de pont de quart, à proximité du littoral pour NHRH)</option>
-                                                        <option value="12">(or Master 3000GT for Great Lakes/Mackenzie River) / (ou Capitaine, jauge brute de 3 000 pour les Grands Lacs et la rivière Mackenzie)</option>
-                                                        <option value="13">(or Master Mariner depending on voyage) / (ou Capitaine au long cours, selon le voyage)</option>
-                                                    </select>
+                                                                                                           <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="CertificateDescriptionId" required>
+                                                                                                               @foreach (var certificate in Model.JobCertificateDescriptions)
+                                                                                                               {
+                                                                                                                   <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
+                                                                                                               }
+                                                                                                           </select>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -350,17 +417,24 @@
                                     <div class="col-3 text-right">
                                         <!-- Button trigger modal edit competency -->
                                         @{
-                                            var routedataremove = new Dictionary<string, string> {
+                                        var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
-                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                        {"jobgroupid", Model.JobGroupId.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
                                         {"addedcertificateids", Model.AddedCertificateIds },
                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
                                         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
                                         {"addedbehaviouralcompetencyids", Model.AddedBehaviouralCompetencyIds },
                                         {"addedexecutivecompetencyids", Model.AddedExecutiveCompetencyIds },
-                                        {"certificateId", certificate.Id.ToString() }
+                                        {"certificateId", certificate.Id.ToString() },
+
                                 };
                                         }
                                         <button class="btn btn-link" asp-page-handler="deletecertificate" asp-all-route-data="@routedataremove">REMOVE</button>
@@ -510,6 +584,11 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                         {"addedcertificateids", Model.AddedCertificateIds },
                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
@@ -648,7 +727,13 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                         {"jobgroupid",Model.JobGroupId.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
                                         {"addedcertificateids", Model.AddedCertificateIds },
                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
                                         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -785,7 +870,13 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                         {"jobgroupid",Model.JobGroupId.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
                                         {"addedcertificateids", Model.AddedCertificateIds },
                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
                                         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -920,7 +1011,13 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                         {"jobgroupid",Model.JobGroupId.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
                                         {"addedcertificateids", Model.AddedCertificateIds },
                                         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
                                         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },

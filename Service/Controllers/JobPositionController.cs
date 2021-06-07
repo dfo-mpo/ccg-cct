@@ -89,7 +89,14 @@ namespace Service.Controllers
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
-
+        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
         [HttpPost, Route("updatejobposition")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task UpdateJobCompetency([FromBody] UpdateJobPositionCommand command)
@@ -97,14 +104,14 @@ namespace Service.Controllers
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpPost, Route("addrolejobpositioncompetency")]
+        [HttpPost, Route("addjobrolepositioncompetency")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCompetency([FromBody] AddJobRolePositionCompetencyCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpPost, Route("addrolejobpositioncertificate")]
+        [HttpPost, Route("addjobrolepositioncertificate")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobRolePositionCertificateCommand command)
         {
@@ -118,6 +125,18 @@ namespace Service.Controllers
               var results =
                           await _queryProvider.ProcessAsync(query);
                return Ok(results);
+        }
+        [HttpPost, Route("addjobrolepositionlocation")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCertificate([FromBody] AddJobRolePositionLocationsCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpPost, Route("addjobrolepositionhlcategory")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCertificate([FromBody] AddJobRolePositionHLCategoryCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

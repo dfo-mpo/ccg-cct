@@ -39,8 +39,15 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
-
-        [HttpPost, Route("addcertificate")]
+        [HttpGet, Route("certificatedescriptions")]
+        [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllCertificateDescriptions()
+        {
+            var results =
+                await _queryProvider.ProcessAsync<GetAllJobCertificateDescriptionsQueryHandler, List<JobCertificateDto>>();
+            return Ok(results);
+        }
+        [HttpPost, Route("addjobcertificate")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobCertificateCommand command)
         {
