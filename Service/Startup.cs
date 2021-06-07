@@ -140,7 +140,7 @@ namespace Service
                 }
             });
 
-            //UpdateDatabase();
+            UpdateDatabase();
 
         }
 
