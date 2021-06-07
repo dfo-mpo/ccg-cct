@@ -26,10 +26,10 @@ namespace Business.Queries.JobGroups
 
         public Task<List<JobPositionDto>> HandleAsync(GetJobPositionsByLevelGroupIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevel.LevelValue == query.level)
+            return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevel.LevelValue == query.level && e.SubJobGroup.SubCode == "")
                             .Include(e => e.JobGroup)
                             .Include(e => e.JobGroupLevel)
-                            .Include(e=>e.JobPosition)
+                            .Include(e => e.JobPosition)
                             .Select(e => new JobPositionDto()
                             {
                                 JobGroupId = e.JobGroupId,

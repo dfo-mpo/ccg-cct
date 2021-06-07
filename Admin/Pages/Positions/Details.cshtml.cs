@@ -1,39 +1,53 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using DataModel;
+using Microsoft.Extensions.Logging;
+using Admin.Data;
+using Business.Dtos.JobPositions;
+using Business.Dtos.JobCompetencies;
+using System.Collections.Generic;
 
 namespace Admin.Pages.Positions
 {
     public class DetailsModel : PageModel
     {
-        private readonly DataModel.CctDbContext _context;
+        private readonly ILogger<DetailsModel> _logger;
+        private readonly JobPositionService _jobpositionService;
+        [BindProperty(SupportsGet = true)]
+        public string Id { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PositionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Level { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
+        public JobPositionDto Position { get; set; }
+        public JobCertificateDto[] PositionCertificates { get; set; }
+        [BindProperty]
+        public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
 
-        public DetailsModel(DataModel.CctDbContext context)
+        public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
         {
-            _context = context;
+            _logger = logger;
+            _jobpositionService = jobcompetencyService;
         }
-
-        public JobPosition JobPosition { get; set; }
-       
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task OnGetAsync(int positionid)
         {
-            if (id == null)
+            Position = await _jobpositionService.GetJobPositionById(positionid);
+            PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
+            var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
+            foreach (var competencytype in CompetencyTypes)
             {
-                return NotFound();
+                var competencies = await _jobpositionService.GetJobCompetencyRatingsByTypeId(positionid, competencytype.Id);
+                if (!competencies.Equals(null))
+                {
+                    PositionCompetencyRatings.Add(competencies);
+                }
             }
-
-            JobPosition = await _context.JobPositions.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (JobPosition == null)
-            {
-                return NotFound();
-            }
-            return Page();
         }
     }
+
 }

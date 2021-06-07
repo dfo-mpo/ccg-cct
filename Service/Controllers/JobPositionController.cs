@@ -7,6 +7,7 @@ using CCG.AspNetCore.Business.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Business.Commands.Admin.JobPositions;
 
 namespace Service.Controllers
 {
@@ -80,6 +81,62 @@ namespace Service.Controllers
             var results =
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
+        }
+
+        [HttpPost, Route("addjobposition")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCompetency([FromBody] AddJobPositionCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpPost, Route("updatejobposition")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task UpdateJobCompetency([FromBody] UpdateJobPositionCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("addjobrolepositioncompetency")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCompetency([FromBody] AddJobRolePositionCompetencyCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("addjobrolepositioncertificate")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCertificate([FromBody] AddJobRolePositionCertificateCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpGet, Route("getjobpositionid/{Title}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobPositionId([FromRoute] GetJobPositionIdByJobTitleQuery query)
+        {
+              var results =
+                          await _queryProvider.ProcessAsync(query);
+               return Ok(results);
+        }
+        [HttpPost, Route("addjobrolepositionlocation")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCertificate([FromBody] AddJobRolePositionLocationsCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpPost, Route("addjobrolepositionhlcategory")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCertificate([FromBody] AddJobRolePositionHLCategoryCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

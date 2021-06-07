@@ -1,10 +1,11 @@
 ﻿@page
-@model Admin.Pages.Competencies.Knowledge.IndexModel
+@model Admin.Pages.Competencies.ListModel
 @{
-    ViewData["Title"] = "Competencies";
+    ViewData["Title"] = "List";
 }
 
-<h1>Competencies</h1>
+
+<h1>@Model.Type.NameEng / @Model.Type.NameFre</h1>
 
 <p>
     <a class="btn btn-dark" asp-page="/Competencies/Create">Create New</a>
@@ -34,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Competency)
+        @foreach (var item in Model.Competencies)
         {
             <tr>
                 <td>
@@ -50,8 +51,6 @@
                     @Html.DisplayFor(modelItem => item.DescFre)
                 </td>
                 <td>
-                    <a asp-page="/Competencies/Create" asp-route-id="@item.Id">Create</a>
-                    <a asp-page="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="Details" asp-route-id="@item.Id">Details</a>
                 </td>
             </tr>

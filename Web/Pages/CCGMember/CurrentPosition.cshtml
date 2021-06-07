@@ -15,20 +15,22 @@
     <div class="col-sm-3 mrgn-bttm-md">
         <label><b>@Localizer["Level"]</b></label><br />
         <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-            @Model.JobGroup.Code @Model.Level  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           @Model.LevelCode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in Model.JobGroupLevels.Select(e => e.LevelValue).ToList().Distinct())
-            {
-                var routedata = new Dictionary<string, string>
+            @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
+                {
+                    var routedata = new Dictionary<string, string>
                      {
-                          { "id",  Model.Id.ToString()},
-                          { "level",  level.ToString()}
-                      };
+                          { "id",  Model.Id},
+                          { "level", level.LevelValue},
+                          {"levelcode", level.LevelCode },
+                          {"subgroupcode", level.SubGroupCode }
+            };
 <li role="presentation">
     <a role="menuitem" tabindex="-1"
-       asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Level"] @level</a>
+       asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode </a>
 </li>
 }
         </ul>
@@ -45,8 +47,10 @@
             {
                 var routedata = new Dictionary<string, string>
                         {
-                        { "id",  Model.Id.ToString()},
-                        { "level",  Model.Level.ToString()},
+                        { "id",  Model.Id},
+                        { "level",  Model.Level},
+                        {"levelcode", Model.LevelCode },
+                        {"subgroupcode", Model.SubGroupCode },
                         { "positionid", jp.JobTitleId.ToString()}
                      };
 <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="CurrentPosition" asp-all-route-data="routedata">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
@@ -72,8 +76,10 @@
                 @if (Model.PositionId != 0) {
                     var routedatanext = new Dictionary<string, string>
                         {
-                             { "id",  Model.Id.ToString()},
-                             { "level",  Model.Level.ToString()},
+                             { "id",  Model.Id},
+                             { "level",  Model.Level},
+                             { "levelcode", Model.LevelCode },
+                             { "subgroupcode", Model.SubGroupCode },
                              { "positionid", Model.PositionId.ToString()}
                          };
                 <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="Details" asp-all-route-data="routedatanext">@Localizer["Next"]</a></li>

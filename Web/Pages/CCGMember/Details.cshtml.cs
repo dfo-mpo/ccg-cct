@@ -20,6 +20,10 @@ namespace Web.Pages.CCGMember
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }

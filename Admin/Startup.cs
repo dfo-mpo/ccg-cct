@@ -13,6 +13,7 @@ using CCG.AspNetCore.Web;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 using SimpleInjector;
+using Admin.Config;
 
 namespace Admin
 {
@@ -20,11 +21,13 @@ namespace Admin
     {
         private readonly Container _container = new Container();
         private readonly ConfigurationBootstrapper _bootstrapper;
+        public AppConfiguration AppConfiguration { get; set; }
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
             _bootstrapper = new ConfigurationBootstrapper(_container);
+            AppConfiguration = Configuration.GetSection("App").Get<AppConfiguration>();
 
         }
 
@@ -62,7 +65,10 @@ namespace Admin
                 .WithCqrs(AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains("Business")).ToArray())
                 ;
 
-
+            services.AddHttpClient("api", c =>
+            {
+                c.BaseAddress = new Uri(AppConfiguration.ApiEndpoint);
+            });
             InitializeContainer();
 
         }

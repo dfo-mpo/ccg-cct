@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using DataModel;
+using Admin.Data;
+using Business.Dtos.JobPositions;
 
 namespace Admin.Pages.Positions
 {
@@ -13,16 +10,20 @@ namespace Admin.Pages.Positions
     {
         private readonly DataModel.CctDbContext _context;
 
-        public IndexModel(DataModel.CctDbContext context)
+        private readonly JobPositionService _jobPositionService;
+
+        public IndexModel(DataModel.CctDbContext context, JobPositionService jobPositionService)
         {
             _context = context;
+            _jobPositionService = jobPositionService;
         }
 
-        public IList<JobPosition> JobPosition { get; set; }
+        public IList<JobPositionDto> JobPositions { get; set; }
 
         public async Task OnGetAsync()
         {
-            JobPosition = await _context.JobPositions.ToListAsync();
+            JobPositions = await _jobPositionService.GetAllJobPositions();
         }
     }
 }
+

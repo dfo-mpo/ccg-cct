@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
+using Admin.Data;
+using Business.Dtos.JobCompetencies;
 
 namespace Admin.Pages.Certificates
 {
@@ -13,28 +15,20 @@ namespace Admin.Pages.Certificates
     {
         private readonly DataModel.CctDbContext _context;
 
-        public IndexModel(DataModel.CctDbContext context)
+        private readonly JobCompetencyService _jobCompetencyService;
+
+        public IndexModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService)
         {
             _context = context;
+            _jobCompetencyService = jobCompetencyService;
         }
-
         public string CurrentFilter { get; set; }
 
-        public IList<Certificate> Certificates { get;set; }
+        public IList<JobCertificateDto> Certificates { get; set; }
 
         public async Task OnGetAsync(string searchString)
         {
-            CurrentFilter = searchString;
-
-            IQueryable<Certificate> certificatesIQ = from s in _context.Certificates
-                                             select s;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                certificatesIQ = certificatesIQ.Where(s => s.NameEng.Contains(searchString)
-                                       || s.NameFre.Contains(searchString));
-            }
-            
-            Certificates = await certificatesIQ.AsNoTracking().ToListAsync();
+            Certificates = await _jobCompetencyService.GetJobCertificates();
         }
     }
 }
