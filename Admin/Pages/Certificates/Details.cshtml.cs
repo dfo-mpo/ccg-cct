@@ -6,34 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
+using Business.Dtos.JobCompetencies;
+using Admin.Data;
 
 namespace Admin.Pages.Certificates
 {
     public class DetailsModel : PageModel
     {
-        private readonly DataModel.CctDbContext _context;
+        //private readonly DataModel.CctDbContext _context;
 
-        public DetailsModel(DataModel.CctDbContext context)
+        private readonly JobCompetencyService _jobpositionService;
+
+        public DetailsModel(JobCompetencyService jobcompetencyService)
         {
-            _context = context;
+            _jobpositionService = jobcompetencyService;
         }
 
-        public Certificate Certificate { get; set; }
+        public JobCertificateDto Certificate { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            Certificate = await _context.Certificates.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Certificate == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            Certificate = await _jobpositionService.GetJobCertificateById(id);
+
+    
         }
     }
 }

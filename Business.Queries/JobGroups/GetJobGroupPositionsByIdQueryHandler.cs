@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,10 +27,13 @@ namespace Business.Queries.JobGroups
         {
             return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id)
                 .Include(e => e.JobGroupLevel)
+                .Include(e => e.SubJobGroup)
                 .Select(e=> new JobGroupPositionDto(){
                     JobId = e.JobPositionId,
                     LevelId = e.JobGroupLevelId,
-                    LevelValue = e.JobGroupLevel.LevelValue              
+                    LevelValue = e.JobGroupLevel.LevelValue,
+                    SubGroupCode = e.SubJobGroup.SubCode,
+                    LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + ' ' + e.JobGroupLevel.LevelValue:e.SubJobGroup.SubCode + ' ' + e.JobGroupLevel.LevelValue
             })
                 .ToListAsync(cancellationToken);
         }

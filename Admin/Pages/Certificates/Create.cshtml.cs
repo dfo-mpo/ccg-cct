@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DataModel;
+using Admin.Data;
+using Business.Dtos.JobCompetencies;
 
 namespace Admin.Pages.Certificates
 {
     public class CreateModel : PageModel
     {
         private readonly DataModel.CctDbContext _context;
+        private readonly JobCertificateService _jobCertificateService;
 
-        public CreateModel(DataModel.CctDbContext context)
+        public CreateModel(DataModel.CctDbContext context, JobCertificateService jobCertificateService)
         {
             _context = context;
+            _jobCertificateService = jobCertificateService;
         }
 
         public IActionResult OnGet()
@@ -24,27 +28,20 @@ namespace Admin.Pages.Certificates
         }
 
         [BindProperty]
-        public Certificate Certificate { get; set; }
+        public JobCertificateDto Certificate { get; set; }
+
+        [BindProperty]
+        public int CompetencyType { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyCertificate = new Certificate();
 
-            if (await TryUpdateModelAsync<Certificate>(
-                emptyCertificate,
-                "certificate",   // Prefix for form value.
-                s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre))
-            {
-                _context.Certificates.Add(emptyCertificate);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
-            }
+            _jobCertificateService.PostJobCertificate(Certificate);
 
-            return Page();
+            return RedirectToPage("Index");
+
         }
-        
     }
 }

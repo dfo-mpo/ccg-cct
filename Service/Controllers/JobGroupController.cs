@@ -7,7 +7,7 @@ using CCG.AspNetCore.Business.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Business.Commands.Admin.JobGroups;
 
 namespace Service.Controllers
 {
@@ -60,6 +60,15 @@ namespace Service.Controllers
             return Ok(results);
         }
 
+        [HttpGet, Route("{Id}/subgrouplevels")]
+        [ProducesResponseType(typeof(List<JobGroupPositionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetSubGroupLevelsById([FromRoute] GetSubGroupLevelsByIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
         [HttpGet, Route("{Id}/levels/{level}/positions")]
         [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPositionsByGroupLevelId([FromRoute]GetJobPositionsByLevelGroupIdQuery query)
@@ -67,6 +76,22 @@ namespace Service.Controllers
             var results =
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
+        }
+
+        [HttpGet, Route("{Id}/{subgroupcode}/{level}/positions")]
+        [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPositionsBySubGroupLevelId([FromRoute] GetJobPositionsBySubGroupCodeLevelQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpPost, Route("addjobgroupposition")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCompetency([FromBody] AddJobGroupPositionCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

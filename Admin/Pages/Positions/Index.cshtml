@@ -7,14 +7,14 @@
 <h1>Positions</h1>
 
 <p>
-    <a asp-page="#">Create New</a>
+    <a asp-page="Create">Create New</a>
 </p>
-        
+
 <p>
     <label name="Filter" class="control-label"><b>Filter</b></label>
     <input name="Filter" class="form-control" />
 </p>
-        
+
 <table class="table">
     <thead>
         <tr>
@@ -24,19 +24,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.JobPosition)
+        @foreach (var item in Model.JobPositions)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TitleEng)
+                    @Html.DisplayFor(modelItem => item.JobTitleEng)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TitleFre)
+                    @Html.DisplayFor(modelItem => item.JobTitleFre)
                 </td>
                 <td>
-                    <a asp-page="Create" asp-route-id="@item.Id">Create</a> |
-                    <a asp-page="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a>
                 </td>
             </tr>
         }

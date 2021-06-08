@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Business.Queries.JobCompetencies;
+using Business.Commands.Admin.JobCompetencies;
 
 namespace Service.Controllers
 {
@@ -63,6 +64,34 @@ namespace Service.Controllers
             var results =
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
+        }
+        [HttpGet, Route("{Id}/{LevelId}")]
+        [ProducesResponseType(typeof(JobCompetencyRatingDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobCompetencyLevelRequirementByIdLevelId([FromRoute] GetJobCompetencyLevelRequirementByIdLevelIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpGet, Route("{Id}/{Value}/description")]
+        [ProducesResponseType(typeof(JobCompetencyRatingDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobCompetencyLevelRequirementByIdLevelId([FromRoute] GetJobCompetencyLevelRequirementDescriptionByIdLevelValueQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpPost, Route("addjobcompetency")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddJobCompetency([FromBody] AddJobCompetencyCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpDelete, Route("deletejobcompetency")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteJobCompetency([FromQuery] DeleteJobCompetencyByIdCommand command)
+        {
+            return await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

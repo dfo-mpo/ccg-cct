@@ -27,5 +27,7 @@
         public string RatingDescFre { get; set; }
         public string CompetencyLevelReqDescEng { get; set; }
         public string CompetencyLevelReqDescFre { get; set; }
+        public int CompetencyRatingLevelId { get; set; }
+        public int CompetencyLevelRequirementId { get; set; }
     }
 }

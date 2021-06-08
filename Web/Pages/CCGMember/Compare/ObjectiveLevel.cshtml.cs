@@ -38,7 +38,7 @@ namespace Web.Pages.CCGMember.Compare
         {
             _logger.LogInformation($"Objective levels page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroup = await _jobcategoryService.GetJobGroupById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsById(id);
+            JobGroupPositions = await _jobcategoryService.GetSubGroupLevelsByGroupId(id);
         }
     }
 }

@@ -20,6 +20,10 @@ namespace Web.Pages.CCGMember
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
+        [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; } = 0;
         public JobPositionDto Position { get; set; }
 
@@ -31,12 +35,12 @@ namespace Web.Pages.CCGMember
             _logger = logger;
             _jobcategoryService = jobcategoryService;
         }
-        public async Task OnGetAsync(int id, string level, int positionid)
+        public async Task OnGetAsync(int id, string level, string subgroupcode, int positionid)
         {
             _logger.LogInformation($"Current position selection page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroup = await _jobcategoryService.GetJobGroupById(id);
-            JobGroupLevels = await _jobcategoryService.GetJobGroupPositionsById(id);
-            JobGroupPositions = await _jobcategoryService.GetJobGroupPositionsByLevel(id, level);
+            JobGroupLevels = await _jobcategoryService.GetSubGroupLevelsByGroupId(id);
+            JobGroupPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobcategoryService.GetJobGroupPositionsByLevel(id, level) : await _jobcategoryService.GetJobGroupPositionsBySubGroupLevel(id, subgroupcode, level); 
             Position = positionid == 0 ? null : await _jobcategoryService.GetJobPositionById(positionid);
         }
 
