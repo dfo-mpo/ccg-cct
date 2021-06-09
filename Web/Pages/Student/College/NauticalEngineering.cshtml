@@ -5,10 +5,10 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
 
-    <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-        <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
-        <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
-    </div>
+<div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
+    <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
+    <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+</div>
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@Localizer["seagoing"]</h3>
 
@@ -32,7 +32,7 @@
                  };
 
                     <tr>
-                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@position.JobGroupCode-@position.SubGroupCode @position.JobLevelValue</td>
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
@@ -100,4 +100,3 @@
         </div>
     </div>
 </div>
-

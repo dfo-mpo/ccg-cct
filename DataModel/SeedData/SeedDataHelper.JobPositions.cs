@@ -392,7 +392,8 @@ namespace DataModel.SeedData
             new JobPosition {Id = 385, TitleEng = "Deputy Commissioner", TitleFre = "Sous-commissaire", Active = 1 },
             new JobPosition {Id = 386, TitleEng = "Commissioner", TitleFre = "Commissaire", Active = 1 },
             new JobPosition {Id = 387, TitleEng = "Lockperson", TitleFre = "Éclusier", Active = 1 },
-            new JobPosition {Id = 388, TitleEng = "Lockmaster", TitleFre = "Maître-éclusiers", Active = 1 }
+            new JobPosition {Id = 388, TitleEng = "Lockmaster", TitleFre = "Maître-éclusiers", Active = 1 },
+            new JobPosition {Id = 389, TitleEng = "Officer in Charge Bay Class", TitleFre = "Officier responsable Classe Baie", Active = 1 },
         };
     }
 }

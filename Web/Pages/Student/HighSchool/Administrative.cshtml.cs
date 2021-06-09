@@ -32,7 +32,7 @@ namespace Web.Pages.Student.HighSchool
             
             //Shoreside
             //Clerical and Regulatory CR-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(12, "03"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(2, "CR", "03"))
             {
                 if (!position.Equals(null))
                 {
@@ -42,7 +42,7 @@ namespace Web.Pages.Student.HighSchool
             }
 
             //Clerical and Regulatory CR-04
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(12, "04"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(2, "CR", "04"))
             {
                 if (!position.Equals(null))
                 {
@@ -62,7 +62,7 @@ namespace Web.Pages.Student.HighSchool
             }
 
             //Office Equipement OE-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "01"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(19, "DEO", "01"))
             {
                 if (!position.Equals(null))
                 {

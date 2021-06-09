@@ -7,6 +7,8 @@ namespace Business.Dtos.JobPositions
         public int JobGroupId { get; set; }
         public int JobLevelId { get; set; }
         public string JobLevelValue { get; set; }
+        public int SubJobGroupId { get; set; }
+        public string SubGroupCode { get; set; }
         public string JobGroupCode { get; set; }
         public string JobGroupTitleEng { get; set; }
         public string JobGroupTitleFre { get; set; }

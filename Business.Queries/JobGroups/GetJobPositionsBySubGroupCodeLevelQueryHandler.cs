@@ -29,12 +29,15 @@ namespace Business.Queries.JobGroups
         {
             return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevel.LevelValue == query.level && e.SubJobGroup.SubCode==query.subgroupcode)
                             .Include(e => e.JobGroup)
+                            .Include(e => e.SubJobGroup)
                             .Include(e => e.JobGroupLevel)
                             .Include(e => e.JobPosition)
                             .Select(e => new JobPositionDto()
                             {
                                 JobGroupId = e.JobGroupId,
                                 JobGroupCode = e.JobGroup.Code,
+                                SubJobGroupId = e.SubJobGroupId,
+                                SubGroupCode = e.SubJobGroup.SubCode,
                                 JobGroupLevelId = e.JobGroupLevelId,
                                 JobGroupLevelValue = e.JobGroupLevel.LevelValue,
                                 JobLevelValue = e.JobGroupLevel.LevelValue,

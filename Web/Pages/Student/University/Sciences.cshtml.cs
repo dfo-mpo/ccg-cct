@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Business.Dtos.JobPositions;
@@ -13,26 +13,30 @@ namespace Web.Pages.Student.University
     {
         private readonly ILogger<SciencesModel> _logger;
         private readonly JobGroupService _jobgroupService;
+        private readonly JobPositionService _jobpositionService;
+
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
-        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
         [BindProperty(SupportsGet = true)]
         public string ShoresidePositionIds { get; set; } = "&PositionId=";
         [BindProperty(SupportsGet = true)]
-        public string SeagoingPositionIds { get; set; } = "&PositionId=";
-        [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
-        public SciencesModel(ILogger<SciencesModel> logger, JobGroupService jobgroupService)
+
+        public JobPositionDto[] SeagoingPositions { get; set; }
+        public string SeagoingPositionIds { get; set; }
+
+        public SciencesModel(ILogger<SciencesModel> logger, JobGroupService jobgroupService, JobPositionService jobcompetencyService)
         {
             _logger = logger;
             _jobgroupService = jobgroupService;
+            _jobpositionService = jobcompetencyService;
         }
         public async Task OnGet()
         {
             _logger.LogInformation($"University Student Sciences positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
             //Shoreside
-            //Nursing NUCHN-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(18, "03"))
+            //Nursing NU (CHN-03)
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(18,"CHN","03"))
             {
                 if (!position.Equals(null))
                 {
@@ -41,24 +45,11 @@ namespace Web.Pages.Student.University
                 }
             }
 
+            
             //Seagoing
-            //Ship's Officer MAO-02 to MAO-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(10, "MAO-02"))
-            {
-                if (!position.Equals(null))
-                {
-                    SeagoingPositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    SeagoingPositions.Add(position);
-                }
-            }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(10, "MAO-03"))
-            {
-                if (!position.Equals(null))
-                {
-                    SeagoingPositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    SeagoingPositions.Add(position);
-                }
-            }
+            //Ship's Officer MAO-02 to MAO-03 (deck)
+            SeagoingPositionIds = "&PositionId=108&PositionId=110&PositionId=111&PositionId=112&PositionId=113&PositionId=116";
+            SeagoingPositions = await _jobpositionService.GetJobPositionByIdValues(SeagoingPositionIds);
         }
     }
 }

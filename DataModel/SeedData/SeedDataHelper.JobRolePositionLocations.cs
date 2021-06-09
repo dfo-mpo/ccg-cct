@@ -1157,17 +1157,17 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 157, JobLocationRegionId = 6},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 158, JobLocationRegionId = 5},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 3, JobPositionId = 158, JobLocationRegionId = 5},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 158, JobLocationRegionId = 4},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 3, JobPositionId = 158, JobLocationRegionId = 4},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 159, JobLocationRegionId = 5},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 4, JobPositionId = 159, JobLocationRegionId = 5},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 159, JobLocationRegionId = 4},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 4, JobPositionId = 159, JobLocationRegionId = 4},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 160, JobLocationRegionId = 5},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 5, JobPositionId = 160, JobLocationRegionId = 5},
             new JobRolePositionLocation
-                {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 160, JobLocationRegionId = 4},
+                {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 5, JobPositionId = 160, JobLocationRegionId = 4},
             new JobRolePositionLocation
                 {JobGroupId = 19, SubJobGroupId = 24, JobGroupLevelId = 1, JobPositionId = 161, JobLocationRegionId = 6},
             new JobRolePositionLocation
@@ -3067,7 +3067,16 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387, JobLocationRegionId = 1},
             new JobRolePositionLocation
-                {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388, JobLocationRegionId = 1}
+                {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobLocationRegionId = 2},
+            new JobRolePositionLocation
+                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobLocationRegionId = 1},
+            new JobRolePositionLocation
+                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobLocationRegionId = 3},
+            new JobRolePositionLocation
+                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobLocationRegionId = 5}
+
         };
     }
 }

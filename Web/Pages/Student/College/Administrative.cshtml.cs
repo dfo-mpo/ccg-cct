@@ -31,7 +31,7 @@ namespace Web.Pages.Student.College
             _logger.LogInformation($"College Administrative positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");       
 
             //Clerical and Regulatory CR-04
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(12, "04"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(2, "CR", "04"))
             {
                 if (!position.Equals(null))
                 {
@@ -51,7 +51,7 @@ namespace Web.Pages.Student.College
             }
 
             //Office Equipement OE-01 to OE-02
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "01"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(19, "DEO", "01"))
             {
                 if (!position.Equals(null))
                 {
@@ -59,7 +59,7 @@ namespace Web.Pages.Student.College
                     ShoreSidePositions.Add(position);
                 }
             }
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(19, "02"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(19, "DEO", "02"))
             {
                 if (!position.Equals(null))
                 {

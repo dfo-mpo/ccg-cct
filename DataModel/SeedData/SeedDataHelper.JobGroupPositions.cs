@@ -162,9 +162,9 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 155},
             new JobGroupPosition {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 156},
             new JobGroupPosition {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 157},
-            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 158},
-            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 159},
-            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 160},
+            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 3, JobPositionId = 158},
+            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 4, JobPositionId = 159},
+            new JobGroupPosition {JobGroupId = 18, SubJobGroupId = 27, JobGroupLevelId = 5, JobPositionId = 160},
             new JobGroupPosition {JobGroupId = 19, SubJobGroupId = 24, JobGroupLevelId = 1, JobPositionId = 161},
             new JobGroupPosition {JobGroupId = 19, SubJobGroupId = 24, JobGroupLevelId = 2, JobPositionId = 162},
             new JobGroupPosition {JobGroupId = 19, SubJobGroupId = 24, JobGroupLevelId = 3, JobPositionId = 163},
@@ -392,7 +392,9 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385},
             new JobGroupPosition {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386},
             new JobGroupPosition {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387},
-            new JobGroupPosition {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388}
+            new JobGroupPosition {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388},
+            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389}
+
         };
     }
 }
