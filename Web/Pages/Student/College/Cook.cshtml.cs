@@ -32,7 +32,7 @@ namespace Web.Pages.Student.College
 
             //Shoreside
             //General Services GS-02
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(4, "FOS-02"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(4, "FOS", "02"))
             {
                 if (!position.Equals(null))
                 {
@@ -43,7 +43,7 @@ namespace Web.Pages.Student.College
 
             //Seagoing
             //Ship's Crew STD-01
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-01"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(9, "STD", "01"))
             {
                 if (!position.Equals(null))
                 {
@@ -52,7 +52,7 @@ namespace Web.Pages.Student.College
                 }
             }
             //Ship's Crew STD-03
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(9, "STD-03"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(9, "STD", "03"))
             {
                 if (!position.Equals(null))
                 {

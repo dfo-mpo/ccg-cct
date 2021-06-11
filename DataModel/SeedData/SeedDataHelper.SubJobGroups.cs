@@ -33,7 +33,8 @@ namespace DataModel.SeedData
             new SubJobGroup() {Id = 23, SubCode = "DM", Active = 1 },
             new SubJobGroup() {Id = 24, SubCode = "DEO", Active = 1 },
             new SubJobGroup() {Id = 25, SubCode = "", Active = 1 },
-            new SubJobGroup() {Id = 26, SubCode = "PEI", Active = 1 }
+            new SubJobGroup() {Id = 26, SubCode = "PEI", Active = 1 },
+            new SubJobGroup() {Id = 27, SubCode = "CHN", Active = 1 }
          };
     }
 }

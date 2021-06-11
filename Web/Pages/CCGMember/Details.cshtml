@@ -33,20 +33,7 @@
                     {
                         var key = "c" + c.Id.ToString();
                         <tr>
-                            <td colspan="2">
-                                <a href="#@key" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                    @(isEnglish ? c.NameEng : c.NameFre)
-                                </a>
-                                <section id="@key" class="mfp-hide modal-dialog modal-content overlay-def">
-                                    <header class="modal-header">
-                                        <h2 class="modal-title">@(isEnglish ? c.NameEng : c.NameFre)</h2>
-                                    </header>
-                                    <div class="modal-body ">
-                                        <p>@(isEnglish ? c.DescEng : c.DescFre)</p>
-                                        <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                    </div>
-                                </section>
-                            </td>
+                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                         </tr>
                     }
                 }

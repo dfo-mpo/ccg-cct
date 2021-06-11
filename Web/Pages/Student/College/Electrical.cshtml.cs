@@ -14,18 +14,22 @@ namespace Web.Pages.Student.College
     {
         private readonly ILogger<ElectricalModel> _logger;
         private readonly JobGroupService _jobgroupService;
+        private readonly JobPositionService _jobpositionService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
-        public List<JobPositionDto> SeagoingPositions = new List<JobPositionDto> { };
-        [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         [BindProperty(SupportsGet = true)]
         public string ShoresidePositionIds { get; set; } = "&PositionId=";
         [BindProperty(SupportsGet = true)]
-        public string SeagoingPositionIds { get; set; } = "&PositionId=";
-        public ElectricalModel(ILogger<ElectricalModel> logger, JobGroupService jobgroupService)
+        public JobPositionDto[] SeagoingPositions { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SeagoingPositionIds { get; set; }
+
+
+        public ElectricalModel(ILogger<ElectricalModel> logger, JobGroupService jobgroupService, JobPositionService jobcompetencyService)
         {
             _logger = logger;
             _jobgroupService = jobgroupService;
+            _jobpositionService = jobcompetencyService;
         }
         public async Task OnGet()
         {
@@ -43,7 +47,7 @@ namespace Web.Pages.Student.College
             }
 
             //General Labor and Trades EIM-10
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(8, "EIM-10"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(8, "EIM", "10"))
             {
                 if (!position.Equals(null))
                 {
@@ -53,15 +57,9 @@ namespace Web.Pages.Student.College
             }
 
             //Seagoing
-            //Ship's Officer MAO-05
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(10, "MAO-05"))
-            {
-                if (!position.Equals(null))
-                {
-                    SeagoingPositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    SeagoingPositions.Add(position);
-                }
-            }
+            //Ship's Officer MAO-05 (electrical)
+            SeagoingPositionIds = "&PositionId=123";
+            SeagoingPositions = await _jobpositionService.GetJobPositionByIdValues(SeagoingPositionIds);
         }
     }
 }
