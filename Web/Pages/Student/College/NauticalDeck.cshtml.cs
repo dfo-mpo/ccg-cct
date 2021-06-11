@@ -15,10 +15,12 @@ namespace Web.Pages.Student.College
         private readonly JobGroupService _jobgroupService;
         private readonly JobPositionService _jobpositionService;
         public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
+        [BindProperty(SupportsGet = true)]
         public string PositionIds { get; set; }
         [BindProperty(SupportsGet = true)]
         public string ShoresidePositionIds { get; set; } = "&PositionId=";
         [BindProperty(SupportsGet = true)]
+
         public JobPositionDto[] SeagoingPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SeagoingPositionIds { get; set; }
