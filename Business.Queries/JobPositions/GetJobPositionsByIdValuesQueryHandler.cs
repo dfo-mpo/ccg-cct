@@ -26,11 +26,14 @@ namespace Business.Queries.JobPositions
         {
             return await _db.JobGroupPositions.Where(e => query.Id.Contains(e.JobPositionId))
                 .Include(e => e.JobGroup)
+                .Include(e => e.SubJobGroup)
                 .Include(e => e.JobPosition)
                 .Include(e => e.JobGroupLevel)
                 .Select(e => new JobPositionDto()
                 {
                     JobGroupId = e.JobGroupId,
+                    SubJobGroupId = e.SubJobGroupId,
+                    SubGroupCode = e.SubJobGroup.SubCode,
                     JobLevelId = e.JobGroupLevel.Id,
                     JobLevelValue = e.JobGroupLevel.LevelValue,
                     JobGroupCode = e.JobGroup.Code,
