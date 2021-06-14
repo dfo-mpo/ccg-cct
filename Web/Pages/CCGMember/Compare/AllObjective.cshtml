@@ -7,10 +7,12 @@
         var routedataprevious = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
+                               { "levelcode", Model.LevelCode },
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
                           { "id",  Model.Id.ToString()},
+                          {"subgroupcode", Model.SubGroupCode },
                           { "level",  Model.Level},
                             };
     }
@@ -30,14 +32,18 @@
                 {
                     @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                     {
-                     var routedata = new Dictionary<string, string>
+                        if (jobgroup.Active != 0) {
+                        var routedata = new Dictionary<string, string>
                          {
                           { "positionid",  Model.PositionId.ToString()},
                           { "level",  Model.Level},
+                                  { "levelcode", Model.LevelCode },
+                          {"subgroupcode", Model.SubGroupCode },
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
-                          { "id",  jobgroup.Id.ToString()}
+                          { "id",  Model.Id},
+                          { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
                             <div class="col-sm-4 mrgn-bttm-md">
@@ -47,6 +53,7 @@
                                 </figure>
                             </div>
                         </a>
+                        }
                     }
                 }
                 else

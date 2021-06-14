@@ -40,7 +40,8 @@ namespace Business.Queries.Compare
                      NameFre = e.Certificate.NameFre,
                      DescEng = e.CertificateDescription.DescEng,
                      DescFre = e.CertificateDescription.DescFre,
-                     Id = e.CertificateId
+                     Id = e.CertificateId,
+                     Active = e.Certificate.Active
 
                  }).ToListAsync(cancellationToken);           
         }

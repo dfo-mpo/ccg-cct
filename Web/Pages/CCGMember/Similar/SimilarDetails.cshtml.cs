@@ -19,6 +19,10 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string LevelObj { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }

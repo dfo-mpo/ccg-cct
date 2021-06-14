@@ -9,6 +9,7 @@
         public string LevelCode { get; set; }
         public int LevelId { get; set; }
         public string LevelValue { get; set; }
+        public int Active { get; set; }
 
     }
 }

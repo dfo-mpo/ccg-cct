@@ -30,7 +30,9 @@ namespace Business.Queries.JobGroups
                     Id = e.Id,
                     Code = e.Code,
                     NameEng = e.NameEng,
-                    NameFre = e.NameFre
+                    NameFre = e.NameFre,
+                    Active = e.Active
+
                 }).FirstOrDefaultAsync(cancellationToken);
 
         }

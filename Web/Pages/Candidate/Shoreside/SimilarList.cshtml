@@ -25,6 +25,7 @@
 
             @foreach (var position in Model.Positions)
             {
+                if (position.Active != 0) { 
                 var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "SimilarList" },
@@ -37,6 +38,7 @@
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
                     <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                 </tr>
+                }
             }
         </tbody>
     </table>

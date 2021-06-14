@@ -11,6 +11,8 @@
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
+                       {"levelcode", Model.LevelCode },
+                       {"subgroupcode", Model.SubGroupCode },
                        { "id",  Model.Id.ToString()},
                        {"level", Model.Level.ToString() },
                   };
@@ -31,6 +33,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
             {
+                if (level.Active != 0) { 
                 var data = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
@@ -38,9 +41,11 @@
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
+                       {"subgroupcode", Model.SubGroupCode },
+                               { "levelcode", Model.LevelCode },
                        { "level",  Model.Level.ToString()},
                        { "levelobj",  level.LevelValue.ToString() },
-                                       
+                             { "idobj",  level.JobGroupId.ToString()},
                               {"levelcodeobj", level.LevelCode },
                               {"subgroupcodeobj", level.SubGroupCode }
                   };
@@ -48,6 +53,7 @@
                     <a role="menuitem" tabindex="-1"
                        asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
                 </li>
+                }
             }
         </ul>
     </div>

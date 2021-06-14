@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
+using Microsoft.Extensions.Logging;
+using Admin.Data;
 
 namespace Admin.Pages.Certificates
 {
     public class EditModel : PageModel
     {
         private readonly DataModel.CctDbContext _context;
+        private readonly ILogger<EditModel> _logger;
+        private readonly JobCertificateService _jobCertificateService;
 
-        public EditModel(DataModel.CctDbContext context)
+
+        public EditModel(DataModel.CctDbContext context,
+            ILogger<EditModel> logger, JobCertificateService jobCertificateService)
         {
             _context = context;
+            _logger = logger;
+            _jobCertificateService = jobCertificateService;
         }
 
         [BindProperty]
@@ -52,9 +60,10 @@ namespace Admin.Pages.Certificates
             if (await TryUpdateModelAsync<Certificate>(
                 certificateToUpdate,
                 "certificate",
-                s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre ))
+                s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre))
             {
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
+                _jobCertificateService.UpdateJobCertificate(Certificate);
                 return RedirectToPage("./Index");
             }
 
@@ -62,3 +71,4 @@ namespace Admin.Pages.Certificates
         }
     }
 }
+

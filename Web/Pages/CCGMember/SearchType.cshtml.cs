@@ -15,6 +15,10 @@ namespace Web.Pages.CCGMember
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
         public void OnGet()
         {
 

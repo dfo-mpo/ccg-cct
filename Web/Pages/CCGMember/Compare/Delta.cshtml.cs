@@ -18,6 +18,12 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string IdObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string LevelCodeObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public int ObjectiveId { get; set; }
@@ -25,6 +31,10 @@ namespace Web.Pages.CCGMember.Compare
         public int PositionId { get; set; }
         [BindProperty(SupportsGet = true)]
         public string LevelObj { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SubGroupCodeObj { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PercentMatch { get; set; }
         [BindProperty(SupportsGet = true)]

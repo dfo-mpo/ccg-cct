@@ -7,9 +7,10 @@
 
 <h2>Certificates</h2>
 
-<p>
-    <a class="btn btn-dark" asp-page="Create">Create New</a>
-</p>
+
+<a class="btn btn-dark" asp-page="Create">Create New</a>
+<a class="btn btn-dark pull-right" asp-page="Descriptions/Index">Descriptions</a>
+
 
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
@@ -41,7 +42,9 @@
                     @Html.DisplayFor(modelItem => item.NameFre)
                 </td>
                 <td style="width:15%">
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

@@ -39,6 +39,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("certificatedescriptions")]
         [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllCertificateDescriptions()
@@ -54,18 +55,31 @@ namespace Service.Controllers
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpPost, Route("addcertificatedescription")]
+        [HttpPost, Route("addjobcertificatedescription")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobCertificateDescriptionCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpDelete, Route("deletejobcertificate")]
+        [HttpPost, Route("deletejobcertificate")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteJobCompetency([FromQuery] DeleteJobCertificateByIdCommand command)
+        public async Task DeleteJobCertificate([FromBody] DeleteJobCertificateByIdCommand command)
         {
-            return await _commandSender.ValidateAndSendAsync(command, ModelState);
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("updatejobcertificate")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task UpdateJobCertificate([FromBody] UpdateJobCertificateCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpPost, Route("updatejobcertificatedescription")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task UpdateJobCertificateDescription([FromBody] UpdateJobCertificateDescriptionCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

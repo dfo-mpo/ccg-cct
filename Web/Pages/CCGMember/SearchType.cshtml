@@ -7,14 +7,18 @@
                             {"positionid", Model.PositionId.ToString()},
                             {"previouspagedetails", "../SearchType" },
                             {"previouspagesimilar", "../SearchType" },
-                            { "id",  Model.Id.ToString()},
-                            { "level",  Model.Level.ToString()},
+                            { "id",  Model.Id},
+                            { "level",  Model.Level},
+                            { "levelcode", Model.LevelCode },
+                            { "subgroupcode", Model.SubGroupCode },
 
                            };
     var paramdataprevious = new Dictionary<string, string>
                            {
-                              { "id",  Model.Id.ToString()},
-                              { "level",  Model.Level.ToString()},
+                              { "id",  Model.Id},
+                              { "level",  Model.Level},
+                              { "subgroupcode", Model.SubGroupCode },   
+                              { "levelcode", Model.LevelCode },
                               {"positionid", Model.PositionId.ToString()}
                             };
 }

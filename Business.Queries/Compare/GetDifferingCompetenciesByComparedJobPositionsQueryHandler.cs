@@ -56,7 +56,8 @@ namespace Business.Queries.Compare
                         CompetencyLevelReqDescCurEng = competency==null ? string.Empty : competency.CompetencyLevelRequirement.DescEng,
                         CompetencyLevelReqDescCurFre = competency==null ? string.Empty : competency.CompetencyLevelRequirement.DescFre,
                         CompetencyLevelReqDescObjEng = obj.CompetencyLevelRequirement.DescEng,
-                        CompetencyLevelReqDescObjFre = obj.CompetencyLevelRequirement.DescFre                    
+                        CompetencyLevelReqDescObjFre = obj.CompetencyLevelRequirement.DescFre,
+                        Active = competency.Competency.Active
                     }).Where(e => e.RatingValueCur != e.RatingValueObj);
 
            var objectiveCompetencies = (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId)
@@ -87,7 +88,8 @@ namespace Business.Queries.Compare
                         CompetencyLevelReqDescCurEng = pos.CompetencyLevelRequirement.DescEng,
                         CompetencyLevelReqDescCurFre = pos.CompetencyLevelRequirement.DescFre,
                         CompetencyLevelReqDescObjEng = competency == null ? string.Empty : competency.CompetencyLevelRequirement.DescEng,
-                        CompetencyLevelReqDescObjFre = competency == null ? string.Empty : competency.CompetencyLevelRequirement.DescFre
+                        CompetencyLevelReqDescObjFre = competency == null ? string.Empty : competency.CompetencyLevelRequirement.DescFre,
+                        Active = competency.Competency.Active
                     }).Where(e => e.RatingValueCur != e.RatingValueObj);
 
            return currentCompetencies.Union(objectiveCompetencies).ToListAsync();       

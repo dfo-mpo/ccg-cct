@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
+using Admin.Data;
 
 namespace Admin.Pages.Certificates
 {
@@ -14,12 +15,14 @@ namespace Admin.Pages.Certificates
     {
         private readonly DataModel.CctDbContext _context;
         private readonly ILogger<DeleteModel> _logger;
+        private readonly JobCertificateService _jobCertificateService;
 
         public DeleteModel(DataModel.CctDbContext context,
-            ILogger<DeleteModel> logger)
+            ILogger<DeleteModel> logger, JobCertificateService jobCertificateService)
         {
             _context = context;
             _logger = logger;
+            _jobCertificateService = jobCertificateService;
         }
 
         [BindProperty]
@@ -64,8 +67,10 @@ namespace Admin.Pages.Certificates
 
             try
             {
-                _context.Certificates.Remove(Certificate);
-                await _context.SaveChangesAsync(); return RedirectToPage("./Index");
+                // _context.Certificates.Remove(Certificate);
+                _jobCertificateService.DeleteJobCertificate(Certificate);
+                //await _context.SaveChangesAsync(); 
+                return RedirectToPage("./Index");
             }
             catch (DbUpdateException ex)
             {

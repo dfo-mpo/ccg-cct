@@ -28,8 +28,10 @@ namespace Business.Commands.Admin.JobCompetencies
 
         public async Task ExecuteAsync(DeleteJobCompetencyByIdCommand command, CancellationToken cancellationToken = new CancellationToken())
         {
-            var competency = await _db.Competencies.FindAsync(command.Id);
-            _db.Competencies.Remove(competency);
+            //var competency = await _db.Competencies.FindAsync(command.Id);
+            //_db.Competencies.Remove(competency);
+            var jobcompetency = await _db.Competencies.FindAsync(command.Id);
+            jobcompetency.Active = 0;
             await _db.SaveChangesAsync(cancellationToken);
         }
     }

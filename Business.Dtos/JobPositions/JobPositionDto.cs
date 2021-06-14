@@ -18,5 +18,6 @@ namespace Business.Dtos.JobPositions
         public string JobTitleFre { get; set; }
         public string JobTitleEng { get; set; }
         public List<int> Competencies {get;set;}
+        public int Active { get; set; }
     }
 }

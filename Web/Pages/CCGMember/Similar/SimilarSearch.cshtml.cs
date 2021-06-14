@@ -36,6 +36,10 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string HigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string SubGroupCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LevelCode { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string SameOrHigherLevels { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string RequiredCompetencies { get; set; } = string.Empty;

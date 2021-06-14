@@ -28,6 +28,7 @@
                 {
                     @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
                     {
+                        if (jobgroup.Active != 0) { 
                         var routedata = new Dictionary<string, string>
                              {
                           { "positionid",  Model.PositionId.ToString()},
@@ -43,6 +44,7 @@
                                 </figure>
                             </div>
                         </a>
+                        }
                     }
                 }
                 else

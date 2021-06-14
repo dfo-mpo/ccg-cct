@@ -30,7 +30,8 @@ namespace Business.Queries.JobGroupTitles
             return _db.JobPositions.Where(e => e.Id == query.Id)
                       .Select(e => new JobGroupTitleDto()
                       {
-                        Id = e.Id
+                        Id = e.Id,
+                        Active = e.Active
 
                       }).SingleOrDefaultAsync(cancellationToken);
         }

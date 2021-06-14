@@ -65,6 +65,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("{Id}/{LevelId}")]
         [ProducesResponseType(typeof(JobCompetencyRatingDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetJobCompetencyLevelRequirementByIdLevelId([FromRoute] GetJobCompetencyLevelRequirementByIdLevelIdQuery query)
@@ -73,6 +74,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("{Id}/{Value}/description")]
         [ProducesResponseType(typeof(JobCompetencyRatingDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetJobCompetencyLevelRequirementByIdLevelId([FromRoute] GetJobCompetencyLevelRequirementDescriptionByIdLevelValueQuery query)
@@ -81,17 +83,26 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpPost, Route("addjobcompetency")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCompetency([FromBody] AddJobCompetencyCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
-        [HttpDelete, Route("deletejobcompetency")]
+
+        [HttpPost, Route("deletejobcompetency")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteJobCompetency([FromQuery] DeleteJobCompetencyByIdCommand command)
+        public async Task DeleteJobCompetency([FromBody] DeleteJobCompetencyByIdCommand command)
         {
-            return await _commandSender.ValidateAndSendAsync(command, ModelState);
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("updatejobcompetency")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task UpdateJobCompetency([FromBody] UpdateJobCompetencyCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
     }
 }

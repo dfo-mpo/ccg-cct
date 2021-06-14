@@ -41,7 +41,8 @@ namespace Business.Queries.JobCompetencies
                     RatingDescEng = e.CompetencyRatingLevel.DescEng,
                     RatingDescFre = e.CompetencyRatingLevel.DescFre,
                     RatingValue = e.CompetencyRatingLevel.Value,
-                    CompetencyId = e.CompetencyId
+                    CompetencyId = e.CompetencyId,
+                    Active = e.Competency.Active
 
                 }).FirstOrDefaultAsync(cancellationToken);
         }

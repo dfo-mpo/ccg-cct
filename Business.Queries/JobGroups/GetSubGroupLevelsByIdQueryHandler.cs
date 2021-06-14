@@ -35,7 +35,8 @@ namespace Business.Queries.JobGroups
                     SubGroupCode = e.SubJobGroup.SubCode,
                     JobGroupId = e.JobGroupId,
                     SubJobGroupId = e.SubJobGroupId,
-                    LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + ' ' + e.JobGroupLevel.LevelValue : e.SubJobGroup.SubCode + ' ' + e.JobGroupLevel.LevelValue
+                    LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + ' ' + e.JobGroupLevel.LevelValue : e.SubJobGroup.SubCode + ' ' + e.JobGroupLevel.LevelValue,
+                    Active = e.JobPosition.Active
                 }).Distinct()
                 .ToListAsync(cancellationToken);
         }

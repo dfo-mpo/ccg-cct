@@ -7,18 +7,25 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
+using Admin.Data;
+using Microsoft.Extensions.Logging;
 
 namespace Admin.Pages.Positions
 {
     public class EditModel : PageModel
     {
         private readonly DataModel.CctDbContext _context;
+        private readonly ILogger<EditModel> _logger;
+        private readonly JobPositionService _jobPositionService;
 
-        public EditModel(DataModel.CctDbContext context)
+
+        public EditModel(DataModel.CctDbContext context,
+            ILogger<EditModel> logger, JobPositionService jobPositionService)
         {
             _context = context;
+            _logger = logger;
+            _jobPositionService = jobPositionService;
         }
-
         [BindProperty]
         public JobPosition JobPosition { get; set; }
 
@@ -47,10 +54,11 @@ namespace Admin.Pages.Positions
                 return Page();
             }
 
-            _context.Attach(JobPosition).State = EntityState.Modified;
+            //    _context.Attach(JobPosition).State = EntityState.Modified;
 
             try
             {
+                _jobPositionService.UpdateJobPosition(JobPosition);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

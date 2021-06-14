@@ -1,0 +1,60 @@
+﻿@page
+@model Admin.Pages.Similar.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="JobPosition.Position" />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.HundredPercent" class="control-label"></label>
+                                <input asp-for="JobPosition.HundredPercent" class="form-control" />
+                                <span asp-validation-for="JobPosition.HundredPercent" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.NinetyPercent" class="control-label"></label>
+                                <input asp-for="JobPosition.NinetyPercent" class="form-control" />
+                                <span asp-validation-for="JobPosition.NinetyPercent" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.EightyPercent" class="control-label"></label>
+                                <input asp-for="JobPosition.EightyPercent" class="form-control" />
+                                <span asp-validation-for="JobPosition.EightyPercent" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.SeventyPercent" class="control-label"></label>
+                                <input asp-for="JobPosition.SeventyPercent" class="form-control" />
+                                <span asp-validation-for="JobPosition.SeventyPercent" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

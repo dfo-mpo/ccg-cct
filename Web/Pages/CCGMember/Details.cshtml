@@ -31,10 +31,12 @@
                 {
                     @foreach (var c in Model.PositionCertificates)
                     {
+                        if (c.Active != 0) {
                         var key = "c" + c.Id.ToString();
                         <tr>
                             <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                         </tr>
+                        }
                     }
                 }
                 else
@@ -56,6 +58,7 @@
 
                             foreach (var c in competencytype)
                             {
+                                if (c.Active != 0) { 
                                 var key1 = "a" + c.CompetencyId.ToString();
                                 var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
@@ -91,6 +94,7 @@
                                         </section>
                                     </td>
                                 </tr>
+                                }
                             }
                         }
                     }

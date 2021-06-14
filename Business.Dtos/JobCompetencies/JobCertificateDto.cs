@@ -10,7 +10,8 @@
 
             public string DescEng { get; set; }
 
-            public string DescFre { get; set; }       
+            public string DescFre { get; set; }
+        public int Active { get; set; }
     }
 }
 
