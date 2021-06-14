@@ -15,6 +15,7 @@ namespace Business.Commands.Admin.JobCompetencies
         public string NameFre { get; set; }
         public string DescEng { get; set; }
         public string DescFre { get; set; }
+        public int TypeId { get; set; }
         public int Active { get; set; }
         public string Level1DescEng { get; set; }
         public string Level1DescFre { get; set; }
@@ -56,16 +57,17 @@ namespace Business.Commands.Admin.JobCompetencies
             jobcompetency.DescEng = string.IsNullOrEmpty(command.DescEng) ? string.Empty : command.DescEng;
             jobcompetency.DescFre = string.IsNullOrEmpty(command.DescFre) ? string.Empty : command.DescFre;
             jobcompetency.Active = command.Active;
+            var execlevelinc = command.TypeId == 4 ? 5 : 0;
             var crg1 = _db.CompetencyRatingGroups
-                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 1).FirstOrDefault();
+                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 1 + execlevelinc).FirstOrDefault();
             var crg2 = _db.CompetencyRatingGroups
-                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 2).FirstOrDefault();
+                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 2 + execlevelinc).FirstOrDefault();
             var crg3 = _db.CompetencyRatingGroups
-                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 3).FirstOrDefault();
+                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 3 + execlevelinc).FirstOrDefault();
             var crg4 = _db.CompetencyRatingGroups
-                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 4).FirstOrDefault();
+                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 4 + execlevelinc).FirstOrDefault();
             var crg5 = _db.CompetencyRatingGroups
-                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 5).FirstOrDefault();
+                .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 5 + execlevelinc).FirstOrDefault();
             var jobcompetencylevel1req = _db.CompetencyLevelRequirements.First(e => e.Id == crg1.CompetencyLevelRequirementId);
             var jobcompetencylevel2req = _db.CompetencyLevelRequirements.First(e => e.Id == crg2.CompetencyLevelRequirementId);
             var jobcompetencylevel3req = _db.CompetencyLevelRequirements.First(e => e.Id == crg3.CompetencyLevelRequirementId);
