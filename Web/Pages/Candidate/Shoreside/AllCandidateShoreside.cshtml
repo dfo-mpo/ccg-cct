@@ -19,6 +19,7 @@
                 {
                     @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
                     {
+                        @if (jobgroup.Active != 0) {
                         <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
                             <div class="col-sm-4 mrgn-bttm-md">
                                 <figure>
@@ -27,6 +28,7 @@
                                 </figure>
                             </div>
                         </a>
+                        }
                     }
                 }
                 else

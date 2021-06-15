@@ -6,6 +6,7 @@
         public string TypeNameEng { get; set; }
         public string TypeNameFre { get; set; }
         public int CompetencyId { get; set; }
+        public int Active { get; set; }
         public string CompetencyNameEng { get; set; }
         public string CompetencyNameFre { get; set; }
         public string CompetencyDescEng { get; set; }

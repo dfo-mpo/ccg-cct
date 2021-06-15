@@ -208,5 +208,18 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<int>(url);
         }
+        public async Task UpdateJobCompetency(object Parameters)
+        {
+            string url = $"/api/jobcompetencies/updatejobcompetency?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task DeleteJobCompetency(object Parameters)
+        {
+            string url = $"/api/jobcompetencies/deletejobcompetency?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
     }
 }
+

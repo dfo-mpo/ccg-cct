@@ -28,6 +28,7 @@ namespace Business.Queries.JobGroups
                     Code = e.Code,
                     NameEng = e.NameEng,
                     NameFre = e.NameFre,
+                    Active = e.Active
 
                 }).ToListAsync(cancellationToken);
         }

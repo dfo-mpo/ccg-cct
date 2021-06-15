@@ -6,8 +6,10 @@
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid",Model.PositionId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id },
+        {"level", Model.Level },
+        { "subgroupcode", Model.SubGroupCode },
+        { "levelcode", Model.LevelCode },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
@@ -43,12 +45,15 @@
                 <tbody>
                     @foreach (var position in Model.Positions)
                     {
+                        if (position.Active != 0) {
                         var routedata = new Dictionary<string, string>
                          {
         {"objectiveid",  position.JobTitleId.ToString()},
         {"positionid",  Model.PositionId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id },
+        {"level", Model.Level },
+        { "subgroupcode", Model.SubGroupCode },
+        { "levelcode", Model.LevelCode },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
@@ -67,7 +72,8 @@
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
                     <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                 </tr>
-            }
+                        }
+                    }
                 </tbody>
             </table>
         </div>

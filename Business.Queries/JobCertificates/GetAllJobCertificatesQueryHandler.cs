@@ -28,6 +28,7 @@ namespace Business.Queries.JobCertificates
                     NameFre = e.NameFre,
                     DescEng = e.DescEng,
                     DescFre = e.DescFre,
+                    Active = e.Active
                 })
                 .ToListAsync(cancellationToken);
 

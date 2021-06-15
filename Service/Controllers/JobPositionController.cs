@@ -45,11 +45,11 @@ namespace Service.Controllers
         public async Task<IActionResult> GetByIdValues(
 
           [FromQuery] int[] positionId)
-            {
+        {
             var query = new GetJobPositionByIdValuesQuery
             {
                 Id = positionId,
- 
+
             };
 
             var result = await _queryProvider.ProcessAsync(query);
@@ -58,7 +58,7 @@ namespace Service.Controllers
 
         [HttpGet, Route("{Id}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyRatingDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetCompetenciesById([FromRoute]GetJobCompetencyRatingsByJobPositionIdQuery query)
+        public async Task<IActionResult> GetCompetenciesById([FromRoute] GetJobCompetencyRatingsByJobPositionIdQuery query)
         {
             var results =
                 await _queryProvider.ProcessAsync(query);
@@ -67,7 +67,7 @@ namespace Service.Controllers
 
         [HttpGet, Route("{Id}/{competencytypeId}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetCompetenciesByTypeId([FromRoute]GetJobCompetenciesByTypeIdQuery query)
+        public async Task<IActionResult> GetCompetenciesByTypeId([FromRoute] GetJobCompetenciesByTypeIdQuery query)
         {
             var results =
                 await _queryProvider.ProcessAsync(query);
@@ -76,7 +76,7 @@ namespace Service.Controllers
 
         [HttpGet, Route("{Id}/certificates")]
         [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPositionCertificatesByGroupLevelId([FromRoute]GetAllJobCertificatesByJobPositionIdQuery query)
+        public async Task<IActionResult> GetPositionCertificatesByGroupLevelId([FromRoute] GetAllJobCertificatesByJobPositionIdQuery query)
         {
             var results =
                 await _queryProvider.ProcessAsync(query);
@@ -122,9 +122,9 @@ namespace Service.Controllers
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetJobPositionId([FromRoute] GetJobPositionIdByJobTitleQuery query)
         {
-              var results =
-                          await _queryProvider.ProcessAsync(query);
-               return Ok(results);
+            var results =
+                        await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
         [HttpPost, Route("addjobrolepositionlocation")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
@@ -135,6 +135,12 @@ namespace Service.Controllers
         [HttpPost, Route("addjobrolepositionhlcategory")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobRolePositionHLCategoryCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+        [HttpPost, Route("deletejobposition")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task DeleteJobPosition([FromBody] DeleteJobPositionByIdCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }

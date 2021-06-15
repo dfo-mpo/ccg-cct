@@ -34,7 +34,9 @@
                     @Html.DisplayFor(modelItem => item.JobTitleFre)
                 </td>
                 <td>
-                    <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a>
+                    <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a> |
+                    <a asp-page="Edit" asp-route-id="@item.JobTitleId">Edit</a> |
+                    <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
                 </td>
             </tr>
         }

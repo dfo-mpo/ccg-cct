@@ -31,7 +31,8 @@ namespace Business.Queries.JobGroupLevels
             return _db.JobGroupLevels.Where(e => e.Id == query.Id)
                       .Select(e => new JobGroupLevelDto()
                       {
-                        Id = e.Id
+                        Id = e.Id,
+                        Active = e.Active
 
                       }).SingleOrDefaultAsync(cancellationToken);
         }

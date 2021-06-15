@@ -21,6 +21,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in Model.JobGroupPositions.ToList())
             {
+                if (level.Active != 0) { 
                 var routedata = new Dictionary<string, string>
                         {
                               { "id",  Model.Id.ToString()},
@@ -32,6 +33,7 @@
             <a role="menuitem" tabindex="-1"
                asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode</a>
         </li>
+                }
             }
         </ul>
     </div>

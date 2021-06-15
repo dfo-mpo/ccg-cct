@@ -8,7 +8,7 @@
     var paramdata = new Dictionary<string, string>
                             {
                                  {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
-                                 {"id", Model.Id.ToString() },
+                                 {"idobj", Model.Id.ToString() },
                                  {"positionid", Model.PositionId.ToString()},
                                  {"previouspage",Model.PreviousPage }
                             };
@@ -28,12 +28,13 @@
                 {
                     @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
                     {
+                        if (jobgroup.Active != 0) { 
                         var routedata = new Dictionary<string, string>
                              {
                           { "positionid",  Model.PositionId.ToString()},
                            {"previouspagecompare", "../../Candidate/Shoreside/Compare/AllObjective" },
                            {"previouspage", Model.PreviousPage},
-                          { "id",  jobgroup.Id.ToString()}
+                          { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="../../../CCGMember/Compare/ObjectiveLevel" asp-all-route-data="routedata">
                             <div class="col-sm-4 mrgn-bttm-md">
@@ -43,6 +44,7 @@
                                 </figure>
                             </div>
                         </a>
+                        }
                     }
                 }
                 else

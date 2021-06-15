@@ -35,7 +35,7 @@ namespace Business.Queries.JobPositions
                         NameFre = e.Certificate.NameFre,
                         DescEng = e.CertificateDescription.DescEng,
                         DescFre = e.CertificateDescription.DescFre,
-                        
+                        Active = e.Certificate.Active
 
                     }).ToListAsync(cancellationToken);
             }

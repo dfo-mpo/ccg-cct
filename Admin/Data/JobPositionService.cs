@@ -57,7 +57,36 @@ namespace Admin.Data
             string url = $"/api/jobpositions/addjobposition?";
             using var httpClient = _clientFactory.CreateClient("api");
             await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
-
+        }
+        public async Task UpdateJobPosition(object Parameters)
+        {
+            string url = $"/api/jobpositions/updatejobposition?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task DeleteJobPosition(object Parameters)
+        {
+            string url = $"/api/jobpositions/deletejobposition?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task UpdateSimilarPositions(object Parameters)
+        {
+            string url = $"/api/similar/updatesimilarjobpositions?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task PostSimilarPositions(object Parameters)
+        {
+            string url = $"/api/similar/addsimilarjobpositions?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task<int[]> GetAllSimilarSearchIds()
+        {
+            string url = $"/api/similar/ids?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<int[]>(url);
         }
     }
 }

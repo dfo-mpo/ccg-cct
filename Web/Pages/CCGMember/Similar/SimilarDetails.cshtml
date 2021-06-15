@@ -7,9 +7,11 @@
     {
         {"positionid" , Model.PositionId.ToString()},
         {"objectiveid",  Model.ObjectiveId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id },
+        {"level", Model.Level },
         {"levelObj", Model.LevelObj },
+        {"subgroupcode", Model.SubGroupCode },
+        {"levelcode", Model.LevelCode },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
@@ -27,8 +29,10 @@
     var routedataprevious = new Dictionary<string, string>
 {
         {"positionid", Model.PositionId.ToString()},
-        {"id", Model.Id.ToString() },
-        {"level", Model.Level.ToString() },
+        {"id", Model.Id },
+        {"level", Model.Level },
+        {"subgroupcode", Model.SubGroupCode },
+        {"levelcode", Model.LevelCode },
         {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
@@ -71,10 +75,12 @@
                 {
                     @foreach (var c in Model.PositionCertificates)
                     {
+                        if (c.Active != 0) { 
                         var key = "c" + c.Id.ToString();
                         <tr>
                             <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                         </tr>
+                        }
                     }
                 }
                 else
@@ -96,6 +102,7 @@
 
                             foreach (var c in competencytype)
                             {
+                                if (c.Active != 0) {
                                 var key1 = "a" + c.CompetencyId.ToString();
                                 var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
@@ -131,6 +138,7 @@
                                         </section>
                                     </td>
                                 </tr>
+                                }
                             }
                         }
                     }

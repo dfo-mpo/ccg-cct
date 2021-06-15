@@ -28,7 +28,8 @@ namespace Business.Queries.JobGroupTitles
                 {
                     Id = e.Id,
                     TitleNameFre = e.TitleFre,
-                    TitleNameEng = e.TitleEng
+                    TitleNameEng = e.TitleEng,
+                    Active = e.Active
 
                 }).ToListAsync(cancellationToken);
         }

@@ -21,7 +21,36 @@ namespace Admin.Data
             string url = $"/api/jobcertificates/addjobcertificate?";
             using var httpClient = _clientFactory.CreateClient("api");
             await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
-
         }
+        public async Task UpdateJobCertificate(object Parameters)
+        {
+            string url = $"/api/jobcertificates/updatejobcertificate?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task DeleteJobCertificate(object Parameters)
+        {
+            string url = $"/api/jobcertificates/deletejobcertificate?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task PostJobCertificateDescription(object Parameters)
+        {
+            string url = $"/api/jobcertificates/addjobcertificatedescription?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task UpdateJobCertificateDescription(object Parameters)
+        {
+            string url = $"/api/jobcertificates/updatejobcertificatedescription?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
+        public async Task<JobCertificateDto[]> GetAllJobCertificateDescriptions()
+        {
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates/certificatedescriptions");
+        }
+
     }
 }

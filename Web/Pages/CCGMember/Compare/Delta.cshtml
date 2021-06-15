@@ -42,9 +42,11 @@
 
                         @foreach (var c in Model.MatchingCertificates)
                         {
+                            if (c.Active != 0) { 
                             <tr>
                                 <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                             </tr>
+                            }
                         }
 
                     </tbody>
@@ -73,9 +75,11 @@
 
                             @foreach (var c in competencies)
                             {
+                                if (c.Active != 0) { 
                                 <tr>
                                     <td>@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</td>
                                 </tr>
+                                }
                             }
 
                         </tbody>
@@ -101,12 +105,14 @@
                 <tbody>
                     @foreach (var d in Model.DifferingCertificates)
                     {
+                        if (d.Active != 0) { 
                         var key = "c" + d.Id.ToString();
                         <tr>
                             <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
                             <td class="text-center bg-success">&nbsp;</td>
                             <td class="text-center bg-info">&nbsp;</td>
                         </tr>
+                        }
                     }
                 </tbody>
             </table>
@@ -134,13 +140,14 @@
                     <tbody>
                         @foreach (var d in competencies)
                         {
+                            if (d.Active != 0) {
                             var key1 = "a" + d.CompetencyId.ToString();
                             var key2 = "b" + d.CompetencyId.ToString();
                             var currentrating = d.RatingValueCur;
                             var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
                             if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
                             {
-                                    currentrating = Localizer["Added"].Value;
+                                currentrating = Localizer["Added"].Value;
                             }
                             <tr>
                                 <td>
@@ -178,8 +185,8 @@
                                     <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
                                 </td>
                             </tr>
+                            }
                         }
-
                     </tbody>
                 </table>
             }
@@ -198,10 +205,15 @@
                     {
                         {"positionid",  Model.PositionId.ToString()},
                         {"objectiveid",  Model.ObjectiveId.ToString() },
-                        {"id",  Model.Id.ToString()},
+                        {"id",  Model.Id},
+                        {"idobj",  Model.IdObj},
                         {"level",  Model.Level.ToString() },
                         {"levelobj", Model.LevelObj.ToString() },
+                        {"levelcode", Model.LevelCode },
+                        {"levelcodeobj", Model.LevelCodeObj },
                         {"pagesubmit", "true" },
+                        {"subgroupcode", Model.SubGroupCode },
+                        {"subgroupcodeobj", Model.SubGroupCodeObj },
                         {"samelevels" , Model.SameLevels},
                         {"higherlevels", Model.HigherLevels },
                         {"certificates", Model.Certificates },

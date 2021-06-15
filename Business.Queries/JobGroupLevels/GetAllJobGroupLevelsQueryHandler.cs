@@ -27,7 +27,8 @@ namespace Business.Queries.JobGroups
                 .Select(e => new JobGroupLevelDto()
                 {
                     Id = e.Id,
-                    LevelValue = e.LevelValue
+                    LevelValue = e.LevelValue,
+                    Active = e.Active
 
                 }).ToListAsync(cancellationToken);
         }

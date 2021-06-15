@@ -58,6 +58,7 @@
                     {
                         @foreach (var c in Model.PositionCertificates)
                         {
+                            if (c.Active != 0) { 
                             if (Model.CertificateIds.Contains(c.Id.ToString()))
                             {
                                 var key = "c" + c.Id.ToString();
@@ -77,6 +78,7 @@
                                         </section>
                                     </td>
                                 </tr>
+                                }
                             }
                             else
                             {
@@ -102,10 +104,11 @@
                                 <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                             </tr>
 
-                            foreach (var c in competencytype)
-                            {
-                                var key1 = "a" + c.CompetencyId.ToString();
-                                var key2 = "b" + c.CompetencyId.ToString();
+                                foreach (var c in competencytype)
+                                {
+                                    if (c.Active != 0) { 
+                                    var key1 = "a" + c.CompetencyId.ToString();
+                                    var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
                                     <td>
                                         <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
@@ -139,6 +142,7 @@
                                         </section>
                                     </td>
                                 </tr>
+                                    }
                                 }
                             }
                         }

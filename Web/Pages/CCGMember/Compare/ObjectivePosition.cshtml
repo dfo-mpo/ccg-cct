@@ -12,13 +12,18 @@
     var routedatanext = new Dictionary<string, string>
 {
         {"id",  Model.Id.ToString()},
+        { "idobj",  Model.IdObj.ToString()},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspagecompare", Model.PreviousPageCompare },
         {"previouspagedelta", "ObjectivePosition" },
         {"level",  Model.Level.ToString() },
         {"levelobj", Model.LevelObj.ToString() },
+        { "levelcode", Model.LevelCode },
+        {"levelcodeobj", Model.LevelCodeObj },
         {"positionid",  Model.PositionId.ToString()},
+        {"subgroupcode", Model.SubGroupCode },
+        {"subgroupcodeobj", Model.SubGroupCodeObj },
         {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
         };
 
@@ -36,9 +41,11 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
             @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
             {
+                if (level.Active != 0) {
                 var data = new Dictionary<string, string>
                  {
                      {"positionid", Model.PositionId.ToString()},
+                     {"idobj",  level.JobGroupId.ToString()},
                      {"id",  Model.Id.ToString()},
                      {"previouspage", Model.PreviousPage },
                      {"previouspagedetails", Model.PreviousPageDetails },
@@ -46,12 +53,15 @@
                      {"previouspagecompare", Model.PreviousPageCompare },
                      {"levelobj",  level.LevelValue.ToString() },
                      {"levelcodeobj", level.LevelCode },
+                     { "levelcode", Model.LevelCode },
+                     {"subgroupcode", Model.SubGroupCode },
                      {"subgroupcodeobj", level.SubGroupCode }
                   };
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1"
                        asp-page="ObjectivePosition" asp-all-route-data="data">@Localizer["Level"] @level.LevelCode</a>
                 </li>
+                }
             }
         </ul>
     </div>
@@ -65,9 +75,11 @@
 
             @foreach (var jp in Model.JobGroupPositions)
             {
+                if (jp.Active != 0) {
                 var data = new Dictionary<string, string>
                      {
                         {"id",  Model.Id.ToString()},
+                        { "idobj",  Model.IdObj.ToString()},
                         {"level",  Model.Level.ToString() },
                         {"levelobj", Model.LevelObj.ToString() },
                         {"previouspage", Model.PreviousPage },
@@ -76,9 +88,12 @@
                         {"positionid",  Model.PositionId.ToString()},
                         {"objectiveid",  jp.JobTitleId.ToString()},
                         {"levelcodeobj", Model.LevelCodeObj },
+                        { "levelcode", Model.LevelCode },
+                        {"subgroupcode", Model.SubGroupCode },
                         {"subgroupcodeobj", Model.SubGroupCodeObj }
                      };
                 <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
+                }
             }
         </ul>
     </div>
@@ -89,13 +104,16 @@
         @{var routedataprevious = new Dictionary<string, string>
         {
         { "id",  Model.Id.ToString()},
+        { "idobj",  Model.IdObj.ToString()},
         {"level", Model.Level.ToString() },
         {"levelobj", Model.LevelObj.ToString() },
         {"positionid",  Model.PositionId.ToString()},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspagecompare", Model.PreviousPageCompare },
+        {"levelcode", Model.LevelCode },
         {"levelcodeobj", Model.LevelCodeObj },
+        {"subgroupcode", Model.SubGroupCode },
         {"subgroupcodeobj", Model.SubGroupCodeObj }
         };
         }

@@ -25,7 +25,9 @@
             {
                 @foreach (var position in Model.SeagoingPositions)
                 {
-                    var routedata = new Dictionary<string, string>
+                    if (position.Active != 0)
+                    {
+                        var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "../../../Student/College/Computer" },
                     { "positionid",  position.JobTitleId.ToString()},
@@ -36,8 +38,9 @@
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
+                        }
+                    }
                 }
-            }
             else
             {
                 <tr>
@@ -65,7 +68,9 @@
             {
                 @foreach (var position in Model.ShoreSidePositions)
                 {
-                    var routedata = new Dictionary<string, string>
+                    if (position.Active != 0)
+                    {
+                        var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "../../Student/College/Computer" },
                     { "positionid",  position.JobTitleId.ToString()},
@@ -76,8 +81,9 @@
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
+                        }
+                    }
                 }
-            }
             else
             {
                 <tr>

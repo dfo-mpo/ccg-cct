@@ -38,6 +38,7 @@ namespace Business.Queries.JobGroups
                                 JobTitleId = e.JobPositionId,
                                 JobTitleFre = e.JobPosition.TitleFre,
                                 JobTitleEng = e.JobPosition.TitleEng,
+                                Active = e.JobPosition.Active
                             }).ToListAsync(cancellationToken);
 
         }

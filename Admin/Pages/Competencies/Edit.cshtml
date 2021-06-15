@@ -13,6 +13,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Competency.Id" />
+            <input type="hidden" asp-for="Competency.TypeId" />
             <div class="form-group">
                 <label asp-for="Competency.NameEng" class="control-label"><b>Name English</b></label>
                 <input asp-for="Competency.NameEng" class="form-control" />
@@ -33,64 +34,69 @@
                 <textarea asp-for="Competency.DescFre" class="form-control" rows="6" cols="50"></textarea>
                 <span asp-validation-for="Competency.DescFre" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Competency.Active" class="control-label"></label>
+                <input asp-for="Competency.Active" class="form-control" />
+                <span asp-validation-for="Competency.Active" class="text-danger"></span>
+            </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 1 - English</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Basic understanding of the CCG and its role as a program facilitator.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 1 - English</b></label>
+                    <textarea asp-for="Competency.Level1DescEng" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level1DescEng" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 1 - French</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Compréhension de base de la GCC et de son rôle en tant que facilitateur de programmes.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 1 - French</b></label>
+                    <textarea asp-for="Competency.Level1DescFre" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level1DescFre" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 2 - English</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Understands the duties of the CCG and the roles and responsibilities of key contacts in the CCG’s regional organization. Has a good understanding of certain programs and assets.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level2DescEng" class="control-label"><b>Level 2 - English</b></label>
+                    <textarea asp-for="Competency.Level2DescEng" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level2DescEng" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 2 - French</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Comprend les fonctions de la GCC ainsi que les rôles et les responsabilités des principales personnes ressources de l'organisation régionale de la GCC. A une bonne compréhension de certains programmes et actifs.</textarea>
-                    <span class="text-danger"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 3 - English</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Good understanding of programs within a regional or national organizational framework. Understands most programs and associated assets. Identifies contacts for other programs. Understands partners’ roles and responsibilities.</textarea>
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 3 - French</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Bonne compréhension des programmes  dans un cadre organisationnel régional ou national. Comprend la plupart des programmes et des actifs associés. Identifie les personnes ressources pour d'autres programmes. Comprend les rôles et les responsabilités des partenaires.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level2DescFre" class="control-label"><b>Level 2 - French</b></label>
+                    <textarea asp-for="Competency.Level2DescFre" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level2DescFre" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 4 - English</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Advanced knowledge of programs and their impact on relations with the public and partners regionally and/or nationally. Extensive knowledge of all CCG programs, as well as regional and national capacity and asset condition. Participates in program planning.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level3DescEng" class="control-label"><b>Level 3 - English</b></label>
+                    <textarea asp-for="Competency.Level3DescEng" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level3DescEng" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 4 - French</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Connaissance avancée des programmes et de leurs impacts sur les relations avec le public et les partenaires, au niveau régional et / ou national. Connaissance approfondie de tous les programmes de la GCC, ainsi que de la capacité et de l'état des actifs au niveau régional et national. Participe à la planification des programmes.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level3DescFre" class="control-label"><b>Level 3 - French</b></label>
+                    <textarea asp-for="Competency.Level3DescFre" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level3DescFre" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 5 - English</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Extensive knowledge of all CCG programs, their delivery methods and timelines both regionally and nationally. Assesses stakeholder expectations and needs for the CCG and other departments in planning and exercises. Establishes internal and external relationships. Suggests potential improvements, changes or opportunities for program expansion.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level4DescEng" class="control-label"><b>Level 4 - English</b></label>
+                    <textarea asp-for="Competency.Level4DescEng" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level4DescEng" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="control-label"><b>Level 5 - French</b></label>
-                    <textarea class="form-control" rows="3" cols="45">Connaissance approfondie de tous les programmes de la GCC, de leurs modes de livraison et de leurs échéanciers aux niveaux régional et national. Évalue les attentes et les besoins des intervenants pour la GCC et les autres ministères dans la planification et les exercices. Établit des relations à l'interne et à l'externe. Suggère des améliorations potentielles, des changements ou des opportunités d'expansion des programmes.</textarea>
-                    <span class="text-danger"></span>
+                    <label asp-for="Competency.Level4DescFre" class="control-label"><b>Level 4 - French</b></label>
+                    <textarea asp-for="Competency.Level4DescFre" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level4DescFre" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Competency.Level5DescEng" class="control-label"><b>Level 5 - English</b></label>
+                    <textarea asp-for="Competency.Level5DescEng" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level5DescEng" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Competency.Level5DescFre" class="control-label"><b>Level 5 - French</b></label>
+                    <textarea asp-for="Competency.Level5DescFre" class="form-control" rows="3" cols="45"></textarea>
+                    <span asp-validation-for="Competency.Level5DescFre" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group">

@@ -33,6 +33,8 @@ namespace Business.Queries.JobCompetencies
                     NameFre = e.Competency.NameFre,
                     DescEng = e.Competency.DescEng,
                     DescFre = e.Competency.DescFre,
+                    Active = e.Competency.Active,
+                    TypeId = e.CompetencyTypeId
 
                 }).FirstOrDefaultAsync(cancellationToken);
         }

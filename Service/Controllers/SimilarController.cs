@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Business.Queries.Similar;
-
+using Business.Dtos.Similar;
+using Business.Commands.Admin.Similar;
+using Business.Commands.Admin.JobPositions;
 
 namespace Service.Controllers
 {
@@ -22,22 +24,24 @@ namespace Service.Controllers
             _commandSender = commandSender;
         }
 
-        [HttpGet, Route("positions")] 
+        [HttpGet, Route("positions")]
         [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllSimilarPositionsByPositionId(
-            
-            [FromQuery] int   jobPositionId, 
+
+            [FromQuery] int jobPositionId,
+            [FromQuery] int[] positionId,
             [FromQuery] int[] requiredCompetencyId,
             [FromQuery] int[] sameLevelCompetencyId,
             [FromQuery] int[] higherLevelCompetencyId,
             [FromQuery] int[] sameOrHigherLevelCompetencyId,
             [FromQuery] int[] addedCompetencyId,
             [FromQuery] int[] certificateId,
-            [FromQuery] double   percentMatch)
+            [FromQuery] double percentMatch)
         {
-            var query = new GetAllSimilarPositionsByPositionIdQuery
+            var query = new GetAllSimilarJobPositionsByJobPositionIdQuery
             {
                 JobPositionId = jobPositionId,
+                SimilarJobPositionId = positionId,
                 RequiredCompetencyId = requiredCompetencyId,
                 SameLevelCompetencyId = sameLevelCompetencyId,
                 HigherLevelCompetencyId = higherLevelCompetencyId,
@@ -49,6 +53,60 @@ namespace Service.Controllers
 
             var result = await _queryProvider.ProcessAsync(query);
             return Ok(result);
+        }
+        [HttpGet, Route("ids")]
+        [ProducesResponseType(typeof(List<int>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get()
+        {
+            var results =
+                await _queryProvider.ProcessAsync<GetAllSearchSimilarJobsPositionIdsQueryHandler, List<int>>();
+            return Ok(results);
+        }
+        [HttpPost, Route("updatesimilarjobpositions")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task UpdateSimilarPositions([FromBody] UpdateSimilarPositionsCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("addsimilarjobpositions")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task AddSimilarPositions([FromBody] AddSimilarPositionsCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpGet, Route("hundredpercentsimilarjobpositions/{JobPositionId}")]
+        [ProducesResponseType(typeof(SimilarSearchDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetHundredPercentSimilar([FromRoute] GetAllOneHundredPercentSimilarJobPositionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpGet, Route("ninetypercentsimilarjobpositions/{JobPositionId}")]
+        [ProducesResponseType(typeof(SimilarSearchDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetNinetyPercentSimilar([FromRoute] GetAllNinetyPercentSimilarJobPositionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpGet, Route("eightypercentsimilarjobpositions/{JobPositionId}")]
+        [ProducesResponseType(typeof(SimilarSearchDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetSeventyPercentSimilar([FromRoute] GetAllEightyPercentSimilarJobPositionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpGet, Route("seventypercentsimilarjobpositions/{JobPositionId}")]
+        [ProducesResponseType(typeof(SimilarSearchDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetSeventyPercentSimilar([FromRoute] GetAllSeventyPercentSimilarJobPositionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
     }
 }
