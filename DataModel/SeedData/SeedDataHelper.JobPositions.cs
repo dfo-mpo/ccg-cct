@@ -139,7 +139,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 132, TitleEng = "Senior Engineering Officer", TitleFre = "Officier d'ingénierie sénior", Active = 1 },
             new JobPosition {Id = 133, TitleEng = "Chief Officer", TitleFre = "Chef officier", Active = 1 },
             new JobPosition {Id = 134, TitleEng = "Senior Engineering Officer", TitleFre = "Officier d'ingénierie sénior", Active = 1 },
-            new JobPosition {Id = 135, TitleEng = "Senior Engineering Officer", TitleFre = "Officier d'ingénierie sénior", Active = 1 },
+            new JobPosition {Id = 135, TitleEng = "Senior Electrical Officer", TitleFre = "Officier électricien sénior", Active = 1 },
             new JobPosition {Id = 136, TitleEng = "Chief Engineer", TitleFre = "Ingénieur en chef", Active = 1 },
             new JobPosition {Id = 137, TitleEng = "Senior Engineer", TitleFre = "Ingénieur senior", Active = 1 },
             new JobPosition {Id = 138, TitleEng = "Chief Engineer", TitleFre = "Ingénieur en chef", Active = 1 },
