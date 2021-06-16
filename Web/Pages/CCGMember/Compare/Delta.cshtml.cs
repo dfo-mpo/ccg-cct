@@ -60,7 +60,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty]
         public JobCertificateDto[] MatchingCertificates { get; set; }
         [BindProperty]
-        public JobCertificateDto[] DifferingCertificates { get; set; }
+        public SharedJobCertificateDto[] DifferingCertificates { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; }
         [BindProperty(SupportsGet = true)]

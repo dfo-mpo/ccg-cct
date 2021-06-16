@@ -109,8 +109,8 @@
                         var key = "c" + d.Id.ToString();
                         <tr>
                             <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
-                            <td class="text-center bg-success">&nbsp;</td>
-                            <td class="text-center bg-info">&nbsp;</td>
+                            <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                            <td class="text-center bg-info">@d.ObjectivePositionHas</td>
                         </tr>
                         }
                     }
