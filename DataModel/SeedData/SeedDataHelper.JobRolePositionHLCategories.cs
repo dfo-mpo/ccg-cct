@@ -773,7 +773,7 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory
                 {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
-                {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386, JobHLCategoryId = 2},
+                {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 5, JobPositionId = 386, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
                 {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387, JobHLCategoryId = 2},
             new JobRolePositionHLCategory
