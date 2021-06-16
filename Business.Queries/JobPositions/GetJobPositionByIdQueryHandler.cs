@@ -30,9 +30,11 @@ namespace Business.Queries.JobPositions
                 .Select(e => new JobPositionDto()
                 {
                     JobGroupId = e.JobGroupId,
+                    JobGroupCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code : e.SubJobGroup.SubCode,
+                    SubJobGroupId = e.SubJobGroupId,
+                    SubGroupCode = e.SubJobGroup.SubCode,
                     JobLevelId = e.JobGroupLevel.Id,
                     JobLevelValue = e.JobGroupLevel.LevelValue,
-                    JobGroupCode = e.JobGroup.Code,
                     JobGroupTitleEng = e.JobGroup.NameEng,
                     JobGroupTitleFre = e.JobGroup.NameFre,
                     JobGroupLevelId = e.JobGroupLevelId,
@@ -40,7 +42,7 @@ namespace Business.Queries.JobPositions
                     JobTitleId = e.JobPositionId,
                     JobTitleFre = e.JobPosition.TitleFre,
                     JobTitleEng = e.JobPosition.TitleEng,
-                    Active = e.JobPosition.Active
+                    Active = e.JobPosition.Active,
 
                 }).FirstOrDefaultAsync(cancellationToken);
         }

@@ -92,7 +92,7 @@ namespace Business.Queries.Compare
                         Active = competency.Competency.Active
                     }).Where(e => e.RatingValueCur != e.RatingValueObj);
 
-           return currentCompetencies.Union(objectiveCompetencies).ToListAsync();       
+           return currentCompetencies.Union(objectiveCompetencies).ToListAsync(cancellationToken);       
         }
     }
 }
