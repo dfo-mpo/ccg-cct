@@ -49,7 +49,7 @@ namespace Service.Controllers
             return Ok(results);
         }
         [HttpGet, Route("differing/certificates/{PositionId}/{ObjectiveId}")]
-        [ProducesResponseType(typeof(JobCertificateDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SharedJobCertificateDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetDifferingCertificatesById([FromRoute] GetDifferingCertificatesByComparedJobPositionsQuery query)
         {
             var results =

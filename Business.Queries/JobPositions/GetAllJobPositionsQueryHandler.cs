@@ -28,7 +28,9 @@ namespace Business.Queries.JobPositions
                 .Select(e => new JobPositionDto()
                 {
                     JobGroupId = e.JobGroupId,
-                    JobGroupCode = e.JobGroup.Code,
+                    JobGroupCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code : e.SubJobGroup.SubCode,
+                    SubJobGroupId = e.SubJobGroupId,
+                    SubGroupCode = e.SubJobGroup.SubCode,
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobGroupLevelValue = e.JobGroupLevel.LevelValue,
                     JobTitleId = e.JobPositionId,
