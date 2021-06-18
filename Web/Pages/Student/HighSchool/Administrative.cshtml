@@ -2,12 +2,13 @@
 @model Web.Pages.Student.HighSchool.AdministrativeModel
 @inject IViewLocalizer Localizer
 @{
+    ViewData["Title"] = Localizer["title"];
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
 
     <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-        <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
-        <a href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+        <a title="@Localizer["print"]" target="_blank" href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]"></span> </a>
+        <a title="@Localizer["save"]" target="_blank" href="@Url.Action("StudentPositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
     </div>
 <div class="mrgn-tp-lg">
     <h3 class="text-center">@Localizer["seagoing"]</h3>
@@ -95,9 +96,9 @@
         </tbody>
     </table>
 
-    <div class="row">
-        <div class="col-lg-12 mrgn-bttm-md">
-            <nav role="navigation" class="mrgn-bttm-lg">
+    <div style="clear:both;">
+        <div class="col-lg-12">
+            <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
                     <li class="previous"><a asp-page="AllPositions" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>

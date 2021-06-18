@@ -147,4 +147,7 @@
   <data name="shoreside" xml:space="preserve">
     <value>POSITIONS À TERRE</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>École secondaire - Postes de métiers</value>
+  </data>
 </root>

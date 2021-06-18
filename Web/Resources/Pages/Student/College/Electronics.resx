@@ -153,4 +153,7 @@
   <data name="shoreside" xml:space="preserve">
     <value>SHORESIDE POSITIONS</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>College - Electronic Positions</value>
+  </data>
 </root>

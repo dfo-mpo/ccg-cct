@@ -144,4 +144,10 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="Print PDF" xml:space="preserve">
+    <value>Imprimer au format PDF</value>
+  </data>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Enregistrer au format PDF</value>
+  </data>
 </root>

@@ -129,6 +129,9 @@
   <data name="computer" xml:space="preserve">
     <value>Computer Science</value>
   </data>
+  <data name="deck" xml:space="preserve">
+    <value>Ships' Crew</value>
+  </data>
   <data name="economics" xml:space="preserve">
     <value>(including Economics, Sociology, Psychology)</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-eng.html</value>
+  </data>
+  <data name="officer" xml:space="preserve">
+    <value>Ships' Officer</value>
   </data>
   <data name="PhotoArts" xml:space="preserve">
     <value>Photo of an individual working at her desk</value>
@@ -153,8 +159,14 @@
   <data name="PhotoComputer" xml:space="preserve">
     <value>Photo of computer systems</value>
   </data>
+  <data name="PhotoDeck" xml:space="preserve">
+    <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>
+  </data>
   <data name="PhotoEngineer" xml:space="preserve">
     <value>Photo of Canadian Coast Guard workshop</value>
+  </data>
+  <data name="PhotoOfficer" xml:space="preserve">
+    <value>Photo of Canadian Coast Guard Officer on the bridge of a vessel</value>
   </data>
   <data name="PhotoSciences" xml:space="preserve">
     <value>Photo of a Canadian Coast Guard nurse checking someones blood pressure</value>
@@ -170,5 +182,8 @@
   </data>
   <data name="social" xml:space="preserve">
     <value>Social Science</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>University - All Positions</value>
   </data>
 </root>

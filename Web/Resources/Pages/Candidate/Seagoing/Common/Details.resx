@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="print" xml:space="preserve">
+    <value>Print PDF</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>Would you like to compare or find similar positions within the organization to your selected position below?</value>
   </data>
   <data name="Question2" xml:space="preserve">
     <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save PDF</value>
   </data>
 </root>

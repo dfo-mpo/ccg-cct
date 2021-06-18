@@ -129,11 +129,17 @@
   <data name="PhotoU" xml:space="preserve">
     <value>Photo d'étudiants assis à une table dans le salon des étudiants</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>Quel est votre niveau académique?</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Étudiants</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
