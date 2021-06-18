@@ -126,11 +126,29 @@
   <data name="computer" xml:space="preserve">
     <value>Ordinateurs</value>
   </data>
+  <data name="deck" xml:space="preserve">
+    <value>Pont / navigation maritime</value>
+  </data>
+  <data name="deckphoto" xml:space="preserve">
+    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
+  </data>
+  <data name="engineer" xml:space="preserve">
+    <value>Ingénierie maritime</value>
+  </data>
+  <data name="engineeringphoto" xml:space="preserve">
+    <value>Photo des ingénieurs de la Garde côtière canadienne</value>
+  </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
   </data>
+  <data name="logistics" xml:space="preserve">
+    <value>Logistique maritime</value>
+  </data>
+  <data name="logisticsphoto" xml:space="preserve">
+    <value>Photo d'un cuisinier de la Garde côtière canadienne préparant des fruits et légumes</value>
+  </data>
   <data name="PhotoAdmin" xml:space="preserve">
-    <value>Photo du personnel administratif travaillant à son bureau</value>
+    <value>Photo d'une administratrice de la Garde côtière canadienne travaillant à son bureau</value>
   </data>
   <data name="PhotoCollege" xml:space="preserve">
     <value>Photo du Collège de la Garde côtière canadienne</value>
@@ -139,13 +157,16 @@
     <value>Photo de systèmes informatiques</value>
   </data>
   <data name="PhotoTrades" xml:space="preserve">
-    <value>Photo d'un soudeur au travail</value>
+    <value>Photo d'un soudeur de la Garde côtière canadienne au travail</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Choisissez un domaine qui vous intéresse?</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>École secondaire - Tous les postes</value>
   </data>
   <data name="trades" xml:space="preserve">
     <value>Métiers généraux</value>

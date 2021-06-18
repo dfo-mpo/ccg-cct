@@ -139,10 +139,10 @@
     <value>Précédent</value>
   </data>
   <data name="Print PDF" xml:space="preserve">
-    <value>Imprimer PDF</value>
+    <value>Imprimer au format PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Enregistrer le PDF</value>
+    <value>Enregistrer au format PDF</value>
   </data>
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSITIONS SIMILAIRES</value>

@@ -3063,7 +3063,7 @@ namespace DataModel.SeedData
             new JobRolePositionLocation
                 {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 7},
             new JobRolePositionLocation
-                {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386, JobLocationRegionId = 4},
+                {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 5, JobPositionId = 386, JobLocationRegionId = 4},
             new JobRolePositionLocation
                 {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387, JobLocationRegionId = 1},
             new JobRolePositionLocation

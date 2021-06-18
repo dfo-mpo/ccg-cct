@@ -147,6 +147,9 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="print" xml:space="preserve">
+    <value>Imprimer au format PDF</value>
+  </data>
   <data name="Question1" xml:space="preserve">
     <value>Souhaitez-vous comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous?</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="SAME CERTIFICATION" xml:space="preserve">
     <value>MÊME ATTESTATION</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer au format PDF</value>
   </data>
   <data name="SELECT" xml:space="preserve">
     <value>SÉLECTIONNER</value>

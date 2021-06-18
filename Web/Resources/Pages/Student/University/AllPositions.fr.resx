@@ -129,6 +129,9 @@
   <data name="computer" xml:space="preserve">
     <value>L'informatique</value>
   </data>
+  <data name="deck" xml:space="preserve">
+    <value>Équipage des navires</value>
+  </data>
   <data name="economics" xml:space="preserve">
     <value>(y compris économie, sociologie, psychologie)</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
+  </data>
+  <data name="officer" xml:space="preserve">
+    <value>Officiers de navires</value>
   </data>
   <data name="PhotoArts" xml:space="preserve">
     <value>Photo d'une personne travaillant à son bureau</value>
@@ -153,8 +159,14 @@
   <data name="PhotoComputer" xml:space="preserve">
     <value>Photo de systèmes informatiques</value>
   </data>
+  <data name="PhotoDeck" xml:space="preserve">
+    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
+  </data>
   <data name="PhotoEngineer" xml:space="preserve">
     <value>Photo de l'atelier de la Garde côtière canadienne</value>
+  </data>
+  <data name="PhotoOfficer" xml:space="preserve">
+    <value>Photo d'un officier de la Garde côtière canadienne sur le pont d'un navire</value>
   </data>
   <data name="PhotoSciences" xml:space="preserve">
     <value>Photo d'une infirmière de la Garde côtière canadienne vérifiant la tension artérielle d'une personne</value>
@@ -173,5 +185,8 @@
   </data>
   <data name="social" xml:space="preserve">
     <value>Science sociale</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Université - Tous les postes</value>
   </data>
 </root>

@@ -120,14 +120,32 @@
   <data name="admin" xml:space="preserve">
     <value>Administratif</value>
   </data>
+  <data name="adminphoto" xml:space="preserve">
+    <value>Photo d'une administratrice de la Garde côtière canadienne travaillant à son bureau</value>
+  </data>
   <data name="ccgcollege" xml:space="preserve">
     <value>Collège de la Garde côtière canadienne</value>
+  </data>
+  <data name="collegephoto" xml:space="preserve">
+    <value>Photo du Collège de la Garde côtière canadienne</value>
   </data>
   <data name="computer" xml:space="preserve">
     <value>Ordinateurs</value>
   </data>
+  <data name="computerphoto" xml:space="preserve">
+    <value>Photo de matériel informatique</value>
+  </data>
+  <data name="glphoto" xml:space="preserve">
+    <value>Photo d'un soudeur de la Garde côtière canadienne au travail</value>
+  </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
+  </data>
+  <data name="logistics" xml:space="preserve">
+    <value>Logistique maritime</value>
+  </data>
+  <data name="logisticsphoto" xml:space="preserve">
+    <value>Photo d'un cuisinier de la Garde côtière canadienne préparant des fruits et légumes</value>
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Choisissez un domaine qui vous intéresse?</value>
