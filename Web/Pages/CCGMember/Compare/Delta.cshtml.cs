@@ -71,6 +71,8 @@ namespace Web.Pages.CCGMember.Compare
         public string PreviousPageDetails { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PreviousPageDelta { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageSimilarDetails { get; set; } = string.Empty;
         public DeltaModel(ILogger<DeltaModel> logger, CompareService compareService)
         {
             _logger = logger;

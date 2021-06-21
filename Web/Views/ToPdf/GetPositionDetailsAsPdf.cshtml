@@ -40,13 +40,13 @@
                 <th style="background-color:#f2f2f2" colspan="2">@certifications</th>
             </tr>
 
-            @if (PositionCertificates.Any())
+            @if (PositionCertificates.Any(e => e.Active != 0))
             {
-                @foreach (var c in PositionCertificates)
+                @foreach (var c in PositionCertificates.Where(e => e.Active != 0))
                 {
-                    <tr>
-                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
-                    </tr>
+                        <tr>
+                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                        </tr>
                 }
             }
             else
@@ -59,27 +59,29 @@
             {
                 @foreach (var competencytype in PositionCompetencyRatings)
                 {
-                    if (competencytype.Any()) { 
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="80%">@(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
-                        <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
-                    </tr>
-                    @foreach(var c in competencytype) {
-                    <tr>
-                        <td>
-                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                        </td>
-                        <td class="text-center">
+                    if (competencytype.Any(e => e.Active != 0))
+                    {
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="80%">@(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                            <th style="background-color:#f2f2f2" class="text-center" width="20%">@level</th>
+                        </tr>
+                        @foreach (var c in competencytype.Where(e => e.Active != 0))
+                        {
+                                <tr>
+                                    <td>
+                                        @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                                    </td>
+                                    <td class="text-center">
 
-                            @c.RatingValue
+                                        @c.RatingValue
 
-                        </td>
-                    </tr>
-                      }
-                   }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
                 }
-            }
-        </tbody>
+            </tbody>
     </table>
 </section>
 

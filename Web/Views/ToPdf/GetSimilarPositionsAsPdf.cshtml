@@ -20,15 +20,15 @@
                 <td class="bg-primary" width="25%">@level</td>
                 <td class="bg-primary" width="75%">@positions</td>
             </tr>
-            
-            @foreach (var position in Positions)
-            {
-        <tr>
-            <td>@position.JobGroupCode-@position.JobLevelValue</td>
-            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
 
-        </tr>
-    }
-        </tbody>
+            @foreach (var position in Positions.Where(e => e.Active != 0))
+            {
+                    <tr>
+                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                    </tr>
+                }
+            </tbody>
     </table>
 </div>

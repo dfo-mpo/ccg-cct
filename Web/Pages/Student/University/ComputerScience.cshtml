@@ -22,12 +22,10 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.SeagoingPositions.Any())
+            @if (Model.SeagoingPositions.Any(e => e.Active != 0))
             {
-                @foreach (var position in Model.SeagoingPositions)
+                @foreach (var position in Model.SeagoingPositions.Where(e => e.Active != 0))
                 {
-                    if (position.Active != 0)
-                    {
                         var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "../../../Student/University/ComputerScience" },
@@ -39,7 +37,6 @@
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
-                        }
                     }
                 }
             else
@@ -65,12 +62,10 @@
         </thead>
 
         <tbody>
-            @if (Model.ShoreSidePositions.Any())
+            @if (Model.ShoreSidePositions.Any(e => e.Active != 0))
             {
-                @foreach (var position in Model.ShoreSidePositions)
+                @foreach (var position in Model.ShoreSidePositions.Where(e => e.Active != 0))
                 {
-                    if (position.Active != 0)
-                    {
                         var routedata = new Dictionary<string, string>
                  {
                     {"previouspage", "../../Student/University/ComputerScience" },
@@ -82,8 +77,7 @@
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
-                        }
-                    }
+                   }               
                 }
             else
             {

@@ -12,7 +12,6 @@
         {"levelObj", Model.LevelObj },
         {"subgroupcode", Model.SubGroupCode },
         {"levelcode", Model.LevelCode },
-        {"pagesubmit", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
         {"certificates", Model.Certificates },
@@ -23,6 +22,7 @@
         {"previouspagesimilar", Model.PreviousPageSimilar },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspage", Model.PreviousPage},
+        {"previouspagesimilardetails", Model.PreviousPageSimilarDetails },
         {"previouspagedelta", "../Similar/SimilarDetails" }
 
     };
@@ -34,6 +34,7 @@
         {"subgroupcode", Model.SubGroupCode },
         {"levelcode", Model.LevelCode },
         {"pagesubmit", "true" },
+         {"percentselected", "true" },
         {"samelevels" , Model.SameLevels},
         {"higherlevels", Model.HigherLevels },
         {"certificates", Model.Certificates },
@@ -43,6 +44,8 @@
         {"percentmatch", Model.PercentMatch },
         {"previouspagesimilar", Model.PreviousPageSimilar },
         {"previouspagedetails", Model.PreviousPageDetails },
+
+                   {"previouspagesimilardetails", Model.PreviousPageSimilarDetails },
         {"previouspage", Model.PreviousPage}
 };
 
@@ -71,16 +74,14 @@
                     <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
 
-                @if (Model.PositionCertificates.Any())
+                @if (Model.PositionCertificates.Any(e => e.Active != 0))
                 {
-                    @foreach (var c in Model.PositionCertificates)
+                    @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                     {
-                        if (c.Active != 0) { 
                         var key = "c" + c.Id.ToString();
                         <tr>
                             <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                         </tr>
-                        }
                     }
                 }
                 else
@@ -93,18 +94,17 @@
                 {
                     @foreach (var competencytype in Model.PositionCompetencyRatings)
                     {
-                        if (competencytype.Any())
+                        if (competencytype.Any(e => e.Active != 0))
                         {
                             <tr>
                                 <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
                                 <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                             </tr>
 
-                            foreach (var c in competencytype)
+                            foreach (var c in competencytype.Where(e => e.Active != 0))
                             {
-                                if (c.Active != 0) {
-                                var key1 = "a" + c.CompetencyId.ToString();
-                                var key2 = "b" + c.CompetencyId.ToString();
+                                    var key1 = "a" + c.CompetencyId.ToString();
+                                    var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
                                     <td>
                                         <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
@@ -138,7 +138,6 @@
                                         </section>
                                     </td>
                                 </tr>
-                                }
                             }
                         }
                     }
@@ -149,7 +148,7 @@
             <nav role="navigation" class="mrgn-bttm-lg">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="SimilarList" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageSimilarDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>

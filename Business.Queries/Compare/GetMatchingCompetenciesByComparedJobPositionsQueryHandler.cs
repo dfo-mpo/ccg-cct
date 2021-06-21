@@ -26,10 +26,9 @@ namespace Business.Queries.Compare
 
         public Task<List<SharedJobCompetencyRating>> HandleAsync(GetMatchingCompetenciesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId)
-                    join obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId)
+            return (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId && e.Competency.Active != 0)
+                    join obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId && e.Competency.Active != 0)
                     on pos.CompetencyId equals obj.CompetencyId                 
-                    where obj.CompetencyRatingLevel.Value == pos.CompetencyRatingLevel.Value
                     orderby obj.CompetencyTypeId
                     select new SharedJobCompetencyRating()
                     {
@@ -42,7 +41,8 @@ namespace Business.Queries.Compare
                         CompetencyNameFre = pos.Competency.NameFre,
                         TypeNameEng = pos.CompetencyType.NameEng,
                         TypeNameFre = pos.CompetencyType.NameFre,
-                        TypeId = pos.CompetencyType.Id
+                        TypeId = pos.CompetencyType.Id,
+                        Active = 1
 
                     }).ToListAsync(cancellationToken);
         }

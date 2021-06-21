@@ -52,6 +52,8 @@ namespace Web.Pages.CCGMember.Similar
         public string PreviousPageSimilar { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageSimilarDetails { get; set; } = string.Empty;
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;

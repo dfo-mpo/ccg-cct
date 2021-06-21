@@ -34,7 +34,7 @@ namespace Web.Pages.Candidate.Shoreside
         [BindProperty]
         public int GroupId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public bool PageSubmit { get; set; } = false;
+        public string PageSubmit { get; set; } = string.Empty;
         [BindProperty]
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
@@ -57,6 +57,7 @@ namespace Web.Pages.Candidate.Shoreside
             }
             _logger.LogInformation($"Seagoing Crew Engineering Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            Id = Position.JobGroupId;
             Level = Position.JobGroupLevelId;
             GroupId = Position.JobGroupId;
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
@@ -75,7 +76,7 @@ namespace Web.Pages.Candidate.Shoreside
         public async Task OnPost(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            PageSubmit = true;
+            PageSubmit = "true";
 
             foreach (var c in CertificateIds)
             {

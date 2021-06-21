@@ -145,7 +145,7 @@
     <value>No Certifications Found</value>
   </data>
   <data name="pageSubmitted" xml:space="preserve">
-    <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
+    <value>Based on how close to your current position you wish to explore, please select a percentage match.</value>
   </data>
   <data name="SAME CERTIFICATION" xml:space="preserve">
     <value>SAME CERTIFICATION</value>
@@ -158,6 +158,9 @@
   </data>
   <data name="Search Positions" xml:space="preserve">
     <value>Search Positions</value>
+  </data>
+  <data name="SelectionTitleCertificates" xml:space="preserve">
+    <value>Select one or more certificates, if appropriate, to narrow your search for positions similar to your current position.</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>

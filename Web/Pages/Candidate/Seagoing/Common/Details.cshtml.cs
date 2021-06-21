@@ -30,7 +30,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
         [BindProperty]
         public int GroupId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public bool PageSubmit { get; set; } = false;
+        public string PageSubmit { get; set; } 
         [BindProperty]
         public JobPositionDto Position { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
@@ -70,7 +70,8 @@ namespace Web.Pages.Candidate.Seagoing.Common
         public async Task OnPost(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            PageSubmit = true;
+            PageSubmit = "true";
+            Certificates = string.Empty;
 
             foreach (var c in CertificateIds)
             {
