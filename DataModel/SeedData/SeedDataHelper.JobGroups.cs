@@ -29,7 +29,8 @@ namespace DataModel.SeedData
             new JobGroup {Id = 20, Code = "PM", NameEng = "Programme Administration", NameFre = "Administration des programmes", Active = 1 },
             new JobGroup {Id = 21, Code = "RO", NameEng = "Radio Operations", NameFre = "Radiotélégraphie", Active = 1 },
             new JobGroup {Id = 22, Code = "TI", NameEng = "Technical Inspection", NameFre = "Inspection technique", Active = 1 },
-            new JobGroup {Id = 23, Code = "EL", NameEng = "Electronics", NameFre = "Électronique", Active = 1 }
+            new JobGroup {Id = 23, Code = "EL", NameEng = "Electronics", NameFre = "Électronique", Active = 1 },
+            new JobGroup {Id = 24, Code = "CR", NameEng = "Clerical and Regulatory", NameFre = "Commis aux écritures et aux règlements", Active = 1 }
         };
     }
 }

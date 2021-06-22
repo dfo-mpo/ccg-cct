@@ -24,15 +24,11 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\AS.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\CCG-employee.png" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\CS-clerical.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EC.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ED.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EG-EngSci.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EG.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ENG.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EU.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\external candidates.png" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GL.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GS.jpg" />
     <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\LI.jpg" />
@@ -61,14 +57,6 @@
 
   <ItemGroup>
     <Content Update="wwwroot\favicon.ico">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\blank.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\mcts.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -104,10 +92,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\img\CCGMember\RO-radio.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Update="wwwroot\img\CCGMember\RO.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -116,23 +100,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\img\CCGMember\Seagoing.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\shoreside.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Update="wwwroot\img\CCGMember\similar.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\SO-MAO.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\Students.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
