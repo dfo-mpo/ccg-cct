@@ -34,7 +34,7 @@
                  };
 
                     <tr>
-                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@position.LevelCode</td>
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>
@@ -74,7 +74,7 @@
                  };
 
                     <tr>
-                        <td>@position.JobGroupCode-@position.SubGroupCode @position.JobLevelValue</td>
+                        <td>@position.LevelCode</td>
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         <td><a asp-page="../../Candidate/Shoreside/SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                     </tr>

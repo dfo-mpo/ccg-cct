@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Admin.Data;
 using Business.Dtos.JobPositions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.Pages.Positions
 {
@@ -19,6 +20,8 @@ namespace Admin.Pages.Positions
         }
 
         public IList<JobPositionDto> JobPositions { get; set; }
+        [BindProperty]
+        public string Filter { get; set; }
 
         public async Task OnGetAsync()
         {

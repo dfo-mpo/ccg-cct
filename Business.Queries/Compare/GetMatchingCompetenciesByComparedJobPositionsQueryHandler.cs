@@ -28,7 +28,8 @@ namespace Business.Queries.Compare
         {
             return (from pos in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.PositionId && e.CompetencyTypeId == query.TypeId && e.Competency.Active != 0)
                     join obj in _db.JobRolePositionCompetencyRatings.Where(e => e.JobPositionId == query.ObjectiveId && e.CompetencyTypeId == query.TypeId && e.Competency.Active != 0)
-                    on pos.CompetencyId equals obj.CompetencyId                 
+                    on pos.CompetencyId equals obj.CompetencyId
+                    where obj.CompetencyRatingLevel.Value == pos.CompetencyRatingLevel.Value
                     orderby obj.CompetencyTypeId
                     select new SharedJobCompetencyRating()
                     {
