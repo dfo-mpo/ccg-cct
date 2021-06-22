@@ -8,6 +8,7 @@
     var paramdata = new Dictionary<string, string>
                             {
                                  {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
+                                 {"id", Model.Id.ToString() },
                                  {"idobj", Model.Id.ToString() },
                                  {"positionid", Model.PositionId.ToString()},
                                  {"previouspage",Model.PreviousPage }
@@ -34,6 +35,7 @@
                           { "positionid",  Model.PositionId.ToString()},
                            {"previouspagecompare", "../../Candidate/Shoreside/Compare/AllObjective" },
                            {"previouspage", Model.PreviousPage},
+                            {"id", Model.Id.ToString() },
                           { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="../../../CCGMember/Compare/ObjectiveLevel" asp-all-route-data="routedata">

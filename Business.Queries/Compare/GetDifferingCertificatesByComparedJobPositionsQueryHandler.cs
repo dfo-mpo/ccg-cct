@@ -26,16 +26,17 @@ namespace Business.Queries.Compare
 
         public Task<List<SharedJobCertificateDto>> HandleAsync(GetDifferingCertificatesByComparedJobPositionsQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            var currentcertificateIds = _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.PositionId)
+            var currentcertificateIds = _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.PositionId && e.Certificate.Active != 0)
                 .Select(e=>e.CertificateId)
                 .ToList();
 
-            var objectivecertificateIds = _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.ObjectiveId)
+            var objectivecertificateIds = _db.JobRolePositionCertificates.Where(e => e.JobPositionId == query.ObjectiveId && e.Certificate.Active != 0)
                 .Select(e => e.CertificateId)
                 .ToList();
 
             var currentcertificates = _db.JobRolePositionCertificates
                 .Where(e => e.JobPositionId == query.PositionId)
+                .Where(e => currentcertificateIds.Contains(e.CertificateId))
                 .Where(e=>!objectivecertificateIds.Contains(e.CertificateId))
                  .Include(e => e.Certificate) 
                  .Include(e=>e.CertificateDescription)
@@ -46,7 +47,7 @@ namespace Business.Queries.Compare
                      DescEng = e.CertificateDescription.DescEng,
                      DescFre = e.CertificateDescription.DescFre,
                      Id = e.CertificateId,
-                     Active = e.Certificate.Active,
+                     Active = 1,
                      CurrentPositionHas = "X",
                      ObjectivePositionHas = string.Empty,
 
@@ -55,6 +56,7 @@ namespace Business.Queries.Compare
             var objectivecertificates = _db.JobRolePositionCertificates
                .Where(e => e.JobPositionId == query.ObjectiveId)
                .Where(e => !currentcertificateIds.Contains(e.CertificateId))
+               .Where(e => objectivecertificateIds.Contains(e.CertificateId))
                 .Include(e => e.Certificate)
                .Include(e => e.CertificateDescription)
               .Select(e => new SharedJobCertificateDto()
@@ -64,7 +66,7 @@ namespace Business.Queries.Compare
                          DescEng = e.CertificateDescription.DescEng,
                          DescFre = e.CertificateDescription.DescFre,
                          Id = e.CertificateId,
-                         Active = e.Certificate.Active,
+                         Active = 1,
                          CurrentPositionHas = string.Empty,
                          ObjectivePositionHas = "X",
 

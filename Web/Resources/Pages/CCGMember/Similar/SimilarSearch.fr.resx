@@ -166,7 +166,7 @@
     <value>Aucune certification trouvée</value>
   </data>
   <data name="pageSubmitted" xml:space="preserve">
-    <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
+    <value>En fonction de la proximité de votre position actuelle que vous souhaitez explorer, veuillez sélectionner un pourcentage de correspondance.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -188,6 +188,9 @@
   </data>
   <data name="Select Competency" xml:space="preserve">
     <value>Sélectionnez une compétence</value>
+  </data>
+  <data name="SelectionTitleCertificates" xml:space="preserve">
+    <value>Sélectionnez un ou plusieurs certificats, le cas échéant, pour affiner votre recherche de postes similaires à votre poste actuel.</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Soumettre</value>
