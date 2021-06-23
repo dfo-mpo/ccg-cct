@@ -11,10 +11,9 @@
 </p>
 
 <p>
-    <label name="Filter" class="control-label"><b>Filter</b></label>
-    <input name="Filter" class="form-control" />
+    <input type="text" asp-for="Filter" />
+    <input type="submit" text="Keywords" value="Filter" />
 </p>
-
 <table class="table">
     <thead>
         <tr>
@@ -24,21 +23,27 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.JobPositions)
+        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobGroupTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobTitleEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobTitleFre)
-                </td>
-                <td>
-                    <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a> |
-                    <a asp-page="Edit" asp-route-id="@item.JobTitleId">Edit</a> |
-                    <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+            @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
+            {
+                if (item.Active != 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitleEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitleFre)
+                        </td>
+                        <td>
+                            <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a> |
+                            <a asp-page="Edit" asp-route-id="@item.JobTitleId">Edit</a> |
+                            <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                }
+            }
+            </tbody>
 </table>

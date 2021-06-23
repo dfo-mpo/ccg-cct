@@ -2,6 +2,7 @@
 @model Admin.Pages.Similar.CreateModel
 @{
     ViewData["Title"] = "Create";
+
 }
 
 <h1>Create</h1>
@@ -19,27 +20,56 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.HundredPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.HundredPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.HundredPercent" class="text-danger"></span>
+
+                        <td colspan="3">
+                            <div class="dropdown col-8 m-1">
+                                <label asp-for="JobPosition.HundredPercent" class="control-label"></label><br />
+
+
+                                <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                    
+
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                    @foreach (var position in Model.AllJobPositions)
+                                    {
+                                        var routedata100 = new Dictionary<string, string> {
+                                                        {"positionid", position.JobTitleId.ToString() },
+
+                                                  
+   
+    };
+                            <li role="presentation">
+                                <button class="btn btn-light" asp-page-handler="hundredpercentposition" asp-all-route-data="routedata100">
+                                    @position.JobGroupCode @position.LevelCode @position.JobTitleEng / @position.JobTitleFre
+                                </button>
+                            </li>
+                        }
+                                </ul>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.NinetyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.NinetyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.NinetyPercent" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.EightyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.EightyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.EightyPercent" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.SeventyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.SeventyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.SeventyPercent" class="text-danger"></span>
-                            </div>
+                            @foreach (var position in Model.AddedPositionsHundredPercent)
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="accordion" id="compOne">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                @position.JobGroupCode @position.LevelCode @position.JobTitleEng / @position.JobTitleFre
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3 text-right">
+                                        @{
+                                            var routedataremove = new Dictionary<string, string> {
+                                                { "deleteid", position.JobTitleId.ToString() }
+
+                                };
+                                        }
+                                        <button class="btn btn-link" asp-page-handler="delete" asp-all-route-data="@routedataremove">REMOVE</button>
+                                    </div>
+                                </div>
+
+                            }
                         </td>
                     </tr>
                 </tbody>
