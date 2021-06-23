@@ -31,7 +31,7 @@ namespace Web.Pages.Student.College
             _logger.LogInformation($"College Administrative positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");       
 
             //Clerical and Regulatory CR-04
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsBySubGroupLevel(2, "CR", "04"))
+            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(24, "04"))
             {
                 if (!position.Equals(null))
                 {
