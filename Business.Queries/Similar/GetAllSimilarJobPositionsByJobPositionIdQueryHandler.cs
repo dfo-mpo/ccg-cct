@@ -71,14 +71,16 @@ namespace Business.Queries.Similar
                     .Include(e => e.JobPosition)
                     .Include(e => e.JobGroupLevel)
                     .Include(e => e.JobGroup)
+                    .Include(e =>e.SubJobGroup)
                     .Include(e => e.CompetencyRatingLevel).ToListAsync()
                 )
-                .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobGroup.Code, e.JobGroupLevel.LevelValue, e.JobPositionId, e.JobPosition.TitleEng, e.JobPosition.TitleFre })
+                .GroupBy(e => new { e.JobGroupId, e.JobGroupLevelId, e.JobGroup.Code, e.JobGroupLevel.LevelValue, e.SubJobGroup.SubCode, e.JobPositionId, e.JobPosition.TitleEng, e.JobPosition.TitleFre })
                 .Select(g => new
                 {
                     JobTitleEng = g.Key.TitleEng,
                     JobTitleFre = g.Key.TitleFre,
                     JobGroupCode = g.Key.Code,
+                    SubGroupCode = g.Key.SubCode,
                     JobGroupId = g.Key.JobGroupId,
                     JobGroupLevelId = g.Key.JobGroupLevelId,
                     JobGroupLevel = g.Key.LevelValue,
@@ -121,6 +123,7 @@ namespace Business.Queries.Similar
                     JobGroupLevelId = e.JobGroupLevelId,
                     JobTitleId = e.JobPositionId,
                     Competencies = e.CompetencyRatings.Select(e => e.CompetencyId).ToList(),
+                    LevelCode = string.IsNullOrEmpty(e.SubGroupCode) ? e.JobGroupCode + '-' + e.JobGroupLevel : e.SubGroupCode + '-' + e.JobGroupLevel,
                     Active = 1
                 }
                 )
