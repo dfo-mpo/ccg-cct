@@ -27,6 +27,7 @@ namespace Business.Queries.JobGroups
         {
             return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id)
                             .Include(e => e.JobGroup)
+                            .Include(e => e.SubJobGroup)
                             .Include(e => e.JobGroupLevel)
                             .Include(e => e.JobPosition)
                             .Select(e => new JobPositionDto()

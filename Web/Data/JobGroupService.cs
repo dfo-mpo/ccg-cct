@@ -38,6 +38,17 @@ namespace Web.Data
                 return string.Compare(jb1.LevelCode, jb2.LevelCode); 
             }
         }
+
+        public class CompareByPositionLevelCode : IComparer
+        {
+            int IComparer.Compare(object o1, object o2)
+            {
+                JobPositionDto jb1 = o1 as JobPositionDto;
+                JobPositionDto jb2 = o2 as JobPositionDto;
+                return string.Compare(jb1.LevelCode, jb2.LevelCode);
+            }
+        }
+
         public async Task<JobPositionDto> GetJobPositionById(int Id)
         {
             string url = $"/api/jobpositions/{Id}";
@@ -70,7 +81,7 @@ namespace Web.Data
 
         public async Task<JobPositionDto[]> GetJobGroupPositionsByLevel(int Id, string level)
         {
-            CompareByLevelCode comparebylevelcode = new CompareByLevelCode();
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/levels/{level}/positions";
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
@@ -80,7 +91,7 @@ namespace Web.Data
 
         public async Task<JobPositionDto[]> GetJobGroupPositionsBySubGroupLevel(int Id, string subgroupcode, string level)
         {
-            CompareByLevelCode comparebylevelcode = new CompareByLevelCode();
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/{subgroupcode}/{level}/positions";
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
@@ -90,7 +101,7 @@ namespace Web.Data
 
         public async Task<JobPositionDto[]> GetJobPositionsByGroupId(int Id)
         {
-            CompareByLevelCode comparebylevelcode = new CompareByLevelCode();
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/jobpositions";
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
