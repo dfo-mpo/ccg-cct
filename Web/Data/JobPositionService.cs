@@ -23,6 +23,10 @@ namespace Web.Data
             {
                 JobPositionDto jb1 = o1 as JobPositionDto;
                 JobPositionDto jb2 = o2 as JobPositionDto;
+                if (jb1.JobGroupId == jb2.JobGroupId)
+                {
+                    return string.Compare(jb1.LevelCode, jb2.LevelCode);
+                }
                 return string.Compare(jb1.JobGroupCode, jb2.JobGroupCode);
             }
         }
