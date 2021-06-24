@@ -28,6 +28,7 @@ namespace Web.Data
                 else { return string.Compare(jb1.NameFre, jb2.NameFre); }
             }
         }
+
         public class CompareByLevelCode : IComparer
         {
             int IComparer.Compare(object o1, object o2)
@@ -35,6 +36,16 @@ namespace Web.Data
                 JobGroupPositionDto jb1 = o1 as JobGroupPositionDto;
                 JobGroupPositionDto jb2 = o2 as JobGroupPositionDto;
                 return string.Compare(jb1.LevelCode, jb2.LevelCode); 
+            }
+        }
+
+        public class CompareByPositionLevelCode : IComparer
+        {
+            int IComparer.Compare(object o1, object o2)
+            {
+                JobPositionDto jb1 = o1 as JobPositionDto;
+                JobPositionDto jb2 = o2 as JobPositionDto;
+                return string.Compare(jb1.LevelCode, jb2.LevelCode);
             }
         }
 
@@ -70,32 +81,41 @@ namespace Web.Data
 
         public async Task<JobPositionDto[]> GetJobGroupPositionsByLevel(int Id, string level)
         {
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/levels/{level}/positions";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            Array.Sort(list, comparebylevelcode);
+            return list;
         }
 
         public async Task<JobPositionDto[]> GetJobGroupPositionsBySubGroupLevel(int Id, string subgroupcode, string level)
         {
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/{subgroupcode}/{level}/positions";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            Array.Sort(list, comparebylevelcode);
+            return list;
         }
 
         public async Task<JobPositionDto[]> GetJobPositionsByGroupId(int Id)
         {
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/jobpositions";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            Array.Sort(list, comparebylevelcode);
+            return list;
         }
 
         public async Task<JobGroupPositionDto[]> GetSubGroupLevelsByGroupId(int Id)
         {
-            CompareByLevelCode comparebyname = new CompareByLevelCode();
+            CompareByLevelCode comparebylevelcode = new CompareByLevelCode();
             string url = $"/api/jobgroups/{Id}/subgrouplevels";
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobGroupPositionDto[]>(url);
-            Array.Sort(list, comparebyname);
+            Array.Sort(list, comparebylevelcode);
             return list;
 
         }

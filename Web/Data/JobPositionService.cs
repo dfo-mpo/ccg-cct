@@ -1,8 +1,10 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobPositions;
+using System.Collections;
 
 namespace Web.Data
 {
@@ -14,18 +16,38 @@ namespace Web.Data
         {
             _clientFactory = clientFactory;
         }
+
+        public class CompareByGroupCode : IComparer
+        {
+            int IComparer.Compare(object o1, object o2)
+            {
+                JobPositionDto jb1 = o1 as JobPositionDto;
+                JobPositionDto jb2 = o2 as JobPositionDto;
+                if (jb1.JobGroupId == jb2.JobGroupId)
+                {
+                    return string.Compare(jb1.LevelCode, jb2.LevelCode);
+                }
+                return string.Compare(jb1.JobGroupCode, jb2.JobGroupCode);
+            }
+        }
+
         public async Task<JobPositionDto> GetJobPositionById(int Id)
         {
             string url = $"/api/jobpositions/{Id}";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobPositionDto>(url);
         }
+
         public async Task<JobPositionDto[]> GetJobPositionByIdValues(string Parameters)
         {
+            CompareByGroupCode comparebygroupcode = new CompareByGroupCode();
             string url = $"/api/jobpositions/IdValues?{Parameters}";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            Array.Sort(list, comparebygroupcode);
+            return list;
         }
+
         public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
         {
             string url = $"/api/jobpositions/{Id}/{compentencytypeId}/competencies";
