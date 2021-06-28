@@ -32,6 +32,18 @@
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.DescFre)
         </dd>
+        <dt class="col-md-2">
+            Type Name English
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.TypeNameEng)
+        </dd>
+        <dt class="col-md-2">
+            Type Name French
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Competency.TypeNameFre)
+        </dd>
     </dl>
 </div>
 <div class="row">
@@ -97,5 +109,5 @@
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Competency.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./List" asp-route-typeid="@Model.Competency.TypeId">Back to List</a>
 </div>

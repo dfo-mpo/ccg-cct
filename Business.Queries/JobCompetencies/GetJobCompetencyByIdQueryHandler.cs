@@ -31,6 +31,8 @@ namespace Business.Queries.JobCompetencies
                     Id = e.Competency.Id,
                     NameEng = e.Competency.NameEng,
                     NameFre = e.Competency.NameFre,
+                    TypeNameEng = e.CompetencyType.NameEng,
+                    TypeNameFre = e.CompetencyType.NameFre,
                     DescEng = e.Competency.DescEng,
                     DescFre = e.Competency.DescFre,
                     Active = e.Competency.Active,

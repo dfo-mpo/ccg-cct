@@ -8,14 +8,14 @@
 <h1>@Model.Type.NameEng / @Model.Type.NameFre</h1>
 
 <p>
-    <a class="btn btn-dark" asp-page="/Competencies/Create">Create New</a>
+    <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
 </p>
 
-<form asp-page="./Index" method="get">
+<form>
     <div class="form-actions no-color">
         <h6>
-            Find Competency:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            Find competencies:
+            <input type="text" asp-for="@Model.Filter"/>
             <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-page="./Index">Back to Full List</a>
         </h6>
@@ -35,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Competencies)
+        @foreach (var item in Model.Competencies.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
             <tr>
                 <td>

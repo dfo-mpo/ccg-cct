@@ -38,9 +38,9 @@ namespace Admin.Pages.Certificates.Descriptions
         public async Task<IActionResult> OnPostAsync()
         {
 
-            _jobCertificateService.PostJobCertificateDescription(Certificate);
+            var id = await _jobCertificateService.PostJobCertificateDescription(Certificate.DescEng, Certificate.DescFre);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("Details", new { id });
 
         }
     }

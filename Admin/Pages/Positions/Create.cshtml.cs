@@ -638,7 +638,6 @@ namespace Admin.Pages.Positions
         }
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            
             JobCertificates = await _jobCompetencyService.GetJobCertificates();
             JobCompetenciesKnowledge = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
             JobCompetenciesTechnical = await _jobCompetencyService.GetJobCompetenciesByTypeId(2);
@@ -849,24 +848,9 @@ namespace Admin.Pages.Positions
             {
                 return Page();
             }
-            /*
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
 
-            _context.Competencies.Add(Competency);
-            await _context.SaveChangesAsync();
-            */
-            // string parameters = $"nameEng={Competency.NameEng}&nameFre={Competency.NameFre}&descEng={Competency.DescEng}&descFre={Competency.DescFre}";
-            // try
-            // {
-            // _jobCompetencyService.PostJobCompetency(Competency);
-            // }
-            // catch(Exception ex) { 
-            return RedirectToPage("Index");
-            //   }
-            //return Page();
+            return RedirectToPage("Details", new { positionid = jobPositionId });
+
 
         }
         private bool JobPositionExists(int id)

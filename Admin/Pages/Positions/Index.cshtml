@@ -5,31 +5,40 @@
 }
 
 <h1>Positions</h1>
-
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-dark" asp-page="Create">Create New</a>
 </p>
+<form>
+    <div class="form-actions no-color">
+        <h6>
+            Find similar positions:
+            <input type="text" asp-for="@Model.Filter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="../Index">Back to Full List</a>
+        </h6>
+    </div>
+</form>
 
-<p>
-    <input type="text" asp-for="Filter" />
-    <input type="submit" text="Keywords" value="Filter" />
-</p>
 <table class="table">
     <thead>
         <tr>
+            <th width="42%"><b>Level</b></th>
             <th width="42%"><b>Title English</b></th>
             <th width="42%"><b>Title French</b></th>
             <th width="16%"></th>
         </tr>
     </thead>
     <tbody>
-        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobGroupTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
+        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
             @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
             {
                 if (item.Active != 0)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LevelCode)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.JobTitleEng)
                         </td>
@@ -42,8 +51,8 @@
                             <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
                         </td>
                     </tr>
-                    }
                 }
             }
-            </tbody>
+        }
+    </tbody>
 </table>

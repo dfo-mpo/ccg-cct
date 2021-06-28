@@ -28,15 +28,15 @@
             <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
-                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.LevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
+                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model.PositionCertificates.Any(e => e.Active != 0))
                     {
                         <tr>
-                            <th style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                            <th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th>
+                            <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                            <!--th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th-->
                         </tr>
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
@@ -44,15 +44,15 @@
                             {
                                 var key = "c" + c.Id.ToString();
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td>
+                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                                    <!--td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td-->
                                 </tr>
                             }
                             else
                             {
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td>
+                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                                    <!--td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td-->
                                 </tr>
                             }
                         }

@@ -40,7 +40,7 @@ namespace Service.Controllers
             return Ok(results);
         }
 
-        [HttpGet, Route("certificatedescriptions")]
+        [HttpGet, Route("descriptions")]
         [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllCertificateDescriptions()
         {
@@ -48,18 +48,32 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync<GetAllJobCertificateDescriptionsQueryHandler, List<JobCertificateDto>>();
             return Ok(results);
         }
-        [HttpPost, Route("addjobcertificate")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task AddJobCertificate([FromBody] AddJobCertificateCommand command)
+
+        [HttpGet, Route("descriptions/{Id}")]
+        [ProducesResponseType(typeof(List<JobCertificateDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobCertificateDescriptionById([FromRoute] GetJobCertificateDescriptionByIdQuery query)
         {
-            await _commandSender.ValidateAndSendAsync(command, ModelState);
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
 
-        [HttpPost, Route("addjobcertificatedescription")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task AddJobCertificate([FromBody] AddJobCertificateDescriptionCommand command)
+        [HttpGet, Route("addjobcertificate/{NameEng}/{NameFre}/{DescEng}/{DescFre}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddJobCertificate([FromRoute] AddJobCertificateCommand query)
         {
-            await _commandSender.ValidateAndSendAsync(command, ModelState);
+            var results =
+                await _queryProvider.ProcessAsync(query);
+                     return Ok(results);
+        }
+
+        [HttpGet, Route("addjobcertificatedescription/{DescEng}/{DescFre}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddJobCertificate([FromRoute] AddJobCertificateDescriptionCommand query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+                   return Ok(results);
         }
 
         [HttpPost, Route("deletejobcertificate")]
