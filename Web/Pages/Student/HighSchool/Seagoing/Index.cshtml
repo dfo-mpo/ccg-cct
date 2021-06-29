@@ -1,0 +1,65 @@
+﻿@page
+@model Web.Pages.Student.HighSchool.Seagoing.IndexModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["title"];
+}
+
+<section role="contentinfo">
+
+    <h2>@Localizer["Q1"]</h2>
+
+    <div class="col-lg-4 col-sm-6">
+        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+            <div class="img-container">
+                <a href="@Localizer["link"]" target="_blank">
+                    <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive" />
+                </a>
+            </div>
+            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm"><a style="text-decoration:none" href="@Localizer["link"]" target="_blank">@Localizer["ccgcollege"]</a></h4></figcaption>
+        </figure>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+            <div class="img-container">
+                <a class="nav-link" asp-page="SeagoingLogistics">
+                    <img src="~/img/Student/HS-Cook.jpg" alt="@Localizer["logisticsphoto"]" class="img-responsive" />
+                </a>
+            </div>
+            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm"><a style="text-decoration:none" asp-page="SeagoingLogistics">@Localizer["logistics"]</a></h4></figcaption>
+        </figure>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+            <div class="img-container">
+                <a class="nav-link" asp-page="SeagoingDeck">
+                    <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["deckphoto"]" class="img-responsive" />
+                </a>
+            </div>
+            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm"><a style="text-decoration:none" asp-page="SeagoingDeck">@Localizer["deck"]</a></h4></figcaption>
+        </figure>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+            <div class="img-container">
+                <a class="nav-link" asp-page="SeagoingEngineer">
+                    <img src="~/img/Student/Marine Engineer - College CCT.jpg" alt="@Localizer["engineeringphoto"]" class="img-responsive" />
+                </a>
+            </div>
+            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm"><a style="text-decoration:none" asp-page="SeagoingEngineer">@Localizer["engineer"]</a></h4></figcaption>
+        </figure>
+    </div>
+    <div style="clear:both;">
+        <div class="col-lg-12">
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>

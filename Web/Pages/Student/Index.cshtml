@@ -11,26 +11,26 @@
 
             <div class="col-sm-4">
                 <figure>
-                    <a class="nav-link" asp-page="HighSchool/AllPositions">
+                    <a class="nav-link" asp-page="HighSchool/Index">
                         <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                     </a>
-                    <figcaption><h4 class="text-center">@Localizer["HighSchool"]</h4></figcaption>
+                    <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="HighSchool/AllPositions">@Localizer["HighSchool"]</a></h4></figcaption>
                 </figure>
             </div>
             <div class="col-sm-4">
                 <figure>
-                    <a asp-page="College/AllPositions">
+                    <a class="nav-link" asp-page="College/Index">
                         <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                     </a>
-                    <figcaption><h4 class="text-center">@Localizer["TechCollege"]</h4></figcaption>
+                    <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="College/Index">@Localizer["TechCollege"]</a></h4></figcaption>
                 </figure>
             </div>
             <div class="col-sm-4">
                 <figure>
-                    <a asp-page="University/AllPositions">
+                    <a class="nav-link" asp-page="University/Index">
                         <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                     </a>
-                    <figcaption><h4 class="text-center">@Localizer["University"]</h4></figcaption>
+                    <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="University/AllPositions">@Localizer["University"]</a></h4></figcaption>
                 </figure>
             </div>
         </div>

@@ -29,7 +29,7 @@
                 @foreach (var position in seagoingPositions.Where(e => e.Active != 0))
                 {
                         <tr>
-                            <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                            <td>@position.LevelCode</td>
                             <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         </tr>
                     }
@@ -67,7 +67,7 @@
                 @foreach (var position in shoresidePositions.Where(e => e.Active != 0))
                 {
                         <tr>
-                            <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                            <td>@position.LevelCode</td>
                             <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                         </tr>
                     }

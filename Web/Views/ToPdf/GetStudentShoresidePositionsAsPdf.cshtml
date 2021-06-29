@@ -1,0 +1,53 @@
+﻿@inject Web.Data.JobPositionService _jobpositionService
+@{
+    Layout = "_ThemePdf";
+}
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+    var shoresidePositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["shoresideId"].ToString());
+    var shoresidetitle = isEnglish ? "SHORESIDE POSITIONS" : "POSITIONS CÔTÉ RIVAGE";
+    var level = isEnglish ? "LEVEL" : "NIVEAU";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var positions = isEnglish ? "POSITION" : "POSTE";
+    var noshoreside = isEnglish ? "No shore side positions available" : "Aucune position côté rivage disponible";
+}
+
+   
+<div class="mrgn-tp-lg">
+    @if (shoresidePositions.Any(e => e.Active != 0))
+    {
+        <h3 class="text-center">@shoresidetitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+
+                @foreach (var position in shoresidePositions.Where(e => e.Active != 0))
+                {
+                    <tr>
+                        <td>@position.LevelCode</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-center">@shoresidetitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@noshoreside</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
