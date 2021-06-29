@@ -9,6 +9,7 @@ using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -39,7 +40,7 @@ namespace Admin.Pages.Certificates.Descriptions
         {
 
             var id = await _jobCertificateService.PostJobCertificateDescription(Certificate.DescEng, Certificate.DescFre);
-
+            Thread.MemoryBarrier();
             return RedirectToPage("Details", new { id });
 
         }

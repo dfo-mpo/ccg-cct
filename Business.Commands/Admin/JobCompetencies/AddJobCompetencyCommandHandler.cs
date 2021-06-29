@@ -117,10 +117,8 @@ namespace Business.Commands.Admin.JobCompetencies
                 CompetencyLevelRequirementId = lr5.Id
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
-            
-            return await _db.Competencies.Where(e => e.NameEng == command.NameEng && e.NameFre == command.NameFre)
-                   .Select(e => e.Id)
-                   .FirstOrDefaultAsync(cancellationToken);
+
+            return newCompetency.Id;
         }
 
     }

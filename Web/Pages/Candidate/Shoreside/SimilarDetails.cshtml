@@ -59,21 +59,10 @@
                         </tr>
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
-                            if (Model.CertificateIds.Contains(c.Id.ToString()))
-                            {
-                                var key = "c" + c.Id.ToString();
-                                <tr>
-                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <!--td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td-->
-                                </tr>
-                            }
-                            else
-                            {
                                 <tr>
                                     <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                                     <!--td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td-->
                                 </tr>
-                            }
                         }
                     }
                     else

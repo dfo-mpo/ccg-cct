@@ -126,7 +126,7 @@ namespace Admin.Data
         public async Task<JobCertificateDto[]> GetAllJobCertificateDescriptions()
         {
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates/certificatedescriptions");
+            return await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates/descriptions");
         }
         public async Task<JobCompetencyTypeDto> GetJobCompetencyTypeById(int TypeId)
         {

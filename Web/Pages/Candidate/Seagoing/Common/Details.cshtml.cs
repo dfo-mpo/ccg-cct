@@ -18,11 +18,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty]
-        public List<string> CertificateIds { get; set; } = new List<string>();
-        [BindProperty]
         public string RouteParameter { get; set; } = string.Empty;
-        [BindProperty(SupportsGet = true)]
-        public string Certificates { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; } = string.Empty;
         [BindProperty]
@@ -43,14 +39,6 @@ namespace Web.Pages.Candidate.Seagoing.Common
         public async Task OnGetAsync(int positionid)
         {
             _logger.LogInformation($"Candidate Seagoing details page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            if (!Certificates.Equals(string.Empty))
-            {
-                var ids = Certificates.Split("&certificateId=");
-                foreach (var id in ids)
-                {
-                    CertificateIds.Add(id);
-                }
-            }
             Position = await _jobpositionService.GetJobPositionById(positionid);
             Level = Position.JobGroupLevelId;
             GroupId = Position.JobGroupId;
@@ -71,14 +59,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
             PageSubmit = "true";
-            Certificates = string.Empty;
-
-            foreach (var c in CertificateIds)
-            {
-                Certificates += "&certificateId=" + c;
-            }
-
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{Certificates}");
+            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}");
 
         }
     }

@@ -10,6 +10,7 @@ using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobGroups;
+using System.Threading;
 
 namespace Admin.Pages.Positions
 {
@@ -841,7 +842,8 @@ namespace Admin.Pages.Positions
                     _jobCompetencyService.PostJobRolePositionCertificate(jobrolepositioncertificate);
 
                 }
-            
+                Thread.MemoryBarrier();
+                return RedirectToPage("Details", new { positionid = jobPositionId });
 
             }
             else
@@ -849,7 +851,7 @@ namespace Admin.Pages.Positions
                 return Page();
             }
 
-            return RedirectToPage("Details", new { positionid = jobPositionId });
+            
 
 
         }

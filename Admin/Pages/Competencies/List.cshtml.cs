@@ -38,5 +38,18 @@ namespace Admin.Pages.Competencies
             Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
             }
         }
+        public async Task OnPostAsync(int typeId)
+        {
+            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
+            {
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
+                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
+            }
+            else
+            {
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
+                Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
+            }
+        }
     }
 }

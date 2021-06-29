@@ -457,6 +457,7 @@ else if (Model.PercentSelected == "true")
 
 
         <div class="mrgn-tp-lg">
+            <h4>@Localizer["Current Position"]: @Model.Position.JobGroupLevelCode - @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</h4>
             <h3 class="text-center">@Localizer["SIMILAR POSITIONS"]</h3>
             <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
             <table class="table table-hover table-responsive table-bordered">
@@ -470,8 +471,8 @@ else if (Model.PercentSelected == "true")
                 <tbody>
                     @foreach (var position in Model.Positions.Where(e => e.Active != 0))
                     {
-                            var routedata = new Dictionary<string, string>
-                                 {
+                        var routedata = new Dictionary<string, string>
+                                         {
         {"objectiveid",  position.JobTitleId.ToString()},
         {"positionid",  Model.PositionId.ToString()},
         {"id", Model.Id },
@@ -497,7 +498,7 @@ else if (Model.PercentSelected == "true")
                 <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
                 <td><a asp-page="SimilarDetails" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
             </tr>
-    }
+        }
                 </tbody>
             </table>
         </div>

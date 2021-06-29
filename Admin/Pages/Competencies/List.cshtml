@@ -10,14 +10,20 @@
 <p>
     <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
 </p>
-
-<form>
+@{ 
+            var filterdata = new Dictionary<string, string>
+    {
+            { "typeid", Model.Type.Id.ToString() },
+            {"filter", Model.Filter }
+    };
+}
+<form method="post">
     <div class="form-actions no-color">
         <h6>
             Find competencies:
             <input type="text" asp-for="@Model.Filter"/>
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to Full List</a>
+            <input type="submit" value="Search" class="btn btn-primary" asp-all-route-data="@filterdata" /> |
+            <a asp-page="./List" asp-route-typeid="@Model.Type.Id">Back to Full List</a>
         </h6>
     </div>
 </form>

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using System.Threading;
 
 namespace Admin.Pages.Certificates
 {
@@ -39,7 +40,7 @@ namespace Admin.Pages.Certificates
         {
 
             var id = await _jobCertificateService.PostJobCertificate(Certificate.NameEng, Certificate.NameFre, Certificate.DescEng, Certificate.DescFre);
-
+            Thread.MemoryBarrier();
             return RedirectToPage("Details", new { id });
 
         }

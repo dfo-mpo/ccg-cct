@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using System.Threading;
 
 namespace Admin.Pages.Competencies
 {
@@ -42,7 +43,7 @@ namespace Admin.Pages.Competencies
             Competency.TypeId = CompetencyType;
             var parameters = string.Format($"&typeId={Competency.TypeId}&nameEng={Competency.NameEng}&nameFre={Competency.NameFre}&descEng={Competency.DescEng}&descFre={Competency.DescFre}&level1DescEng={Competency.Level1DescEng}&level1DescFre={Competency.Level1DescFre}&level2DescEng={Competency.Level2DescEng}&level2DescFre={Competency.Level2DescFre}&level3DescEng={Competency.Level3DescEng}&level3DescFre={Competency.Level3DescFre}&level4DescEng={Competency.Level4DescEng}&level4DescFre={Competency.Level4DescFre}&level5DescEng={Competency.Level5DescEng}&level5DescFre={Competency.Level5DescFre}");
             var competencyid = await _jobCompetencyService.PostJobCompetency(parameters);
-            //var competencyid = await _jobCompetencyService.GetJobCompetencyIdByName(Competency.NameEng);
+            Thread.MemoryBarrier();
             return RedirectToPage("Details", new { id = competencyid});
 
         }
