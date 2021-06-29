@@ -2,9 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Business.Dtos.JobCompetencies;
-using System.Collections;
-using System;
-using Business.Dtos.JobGroups;
 
 namespace Admin.Data
 {
@@ -34,9 +31,9 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificateDto>(url);
         }
-        public async Task<int> PostJobCertificate(string NameEng, string NameFre, string DescEng, string DescFre)
+        public async Task<int> PostJobCertificate(string Parameters)
         {
-            string url = $"/api/jobcertificates/addjobcertificate/{NameEng}/{NameFre}/{DescEng}/{DescFre}";
+            string url = $"/api/jobcertificates/addjobcertificate?{Parameters}";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<int>(url);
         }

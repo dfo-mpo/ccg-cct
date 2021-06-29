@@ -58,13 +58,27 @@ namespace Service.Controllers
             return Ok(results);
         }
 
-        [HttpGet, Route("addjobcertificate/{NameEng}/{NameFre}/{DescEng}/{DescFre}")]
+        [HttpGet, Route("addjobcertificate")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public async Task<IActionResult> AddJobCertificate([FromRoute] AddJobCertificateCommand query)
+        public async Task<IActionResult> AddJobCertificate(
+
+                [FromQuery] string nameEng,
+                [FromQuery] string nameFre,
+                [FromQuery] string descEng,
+                [FromQuery] string descFre)
+
         {
+            var query = new AddJobCertificateCommand
+            {
+                NameEng = nameEng,
+                NameFre = nameFre,
+                DescEng = descEng,
+                DescFre = descFre,
+            };
+
             var results =
-                await _queryProvider.ProcessAsync(query);
-                     return Ok(results);
+            await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
 
         [HttpGet, Route("addjobcertificatedescription/{DescEng}/{DescFre}")]
