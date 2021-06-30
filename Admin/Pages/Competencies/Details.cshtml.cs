@@ -27,7 +27,7 @@ namespace Admin.Pages.Competencies
         public async Task OnGetAsync(int id)
         {
             Competency = await _jobCompetencyService.GetJobCompetencyById(id);
-
+           
             Competency.Level1DescEng =_jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 1).Result.CompetencyLevelReqDescEng;
             Competency.Level1DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 1).Result.CompetencyLevelReqDescFre;
 

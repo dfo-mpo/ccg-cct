@@ -18,8 +18,8 @@
         <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @Model.CurrentPosition.LevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
-                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @Model.ObjectivePosition.LevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
+                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @Model.CurrentPosition.JobGroupLevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
+                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @Model.ObjectivePosition.JobGroupLevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
                 </tr>
             </tbody>
         </table>

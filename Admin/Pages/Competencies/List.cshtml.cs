@@ -21,17 +21,35 @@ namespace Admin.Pages.Competencies
             _context = context;
             _jobCompetencyService = jobCompetencyService;
         }
-
-        public string CurrentFilter { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string Filter { get; set; } 
         public JobCompetencyDto[] Competencies { get; set; }
         public JobCompetencyTypeDto Type { get; set; }
 
         public async Task OnGetAsync(int typeId)
         {
+            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
+            {
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
+                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
+            }
+            else { 
             Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
-            Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);         
-
+            Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
+            }
+        }
+        public async Task OnPostAsync(int typeId)
+        {
+            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
+            {
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
+                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
+            }
+            else
+            {
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
+                Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
+            }
         }
     }
 }

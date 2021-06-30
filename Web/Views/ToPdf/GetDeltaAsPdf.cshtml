@@ -46,8 +46,8 @@
         <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@currentposition</b> @CurrentPosition.JobGroupCode @CurrentPosition.JobGroupLevelValue - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
-                    <td class="bg-info" width="50%"><b>@selectedposition</b> @ObjectivePosition.JobGroupCode @ObjectivePosition.JobGroupLevelValue - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
+                    <td class="bg-success" width="50%"><b>@currentposition</b> @CurrentPosition.JobGroupLevelCode - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
+                    <td class="bg-info" width="50%"><b>@selectedposition</b> @ObjectivePosition.JobGroupLevelCode - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
                 </tr>
             </tbody>
         </table>
