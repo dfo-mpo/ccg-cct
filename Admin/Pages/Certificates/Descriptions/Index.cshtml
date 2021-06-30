@@ -8,8 +8,18 @@
 
 <p>
     <a class="btn btn-dark" asp-page="Create">Create New</a>
+    <a class="btn btn-dark pull-right" asp-page="../Index">Certificates</a>
 </p>
-
+<form>
+    <div class="form-actions no-color">
+        <h6>
+            Find certificate descriptions:
+            <input type="text" asp-for="@Model.Filter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to Full List</a>
+        </h6>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Certificates)
+        @foreach (var item in Model.Descriptions.Where(e => Model.Filter == null || e.DescEng.ToLower().Contains(@Model.Filter.ToLower()) || e.DescFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
             <tr>
                 <td>
@@ -29,6 +39,7 @@
                     @Html.DisplayFor(modelItem => item.DescFre)
                 </td>
                 <td style="width:15%">
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
                 </td>
             </tr>

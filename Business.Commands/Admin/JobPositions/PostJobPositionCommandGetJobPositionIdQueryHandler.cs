@@ -31,9 +31,7 @@ namespace Business.Commands.Admin.JobPositions
             };
             await _db.JobPositions.AddAsync(newjobposition, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
-            return await _db.JobPositions.Where(e => e.TitleEng == query.TitleEng || e.TitleFre == query.TitleFre)
-                    .Select(e => e.Id)
-                    .FirstOrDefaultAsync(cancellationToken);
+            return newjobposition.Id;
         }
     }
 }

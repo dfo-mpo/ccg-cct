@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using System.Threading;
 
 namespace Admin.Pages.Certificates
 {
@@ -37,10 +33,10 @@ namespace Admin.Pages.Certificates
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-
-            _jobCertificateService.PostJobCertificate(Certificate);
-
-            return RedirectToPage("Index");
+            var Parameters = $"&nameEng={Certificate.NameEng}&nameFre={Certificate.NameFre}&descEng={Certificate.DescEng}&descFre={Certificate.DescFre}"; 
+            var id = await _jobCertificateService.PostJobCertificate(Parameters);
+            Thread.MemoryBarrier();
+            return RedirectToPage("Details", new { id });
 
         }
     }

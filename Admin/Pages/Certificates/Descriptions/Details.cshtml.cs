@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Business.Dtos.JobCompetencies;
 using Admin.Data;
-
-namespace Admin.Pages.Certificates
+namespace Admin.Pages.Certificates.Descriptions
 {
     public class DetailsModel : PageModel
     {
@@ -14,11 +13,11 @@ namespace Admin.Pages.Certificates
             _jobCertificateService = jobCertificateService;
         }
 
-        public JobCertificateDto Certificate { get; set; }
+        public JobCertificateDto Description { get; set; }
 
         public async Task OnGetAsync(int id)
         {
-            Certificate = await _jobCertificateService.GetJobCertificateById(id); 
+            Description = await _jobCertificateService.GetJobCertificateDescriptionById(id);
         }
     }
 }

@@ -132,6 +132,9 @@
   <data name="CURRENT LEVEL" xml:space="preserve">
     <value>NIVEAU ACTUEL</value>
   </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Position actuelle</value>
+  </data>
   <data name="Current Position Level" xml:space="preserve">
     <value>Niveau de poste actuel</value>
   </data>

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
+using Business.Dtos.JobCompetencies;
 
 namespace Admin.Pages.Competencies
 {
@@ -26,7 +27,7 @@ namespace Admin.Pages.Competencies
         }
 
         [BindProperty]
-        public Competency Competency { get; set; }
+        public JobCompetencyDto Competency { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
@@ -36,10 +37,10 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            Competency = await _context.Competencies
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
-
+            //Competency = await _context.Competencies
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            Competency = await _jobCompetencyService.GetJobCompetencyById(id);
             if (Competency == null)
             {
                 return NotFound();
@@ -58,7 +59,7 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            var Competency = await _context.Certificates.FindAsync(id);
+            var Competency = await _context.Competencies.FindAsync(id);
 
             if (Competency == null)
             {

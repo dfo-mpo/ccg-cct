@@ -4,31 +4,34 @@
 }
 @{
     var isEnglish = ViewData["Language"].ToString() == "en";
+    var Position = await _similarService.GetJobPositionById(int.Parse(ViewData["PositionId"].ToString()));
     var Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(ViewData["Id"].ToString());
     var similarpositions = isEnglish ? "SIMILAR POSITIONS" : "POSITIONS SIMILAIRES";
     var level = isEnglish ? "Level" : "Niveau";
     var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
     var positions = isEnglish ? "POSITION" : "POSTE";
     var countmessage = Positions.Length != 1 ? "POSITIONS" : "POSITION";
+    var currentposition = isEnglish ? "Current Position" : "Position actuelle";
 }
-<div class="mrgn-tp-lg">
-    <h3 class="text-center">@similarpositions</h3>
-    <h5>@Positions.Length @countmessage</h5>
-    <table class="table table-hover table-responsive table-bordered">
-        <tbody>
-            <tr>
-                <td class="bg-primary" width="25%">@level</td>
-                <td class="bg-primary" width="75%">@positions</td>
-            </tr>
+    <div class="mrgn-tp-lg">
+        <h4>@currentposition: @Position.JobGroupLevelCode - @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</h4>
+        <h3 class="text-center">@similarpositions</h3>
+        <h5>@Positions.Length @countmessage</h5>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
 
-            @foreach (var position in Positions.Where(e => e.Active != 0))
-            {
+                @foreach (var position in Positions.Where(e => e.Active != 0))
+                {
                     <tr>
-                        <td>@position.JobGroupCode-@position.JobLevelValue</td>
+                        <td>@position.LevelCode</td>
                         <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
 
                     </tr>
                 }
             </tbody>
-    </table>
-</div>
+        </table>
+    </div>

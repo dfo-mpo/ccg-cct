@@ -20,7 +20,7 @@ namespace Admin.Pages.Positions
         }
 
         public IList<JobPositionDto> JobPositions { get; set; }
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
 
         public async Task OnGetAsync()

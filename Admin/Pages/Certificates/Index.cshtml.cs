@@ -22,7 +22,8 @@ namespace Admin.Pages.Certificates
             _context = context;
             _jobCompetencyService = jobCompetencyService;
         }
-        public string CurrentFilter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Filter { get; set; }
 
         public IList<JobCertificateDto> Certificates { get; set; }
 

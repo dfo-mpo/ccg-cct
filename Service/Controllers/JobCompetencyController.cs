@@ -84,11 +84,48 @@ namespace Service.Controllers
             return Ok(results);
         }
 
-        [HttpPost, Route("addjobcompetency")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task AddJobCompetency([FromBody] AddJobCompetencyCommand command)
+        [HttpGet, Route("addjobcompetency")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddJobCompetency(
+                [FromQuery] int typeId,
+                [FromQuery] string nameEng,
+                [FromQuery] string nameFre,
+                [FromQuery] string  descEng,
+                [FromQuery] string  descFre,
+                [FromQuery] string level1DescEng,
+                [FromQuery] string level1DescFre,
+                [FromQuery] string level2DescEng,
+                [FromQuery] string level2DescFre,
+                [FromQuery] string level3DescEng,
+                [FromQuery] string level3DescFre,
+                [FromQuery] string level4DescEng,
+                [FromQuery] string level4DescFre,
+                [FromQuery] string level5DescEng,
+                [FromQuery] string level5DescFre)
         {
-            await _commandSender.ValidateAndSendAsync(command, ModelState);
+            var query = new AddJobCompetencyCommand
+            {
+                TypeId = typeId,
+                NameEng = nameEng,
+                NameFre = nameFre,
+                DescEng = descEng,
+                DescFre = descFre,
+                Level1DescEng = level1DescEng,
+                Level1DescFre = level1DescFre,
+                Level2DescEng = level2DescEng,
+                Level2DescFre = level2DescFre,
+                Level3DescEng = level3DescEng,
+                Level3DescFre = level3DescFre,
+                Level4DescEng = level4DescEng,
+                Level4DescFre = level4DescFre,
+                Level5DescEng = level5DescEng,
+                Level5DescFre = level5DescFre,
+
+            };
+
+            var results =
+            await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
 
         [HttpPost, Route("deletejobcompetency")]

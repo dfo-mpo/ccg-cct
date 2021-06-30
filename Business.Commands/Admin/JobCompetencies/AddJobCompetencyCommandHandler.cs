@@ -2,12 +2,14 @@
 using CCG.AspNetCore.Business.Validator;
 using DataModel;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Business.Commands.Admin.JobCompetencies
 {
-    public class AddJobCompetencyCommand : ICommand
+    public class AddJobCompetencyCommand : IQuery<int>
     {
         public string NameEng { get; set; }
         public string NameFre { get; set; }
@@ -26,27 +28,15 @@ namespace Business.Commands.Admin.JobCompetencies
         public string Level5DescFre { get; set; }
     }
 
-    public class AddJobCompetencyCommandValidator : AbstractCommandValidator<AddJobCompetencyCommand>
-    {
-        public AddJobCompetencyCommandValidator(CctDbContext db)
-        {
-            RuleFor(e => e.DescEng)
-                .MaximumLength(250);
 
-            RuleFor(e => e.DescFre)
-                .MaximumLength(255);
-        }
-    }
-    public class AddJobCompetencyCommandHandler : ICommandHandler<AddJobCompetencyCommand>
+    public class AddJobCompetencyCommandHandler : IQueryHandler<AddJobCompetencyCommand,int>
     {
         private readonly CctDbContext _db;
-
         public AddJobCompetencyCommandHandler(CctDbContext db)
         {
             _db = db;
         }
-
-        public async Task ExecuteAsync(AddJobCompetencyCommand command, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<int> HandleAsync(AddJobCompetencyCommand command, CancellationToken cancellationToken = new CancellationToken())
         {
             var newCompetency = new Competency()
             {
@@ -127,6 +117,8 @@ namespace Business.Commands.Admin.JobCompetencies
                 CompetencyLevelRequirementId = lr5.Id
             }, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);
+
+            return newCompetency.Id;
         }
 
     }
