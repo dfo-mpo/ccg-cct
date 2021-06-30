@@ -1,0 +1,54 @@
+﻿@inject Web.Data.JobPositionService _jobpositionService
+@{
+    Layout = "_ThemePdf";
+}
+@{
+    var isEnglish = ViewData["Language"].ToString() == "en";
+
+    var seagoingPositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["seagoingId"].ToString());
+    var seagoingtitle = isEnglish ? "SEAGOING POSITIONS" : "POSITIONS EN MER";
+    var level = isEnglish ? "LEVEL" : "NIVEAU";
+    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
+    var positions = isEnglish ? "POSITIONS" : "POSTES";
+    var noseagoing = isEnglish ? "No seagoing positions available" : "Aucune position en mer disponible";
+}
+
+<div class="mrgn-tp-lg">
+    @if (seagoingPositions.Any(e => e.Active != 0))
+    {
+        <h3 class="text-center">@seagoingtitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+
+                @foreach (var position in seagoingPositions.Where(e => e.Active != 0))
+                {
+                    <tr>
+                        <td>@position.LevelCode</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-center">@seagoingtitle</h3>
+        <table class="table table-hover table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td class="bg-primary" width="25%">@level</td>
+                    <td class="bg-primary" width="75%">@positions</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@noseagoing</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
+

@@ -135,11 +135,20 @@
   <data name="Level" xml:space="preserve">
     <value>Level</value>
   </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
   <data name="NoType1Competencies" xml:space="preserve">
     <value>No Behavioural </value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
   </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>

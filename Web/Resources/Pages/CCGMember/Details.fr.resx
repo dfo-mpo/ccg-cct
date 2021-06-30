@@ -132,11 +132,20 @@
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
   <data name="No Certifications" xml:space="preserve">
     <value>Aucun certificat associées</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
   </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>

@@ -133,6 +133,6 @@
     <value>Positions en mer</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Positions à terre</value>
+    <value>Positions côté rivage</value>
   </data>
 </root>
