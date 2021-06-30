@@ -28,33 +28,20 @@
             <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
-                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.LevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
+                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model.PositionCertificates.Any(e => e.Active != 0))
                     {
                         <tr>
-                            <th style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                            <th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th>
+                            <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
                         </tr>
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
-                            if (Model.CertificateIds.Contains(c.Id.ToString()))
-                            {
-                                var key = "c" + c.Id.ToString();
                                 <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" type="checkbox" checked="true" /></td>
+                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
                                 </tr>
-                            }
-                            else
-                            {
-                                <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td>
-                                </tr>
-                            }
                         }
                     }
                     else
@@ -126,8 +113,7 @@
                         @{
                             var paramdata = new Dictionary<string, string>
                                                                                    {
-                              {"positionid", Model.PositionId.ToString()},
-                              {"certificates", Model.Certificates }
+                              {"positionid", Model.PositionId.ToString()}
                             };
                         }
                         <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" >@Localizer["Previous"]</a></li>
@@ -140,13 +126,13 @@
                             else
                             {
                                 var RouteParameter70 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
-                            {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
                                 var RouteParameter80 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
-                            {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
                                 var RouteParameter90 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
-                            {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
                                 var RouteParameter100 = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
-                            {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Seagoing/Common/Details"} };
 
     <section>
 
@@ -167,7 +153,6 @@
                             var paramdata = new Dictionary<string, string>
                             {
                               {"positionid", Model.PositionId.ToString()},
-                              {"certificates", Model.Certificates },
                               {"previouspage",Model.PreviousPage },
                               {"previouspagedetails", "../../Candidate/Seagoing/Common/Details" }
                             };

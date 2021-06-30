@@ -6,12 +6,16 @@
 
 <h1>Similar Positions</h1>
 
-
-<p>
-    <label name="Filter" class="control-label"><b>Filter</b></label>
-    <input name="Filter" class="form-control" />
-</p>
-
+<form>
+    <div class="form-actions no-color">
+        <h6>
+            Find similar positions:
+            <input type="text" asp-for="@Model.Filter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to Full List</a>
+        </h6>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.JobPositions)
+        @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
         <tr>
             <td>

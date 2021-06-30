@@ -5,7 +5,8 @@
         public int Id { get; set; }
         public int Active { get; set; }
         public int TypeId { get; set; }
-
+        public string TypeNameEng { get; set; }
+        public string TypeNameFre { get; set; }
         public string NameEng { get; set; }
 
         public string NameFre { get; set; }

@@ -12,17 +12,16 @@
 <a class="btn btn-dark pull-right" asp-page="Descriptions/Index">Descriptions</a>
 
 
-<form asp-page="./Index" method="get">
+<form>
     <div class="form-actions no-color">
         <h6>
             Find certificates:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="text" asp-for="@Model.Filter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-page="./Index">Back to Full List</a>
         </h6>
     </div>
 </form>
-
 <table class="table">
     <thead>
         <tr>
@@ -32,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Certificates)
+        @foreach (var item in Model.Certificates.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
             <tr>
                 <td>

@@ -43,6 +43,18 @@ namespace Business.Queries.Compare
                         TypeNameEng = pos.CompetencyType.NameEng,
                         TypeNameFre = pos.CompetencyType.NameFre,
                         TypeId = pos.CompetencyType.Id,
+                        RatingNameCurEng = pos.CompetencyRatingLevel.NameEng,
+                        RatingNameCurFre = pos.CompetencyRatingLevel.NameFre,
+                        RatingNameObjEng = obj == null ? "Your objective position does not have this competency." : obj.CompetencyRatingLevel.NameEng,
+                        RatingNameObjFre = obj == null ? "Votre poste objectif n'a pas cette compétence." : obj.CompetencyRatingLevel.NameFre,
+                        RatingDescCurEng = pos.CompetencyRatingLevel.DescEng,
+                        RatingDescCurFre = pos.CompetencyRatingLevel.DescFre,
+                        RatingDescObjEng = obj == null ? string.Empty : obj.CompetencyRatingLevel.DescEng,
+                        RatingDescObjFre = obj == null ? string.Empty : obj.CompetencyRatingLevel.DescFre,
+                        CompetencyLevelReqDescCurEng = pos.CompetencyLevelRequirement.DescEng,
+                        CompetencyLevelReqDescCurFre = pos.CompetencyLevelRequirement.DescFre,
+                        CompetencyLevelReqDescObjEng = obj == null ? string.Empty : obj.CompetencyLevelRequirement.DescEng,
+                        CompetencyLevelReqDescObjFre = obj == null ? string.Empty : obj.CompetencyLevelRequirement.DescFre,
                         Active = 1
 
                     }).ToListAsync(cancellationToken);

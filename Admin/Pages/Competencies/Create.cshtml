@@ -13,14 +13,14 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <h3 style="margin-bottom:15px;">Choose a competency to add</h3>
         <div class="form-group">
-            <input type="radio" id="knowledge" name="CompetencyType" value="1">
-            <label class="h5 mr-md-3" for="knowledge">Knowledge</label>
-            <input type="radio" id="technical" name="CompetencyType" value="2">
-            <label class="h5 mr-md-3" for="technical">Technical</label>
-            <input type="radio" id="behavioural" name="CompetencyType" value="3">
-            <label class="h5 mr-md-3" for="behavioural">Behavioural</label>
-            <input type="radio" id="executive" name="CompetencyType" value="4">
-            <label class="h5 mr-md-3" for="executive">Executive</label>
+            <input type="radio" id="knowledge" asp-for="@Model.TypeId" name="CompetencyType" value="1">
+            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="knowledge">Knowledge</label>
+            <input type="radio" id="technical" asp-for="@Model.TypeId" name="CompetencyType" value="2">
+            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="technical">Technical</label>
+            <input type="radio" id="behavioural" asp-for="@Model.TypeId" name="CompetencyType" value="3">
+            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="behavioural">Behavioural</label>
+            <input type="radio" id="executive" asp-for="@Model.TypeId" name="CompetencyType" value="4">
+            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="executive">Executive</label>
         </div>
         <div class="form-group">
             <label asp-for="Competency.NameEng" class="control-label"><b>Name English</b></label>
@@ -111,7 +111,7 @@
 
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="List" asp-route-typeid="@Model.TypeId">Back to List</a>
 </div>
 
 @section Scripts {

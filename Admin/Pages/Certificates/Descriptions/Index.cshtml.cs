@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -22,13 +18,14 @@ namespace Admin.Pages.Certificates.Descriptions
             _context = context;
             _jobCertificateService = jobCertificateService;
         }
-        public string CurrentFilter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Filter { get; set; }
 
-        public IList<JobCertificateDto> Certificates { get; set; }
+        public IList<JobCertificateDto> Descriptions { get; set; }
 
         public async Task OnGetAsync(string searchString)
         {
-            Certificates = await _jobCertificateService.GetAllJobCertificateDescriptions();
+            Descriptions = await _jobCertificateService.GetAllJobCertificateDescriptions();
         }
     }
 }
