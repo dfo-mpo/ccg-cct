@@ -129,4 +129,10 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer ou imprimer ce document</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Liste de postes similaires</value>
+  </data>
 </root>

@@ -144,4 +144,7 @@
   <data name="Text" xml:space="preserve">
     <value>Les officiers de la navigation maritime et du génie ont des exigences supplémentaires associées à une matrice de certification (c'est-à-dire une formation terminée dans une institution reconnue), le temps de mer (c'est-à-dire le temps enregistré en mer) et la classe du navire (c'est-à-dire la taille, la puissance, le type du navire).</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes - En mer - Officier</value>
+  </data>
 </root>

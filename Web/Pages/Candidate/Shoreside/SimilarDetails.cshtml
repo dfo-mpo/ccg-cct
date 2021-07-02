@@ -2,7 +2,7 @@
 @model Web.Pages.Candidate.Shoreside.SimilarDetailsModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "SimilarDetails";
+    ViewData["Title"] = Localizer["title"];
 }
 
 @{
@@ -21,8 +21,7 @@
     <section role="contentinfo">
 
         <div class="col-md-12 mrgn-tp-md mrgn-bttm-md pull-right">
-            <a target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["print"]" alt="@Localizer["print"]"></span> </a>
-            <a target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]" alt="@Localizer["save"]"></span> </a>
+            <a target="_blank" title="@Localizer["save"]" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
         </div>
         <br />
         @if (Model.Position.JobTitleEng.Contains("MELDEV") || Model.Position.JobTitleEng.Contains("MCTS"))
@@ -127,9 +126,9 @@
                 </tbody>
             </table>
         </form>
-        <div class="row">
-            <div class="col-lg-12 mrgn-tp-md">
-                <nav role="navigation" class="mrgn-bttm-lg">
+        <div style="clear: both;">
+            <div class="col-lg-12">
+                <nav role="navigation">
                     <h2 class="wb-inv">Document navigation</h2>
                     <ul class="pager">
                         <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
@@ -165,14 +164,14 @@ else
                         <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 mrgn-tp-md">
-                            <nav role="navigation" class="mrgn-bttm-lg">
+                    <div style="clear: both;">
+                        <div class="col-lg-12">
+                            <nav role="navigation">
                                 <h2 class="wb-inv">Document navigation</h2>
                                 <ul class="pager">
                                     @{
                                         var paramdataprevious = new Dictionary<string, string>
-                                                        {
+                                                                                {
                               {"positionid", Model.PositionId.ToString()},
                               {"certificates", Model.Certificates },
                               {"previouspage",Model.PreviousPage },
