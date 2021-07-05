@@ -132,4 +132,7 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes postes à côté rivage</value>
+  </data>
 </root>

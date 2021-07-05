@@ -1,6 +1,7 @@
 ﻿@page
 @inject IViewLocalizer Localizer
 @{
+    ViewData["Title"] = Localizer["title"];
 }
     <section role="contentinfo">
         <div class="col-md-12">
@@ -11,15 +12,15 @@
                         <a class="nav-link" asp-page="Officer/Index">
                             <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                         </a>
-                        <figcaption><h4 class="text-center">@Localizer["Officer"]</h4></figcaption>
+                        <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Officer/Index">@Localizer["Officer"]</a></h4></figcaption>
                     </figure>
                 </div>
                 <div class="col-sm-6">
                     <figure>
-                        <a asp-page="Crew/Index">
+                        <a class="nav-link" asp-page="Crew/Index">
                             <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
                         </a>
-                        <figcaption><h4 class="text-center">@Localizer["Crew"]</h4></figcaption>
+                        <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Crew/Index">@Localizer["Crew"]</a></h4></figcaption>
                     </figure>
                 </div>
             </div>

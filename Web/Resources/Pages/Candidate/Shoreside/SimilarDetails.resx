@@ -132,4 +132,10 @@
   <data name="Question2" xml:space="preserve">
     <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Save or print this document</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Similar Position Details</value>
+  </data>
 </root>

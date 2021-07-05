@@ -2,6 +2,7 @@
 @inject IViewLocalizer Localizer
 @model Web.Pages.Candidate.Shoreside.AllCandidateShoresideModel
 @{
+    ViewData["Title"] = Localizer["title"];
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
 }
@@ -20,14 +21,14 @@
                     @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
                     {
                         @if (jobgroup.Active != 0) {
-                        <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
-                            <div class="col-md-4 col-sm-6">
-                                <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                                </figure>
-                            </div>
-                        </a>
+                            <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
+                                <div class="col-md-4 col-sm-6">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
                         }
                     }
                 }
