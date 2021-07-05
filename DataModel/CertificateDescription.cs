@@ -16,6 +16,8 @@ namespace DataModel
 
         public string DescFre { get; set; }
 
+        public int Active { get; set; } // ex : 0 = certificate Description deleted, 1 = certificate Description active
+
         public virtual ICollection<JobRolePositionCertificate> JobRolePositionCertificates { get; set; }
 
 
