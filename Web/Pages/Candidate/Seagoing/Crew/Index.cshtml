@@ -3,45 +3,51 @@
 @{
     ViewData["Title"] = Localizer["title"];
 }
-    <section role="contentinfo">
-        <div class="col-md-12">
-            <h2>@Localizer["Q1"]</h2>
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <figure>
-                        <a class="nav-link" asp-page="Deck/PositionList">
-                            <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoDeck"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                        </a>
-                        <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Deck/PositionList">@Localizer["Deck"]</a></h4></figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <figure>
-                        <a class="nav-link" asp-page="Engineering/PositionList">
-                            <img src="~/img/CCGMember/Oiler.jpg" alt="@Localizer["PhotoEngineer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                        </a>
-                        <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Engineering"]</a></h4></figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <figure>
-                        <a class="nav-link" asp-page="Logistics/PositionList">
-                            <img src="~/img/CCGMember/GS.jpg" alt="@Localizer["PhotoLogistics"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                        </a>
-                        <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Logistics/PositionList">@Localizer["Logistics"]</a></h4></figcaption>
-                    </figure>
-                </div>
-            </div>
+<section role="contentinfo">
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+    <h2>@Localizer["Q1"]</h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a class="nav-link" asp-page="Deck/PositionList">
+                    <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoDeck"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Deck/PositionList">@Localizer["Deck"]</a></h4></figcaption>
+            </figure>
         </div>
-        <div style="clear:both;">
-            <div class="col-lg-12">
-                <nav role="navigation">
-                    <h2 class="wb-inv">Document navigation</h2>
-                    <ul class="pager">
-                        <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a class="nav-link" asp-page="Engineering/PositionList">
+                    <img src="~/img/CCGMember/Oiler.jpg" alt="@Localizer["PhotoEngineer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Engineering"]</a></h4></figcaption>
+            </figure>
         </div>
-    </section>
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a class="nav-link" asp-page="Logistics/PositionList">
+                    <img src="~/img/CCGMember/GS.jpg" alt="@Localizer["PhotoLogistics"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Logistics/PositionList">@Localizer["Logistics"]</a></h4></figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!-- <div style="clear:both;">
+                <div class="col-lg-12">
+                    <nav role="navigation">
+                        <h2 class="wb-inv">Document navigation</h2>
+                        <ul class="pager">
+                            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                        </ul>
+                    </nav>
+                </div>
+          </div>
+    -->
+</section>
 

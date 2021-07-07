@@ -79,6 +79,15 @@ namespace Web.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Career Competency Tool.
         /// </summary>
         public static string IndexTitle {
@@ -129,6 +138,15 @@ namespace Web.Resources.Pages {
         public static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
         

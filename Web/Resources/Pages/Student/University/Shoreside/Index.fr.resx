@@ -127,7 +127,7 @@
     <value>Collège de la Garde côtière canadienne</value>
   </data>
   <data name="computer" xml:space="preserve">
-    <value>L'informatique</value>
+    <value>Sciences informatiques</value>
   </data>
   <data name="economics" xml:space="preserve">
     <value>(y compris économie, sociologie, psychologie)</value>
@@ -171,10 +171,10 @@
   <data name="sciences" xml:space="preserve">
     <value>Les sciences</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
   <data name="social" xml:space="preserve">
     <value>Science sociale</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>Université - Postes à côté rivage</value>
   </data>
 </root>
