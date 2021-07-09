@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages.Student.College.Shoreside
 {
+    [Breadcrumb("Geographical", FromPage = typeof(Shoreside.IndexModel))]
     public class GeographicalInformationModel : PageModel
     {
         private readonly ILogger<GeographicalInformationModel> _logger;

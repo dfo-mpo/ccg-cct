@@ -23,34 +23,39 @@
                             };
 }
 
-
-<h2><b>@Localizer["Question1"]</b></h2>
-<a asp-page="Similar/SimilarSearch" asp-all-route-data="@paramdata">
-    <div class="col-sm-6 mrgn-bttm-md">
-        <figure>
-            <img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive thumbnail mrgn-bttm-sm" />
-            <h4>@Localizer["Similar"]</h4>
-        </figure>
-    </div>
-</a>
-<a asp-page="Compare/AllObjective" asp-all-route-data="@paramdata">
-    <div class="col-sm-6 mrgn-bttm-md">
-        <figure>
-            <img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive thumbnail mrgn-bttm-sm" />
-            <h4>@Localizer["Compare"]</h4>
-        </figure>
-    </div>
-</a>
-<div class="row">
-    <div class="col-lg-12 mrgn-bttm-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="Details" asp-all-route-data="@paramdataprevious" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-
+<section role="contentinfo">
+    <nav role="navigation" class="mrgn-bttm-lg">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="Details" asp-all-route-data="@paramdataprevious" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+    <h2><b>@Localizer["Question1"]</b></h2>
+    <a asp-page="Similar/SimilarSearch" asp-all-route-data="@paramdata">
+        <div class="col-sm-6 mrgn-bttm-md">
+            <figure>
+                <img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive thumbnail mrgn-bttm-sm" />
+                <h4>@Localizer["Similar"]</h4>
+            </figure>
+        </div>
+    </a>
+    <a asp-page="Compare/AllObjective" asp-all-route-data="@paramdata">
+        <div class="col-sm-6 mrgn-bttm-md">
+            <figure>
+                <img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive thumbnail mrgn-bttm-sm" />
+                <h4>@Localizer["Compare"]</h4>
+            </figure>
+        </div>
+    </a>
+    <!--    <div class="row">
+            <div class="col-lg-12 mrgn-bttm-md">
+                <nav role="navigation" class="mrgn-bttm-lg">
+                    <h2 class="wb-inv">Document navigation</h2>
+                    <ul class="pager">
+                        <li class="previous"><a asp-page="Details" asp-all-route-data="@paramdataprevious" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    -->
+</section>

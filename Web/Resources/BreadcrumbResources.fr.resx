@@ -117,37 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CCGMember" xml:space="preserve">
-    <value>Membre de la GCC</value>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administratif</value>
   </data>
-  <data name="ExternalCandidate" xml:space="preserve">
-    <value>Candidat externe</value>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>Collège technique</value>
+  </data>
+  <data name="Computer" xml:space="preserve">
+    <value>Systèmes informatiques</value>
+  </data>
+  <data name="ComputerScience" xml:space="preserve">
+    <value>Sciences informatiques</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cuisinier</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Pont</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Électrique</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Électronique</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Ingénierie</value>
+  </data>
+  <data name="GeneralArts" xml:space="preserve">
+    <value>Arts généraux</value>
+  </data>
+  <data name="Geographical" xml:space="preserve">
+    <value>Information géographique</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>École secondaire</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
-  <data name="IndexTitle" xml:space="preserve">
-    <value>Outil de compétence professionnelle</value>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistique</value>
   </data>
-  <data name="PhotoExternal" xml:space="preserve">
-    <value>Photo d'un groupe d'individus</value>
+  <data name="Sciences" xml:space="preserve">
+    <value>Les sciences</value>
   </data>
-  <data name="PhotoMember" xml:space="preserve">
-    <value>Photo d'un membre de la Garde côtière canadienne</value>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
   </data>
-  <data name="PhotoStudents" xml:space="preserve">
-    <value>Photo d'étudiants diplômés</value>
+  <data name="ShipsCrew" xml:space="preserve">
+    <value>Équipage des navires</value>
   </data>
-  <data name="Question1" xml:space="preserve">
-    <value>Pour commencer, dites-nous qui vous êtes</value>
+  <data name="ShipsOfficer" xml:space="preserve">
+    <value>Officiers de navire</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
+  <data name="SocialScience" xml:space="preserve">
+    <value>Science sociale</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Étudiant</value>
   </data>
-  <data name="title" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>Bienvenue dans l'outil de compétence professionnelle. Cet outil est conçu pour vous permettre de rechercher et de comparer divers postes au sein de la Garde côtière canadienne.</value>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
 </root>
