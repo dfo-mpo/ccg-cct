@@ -1,5 +1,9 @@
 ﻿@page
+@model Web.Pages.IndexModel
 @inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Home";
+}
 
 <div class="text-left">
     <h1 class="display-4">@Localizer["IndexTitle"]</h1>

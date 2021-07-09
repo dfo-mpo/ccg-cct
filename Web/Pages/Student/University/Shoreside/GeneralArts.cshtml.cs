@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages.Student.University.Shoreside
 {
+    [Breadcrumb("GeneralArts", FromPage = typeof(Shoreside.IndexModel))]
     public class GeneralArtsModel : PageModel
     {
         private readonly ILogger<GeneralArtsModel> _logger;

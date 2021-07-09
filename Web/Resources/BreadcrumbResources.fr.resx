@@ -117,31 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administratif</value>
+  </data>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>Collège technique</value>
+  </data>
+  <data name="Computer" xml:space="preserve">
+    <value>Systèmes informatiques</value>
+  </data>
+  <data name="ComputerScience" xml:space="preserve">
+    <value>Sciences informatiques</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cuisinier</value>
+  </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Électrique</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Électronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
     <value>Ingénierie</value>
   </data>
+  <data name="GeneralArts" xml:space="preserve">
+    <value>Arts généraux</value>
+  </data>
+  <data name="Geographical" xml:space="preserve">
+    <value>Information géographique</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>École secondaire</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>
-  <data name="PhotoDeck" xml:space="preserve">
-    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
+  <data name="Sciences" xml:space="preserve">
+    <value>Les sciences</value>
   </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo d'un membre de la Garde côtière canadienne vérifiant l'huile</value>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
   </data>
-  <data name="PhotoLogistics" xml:space="preserve">
-    <value>Photo d'un cuisinier de la Garde côtière canadienne servant le déjeuner</value>
+  <data name="ShipsCrew" xml:space="preserve">
+    <value>Équipage des navires</value>
   </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
+  <data name="ShipsOfficer" xml:space="preserve">
+    <value>Officiers de navire</value>
   </data>
-  <data name="Q1" xml:space="preserve">
-    <value>Veuillez sélectionner votre domaine d'emploi préféré</value>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
   </data>
-  <data name="title" xml:space="preserve">
-    <value>Candidats externes - En mer - Équipage</value>
+  <data name="SocialScience" xml:space="preserve">
+    <value>Science sociale</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
 </root>

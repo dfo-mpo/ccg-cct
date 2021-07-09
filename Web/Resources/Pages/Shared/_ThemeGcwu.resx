@@ -126,6 +126,9 @@
   <data name="Government of Canada" xml:space="preserve">
     <value>Government of Canada</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Language selection" xml:space="preserve">
     <value>Language selection</value>
   </data>

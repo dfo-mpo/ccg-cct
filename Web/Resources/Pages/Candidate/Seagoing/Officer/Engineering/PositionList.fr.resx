@@ -138,7 +138,13 @@
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer ou imprimer ce document</value>
+  </data>
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSITIONS SIMILAIRES</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes - En mer - Officier - Postes d'ingénieur</value>
   </data>
 </root>

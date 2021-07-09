@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages.Student.HighSchool.Shoreside
 {
+    [Breadcrumb("Computer", FromPage = typeof(Shoreside.IndexModel))]
     public class ComputerModel : PageModel
     {
         private readonly ILogger<ComputerModel> _logger;

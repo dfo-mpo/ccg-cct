@@ -438,7 +438,6 @@ else if (Model.PercentSelected == "true")
 
     <section>
         <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-            <a title="@Localizer["Print PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-print pull-right mrgn-lft-md" alt="@Localizer["Print PDF"]"></span></a>
             <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
         </div>
 

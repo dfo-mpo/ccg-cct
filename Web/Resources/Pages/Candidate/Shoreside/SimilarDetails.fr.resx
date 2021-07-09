@@ -156,10 +156,16 @@
   <data name="Question2" xml:space="preserve">
     <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer ou imprimer ce document</value>
+  </data>
   <data name="SELECT" xml:space="preserve">
     <value>SÉLECTIONNER</value>
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Similaire</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Détails de poste similaires</value>
   </data>
 </root>

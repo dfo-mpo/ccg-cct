@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Localization.Routing;
 using Web.Helpers;
 using System.Linq;
 using Rotativa.AspNetCore;
+using SmartBreadcrumbs.Extensions;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Web
@@ -49,7 +50,15 @@ namespace Web
                     opts =>
                     {
                         opts.ResourcesPath = "Resources";
+
                     });
+
+            services.AddBreadcrumbs(GetType().Assembly, options =>
+            {
+                // Testing
+                options.DontLookForDefaultNode = true;
+                options.ResourceType = typeof(Resx.BreadcrumbResources);
+            });
 
             services.AddHttpClient("api", c =>
             {
@@ -84,10 +93,6 @@ namespace Web
             }
 
             app.UseHttpsRedirection();
-
-
-
-
             app.UseStaticFiles();
 
             app.UseRouting();

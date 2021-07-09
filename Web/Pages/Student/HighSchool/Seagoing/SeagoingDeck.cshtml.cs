@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages.Student.HighSchool.Seagoing
 {
+    [Breadcrumb("Deck", FromPage = typeof(Seagoing.IndexModel))]
     public class SeagoingDeckModel : PageModel
     {
         private readonly ILogger<SeagoingDeckModel> _logger;
