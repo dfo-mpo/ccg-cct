@@ -88,7 +88,7 @@ namespace Admin.Pages.Positions
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             CurrentSelectedJobGroup = JobGroups[0];
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroups[0].Id);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
             SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
             JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
             LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
@@ -101,7 +101,7 @@ namespace Admin.Pages.Positions
             JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
             JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
             JobCertificates = await _jobCompetencyService.GetJobCertificates();
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
@@ -202,7 +202,7 @@ namespace Admin.Pages.Positions
             JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             SubJobGroupId = int.Parse(LevelValue.Split("/")[0]);
             JobGroupLevelId = int.Parse(LevelValue.Split("/")[1]);
@@ -322,7 +322,7 @@ namespace Admin.Pages.Positions
             JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
             JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             SubJobGroupId = int.Parse(LevelValue.Split("/")[0]);
@@ -414,7 +414,7 @@ namespace Admin.Pages.Positions
             TitleEng = Request.Form["titleEng"];
             TitleFre = Request.Form["titleFre"];            
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             SubJobGroupId = int.Parse(LevelValue.Split("/")[0]);
@@ -519,7 +519,7 @@ namespace Admin.Pages.Positions
             TitleEng = Request.Form["titleEng"];
             TitleFre = Request.Form["titleFre"];
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             SubJobGroupId = int.Parse(LevelValue.Split("/")[0]);
@@ -645,7 +645,7 @@ namespace Admin.Pages.Positions
             JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
             JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
-            JobGroupPositions = await _jobCompetencyService.GetSubGroupLevelsByGroupId(JobGroupId);
+            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobCompetencyService.GetJobGroups();
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             LevelCode = LevelValue.Split("/")[2];

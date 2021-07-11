@@ -2,59 +2,720 @@
 @model Admin.Pages.Similar.EditModel
 @{
     ViewData["Title"] = "Edit";
+    var routedataadd = new Dictionary<string, string> {
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"selectedjobpositionid",Model.SelectedJobPositionId.ToString() },
+                                                        {"subgroupcode", Model.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                                        };
+
 }
-
-<h1>Edit</h1>
-
-<div class="row">
-    <div class="col-md-12">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="JobPosition.Position" />
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.HundredPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.HundredPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.HundredPercent" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.NinetyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.NinetyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.NinetyPercent" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.EightyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.EightyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.EightyPercent" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="JobPosition.SeventyPercent" class="control-label"></label>
-                                <input asp-for="JobPosition.SeventyPercent" class="form-control" />
-                                <span asp-validation-for="JobPosition.SeventyPercent" class="text-danger"></span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>
+<h1>Edit</h1>
+@if (Model.PercentSelection == "100")
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
 
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="JobPosition.Position" />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">Add similar postion</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button class="btn btn-info" disabled>
+                                    one hundred percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
+                                    ninety percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
+                                    eighty percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
+                                    seventy percent
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row mrgn-bttm-md col-12">
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Select similar position</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.CurrentSelectedJobGroup.Code
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            @foreach (var jobgroup in Model.JobGroups)
+                                            {
+                                                var routedatagroup = new Dictionary<string, string> {
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        {"jobgroupid",jobgroup.Id.ToString() },
+
+    };
+                                <li>
+                                    <button class="btn btn-light" asp-page-handler="grouponehundredpercent" asp-all-route-data="routedatagroup">
+                                        (@jobgroup.Code) @jobgroup.NameEng / @jobgroup.NameFre
+                                    </button>
+                                </li>
+                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-2">
+                                        <label class="control-label"><b>Level/Niveau</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.LevelCode
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" name="LevelCode">
+                                            @foreach (var level in Model.JobGroupPositions.ToList())
+                                            {
+                                                var routedatalevel = new Dictionary<string, string> {
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"levelvalue", level.LevelValue},
+                                                        {"levelcode", level.LevelCode },
+                                                        {"subgroupcode", level.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        };
+                                                <li role="presentation">
+                                                    <button class="btn btn-light" asp-page-handler="levelonehundredpercent" asp-all-route-data="routedatalevel">
+                                                        @level.LevelCode
+                                                    </button>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Position/Poste</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="SelectedJobPositionId">
+                                            @if (!Model.AddedOneHundredPercentIds.Contains(@Model.SelectedJobPositionId.ToString()))
+                                            {
+                                                <option value="@Model.SelectedJobPositionId" selected>
+                                                    @Model.CurrentSelectedJobTitleEng / @Model.CurrentSelectedJobTitleFre
+                                                </option>
+                                            }
+                                            @foreach (var jp in Model.JobGroupLevelPositions.Where(e => e.Active != 0))
+                                            {
+                                                @if (!Model.AddedOneHundredPercentIds.Contains(jp.JobTitleId.ToString()) && jp.JobTitleId != Model.SelectedJobPositionId)
+                                                {
+                                                    <option value="@jp.JobTitleId">
+                                                        @jp.JobTitleEng / @jp.JobTitleFre
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-2 ">
+                                        <br />
+                                        <button class="btn btn-primary" asp-page-handler="addonehundredpercentsimilarposition" asp-all-route-data="routedataadd">
+                                            ADD
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                @foreach (var position in Model.AddedOneHundredPercentJobPositions.Where(e => e.Active != 0))
+                                {
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                var routedataremove = new Dictionary<string, string> {
+                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subgroupcode", Model.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                };
+                                            }
+                                            <button class="btn btn-link" asp-page-handler="deleteonehundredpercentsimilarposition" asp-all-route-data="@routedataremove">REMOVE</button>
+                                            <a class="btn btn-link col-10 text-left">
+                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="routedataadd">
+                        UPDATE
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else if (Model.PercentSelection == "90")
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="JobPosition.Position" />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">Add similar postion</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
+                                    one hundred percent
+                                </button>
+                                <button class="btn btn-info" disabled>
+                                    ninety percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
+                                    eighty percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
+                                    seventy percent
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row col-12">
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Select similar position</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.CurrentSelectedJobGroup.Code
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            @foreach (var jobgroup in Model.JobGroups)
+                                            {
+                                                var routedatagroup = new Dictionary<string, string> {
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        {"jobgroupid",jobgroup.Id.ToString() },
+
+    };
+                                <li>
+                                    <button class="btn btn-light" asp-page-handler="groupninetypercent" asp-all-route-data="routedatagroup">
+                                        (@jobgroup.Code) @jobgroup.NameEng / @jobgroup.NameFre
+                                    </button>
+                                </li>
+                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-2">
+                                        <label class="control-label"><b>Level/Niveau</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.LevelCode
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" name="LevelCode">
+                                            @foreach (var level in Model.JobGroupPositions.ToList())
+                                            {
+                                                var routedatalevel = new Dictionary<string, string> {
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"levelvalue", level.LevelValue},
+                                                        {"levelcode", level.LevelCode },
+                                                        {"subgroupcode", level.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        };
+                                                <li role="presentation">
+                                                    <button class="btn btn-light" asp-page-handler="levelninetypercent" asp-all-route-data="routedatalevel">
+                                                        @level.LevelCode
+                                                    </button>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Position/Poste</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="SelectedJobPositionId">
+                                            @if (!Model.AddedNinetyPercentIds.Contains(@Model.SelectedJobPositionId.ToString()))
+                                            {
+                                                <option value="@Model.SelectedJobPositionId" selected>
+                                                    @Model.CurrentSelectedJobTitleEng / @Model.CurrentSelectedJobTitleFre
+                                                </option>
+                                            }
+                                            @foreach (var jp in Model.JobGroupLevelPositions.Where(e => e.Active != 0))
+                                            {
+                                                @if (!Model.AddedNinetyPercentIds.Contains(jp.JobTitleId.ToString()) && jp.JobTitleId != Model.SelectedJobPositionId)
+                                                {
+                                                    <option value="@jp.JobTitleId">
+                                                        @jp.JobTitleEng / @jp.JobTitleFre
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <br />
+                                        <button class="btn btn-primary" asp-page-handler="addninetypercentsimilarposition" asp-all-route-data="routedataadd">
+                                            ADD
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                @foreach (var position in Model.AddedNinetyPercentJobPositions.Where(e => e.Active != 0))
+                                {
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                var routedataremove = new Dictionary<string, string> {
+                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subgroupcode", Model.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                };
+                                            }
+                                            <button class="btn btn-link" asp-page-handler="deleteninetypercentsimilarposition" asp-all-route-data="@routedataremove">REMOVE</button>
+                                            <a class="btn btn-link col-10 text-left">
+                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="routedataadd">
+                        UPDATE
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else if (Model.PercentSelection == "80")
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="JobPosition.Position" />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">Add similar postion</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
+                                    one hundred percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
+                                    ninety percent
+                                </button>
+                                <button class="btn btn-info" disabled>
+                                    eighty percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
+                                    seventy percent
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row col-12">
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Select similar position</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.CurrentSelectedJobGroup.Code
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            @foreach (var jobgroup in Model.JobGroups)
+                                            {
+                                                var routedatagroup = new Dictionary<string, string> {
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        {"jobgroupid",jobgroup.Id.ToString() },
+
+    };
+                                <li>
+                                    <button class="btn btn-light" asp-page-handler="groupeightypercent" asp-all-route-data="routedatagroup">
+                                        (@jobgroup.Code) @jobgroup.NameEng / @jobgroup.NameFre
+                                    </button>
+                                </li>
+                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-2">
+                                        <label class="control-label"><b>Level/Niveau</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.LevelCode
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" name="LevelCode">
+                                            @foreach (var level in Model.JobGroupPositions.ToList())
+                                            {
+                                                var routedatalevel = new Dictionary<string, string> {
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"levelvalue", level.LevelValue},
+                                                        {"levelcode", level.LevelCode },
+                                                        {"subgroupcode", level.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        };
+                                                <li role="presentation">
+                                                    <button class="btn btn-light" asp-page-handler="leveleightypercent" asp-all-route-data="routedatalevel">
+                                                        @level.LevelCode
+                                                    </button>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Position/Poste</b></label><br />
+
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="SelectedJobPositionId">
+                                            @if (!Model.AddedEightyPercentIds.Contains(@Model.SelectedJobPositionId.ToString()))
+                                            {
+                                                <option value="@Model.SelectedJobPositionId" selected>
+                                                    @Model.CurrentSelectedJobTitleEng / @Model.CurrentSelectedJobTitleFre
+                                                </option>
+                                            }
+                                            @foreach (var jp in Model.JobGroupLevelPositions.Where(e => e.Active != 0))
+                                            {
+                                                @if (!Model.AddedEightyPercentIds.Contains(jp.JobTitleId.ToString()) && jp.JobTitleId != Model.SelectedJobPositionId)
+                                                {
+                                                    <option value="@jp.JobTitleId">
+                                                        @jp.JobTitleEng / @jp.JobTitleFre
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <br />
+                                        <button class="btn btn-primary" asp-page-handler="addeightypercentsimilarposition" asp-all-route-data="routedataadd">
+                                            ADD
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                @foreach (var position in Model.AddedEightyPercentJobPositions.Where(e => e.Active != 0))
+                                {
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                var routedataremove = new Dictionary<string, string> {
+                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        { "levelvalue", Model.LevelValue},
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subgroupcode", Model.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                };
+                                            }
+                                            <button class="btn btn-link" asp-page-handler="deleteeightypercentsimilarposition" asp-all-route-data="@routedataremove">REMOVE</button>
+                                            <a class="btn btn-link col-10 text-left">
+                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="routedataadd">
+                        UPDATE
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else if (Model.PercentSelection == "70")
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="JobPosition.Position" />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">Add similar postion</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
+                                    one hundred percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
+                                    ninety percent
+                                </button>
+                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
+                                    eighty percent
+                                </button>
+                                <button class="btn btn-info" disabled>
+                                    seventy percent
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row col-12">
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Select similar position</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.CurrentSelectedJobGroup.Code
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            @foreach (var jobgroup in Model.JobGroups)
+                                            {
+                                                var routedatagroup = new Dictionary<string, string> {
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        {"jobgroupid",jobgroup.Id.ToString() },
+
+    };
+                                <li>
+                                    <button class="btn btn-light" asp-page-handler="groupseventypercent" asp-all-route-data="routedatagroup">
+                                        (@jobgroup.Code) @jobgroup.NameEng / @jobgroup.NameFre
+                                    </button>
+                                </li>
+                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-2">
+                                        <label class="control-label"><b>Level/Niveau</b></label><br />
+
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @Model.LevelCode
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" name="LevelCode">
+                                            @foreach (var level in Model.JobGroupPositions.ToList())
+                                            {
+                                                var routedatalevel = new Dictionary<string, string> {
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        { "levelvalue", level.LevelValue},
+                                                        {"levelcode", level.LevelCode },
+                                                        {"subgroupcode", level.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                        };
+                                                <li role="presentation">
+                                                    <button class="btn btn-light" asp-page-handler="levelseventypercent" asp-all-route-data="routedatalevel">
+                                                        @level.LevelCode
+                                                    </button>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-4">
+                                        <label class="control-label"><b>Position/Poste</b></label><br />
+
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="SelectedJobPositionId">
+                                            @if (!Model.AddedSeventyPercentIds.Contains(@Model.SelectedJobPositionId.ToString()))
+                                            {
+                                                <option value="@Model.SelectedJobPositionId" selected>
+                                                    @Model.CurrentSelectedJobTitleEng / @Model.CurrentSelectedJobTitleFre
+                                                </option>
+                                            }
+                                            @foreach (var jp in Model.JobGroupLevelPositions.Where(e => e.Active != 0))
+                                            {
+                                                @if (!Model.AddedSeventyPercentIds.Contains(jp.JobTitleId.ToString()) && jp.JobTitleId != Model.SelectedJobPositionId)
+                                                {
+                                                    <option value="@jp.JobTitleId">
+                                                        @jp.JobTitleEng / @jp.JobTitleFre
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <br />
+                                        <button class="btn btn-primary" asp-page-handler="addseventypercentsimilarposition" asp-all-route-data="routedataadd">
+                                            ADD
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                @foreach (var position in Model.AddedSeventyPercentJobPositions.Where(e => e.Active != 0))
+                                {
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                var routedataremove = new Dictionary<string, string> {
+                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"levelvalue", Model.LevelValue },
+                                                        {"jobgroupid",Model.JobGroupId.ToString() },
+                                                        {"levelcode", Model.LevelCode },
+                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
+                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
+                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
+                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
+                                                        {"subgroupcode", Model.SubGroupCode },
+                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                };
+                                            }
+                                            <button class="btn btn-link" asp-page-handler="deleteseventypercentsimilarposition" asp-all-route-data="@routedataremove">REMOVE</button>
+                                            <a class="btn btn-link col-10 text-left">
+                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="routedataadd">
+                        UPDATE
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

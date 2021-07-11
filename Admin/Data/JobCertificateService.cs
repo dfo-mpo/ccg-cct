@@ -66,6 +66,11 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates/descriptions");
         }
-
+        public async Task DeleteJobCertificateDescription(object Parameters)
+        {
+            string url = $"/api/jobcertificates/deletejobcertificatedescription?";
+            using var httpClient = _clientFactory.CreateClient("api");
+            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+        }
     }
 }

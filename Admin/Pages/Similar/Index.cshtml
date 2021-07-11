@@ -27,6 +27,7 @@
     <tbody>
         @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
+            if (item.Active != 0) { 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.JobTitleEng)
@@ -47,6 +48,7 @@
                 </td>
             }
         </tr>
+            }
         }
     </tbody>
 </table>

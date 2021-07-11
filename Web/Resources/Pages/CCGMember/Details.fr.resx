@@ -162,4 +162,7 @@
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer au format PDF</value>
   </data>
+  <data name="USERACTION" xml:space="preserve">
+    <value>Cliquez sur Suivant pour comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous.</value>
+  </data>
 </root>
