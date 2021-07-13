@@ -22,6 +22,8 @@ namespace Business.Commands.Admin.JobCertificates
     {
         public JobCertificateCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.NameEng)
                 .MaximumLength(1000);
             RuleFor(e => e.NameFre)

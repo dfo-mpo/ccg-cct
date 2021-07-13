@@ -21,6 +21,8 @@ namespace Business.Commands.Admin.JobPositions
     {
         public UpdateJobPositionCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.TitleEng)
                 .MaximumLength(3000);
 

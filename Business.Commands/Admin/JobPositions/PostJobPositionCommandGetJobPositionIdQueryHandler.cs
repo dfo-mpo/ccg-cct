@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;

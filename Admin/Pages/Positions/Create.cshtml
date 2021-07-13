@@ -374,7 +374,7 @@
                                                 <div class="mb-3">
                                                     <label class="control-label"><b>Description</b></label><br />
                                                                                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="CertificateDescriptionId" required>
-                                                                                                               @foreach (var certificate in Model.JobCertificateDescriptions)
+                                                                                                               @foreach (var certificate in Model.JobCertificateDescriptions.Where(e => e.Active != 0))
                                                                                                                {
                                                                                                                    <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
                                                                                                                }
