@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     var routedataadd = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"levelcode", Model.LevelCode },
@@ -20,6 +21,8 @@
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>
+<h4>Current Position: @Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleEng</h4>
+<h4>Position actuelle: @Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleFre</h4>
 <h1>Edit</h1>
 @if (Model.PercentSelection == "100")
 {
@@ -36,17 +39,17 @@
                         </tr>
                         <tr>
                             <th>
-                                <button class="btn btn-info" disabled>
-                                    one hundred percent
+                                <button class="btn btn-info" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
+                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    ninety percent
+                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    eighty percent
+                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    seventy percent
+                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
                                 </button>
                             </th>
                         </tr>
@@ -66,6 +69,7 @@
                                             @foreach (var jobgroup in Model.JobGroups)
                                             {
                                                 var routedatagroup = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"levelcode", Model.LevelCode },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
@@ -96,6 +100,7 @@
                                             @foreach (var level in Model.JobGroupPositions.ToList())
                                             {
                                                 var routedatalevel = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
                                                         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
@@ -162,7 +167,8 @@
                                         <div class="col-12">
                                             @{
                                                 var routedataremove = new Dictionary<string, string> {
-                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"id" , Model.Id.ToString() },
+                                                        {"deletepositionid",position.JobTitleId.ToString() },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"levelcode", Model.LevelCode },
@@ -210,16 +216,16 @@ else if (Model.PercentSelection == "90")
                         <tr>
                             <th>
                                 <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    one hundred percent
+                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
                                 </button>
-                                <button class="btn btn-info" disabled>
-                                    ninety percent
+                                <button class="btn btn-info" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
+                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    eighty percent
+                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    seventy percent
+                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
                                 </button>
                             </th>
                         </tr>
@@ -239,6 +245,7 @@ else if (Model.PercentSelection == "90")
                                             @foreach (var jobgroup in Model.JobGroups)
                                             {
                                                 var routedatagroup = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"levelcode", Model.LevelCode },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
@@ -269,6 +276,7 @@ else if (Model.PercentSelection == "90")
                                             @foreach (var level in Model.JobGroupPositions.ToList())
                                             {
                                                 var routedatalevel = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
                                                         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
@@ -335,7 +343,8 @@ else if (Model.PercentSelection == "90")
                                         <div class="col-12">
                                             @{
                                                 var routedataremove = new Dictionary<string, string> {
-                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"id" , Model.Id.ToString() },
+                                                        {"deletepositionid",position.JobTitleId.ToString() },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"levelcode", Model.LevelCode },
@@ -383,16 +392,16 @@ else if (Model.PercentSelection == "80")
                         <tr>
                             <th>
                                 <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    one hundred percent
+                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    ninety percent
+                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
                                 </button>
-                                <button class="btn btn-info" disabled>
-                                    eighty percent
+                                <button class="btn btn-info" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
+                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    seventy percent
+                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
                                 </button>
                             </th>
                         </tr>
@@ -412,6 +421,7 @@ else if (Model.PercentSelection == "80")
                                             @foreach (var jobgroup in Model.JobGroups)
                                             {
                                                 var routedatagroup = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"levelcode", Model.LevelCode },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
@@ -442,6 +452,7 @@ else if (Model.PercentSelection == "80")
                                             @foreach (var level in Model.JobGroupPositions.ToList())
                                             {
                                                 var routedatalevel = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
                                                         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
@@ -509,7 +520,8 @@ else if (Model.PercentSelection == "80")
                                         <div class="col-12">
                                             @{
                                                 var routedataremove = new Dictionary<string, string> {
-                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"id" , Model.Id.ToString() },
+                                                        {"deletepositionid",position.JobTitleId.ToString() },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         { "levelvalue", Model.LevelValue},
                                                         {"levelcode", Model.LevelCode },
@@ -557,16 +569,16 @@ else if (Model.PercentSelection == "70")
                         <tr>
                             <th>
                                 <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    one hundred percent
+                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    ninety percent
+                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
                                 </button>
                                 <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    eighty percent
+                                    &nbsp;&nbsp;&nbsp;80$&nbsp;&nbsp;&nbsp;
                                 </button>
-                                <button class="btn btn-info" disabled>
-                                    seventy percent
+                                <button class="btn btn-info" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
+                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
                                 </button>
                             </th>
                         </tr>
@@ -586,6 +598,7 @@ else if (Model.PercentSelection == "70")
                                             @foreach (var jobgroup in Model.JobGroups)
                                             {
                                                 var routedatagroup = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"levelcode", Model.LevelCode },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
@@ -616,6 +629,7 @@ else if (Model.PercentSelection == "70")
                                             @foreach (var level in Model.JobGroupPositions.ToList())
                                             {
                                                 var routedatalevel = new Dictionary<string, string> {
+                                                        {"id" , Model.Id.ToString() },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
                                                         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
@@ -683,7 +697,8 @@ else if (Model.PercentSelection == "70")
                                         <div class="col-12">
                                             @{
                                                 var routedataremove = new Dictionary<string, string> {
-                                        {"deletepositionid",position.JobTitleId.ToString() },
+                                                        {"id" , Model.Id.ToString() },
+                                                        {"deletepositionid",position.JobTitleId.ToString() },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"jobgroupid",Model.JobGroupId.ToString() },
                                                         {"levelcode", Model.LevelCode },

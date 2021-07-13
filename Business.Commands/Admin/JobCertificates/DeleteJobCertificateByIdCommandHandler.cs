@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;
 using DataModel;
+using FluentValidation;
 
 namespace Business.Commands.Admin.JobCertificates
 {
@@ -14,7 +15,8 @@ namespace Business.Commands.Admin.JobCertificates
     {
         public DeleteJobCertificateByIdCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.Id)
+                  .NotEmpty();
         }
     }
     public class DeleteJobCertificateByIdCommandHandler : ICommandHandler<DeleteJobCertificateByIdCommand>

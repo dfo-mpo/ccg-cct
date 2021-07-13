@@ -5,7 +5,6 @@ using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;
 using DataModel;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 
 namespace Business.Commands.Admin.JobPositions
 {
@@ -19,10 +18,10 @@ namespace Business.Commands.Admin.JobPositions
         public PostJobPositionCommandValidator(CctDbContext db)
         {
             RuleFor(e => e.TitleEng)
-                .MaximumLength(250);
+                .MaximumLength(3000);
 
             RuleFor(e => e.TitleFre)
-                .MaximumLength(250);
+                .MaximumLength(3000);
         }
     }
     public class PostJobPositionCommandGetJobPositionIdQueryHandler : IQueryHandler<PostJobPositionCommandGetJobPositionIdQuery, int>

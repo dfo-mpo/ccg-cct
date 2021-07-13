@@ -29,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
+        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower()) || e.LevelCode.ToLower().Contains(@Model.Filter.ToLower())))
         {
             @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
             {

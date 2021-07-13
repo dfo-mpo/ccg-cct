@@ -8,6 +8,7 @@ using Admin.Data;
 using Microsoft.Extensions.Logging;
 using Business.Dtos.JobGroups;
 using Business.Dtos.JobPositions;
+using System.Threading;
 
 namespace Admin.Pages.Similar
 {
@@ -25,13 +26,15 @@ namespace Admin.Pages.Similar
             _logger = logger;
             _jobPositionService = jobPositionService;
         }
-
+        [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
         [BindProperty]
         public SearchSimilarJob JobPosition { get; set; }
         [BindProperty]
         public JobGroupDto[] JobGroups { get; set; }
         public JobGroupDto CurrentSelectedJobGroup { get; set; }
         public JobGroupPositionDto CurrentSelectedLevelCode { get; set; }
+        public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto CurrentSelectedPosition { get; set; }
         public string CurrentSelectedJobTitleEng { get; set; } = string.Empty;
         public string CurrentSelectedJobTitleFre { get; set; } = string.Empty;
@@ -69,6 +72,7 @@ namespace Admin.Pages.Similar
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             JobGroups = await _jobPositionService.GetJobGroups();
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
@@ -208,32 +212,18 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
-            try
-            {
-                JobPosition.HundredPercent = querystring100;
-                JobPosition.NinetyPercent = querystring90;
-                JobPosition.EightyPercent = querystring80;
-                JobPosition.SeventyPercent = querystring70;
-                _jobPositionService.UpdateSimilarPositions(JobPosition);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobPositionExists(JobPosition.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            JobPosition.HundredPercent = querystring100;
+            JobPosition.NinetyPercent = querystring90;
+            JobPosition.EightyPercent = querystring80;
+            JobPosition.SeventyPercent = querystring70;
+            _jobPositionService.UpdateSimilarPositions(JobPosition);
+            Thread.MemoryBarrier();
+            return RedirectToPage("Details", new { Id });
         }
         public async Task OnPostGroupOneHundredPercent()
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobPositionService.GetJobGroups();
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
@@ -267,6 +257,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostLevelOneHundredPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
             JobGroups = await _jobPositionService.GetJobGroups();
@@ -296,6 +287,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostGroupNinetyPercent()
         {
             PercentSelection = "90";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobPositionService.GetJobGroups();
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
@@ -329,6 +321,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostLevelNinetyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
             PercentSelection = "90";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
             JobGroups = await _jobPositionService.GetJobGroups();
@@ -358,6 +351,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostGroupEightyPercent()
         {
             PercentSelection = "80";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobPositionService.GetJobGroups();
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
@@ -391,6 +385,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostLevelEightyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
             PercentSelection = "80";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
             JobGroups = await _jobPositionService.GetJobGroups();
@@ -420,6 +415,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostGroupSeventyPercent()
         {
             PercentSelection = "70";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobPositionService.GetJobGroups();
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
@@ -453,6 +449,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostLevelSeventyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
             PercentSelection = "70";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
             JobGroups = await _jobPositionService.GetJobGroups();
@@ -482,6 +479,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostSelectOneHundredPercent()
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -511,6 +509,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostSelectNinetyPercent()
         {
             PercentSelection = "90";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -541,6 +540,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostSelectEightyPercent()
         {
             PercentSelection = "80";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -570,6 +570,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostSelectSeventyPercent()
         {
             PercentSelection = "70";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -600,6 +601,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostAddOneHundredPercentSimilarPosition()
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -630,6 +632,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostDeleteOneHundredPercentSimilarPosition(int deletepositionid)
         {
             PercentSelection = "100";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -664,6 +667,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostAddNinetyPercentSimilarPosition()
         {
             PercentSelection = "90";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -694,6 +698,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostDeleteNinetyPercentSimilarPosition(int deletepositionid)
         {
             PercentSelection = "90";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -728,6 +733,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostAddEightyPercentSimilarPosition()
         {
             PercentSelection = "80";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -758,6 +764,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostDeleteEightyPercentSimilarPosition(int deletepositionid)
         {
             PercentSelection = "80";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -792,6 +799,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostAddSeventyPercentSimilarPosition()
         {
             PercentSelection = "70";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
@@ -822,6 +830,7 @@ namespace Admin.Pages.Similar
         public async Task OnPostDeleteSeventyPercentSimilarPosition(int deletepositionid)
         {
             PercentSelection = "70";
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             if (SelectedJobPositionId != 0)
             {
                 var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);

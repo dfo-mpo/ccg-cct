@@ -23,7 +23,10 @@ namespace Business.Commands.Admin.JobPositions
     {
         public AddJobRolePositionLocationsCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.JobPositionId)
+                   .NotEmpty();
+            RuleFor(e => e.JobLocationRegionId)
+                   .NotEmpty();
         }
     }
     public class AddJobRolePositionLocationsCommandHandler : ICommandHandler<AddJobRolePositionLocationsCommand>
