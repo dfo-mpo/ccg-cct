@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 
 namespace Admin.Pages.Positions
 {
@@ -56,24 +57,9 @@ namespace Admin.Pages.Positions
 
             //    _context.Attach(JobPosition).State = EntityState.Modified;
 
-            try
-            {
-                _jobPositionService.UpdateJobPosition(JobPosition);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobPositionExists(JobPosition.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            _jobPositionService.UpdateJobPosition(JobPosition);
+            Thread.MemoryBarrier();
+            return RedirectToPage("Details", new { positionid = JobPosition.Id });
         }
 
         private bool JobPositionExists(int id)

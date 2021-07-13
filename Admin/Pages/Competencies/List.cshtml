@@ -43,6 +43,7 @@
     <tbody>
         @foreach (var item in Model.Competencies.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
+            if (item.Active != 0) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.NameEng)
@@ -62,6 +63,7 @@
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
+            }
         }
     </tbody>
 </table>

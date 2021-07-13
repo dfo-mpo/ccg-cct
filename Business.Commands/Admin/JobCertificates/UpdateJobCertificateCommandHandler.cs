@@ -22,11 +22,16 @@ namespace Business.Commands.Admin.JobCertificates
     {
         public JobCertificateCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.NameEng)
-                .MaximumLength(250);
-
+                .MaximumLength(1000);
             RuleFor(e => e.NameFre)
-                .MaximumLength(255);
+                .MaximumLength(1000);
+            RuleFor(e => e.DescEng)
+                .MaximumLength(1000);
+            RuleFor(e => e.DescFre)
+                .MaximumLength(1000);
         }
     }
     public class JobCertificateCommandHandler : ICommandHandler<UpdateJobCertificateCommand>
