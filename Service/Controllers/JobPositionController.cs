@@ -40,6 +40,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("IdValues")]
         [ProducesResponseType(typeof(List<JobPositionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByIdValues(
@@ -89,6 +90,7 @@ namespace Service.Controllers
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
+
         [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
@@ -97,6 +99,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpPost, Route("updatejobposition")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task UpdateJobCompetency([FromBody] UpdateJobPositionCommand command)
@@ -126,18 +129,21 @@ namespace Service.Controllers
                         await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpPost, Route("addjobrolepositionlocation")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobRolePositionLocationsCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
+
         [HttpPost, Route("addjobrolepositionhlcategory")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task AddJobCertificate([FromBody] AddJobRolePositionHLCategoryCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
+
         [HttpPost, Route("deletejobposition")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task DeleteJobPosition([FromBody] DeleteJobPositionByIdCommand command)

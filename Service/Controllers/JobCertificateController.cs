@@ -103,9 +103,17 @@ namespace Service.Controllers
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
+
         [HttpPost, Route("updatejobcertificatedescription")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task UpdateJobCertificateDescription([FromBody] UpdateJobCertificateDescriptionCommand command)
+        {
+            await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpPost, Route("deletejobcertificatedescription")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        public async Task DeleteJobCertificateDescription([FromBody] DeleteJobCertificateDescriptionByIdCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }

@@ -19,6 +19,10 @@ namespace Business.Commands.Admin.JobGroups
     {
         public AddJobGroupPositionCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.JobPositionId)
+                 .NotEmpty();
+            RuleFor(e => e.JobGroupId)
+                 .NotEmpty();
         }
     }
     public class AddJobGroupPositionCommandHandler : ICommandHandler<AddJobGroupPositionCommand>

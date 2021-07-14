@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;
 using DataModel;
+using FluentValidation;
 
 namespace Business.Commands.Admin.JobCertificates
 {
@@ -14,7 +15,8 @@ namespace Business.Commands.Admin.JobCertificates
     {
         public DeleteJobCertificateByIdCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.Id)
+                  .NotEmpty();
         }
     }
     public class DeleteJobCertificateByIdCommandHandler : ICommandHandler<DeleteJobCertificateByIdCommand>
@@ -28,11 +30,6 @@ namespace Business.Commands.Admin.JobCertificates
 
         public async Task ExecuteAsync(DeleteJobCertificateByIdCommand command, CancellationToken cancellationToken = new CancellationToken())
         {
-            //var certificate = await _db.Certificates.FindAsync(command.Id);
-            //_db.Certificates.Remove(certificate);
-            // var certificatedesc = await _db.CertificateDescriptions.FindAsync(command.Id);
-            //  _db.CertificateDescriptions.Remove(certificatedesc);
-            //await _db.SaveChangesAsync(cancellationToken);
             var certificate = await _db.Certificates.FindAsync(command.Id);
             certificate.Active = 0;
             await _db.SaveChangesAsync(cancellationToken);

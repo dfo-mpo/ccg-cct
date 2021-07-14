@@ -1,7 +1,5 @@
 ﻿using CCG.AspNetCore.Business.Interface;
-using CCG.AspNetCore.Business.Validator;
 using DataModel;
-using FluentValidation;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,7 +25,8 @@ namespace Business.Commands.Admin.JobCertificates
             var newCertificateDescription = new CertificateDescription()
             {
                 DescEng = command.DescEng,
-                DescFre = command.DescFre
+                DescFre = command.DescFre,
+                Active = 1
             };
             await _db.CertificateDescriptions.AddAsync(newCertificateDescription, cancellationToken);
             await _db.SaveChangesAsync(cancellationToken);

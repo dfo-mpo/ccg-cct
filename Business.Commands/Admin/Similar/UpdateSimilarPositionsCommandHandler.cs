@@ -21,6 +21,16 @@ namespace Business.Commands.Admin.Similar
     {
         public UpdateSimilarPositionsCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Position)
+                   .NotEmpty();
+            RuleFor(e => e.HundredPercent)
+                    .MaximumLength(8000);
+            RuleFor(e => e.NinetyPercent)
+                    .MaximumLength(8000);
+            RuleFor(e => e.EightyPercent)
+                    .MaximumLength(8000);
+            RuleFor(e => e.SeventyPercent)
+                    .MaximumLength(8000);
         }
     }
     public class UpdateSimilarPositionsCommandHandler : ICommandHandler<UpdateSimilarPositionsCommand>

@@ -18,10 +18,10 @@ namespace Business.Commands.Admin.JobPositions
         public AddJobPositionCommandValidator(CctDbContext db)
         {
             RuleFor(e => e.TitleEng)
-                .MaximumLength(250);
+                .MaximumLength(3000);
 
             RuleFor(e => e.TitleFre)
-                .MaximumLength(255);
+                .MaximumLength(3000);
         }
     }
     public class AddJobPositionCommandHandler : ICommandHandler<AddJobPositionCommand>

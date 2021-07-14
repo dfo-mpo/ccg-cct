@@ -21,11 +21,13 @@ namespace Business.Commands.Admin.JobPositions
     {
         public UpdateJobPositionCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.TitleEng)
-                .MaximumLength(250);
+                .MaximumLength(3000);
 
             RuleFor(e => e.TitleFre)
-                .MaximumLength(255);
+                .MaximumLength(3000);
         }
     }
     public class UpdateJobPositionCommandHandler : ICommandHandler<UpdateJobPositionCommand>
