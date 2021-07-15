@@ -123,6 +123,9 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDANT</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Détails de la position actuelle</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
   </data>
   <data name="MCTSUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>

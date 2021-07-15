@@ -1351,32 +1351,32 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 237,
-                DescEng = "Understands the fundamentals of project goals, participants’ roles and the importance of project management principles. Willingness to participate in project support activities.",
-                DescFre = "Comprend les principes fondamentaux qui sous-tendent les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet. Est disposé à participer aux activités de soutien du projet."
+                DescEng = "Uses the of basics of the life cycle asset management program in daily activities. Performs routine asset management tasks. Manages the life cycle of tackle books, safety equipment, charts, etc. when and where applicable.",
+                DescFre = "Utilise les bases du programme de gestion du cycle de vie des actifs dans les activités quotidiennes. Effectue des tâches de routine de gestion des actifs. Gère le cycle de vie des carnets de pêche, des équipements de sécurité, des cartes, etc. le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 238,
-                DescEng = "Comprehends project goals, participants’ roles, and the importance of project management principles. Able to participate in project support activities (i.e. gathering needed information). Able to participate, under supervision, with others in small and well defined components of the project.",
-                DescFre = "Comprend les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet. Capacité à participer aux activités de soutien du projet (p. ex. recueillir les renseignements nécessaires). Capacité à participer, avec d’autres personnes et sous supervision, à la réalisation de petites tâches bien définies qui se rapportent au projet."
+                DescEng = "Advises and follows the Government of Canada's Controlled Goods Directive, directives on fleet management, the Policy on Management of Materiel, and the Directive on Disposal of Surplus Materiel, when and where applicable.",
+                DescFre = "Conseille et suit la Directive sur les marchandises contrôlées du gouvernement du Canada, les directives sur la gestion de la flotte, la Politique sur la gestion du matériel et la Directive sur l'aliénation du matériel en surplus, le cas échéant."
             },
             new CompetencyLevelRequirement
             {
                 Id = 239,
-                DescEng = "Knowledge of project goals, participants’ roles, and the importance of project management principles, such as time, cost, and quality management. Participates, with minimal supervision, with others in all projects. Will seek advice and guidance for more complex components of the project.",
-                DescFre = "Comprend les objectifs du projet, les rôles des participants et l’importance des principes de gestion de projet, comme la gestion du temps, des coûts et de la qualité. Participe à tous les projets, en collaboration avec d’autres personnes et avec un minimum de supervision. Demande des conseils et des directives pour les éléments plus complexes du projet."
+                DescEng = "Performs all four phases of life cycle materiel management, including assessing and planning materiel requirements, acquiring materiel resources, operating and using, maintaining, and disposing of materiel. Implements the concepts of the Policy Framework for the Management of Assets and Acquired Services.",
+                DescFre = "Effectue les quatre phases de la gestion du cycle de vie du matériel, y compris l'évaluation et la planification des besoins en matériel, l'acquisition des ressources matérielles, l'exploitation et l'utilisation, l'entretien et l'élimination du matériel. Met en œuvre les concepts du Cadre de politique sur la gestion des actifs et services acquis."
             },
             new CompetencyLevelRequirement
             {
                 Id = 240,
-                DescEng = "Extensive practical experience in leading projects and programs. Leads project support activities, taking the initiative to gather additional information, keep documentation organized, and identify process improvements when needed. Actively participates in all projects and provides advice to others who seek assistance.",
-                DescFre = "Vaste expérience pratique en gestion de projets et de programmes. Dirige les activités de soutien au projet en prenant l’initiative de recueillir des renseignements supplémentaires, de veiller au classement de la documentation et de cibler les améliorations à apporter aux processus. Participe activement à tous les projets et donne des conseils aux personnes qui demandent de l’aide."
+                DescEng = "Manages a risk-based and complexity-based approach to processes, systems, capacity, resourcing, oversight, and reporting to promote the attainment of program outcomes. Advises and guides decisions on life cycle asset management within their area of concern.",
+                DescFre = "Gère une approche fondée sur le risque et la complexité des processus, des systèmes, des capacités, des ressources, de la surveillance et des rapports afin de promouvoir l'obtention des résultats du programme. Conseille et oriente les décisions sur la gestion du cycle de vie des actifs dans leur domaine de responsabilité."
             },
             new CompetencyLevelRequirement
             {
                 Id = 241,
-                DescEng = "Responsible for project delivery, directs teams to complete activities to current policies and practices. Provides accurate and timely recommendations to client. Able to train and advise anyone seeking guidance on basic to complex projects.",
-                DescFre = "Est responsable de l’exécution du projet et dirige les équipes pour mener les activités à bien conformément aux politiques et aux pratiques en vigueur. Fournit au client des recommandations précises et opportunes. Est capable de former et de conseiller toute personne souhaitant obtenir des conseils à l’égard de projets simples ou complexes.",
+                DescEng = "Implements an effective management framework, including departmental procedures, processes, and systems. Manages based on the principles of value for money acquisition of assets, effective management and usage of these assets, and effective disposal of such assets. Advises and guides decisions on life cycle asset management within the Coast Guard from a regional and/or national perspective.",
+                DescFre = "Met en œuvre un cadre de gestion efficace, y compris des procédures, des processus et des systèmes ministériels. Gère sur la base des principes de l'optimisation des ressources pour l'acquisition de biens, de la gestion et de l'utilisation efficaces de ces biens et de leur cession efficace. Conseille et oriente les décisions sur la gestion du cycle de vie des biens au sein de la Garde côtière dans une perspective régionale et/ou nationale.",
             },
             new CompetencyLevelRequirement
             {

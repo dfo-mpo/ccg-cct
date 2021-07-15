@@ -394,6 +394,11 @@ namespace DataModel.SeedData
             new JobPosition {Id = 387, TitleEng = "Lockperson", TitleFre = "Éclusier", Active = 1 },
             new JobPosition {Id = 388, TitleEng = "Lockmaster", TitleFre = "Maître-éclusiers", Active = 1 },
             new JobPosition {Id = 389, TitleEng = "Officer in Charge Bay Class", TitleFre = "Officier responsable Classe Baie", Active = 1 },
+            new JobPosition {Id = 390, TitleEng = "Health and Safety Compliance Officer", TitleFre = "Officier, conformité santé et sécurité", Active = 1 },
+            new JobPosition {Id = 391, TitleEng = "Health and Safety Compliance Manager", TitleFre = "Gestionnaire, conformité santé et sécurité", Active = 1 },
+            new JobPosition {Id = 392, TitleEng = "Supply Chain Manager", TitleFre = "Gestionnaire de chaîne d'approvisionnement", Active = 1 },
+            new JobPosition {Id = 393, TitleEng = "Officer, Asset management system (AMS)", TitleFre = "Officier, Système de gestion des avoirs", Active = 1 },
+            new JobPosition {Id = 394, TitleEng = "Supervisor, Asset management system (AMS)", TitleFre = "Superviseur, Système de gestion des avoirs", Active = 1 }
         };
     }
 }

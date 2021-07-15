@@ -126,6 +126,9 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDING OFFICER</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Current Position Details</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Level" xml:space="preserve">
     <value>Level</value>
+  </data>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
   </data>
   <data name="MCTSUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>

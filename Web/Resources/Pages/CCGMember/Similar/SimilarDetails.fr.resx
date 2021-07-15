@@ -120,6 +120,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDANT</value>
+  </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer les positions</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
