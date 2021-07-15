@@ -123,6 +123,9 @@
   <data name="ExternalCandidate" xml:space="preserve">
     <value>Candidat externe</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="IndexTitle" xml:space="preserve">
     <value>Outil de compétence professionnelle</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Student" xml:space="preserve">
     <value>Étudiant</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Accueil</value>
   </data>
   <data name="WelcomeText" xml:space="preserve">
     <value>Bienvenue dans l'outil de compétence professionnelle. Cet outil est conçu pour vous permettre de rechercher et de comparer divers postes au sein de la Garde côtière canadienne.</value>

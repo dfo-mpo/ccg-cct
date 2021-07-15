@@ -23,7 +23,8 @@ namespace Business.Commands.Admin.JobPositions
     {
         public UpdateJobRolePositionCompetencyCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.JobPositionId)
+                 .NotEmpty();
         }
     }
     public class UpdateJobRolePositionCompetencyCommandHandler : ICommandHandler<UpdateJobRolePositionCompetencyCommand>

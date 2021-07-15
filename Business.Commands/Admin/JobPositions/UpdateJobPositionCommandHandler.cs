@@ -13,7 +13,6 @@ namespace Business.Commands.Admin.JobPositions
         public int Id { get; set; }
         public string TitleEng { get; set; }
         public string TitleFre { get; set; }
-        public int Active { get; set; }
     }
 
 
@@ -21,11 +20,13 @@ namespace Business.Commands.Admin.JobPositions
     {
         public UpdateJobPositionCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.TitleEng)
-                .MaximumLength(250);
+                .MaximumLength(3000);
 
             RuleFor(e => e.TitleFre)
-                .MaximumLength(255);
+                .MaximumLength(3000);
         }
     }
     public class UpdateJobPositionCommandHandler : ICommandHandler<UpdateJobPositionCommand>
@@ -42,7 +43,6 @@ namespace Business.Commands.Admin.JobPositions
             var jobposition = _db.JobPositions.First(e => e.Id == command.Id);
             jobposition.TitleEng = command.TitleEng;
             jobposition.TitleFre = command.TitleFre;
-            jobposition.Active = command.Active;
             await _db.SaveChangesAsync(cancellationToken);
         }
 

@@ -29,7 +29,7 @@
         {"levelvalue", Model.LevelValue },
         {"jobhlcategory", Model.JobHLCategory },
         {"regionids", Model.RegionIds },
-                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
@@ -48,7 +48,7 @@
         {"regionids", Model.RegionIds },
         {"jobhlcategory", Model.JobHLCategory },
         {"jobgroupid",Model.JobGroupId.ToString() },
-                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
@@ -65,7 +65,7 @@
         {"levelvalue", Model.LevelValue },
         {"regionids", Model.RegionIds },
         {"jobhlcategory", Model.JobHLCategory },
-                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
@@ -83,7 +83,7 @@
         {"levelvalue", Model.LevelValue },
         {"regionids", Model.RegionIds },
         {"jobhlcategory", Model.JobHLCategory },
-                {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
         {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
@@ -168,7 +168,6 @@
 
                             <label class="mr-3" for="Shoreside">All Regions / Toutes les régions</label>
                         </td>
-                        <!--input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1"-->
                         @if (Model.RegionIds.Split("-").ToList().Contains(7.ToString()))
                         {
                             <td class="text-center"><input name="SelectedRegionIds" value="7" type="checkbox" checked="true" /></td>
@@ -184,7 +183,6 @@
 
                             <label class="mr-3" for="Shoreside">Atlantic / Atlantique</label>
                         </td>
-                        <!--input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1"-->
                         @if (Model.RegionIds.Split("-").ToList().Contains(1.ToString()))
                         {
                             <td class="text-center"><input name="SelectedRegionIds" value="1" type="checkbox" checked="true" /></td>
@@ -367,7 +365,7 @@
                                                 <div class="mb-3">
                                                     <label class="control-label"><b>Certificates</b></label><br />
                                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="certificate" required>
-                                                        @foreach (var certificate in Model.JobCertificates)
+                                                        @foreach (var certificate in Model.JobCertificates.Where(e => e.Active != 0))
                                                         {
                                                             <option value="@certificate.Id">@certificate.NameEng / @certificate.NameFre</option>
                                                         }
@@ -376,7 +374,7 @@
                                                 <div class="mb-3">
                                                     <label class="control-label"><b>Description</b></label><br />
                                                                                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="CertificateDescriptionId" required>
-                                                                                                               @foreach (var certificate in Model.JobCertificateDescriptions)
+                                                                                                               @foreach (var certificate in Model.JobCertificateDescriptions.Where(e => e.Active != 0))
                                                                                                                {
                                                                                                                    <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
                                                                                                                }
@@ -391,7 +389,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @foreach (var certificate in Model.AddedCertificates)
+                            @foreach (var certificate in Model.AddedCertificates.Where(e => e.Active != 0))
                             {
                                 <div class="row">
                                     <div class="col-6">
@@ -442,23 +440,6 @@
                                 </div>
 
                             }
-                            <!--div class="row">
-                                <div class="col-9 m-auto">No Certifications / Aucun certificat associées</div>
-                                <div class="col-3">
-                                    <div class="text-right">
-                                        <Button trigger modal edit certificate>
-                                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editcert">
-                                            EDIT
-                                        </button>
-                                        |
-                                        <button class="btn btn-link" type="button">
-                                            REMOVE
-                                        </button>
-                                    </div>
-                                </div>
-                            </div-->
-                            <!-- Modal Edit Certificate -->
-                            <!-- End Modal Edit Certificate -->
                         </td>
                     </tr>
                 </tbody>
@@ -502,7 +483,7 @@
 
 
                                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="knowledgeCompetency">
-                                                        @foreach (var competency in Model.JobCompetenciesKnowledge)
+                                                        @foreach (var competency in Model.JobCompetenciesKnowledge.Where(e => e.Active != 0))
                                                         {
                                                             if (!Model.AddedKnowledgeCompetencies.Any(e => e.CompetencyId == competency.Id))
                                                             {
@@ -532,7 +513,7 @@
                             </div>
                         </div>
 
-                        @foreach (var competency in Model.AddedKnowledgeCompetencies)
+                        @foreach (var competency in Model.AddedKnowledgeCompetencies.Where(e => e.Active != 0))
                         {
                             <div class="row">
                                 <div class="col-6">
@@ -645,7 +626,7 @@
 
 
                                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="technicalCompetency">
-                                                        @foreach (var competency in Model.JobCompetenciesTechnical)
+                                                        @foreach (var competency in Model.JobCompetenciesTechnical.Where(e => e.Active != 0))
                                                         {
                                                             if (!Model.AddedTechnicalCompetencies.Any(e => e.CompetencyId == competency.Id))
                                                             {
@@ -675,7 +656,7 @@
                             </div>
                         </div>
 
-                        @foreach (var competency in Model.AddedTechnicalCompetencies)
+                        @foreach (var competency in Model.AddedTechnicalCompetencies.Where(e => e.Active != 0))
                         {
                             <div class="row">
                                 <div class="col-6">
@@ -788,7 +769,7 @@
 
 
                                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="behaviouralCompetency">
-                                                        @foreach (var competency in Model.JobCompetenciesBehavioural)
+                                                        @foreach (var competency in Model.JobCompetenciesBehavioural.Where(e => e.Active != 0))
                                                         {
                                                             if (!Model.AddedBehaviouralCompetencies.Any(e => e.CompetencyId == competency.Id))
                                                             {
@@ -818,7 +799,7 @@
                             </div>
                         </div>
 
-                        @foreach (var competency in Model.AddedBehaviouralCompetencies)
+                        @foreach (var competency in Model.AddedBehaviouralCompetencies.Where(e => e.Active != 0))
                         {
                             <div class="row">
                                 <div class="col-6">
@@ -931,7 +912,7 @@
 
 
                                                     <select class="form-control dropdown-toggle mrgn-bttm-md" id="class" name="executiveCompetency">
-                                                        @foreach (var competency in Model.JobCompetenciesExecutive)                                                        {
+                                                        @foreach (var competency in Model.JobCompetenciesExecutive.Where(e => e.Active != 0))                                                        {
                                                             if (!Model.AddedExecutiveCompetencies.Any(e => e.CompetencyId == competency.Id))
                                                             {
                                                                 <option value="@competency.Id">@(isEnglish ? competency.NameEng : competency.NameFre)</option>
@@ -959,7 +940,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach (var competency in Model.AddedExecutiveCompetencies)
+                        @foreach (var competency in Model.AddedExecutiveCompetencies.Where(e => e.Active != 0))
                         {
                             <div class="row">
                                 <div class="col-6">

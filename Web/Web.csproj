@@ -11,14 +11,9 @@
     <None Remove="Pages\Mockups\Students\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Pages\Index1.cshtml.cs" />
-
-  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Pages\Candidate\Shoreside\Index.cshtml" />
-    <Content Remove="Pages\Index1.cshtml" />
    
   </ItemGroup>
 
@@ -39,6 +34,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="SmartBreadcrumbs" Version="3.6.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,9 +48,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>_ThemeGcwu.resx</DependentUpon>
     </Compile>
+	  <Compile Update="Resources\BreadcrumbResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>BreadcrumbResources.resx</DependentUpon>
+	  </Compile>
   </ItemGroup>
 
-  <ItemGroup>
+ <ItemGroup>
     <Content Update="wwwroot\favicon.ico">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -114,11 +115,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_ThemeGcwu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+	<EmbeddedResource Update="Resources\BreadcrumbResources.resx">
+		<CustomToolNamespace>Resx</CustomToolNamespace>
+		<Generator>PublicResXFileCodeGenerator</Generator>
+		<LastGenOutput>BreadcrumbResources.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\" />
+	</ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />

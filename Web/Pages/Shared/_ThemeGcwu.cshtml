@@ -148,15 +148,7 @@
             <div class="container">
                 <div class="row">
                     <ol class="breadcrumb">
-                        @if (isEnglish)
-                        {
-                        <li><a href="/en/">Home</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/fr/Index">Accueil</a></li>
-                        }
-                        @RenderSection("Breadcrumbs", required: false)
+                       <li><breadcrumb></breadcrumb></li>
                     </ol>
                 </div>
             </div>

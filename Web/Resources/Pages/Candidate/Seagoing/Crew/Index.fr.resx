@@ -141,4 +141,7 @@
   <data name="Q1" xml:space="preserve">
     <value>Veuillez sélectionner votre domaine d'emploi préféré</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes - En mer - Équipage</value>
+  </data>
 </root>

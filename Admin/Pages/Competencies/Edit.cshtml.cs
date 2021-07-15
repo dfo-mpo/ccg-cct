@@ -10,6 +10,7 @@ using DataModel;
 using Business.Dtos.JobCompetencies;
 using Admin.Data;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 
 namespace Admin.Pages.Competencies
 {
@@ -89,7 +90,8 @@ namespace Admin.Pages.Competencies
                 }
             }
 
-            return RedirectToPage("./Index");
+            Thread.MemoryBarrier();
+            return RedirectToPage("Details", new { id = Competency.Id });
         }
 
         private bool CompetencyExists(int id)

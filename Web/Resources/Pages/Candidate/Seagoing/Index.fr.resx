@@ -135,4 +135,7 @@
   <data name="Q1" xml:space="preserve">
     <value>Choisissez parmi les deux positions ci-dessous</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes - en mer</value>
+  </data>
 </root>

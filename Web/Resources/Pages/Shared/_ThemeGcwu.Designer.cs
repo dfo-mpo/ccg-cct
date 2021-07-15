@@ -88,6 +88,15 @@ namespace Web.Resources.Pages.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language selection.
         /// </summary>
         public static string Language_selection {

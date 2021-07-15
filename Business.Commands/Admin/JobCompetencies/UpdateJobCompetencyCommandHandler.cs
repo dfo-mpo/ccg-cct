@@ -16,7 +16,6 @@ namespace Business.Commands.Admin.JobCompetencies
         public string DescEng { get; set; }
         public string DescFre { get; set; }
         public int TypeId { get; set; }
-        public int Active { get; set; }
         public string Level1DescEng { get; set; }
         public string Level1DescFre { get; set; }
         public string Level2DescEng { get; set; }
@@ -34,10 +33,13 @@ namespace Business.Commands.Admin.JobCompetencies
         public UpdateJobCompetencyCommandValidator(CctDbContext db)
         {
             RuleFor(e => e.NameEng)
-                .MaximumLength(250);
-
+                .MaximumLength(1000);
             RuleFor(e => e.NameFre)
-                .MaximumLength(255);
+                .MaximumLength(1000);
+            RuleFor(e => e.DescEng)
+                .MaximumLength(2500);
+            RuleFor(e => e.DescFre)
+                .MaximumLength(2500);
         }
     }
     public class UpdateJobCompetencyCommandHandler : ICommandHandler<UpdateJobCompetencyCommand>
@@ -56,7 +58,6 @@ namespace Business.Commands.Admin.JobCompetencies
             jobcompetency.NameFre = command.NameFre;
             jobcompetency.DescEng = string.IsNullOrEmpty(command.DescEng) ? string.Empty : command.DescEng;
             jobcompetency.DescFre = string.IsNullOrEmpty(command.DescFre) ? string.Empty : command.DescFre;
-            jobcompetency.Active = command.Active;
             var execlevelinc = command.TypeId == 4 ? 5 : 0;
             var crg1 = _db.CompetencyRatingGroups
                 .Where(e => e.CompetencyId == command.Id && e.CompetencyRatingLevelId == 1 + execlevelinc).FirstOrDefault();

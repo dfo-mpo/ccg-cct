@@ -135,11 +135,14 @@
   <data name="Q1" xml:space="preserve">
     <value>Quel est votre niveau académique?</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Étudiants</value>
+    <value>Étudiant</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

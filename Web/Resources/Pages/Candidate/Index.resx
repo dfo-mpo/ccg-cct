@@ -132,4 +132,7 @@
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
 </root>
