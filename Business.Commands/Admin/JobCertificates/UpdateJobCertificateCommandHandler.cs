@@ -15,7 +15,6 @@ namespace Business.Commands.Admin.JobCertificates
         public string NameFre { get; set; }
         public string DescEng { get; set; }
         public string DescFre { get; set; }
-        public int Active { get; set; }
     }
 
     public class JobCertificateCommandValidator : AbstractCommandValidator<UpdateJobCertificateCommand>
@@ -50,7 +49,6 @@ namespace Business.Commands.Admin.JobCertificates
             jobcertificate.NameFre = command.NameFre;
             jobcertificate.DescEng = string.IsNullOrEmpty(command.DescEng) ? string.Empty : command.DescEng;
             jobcertificate.DescFre = string.IsNullOrEmpty(command.DescFre) ? string.Empty : command.DescFre;
-            jobcertificate.Active = command.Active;
             await _db.SaveChangesAsync(cancellationToken);
         }
     }

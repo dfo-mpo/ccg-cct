@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Microsoft.Extensions.Logging;
 using Admin.Data;
+using System.Threading;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -62,7 +58,8 @@ namespace Admin.Pages.Certificates.Descriptions
                 s => s.DescEng, s => s.DescFre))
             {
                 _jobCertificateService.UpdateJobCertificateDescription(Certificate);
-                return RedirectToPage("./Index");
+                Thread.MemoryBarrier();
+                return RedirectToPage("Details", new { id });
             }
 
             return Page();

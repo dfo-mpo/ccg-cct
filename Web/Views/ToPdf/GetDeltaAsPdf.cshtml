@@ -13,7 +13,7 @@
     List<SharedJobCompetencyRating[]> MatchingCompetencies = new List<SharedJobCompetencyRating[]>();
     List<SharedJobCompetencyRating[]> DifferingCompetencies = new List<SharedJobCompetencyRating[]>();
     var MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
-    var DifferingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
+    var DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, obj);
     var CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
     foreach (var competencytype in CompetencyTypes)
     {
@@ -127,8 +127,8 @@
                     {
                             <tr>
                                 <td width="70%">@d.NameEng</td>
-                                <td class="text-center bg-success">&nbsp;</td>
-                                <td class="text-center bg-info">&nbsp;</td>
+                                <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                                <td class="text-center bg-info">@d.ObjectivePositionHas</td>
                             </tr>
                         }
                     </tbody>
