@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Microsoft.Extensions.Logging;
 using Admin.Data;
+using System.Threading;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -62,6 +63,7 @@ namespace Admin.Pages.Certificates.Descriptions
                 s => s.DescEng, s => s.DescFre))
             {
                 _jobCertificateService.UpdateJobCertificateDescription(Certificate);
+                Thread.MemoryBarrier();
                 return RedirectToPage("./Index");
             }
 
