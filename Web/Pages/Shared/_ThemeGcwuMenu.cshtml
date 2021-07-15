@@ -1,7 +1,8 @@
 ﻿@{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
-@if (isEnglish) {
+@if (isEnglish)
+{
     <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
         <div class="container nvbar">
             <h2>Topics menu</h2>
@@ -11,11 +12,13 @@
                     <li><a href="/en/CCGMember/AllPositions">CCG Member</a></li>
                     <li><a href="/en/Candidate/Index">External Candidate</a></li>
                     <li><a href="/en/Student/Index">Student</a></li>
-                    <li><a href="https://www.ccg-gcc.gc.ca/contact/index-fra.html" target="_blank" class="item">Contactez-nous</a>
+                    <li><a href="/en/FAQs">FAQs</a></li>
+                    <li><a href="/en/Contact">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 }
 else
 {
@@ -28,9 +31,11 @@ else
                     <li><a href="/fr/CCGMember/AllPositions">Membre de la GCC</a></li>
                     <li><a href="/fr/Candidate/Index">Candidat externe</a></li>
                     <li><a href="/fr/Student/Index">Étudiant</a></li>
-                    <li><a href="https://www.ccg-gcc.gc.ca/contact/index-fra.html" target="_blank" class="item">Contactez-nous</a>
+                    <li><a href="/fr/FAQs">FAQs</a></li>
+                    <li><a href="/fr/Contact">Contactez-nous</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 }

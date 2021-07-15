@@ -1,0 +1,26 @@
+﻿@page
+@model Web.Pages.ContactModel
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Contact"];
+}
+
+<section role="contentinfo">
+    <div class="col-lg-9 col-sm-9">
+        <h2>@Localizer["Inquiry"]</h2>
+        <hr />
+        <p>@Localizer["para1"]</p>
+        <p>@Localizer["para2"]</p>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+        <figure>
+            <img src="~/img/ForceGen-logo.png" class="img-responsive mrgn-tp-md" />
+        </figure>
+    </div>
+</section>
+
+
+
+
