@@ -62,15 +62,7 @@
                 <li><a class="btn btn-primary pull-right mrgn-lft-md" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a></li>
             </ul>
         </nav>
- 
-
-    <!-- <div class="row mrgn-tp-md">
-           <a class="btn btn-primary pull-left mrgn-lft-md" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a>
-         </div>
-    -->
-
-
-    @if (Model.Position.JobTitleEng.Contains("Commanding"))
+ @if (Model.Position.JobTitleEng.Contains("Commanding"))
     {
         <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
             <div class="text-center">
