@@ -49,28 +49,46 @@
 };
 
 }
-    <section role="contentinfo">
-        <form method="post">
+<section role="contentinfo">
+        
+            <a title="@Localizer["Save PDF"]" class="mrgn-tp-md pull-right" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span> </a>
+      
+    <div class="clearfix"></div>
+    
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageSimilarDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                <li><a class="btn btn-primary pull-right mrgn-lft-md" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a></li>
+            </ul>
+        </nav>
+ 
 
-            <div class="col-md-6 mrgn-tp-md mrgn-bttm-md pull-right">
-                <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span> </a>
+    <!-- <div class="row mrgn-tp-md">
+           <a class="btn btn-primary pull-left mrgn-lft-md" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a>
+         </div>
+    -->
+
+
+    @if (Model.Position.JobTitleEng.Contains("Commanding"))
+    {
+        <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
+            <div class="text-center">
+                <h4>@Localizer["Commanding Officer"]</h4>
+                <p>@Localizer["MAOtext"]</p>
             </div>
-
-        </form>
-
-        <div class="row mrgn-tp-md">
-            <a class="btn btn-primary pull-left mrgn-lft-md" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a>
         </div>
-        <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <thead>
-                <tr>
-                    <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.LevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
-                </tr>
+    }
+    <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.LevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
+            </tr>
 
                 @if (Model.PositionCertificates.Any(e => e.Active != 0))
                 {
@@ -99,56 +117,49 @@
                                 <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                             </tr>
 
-                            foreach (var c in competencytype.Where(e => e.Active != 0))
-                            {
-                                    var key1 = "a" + c.CompetencyId.ToString();
-                                    var key2 = "b" + c.CompetencyId.ToString();
-                                <tr>
-                                    <td>
-                                        <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
-                                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                        </a>
-                                        <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
+                        foreach (var c in competencytype.Where(e => e.Active != 0))
+                        {
+                            var key1 = "a" + c.CompetencyId.ToString();
+                            var key2 = "b" + c.CompetencyId.ToString();
+                            <tr>
+                                <td>
+                                    <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
+                                        @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                                    </a>
+                                    <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
+                                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                        </div>
+                                    </section>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx">
+                                        <abbr title="Level @c.RatingValue Summary">
+                                            @c.RatingValue
+                                        </abbr>
+                                    </a>
+                                    <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <header class="modal-header">
+                                            <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
+                                        </header>
+                                        <div class="modal-body ">
+                                            <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                            <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
                                                 <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#@key2" aria-controls="centred-popup" class="wb-lbx">
-                                            <abbr title="Level @c.RatingValue Summary">
-                                                @c.RatingValue
-                                            </abbr>
-                                        </a>
-                                        <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                                <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                </tr>
-                            }
+                                        </div>
+                                    </section>
+                                </td>
+                            </tr>
                         }
                     }
                 }
-            </tbody>
-        </table>
-        <div class="row mrgn-tp-md">
-            <nav role="navigation" class="mrgn-bttm-lg">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageSimilarDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
+            }
+        </tbody>
+    </table>
+
+</section>
 
