@@ -7,43 +7,76 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-@if (!string.IsNullOrEmpty(Model.ObjectiveId))
-{
-    var routedatanext = new Dictionary<string, string>
-{
-        {"id",  Model.Id.ToString()},
+<section role="contentinfo">
+    <div class="row mrgn-tp-md mrgn-bttm-md">
+        <div class="col-sm-6">
+            @{var routedataprevious = new Dictionary<string, string>
+                            {
+        { "id",  Model.Id.ToString()},
         { "idobj",  Model.IdObj.ToString()},
+        {"level", Model.Level.ToString() },
+        {"levelobj", Model.LevelObj.ToString() },
+        {"positionid",  Model.PositionId.ToString()},
         {"previouspage", Model.PreviousPage },
         {"previouspagedetails", Model.PreviousPageDetails },
         {"previouspagecompare", Model.PreviousPageCompare },
-        {"previouspagedelta", "ObjectivePosition" },
-        {"level",  Model.Level.ToString() },
-        {"levelobj", Model.LevelObj.ToString() },
-        { "levelcode", Model.LevelCode },
+        {"levelcode", Model.LevelCode },
         {"levelcodeobj", Model.LevelCodeObj },
-        {"positionid",  Model.PositionId.ToString()},
         {"subgroupcode", Model.SubGroupCode },
-        {"subgroupcodeobj", Model.SubGroupCodeObj },
-        {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
+        {"subgroupcodeobj", Model.SubGroupCodeObj }
         };
-
-<a class="btn btn-primary pull-right mrgn-tp-sm" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
-}
-<h2><b>@Localizer["h2Text"]</b></h2>
-<h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-<div class="dropdown">
-    <div class="col-sm-3 mrgn-bttm-md">
-        <label><b>@Localizer["Level"]</b></label><br />
-        <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-            @Model.LevelCodeObj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
+            }
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li><a class="btn btn-default pull-left" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-6">
+            @if (!string.IsNullOrEmpty(Model.ObjectiveId))
             {
-                if (level.Active != 0) {
-                var data = new Dictionary<string, string>
-                 {
+                var routedatanext = new Dictionary<string, string>
+                {
+            {"id",  Model.Id.ToString()},
+            { "idobj",  Model.IdObj.ToString()},
+            {"previouspage", Model.PreviousPage },
+            {"previouspagedetails", Model.PreviousPageDetails },
+            {"previouspagecompare", Model.PreviousPageCompare },
+            {"previouspagedelta", "ObjectivePosition" },
+            {"level",  Model.Level.ToString() },
+            {"levelobj", Model.LevelObj.ToString() },
+            { "levelcode", Model.LevelCode },
+            {"levelcodeobj", Model.LevelCodeObj },
+            {"positionid",  Model.PositionId.ToString()},
+            {"subgroupcode", Model.SubGroupCode },
+            {"subgroupcodeobj", Model.SubGroupCodeObj },
+            {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
+            };
+
+                <a class="btn btn-primary pull-right mrgn-tp-sm" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
+            }
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+        <h2><b>@Localizer["h2Text"]</b></h2>
+        <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+        <div class="dropdown">
+            <div class="col-sm-3 mrgn-bttm-md">
+                <label><b>@Localizer["Level"]</b></label><br />
+                <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
+                    @Model.LevelCodeObj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
+                    {
+                        if (level.Active != 0)
+                        {
+                            var data = new Dictionary<string, string>
+                                         {
                      {"positionid", Model.PositionId.ToString()},
                      {"idobj",  level.JobGroupId.ToString()},
                      {"id",  Model.Id.ToString()},
@@ -57,27 +90,28 @@
                      {"subgroupcode", Model.SubGroupCode },
                      {"subgroupcodeobj", level.SubGroupCode }
                   };
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1"
-                       asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
-                </li>
-                }
-            }
-        </ul>
-    </div>
-    <div class="col-sm-9 mrgn-bttm-md">
-        <label><b>@Localizer["Position"]</b></label><br />
-        <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-            @(Model.ObjectiveId==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-9 mrgn-bttm-md">
+                <label><b>@Localizer["Position"]</b></label><br />
+                <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                    @(Model.ObjectiveId==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
-            @foreach (var jp in Model.JobGroupPositions)
-            {
-                if (jp.Active != 0) {
-                var data = new Dictionary<string, string>
-                     {
+                    @foreach (var jp in Model.JobGroupPositions)
+                    {
+                        if (jp.Active != 0)
+                        {
+                            var data = new Dictionary<string, string>
+                                             {
                         {"id",  Model.Id.ToString()},
                         { "idobj",  Model.IdObj.ToString()},
                         {"level",  Model.Level.ToString() },
@@ -92,39 +126,12 @@
                         {"subgroupcode", Model.SubGroupCode },
                         {"subgroupcodeobj", Model.SubGroupCodeObj }
                      };
-                <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
-                }
-            }
-        </ul>
-    </div>
-</div>
-<figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /> </figure>
-<div class="row mrgn-tp-lg">
-    <div class="col-sm-9 pull-right mrgn-tp-lg">
-        @{var routedataprevious = new Dictionary<string, string>
-        {
-        { "id",  Model.Id.ToString()},
-        { "idobj",  Model.IdObj.ToString()},
-        {"level", Model.Level.ToString() },
-        {"levelobj", Model.LevelObj.ToString() },
-        {"positionid",  Model.PositionId.ToString()},
-        {"previouspage", Model.PreviousPage },
-        {"previouspagedetails", Model.PreviousPageDetails },
-        {"previouspagecompare", Model.PreviousPageCompare },
-        {"levelcode", Model.LevelCode },
-        {"levelcodeobj", Model.LevelCodeObj },
-        {"subgroupcode", Model.SubGroupCode },
-        {"subgroupcodeobj", Model.SubGroupCodeObj }
-        };
-        }
-    </div>
-    <div class="col-sm-3 pull-left mrgn-tp-sm">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /> </figure>
 
+</section>

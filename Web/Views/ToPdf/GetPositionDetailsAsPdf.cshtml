@@ -25,13 +25,27 @@
     var level = isEnglish ? "Level" : "Niveau";
     var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
     var nocertifications = isEnglish ? "No Certifications" : "Aucun certificat associées";
+    var PDAPText = isEnglish ? "Professional Development Apprenticeship Program (PDAP)" : "Programme d'apprentissage de perfectionnement professionnel (PDAP)";
+    var MELDEVUrl = isEnglish ? "https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html" : "https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html";
+    var MCTSUrl = isEnglish ? "https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html" : "https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html";
 }
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 <section role="contentinfo">
-   
+
     <h3 class="text-center">@h2Results</h3>
+    <br />
+    @if (Position.JobTitleEng.Contains("MELDEV") || Position.JobTitleEng.Contains("MCTS"))
+    {
+        <div class="col-md-offset-2 col-md-8" style="background-color: #f2f2f2; padding-top: 5px; padding-bottom:25px;">
+            <div class="text-center">
+                <h4>@PDAPText</h4>
+                @{var url = Position.JobTitleEng.Contains("MELDEV") ? @MELDEVUrl : @MCTSUrl; }
+                <a href="@url" target="_blank">@url</a>
+            </div>
+        </div>
+    }
 
     <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
         <caption><h4>@positiondetails: @Position.JobGroupLevelCode @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</h4></caption>
@@ -44,9 +58,9 @@
             {
                 @foreach (var c in PositionCertificates.Where(e => e.Active != 0))
                 {
-                        <tr>
-                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
-                        </tr>
+                    <tr>
+                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                    </tr>
                 }
             }
             else
@@ -67,21 +81,21 @@
                         </tr>
                         @foreach (var c in competencytype.Where(e => e.Active != 0))
                         {
-                                <tr>
-                                    <td>
-                                        @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                    </td>
-                                    <td class="text-center">
+                            <tr>
+                                <td>
+                                    @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                                </td>
+                                <td class="text-center">
 
-                                        @c.RatingValue
+                                    @c.RatingValue
 
-                                    </td>
-                                </tr>
-                            }
+                                </td>
+                            </tr>
                         }
                     }
                 }
-            </tbody>
+            }
+        </tbody>
     </table>
 </section>
 

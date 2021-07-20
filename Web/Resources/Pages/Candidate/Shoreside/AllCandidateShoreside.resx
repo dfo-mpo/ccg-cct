@@ -126,4 +126,7 @@
   <data name="NoResults" xml:space="preserve">
     <value>No matching results found</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>External Candidate shore side positions</value>
+  </data>
 </root>

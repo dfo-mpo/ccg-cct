@@ -60,6 +60,15 @@ namespace Service.Controllers
             return Ok(results);
         }
 
+        [HttpGet, Route("{Id}/grouplevels")]
+        [ProducesResponseType(typeof(List<JobGroupPositionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetGroupLevelsById([FromRoute] GetJobGroupLevelTitlesByIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
         [HttpGet, Route("{Id}/subgrouplevels")]
         [ProducesResponseType(typeof(List<JobGroupPositionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetSubGroupLevelsById([FromRoute] GetSubGroupLevelsByIdQuery query)

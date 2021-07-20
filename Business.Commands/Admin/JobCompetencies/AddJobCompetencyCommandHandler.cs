@@ -1,9 +1,5 @@
 ﻿using CCG.AspNetCore.Business.Interface;
-using CCG.AspNetCore.Business.Validator;
 using DataModel;
-using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

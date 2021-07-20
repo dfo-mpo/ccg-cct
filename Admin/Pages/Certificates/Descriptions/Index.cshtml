@@ -31,6 +31,7 @@
     <tbody>
         @foreach (var item in Model.Descriptions.Where(e => Model.Filter == null || e.DescEng.ToLower().Contains(@Model.Filter.ToLower()) || e.DescFre.ToLower().Contains(@Model.Filter.ToLower())))
         {
+            if (item.Active != 0) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.DescEng)
@@ -40,9 +41,11 @@
                 </td>
                 <td style="width:15%">
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
+            }
         }
     </tbody>
 </table>

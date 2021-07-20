@@ -165,4 +165,7 @@
   <data name="TECHNICAL ELEMENTS" xml:space="preserve">
     <value>TECHNICAL ELEMENTS</value>
   </data>
+  <data name="USERACTION" xml:space="preserve">
+    <value>Click Next to compare or find similar positions within the organization to your selected position below.</value>
+  </data>
 </root>

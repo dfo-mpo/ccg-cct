@@ -144,6 +144,9 @@
   <data name="Q1" xml:space="preserve">
     <value>Choisissez un domaine qui vous intéresse</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Université - Postes en mer</value>
   </data>

@@ -23,7 +23,10 @@ namespace Business.Commands.Admin.JobPositions
     {
         public AddJobRolePositionHLCategoryCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.JobPositionId)
+                  .NotEmpty();
+            RuleFor(e => e.JobHLCategoryId)
+                  .NotEmpty();
         }
     }
     public class AddJobRolePositionHLCategoryCommandHandler : ICommandHandler<AddJobRolePositionHLCategoryCommand>

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SmartBreadcrumbs.Attributes;
 
-namespace Web.Pages.Student
+namespace Web.Pages
 {
-    public class Student_DetailsModel : PageModel
+    [DefaultBreadcrumb("Home")]
+    public class IndexModel : PageModel
     {
         public void OnGet()
         {

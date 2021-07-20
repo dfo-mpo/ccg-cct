@@ -19,15 +19,20 @@
 <table class="table">
     <thead>
         <tr>
-            <th width="42%"><b>Title English</b></th>
-            <th width="42%"><b>Title French</b></th>
-            <th width="16%"></th>
+            <th width="7%"><b>Level</b></th>
+            <th width="35%"><b>Title English</b></th>
+            <th width="35%"><b>Title French</b></th>
+            <th width="15%"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
+        @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower()) || e.LevelCode.ToLower().Contains(@Model.Filter.ToLower())))
         {
+            if (item.Active != 0) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelCode)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JobTitleEng)
             </td>
@@ -37,6 +42,7 @@
             @if (Model.SimilarSearchIds.Contains(item.JobTitleId))
             {
                 <td>
+                    <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
                     <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a>
                 </td>
             }
@@ -47,6 +53,7 @@
                 </td>
             }
         </tr>
+            }
         }
     </tbody>
 </table>

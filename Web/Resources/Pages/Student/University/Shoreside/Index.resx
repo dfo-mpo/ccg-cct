@@ -127,7 +127,7 @@
     <value>Canadian Coast Guard College</value>
   </data>
   <data name="computer" xml:space="preserve">
-    <value>Computer Science</value>
+    <value>Computer Sciences</value>
   </data>
   <data name="economics" xml:space="preserve">
     <value>(including Economics, Sociology, Psychology)</value>
@@ -168,10 +168,10 @@
   <data name="sciences" xml:space="preserve">
     <value>Sciences</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
   <data name="social" xml:space="preserve">
     <value>Social Science</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>University - Shore side positions</value>
   </data>
 </root>

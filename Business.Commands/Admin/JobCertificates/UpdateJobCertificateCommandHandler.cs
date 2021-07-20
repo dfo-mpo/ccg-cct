@@ -15,18 +15,22 @@ namespace Business.Commands.Admin.JobCertificates
         public string NameFre { get; set; }
         public string DescEng { get; set; }
         public string DescFre { get; set; }
-        public int Active { get; set; }
     }
 
     public class JobCertificateCommandValidator : AbstractCommandValidator<UpdateJobCertificateCommand>
     {
         public JobCertificateCommandValidator(CctDbContext db)
         {
+            RuleFor(e => e.Id)
+                .NotEmpty();
             RuleFor(e => e.NameEng)
-                .MaximumLength(250);
-
+                .MaximumLength(1000);
             RuleFor(e => e.NameFre)
-                .MaximumLength(255);
+                .MaximumLength(1000);
+            RuleFor(e => e.DescEng)
+                .MaximumLength(1000);
+            RuleFor(e => e.DescFre)
+                .MaximumLength(1000);
         }
     }
     public class JobCertificateCommandHandler : ICommandHandler<UpdateJobCertificateCommand>
@@ -45,7 +49,6 @@ namespace Business.Commands.Admin.JobCertificates
             jobcertificate.NameFre = command.NameFre;
             jobcertificate.DescEng = string.IsNullOrEmpty(command.DescEng) ? string.Empty : command.DescEng;
             jobcertificate.DescFre = string.IsNullOrEmpty(command.DescFre) ? string.Empty : command.DescFre;
-            jobcertificate.Active = command.Active;
             await _db.SaveChangesAsync(cancellationToken);
         }
     }

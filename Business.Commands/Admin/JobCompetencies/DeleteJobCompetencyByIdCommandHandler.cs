@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CCG.AspNetCore.Business.Interface;
 using CCG.AspNetCore.Business.Validator;
 using DataModel;
+using FluentValidation;
 
 namespace Business.Commands.Admin.JobCompetencies
 {
@@ -14,7 +15,8 @@ namespace Business.Commands.Admin.JobCompetencies
     {
         public DeleteJobCompetencyByIdCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.Id)
+                .NotEmpty();
         }
     }
     public class DeleteJobCompetencyByIdCommandHandler : ICommandHandler<DeleteJobCompetencyByIdCommand>
@@ -28,8 +30,6 @@ namespace Business.Commands.Admin.JobCompetencies
 
         public async Task ExecuteAsync(DeleteJobCompetencyByIdCommand command, CancellationToken cancellationToken = new CancellationToken())
         {
-            //var competency = await _db.Competencies.FindAsync(command.Id);
-            //_db.Competencies.Remove(competency);
             var jobcompetency = await _db.Competencies.FindAsync(command.Id);
             jobcompetency.Active = 0;
             await _db.SaveChangesAsync(cancellationToken);

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Microsoft.Extensions.Logging;
 using Admin.Data;
+using System.Threading;
 
 namespace Admin.Pages.Certificates
 {
@@ -62,9 +63,9 @@ namespace Admin.Pages.Certificates
                 "certificate",
                 s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre))
             {
-                //await _context.SaveChangesAsync();
                 _jobCertificateService.UpdateJobCertificate(Certificate);
-                return RedirectToPage("./Index");
+                Thread.MemoryBarrier();
+                return RedirectToPage("Details", new { id });
             }
 
             return Page();

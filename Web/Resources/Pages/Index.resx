@@ -123,6 +123,9 @@
   <data name="ExternalCandidate" xml:space="preserve">
     <value>External Candidate</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="IndexTitle" xml:space="preserve">
     <value>Career Competency Tool</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="WelcomeText" xml:space="preserve">
     <value>Welcome to the Career Competency Tool. This tool is designed to allow you to search and compare various positions within the Canadian Coast Guard.</value>

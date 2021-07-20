@@ -21,7 +21,8 @@ namespace Business.Commands.Admin.JobPositions
     {
         public AddJobRolePositionCertificateCommandValidator(CctDbContext db)
         {
-
+            RuleFor(e => e.JobPositionId)
+                  .NotEmpty();
         }
     }
     public class AddJobRolePositionCertificateCommandHandler : ICommandHandler<AddJobRolePositionCertificateCommand>

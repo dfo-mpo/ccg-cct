@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Web.Data;
+using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages.Student.HighSchool.Shoreside
 {
+    [Breadcrumb("Administrative", FromPage = typeof(Shoreside.IndexModel))]
     public class AdministrativeModel : PageModel
     {
         private readonly ILogger<AdministrativeModel> _logger;

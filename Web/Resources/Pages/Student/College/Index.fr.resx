@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="College" xml:space="preserve">
+    <value>Collège</value>
+  </data>
   <data name="PhotoSeagoing" xml:space="preserve">
     <value>Photo du navire Cape Kuper</value>
   </data>
@@ -135,7 +138,10 @@
   <data name="Shoreside" xml:space="preserve">
     <value>Positions côté rivage</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - En mer ou côté rivage </value>
+    <value>Collège</value>
   </data>
 </root>
