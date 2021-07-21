@@ -126,6 +126,9 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDANT</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
     <value>Position actuelle</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
+  </data>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>

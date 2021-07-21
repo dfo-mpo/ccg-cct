@@ -25,10 +25,16 @@
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
 <section>
-    <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
-        <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
-    </div>
+    
+        <a title="@Localizer["Save PDF"]" class="mrgn-tp-sm pull-right"target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
 
+    <div class="clearfix"></div>
 
     <div class="mrgn-tp-lg">
         <h4>@Localizer["Current Position"]: @Model.Position.JobGroupLevelCode - @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</h4>
@@ -46,7 +52,7 @@
                 @foreach (var position in Model.Positions.Where(e => e.Active != 0))
                 {
                     var routedata = new Dictionary<string, string>
-                                     {
+                                         {
         {"objectiveid",  position.JobTitleId.ToString()},
         {"positionid",  Model.PositionId.ToString()},
         {"id", Model.Id },
@@ -74,14 +80,5 @@
         }
             </tbody>
         </table>
-    </div>
-
-    <div class="row mrgn-tp-md">
-        <nav role="navigation" class="mrgn-bttm-lg">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
     </div>
 </section>

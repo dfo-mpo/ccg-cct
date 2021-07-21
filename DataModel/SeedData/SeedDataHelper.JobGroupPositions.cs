@@ -393,8 +393,12 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386},
             new JobGroupPosition {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387},
             new JobGroupPosition {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388},
-            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389}
-
+            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389},
+            new JobGroupPosition {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 390},
+            new JobGroupPosition {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 7, JobPositionId = 391},
+            new JobGroupPosition {JobGroupId = 7, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 392},
+            new JobGroupPosition {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 393},
+            new JobGroupPosition {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 394}
         };
     }
 }
