@@ -155,6 +155,9 @@
     <value>&lt;p&gt;During our Force Generation consultations we discovered that there was a national appetite for this kind of work because of its potential to empower Coast Guard members in their own career development. Had we done project-specific pre-consultations, however, the time, cost, and disparities would have made it difficult to map a common tool effectively and efficiently. Little in the profiles and tool has been made up by the team; it is based on posted material and subsequent feedback.&lt;/p&gt;
 &lt;p&gt;Even if the CCT was never constructed and the work ended with the competency profiles and consultations, every position and classification will be mapped and described using all available tools and indicators. From here the information may be used for staffing (e.g. SoMCs), training, and career development, including the development of professional development programs, which are proven recruiting and training programs.&lt;/p&gt;</value>
   </data>
+  <data name="A20" xml:space="preserve">
+    <value>You can find pay rates of each position on the Treasury Board of Canada website &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-eng.asp" target="_blank"&gt;here&lt;/a&gt;.</value>
+  </data>
   <data name="A3" xml:space="preserve">
     <value>&lt;p&gt;For every classification and level we used every job poster we could locate for several years back to ensure that we were using the right material. We inventoried and used existing competency profiles. Where available we used TBS job/classification evaluations for jobs. Unions were notified of the work and invited to comment. We had a post construction consultation to iron out differences while highlighting the value of similarities and the logic of selection. This beta test will comprise a final layer of consultation to ensure that we have got it right, and even afterwards we will always be able to make changes.&lt;/p&gt;</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="Q2" xml:space="preserve">
     <value>Did you do a pre-consultation?</value>
+  </data>
+  <data name="Q20" xml:space="preserve">
+    <value>Where can I find the pay rates for the positions shown in this tool?</value>
   </data>
   <data name="Q3" xml:space="preserve">
     <value>What was your method?</value>

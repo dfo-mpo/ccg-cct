@@ -155,6 +155,9 @@
     <value>&lt;p&gt;Lors de nos consultations sur la génération du personnel, nous avons découvert qu’il existait un intérêt national à l’égard de ce type de travail en raison de sa capacité potentielle à autonomiser les membres de la Garde côtière au cours de leur perfectionnement professionnel. Cependant, si nous avions effectué des consultations préalables propres à chaque projet, le temps, le coût et les disparités auraient rendu difficile la conception efficace et efficiente d’un outil commun. L’équipe a inventé peu de choses en ce qui concerne les profils et l’outil; elle s’est basée sur les documents publiés et la rétroaction subséquente.&lt;/p&gt;
 &lt;p&gt;Même si l’OCP n’a jamais été élaboré et que le travail s’est terminé avec les profils de compétences et les consultations, chaque poste et chaque classification seront cartographiés et décrits en utilisant l’ensemble des outils et des indicateurs disponibles. À partir de là, les renseignements pourraient être utilisés pour la dotation en personnel (par exemple, les énoncés des critères de mérite), la formation et le perfectionnement professionnel, y compris l’élaboration de programmes de perfectionnement professionnel, qui sont des programmes de recrutement et de formation éprouvés.&lt;/p&gt;</value>
   </data>
+  <data name="A20" xml:space="preserve">
+    <value>Vous pouvez trouver les taux de rémunération de chaque poste sur le site Web du Conseil du Trésor du Canada &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-fra.asp" target="_blank"&gt;ici&lt;/a&gt;.</value>
+  </data>
   <data name="A3" xml:space="preserve">
     <value>&lt;p&gt;Pour chaque classification et chaque niveau, nous avons utilisé toutes les affiches d’emploi que nous avons pu trouver depuis plusieurs années pour nous assurer que nous utilisions le bon matériel. De plus, nous avons inventorié et utilisé les profils de compétences existants. Lorsque cela était possible, nous avons utilisé les évaluations de la classification et des postes du Secrétariat du Conseil du Trésor. du Canada (SCT) en ce qui concerne les emplois. Les syndicats ont été informés des travaux et invités à formuler des commentaires. Par ailleurs, nous avons mené une consultation après la construction afin d’aplanir les différences, tout en soulignant la valeur des similitudes et la logique de la sélection. Cet essai bêta comprendra une dernière couche de consultation pour s’assurer que nous avons bien fait les choses, et même par la suite, nous pourrons toujours apporter des modifications.&lt;/p&gt;</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="Q2" xml:space="preserve">
     <value>Avez-vous mené une consultation préalable?</value>
+  </data>
+  <data name="Q20" xml:space="preserve">
+    <value>Où puis-je trouver les taux de rémunération pour les postes affichés dans cet outil?</value>
   </data>
   <data name="Q3" xml:space="preserve">
     <value>Quelle était votre méthode?</value>

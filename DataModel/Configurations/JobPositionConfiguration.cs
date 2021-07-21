@@ -22,6 +22,12 @@ namespace DataModel.Configurations
                 .IsRequired()
                 .HasMaxLength(3000);
 
+            builder.Property(b => b.PositionDescEng)
+               .HasMaxLength(8000);
+
+            builder.Property(b => b.PositionDescFre)
+                .HasMaxLength(8000);
+
             builder.Property(b => b.Active)
                .IsRequired();
         }
