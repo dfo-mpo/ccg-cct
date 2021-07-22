@@ -1364,13 +1364,13 @@ namespace DataModel.SeedData
             {
                 Id = 239,
                 DescEng = "Performs all four phases of life cycle materiel management, including assessing and planning materiel requirements, acquiring materiel resources, operating and using, maintaining, and disposing of materiel. Implements the concepts of the Policy Framework for the Management of Assets and Acquired Services.",
-                DescFre = "Effectue les quatre phases de la gestion du cycle de vie du matériel, y compris l'évaluation et la planification des besoins en matériel, l'acquisition des ressources matérielles, l'exploitation et l'utilisation, l'entretien et l'élimination du matériel. Met en œuvre les concepts du Cadre de politique sur la gestion des actifs et services acquis."
+                DescFre = "Effectue les quatre phases de la gestion du cycle de vie du matériel, y compris l'évaluation et la planification des besoins en matériel, l'acquisition des ressources matérielles, l'exploitation et l'utilisation, l'entretien et l'élimination du matériel. Met en œuvre les concepts du Cadre de politique sur la gestion des actifs et services acquis. S’il y a lieu, en tant que responsable de l’entretien, gère les biens matériels à l’aide du Système de gestion des actifs (SGA) afin de s’assurer que les tâches sont effectuées correctement, de façon sécuritaire et aux intervalles requis. Gère également tout le matériel et la main-d’œuvre associés à l’entretien des biens et consigne les mesures correctives."
             },
             new CompetencyLevelRequirement
             {
                 Id = 240,
                 DescEng = "Manages a risk-based and complexity-based approach to processes, systems, capacity, resourcing, oversight, and reporting to promote the attainment of program outcomes. Advises and guides decisions on life cycle asset management within their area of concern.",
-                DescFre = "Gère une approche fondée sur le risque et la complexité des processus, des systèmes, des capacités, des ressources, de la surveillance et des rapports afin de promouvoir l'obtention des résultats du programme. Conseille et oriente les décisions sur la gestion du cycle de vie des actifs dans leur domaine de responsabilité."
+                DescFre = "Gère une approche fondée sur le risque et la complexité des processus, des systèmes, des capacités, des ressources, de la surveillance et des rapports afin de promouvoir l'obtention des résultats du programme. Conseille et oriente les décisions sur la gestion du cycle de vie des actifs dans leur domaine de responsabilité. S’il y a lieu, en tant que responsable ou superviseur de l’entretien, gère les biens matériels à l’aide du Système de gestion des actifs (SGA) afin de s’assurer que les tâches sont effectuées correctement, de façon sécuritaire et aux intervalles requis. Gère également tout le matériel et la main-d’œuvre associés à l’entretien des biens et consigne les mesures correctives."
             },
             new CompetencyLevelRequirement
             {
