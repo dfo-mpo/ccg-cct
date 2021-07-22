@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="A1" xml:space="preserve">
-    <value>&lt;p&gt;The Canadian Coast Guard’s new Competency Career Tool (CCT), is a simple on-line tool enabling every Coast Guard member to see where they are in the organization and what is broadly required for every other job they may be interested in in any career stream, level, and location. There will be related portals for external candidates and students potentially interested in joining the Coast Guard. &lt;/p&gt;
+    <value>&lt;p&gt;The Canadian Coast Guard’s new Career Competency Tool (CCT), is a simple on-line tool enabling every Coast Guard member to see where they are in the organization and what is broadly required for every other job they may be interested in in any career stream, level, and location. There will be related portals for external candidates and students potentially interested in joining the Coast Guard. &lt;/p&gt;
 &lt;p&gt;While some specificities are absent (e.g. ship classes/sea time) we paid attention to the details of the work Coast Guard members do while seeking commonalities. The idea of career columns as lists of minimal level competencies, and comparisons to others, is new; but the language is designed for Coast Guard members. This tool will be unique not merely to the Coast Guard but to the entire public service.&lt;/p&gt;</value>
   </data>
   <data name="A10" xml:space="preserve">
@@ -181,7 +181,7 @@
     <value>&lt;p&gt;Knowledge refers to the practical or theoretical understanding of a subject. It is information acquired by a person through experience or education. Technical competencies describe the skill-based application of the needed knowledge to perform the specific job and/or group of jobs efficiently and effectively, day to day, within an organization.&lt;/p&gt;</value>
   </data>
   <data name="Q1" xml:space="preserve">
-    <value>What is the Competency Career Tool about?</value>
+    <value>What is the Career Competency Tool about?</value>
   </data>
   <data name="Q10" xml:space="preserve">
     <value>What are behavioural competencies?</value>
