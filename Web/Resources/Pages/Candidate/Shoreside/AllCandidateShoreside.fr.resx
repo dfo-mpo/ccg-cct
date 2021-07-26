@@ -126,7 +126,7 @@
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
   </data>
-  <data name="NoResult" xml:space="preserve">
+  <data name="NoResults" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
   </data>
   <data name="Previous" xml:space="preserve">
