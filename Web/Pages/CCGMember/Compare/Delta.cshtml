@@ -206,6 +206,11 @@
                             url += "GeneralArts";
                             <li><a asp-page="@url">@Localizer["General Arts"]</a></li>
                         }
+                        else if (Model.PreviousPage.Contains("SocialScience"))
+                        {
+                            url += "SocialScience";
+                            <li><a asp-page="@url">@Localizer["Social Sciences"]</a></li>
+                        }
                         else if (Model.PreviousPage.Contains("Sciences"))
                         {
                             url += "Sciences";
@@ -276,16 +281,14 @@
                         <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
                         <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["Search Type"]</a></li>
                     }
-
                     @if (Model.PreviousPageDelta == "ObjectivePosition")
                     {
-
                         <li><a asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Compare"]</a></li>
-                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Select Position"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
                     }
                     else
                     {
-                        if (Model.PreviousPage.Contains("Candidate"))
+                        if (Model.PreviousPageDetails.Contains("Candidate"))
                         {
                             <li><a asp-page="../Similar/SimilarList" asp-all-route-data="routedata">@Localizer["Similar Positions"]</a></li>
                         }
