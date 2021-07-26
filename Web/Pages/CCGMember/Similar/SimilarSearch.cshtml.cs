@@ -61,6 +61,8 @@ namespace Web.Pages.CCGMember.Similar
         public string AddedCompetencies { get; set; } = string.Empty;
         [BindProperty]
         public List<int> AddedCompetencyValues { get; set; } = new List<int>();
+        public List<int> SimilarSearchIds { get; set; }
+
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, SimilarService similarService, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -70,7 +72,10 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnGetAsync(int positionid)
         {
             _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            if (!SameLevels.Equals(string.Empty))
+            SimilarSearchIds = await _similarService.GetAllSimilarSearchIds();
+            if (SimilarSearchIds.Contains(positionid))
+            {
+                if (!SameLevels.Equals(string.Empty))
             {
                 var ids = SameLevels.Split("&sameLevelCompetencyId=");
                 foreach (var id in ids)
@@ -163,6 +168,7 @@ namespace Web.Pages.CCGMember.Similar
                     HigherLevels += "&higherLevelCompetencyId=" + c;
                 }
             }
+                if (!string.IsNullOrEmpty(PercentMatch)) {
             if (PercentMatch == "&percentMatch=100")
             {
                 SimilarJobIds = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
@@ -179,13 +185,32 @@ namespace Web.Pages.CCGMember.Similar
             {
                 SimilarJobIds = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
             }
-            RouteParameter = String.Format($"jobPositionId={positionid}&{SimilarJobIds.SimilarPositionIds}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
-            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);
+
+                      RouteParameter = String.Format($"jobPositionId={positionid}&{SimilarJobIds.SimilarPositionIds}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
+                      Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);
+
+            }
+                else
+                {
+                    var SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                    var SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                    var SimilarJobIds80 = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
+                    var SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
+                if(SimilarJobIds100.SimilarPositionIds == "" && SimilarJobIds90.SimilarPositionIds == "" && SimilarJobIds80.SimilarPositionIds == "" && SimilarJobIds70.SimilarPositionIds == "")
+                    {
+                        PageSubmit = "Error";
+                    }
+                }
+            }
+            else
+            {
+                PageSubmit = "Error";
+            }
+            
         }
         public async Task OnPost(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            // PageSubmit = true;
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
@@ -222,8 +247,6 @@ namespace Web.Pages.CCGMember.Similar
         }
         public void OnPostCompetency(string competencyid)
         {
-
-            // PageSubmit = true;
             PageEdit = true;
             AddedCompetencies += "&addedCompetencyId=" + competencyid;
 
@@ -245,14 +268,11 @@ namespace Web.Pages.CCGMember.Similar
         }
         public void OnPostClear()
         {
-            // PageSubmit = true;
             PageEdit = true;
             AddedCompetencies = string.Empty;
         }
         public void OnPostDelete(int competencyid)
         {
-
-            // PageSubmit = true;
             PageEdit = true;
             foreach (var added in AddedCompetencies.Split("&addedCompetencyId="))
             {
@@ -276,7 +296,6 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnPostEdit(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
-            // PageSubmit = true;
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
@@ -344,7 +363,7 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string PercentSelected { get; set; } = string.Empty;
         public SimilarSearchDto SimilarJobIds { get; set; }
-        public JobPositionDto[] Positions { get; set; }
+        public JobPositionDto[] Positions { get; set; } = new JobPositionDto[] { };
         [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; } = string.Empty;
         public async Task OnPostSubmit(int positionid)

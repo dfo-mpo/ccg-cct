@@ -7,27 +7,29 @@ using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace Business.Queries.JobGroups
+namespace Business.Queries.JobPositions
 {
-    public class GetJobPositionsByLevelGroupIdQuery: IQuery<List<JobPositionDto>>
+    public class GetJobPositionsByGroupJobHLCategoryIdQuery : IQuery<List<JobPositionDto>>
     {
-        public int Id { get; set; }
-        public string level { get; set; }
+        public int JobGroupId { get; set; }
+        public int JobHLCategoryId { get; set; }
     }
 
-    public class GetJobPositionsByLevelGroupIdQueryHandler : IQueryHandler<GetJobPositionsByLevelGroupIdQuery, List<JobPositionDto>>
+    public class GetJobPositionsByGroupJobHLCategoryIdQueryHandler : IQueryHandler<GetJobPositionsByGroupJobHLCategoryIdQuery, List<JobPositionDto>>
     {
         private readonly CctDbContext _db;
 
-        public GetJobPositionsByLevelGroupIdQueryHandler(CctDbContext db)
+        public GetJobPositionsByGroupJobHLCategoryIdQueryHandler(CctDbContext db)
         {
             _db = db;
         }
 
-        public Task<List<JobPositionDto>> HandleAsync(GetJobPositionsByLevelGroupIdQuery query, CancellationToken cancellationToken = new CancellationToken())
+        public Task<List<JobPositionDto>> HandleAsync(GetJobPositionsByGroupJobHLCategoryIdQuery query, CancellationToken cancellationToken = new CancellationToken())
         {
-            return _db.JobGroupPositions.Where(e => e.JobGroupId == query.Id && e.JobGroupLevel.LevelValue == query.level && e.SubJobGroup.SubCode == "")
+            return _db.JobRolePositionHLCategories.Where(e => e.JobGroupId == query.JobGroupId)
+                            .Where(e => e.JobHLCategoryId == query.JobHLCategoryId)
                             .Include(e => e.JobGroup)
+                            .Include(e => e.SubJobGroup)
                             .Include(e => e.JobGroupLevel)
                             .Include(e => e.JobPosition)
                             .Select(e => new JobPositionDto()
@@ -35,8 +37,8 @@ namespace Business.Queries.JobGroups
                                 JobGroupId = e.JobGroupId,
                                 JobGroupCode = e.JobGroup.Code,
                                 JobGroupLevelId = e.JobGroupLevelId,
-                                JobGroupLevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + '-' + e.JobGroupLevel.LevelValue : e.JobGroup.Code + '-' + e.SubJobGroup.SubCode + '-' + e.JobGroupLevel.LevelValue,
                                 JobLevelValue = e.JobGroupLevel.LevelValue,
+                                JobGroupLevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + '-' + e.JobGroupLevel.LevelValue : e.JobGroup.Code + '-' + e.SubJobGroup.SubCode + '-' + e.JobGroupLevel.LevelValue,
                                 LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + '-' + e.JobGroupLevel.LevelValue : e.SubJobGroup.SubCode + '-' + e.JobGroupLevel.LevelValue,
                                 JobTitleId = e.JobPositionId,
                                 JobTitleFre = e.JobPosition.TitleFre,

@@ -17,7 +17,7 @@
                 <ul class="pager">
                     @{
                         var paramdata = new Dictionary<string, string>
-                                                                                          {
+                                                                                                      {
                               { "id",  Model.Id.ToString()},
                               { "level",  Model.Level},
                               { "levelcode", Model.LevelCode },
@@ -43,7 +43,7 @@
         }
         @if (Model.Position.JobTitleEng.Contains("Commanding"))
         {
-            <div class="col-md-offset-2 col-md-8" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
+            <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
                 <div class="text-center">
                     <h4>@Localizer["Commanding Officer"]</h4>
                     <p>@Localizer["MAOtext"]</p>
@@ -60,10 +60,37 @@
                 </tr>
             </thead>
             <tbody>
+                @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
+                {
+                    <tr>
+                        <th style="background-color:#f2f2f2" colspan="2">@Localizer["DESCRIPTION"]</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">@(isEnglish ? Model.Position.JobDescriptionEng : Model.Position.JobDescriptionFre)</td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                </tr>
+                @if (Model.JobLocationRegions.Any())
+                {
+                    @foreach (var c in Model.JobLocationRegions)
+                    {
+                        var key = "d" + c.JobLocationRegionId.ToString();
+                        <tr>
+                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">@Localizer["noregions"]</td>
+                    </tr>
+                }
                 <tr>
                     <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
-
                 @if (Model.PositionCertificates.Any(e => e.Active != 0))
                 {
                     @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))

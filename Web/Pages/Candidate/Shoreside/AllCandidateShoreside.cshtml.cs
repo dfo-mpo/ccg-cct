@@ -24,7 +24,7 @@ namespace Web.Pages.Candidate.Shoreside
         public async Task OnGetAsync()
         {
             _logger.LogInformation($"All positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            JobGroups = await _jobgroupService.GetJobGroups();
+            JobGroups = await _jobgroupService.GetJobGroupsByHLCategoryId(2);
         }
     }
 }

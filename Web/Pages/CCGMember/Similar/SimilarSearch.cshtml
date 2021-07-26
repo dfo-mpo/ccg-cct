@@ -18,10 +18,47 @@
                             {"samelevels", Model.SameLevels },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },
                             {"addedcompetencies",Model.AddedCompetencies},
-                            {"certificates", Model.Certificates },
+                            {"certificates", Model.Certificates }
                    };
+    var routedataprevious = new Dictionary<string, string>
+{
+        {"positionid",Model.PositionId.ToString()},
+        {"id", Model.Id },
+        {"level", Model.Level },
+        { "subgroupcode", Model.SubGroupCode },
+        { "levelcode", Model.LevelCode },
+        {"pagesubmit", "false" },
+        {"samelevels" , Model.SameLevels},
+        {"higherlevels", Model.HigherLevels },
+        {"certificates", Model.Certificates },
+        {"sameorhigherlevels", Model.SameOrHigherLevels },
+        {"addedcompetencies",Model.AddedCompetencies},
+        {"requiredcompetencies", Model.RequiredCompetencies },
+        {"percentmatch", Model.PercentMatch },
+        {"previouspage", Model.PreviousPage },
+        {"previouspagesimilar", Model.PreviousPageSimilar },
+        {"previouspagedetails", Model.PreviousPageDetails }
+    };
 }
-@if (!(Model.PageSubmit == "true"))
+@if (Model.PageSubmit == "Error")
+{
+    <section>
+        <div class="mrgn-tp-md">
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mrgn-tp-lg">
+            <h4>@Localizer["NoPositions"]</h4>
+        </div>
+
+
+    </section>
+}
+else if (!(Model.PageSubmit == "true"))
 {
 
 <section role="contentinfo">
@@ -284,7 +321,7 @@ else if (Model.PageEdit)
                             {"higherlevels", Model.HigherLevels },
                             {"samelevels", Model.SameLevels },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },
-                            {"certificates", Model.Certificates },
+                            {"certificates", Model.Certificates }
                          };
     var routedatanext = new Dictionary<string, string>
 {
@@ -300,7 +337,7 @@ else if (Model.PageEdit)
                             {"samelevels", Model.SameLevels },
                             {"sameorhigherlevels", Model.SameOrHigherLevels },
                             {"addedcompetencies",Model.AddedCompetencies},
-                            {"certificates", Model.Certificates },
+                            {"certificates", Model.Certificates }
                          };
 
 
@@ -407,25 +444,7 @@ else if (Model.PageEdit)
 }
 else if (Model.PercentSelected == "true")
 {
-    var routedataprevious = new Dictionary<string, string>
-{
-        {"positionid",Model.PositionId.ToString()},
-        {"id", Model.Id },
-        {"level", Model.Level },
-        { "subgroupcode", Model.SubGroupCode },
-        { "levelcode", Model.LevelCode },
-        {"pagesubmit", "false" },
-        {"samelevels" , Model.SameLevels},
-        {"higherlevels", Model.HigherLevels },
-        {"certificates", Model.Certificates },
-        {"sameorhigherlevels", Model.SameOrHigherLevels },
-        {"addedcompetencies",Model.AddedCompetencies},
-        {"requiredcompetencies", Model.RequiredCompetencies },
-        {"percentmatch", Model.PercentMatch },
-        {"previouspage", Model.PreviousPage },
-        {"previouspagesimilar", Model.PreviousPageSimilar },
-        {"previouspagedetails", Model.PreviousPageDetails }
-    };
+
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 
 <section>

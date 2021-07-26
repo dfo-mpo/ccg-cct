@@ -8,6 +8,7 @@
     var isEnglish = ViewData["Language"].ToString() == "en";
     var positionid = System.Int32.Parse(ViewData["Id"].ToString());
     var Position = await _jobpositionService.GetJobPositionById(positionid);
+    var JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
     var PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
     List<JobCompetencyRatingDto[]> PositionCompetencyRatings = new List<JobCompetencyRatingDto[]>();
     var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
@@ -28,6 +29,9 @@
     var PDAPText = isEnglish ? "Professional Development Apprenticeship Program (PDAP)" : "Programme d'apprentissage de perfectionnement professionnel (PDAP)";
     var MELDEVUrl = isEnglish ? "https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html" : "https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html";
     var MCTSUrl = isEnglish ? "https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html" : "https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html";
+    var positiondescription = isEnglish ? "DESCRIPTION" : "DESCRIPTIF";
+    var regions = isEnglish ? "REGIONS" : "RÉGIONS";
+    var noregions = isEnglish ? "No regions available" : "Aucune région disponible";
 }
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -50,10 +54,37 @@
     <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
         <caption><h4>@positiondetails: @Position.JobGroupLevelCode @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</h4></caption>
         <tbody>
+            @if (Position.JobDescriptionEng != "" && Position.JobDescriptionFre != "")
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">@positiondescription</th>
+                </tr>
+                <tr>
+                    <td colspan="2">@(isEnglish ? Position.JobDescriptionEng : Position.JobDescriptionFre)</td>
+                </tr>
+            }
+            <tr>
+                <th style="background-color:#f2f2f2" colspan="2">@regions</th>
+            </tr>
+            @if (JobLocationRegions.Any())
+            {
+                @foreach (var c in JobLocationRegions)
+                {
+                    var key = "d" + c.JobLocationRegionId.ToString();
+                    <tr>
+                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">@noregions</td>
+                </tr>
+            }
             <tr>
                 <th style="background-color:#f2f2f2" colspan="2">@certifications</th>
             </tr>
-
             @if (PositionCertificates.Any(e => e.Active != 0))
             {
                 @foreach (var c in PositionCertificates.Where(e => e.Active != 0))

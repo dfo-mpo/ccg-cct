@@ -2,19 +2,20 @@
 @inject IViewLocalizer Localizer
 @model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @{
-        var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-        var imagefolder = "~/img/CCGMember/";
-        var routedataprevious = new Dictionary<string, string>
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var imagefolder = "~/img/CCGMember/";
+    var routedataprevious = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
-                               { "levelcode", Model.LevelCode },
-                          {"previouspage", Model.PreviousPage },
-                          {"previouspagecompare", "AllObjective" },
-                          {"previouspagedetails", Model.PreviousPageDetails },
-                          { "id",  Model.Id.ToString()},
-                          {"subgroupcode", Model.SubGroupCode },
-                          { "level",  Model.Level},
-                            };
+                       {"levelcode", Model.LevelCode },
+                       {"previouspage", Model.PreviousPage },
+                       {"previouspagecompare", "AllObjective" },
+                       {"previouspagedetails", Model.PreviousPageDetails },
+                       {"id", Model.Id.ToString()},
+                       {"hlid", Model.HLId.ToString() },
+                       {"subgroupcode", Model.SubGroupCode },
+                       {"level", Model.Level}
+               };
     }
 
 <section role="contentinfo">
@@ -44,12 +45,13 @@
                          {
                           { "positionid",  Model.PositionId.ToString()},
                           { "level",  Model.Level},
-                                  { "levelcode", Model.LevelCode },
+                          { "levelcode", Model.LevelCode },
                           {"subgroupcode", Model.SubGroupCode },
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
                           { "id",  Model.Id},
+                          { "hlid", Model.HLId.ToString() },
                           { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">

@@ -16,11 +16,38 @@
                     @Model.Position.JobGroupTitleEng Level (@Model.Position.LevelCode) / @Model.Position.JobGroupTitleFre Niveau (@Model.Position.LevelCode)
                 </td>
             </tr>
-            <tr>
-                <th colspan="2" style="background-color:#f2f2f2">CERTIFICATIONS / ATTESTATIONS</th>
-            </tr>
+            @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">DESCRIPTION</th>
+                </tr>
+                <tr>
+                    <td colspan="2">@Model.Position.JobDescriptionEng</td>
+                </tr>
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">DESCRIPTIF</th>
+                </tr>
+                <tr>
+                    <td colspan="2">@Model.Position.JobDescriptionFre</td>
+                </tr>
+            }
+            @if (Model.JobLocationRegions.Any())
+            {
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">REGIONS / RÉGIONS</th>
+                </tr>
+                @foreach (var c in Model.JobLocationRegions)
+                {
+                    <tr>
+                        <td colspan="2">@c.NameEng / @c.NameFre</td>
+                    </tr>
+                }
+            }
             @if (Model.PositionCertificates.Any(e => e.Active != 0))
             {
+                <tr>
+                    <th colspan="2" style="background-color:#f2f2f2">CERTIFICATIONS / ATTESTATIONS</th>
+                </tr>
                 @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                 {
                     var key = "c" + c.Id.ToString();
@@ -46,82 +73,82 @@
                             </div>
                         </td>
                     </tr>
-                    }
-                    }
-                    else
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">
+                        No Certifications / Aucun certificat associées
+                    </td>
+                </tr>
+            }
+            @if (Model.PositionCompetencyRatings.Any())
+            {
+                @foreach (var competencytype in Model.PositionCompetencyRatings)
+                {
+                    if (competencytype.Any(e => e.Active != 0))
                     {
-                    <tr>
-                        <td colspan="2">
-                            No Certifications / Aucun certificat associées
-                        </td>
-                    </tr>
-                    }
-                    @if (Model.PositionCompetencyRatings.Any())
-                    {
-                        @foreach (var competencytype in Model.PositionCompetencyRatings)
+
+
+                        <tr>
+                            <th style="background-color:#f2f2f2">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</th>
+                            <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
+                        </tr>
+                        foreach (var c in competencytype.Where(e => e.Active != 0))
                         {
-                            if (competencytype.Any(e => e.Active != 0))
-                            {
-
-
-                                <tr>
-                                    <th style="background-color:#f2f2f2">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</th>
-                                    <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
-                                </tr>
-                                foreach (var c in competencytype.Where(e => e.Active != 0))
-                                {
-                                    var key1 = "a" + c.CompetencyId.ToString();
-                                    var key2 = "b" + c.CompetencyId.ToString();
-                                    <tr>
-                                        <td style="width:70%;">
-                                            <div class="accordion" id="compOne">
-                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
-                                                    @c.CompetencyNameEng / @c.CompetencyNameFre
-                                                </button>
-                                                <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
-                                                    <div class="card-body">
-                                                        <p>
-                                                            <b>English Description</b><br />
-                                                            @c.CompetencyDescEng
-                                                        </p>
-                                                        <p>
-                                                            <b>French Description</b><br />
-                                                            @c.CompetencyDescFre
-                                                        </p>
-                                                    </div>
-                                                </div>
+                            var key1 = "a" + c.CompetencyId.ToString();
+                            var key2 = "b" + c.CompetencyId.ToString();
+                            <tr>
+                                <td style="width:70%;">
+                                    <div class="accordion" id="compOne">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
+                                            @c.CompetencyNameEng / @c.CompetencyNameFre
+                                        </button>
+                                        <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
+                                            <div class="card-body">
+                                                <p>
+                                                    <b>English Description</b><br />
+                                                    @c.CompetencyDescEng
+                                                </p>
+                                                <p>
+                                                    <b>French Description</b><br />
+                                                    @c.CompetencyDescFre
+                                                </p>
                                             </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <div class="accordion" id="levelOne">
-                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
-                                                    @c.RatingValue
-                                                </button>
-                                                <div id="@key2" class="collapse" aria-labelledby="headingFour" data-parent="#levelOne">
-                                                    <div class="card-body text-left">
-                                                        <p>
-                                                            <b>English Description</b><br />
-                                                            @c.RatingNameEng @c.RatingDescEng
-                                                            <br /><br />
-                                                            @c.CompetencyLevelReqDescEng
-                                                        </p>
-                                                        <p>
-                                                            <b>French Description</b><br />
-                                                            @c.RatingNameFre @c.RatingDescFre
-                                                            <br /><br />
-                                                            @c.CompetencyLevelReqDescFre
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="accordion" id="levelOne">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
+                                            @c.RatingValue
+                                        </button>
+                                        <div id="@key2" class="collapse" aria-labelledby="headingFour" data-parent="#levelOne">
+                                            <div class="card-body text-left">
+                                                <p>
+                                                    <b>English Description</b><br />
+                                                    @c.RatingNameEng @c.RatingDescEng
+                                                    <br /><br />
+                                                    @c.CompetencyLevelReqDescEng
+                                                </p>
+                                                <p>
+                                                    <b>French Description</b><br />
+                                                    @c.RatingNameFre @c.RatingDescFre
+                                                    <br /><br />
+                                                    @c.CompetencyLevelReqDescFre
+                                                </p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                }
-                            }
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         }
-
                     }
-                </tbody>
+                }
+
+            }
+        </tbody>
         </table>
         </div>
 

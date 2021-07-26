@@ -5,7 +5,6 @@ namespace Business.Dtos.JobPositions
     public class JobPositionDto
     {
         public int JobGroupId { get; set; }
-        public int JobLevelId { get; set; }
         public string JobLevelValue { get; set; }
         public int SubJobGroupId { get; set; }
         public string SubGroupCode { get; set; }
@@ -18,6 +17,8 @@ namespace Business.Dtos.JobPositions
         public int JobTitleId { get; set; }
         public string JobTitleFre { get; set; }
         public string JobTitleEng { get; set; }
+        public string JobDescriptionFre { get; set; }
+        public string JobDescriptionEng { get; set; }
         public List<int> Competencies {get;set;}
         public int Active { get; set; }
     }

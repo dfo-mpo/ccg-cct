@@ -189,6 +189,12 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<int>(url);
         }
+        public async Task<int> PostJobPositionGetId(string TitleEng, string TitleFre, string DescriptionEng, string DescriptionFre)
+        {
+            string url = $"/api/jobpositions/postjobpositionreturnid/{TitleEng}/{TitleFre}/{DescriptionEng}/{DescriptionFre}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<int>(url);
+        }
         public async Task<JobGroupPositionDto[]> GetSubGroupLevelsByGroupId(int Id)
         {
             CompareByLevelCode comparebyname = new CompareByLevelCode();

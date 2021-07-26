@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Business.Queries.Similar;
 using Business.Dtos.Similar;
 using Business.Commands.Admin.Similar;
-using Business.Commands.Admin.JobPositions;
 
 namespace Service.Controllers
 {

@@ -25,6 +25,7 @@ namespace Web.Pages.CCGMember
         [BindProperty(SupportsGet = true)]
         public string LevelCode { get; set; }
         public JobPositionDto Position { get; set; }
+        public JobLocationRegionDto[] JobLocationRegions { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         public JobCompetencyRatingDto[] PositionRatings1 { get; set; }
         public JobCompetencyRatingDto[] PositionRatings2 { get; set; }
@@ -32,15 +33,16 @@ namespace Web.Pages.CCGMember
         [BindProperty]
         public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
 
-        public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobcompetencyService)
+        public DetailsModel(ILogger<DetailsModel> logger, JobPositionService jobpositionService)
         {
             _logger = logger;
-            _jobpositionService = jobcompetencyService;
+            _jobpositionService = jobpositionService;
         }
         public async Task OnGetAsync(int positionid)
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)
@@ -52,7 +54,6 @@ namespace Web.Pages.CCGMember
                 }
             }
         }
-        }
-
     }
 
+}

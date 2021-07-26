@@ -49,6 +49,10 @@ namespace Admin.Pages.Positions
         [BindProperty(SupportsGet = true)]
         public string TitleFre { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public string DescriptionEng { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public string DescriptionFre { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
         public string AddedCertificateIds { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string AddedKnowledgeCompetencyIds { get; set; } = string.Empty;
@@ -731,7 +735,7 @@ namespace Admin.Pages.Positions
             var jobPositionId = _jobCompetencyService.GetJobPositionIdByTitle(Request.Form["titleEng"]).Result;
             if (jobPositionId == 0)
             {
-                jobPositionId = await _jobCompetencyService.PostJobPositionGetId(Request.Form["titleEng"], Request.Form["titleFre"]);
+                jobPositionId = await _jobCompetencyService.PostJobPositionGetId(Request.Form["titleEng"], Request.Form["titleFre"], Request.Form["descriptionEng"], Request.Form["descriptionFre"]);
 
             var jobGroupPosition = new JobGroupPosition()
             {

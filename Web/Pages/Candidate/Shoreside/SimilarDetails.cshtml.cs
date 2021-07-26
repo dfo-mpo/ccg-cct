@@ -37,9 +37,11 @@ namespace Web.Pages.Candidate.Shoreside
         public string PageSubmit { get; set; } = string.Empty;
         [BindProperty]
         public JobPositionDto Position { get; set; }
+        public JobLocationRegionDto[] JobLocationRegions { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         [BindProperty]
         public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
+        public List<int> SimilarSearchIds { get; set; }
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)
         {
             _logger = logger;
@@ -57,6 +59,7 @@ namespace Web.Pages.Candidate.Shoreside
             }
             _logger.LogInformation($"Seagoing Crew Engineering Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
             Id = Position.JobGroupId;
             Level = Position.JobGroupLevelId;
             GroupId = Position.JobGroupId;
@@ -75,16 +78,32 @@ namespace Web.Pages.Candidate.Shoreside
 
         public async Task OnPost(int positionid)
         {
-            Position = await _jobpositionService.GetJobPositionById(positionid);
-            PageSubmit = "true";
-
-            foreach (var c in CertificateIds)
+            SimilarSearchIds = await _jobpositionService.GetAllSimilarSearchIds();
+            if (SimilarSearchIds.Contains(positionid))
             {
-                Certificates += "&certificateId=" + c;
+                Position = await _jobpositionService.GetJobPositionById(positionid);
+                JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
+                PageSubmit = "true";
+
+                foreach (var c in CertificateIds)
+                {
+                    Certificates += "&certificateId=" + c;
+                }
+
+                RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{Certificates}");
+                var SimilarJobIds100 = await _jobpositionService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                var SimilarJobIds90 = await _jobpositionService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                var SimilarJobIds80 = await _jobpositionService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
+                var SimilarJobIds70 = await _jobpositionService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
+                if (SimilarJobIds100.SimilarPositionIds == "" && SimilarJobIds90.SimilarPositionIds == "" && SimilarJobIds80.SimilarPositionIds == "" && SimilarJobIds70.SimilarPositionIds == "")
+                {
+                    PageSubmit = "Error";
+                }
             }
-
-            RouteParameter = String.Format($"jobPositionId={positionid}&jobGroupLevelId={Position.JobGroupLevelId}&jobGroupId={Position.JobGroupId}{Certificates}");
-
+            else
+            {
+                PageSubmit = "Error";
+            }
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Business.Commands.Admin.JobPositions
     {
         public string TitleEng { get; set; }
         public string TitleFre { get; set; }
+        public string DescriptionEng { get; set; }
+        public string DescriptionFre { get; set; }
     }
     public class PostJobPositionCommandValidator : AbstractCommandValidator<PostJobPositionCommandGetJobPositionIdQuery>
     {
@@ -38,6 +40,8 @@ namespace Business.Commands.Admin.JobPositions
             {
                 TitleEng = query.TitleEng,
                 TitleFre = query.TitleFre,
+                PositionDescEng = string.IsNullOrEmpty(query.DescriptionEng) ? "" : query.DescriptionEng,
+                PositionDescFre = string.IsNullOrEmpty(query.DescriptionFre) ? "" : query.DescriptionFre,
                 Active = 1
             };
             await _db.JobPositions.AddAsync(newjobposition, cancellationToken);

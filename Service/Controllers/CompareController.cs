@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using Business.Queries.Compare;
+using Business.Dtos.JobPositions;
 
 namespace Service.Controllers
 {
@@ -40,6 +41,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("matching/certificates/{PositionId}/{ObjectiveId}")]
         [ProducesResponseType(typeof(JobCertificateDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetMatchingCertificatesById([FromRoute] GetMatchingCertificatesByComparedJobPositionsQuery query)
@@ -48,6 +50,7 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("differing/certificates/{PositionId}/{ObjectiveId}")]
         [ProducesResponseType(typeof(SharedJobCertificateDto[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetDifferingCertificatesById([FromRoute] GetDifferingCertificatesByComparedJobPositionsQuery query)
@@ -56,7 +59,24 @@ namespace Service.Controllers
                 await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
-    }
 
+        [HttpGet, Route("matching/joblocationregions/{PositionId}/{ObjectiveId}")]
+        [ProducesResponseType(typeof(JobLocationRegionDto[]), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetMatchingJobLocationRegionsById([FromRoute] GetMatchingJobLocationRegionsByComparedJobPositionsQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("differing/joblocationregions/{PositionId}/{ObjectiveId}")]
+        [ProducesResponseType(typeof(SharedJobCertificateDto[]), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GeDifferingJobLocationRegionsById([FromRoute] GetDifferingJobLocationRegionsByComparedJobPositionsQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+    }
 }
 

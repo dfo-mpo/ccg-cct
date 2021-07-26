@@ -57,6 +57,24 @@ namespace Service.Controllers
             return Ok(result);
         }
 
+        [HttpGet, Route("{Id}/JobLocationRegions")]
+        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobLocationRegionsById([FromRoute] GetJobPositionLocationRegionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("{JobGroupId}/{JobHLCategoryId}")]
+        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobPositionsByJobHLCategoryId([FromRoute] GetJobPositionsByGroupJobHLCategoryIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
         [HttpGet, Route("{Id}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyRatingDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetCompetenciesById([FromRoute] GetJobCompetencyRatingsByJobPositionIdQuery query)
@@ -92,6 +110,15 @@ namespace Service.Controllers
         }
 
         [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> PostJobPositionReturnId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}/{DescriptionEng}/{DescriptionFre}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
         {
