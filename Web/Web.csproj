@@ -5,16 +5,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Candidate\Shoreside\Compare\**" />
     <Compile Remove="Pages\Mockups\Students\**" />
+    <Content Remove="Pages\Candidate\Shoreside\Compare\**" />
     <Content Remove="Pages\Mockups\Students\**" />
+    <EmbeddedResource Remove="Pages\Candidate\Shoreside\Compare\**" />
     <EmbeddedResource Remove="Pages\Mockups\Students\**" />
+    <None Remove="Pages\Candidate\Shoreside\Compare\**" />
     <None Remove="Pages\Mockups\Students\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\Candidate\Classifications.cshtml.cs" />
+    <Compile Remove="Pages\Candidate\CurrentPosition.cshtml.cs" />
+    <Compile Remove="Pages\Candidate\Positions.cshtml.cs" />
+  </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Candidate\Shoreside\Index.cshtml" />
-   
+    <Content Remove="Pages\Candidate\Classifications.cshtml" />
+    <Content Remove="Pages\Candidate\CurrentPosition.cshtml" />
+    <Content Remove="Pages\Candidate\Positions.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\Pages\Candidate\Classifications.fr.resx" />
+    <EmbeddedResource Remove="Resources\Pages\Candidate\Classifications.resx" />
+    <EmbeddedResource Remove="Resources\Pages\Candidate\CurrentPosition.fr.resx" />
+    <EmbeddedResource Remove="Resources\Pages\Candidate\CurrentPosition.resx" />
+    <EmbeddedResource Remove="Resources\Pages\Candidate\Positions.fr.resx" />
+    <EmbeddedResource Remove="Resources\Pages\Candidate\Positions.resx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +146,18 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Candidate\Seagoing\Common\Details.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Crew\Deck\PositionList.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Crew\Engineering\PositionList.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Crew\Index.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Crew\Logistics\PositionList.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Index.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Officer\Engineering\PositionList.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Officer\Index.cshtml" />
+    <None Include="Pages\Candidate\Seagoing\Officer\Navigation\PositionList.cshtml" />
+    <None Include="Pages\Candidate\Shoreside\AllCandidateShoreside.cshtml" />
+    <None Include="Pages\Candidate\Shoreside\SimilarDetails.cshtml" />
+    <None Include="Pages\Candidate\Shoreside\SimilarList.cshtml" />
     <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
     <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
