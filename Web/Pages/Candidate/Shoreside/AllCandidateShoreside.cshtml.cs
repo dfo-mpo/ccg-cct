@@ -14,7 +14,7 @@ namespace Web.Pages.Candidate.Shoreside
         private readonly JobGroupService _jobgroupService;
         public JobGroupDto[] JobGroups { get; set; }
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
         public AllCandidateShoresideModel(ILogger<AllCandidateShoresideModel> logger, JobGroupService jobcategoryService)
         {
@@ -23,7 +23,7 @@ namespace Web.Pages.Candidate.Shoreside
         }
         public async Task OnGetAsync()
         {
-            _logger.LogInformation($"All positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"Candidate Shoreside All positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroups = await _jobgroupService.GetJobGroupsByHLCategoryId(2);
         }
     }
