@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using System.Threading;
 
 namespace Admin.Pages.Competencies
 {
@@ -37,9 +36,6 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            //Competency = await _context.Competencies
-            //    .AsNoTracking()
-            //    .FirstOrDefaultAsync(m => m.Id == id);
             Competency = await _jobCompetencyService.GetJobCompetencyById(id);
             if (Competency == null)
             {
@@ -68,9 +64,8 @@ namespace Admin.Pages.Competencies
 
             try
             {
-                // _context.Certificates.Remove(Certificate);
                 _jobCompetencyService.DeleteJobCompetency(Competency);
-                //await _context.SaveChangesAsync(); 
+                Thread.Sleep(5000);
                 return RedirectToPage("./Index");
             }
             catch (DbUpdateException ex)
