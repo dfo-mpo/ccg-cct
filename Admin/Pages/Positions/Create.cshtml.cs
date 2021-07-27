@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
@@ -732,10 +729,8 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            var jobPositionId = _jobCompetencyService.GetJobPositionIdByTitle(Request.Form["titleEng"]).Result;
-            if (jobPositionId == 0)
-            {
-                jobPositionId = await _jobCompetencyService.PostJobPositionGetId(Request.Form["titleEng"], Request.Form["titleFre"], Request.Form["descriptionEng"], Request.Form["descriptionFre"]);
+            var parameters = string.Format($"&titleEng={TitleEng}&titleFre={TitleFre}&descriptionEng={DescriptionEng}&descriptionFre={DescriptionFre}");
+            var jobPositionId = await _jobCompetencyService.PostJobPositionGetId(parameters);
 
             var jobGroupPosition = new JobGroupPosition()
             {
@@ -849,11 +844,8 @@ namespace Admin.Pages.Positions
                 Thread.MemoryBarrier();
                 return RedirectToPage("Details", new { positionid = jobPositionId });
 
-            }
-            else
-            {
-                return Page();
-            }
+            
+     
 
             
 

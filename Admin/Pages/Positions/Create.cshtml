@@ -340,7 +340,7 @@
                                                                                                     <option value = "@Model.SubJobGroupId/@Model.JobGroupLevelId/@Model.LevelCode" selected>@Model.LevelCode</option>
                                                                                                 }
 
-                                                                                                @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
+                                                                                                @foreach (var level in Model.JobGroupPositions.Where(e=>e.LevelCode!=Model.LevelCode))
                                                                                                 {
                                                                                                     <option value="@level.SubJobGroupId/@level.LevelId/@level.LevelCode">
                                                                                                         @level.LevelCode

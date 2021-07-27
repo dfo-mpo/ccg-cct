@@ -20,9 +20,12 @@ namespace Business.Commands.Admin.JobPositions
         {
             RuleFor(e => e.TitleEng)
                 .MaximumLength(3000);
-
             RuleFor(e => e.TitleFre)
                 .MaximumLength(3000);
+            RuleFor(b => b.DescriptionEng)
+                 .MaximumLength(8000);
+            RuleFor(b => b.DescriptionFre)
+                .MaximumLength(8000);
         }
     }
     public class PostJobPositionCommandGetJobPositionIdQueryHandler : IQueryHandler<PostJobPositionCommandGetJobPositionIdQuery, int>

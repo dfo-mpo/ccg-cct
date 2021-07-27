@@ -26,9 +26,12 @@ namespace Business.Commands.Admin.JobPositions
                 .NotEmpty();
             RuleFor(e => e.TitleEng)
                 .MaximumLength(3000);
-
             RuleFor(e => e.TitleFre)
                 .MaximumLength(3000);
+            RuleFor(b => b.PositionDescEng)
+                .MaximumLength(8000);
+            RuleFor(b => b.PositionDescFre)
+                .MaximumLength(8000);
         }
     }
     public class UpdateJobPositionCommandHandler : ICommandHandler<UpdateJobPositionCommand>

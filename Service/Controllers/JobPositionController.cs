@@ -109,15 +109,26 @@ namespace Service.Controllers
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
+        [HttpGet, Route("addjobpositiongetid")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public async Task<IActionResult> PostJobPositionReturnId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
+        public async Task<IActionResult> AddJobPositionGetId(
+        [FromQuery] string titleEng,
+        [FromQuery] string titleFre,
+        [FromQuery] string descriptionEng,
+        [FromQuery] string descriptionFre)
         {
+            var query = new PostJobPositionCommandGetJobPositionIdQuery
+            {
+                TitleEng = titleEng,
+                TitleFre = titleFre,
+                DescriptionEng = descriptionEng,
+                DescriptionFre = descriptionFre
+            };
+
             var results =
-                await _queryProvider.ProcessAsync(query);
+            await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
-
         [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}/{DescriptionEng}/{DescriptionFre}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
