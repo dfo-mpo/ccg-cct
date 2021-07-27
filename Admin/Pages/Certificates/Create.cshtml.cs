@@ -35,7 +35,7 @@ namespace Admin.Pages.Certificates
         {
             var Parameters = $"&nameEng={Certificate.NameEng}&nameFre={Certificate.NameFre}&descEng={Certificate.DescEng}&descFre={Certificate.DescFre}"; 
             var id = await _jobCertificateService.PostJobCertificate(Parameters);
-            Thread.MemoryBarrier();
+            Thread.Sleep(5000);
             return RedirectToPage("Details", new { id });
 
         }

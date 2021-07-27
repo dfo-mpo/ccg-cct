@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="arts" xml:space="preserve">
+    <value>General Arts</value>
+  </data>
+  <data name="business" xml:space="preserve">
+    <value>Business</value>
+  </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDING OFFICER</value>
+  </data>
+  <data name="computer" xml:space="preserve">
+    <value>Computer Sciences</value>
   </data>
   <data name="Current Position" xml:space="preserve">
     <value>Current Position</value>
@@ -135,8 +147,17 @@
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>DIFFERING COMPETENCIES</value>
   </data>
+  <data name="engineering" xml:space="preserve">
+    <value>Engineering</value>
+  </data>
+  <data name="geo" xml:space="preserve">
+    <value>Geographical Information</value>
+  </data>
   <data name="h2Results" xml:space="preserve">
     <value>Results comparing the two positions</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
@@ -186,10 +207,31 @@
   <data name="Save PDF" xml:space="preserve">
     <value>Save PDF</value>
   </data>
+  <data name="sciences" xml:space="preserve">
+    <value>Sciences</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select Position</value>
+  </data>
   <data name="Selected Position" xml:space="preserve">
     <value>Selected Position</value>
   </data>
   <data name="Selected Position Level" xml:space="preserve">
     <value>Selected Position Level</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
+  <data name="social" xml:space="preserve">
+    <value>Social Science</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>University</value>
   </data>
 </root>

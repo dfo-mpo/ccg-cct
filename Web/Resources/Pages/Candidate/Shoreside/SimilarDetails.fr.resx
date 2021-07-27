@@ -126,6 +126,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>DESCRIPTIF</value>
+  </data>
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
@@ -141,6 +144,12 @@
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
+  </data>
+  <data name="noregions" xml:space="preserve">
+    <value>Aucune région disponible</value>
+  </data>
   <data name="PDAPText" xml:space="preserve">
     <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
   </data>
@@ -155,6 +164,9 @@
   </data>
   <data name="Question2" xml:space="preserve">
     <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
+  </data>
+  <data name="REGIONS" xml:space="preserve">
+    <value>RÉGIONS</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Enregistrer ou imprimer ce document</value>

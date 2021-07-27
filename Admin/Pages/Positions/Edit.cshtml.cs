@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
@@ -58,7 +55,7 @@ namespace Admin.Pages.Positions
             //    _context.Attach(JobPosition).State = EntityState.Modified;
 
             _jobPositionService.UpdateJobPosition(JobPosition);
-            Thread.MemoryBarrier();
+            Thread.Sleep(10000);
             return RedirectToPage("Details", new { positionid = JobPosition.Id });
         }
 

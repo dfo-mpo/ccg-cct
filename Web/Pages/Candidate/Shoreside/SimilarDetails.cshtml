@@ -10,14 +10,42 @@
     var RouteParameter = new Dictionary<string, string> { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() } };
     var routedata = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "groupid", Model.GroupId.ToString() }, { "level", Model.Level.ToString() } };
     var paramdata = new Dictionary<string, string>
-                    {
+            {
                                  {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
                                  {"id", Model.Id.ToString() },
                                  {"positionid", Model.PositionId.ToString()},
                                  {"previouspage", Model.PreviousPage },
+                                 {"previouspagedetails", "../../Candidate/Shoreside/SimilarDetails" },
+
+                            };
+    var paramdataprevious = new Dictionary<string, string>
+                            {
+                              {"positionid", Model.PositionId.ToString()},
+                              {"certificates", Model.Certificates },
+                              {"previouspage",Model.PreviousPage },
+                              {"previouspagedetails", "../../Candidate/Seagoing/Common/Details" },
+                              {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
+                              {"id", Model.Id.ToString() },
                             };
 }
-@if (!(Model.PageSubmit == "true")) { 
+@if (Model.PageSubmit == "Error")
+{
+    <section>
+        <div class="mrgn-tp-md">
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mrgn-tp-lg">
+            <h4>@Localizer["NoPositions"]</h4>
+        </div>
+    </section>
+}
+else if (!(Model.PageSubmit == "true"))
+{
     <section role="contentinfo">
         <div class="mrgn-tp-md">
             <a target="_blank" title="@Localizer["save"]" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
@@ -43,7 +71,7 @@
             <div class="col-md-12 mrgn-tp-sm mrgn-bttm-md">
                 <div class="col-md-9"><h3>@Localizer["Question1"]</h3></div>
                 <div class="col-md-3 mrgn-tp-lg">
-                    <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="@paramdata" asp-page="Compare/AllObjective">@Localizer["Compare"]</a>
+                    <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="@paramdata" asp-page="../../CCGMember/Compare/AllObjective">@Localizer["Compare"]</a>
                     <button class="btn btn-primary mrgn-rght-md" asp-all-route-data="@paramdata">@Localizer["Similar"]</button>
                 </div>
             </div>
@@ -54,6 +82,33 @@
                         <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
                     </tr>
                 </thead>
+                @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
+                {
+                    <tr>
+                        <th style="background-color:#f2f2f2" colspan="2">@Localizer["DESCRIPTION"]</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">@(isEnglish ? Model.Position.JobDescriptionEng : Model.Position.JobDescriptionFre)</td>
+                    </tr>
+                }
+                <tr>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                </tr>
+                @if (Model.JobLocationRegions.Any())
+                {
+                    @foreach (var c in Model.JobLocationRegions)
+                    {
+                        <tr>
+                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">@Localizer["noregions"]</td>
+                    </tr>
+                }
                 <tbody>
                     @if (Model.PositionCertificates.Any(e => e.Active != 0))
                     {
@@ -63,10 +118,10 @@
                         </tr>
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
-                                <tr>
-                                    <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                    <!--td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td-->
-                                </tr>
+                            <tr>
+                                <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                                <!--td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td-->
+                            </tr>
                         }
                     }
                     else
@@ -131,7 +186,7 @@
                 </tbody>
             </table>
         </form>
-         <!--       <div style="clear: both;">
+        <!--       <div style="clear: both;">
                     <div class="col-lg-12">
                         <nav role="navigation">
                             <h2 class="wb-inv">Document navigation</h2>
@@ -146,47 +201,36 @@
 
 }
 else
-                            {
-                                var RouteParameter70 = new Dictionary<string, string>
-    { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
+{
+    var RouteParameter70 = new Dictionary<string, string>
+{ { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
     {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Shoreside/SimilarDetails"} };
     var RouteParameter80 = new Dictionary<string, string>
-        { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
+{ { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
         {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Shoreside/SimilarDetails"} };
-        var RouteParameter90 = new Dictionary<string, string>
-            { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
+    var RouteParameter90 = new Dictionary<string, string>
+{ { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
             {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Shoreside/SimilarDetails"} };
-            var RouteParameter100 = new Dictionary<string, string>
-                { { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
+    var RouteParameter100 = new Dictionary<string, string>
+{ { "id", Model.RouteParameter }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
                 {"certificates", Model.Certificates },{ "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/Shoreside/SimilarDetails"} };
 
-<section>
-            <nav role="navigation">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    @{
-                        var paramdataprevious = new Dictionary<string, string>
-                            {
-                              {"positionid", Model.PositionId.ToString()},
-                              {"certificates", Model.Certificates },
-                              {"previouspage",Model.PreviousPage },
-                              {"previouspagedetails", "../../Candidate/Seagoing/Common/Details" },
-                              {"previouspagesimilar", "../../Candidate/Shoreside/SimilarDetails" },
-                              {"id", Model.Id.ToString() },
-                            };
-                    }
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
+    <section>
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
 
-    <h4>@Localizer["Question2"]</h4>
-    <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
-        <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
-        <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
-        <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
-        <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
-    </div>
-</section>
-                }
+        <h4>@Localizer["Question2"]</h4>
+        <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
+            <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+        </div>
+    </section>
+}
 
 

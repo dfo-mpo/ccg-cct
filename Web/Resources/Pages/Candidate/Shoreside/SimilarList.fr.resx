@@ -123,6 +123,9 @@
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>

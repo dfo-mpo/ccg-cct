@@ -14,7 +14,8 @@
                        {"levelcode", Model.LevelCode },
                        {"subgroupcode", Model.SubGroupCode },
                        { "id",  Model.Id.ToString()},
-                       {"level", Model.Level.ToString() },
+                       { "hlid", Model.HLId.ToString() },
+                       {"level", Model.Level.ToString() }
                   };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,16 +46,17 @@
                          {
                        {"positionid",  Model.PositionId.ToString() },
                        { "id",  Model.Id.ToString()},
+                       { "hlid", Model.HLId.ToString() },
                        {"previouspage", Model.PreviousPage },
                        {"previouspagedetails", Model.PreviousPageDetails },
                        {"previouspagecompare", Model.PreviousPageCompare },
                        {"subgroupcode", Model.SubGroupCode },
-                               { "levelcode", Model.LevelCode },
+                       { "levelcode", Model.LevelCode },
                        { "level",  Model.Level.ToString()},
                        { "levelobj",  level.LevelValue.ToString() },
-                             { "idobj",  level.JobGroupId.ToString()},
-                              {"levelcodeobj", level.LevelCode },
-                              {"subgroupcodeobj", level.SubGroupCode }
+                       { "idobj",  level.JobGroupId.ToString()},
+                       {"levelcodeobj", level.LevelCode },
+                       {"subgroupcodeobj", level.SubGroupCode }
                   };
                         <li role="presentation">
                             <a role="menuitem" tabindex="-1"

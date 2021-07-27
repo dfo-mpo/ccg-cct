@@ -123,6 +123,12 @@
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>No similar positions are currently available for this position.</value>
+  </data>
+  <data name="noregions" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
   <data name="PDAPText" xml:space="preserve">
     <value>Professional Development Apprenticeship Program (PDAP)</value>
   </data>

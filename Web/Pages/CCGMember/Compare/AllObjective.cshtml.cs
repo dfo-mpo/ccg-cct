@@ -28,6 +28,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
         [BindProperty(SupportsGet = true)]
+        public int HLId { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string PreviousPage { get; set; }
         [BindProperty(SupportsGet = true)]
         public string PreviousPageCompare { get; set; }

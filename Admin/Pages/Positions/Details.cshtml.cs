@@ -25,6 +25,7 @@ namespace Admin.Pages.Positions
         [BindProperty(SupportsGet = true)]
         public string LevelCode { get; set; }
         public JobPositionDto Position { get; set; }
+        public JobLocationRegionDto[] JobLocationRegions { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         [BindProperty]
         public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
@@ -37,6 +38,7 @@ namespace Admin.Pages.Positions
         public async Task OnGetAsync(int positionid)
         {
             Position = await _jobpositionService.GetJobPositionById(positionid);
+            JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
             PositionCertificates = await _jobpositionService.GetJobCertificatesById(positionid);
             var CompetencyTypes = await _jobpositionService.GetAllJobCompetencyTypes();
             foreach (var competencytype in CompetencyTypes)

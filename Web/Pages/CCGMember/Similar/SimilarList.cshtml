@@ -7,6 +7,7 @@
 {
         {"positionid",Model.PositionId.ToString()},
         {"id", Model.Id },
+        { "hlid", Model.HLId.ToString() },
         {"level", Model.Level },
         { "subgroupcode", Model.SubGroupCode },
         { "levelcode", Model.LevelCode },
@@ -24,15 +25,32 @@
     };
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
-<section>
-    
-        <a title="@Localizer["Save PDF"]" class="mrgn-tp-sm pull-right"target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+@if (Model.PageSubmit == "Error")
+{
+    <section>
+        <div class="mrgn-tp-md">
             <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
                     <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
+        </div>
+        <div class="mrgn-tp-lg">
+            <h4>@Localizer["NoPositions"]</h4>
+        </div>
+    </section>
+}
+else{
+<section>
+
+    <a title="@Localizer["Save PDF"]" class="mrgn-tp-sm pull-right" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
 
     <div class="clearfix"></div>
 
@@ -52,10 +70,11 @@
                 @foreach (var position in Model.Positions.Where(e => e.Active != 0))
                 {
                     var routedata = new Dictionary<string, string>
-                                         {
+                                             {
         {"objectiveid",  position.JobTitleId.ToString()},
         {"positionid",  Model.PositionId.ToString()},
         {"id", Model.Id },
+        {"hlid", Model.HLId.ToString() },
         {"level", Model.Level },
         { "subgroupcode", Model.SubGroupCode },
         {"previouspagesimilardetails","SimilarList" },
@@ -82,3 +101,4 @@
         </table>
     </div>
 </section>
+}

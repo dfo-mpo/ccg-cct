@@ -58,7 +58,7 @@ namespace Admin.Pages.Certificates.Descriptions
                 s => s.DescEng, s => s.DescFre))
             {
                 _jobCertificateService.UpdateJobCertificateDescription(Certificate);
-                Thread.MemoryBarrier();
+                Thread.Sleep(5000);
                 return RedirectToPage("Details", new { id });
             }
 

@@ -126,8 +126,14 @@
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
   </data>
+  <data name="Commanding Officer1" xml:space="preserve">
+    <value>COMMANDANT</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Détails de la position actuelle</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>DESCRIPTIF</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Page d'accueil</value>
@@ -136,6 +142,9 @@
     <value>NIVEAU</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
+  </data>
+  <data name="MAOtext1" xml:space="preserve">
     <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
   </data>
   <data name="MCTSUrl" xml:space="preserve">
@@ -149,6 +158,9 @@
   </data>
   <data name="No Certifications" xml:space="preserve">
     <value>Aucun certificat associées</value>
+  </data>
+  <data name="noregions" xml:space="preserve">
+    <value>Aucune région disponible</value>
   </data>
   <data name="PDAPText" xml:space="preserve">
     <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
@@ -164,6 +176,9 @@
   </data>
   <data name="Print PDF" xml:space="preserve">
     <value>Imprimer au format PDF</value>
+  </data>
+  <data name="REGIONS" xml:space="preserve">
+    <value>RÉGIONS</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer au format PDF</value>

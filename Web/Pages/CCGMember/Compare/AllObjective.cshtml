@@ -2,19 +2,20 @@
 @inject IViewLocalizer Localizer
 @model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @{
-        var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-        var imagefolder = "~/img/CCGMember/";
-        var routedataprevious = new Dictionary<string, string>
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var imagefolder = "~/img/CCGMember/";
+    var routedataprevious = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
-                               { "levelcode", Model.LevelCode },
-                          {"previouspage", Model.PreviousPage },
-                          {"previouspagecompare", "AllObjective" },
-                          {"previouspagedetails", Model.PreviousPageDetails },
-                          { "id",  Model.Id.ToString()},
-                          {"subgroupcode", Model.SubGroupCode },
-                          { "level",  Model.Level},
-                            };
+                       {"levelcode", Model.LevelCode },
+                       {"previouspage", Model.PreviousPage },
+                       {"previouspagecompare", "AllObjective" },
+                       {"previouspagedetails", Model.PreviousPageDetails },
+                       {"id", Model.Id.ToString()},
+                       {"hlid", Model.HLId.ToString() },
+                       {"subgroupcode", Model.SubGroupCode },
+                       {"level", Model.Level}
+               };
     }
 
 <section role="contentinfo">
@@ -34,9 +35,9 @@
             </p>
         </form>
         <form>
-            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
             {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                 {
                     if (jobgroup.Active != 0)
                     {
@@ -44,26 +45,27 @@
                          {
                           { "positionid",  Model.PositionId.ToString()},
                           { "level",  Model.Level},
-                                  { "levelcode", Model.LevelCode },
+                          { "levelcode", Model.LevelCode },
                           {"subgroupcode", Model.SubGroupCode },
                           {"previouspage", Model.PreviousPage },
                           {"previouspagecompare", "AllObjective" },
                           {"previouspagedetails", Model.PreviousPageDetails },
                           { "id",  Model.Id},
+                          { "hlid", Model.HLId.ToString() },
                           { "idobj",  jobgroup.Id.ToString()}
                          };
                         <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
                             <div class="col-sm-4 mrgn-bttm-md">
                                 <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code +".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
                                     <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
                                 </figure>
                             </div>
                         </a>
+                        }
                     }
                 }
-            }
-            else
+        else
             {
                 <h4>@Localizer["NoResults"]</h4>
             }

@@ -36,6 +36,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public int HLId { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string IdObj { get; set; } = string.Empty;
         public ObjectiveLevelModel(ILogger<ObjectiveLevelModel> logger, JobGroupService jobcategoryService)
         {

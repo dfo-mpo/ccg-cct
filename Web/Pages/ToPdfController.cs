@@ -30,9 +30,10 @@ namespace Web.Pages
         }
 
         [Route("SimilarListCandidate")]
-        public ActionResult SimilarListCandidate(string id, string language)
+        public ActionResult SimilarListCandidate(int id, int hlid, string language)
         {
             ViewData["Id"] = id;
+            ViewData["HLId"] = hlid;
             ViewData["Language"] = language;
             return new Rotativa.AspNetCore.ViewAsPdf("GetSimilarPositionsCandidateAsPdf", ViewData);
         }

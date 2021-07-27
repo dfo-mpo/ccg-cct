@@ -150,6 +150,9 @@
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="noregion" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
   <data name="NoType1Competencies" xml:space="preserve">
     <value>No Behavioural </value>
   </data>

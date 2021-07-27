@@ -8,13 +8,15 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"descriptioneng",Model.DescriptionEng },
+        {"descriptionfre",Model.DescriptionFre },
         {"levelcode", Model.LevelCode },
         {"levelvalue", Model.LevelValue },
         {"jobhlcategory", Model.JobHLCategory },
         {"regionids", Model.RegionIds },
         {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
-        { "jobgroupid",Model.JobGroupId.ToString() },
+        {"jobgroupid",Model.JobGroupId.ToString() },
         {"addedcertificateids", Model.AddedCertificateIds },
         {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
         {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
@@ -25,6 +27,8 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"descriptioneng",Model.DescriptionEng },
+        {"descriptionfre",Model.DescriptionFre },
         {"levelcode", Model.LevelCode },
         {"levelvalue", Model.LevelValue },
         {"jobhlcategory", Model.JobHLCategory },
@@ -43,6 +47,8 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"descriptioneng",Model.DescriptionEng },
+        {"descriptionfre",Model.DescriptionFre },
         {"levelcode", Model.LevelCode },
         {"levelvalue", Model.LevelValue },
         {"regionids", Model.RegionIds },
@@ -61,6 +67,8 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"descriptioneng",Model.DescriptionEng },
+        {"descriptionfre",Model.DescriptionFre },
         {"levelcode", Model.LevelCode },
         {"levelvalue", Model.LevelValue },
         {"regionids", Model.RegionIds },
@@ -79,6 +87,8 @@
         {"id", Model.Id.ToString() },
         {"titleeng",Model.TitleEng },
         {"titlefre",Model.TitleFre },
+        {"descriptioneng",Model.DescriptionEng },
+        {"descriptionfre",Model.DescriptionFre },
         {"levelcode", Model.LevelCode },
         {"levelvalue", Model.LevelValue },
         {"regionids", Model.RegionIds },
@@ -118,11 +128,24 @@
                                 <textarea class="form-control" name="titleEng" required>@Model.TitleEng</textarea>
                                 <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
                             </div>
-
                             <div class="form-group m-2">
                                 <label class="control-label"><b>Title French</b></label>
                                 <textarea class="form-control" name="titleFre" required>@Model.TitleFre</textarea>
                                 <span asp-validation-for="JobPosition.TitleFre" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group m-2">
+                                <label class="control-label"><b>Description English</b></label>
+                                <textarea class="form-control" name="descriptionEng">@Model.DescriptionEng</textarea>
+                                <span asp-validation-for="JobPosition.PositionDescEng" class="text-danger"></span>
+                            </div>
+                            <div class="form-group m-2">
+                                <label class="control-label"><b>Description French</b></label>
+                                <textarea class="form-control" name="descriptionFre">@Model.DescriptionFre</textarea>
+                                <span asp-validation-for="JobPosition.PositionDescFre" class="text-danger"></span>
                             </div>
                         </td>
                     </tr>
@@ -285,6 +308,8 @@
                                                         {"id", Model.Id.ToString() },
                                                         {"titleeng",Model.TitleEng },
                                                         {"titlefre",Model.TitleFre },
+                                                        {"descriptioneng",Model.DescriptionEng },
+                                                        {"descriptionfre",Model.DescriptionFre },
                                                         {"levelcode", Model.LevelCode },
                                                         {"levelvalue", Model.LevelValue },
                                                         {"regionids", Model.RegionIds },
@@ -315,7 +340,7 @@
                                                                                                     <option value = "@Model.SubJobGroupId/@Model.JobGroupLevelId/@Model.LevelCode" selected>@Model.LevelCode</option>
                                                                                                 }
 
-                                                                                                @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
+                                                                                                @foreach (var level in Model.JobGroupPositions.Where(e=>e.LevelCode!=Model.LevelCode))
                                                                                                 {
                                                                                                     <option value="@level.SubJobGroupId/@level.LevelId/@level.LevelCode">
                                                                                                         @level.LevelCode
@@ -419,6 +444,8 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -565,6 +592,8 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -708,6 +737,8 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -851,6 +882,8 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -992,6 +1025,8 @@
                                         {"id", Model.Id.ToString() },
                                         {"titleeng",Model.TitleEng },
                                         {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },

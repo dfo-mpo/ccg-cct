@@ -64,7 +64,7 @@ namespace Business.Queries.Similar
                 .Where(e =>
                     query.CertificateId.Any() &&
                     query.CertificateId.All(sl => e.Certificates.Any(cr => cr == sl))
-                    && e.JobPositionId != query.JobPositionId
+                    //&& e.JobPositionId != query.JobPositionId
                     );
 
             return (await _db.JobRolePositionCompetencyRatings.Where(e => allSimilarJobPositions.Contains(e.JobPositionId) && e.JobPosition.Active != 0)

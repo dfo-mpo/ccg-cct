@@ -23,6 +23,20 @@ namespace Web.Data
             return await httpClient.GetJsonAsync<JobPositionDto>(url);
         }
 
+        public async Task<JobLocationRegionDto[]> GetMatchingJobLocationRegionsByPositionId(int PositionId, int ObjectiveId)
+        {
+            string url = $"/api/compare/matching/joblocationregions/{PositionId}/{ObjectiveId}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobLocationRegionDto[]>(url);
+        }
+
+        public async Task<SharedJobLocationRegionDto[]> GetDifferingJobLocationRegionsByPositionId(int PositionId, int ObjectiveId)
+        {
+            string url = $"/api/compare/differing/joblocationregions/{PositionId}/{ObjectiveId}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<SharedJobLocationRegionDto[]>(url);
+        }
+
         public async Task<SharedJobCompetencyRating[]> GetMatchingCompetenciesByTypeId(int TypeId, int PositionId, int ObjectiveId)
         {
             string url = $"/api/compare/matching/competencies/{TypeId}/{PositionId}/{ObjectiveId}";
@@ -50,6 +64,7 @@ namespace Web.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<SharedJobCertificateDto[]>(url);
         }
+
         public async Task<JobCompetencyDto[]> GetAllJobCompetencyTypes()
         {
             string url = $"/api/jobcompetencies/types";

@@ -34,6 +34,20 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.PositionDescEng" class="control-label"><b>Description English</b></label>
+                                <input asp-for="JobPosition.PositionDescEng" class="form-control" />
+                                <span asp-validation-for="JobPosition.PositionDescEng" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobPosition.PositionDescFre" class="control-label"><b>Description French</b></label>
+                                <input asp-for="JobPosition.PositionDescFre" class="form-control" />
+                                <span asp-validation-for="JobPosition.PositionDescFre" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

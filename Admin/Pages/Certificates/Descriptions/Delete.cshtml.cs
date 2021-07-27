@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using System.Threading;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -72,7 +71,7 @@ namespace Admin.Pages.Certificates.Descriptions
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, ErrorMessage);
-
+                Thread.Sleep(5000);
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });
             }

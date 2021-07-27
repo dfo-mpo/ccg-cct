@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
+using System.Threading;
 
 namespace Admin.Pages.Positions
 {
@@ -60,9 +61,8 @@ namespace Admin.Pages.Positions
 
             try
             {
-                // _context.Certificates.Remove(Certificate);
                 _jobPositionService.DeleteJobPosition(JobPosition);
-                //await _context.SaveChangesAsync(); 
+                Thread.Sleep(5000);
                 return RedirectToPage("./Index");
             }
             catch (DbUpdateException ex)

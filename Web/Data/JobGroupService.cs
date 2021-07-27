@@ -65,6 +65,16 @@ namespace Web.Data
             return list;
         }
 
+        public async Task<JobGroupDto[]> GetJobGroupsByHLCategoryId(int Id)
+        {
+            CompareByName comparebyname = new CompareByName();
+            string url = $"/api/jobgroups/hlcategory/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            var list = await httpClient.GetJsonAsync<JobGroupDto[]>(url);
+            Array.Sort(list, comparebyname);
+            return list;
+        }
+
         public async Task<JobGroupDto> GetJobGroupById(int Id)
         {
             string url = $"/api/jobgroups/{Id}";
@@ -103,6 +113,16 @@ namespace Web.Data
         {
             CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
             string url = $"/api/jobgroups/{Id}/jobpositions";
+            using var httpClient = _clientFactory.CreateClient("api");
+            var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
+            Array.Sort(list, comparebylevelcode);
+            return list;
+        }
+
+        public async Task<JobPositionDto[]> GetJobPositionsByHLCategoryGroupId(int Id, int HLId)
+        {
+            CompareByPositionLevelCode comparebylevelcode = new CompareByPositionLevelCode();
+            string url = $"/api/jobpositions/{Id}/{HLId}";
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobPositionDto[]>(url);
             Array.Sort(list, comparebylevelcode);

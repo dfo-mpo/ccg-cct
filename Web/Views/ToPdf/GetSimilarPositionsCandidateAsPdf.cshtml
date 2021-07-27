@@ -1,10 +1,13 @@
-﻿@inject Web.Data.JobPositionService _jobpositionService
+﻿@inject Web.Data.JobGroupService _jobgroupService
 @{
     Layout = "_ThemePdf";
 }
 @{
     var isEnglish = ViewData["Language"].ToString() == "en";
-    var Positions = await _jobpositionService.GetJobPositionByIdValues(ViewData["Id"].ToString());
+    var id = int.Parse(ViewData["Id"].ToString());
+    var hlid = int.Parse(ViewData["HLId"].ToString());
+    var JobGroup = await _jobgroupService.GetJobGroupById(id);
+    var Positions = await _jobgroupService.GetJobPositionsByHLCategoryGroupId(id, hlid);
     var similarpositions = isEnglish ? "SIMILAR POSITIONS" : "POSITIONS SIMILAIRES";
     var level = isEnglish ? "Level" : "Niveau";
     var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
@@ -12,7 +15,7 @@
     var countmessage = Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
 <div class="mrgn-tp-lg">
-    <h3 class="text-center">@similarpositions</h3>
+    <h3 class="text-center">@(isEnglish ? JobGroup.NameEng : JobGroup.NameFre) (@JobGroup.Code)</h3>
     <h5>@Positions.Length @countmessage</h5>
     <table class="table table-hover table-responsive table-bordered">
         <tbody>
