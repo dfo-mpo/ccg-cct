@@ -328,8 +328,8 @@
                 @if (currentdescription != "" || objectivedescription != "")
                 {
                     <tr>
-                        <td class="bg-success" width="50%">@(isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre)</td>
-                        <td class="bg-info" width="50%">@(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
+                        <td class="bg-success" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre)</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
                     </tr>
                 }
             </tbody>

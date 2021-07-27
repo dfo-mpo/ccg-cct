@@ -841,8 +841,8 @@ namespace Admin.Pages.Positions
                     _jobCompetencyService.PostJobRolePositionCertificate(jobrolepositioncertificate);
 
                 }
-                Thread.MemoryBarrier();
-                return RedirectToPage("Details", new { positionid = jobPositionId });
+            Thread.Sleep(10000);
+            return RedirectToPage("Details", new { positionid = jobPositionId });
 
             
      
