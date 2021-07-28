@@ -10,6 +10,8 @@
     var obj = System.Int32.Parse(ViewData["Obj"].ToString());
     var CurrentPosition = await _compareService.GetJobPositionById(positionid);
     var ObjectivePosition = await _compareService.GetJobPositionById(obj);
+    var MatchingJobLocationRegions = await _compareService.GetMatchingJobLocationRegionsByPositionId(positionid, obj);
+    var DifferingJobLocationRegions = await _compareService.GetDifferingJobLocationRegionsByPositionId(positionid, obj);
     List<SharedJobCompetencyRating[]> MatchingCompetencies = new List<SharedJobCompetencyRating[]>();
     List<SharedJobCompetencyRating[]> DifferingCompetencies = new List<SharedJobCompetencyRating[]>();
     var MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, obj);
@@ -34,27 +36,96 @@
     var h2Results = isEnglish ? "Results Comparing Two Positions" : "Résultats comparant deux positions";
     var currentposition = isEnglish ? "Current Position" : "Position actuelle";
     var selectedposition = isEnglish ? "Selected Position" : "Position sélectionnée";
+    var DIFFERINGREGIONS = isEnglish ? "DIFFERING REGIONS" : "RÉGIONS DIFFÉRENTES";
+    var MATCHINGREGIONS = isEnglish ? "MATCHING REGIONS" : "RÉGIONS ASSOCIÉES";
+    var DIFFERINGCERTIFICATIONS = isEnglish ? "DIFFERING CERTIFICATIONS" : "ATTESTATIONS DIFFÉRENTES";
+    var MATCHINGCERTIFICATIONS = isEnglish ? "MATCHING CERTIFICATIONS" : "ATTESTATIONS ASSOCIÉES";
     var DIFFERINGCOMPETENCIES = isEnglish ? "DIFFERING COMPETENCIES" : "COMPÉTENCES DIFFÉRENTES";
     var MATCHINGCOMPETENCIES = isEnglish ? "MATCHING COMPETENCIES" : "COMPÉTENCES ASSOCIÉES";
+    var regions = isEnglish ? "REGIONS" : "RÉGIONS";
     var matchingcompetencies = false;
     var differingcompetencies = false;
+    var currentdescription = isEnglish ? CurrentPosition.JobDescriptionEng : CurrentPosition.JobDescriptionFre;
+    var objectivedescription = isEnglish ? ObjectivePosition.JobDescriptionEng : ObjectivePosition.JobDescriptionFre;
 }
     <section role="contentinfo">
         <div class="row text-center mrgn-bttm-lg">
             <h2><b>@h2Results</b></h2>
         </div>
         <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="bg-success" width="50%">@currentposition</th>
+                    <th class="bg-info" width="50%">@selectedposition</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@currentposition</b> @CurrentPosition.JobGroupLevelCode - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
-                    <td class="bg-info" width="50%"><b>@selectedposition</b> @ObjectivePosition.JobGroupLevelCode - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
+                    <td class="bg-success" width="50%">@CurrentPosition.JobGroupLevelCode - @(isEnglish ? CurrentPosition.JobTitleEng : CurrentPosition.JobTitleFre)</td>
+                    <td class="bg-info" width="50%">@ObjectivePosition.JobGroupLevelCode - @(isEnglish ? ObjectivePosition.JobTitleEng : ObjectivePosition.JobTitleFre)</td>
                 </tr>
+                @if (currentdescription != "" || objectivedescription != "")
+                {
+                    <tr>
+                        <td class="bg-success" width="50%">@(isEnglish ? CurrentPosition.JobDescriptionEng : CurrentPosition.JobDescriptionFre)</td>
+                        <td class="bg-info" width="50%">@(isEnglish ? ObjectivePosition.JobDescriptionEng : ObjectivePosition.JobDescriptionFre)</td>
+                    </tr>
+                }
             </tbody>
         </table>
+        @if (MatchingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@MATCHINGREGIONS</h3>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">@regions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in MatchingJobLocationRegions)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        @if (DifferingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@DIFFERINGREGIONS</h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@regions</th>
+                        <th class="text-center bg-success">@currentposition</th>
+                        <th class="text-center bg-info">@selectedposition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in DifferingJobLocationRegions)
+                    {
+                        var key = "c" + d.Id.ToString();
+                        <tr>
+                            <td>@(isEnglish ? d.NameEng : d.NameFre)</td>
+                            <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                            <td class="text-center bg-info">@d.ObjectivePositionHas</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
         @if (MatchingCertificates.Any(e => e.Active != 0))
         {
             <div class="row col-lg-12">
-                <h3>@MATCHINGCOMPETENCIES</h3>
+                <h3>@MATCHINGCERTIFICATIONS</h3>
             </div>
             matchingcompetencies = true;
             <div class="col-md-6">
@@ -65,13 +136,37 @@
                         </tr>
                         @foreach (var c in MatchingCertificates.Where(e => e.Active != 0))
                         {
-                                <tr>
-                                    <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
-                                </tr>
-                            }
-                        </tbody>
+                            <tr>
+                                <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
+        }
+        @if (DifferingCertificates.Any(e => e.Active != 0))
+        {
+            <div class="row col-lg-12">
+                <h3>@DIFFERINGCERTIFICATIONS</h3>
+            </div>
+            differingcompetencies = true;
+            <table class="table table-hover table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@CERTIFICATIONS</th>
+                        <th class="text-center bg-success">@currentposition</th>
+                        <th class="text-center bg-info">@selectedposition</th>
+                    </tr>
+                    @foreach (var d in DifferingCertificates.Where(e => e.Active != 0))
+                    {
+                        <tr>
+                            <td width="70%">@d.NameEng</td>
+                            <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                            <td class="text-center bg-info">@d.ObjectivePositionHas</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
         @foreach (var competencies in MatchingCompetencies)
         {
@@ -105,34 +200,10 @@
                                     @d.RatingValueObj
                                 </td>
                             </tr>
-                            }
+                        }
                         </tbody>
                     </table>
                 }
-        }
-        @if (DifferingCertificates.Any(e => e.Active != 0))
-        {
-            <div class="row col-lg-12">
-                <h3>@DIFFERINGCOMPETENCIES</h3>
-            </div>
-            differingcompetencies = true;
-            <table class="table table-hover table-bordered">
-                <tbody>
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@CERTIFICATIONS</th>
-                        <th class="text-center bg-success">@currentposition</th>
-                        <th class="text-center bg-info">@selectedposition</th>
-                    </tr>
-                    @foreach (var d in DifferingCertificates.Where(e => e.Active != 0))
-                    {
-                            <tr>
-                                <td width="70%">@d.NameEng</td>
-                                <td class="text-center bg-success">@d.CurrentPositionHas</td>
-                                <td class="text-center bg-info">@d.ObjectivePositionHas</td>
-                            </tr>
-                        }
-                    </tbody>
-            </table>
         }
         @foreach (var competencies in DifferingCompetencies)
         {
@@ -165,7 +236,7 @@
                                     @d.RatingValueObj
                                 </td>
                             </tr>
-                                }
+                        }
                         </tbody>
                     </table>
                 }

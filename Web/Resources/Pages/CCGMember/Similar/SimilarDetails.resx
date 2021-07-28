@@ -132,6 +132,21 @@
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
   </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
+  <data name="noregion" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
+  <data name="noregion1" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>
   </data>

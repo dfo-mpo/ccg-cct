@@ -6,7 +6,7 @@ using CCG.AspNetCore.Business.Interface;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace Business.Commands.Admin.JobPositions
+namespace Business.Queries.Similar
 {
     public class GetAllSearchSimilarJobsPositionIdsQueryHandler : IQueryHandler<List<int>>
     {
@@ -17,7 +17,7 @@ namespace Business.Commands.Admin.JobPositions
             _db = db;
         }
 
-        public Task<List<int>> HandleAsync( CancellationToken cancellationToken = new CancellationToken())
+        public Task<List<int>> HandleAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             return _db.SearchSimilarJobs
                     .Select(e => e.Position)

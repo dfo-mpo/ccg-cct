@@ -13,7 +13,7 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarListModel> _logger;
         private readonly SimilarService _similarService;
-        public JobPositionDto[] Positions { get; set; }
+        public JobPositionDto[] Positions { get; set; } = new JobPositionDto[] { };
         [BindProperty(SupportsGet = true)]
         public int PositionId { get; set; }
         [BindProperty]
@@ -21,6 +21,8 @@ namespace Web.Pages.CCGMember.Similar
         public JobPositionDto Position { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
+        [BindProperty(SupportsGet = true)]
+        public int HLId { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
@@ -50,6 +52,7 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; } = string.Empty;
         public SimilarSearchDto SimilarJobIds { get; set; }
+        public string PageSubmit { get; set; } = string.Empty;
         public SimilarListModel(ILogger<SimilarListModel> logger, SimilarService similarService)
         {
             _logger = logger;
@@ -75,8 +78,9 @@ namespace Web.Pages.CCGMember.Similar
             {
                 SimilarJobIds = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
             }
+
             RouteParameter = String.Format($"jobPositionId={positionid}&{SimilarJobIds?.SimilarPositionIds}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
-            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);
+            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);           
         }
     }
 }

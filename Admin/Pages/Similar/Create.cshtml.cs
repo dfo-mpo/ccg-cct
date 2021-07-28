@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Microsoft.Extensions.Logging;
@@ -161,7 +160,7 @@ namespace Admin.Pages.Similar
                 EightyPercent = querystring80,
                 SeventyPercent = querystring70,
             });
-            Thread.MemoryBarrier();
+            Thread.Sleep(5000);
             return RedirectToPage("Details", new { Id });
         }
         public async Task OnPostGroupOneHundredPercent()

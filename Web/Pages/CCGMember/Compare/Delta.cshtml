@@ -5,20 +5,14 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var matchingcompetencies = false;
     var differingcompetencies = false;
-}
-<section role="contentinfo">
-
-    <div class="mrgn-tp-md">
-        <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("Delta","ToPdf", new { id = Model.CurrentPosition.JobTitleId, obj = Model.ObjectivePosition.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span> </a>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                @{
-                    var routedata = new Dictionary<string, string>
-                                                {
+    var currentdescription = isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre;
+    var objectivedescription = isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre;
+    var routedata = new Dictionary<string, string>
+                                                                                    {
                         {"positionid",  Model.PositionId.ToString()},
                         {"objectiveid",  Model.ObjectiveId.ToString() },
                         {"id",  Model.Id},
+                        { "hlid", Model.HLId.ToString() },
                         {"idobj",  Model.IdObj},
                         {"level",  Model.Level.ToString() },
                         {"levelobj", Model.LevelObj.ToString() },
@@ -38,38 +32,362 @@
                         {"previouspagecompare", Model.PreviousPageCompare },
                         {"previouspagedetails", Model.PreviousPageDetails },
                         {"previouspage", Model.PreviousPage}
+
                     };
-                }
-                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-    </div>
-    @if (Model.CurrentPosition.JobTitleEng.Contains("Commanding") || Model.ObjectivePosition.JobTitleEng.Contains("Commanding"))
-        {
-            <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
-                <div class="text-center">
-                    <h4>@Localizer["Commanding Officer"]</h4>
-                    <p>@Localizer["MAOtext"]</p>
-                </div>
+    var routedatasimilar = new Dictionary<string, string>
+                                                                                    {
+                        {"positionid",  Model.PositionId.ToString()},
+                        {"objectiveid",  Model.ObjectiveId.ToString() },
+                        {"id",  Model.Id},
+                        { "hlid", Model.HLId.ToString() },
+                        {"idobj",  Model.IdObj},
+                        {"percentselected", "true" },
+                        { "pagesubmit", "true" },
+                        {"level",  Model.Level.ToString() },
+                        {"levelobj", Model.LevelObj.ToString() },
+                        {"levelcode", Model.LevelCode },
+                        {"levelcodeobj", Model.LevelCodeObj },
+                        {"subgroupcode", Model.SubGroupCode },
+                        {"previouspagesimilardetails", Model.PreviousPageSimilarDetails },
+                        {"subgroupcodeobj", Model.SubGroupCodeObj },
+                        {"samelevels" , Model.SameLevels},
+                        {"higherlevels", Model.HigherLevels },
+                        {"certificates", Model.Certificates },
+                        {"sameorhigherlevels", Model.SameOrHigherLevels },
+                        {"requiredcompetencies", Model.RequiredCompetencies },
+                        {"addedcompetencies",Model.AddedCompetencies},
+                        {"percentmatch", Model.PercentMatch },
+                        {"previouspagesimilar", Model.PreviousPageSimilar },
+                        {"previouspagecompare", Model.PreviousPageCompare },
+                        {"previouspagedetails", Model.PreviousPageDetails },
+                        {"previouspage", Model.PreviousPage}
+
+                    };
+    var url = "../..";
+}
+    <section role="contentinfo">
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+
+            <h2>
+
+                @Localizer["You are here:"]
+
+            </h2>
+
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
+                    @if (Model.PreviousPage.Contains("Student"))
+                    {
+                        <li><a asp-page="../../Student/Index">@Localizer["Student"]</a></li>
+                        if (Model.PreviousPage.Contains("HighSchool"))
+                        {
+                            <li><a asp-page="../../Student/HighSchool/Index">@Localizer["HighSchool"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/HighSchool/Shoreside/";
+                                <li><a asp-page="../../Student/HighSchool/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                url = "../../Student/HighSchool/Seagoing/";
+                                <li><a asp-page="../../Student/HighSchool/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("College"))
+                        {
+                            <li><a asp-page="../../Student/College/Index">@Localizer["TechCollege"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/College/Shoreside/";
+                                <li><a asp-page="../../Student/College/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-page="../../Student/College/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                                if (Model.PreviousPage.Contains("Officer"))
+                                {
+                                    url = "../../Student/College/Seagoing/Officer/";
+                                    <li><a asp-page="../../Student/College/Shoreside/Officer/Index">@Localizer["Officer"]</a></li>
+                                }
+                                else
+                                {
+                                    url = "../../Student/College/Seagoing/Crew/";
+                                    <li><a asp-page="../../Student/College/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                                }
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("University"))
+                        {
+                            <li><a asp-page="../../Student/University/Index">@Localizer["University"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/University/Shoreside/";
+
+                                <li><a asp-page="../../Student/University/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-page="../../Student/University/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                                if (Model.PreviousPage.Contains("Officer"))
+                                {
+                                    url = "../../Student/University/Seagoing/Officer/";
+                                    <li><a asp-page="../../Student/University/Shoreside/Officer/Index">@Localizer["Officer"]</a></li>
+                                }
+                                else
+                                {
+                                    url = "../../Student/University/Seagoing/Crew/";
+                                    <li><a asp-page="../../Student/University/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                                }
+                            }
+                        }
+                        @if (Model.PreviousPage.Contains("Administrative"))
+                        {
+                            url += "Administrative";
+                            <li><a asp-page="@url">@Localizer["Administrative"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Deck"))
+                        {
+                            url += "Deck";
+                            <li><a asp-page="@url">@Localizer["Deck"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingDeck"))
+                        {
+                            url += "SeagoingDeck";
+                            <li><a asp-page="@url">@Localizer["Deck"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Engineering"))
+                        {
+                            url += "Engineering";
+                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Logistics"))
+                        {
+                            url += "Logistics";
+                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Cook"))
+                        {
+                            url += "Cook";
+                            <li><a asp-page="@url">@Localizer["Cook"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Electrical"))
+                        {
+                            url += "Electrical";
+                            <li><a asp-page="@url">@Localizer["Electrical"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Electronics"))
+                        {
+                            url += "Electronics";
+                            <li><a asp-page="@url">@Localizer["Electronics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("GeographicalInformation"))
+                        {
+                            url += "GeographicalInformation";
+                            <li><a asp-page="@url">@Localizer["geo"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("ComputerScience"))
+                        {
+                            url += "ComputerScience";
+                            <li><a asp-page="@url">@Localizer["Computer Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Computer"))
+                        {
+                            url += "Computer";
+                            <li><a asp-page="@url">@Localizer["Computer Systems"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Trades"))
+                        {
+                            url += "Trades";
+                            <li><a asp-page="@url">@Localizer["Trades"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("GeneralArts"))
+                        {
+                            url += "GeneralArts";
+                            <li><a asp-page="@url">@Localizer["General Arts"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SocialScience"))
+                        {
+                            url += "SocialScience";
+                            <li><a asp-page="@url">@Localizer["Social Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Sciences"))
+                        {
+                            url += "Sciences";
+                            <li><a asp-page="@url">@Localizer["Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Business"))
+                        {
+                            url += "Business";
+                            <li><a asp-page="@url">@Localizer["Business"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingLogistics"))
+                        {
+                            url += "SeagoingLogistics";
+                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingEngineer"))
+                        {
+                            url += "SeagoingEngineer";
+                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
+                        }
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else if (Model.PreviousPageDetails.Contains("Shoreside"))
+                    {
+                        <li><a href="../../Candidate/Index">@Localizer["Candidate"]</a></li>
+                        <li><a href="../../Candidate/Shoreside/AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                        <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.CurrentPosition.JobGroupId">@Localizer["Position List"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else if (Model.PreviousPageDetails.Contains("Seagoing"))
+                    {
+                        <li><a href="../../Candidate/Index">@Localizer["Candidate"]</a></li>
+                        <li><a href="../../Candidate/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                        if (Model.PreviousPage.Contains("Officer"))
+                        {
+                            <li><a href="../../Candidate/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
+                            if (Model.PreviousPage.Contains("Navigation"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
+                            }
+                            else if (Model.PreviousPage.Contains("Engineering"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("Crew"))
+                        {
+                            <li><a href="../../Candidate/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                            if (Model.PreviousPage.Contains("Deck"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
+                            }
+                            if (Model.PreviousPage.Contains("Engineering"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            }
+                            if (Model.PreviousPage.Contains("Logistics"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
+                            }
+                        }
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
+                        <li><a asp-page="../CurrentPosition" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
+                        <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["Search Type"]</a></li>
+                    }
+                    @if (Model.PreviousPageDelta == "ObjectivePosition")
+                    {
+                        <li><a asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Compare"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
+                    }
+                    else
+                    {
+                        if (Model.PreviousPageDetails.Contains("Candidate"))
+                        {
+                            <li><a asp-page="../Similar/SimilarList" asp-all-route-data="routedata">@Localizer["Similar Positions"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-page="../Similar/SimilarSearch" asp-all-route-data="routedatasimilar">@Localizer["Similar Positions"]</a></li>
+                        }
+                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
+                    }
+                </ol>
             </div>
-        }
-    <div class="clearfix"></div>
+        </nav>
+        <div class="mrgn-tp-md">
+            <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("Delta","ToPdf", new { id = Model.CurrentPosition.JobTitleId, obj = Model.ObjectivePosition.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span> </a>
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+
         <h2><b>@Localizer["h2Results"]</b></h2>
 
         <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="bg-success" width="50%">@Localizer["Current Position"]</th>
+                    <th class="bg-info" width="50%">@Localizer["Selected Position"]</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@Localizer["Current Position"]:</b> @Model.CurrentPosition.JobGroupLevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
-                    <td class="bg-info" width="50%"><b>@Localizer["Selected Position"]:</b> @Model.ObjectivePosition.JobGroupLevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
+                    <td class="bg-success" width="50%">@Model.CurrentPosition.JobGroupLevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
+                    <td class="bg-info" width="50%"> @Model.ObjectivePosition.JobGroupLevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
                 </tr>
+                @if (currentdescription != "" || objectivedescription != "")
+                {
+                    <tr>
+                        <td class="bg-success" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre)</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
+                    </tr>
+                }
             </tbody>
         </table>
+        @if (Model.MatchingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["MATCHING REGIONS"]</h3>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">@Localizer["REGIONS"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.MatchingJobLocationRegions)
+                        {
+                            <tr>
+                                <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        @if (Model.DifferingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["DIFFERING REGIONS"]</h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["REGIONS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.DifferingJobLocationRegions)
+                    {
+                        var key = "c" + d.Id.ToString();
+                        <tr>
+                            <td>@(isEnglish ? d.NameEng : d.NameFre)</td>
+                            <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                            <td class="text-center bg-info">@d.ObjectivePositionHas</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
         @if (Model.MatchingCertificates.Any(e => e.Active != 0))
         {
             <div class="row col-lg-12">
-                <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+                <h3>@Localizer["MATCHING CERTIFICATES"]</h3>
             </div>
-            matchingcompetencies = true;
             <div class="col-md-6">
                 <table class="table table-responsive table-bordered">
                     <thead>
@@ -78,9 +396,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
-
-
                         @foreach (var c in Model.MatchingCertificates)
                         {
                             if (c.Active != 0)
@@ -90,10 +405,38 @@
                                 </tr>
                             }
                         }
-
                     </tbody>
                 </table>
             </div>
+        }
+        @if (Model.DifferingCertificates.Any(e => e.Active != 0))
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["DIFFERING CERTIFICATIONS"]</h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.DifferingCertificates)
+                    {
+                        if (d.Active != 0)
+                        {
+                            var key = "c" + d.Id.ToString();
+                            <tr>
+                                <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
+                                <td class="text-center bg-success">@d.CurrentPositionHas</td>
+                                <td class="text-center bg-info">@d.ObjectivePositionHas</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
         }
         @foreach (var competencies in Model.MatchingCompetencies)
         {
@@ -169,37 +512,6 @@
                     </tbody>
                 </table>
             }
-        }
-
-        @if (Model.DifferingCertificates.Any(e => e.Active != 0))
-        {
-            <div class="row col-lg-12">
-                <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
-            </div>
-            differingcompetencies = true;
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
-                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var d in Model.DifferingCertificates)
-                    {
-                        if (d.Active != 0)
-                        {
-                            var key = "c" + d.Id.ToString();
-                            <tr>
-                                <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
-                                <td class="text-center bg-success">@d.CurrentPositionHas</td>
-                                <td class="text-center bg-info">@d.ObjectivePositionHas</td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
         }
         @foreach (var competencies in Model.DifferingCompetencies)
         {
@@ -277,4 +589,3 @@
             }
         }
     </section>
-                        

@@ -168,6 +168,9 @@
   <data name="No Certifications Found" xml:space="preserve">
     <value>Aucune certification trouvée</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
+  </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>En fonction de la proximité de votre position actuelle que vous souhaitez explorer, veuillez sélectionner un pourcentage de correspondance.</value>
   </data>

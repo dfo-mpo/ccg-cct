@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
+using System.Threading;
 
 namespace Admin.Pages.Certificates
 {
@@ -67,15 +66,13 @@ namespace Admin.Pages.Certificates
 
             try
             {
-                // _context.Certificates.Remove(Certificate);
                 _jobCertificateService.DeleteJobCertificate(Certificate);
-                //await _context.SaveChangesAsync(); 
+                Thread.Sleep(5000);
                 return RedirectToPage("./Index");
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, ErrorMessage);
-
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });
             }

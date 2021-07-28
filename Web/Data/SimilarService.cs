@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Business.Dtos.Similar;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Web.Data
 {
@@ -30,6 +31,13 @@ namespace Web.Data
                 }
                 return string.Compare(jb1.JobGroupCode, jb2.JobGroupCode);
             }
+        }
+
+        public async Task<List<int>> GetAllSimilarSearchIds()
+        {
+            string url = $"/api/similar/ids";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<List<int>>(url);
         }
 
         public async Task<JobPositionDto> GetJobPositionById(int Id)

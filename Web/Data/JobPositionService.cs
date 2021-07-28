@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Components;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobPositions;
 using System.Collections;
+using System.Collections.Generic;
+using Business.Dtos.Similar;
 
 namespace Web.Data
 {
@@ -48,6 +50,13 @@ namespace Web.Data
             return list;
         }
 
+        public async Task<JobLocationRegionDto[]> GetJobLocationRegionsById(int Id)
+        {
+            string url = $"/api/jobpositions/{Id}/joblocationregions";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<JobLocationRegionDto[]>(url);
+        }
+
         public async Task<JobCompetencyRatingDto[]> GetJobCompetencyRatingsByTypeId(int Id, int compentencytypeId)
         {
             string url = $"/api/jobpositions/{Id}/{compentencytypeId}/competencies";
@@ -67,6 +76,41 @@ namespace Web.Data
             string url = $"/api/jobcompetencies/types";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
+        }
+
+        public async Task<List<int>> GetAllSimilarSearchIds()
+        {
+            string url = $"/api/similar/ids";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<List<int>>(url);
+        }
+
+        public async Task<SimilarSearchDto> GetAllHundredPercentSimilarPositionsByPositionId(int Id)
+        {
+            string url = $"/api/similar/hundredpercentsimilarjobpositions/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<SimilarSearchDto>(url);
+        }
+
+        public async Task<SimilarSearchDto> GetAllNinetyPercentSimilarPositionsByPositionId(int Id)
+        {
+            string url = $"/api/similar/ninetypercentsimilarjobpositions/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<SimilarSearchDto>(url);
+        }
+
+        public async Task<SimilarSearchDto> GetAllEightyPercentSimilarPositionsByPositionId(int Id)
+        {
+            string url = $"/api/similar/eightypercentsimilarjobpositions/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<SimilarSearchDto>(url);
+        }
+
+        public async Task<SimilarSearchDto> GetAllSeventyPercentSimilarPositionsByPositionId(int Id)
+        {
+            string url = $"/api/similar/seventypercentsimilarjobpositions/{Id}";
+            using var httpClient = _clientFactory.CreateClient("api");
+            return await httpClient.GetJsonAsync<SimilarSearchDto>(url);
         }
     }
 }

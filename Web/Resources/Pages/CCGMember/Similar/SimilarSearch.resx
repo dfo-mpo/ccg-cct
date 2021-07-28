@@ -144,6 +144,9 @@
   <data name="No Certifications Found" xml:space="preserve">
     <value>No Certifications Found</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>No similar positions are currently available for this position.</value>
+  </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>Based on how close to your current position you wish to explore, please select a percentage match.</value>
   </data>

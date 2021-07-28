@@ -123,6 +123,12 @@
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>No similar positions are currently available for this position.</value>
+  </data>
+  <data name="noregions" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
   <data name="print" xml:space="preserve">
     <value>Print PDF</value>
   </data>

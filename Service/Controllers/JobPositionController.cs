@@ -57,6 +57,24 @@ namespace Service.Controllers
             return Ok(result);
         }
 
+        [HttpGet, Route("{Id}/JobLocationRegions")]
+        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobLocationRegionsById([FromRoute] GetJobPositionLocationRegionsByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
+        [HttpGet, Route("{JobGroupId}/{JobHLCategoryId}")]
+        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobPositionsByJobHLCategoryId([FromRoute] GetJobPositionsByGroupJobHLCategoryIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+
         [HttpGet, Route("{Id}/competencies")]
         [ProducesResponseType(typeof(List<JobCompetencyRatingDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetCompetenciesById([FromRoute] GetJobCompetencyRatingsByJobPositionIdQuery query)
@@ -91,7 +109,27 @@ namespace Service.Controllers
             await _commandSender.ValidateAndSendAsync(command, ModelState);
         }
 
-        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}")]
+        [HttpGet, Route("addjobpositiongetid")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddJobPositionGetId(
+        [FromQuery] string titleEng,
+        [FromQuery] string titleFre,
+        [FromQuery] string descriptionEng,
+        [FromQuery] string descriptionFre)
+        {
+            var query = new PostJobPositionCommandGetJobPositionIdQuery
+            {
+                TitleEng = titleEng,
+                TitleFre = titleFre,
+                DescriptionEng = descriptionEng,
+                DescriptionFre = descriptionFre
+            };
+
+            var results =
+            await _queryProvider.ProcessAsync(query);
+            return Ok(results);
+        }
+        [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}/{DescriptionEng}/{DescriptionFre}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
         {

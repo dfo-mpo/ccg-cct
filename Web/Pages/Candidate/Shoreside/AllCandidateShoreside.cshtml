@@ -23,11 +23,11 @@
             </p>
         </form>
         <form>
-            @if (Model.JobGroups.Any(e => string.IsNullOrEmpty(Model.Filter) || e.NameEng.ToLower().Contains(@Model.Filter) || e.Code.ToLower().Contains(@Model.Filter)))
+            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
             {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => !e.NameEng.ToLower().Contains("ship") && (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
+                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                 {
-                    @if (jobgroup.Active != 0)
+                    if (jobgroup.Active != 0)
                     {
                         <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
                             <div class="col-md-4 col-sm-6">
@@ -46,16 +46,5 @@
             }
         </form>
     </div>
-    <!--<div style="clear: both;">
-        <div class="col-lg-12">
-            <nav role="navigation">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="../Index">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
-        </div>
-        </div>
-    -->
 </section>
 

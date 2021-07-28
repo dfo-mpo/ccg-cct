@@ -35,7 +35,6 @@ namespace Business.Queries.JobPositions
                     JobGroupCode = e.JobGroup.Code,
                     SubJobGroupId = e.SubJobGroupId,
                     SubGroupCode = e.SubJobGroup.SubCode,
-                    JobLevelId = e.JobGroupLevel.Id,
                     JobLevelValue = e.JobGroupLevel.LevelValue,
                     JobGroupLevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + '-' + e.JobGroupLevel.LevelValue : e.JobGroup.Code + '-' + e.SubJobGroup.SubCode + '-' + e.JobGroupLevel.LevelValue,
                     LevelCode = string.IsNullOrEmpty(e.SubJobGroup.SubCode) ? e.JobGroup.Code + '-' + e.JobGroupLevel.LevelValue : e.SubJobGroup.SubCode + '-' + e.JobGroupLevel.LevelValue,
@@ -45,6 +44,8 @@ namespace Business.Queries.JobPositions
                     JobTitleId = e.JobPositionId,
                     JobTitleFre = e.JobPosition.TitleFre,
                     JobTitleEng = e.JobPosition.TitleEng,
+                    JobDescriptionFre = e.JobPosition.PositionDescFre,
+                    JobDescriptionEng = e.JobPosition.PositionDescEng,
                     Active = e.JobPosition.Active
 
                 }).ToListAsync(cancellationToken);

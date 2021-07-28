@@ -217,7 +217,7 @@ namespace Admin.Pages.Similar
             JobPosition.EightyPercent = querystring80;
             JobPosition.SeventyPercent = querystring70;
             _jobPositionService.UpdateSimilarPositions(JobPosition);
-            Thread.MemoryBarrier();
+            Thread.Sleep(5000);
             return RedirectToPage("Details", new { Id });
         }
         public async Task OnPostGroupOneHundredPercent()

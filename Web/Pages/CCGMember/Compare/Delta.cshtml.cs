@@ -18,6 +18,8 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
+        public int HLId { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string IdObj { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string LevelCode { get; set; } = string.Empty;
@@ -54,6 +56,10 @@ namespace Web.Pages.CCGMember.Compare
         public JobPositionDto CurrentPosition { get; set; }
         public JobPositionDto ObjectivePosition { get; set; }
         [BindProperty]
+        public JobLocationRegionDto[] MatchingJobLocationRegions { get; set; }
+        [BindProperty]
+        public SharedJobLocationRegionDto[] DifferingJobLocationRegions { get; set; }
+        [BindProperty]
         public List<SharedJobCompetencyRating[]> MatchingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
         [BindProperty]
         public List<SharedJobCompetencyRating[]> DifferingCompetencies { get; set; } = new List<SharedJobCompetencyRating[]>();
@@ -62,7 +68,7 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty]
         public SharedJobCertificateDto[] DifferingCertificates { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageCompare { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -85,9 +91,11 @@ namespace Web.Pages.CCGMember.Compare
             CurrentPosition = await _compareService.GetJobPositionById(positionid);
             ObjectivePosition = await _compareService.GetJobPositionById(objectiveid);
 
+            MatchingJobLocationRegions = await _compareService.GetMatchingJobLocationRegionsByPositionId(positionid, objectiveid);
+            DifferingJobLocationRegions = await _compareService.GetDifferingJobLocationRegionsByPositionId(positionid, objectiveid);
+
             MatchingCertificates = await _compareService.GetMatchingCertificatesByPositionId(positionid, objectiveid);
             DifferingCertificates = await _compareService.GetDifferingCertificatesByPositionId(positionid, objectiveid);
-
             var CompetencyTypes = await _compareService.GetAllJobCompetencyTypes();
             foreach(var competencytype in CompetencyTypes)
             {
