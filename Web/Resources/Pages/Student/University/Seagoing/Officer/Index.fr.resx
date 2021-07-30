@@ -123,8 +123,14 @@
   <data name="Engineering" xml:space="preserve">
     <value>Ingénierie</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
+  </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officiers de navire</value>
   </data>
   <data name="PhotoDeck" xml:space="preserve">
     <value>Photo d'un officier de navigation de la Garde côtière canadienne</value>
@@ -141,7 +147,16 @@
   <data name="Q1" xml:space="preserve">
     <value>Veuillez sélectionner votre domaine d'emploi préféré</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Université - Navigateur - Officier</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

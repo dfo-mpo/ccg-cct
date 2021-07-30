@@ -50,11 +50,11 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public string Certificates { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageSimilar { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageDetails { get; set; }
+        public string PreviousPageDetails { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageSimilarDetails { get; set; } = string.Empty;
         public SimilarDetailsModel(ILogger<SimilarDetailsModel> logger, JobPositionService jobcompetencyService)

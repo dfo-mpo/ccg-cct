@@ -117,82 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS COMPORTEMENTAUX</value>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDING OFFICER</value>
   </data>
-  <data name="CERTIFICATIONS" xml:space="preserve">
-    <value>ATTESTATIONS</value>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Fermer</value>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
   </data>
-  <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
   </data>
-  <data name="Current Position Level" xml:space="preserve">
-    <value>Niveau de poste actuel</value>
+  <data name="noregions" xml:space="preserve">
+    <value>No regions available</value>
   </data>
-  <data name="DIFFERING COMPETENCIES" xml:space="preserve">
-    <value>COMPÉTENCES DIFFÉRENTES</value>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
   </data>
-  <data name="h2Results" xml:space="preserve">
-    <value>Résultats comparant deux positions</value>
+  <data name="print" xml:space="preserve">
+    <value>Print PDF</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+  <data name="Question1" xml:space="preserve">
+    <value>Would you like to compare or find similar positions within the organization to your selected position below?</value>
   </data>
-  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS DE CONNAISSANCE</value>
+  <data name="Question2" xml:space="preserve">
+    <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
   </data>
-  <data name="MATCHING COMPETENCIES" xml:space="preserve">
-    <value>COMPÉTENCES ASSOCIÉES</value>
-  </data>
-  <data name="NoDiff" xml:space="preserve">
-    <value>Pas de compétences différentes</value>
-  </data>
-  <data name="NoDifferingCertifications" xml:space="preserve">
-    <value>Pas de certifications différentes</value>
-  </data>
-  <data name="NoDifferingType1" xml:space="preserve">
-    <value>Aucun élément de connaissance différent</value>
-  </data>
-  <data name="NoDifferingType2" xml:space="preserve">
-    <value>Aucun éléments techniques différents</value>
-  </data>
-  <data name="NoDifferingType3" xml:space="preserve">
-    <value>Aucun élément comportemental différent</value>
-  </data>
-  <data name="NoMatch" xml:space="preserve">
-    <value>Aucune compétence correspondante</value>
-  </data>
-  <data name="NoMatchingCertificates" xml:space="preserve">
-    <value>Aucun certificat associées</value>
-  </data>
-  <data name="NoMatchingType1" xml:space="preserve">
-    <value>Aucun élément de connaissance associées</value>
-  </data>
-  <data name="NoMatchingType2" xml:space="preserve">
-    <value>Aucun élément technique associées</value>
-  </data>
-  <data name="NoMatchingType3" xml:space="preserve">
-    <value>Aucun élément comportemental associées</value>
-  </data>
-  <data name="Position Level" xml:space="preserve">
-    <value>Niveau du poste</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
-  </data>
-  <data name="Save PDF" xml:space="preserve">
-    <value>Enregistrer le PDF</value>
-  </data>
-  <data name="Selected Position" xml:space="preserve">
-    <value>Position sélectionnée</value>
-  </data>
-  <data name="Selected Position Level" xml:space="preserve">
-    <value>Niveau de position sélectionné</value>
-  </data>
-  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
-    <value>ÉLÉMENTS TECHNIQUES</value>
+  <data name="save" xml:space="preserve">
+    <value>Save PDF</value>
   </data>
 </root>

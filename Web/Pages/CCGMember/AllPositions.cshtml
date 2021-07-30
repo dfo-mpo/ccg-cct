@@ -5,46 +5,57 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
 }
-<section role="contentinfo">
-    <nav role="navigation">
-        <h2 class="wb-inv">Document navigation</h2>
-        <ul class="pager">
-            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-        </ul>
-    </nav>
-    <div class="col-md-12">
-        <h2><b>@Localizer["AllPositions"]</b></h2>
-        <form>
-            <p>
-                <input type="text" asp-for="Filter" />
-                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-            </p>
-        </form>
-        <form>
-            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-            {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+    <section role="contentinfo">
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Categories"]</a></li>
+                </ol>
+            </div>
+        </nav>
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+        <div class="col-md-12">
+            <h2><b>@Localizer["AllPositions"]</b></h2>
+            <form>
+                <p>
+                    <input type="text" asp-for="Filter" />
+                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+                </p>
+            </form>
+            <form>
+                @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                 {
-                    if (jobgroup.Active != 0)
+                    @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                     {
-                        <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                            <div class="col-md-4 col-sm-6">
-                                <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                                </figure>
-                            </div>
-                        </a>
+                        if (jobgroup.Active != 0)
+                        {
+                            <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
+                                <div class="col-md-4 col-sm-6">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
+                        }
                     }
                 }
-            }
-            else
-            {
-                <h4>@Localizer["NoResults"]</h4>
-            }
-        </form>
-    </div>
-    <!--    <div style="clear:both;">
+                else
+                {
+                    <h4>@Localizer["NoResults"]</h4>
+                }
+            </form>
+        </div>
+        <!--    <div style="clear:both;">
             <div class="col-lg-12">
                 <nav role="navigation">
                     <h2 class="wb-inv">Document navigation</h2>
@@ -55,5 +66,5 @@
             </div>
         </div>
     -->
-</section>
+    </section>
 

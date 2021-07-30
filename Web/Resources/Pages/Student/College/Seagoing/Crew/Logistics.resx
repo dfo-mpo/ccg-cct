@@ -141,6 +141,12 @@
   <data name="save" xml:space="preserve">
     <value>Save this page</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>College - Crew - Logistics Positions</value>
   </data>

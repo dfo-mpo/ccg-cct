@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllPositions" xml:space="preserve">
-    <value>Choisissez une position à comparer</value>
+    <value>Choisissez parmi les postes ci-dessous</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrer</value>
@@ -128,5 +128,11 @@
   </data>
   <data name="NoResult" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Candidats externes postes à côté rivage</value>
   </data>
 </root>

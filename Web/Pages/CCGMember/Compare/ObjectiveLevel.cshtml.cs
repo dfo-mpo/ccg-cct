@@ -16,11 +16,11 @@ namespace Web.Pages.CCGMember.Compare
         public JobGroupDto JobGroup { get; set; }
         public JobGroupPositionDto[] JobGroupPositions { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageCompare { get; set; }
+        public string PreviousPageCompare { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageDetails { get; set; }
+        public string PreviousPageDetails { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]

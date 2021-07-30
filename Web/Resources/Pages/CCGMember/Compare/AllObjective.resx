@@ -120,10 +120,31 @@
   <data name="AllPositions" xml:space="preserve">
     <value>Choose a position to compare</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Current Position</value>
+  </data>
   <data name="Fllter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="geo" xml:space="preserve">
+    <value>Geographical Information</value>
+  </data>
   <data name="NoResults" xml:space="preserve">
     <value>No matching results found</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>University</value>
   </data>
 </root>

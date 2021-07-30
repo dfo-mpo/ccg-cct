@@ -120,6 +120,9 @@
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="PhotoHS" xml:space="preserve">
     <value>Photo d'élèves du secondaire dans le couloir</value>
   </data>

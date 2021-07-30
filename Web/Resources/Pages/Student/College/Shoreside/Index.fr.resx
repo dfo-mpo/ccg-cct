@@ -120,6 +120,9 @@
   <data name="admin" xml:space="preserve">
     <value>Administratif</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
   <data name="ccgcollege" xml:space="preserve">
     <value>Collège de la Garde côtière canadienne</value>
   </data>
@@ -140,6 +143,12 @@
   </data>
   <data name="geo" xml:space="preserve">
     <value>Information géographique</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Home1" xml:space="preserve">
+    <value>Accueil</value>
   </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
@@ -176,6 +185,15 @@
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Choisissez un domaine qui vous intéresse</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Collège - Postes à côté rivage</value>

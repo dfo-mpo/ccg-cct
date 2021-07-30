@@ -141,6 +141,9 @@
   <data name="save" xml:space="preserve">
     <value>Save this page</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>University - Shore side - Engineering</value>
   </data>

@@ -30,11 +30,11 @@ namespace Web.Pages.CCGMember.Compare
         [BindProperty(SupportsGet = true)]
         public int HLId { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageCompare { get; set; }
+        public string PreviousPageCompare { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageDetails { get; set; }
+        public string PreviousPageDetails { get; set; } = string.Empty;
         public AllObjectiveModel(ILogger<AllObjectiveModel> logger, JobGroupService jobgroupService)
         {
             _logger = logger;

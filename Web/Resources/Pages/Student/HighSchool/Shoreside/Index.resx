@@ -147,6 +147,9 @@
   <data name="Q1" xml:space="preserve">
     <value>Choose an area that you are interested in</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>High School - Shoreside</value>
   </data>

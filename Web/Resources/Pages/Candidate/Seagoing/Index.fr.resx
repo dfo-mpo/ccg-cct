@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
   </data>
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Choisissez parmi les deux positions ci-dessous</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Candidats externes - en mer</value>

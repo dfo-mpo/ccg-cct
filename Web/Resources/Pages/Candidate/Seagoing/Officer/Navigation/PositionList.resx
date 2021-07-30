@@ -120,6 +120,9 @@
   <data name="save" xml:space="preserve">
     <value>Save or print this document</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>External Canadidates - Seagoing - Officer - Navigation Positions</value>
   </data>

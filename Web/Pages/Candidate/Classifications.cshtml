@@ -1,0 +1,51 @@
+﻿@page
+@inject IViewLocalizer Localizer
+@model Web.Pages.Candidate.ClassificationsModel
+@{
+    ViewData["Title"] = Localizer["title"];
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var imagefolder = "~/img/CCGMember/";
+}
+<section role="contentinfo">
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="Index">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+    <div class="col-md-12">
+        <h2><b>@Localizer["AllPositions"]</b></h2>
+        <form>
+            <p>
+                <input type="text" asp-for="Filter" />
+                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+            </p>
+        </form>
+        <form>
+            @if (Model.JobGroups.Any(e => string.IsNullOrEmpty(Model.Filter) || e.NameEng.ToLower().Contains(@Model.Filter) || e.Code.ToLower().Contains(@Model.Filter)))
+            {
+                @foreach (var jobgroup in Model.JobGroups.Where(e => (Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower()))))
+                {
+                    var routedata = new Dictionary<string, string>
+                         {
+                          { "id",  jobgroup.Id.ToString()},
+                          { "hlid",  Model.HLId.ToString()}
+                         };
+                        <a asp-page="Positions" asp-all-route-data="routedata">
+                            <div class="col-md-4 col-sm-6">
+                                <figure>
+                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                    <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                </figure>
+                            </div>
+                        </a>
+                }
+            }
+            else
+            {
+                <h4>@Localizer["NoResults"]</h4>
+            }
+        </form>
+    </div>
+</section>

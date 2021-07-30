@@ -123,11 +123,32 @@
   <data name="ADDED ELEMENTS" xml:space="preserve">
     <value>ÉLÉMENTS AJOUTÉS</value>
   </data>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
+  </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Sciences informatiques</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Ordinateurs</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cuisinier</value>
+  </data>
+  <data name="Crew" xml:space="preserve">
+    <value>Équipage</value>
   </data>
   <data name="CURRENT LEVEL" xml:space="preserve">
     <value>NIVEAU ACTUEL</value>
@@ -138,11 +159,26 @@
   <data name="Current Position Level" xml:space="preserve">
     <value>Niveau de poste actuel</value>
   </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Pont</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Éditer</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Électronique</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Ingénierie</value>
+  </data>
+  <data name="General Arts" xml:space="preserve">
+    <value>Arts généraux</value>
+  </data>
+  <data name="geo" xml:space="preserve">
+    <value>Information géographique</value>
   </data>
   <data name="h1Text" xml:space="preserve">
     <value>Recherche de position similaire</value>
@@ -156,11 +192,17 @@
   <data name="HIGHER LEVEL" xml:space="preserve">
     <value>NIVEAU SUPÉRIEUR</value>
   </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>École secondaire</value>
+  </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="LimitReached" xml:space="preserve">
     <value>La limite a été atteinte.</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistique</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -171,8 +213,17 @@
   <data name="NoPositions" xml:space="preserve">
     <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
   </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officier</value>
+  </data>
   <data name="pageSubmitted" xml:space="preserve">
     <value>En fonction de la proximité de votre position actuelle que vous souhaitez explorer, veuillez sélectionner un pourcentage de correspondance.</value>
+  </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau du poste</value>
+  </data>
+  <data name="Position List" xml:space="preserve">
+    <value>Liste des postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -189,16 +240,58 @@
   <data name="SAME LEVEL" xml:space="preserve">
     <value>MÊME NIVEAU</value>
   </data>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Enregistrer le PDF</value>
+  </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Les sciences</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
   <data name="Search Positions" xml:space="preserve">
     <value>Rechercher des postes</value>
+  </data>
+  <data name="Search Type" xml:space="preserve">
+    <value>Type de recherche</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
   <data name="Select Competency" xml:space="preserve">
     <value>Sélectionnez une compétence</value>
   </data>
+  <data name="Selected Position" xml:space="preserve">
+    <value>Position sélectionnée</value>
+  </data>
+  <data name="Selected Position Level" xml:space="preserve">
+    <value>Niveau de position sélectionné</value>
+  </data>
   <data name="SelectionTitleCertificates" xml:space="preserve">
     <value>Sélectionnez un ou plusieurs certificats, le cas échéant, pour affiner votre recherche de postes similaires à votre poste actuel.</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
+  <data name="Similar Positions" xml:space="preserve">
+    <value>Postes similaires</value>
+  </data>
+  <data name="Similar Search" xml:space="preserve">
+    <value>Recherche similaire</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Science sociale</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Soumettre</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Collège technique</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

@@ -62,16 +62,30 @@ else if (!(Model.PageSubmit == "true"))
 {
 
 <section role="contentinfo">
-    
-        <div class="col-lg-12">
-            <nav role="navigation">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageSimilar" asp-all-route-data="@paramdataprevious">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
+                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["Select"]</a></li>
+                <li><a asp-page="../Details" asp-all-route-data="routedataprevious">@Localizer["Current Position"]</a></li>
+                <li><a asp-page="../SearchType" asp-all-route-data="routedataprevious">@Localizer["Search Type"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar Search"]</a></li>
+            </ol>
         </div>
- 
+    </nav>
+    <div class="col-lg-12">
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageSimilar" asp-all-route-data="@paramdataprevious">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="clearfix"></div>
     <h1>@Localizer["h1Text"]</h1>
     <!--h4>@Localizer["h4Text"]</h4-->
@@ -302,7 +316,7 @@ else if (!(Model.PageSubmit == "true"))
             </div>
         </div>
     </form>
-    
+
 </section>
 }
 else if (Model.PageEdit)
@@ -448,6 +462,22 @@ else if (Model.PercentSelected == "true")
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 
 <section>
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
+                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["Select"]</a></li>
+                <li><a asp-page="../Details" asp-all-route-data="routedataprevious">@Localizer["Current Position"]</a></li>
+                <li><a asp-page="../SearchType" asp-all-route-data="routedataprevious">@Localizer["Search Type"]</a></li>
+                <li><a asp-page="SimilarSearch" asp-all-route-data="routedataprevious">@Localizer["Similar Search"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar Positions"]</a></li>
+            </ol>
+        </div>
+    </nav>
     <div class="mrgn-tp-md">
         <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("SimilarList","ToPdf", new { id = Model.RouteParameter, positionid = Model.PositionId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
         <nav role="navigation">
@@ -505,7 +535,7 @@ else if (Model.PercentSelected == "true")
         </table>
     </div>
 
-    
+
 </section>
 }
 else

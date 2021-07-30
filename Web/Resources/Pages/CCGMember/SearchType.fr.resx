@@ -120,11 +120,17 @@
   <data name="Available" xml:space="preserve">
     <value>Quels postes sont disponibles pour moi maintenant</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer ma position à une autre position</value>
   </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Poste actuelle</value>
+  </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="PhotoCompare" xml:space="preserve">
     <value>Photo de deux postes au sein de la Garde côtière canadienne</value>
@@ -134,6 +140,12 @@
   </data>
   <data name="Question1" xml:space="preserve">
     <value>Comment souhaitez-vous effectuer votre recherche?</value>
+  </data>
+  <data name="Search Type" xml:space="preserve">
+    <value>Type de recherche</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Trouver des postes similaires à mon poste actuel</value>

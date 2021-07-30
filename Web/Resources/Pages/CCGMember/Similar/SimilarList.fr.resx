@@ -117,14 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Sciences informatiques</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Ordinateurs</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cuisinier</value>
+  </data>
+  <data name="Crew" xml:space="preserve">
+    <value>Équipage</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
     <value>Position actuelle</value>
   </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Pont</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Électronique</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Ingénierie</value>
+  </data>
+  <data name="General Arts" xml:space="preserve">
+    <value>Arts généraux</value>
+  </data>
+  <data name="geo" xml:space="preserve">
+    <value>Information géographique</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>École secondaire</value>
+  </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistique</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
@@ -132,8 +174,17 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officier</value>
+  </data>
   <data name="POSITION" xml:space="preserve">
     <value>POSTE</value>
+  </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau du poste</value>
+  </data>
+  <data name="Position List" xml:space="preserve">
+    <value>Liste des postes</value>
   </data>
   <data name="POSITIONS" xml:space="preserve">
     <value>POSTES</value>
@@ -147,7 +198,46 @@
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer au format PDF</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Les sciences</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
+  <data name="Search Type" xml:space="preserve">
+    <value>Type de recherche</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
+  </data>
+  <data name="Selected Position" xml:space="preserve">
+    <value>Position sélectionnée</value>
+  </data>
+  <data name="Selected Position Level" xml:space="preserve">
+    <value>Niveau de position sélectionné</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
+  <data name="Similar" xml:space="preserve">
+    <value>Postes similaires</value>
+  </data>
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSITIONS SIMILAIRES</value>
+  </data>
+  <data name="Similar Search" xml:space="preserve">
+    <value>Recherche similaire</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Science sociale</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Collège technique</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

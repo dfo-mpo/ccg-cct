@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="High School" xml:space="preserve">
+    <value>École secondaire</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="level" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistique</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
@@ -140,6 +149,15 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Sauvegarder cette page</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>École secondaire - Équipage - Postes logistiques</value>
