@@ -277,7 +277,7 @@
     <value>Sélectionnez</value>
   </data>
   <data name="Selected Position" xml:space="preserve">
-    <value>Poste sélectionné</value>
+    <value>Position sélectionnée</value>
   </data>
   <data name="Selected Position Level" xml:space="preserve">
     <value>Niveau de position sélectionné</value>
@@ -299,6 +299,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

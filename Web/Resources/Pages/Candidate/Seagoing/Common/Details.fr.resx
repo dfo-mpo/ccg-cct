@@ -123,6 +123,9 @@
   <data name="Business" xml:space="preserve">
     <value>Affaires</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
@@ -145,7 +148,7 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
@@ -272,6 +275,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

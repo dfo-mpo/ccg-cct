@@ -120,6 +120,9 @@
   <data name="Administrative" xml:space="preserve">
     <value>Administratif</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
@@ -139,7 +142,7 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
@@ -202,7 +205,7 @@
     <value>Niveau du poste</value>
   </data>
   <data name="Position List" xml:space="preserve">
-    <value>Liste des postes</value>
+    <value>Liste de postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -269,6 +272,9 @@
   </data>
   <data name="title" xml:space="preserve">
     <value>Détails de poste similaires</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

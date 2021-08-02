@@ -132,6 +132,12 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Sciences informatiques</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Ordinateurs</value>
+  </data>
   <data name="Cook" xml:space="preserve">
     <value>Cuisinier</value>
   </data>
@@ -139,10 +145,13 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Électrique</value>
   </data>
   <data name="Electronics" xml:space="preserve">
     <value>Électronique</value>
@@ -236,6 +245,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Rotativa;
+﻿using Microsoft.AspNetCore.Mvc;
 using Rotativa.AspNetCore;
 
 namespace Web.Pages
@@ -17,16 +11,20 @@ namespace Web.Pages
         {
             ViewData["Id"] = id;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetPositionDetailsAsPdf", ViewData);
+            return new ViewAsPdf("GetPositionDetailsAsPdf", ViewData);
         }
 
         [Route("SimilarLists")]
-        public ActionResult SimilarList(string id, int positionid, string language)
+        public ActionResult SimilarList(string id, string similarjobids70, string similarjobids80, string similarjobids90, string similarjobids100, int positionid, string language)
         {
             ViewData["Id"] = id;
+            ViewData["SimilarJobIds100"] = similarjobids100;
+            ViewData["SimilarJobIds90"] = similarjobids90;
+            ViewData["SimilarJobIds80"] = similarjobids80;
+            ViewData["SimilarJobIds70"] = similarjobids70;
             ViewData["Language"] = language;
             ViewData["PositionId"] = positionid;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetSimilarPositionsAsPdf", ViewData);
+            return new ViewAsPdf("GetSimilarPositionsAsPdf", ViewData);
         }
 
         [Route("SimilarListCandidate")]
@@ -35,7 +33,7 @@ namespace Web.Pages
             ViewData["Id"] = id;
             ViewData["HLId"] = hlid;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetSimilarPositionsCandidateAsPdf", ViewData);
+            return new ViewAsPdf("GetSimilarPositionsCandidateAsPdf", ViewData);
         }
 
         [Route("StudentPositionsList")]
@@ -44,7 +42,7 @@ namespace Web.Pages
             ViewData["shoresideId"] = shoresideIds;
             ViewData["seagoingId"] = seagoingIds;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetStudentPositionsAsPdf", ViewData);
+            return new ViewAsPdf("GetStudentPositionsAsPdf", ViewData);
         }
 
         [Route("StudentShoresidePositionsList")]
@@ -52,7 +50,7 @@ namespace Web.Pages
         {
             ViewData["shoresideId"] = shoresideIds;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetStudentShoresidePositionsAsPdf", ViewData);
+            return new ViewAsPdf("GetStudentShoresidePositionsAsPdf", ViewData);
         }
 
         [Route("StudentSeagoingPositionsList")]
@@ -60,7 +58,7 @@ namespace Web.Pages
         {
             ViewData["seagoingId"] = seagoingIds;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetStudentSeagoingPositionsAsPdf", ViewData);
+            return new ViewAsPdf("GetStudentSeagoingPositionsAsPdf", ViewData);
         }
 
         [Route("Delta")]
@@ -69,7 +67,7 @@ namespace Web.Pages
             ViewData["Id"] = id;
             ViewData["Obj"] = obj;
             ViewData["Language"] = language;
-            return new Rotativa.AspNetCore.ViewAsPdf("GetDeltaAsPdf", ViewData);
+            return new ViewAsPdf("GetDeltaAsPdf", ViewData);
         }
 
     }

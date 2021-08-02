@@ -135,9 +135,6 @@
   <data name="Current Position Level" xml:space="preserve">
     <value>Current Position Level</value>
   </data>
-  <data name="geo" xml:space="preserve">
-    <value>Geographical Information</value>
-  </data>
   <data name="h1Text" xml:space="preserve">
     <value>Similar Position Search</value>
   </data>
@@ -168,25 +165,13 @@
   <data name="SAME LEVEL" xml:space="preserve">
     <value>SAME LEVEL</value>
   </data>
-  <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
-  </data>
   <data name="Search Positions" xml:space="preserve">
     <value>Search Positions</value>
   </data>
   <data name="SelectionTitleCertificates" xml:space="preserve">
     <value>Select one or more certificates, if appropriate, to narrow your search for positions similar to your current position.</value>
   </data>
-  <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
-  </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
-  </data>
-  <data name="TechCollege" xml:space="preserve">
-    <value>Technical College</value>
-  </data>
-  <data name="University" xml:space="preserve">
-    <value>University</value>
   </data>
 </root>

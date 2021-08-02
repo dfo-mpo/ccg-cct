@@ -133,10 +133,10 @@
     <value>Aucune position en mer disponible</value>
   </data>
   <data name="Officer" xml:space="preserve">
-    <value>Officiers de navire</value>
+    <value>Officier</value>
   </data>
   <data name="position" xml:space="preserve">
-    <value>POSTES</value>
+    <value>POSTE</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>

@@ -77,7 +77,7 @@ namespace Web.Pages.Candidate.Seagoing.Common
                     if (SimilarJobIds100.SimilarPositionIds == "" && SimilarJobIds90.SimilarPositionIds == "" && SimilarJobIds80.SimilarPositionIds == "" && SimilarJobIds70.SimilarPositionIds == "")
                     {
                         PageSubmit = "Error";
-                      }
+                    }
                 
             }
             else

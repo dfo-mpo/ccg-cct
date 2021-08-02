@@ -139,10 +139,13 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Électrique</value>
   </data>
   <data name="Electronics" xml:space="preserve">
     <value>Électronique</value>
@@ -233,6 +236,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

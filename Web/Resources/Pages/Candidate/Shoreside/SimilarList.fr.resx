@@ -132,11 +132,14 @@
   <data name="NoPositions" xml:space="preserve">
     <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
   </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>POSTE</value>
+  </data>
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>DÉTAILS DU POSTE</value>
   </data>
   <data name="Position List" xml:space="preserve">
-    <value>Liste des postes</value>
+    <value>Liste de postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>

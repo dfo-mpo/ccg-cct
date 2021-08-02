@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administratif</value>
+  </data>
   <data name="AllPositions" xml:space="preserve">
     <value>Choisissez une position à comparer</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Ordinateurs</value>
+  </data>
   <data name="Cook" xml:space="preserve">
     <value>Cuisinier</value>
   </data>
@@ -139,10 +145,13 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Électrique</value>
   </data>
   <data name="Electronics" xml:space="preserve">
     <value>Électronique</value>
@@ -218,6 +227,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

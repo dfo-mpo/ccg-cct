@@ -127,10 +127,10 @@
     <value>No seagoing positions available</value>
   </data>
   <data name="Officer" xml:space="preserve">
-    <value>Ships' Officer</value>
+    <value>Officer</value>
   </data>
   <data name="position" xml:space="preserve">
-    <value>POSITIONS</value>
+    <value>POSITION</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
