@@ -4,7 +4,16 @@
 @{
     ViewData["Title"] = "Home";
 }
-
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Home"]</a></li>
+        </ol>
+    </div>
+</nav>
 <div class="text-left">
     <h1 class="display-4">@Localizer["IndexTitle"]</h1>
     <p>@Localizer["WelcomeText"]</p>
