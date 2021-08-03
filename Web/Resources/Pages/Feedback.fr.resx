@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="areacode" xml:space="preserve">
+    <value>y compris l'indicatif régional (&lt;abbr title="par example"&gt;p. ex.&lt;/abbr&gt; : 999-999-9999)</value>
+  </data>
+  <data name="Comp definitions elaborate" xml:space="preserve">
+    <value>Si vous avez énuméré des compétences qui comportent des définitions qui, selon vous, devraient être modifiées, veuillez préciser le changement de libellé que vous recommandez et expliquer pourquoi.</value>
+  </data>
+  <data name="Comp definitions rating" xml:space="preserve">
+    <value>Dans votre examen d’un profil de compétences d’un poste donné dans l’OCC, les définitions des compétences énumérées ont-elles été notées correctement? (c’est-à-dire avec les notes de 1 à 5).</value>
+  </data>
+  <data name="Comp rating if no" xml:space="preserve">
+    <value>Si non, lesquelles et pourquoi?</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Veuillez fournir des renseignements qui pourraient servir à vous joindre</value>
+  </data>
+  <data name="E-mail" xml:space="preserve">
+    <value>Adresse de courriel</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback Form</value>
+  </data>
+  <data name="FormTitle" xml:space="preserve">
+    <value>Outil de compétences de carrière (OCC)</value>
+  </data>
+  <data name="Home phone" xml:space="preserve">
+    <value>Numéro de téléphone à domicile</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="one-added" xml:space="preserve">
+    <value>Une ou plusieurs doivent être ajoutées</value>
+  </data>
+  <data name="one-removed" xml:space="preserve">
+    <value>Une ou plusieurs doivent être supprimées</value>
+  </data>
+  <data name="para1" xml:space="preserve">
+    <value>Veuillez noter que ces compétences sont le fruit de nombreuses recherches et consultations. Les demandes de modification des compétences et des cotes peuvent avoir des conséquences négatives ailleurs dans l’outil, car de nombreuses compétences sont nécessairement liées. Nous agirons dans les domaines où il y a de nombreuses recommandations similaires plutôt que des recommandations ponctuelles. Dans vos commentaires, veuillez décrire très précisément les compétences ou les postes dont vous parlez.</value>
+  </data>
+  <data name="para2" xml:space="preserve">
+    <value>Si vous avez des problèmes avec le formulaire suivant, vous pouvez envoyez vos commentaires à &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;. S'il vous plaît lire l'&lt;a href="#pics-ecrp"&gt;énoncé de collecte de renseignements personnels&lt;/a&gt; avant de compléter ce formulaire.</value>
+  </data>
+  <data name="PICS" xml:space="preserve">
+    <value>Énoncé de collecte de renseignements personnels</value>
+  </data>
+  <data name="PICS-para" xml:space="preserve">
+    <value>Tous les renseignements personnels créés, recueillis ou conservés par le ministère sont protégés par la &lt;em&gt;&lt;a href="http://laws-lois.justice.gc.ca/fra/lois/P-21/index.html" rel="external"&gt;Loi sur la protection des renseignements personnels&lt;/a&gt;&lt;/em&gt;. Cela signifie qu’on vous informera des fins auxquelles ces renseignements sont recueillis et de la façon dont vous pouvez exercer votre droit d'accès à ces renseignements. Le cas échéant, on vous demandera d’exprimer votre consentement par rapport à ces renseignements.</value>
+  </data>
+  <data name="Public Communications" xml:space="preserve">
+    <value>Communications publiques</value>
+  </data>
+  <data name="Public-para1" xml:space="preserve">
+    <value>Les renseignements personnels que vous fournissez dans une demande d’informations peuvent être utilisés pour préparer une réponse. Ces renseignements personnels sont recueillis conformément à la &lt;em class="highlight"&gt;[disposition pertinente de la loi habilitante du ministère]&lt;/em&gt;. Ces renseignements peuvent être utilisés à des fins d’évaluation, de compilation de statistiques et d’établissement de rapports. Ces informations sont versées dans le fichier de renseignements personnels &lt;em class="highlight"&gt;[Numéro du &lt;abbr title="fichier de renseignements personnels"&gt;FRP&lt;/abbr&gt; - Titre du &lt;abbr title="fichier de renseignements personnels"&gt;FRP&lt;/abbr&gt;]&lt;/em&gt;. Il se peut que ces renseignements soient communiqués aux services responsables des programmes et des activités de &lt;em class="highlight"&gt;[Titre d’usage du ministère]&lt;/em&gt; si votre demande porte sur les programmes ou les activités de ce ministère. Dans ces cas, ces renseignements sont compris dans le fichier de renseignements personnels du service responsable du programme ou de l’activité.</value>
+  </data>
+  <data name="Public-para2" xml:space="preserve">
+    <value>Si, après avoir lu cet avis, vous préférez ne pas présenter votre demande d'information par Internet, vous pouvez envoyer vos commentaires par courriel à &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;</value>
+  </data>
+  <data name="Q1-certcorrect" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les certifications étaient-elles correctes? (c’est-à-dire les bonnes certifications étaient-elles énumérées dans l’ensemble pour un poste).</value>
+  </data>
+  <data name="Q1-comp if no" xml:space="preserve">
+    <value>Si non :</value>
+  </data>
+  <data name="Q1-comp listing" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les compétences énumérées étaient-elles appropriées? (c’est-à-dire les bonnes connaissances et les bonnes  capacités techniques et comportementales étaient-elles énumérées dans l’ensemble pour un poste).</value>
+  </data>
+  <data name="Q1-if no" xml:space="preserve">
+    <value>Si non, qu'est-ce qui doit être corrigé?</value>
+  </data>
+  <data name="Q2-comp definitions" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les définitions de compétences énumérées étaient-elles rédigées correctement? (c’est-à-dire les définitions écrites des connaissances et des capacités techniques et comportementales dans l’ensemble et les descriptions écrites des niveaux).</value>
+  </data>
+  <data name="Q2-comp definitions if no" xml:space="preserve">
+    <value>Si non, lesquelles?</value>
+  </data>
+  <data name="required" xml:space="preserve">
+    <value>(obligatoire)</value>
+  </data>
+  <data name="sectioncert" xml:space="preserve">
+    <value>Certifications</value>
+  </data>
+  <data name="sectioncomp" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="sectionContact" xml:space="preserve">
+    <value>Coordonnées</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Formulaire de demande de modification</value>
+  </data>
+  <data name="which-added" xml:space="preserve">
+    <value>Lesquelles faut-il ajouter?</value>
+  </data>
+  <data name="which-removed" xml:space="preserve">
+    <value>Lesquelles faut-il supprimer?</value>
+  </data>
+  <data name="Work ext" xml:space="preserve">
+    <value>Numéro du poste au travail</value>
+  </data>
+  <data name="Work phone" xml:space="preserve">
+    <value>Numéro de téléphone au travail</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+</root>

@@ -29,7 +29,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 19, DescEng = "", DescFre = "", NameEng = "Marine Emergency Duties - Proficiency in Advanced Firefighting", NameFre = "Fonctions d'urgence en mer - Maîtrise avancée de la lutte anti-incendie", Active = 1 },
                 new Certificate { Id = 20, DescEng = "", DescFre = "", NameEng = "Restricted Operator Certificate-Maritime Commercial (ROC-MC)", NameFre = "Certificat restreint d’opérateur - commercial maritime (CRO-CM)", Active = 1 },
                 new Certificate { Id = 21, DescEng = "", DescFre = "", NameEng = "Diver Certification Board of Canada (DCBC) Restricted Surface Supplied Diver Certification", NameFre = "Conseil Canadien de certification en plongée – Système de distribution d’air restreinte en surface", Active = 1 },
-                new Certificate { Id = 22, DescEng = "", DescFre = "", NameEng = "First Aid", NameFre = "Premiers soins", Active = 1 },
+                new Certificate { Id = 22, DescEng = "", DescFre = "", NameEng = "First Aid", NameFre = "Secourisme", Active = 1 },
                 new Certificate { Id = 23, DescEng = "", DescFre = "", NameEng = "CCG Medic-A Certificate", NameFre = "Formation Medic-A GCC", Active = 1 },
                 new Certificate { Id = 24, DescEng = "", DescFre = "", NameEng = "OEM Maintenance Qualification; Technician", NameFre = "Certification du maintenance du fabricants d’équipement d’origine (FEO)", Active = 1 },
                 new Certificate { Id = 25, DescEng = "", DescFre = "", NameEng = "Food Safety Training", NameFre = "Formation en sécurité alementaire", Active = 1 },
@@ -53,7 +53,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 43, DescEng = "", DescFre = "", NameEng = "Standard on Training, Certification and Watchkeeping (STCW)", NameFre = "Normes de formation des gens de mer, de délivrance des brevets et de veille (STCW)", Active = 1 },
                 new Certificate { Id = 44, DescEng = "", DescFre = "", NameEng = "Cardiopulmonary Resuscitation (CPR)", NameFre = "Réanimation cardiorespiratoire (RCR)", Active = 1 },
                 new Certificate { Id = 45, DescEng = "", DescFre = "", NameEng = "Automated External Defibrillator (AED)", NameFre = "Défibrillateur externe automatisé (DEA)", Active = 1 },
-                new Certificate { Id = 46, DescEng = "", DescFre = "", NameEng = "Advanced Marine First Aid", NameFre = "Premiers soins en mer avancés", Active = 1 },
+                new Certificate { Id = 46, DescEng = "", DescFre = "", NameEng = "Marine Advanced First Aid", NameFre = "Secourisme avancé en mer", Active = 1 },
                 new Certificate { Id = 47, DescEng = "", DescFre = "", NameEng = "Advance Cardiac Life Support; Valid ACLS", NameFre = "Soins avancés de réanimation cardiaque; valide SARC", Active = 1 },
                 new Certificate { Id = 48, DescEng = "", DescFre = "", NameEng = "Trauma Nursing Core Course (TNCC); Certification from Emergency Nursing Association", NameFre = "Cours de base en soins infirmiers en traumatologie (CBSIT); certification de l'Association des infirmières et infirmiers d'urgence", Active = 1 },
                 new Certificate { Id = 49, DescEng = "", DescFre = "", NameEng = "Certified Nurse Practitioner", NameFre = "Infirmière praticienne certifiée", Active = 1 },
@@ -65,7 +65,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 55, DescEng = "", DescFre = "", NameEng = "Forklift Operator's Certification", NameFre = "Certificat de conducteur de chariot élévateur à fourche", Active = 1 },
                 new Certificate { Id = 56, DescEng = "", DescFre = "", NameEng = "Transportation of Dangerous Goods Air & Ground Certification", NameFre = "Certification du transport aérien et terrestre des marchandises dangereuses", Active = 1 },
                 new Certificate { Id = 57, DescEng = "", DescFre = "", NameEng = "Restricted Operator's Certificate (Maritime)", NameFre = "Certificat restreint d'opérateur-Maritime (CRO-M)", Active = 1 },
-                new Certificate { Id = 58, DescEng = "", DescFre = "", NameEng = "Basic First Aid", NameFre = "Premiers soins de base", Active = 1 },
+                new Certificate { Id = 58, DescEng = "", DescFre = "", NameEng = "Basic First Aid", NameFre = "Secourisme de base", Active = 1 },
                 new Certificate { Id = 59, DescEng = "", DescFre = "", NameEng = "Marine Communications and Traffic Services Certificate", NameFre = "Certificat de services de communications et de trafic maritimes", Active = 1 },
                 new Certificate { Id = 60, DescEng = "", DescFre = "", NameEng = "Inter-Provincial Journeyman Trade Certification; Welding (47.1 and/or 47.2)", NameFre = "Certification interprovinciale des compagnons compagnons ; soudage (47,1 et/ou 47,2)", Active = 1 },
                 new Certificate { Id = 61, DescEng = "", DescFre = "", NameEng = "Class 3 with Air Break Endorsement", NameFre = "Classe 3 avec l'Attestation de coupure d'air", Active = 1 },
@@ -111,6 +111,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 101, DescEng = "", DescFre = "", NameEng = "Incident Command System (ICS-300)", NameFre = "Système de commandement d'intervention (SCI-300)", Active = 1 },
                 new Certificate { Id = 102, DescEng = "", DescFre = "", NameEng = "Master, Near Coastal", NameFre = "Capitaine, à proximité du littoral", Active = 1 },
                 new Certificate { Id = 103, DescEng = "", DescFre = "", NameEng = "Master 500 GT, Near Coastal", NameFre = "Capitaine, jauge brute de 500, à proximité du littoral", Active = 1 },
+                new Certificate { Id = 104, DescEng = "", DescFre = "", NameEng = "First Aid or Marine Advanced First Aid", NameFre = "Secourisme ou Secourisme avancé en mer", Active = 1 }
         };
     }
 }
