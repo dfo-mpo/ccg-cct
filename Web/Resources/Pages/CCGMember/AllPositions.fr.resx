@@ -123,6 +123,9 @@
   <data name="AS" xml:space="preserve">
     <value>Services administratif</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="CR" xml:space="preserve">
     <value>Commis aux écritures et aux règlements</value>
   </data>
@@ -160,7 +163,7 @@
     <value>Technicien général</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="Keywords" xml:space="preserve">
     <value>Mots clé(s)</value>
@@ -194,6 +197,9 @@
   </data>
   <data name="SC" xml:space="preserve">
     <value>Équipages de navires</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
   <data name="SO" xml:space="preserve">
     <value>Officiers de navire</value>

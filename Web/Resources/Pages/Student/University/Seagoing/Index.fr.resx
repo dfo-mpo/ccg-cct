@@ -121,7 +121,10 @@
     <value>Collège de la Garde côtière canadienne</value>
   </data>
   <data name="Crew" xml:space="preserve">
-    <value>Équipage des navires</value>
+    <value>Équipage</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
   </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
@@ -147,7 +150,13 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Université - Postes en mer</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

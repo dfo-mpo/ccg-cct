@@ -4,7 +4,7 @@
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
-    var routedataprevious = new Dictionary<string, string>
+    var routedata = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },
                        {"levelcode", Model.LevelCode },
@@ -16,33 +16,261 @@
                        {"subgroupcode", Model.SubGroupCode },
                        {"level", Model.Level}
                };
+    var routedatasearch = new Dictionary<string, string>
+                 {
+                       {"positionid",  Model.PositionId.ToString() },
+                       {"levelcode", Model.LevelCode },
+                       {"previouspage", Model.PreviousPage },
+                       {"previouspagecompare", "AllObjective" },
+                       {"previouspagedetails", Model.PreviousPageDetails },
+                       {"id", Model.Id.ToString()},
+                       {"hlid", Model.HLId.ToString() },
+                       {"subgroupcode", Model.SubGroupCode },
+                       {"level", Model.Level},
+                       {"pagesubmit", "true" }
+               };
+    var url = string.Empty;
     }
 
-<section role="contentinfo">
-    <nav role="navigation" class="mrgn-bttm-lg">
-        <h2 class="wb-inv">Document navigation</h2>
-        <ul class="pager">
-            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-        </ul>
-    </nav>
-    <div class="col-md-12">
-
-        <h2><b>@Localizer["AllPositions"]</b></h2>
-        <form>
-            <p>
-                <input type="text" asp-for="Filter" />
-                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-            </p>
-        </form>
-        <form>
-            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-            {
-                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-                {
-                    if (jobgroup.Active != 0)
+    <section role="contentinfo">
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
+                    @if (Model.PreviousPage.Contains("Student"))
                     {
-                        var routedata = new Dictionary<string, string>
-                         {
+                        <li><a asp-page="../../Student/Index">@Localizer["Student"]</a></li>
+                        if (Model.PreviousPage.Contains("HighSchool"))
+                        {
+                            <li><a asp-page="../../Student/HighSchool/Index">@Localizer["HighSchool"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/HighSchool/Shoreside/";
+                                <li><a asp-page="../../Student/HighSchool/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                url = "../../Student/HighSchool/Seagoing/";
+                                <li><a asp-page="../../Student/HighSchool/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("College"))
+                        {
+                            <li><a asp-page="../../Student/College/Index">@Localizer["TechCollege"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/College/Shoreside/";
+                                <li><a asp-page="../../Student/College/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-page="../../Student/College/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                                if (Model.PreviousPage.Contains("Officer"))
+                                {
+                                    url = "../../Student/College/Seagoing/Officer/";
+                                    <li><a asp-page="../../Student/College/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
+                                }
+                                else
+                                {
+                                    url = "../../Student/College/Seagoing/Crew/";
+                                    <li><a asp-page="../../Student/College/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                                }
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("University"))
+                        {
+                            <li><a asp-page="../../Student/University/Index">@Localizer["University"]</a></li>
+                            if (Model.PreviousPage.Contains("Shoreside"))
+                            {
+                                url = "../../Student/University/Shoreside/";
+                                <li><a asp-page="../../Student/University/Shoreside/Index">@Localizer["Shoreside"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-page="../../Student/University/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                                if (Model.PreviousPage.Contains("Officer"))
+                                {
+                                    url = "../../Student/University/Seagoing/Officer/";
+                                    <li><a asp-page="../../Student/University/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
+                                }
+                                else
+                                {
+                                    url = "../../Student/University/Seagoing/Crew/";
+                                    <li><a asp-page="../../Student/University/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                                }
+                            }
+                        }
+                        @if (Model.PreviousPage.Contains("Administrative"))
+                        {
+                            url += "Administrative";
+                            <li><a asp-page="@url">@Localizer["Administrative"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Deck"))
+                        {
+                            url += "Deck";
+                            <li><a asp-page="@url">@Localizer["Deck"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingDeck"))
+                        {
+                            url += "SeagoingDeck";
+                            <li><a asp-page="@url">@Localizer["Deck"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Engineering"))
+                        {
+                            url += "Engineering";
+                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Logistics"))
+                        {
+                            url += "Logistics";
+                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Cook"))
+                        {
+                            url += "Cook";
+                            <li><a asp-page="@url">@Localizer["Cook"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Electrical"))
+                        {
+                            url += "Electrical";
+                            <li><a asp-page="@url">@Localizer["Electrical"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Electronics"))
+                        {
+                            url += "Electronics";
+                            <li><a asp-page="@url">@Localizer["Electronics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("GeographicalInformation"))
+                        {
+                            url += "GeographicalInformation";
+                            <li><a asp-page="@url">@Localizer["geo"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("ComputerScience"))
+                        {
+                            url += "ComputerScience";
+                            <li><a asp-page="@url">@Localizer["Computer Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Computer"))
+                        {
+                            url += "Computer";
+                            <li><a asp-page="@url">@Localizer["Computer Systems"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Trades"))
+                        {
+                            url += "Trades";
+                            <li><a asp-page="@url">@Localizer["Trades"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("GeneralArts"))
+                        {
+                            url += "GeneralArts";
+                            <li><a asp-page="@url">@Localizer["General Arts"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SocialScience"))
+                        {
+                            url += "SocialScience";
+                            <li><a asp-page="@url">@Localizer["Social Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Sciences"))
+                        {
+                            url += "Sciences";
+                            <li><a asp-page="@url">@Localizer["Sciences"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("Business"))
+                        {
+                            url += "Business";
+                            <li><a asp-page="@url">@Localizer["Business"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingLogistics"))
+                        {
+                            url += "SeagoingLogistics";
+                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingEngineer"))
+                        {
+                            url += "SeagoingEngineer";
+                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
+                        }
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else if (Model.PreviousPageDetails.Contains("Shoreside"))
+                    {
+                        <li><a href="../../Candidate/Index">@Localizer["Candidate"]</a></li>
+                        <li><a href="../../Candidate/Shoreside/AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                        <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else if (Model.PreviousPageDetails.Contains("Seagoing"))
+                    {
+                        <li><a href="../../Candidate/Index">@Localizer["Candidate"]</a></li>
+                        <li><a href="../../Candidate/Seagoing/Index">@Localizer["Seagoing"]</a></li>
+                        if (Model.PreviousPage.Contains("Officer"))
+                        {
+                            <li><a href="../../Candidate/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
+                            if (Model.PreviousPage.Contains("Navigation"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
+                            }
+                            else if (Model.PreviousPage.Contains("Engineering"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            }
+                        }
+                        else if (Model.PreviousPage.Contains("Crew"))
+                        {
+                            <li><a href="../../Candidate/Seagoing/Crew/Index">@Localizer["Crew"]</a></li>
+                            if (Model.PreviousPage.Contains("Deck"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
+                            }
+                            if (Model.PreviousPage.Contains("Engineering"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            }
+                            if (Model.PreviousPage.Contains("Logistics"))
+                            {
+                                <li><a href="../../Candidate/Seagoing/Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
+                            }
+                        }
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
+                        <li><a asp-page="../CurrentPosition" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
+                        <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["Search Type"]</a></li>
+                    }
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Compare"]</a></li>
+                </ol>
+            </div>
+        </nav>
+        <nav role="navigation" class="mrgn-bttm-lg">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+        <div class="col-md-12">
+
+            <h2><b>@Localizer["AllPositions"]</b></h2>
+            <form>
+                <p>
+                    <input type="text" asp-for="Filter" />
+                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+                </p>
+            </form>
+            <form>
+                @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                {
+                    @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                    {
+                        if (jobgroup.Active != 0)
+                        {
+                            var routedatanext = new Dictionary<string, string>
+                             {
                           { "positionid",  Model.PositionId.ToString()},
                           { "level",  Model.Level},
                           { "levelcode", Model.LevelCode },
@@ -54,33 +282,22 @@
                           { "hlid", Model.HLId.ToString() },
                           { "idobj",  jobgroup.Id.ToString()}
                          };
-                        <a asp-page="ObjectiveLevel" asp-all-route-data="routedata">
-                            <div class="col-sm-4 mrgn-bttm-md">
-                                <figure>
-                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                    <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                                </figure>
-                            </div>
-                        </a>
+                            <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext">
+                                <div class="col-sm-4 mrgn-bttm-md">
+                                    <figure>
+                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                    </figure>
+                                </div>
+                            </a>
                         }
                     }
                 }
-        else
-            {
-                <h4>@Localizer["NoResults"]</h4>
-            }
-        </form>
-    </div>
-    <!--    <div class="row">
-            <div class="col-lg-12 mrgn-bttm-md">
-                <nav role="navigation" class="mrgn-bttm-lg">
-                    <h2 class="wb-inv">Document navigation</h2>
-                    <ul class="pager">
-                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-                    </ul>
-                </nav>
-            </div>
+                else
+                {
+                    <h4>@Localizer["NoResults"]</h4>
+                }
+            </form>
         </div>
-    -->
-</section>
+    </section>
 

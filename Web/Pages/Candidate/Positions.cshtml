@@ -1,0 +1,60 @@
+﻿@page
+@model Web.Pages.Candidate.PositionsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["title"];
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
+    var routedataprevious = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "id", Model.Id.ToString() }, { "hlid", Model.HLId.ToString() } };
+}
+    <section role="contentinfo">
+        <div class="mrgn-tp-md">
+            <a target="_blank" title="@Localizer["save"]" href="@Url.Action("SimilarListCandidate","ToPdf", new { id = Model.Id, hlid=Model.HLId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="Classifications" asp-all-route-data="@routedataprevious">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mrgn-tp-sm">
+            <h3 class="text-center">@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</h3>
+            @if ((Model.JobGroup.Id == 1 || Model.JobGroup.Id == 10) && Model.HLId == 1)
+            {
+                <div class="col-sm-12 well text-center ">
+                    <p>@Localizer["Text"]</p>
+                    <p>@Localizer["Details"]<a rel="external" target="_blank" href="@Localizer["Link"]">@Localizer["Link"]</a></p>
+                </div>
+            }
+            <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
+            <table class="table table-hover table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                        <th class="bg-primary" width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var position in Model.Positions.Where(e => e.Active != 0))
+                    {
+                        var routedata = new Dictionary<string, string>
+                                 {
+                    {"previouspage", "Positions" },
+                    {"id", Model.Id.ToString()},
+                    {"hlid", Model.HLId.ToString()},
+                    {"positionid", position.JobTitleId.ToString()},
+                    {"userpath", Model.Userpath }
+                 };
+
+                        <tr>
+                            <td>@position.LevelCode</td>
+                            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                            <td><a asp-page="CurrentPosition" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>

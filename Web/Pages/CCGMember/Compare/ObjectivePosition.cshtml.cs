@@ -42,11 +42,11 @@ namespace Web.Pages.CCGMember.Compare
         public JobGroupPositionDto[] JobGroupLevels { get; set; }
         public JobPositionDto[] JobGroupPositions { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageDetails { get; set; }
+        public string PreviousPageDetails { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
-        public string PreviousPageCompare { get; set; }
+        public string PreviousPageCompare { get; set; } = string.Empty;
         public ObjectivePositionModel(ILogger<ObjectivePositionModel> logger, JobGroupService jobcategoryService)
         {
             _logger = logger;

@@ -1,0 +1,209 @@
+﻿@page
+@model Web.Pages.Candidate.CurrentPositionModel
+@inject IViewLocalizer Localizer
+
+@{
+    var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
+    var RouteParameter = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "id", Model.Id.ToString() }, { "hlid", Model.HLId.ToString() }, { "previouspage", Model.PreviousPage }, { "userpath", Model.Userpath } };
+    var routedata = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "id", Model.Id.ToString()}, { "hlid",  Model.HLId.ToString()}, { "userpath", Model.Userpath } };
+    var routedatacompare = new Dictionary<string, string> { { "positionid", Model.PositionId.ToString() }, { "previouspage", Model.PreviousPage }, { "previouspagedetails", "../../Candidate/CurrentPosition" }, { "id", Model.Id.ToString() }, { "hlid", Model.HLId.ToString() }, {"userpath", Model.Userpath } };
+}
+@if (!(Model.PageSubmit == "true"))
+{
+    <section role="contentinfo">
+        <div class="mrgn-tp-md">
+            <a title="@Localizer["save"]" target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+            <nav role="navigation">
+                <h2 class="wb-inv">Document navigation</h2>
+                <ul class="pager">
+                    @{
+                        var paramdata = new Dictionary<string, string>
+                                                                                                                                   {
+                              {"positionid", Model.PositionId.ToString()}
+                            };
+                    }
+                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage" asp-all-route-data="@routedata">@Localizer["Previous"]</a></li>
+                </ul>
+            </nav>
+        </div>
+        @if (Model.Position.JobTitleEng.Contains("MELDEV") || Model.Position.JobTitleEng.Contains("MCTS"))
+        {
+            <div class="col-md-offset-2 col-md-8" style="background-color:#f2f2f2; padding-bottom:25px;">
+                <div class="text-center">
+                    <h4>@Localizer["PDAPText"]</h4>
+                    @{var url = Model.Position.JobTitleEng.Contains("MELDEV") ? Localizer["MELDEVUrl"] : Localizer["MCTSUrl"]; }
+                    <a href="@url" target="_blank">@url</a>
+                </div>
+            </div>
+        }
+        @if (Model.Position.JobTitleEng.Contains("Commanding"))
+        {
+            <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
+                <div class="text-center">
+                    <h4>@Localizer["Commanding Officer"]</h4>
+                    <p>@Localizer["MAOtext"]</p>
+                </div>
+            </div>
+        }
+        <div class="clearfix"></div>
+        <form asp-all-route-data="RouteParameter" method="post">
+            <div class="col-md-12 mrgn-bttm-md">
+                <div class="col-md-9"><h3>@Localizer["Question1"]</h3></div>
+                <div class="col-md-3 mrgn-tp-sm">
+                    <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="routedatacompare" asp-page="../CCGMember/Compare/AllObjective">@Localizer["Compare"]</a>
+                    <button class="btn btn-primary mrgn-rght-md">@Localizer["Similar"]</button>
+                </div>
+            </div>
+
+            <table class="table table-hover table-bordered mrgn-tp-md" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
+                    {
+                        <tr>
+                            <th style="background-color:#f2f2f2" colspan="2">@Localizer["DESCRIPTION"]</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">@(isEnglish ? Model.Position.JobDescriptionEng : Model.Position.JobDescriptionFre)</td>
+                        </tr>
+                    }
+                    <tr>
+                        <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                    </tr>
+                    @if (Model.JobLocationRegions.Any())
+                    {
+                        @foreach (var c in Model.JobLocationRegions)
+                        {
+                            var key = "d" + c.JobLocationRegionId.ToString();
+                            <tr>
+                                <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">@Localizer["noregions"]</td>
+                        </tr>
+                    }
+                    <tr>
+                        <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                    </tr>
+                    @if (Model.PositionCertificates.Any(e => e.Active != 0))
+                    {
+                        @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">@Localizer["No Certifications"]</td>
+                        </tr>
+                    }
+                    @if (Model.PositionCompetencyRatings.Any())
+                    {
+                        @foreach (var competencytype in Model.PositionCompetencyRatings)
+                        {
+                            if (competencytype.Any(e => e.Active != 0))
+                            {
+                                <tr>
+                                    <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                                    <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
+                                </tr>
+
+                                foreach (var c in competencytype)
+                                {
+                                    var key1 = "a" + c.CompetencyId.ToString();
+                                    var key2 = "b" + c.CompetencyId.ToString();
+                                    <tr>
+                                        <td>
+                                            <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">
+                                                @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                                            </a>
+                                            <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                                <header class="modal-header">
+                                                    <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
+                                                </header>
+                                                <div class="modal-body ">
+                                                    <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
+                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                                </div>
+                                            </section>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#@key2" aria-controls="centred-popup" class="wb-lbx">
+                                                <abbr title="Level @c.RatingValue Summary">
+                                                    @c.RatingValue
+                                                </abbr>
+                                            </a>
+                                            <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                                <header class="modal-header">
+                                                    <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
+                                                </header>
+                                                <div class="modal-body ">
+                                                    <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                                                    <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
+                                                        <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                                </div>
+                                            </section>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </form>
+    </section>
+}
+else
+{
+    var RouteParameter70 = new Dictionary<string, string> { { "id", Model.Id.ToString() }, {"hlid", Model.HLId.ToString() }, { "percentmatch", "&percentMatch=70" }, { "positionid", Model.PositionId.ToString() },
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/CurrentPosition"}, {"userpath", Model.Userpath }  };
+    var RouteParameter80 = new Dictionary<string, string> { { "id", Model.Id.ToString() }, {"hlid", Model.HLId.ToString() }, { "percentmatch", "&percentMatch=80" }, { "positionid", Model.PositionId.ToString() },
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/CurrentPosition"}, {"userpath", Model.Userpath }  };
+    var RouteParameter90 = new Dictionary<string, string> { { "id", Model.Id.ToString() }, {"hlid", Model.HLId.ToString() },{ "percentmatch", "&percentMatch=90" }, { "positionid", Model.PositionId.ToString() },
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/CurrentPosition"}, {"userpath", Model.Userpath }  };
+    var RouteParameter100 = new Dictionary<string, string> { { "id", Model.Id.ToString() }, {"hlid", Model.HLId.ToString() }, { "percentmatch", "&percentMatch=100" }, { "positionid", Model.PositionId.ToString() },
+                            { "previouspage",Model.PreviousPage},{ "previouspagedetails","../../Candidate/CurrentPosition"}, {"userpath", Model.Userpath }  };
+
+    <section>
+
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                @{
+                    var paramdata = new Dictionary<string, string>
+                                                {
+                                  {"positionid", Model.PositionId.ToString()},
+                                  {"previouspage",Model.PreviousPage },
+                                  {"id", Model.Id.ToString() }, 
+                                  {"hlid", Model.HLId.ToString() },
+                                  {"previouspagedetails", "../../Candidate/CurrentPosition" }, 
+                                  {"userpath", Model.Userpath }  };
+
+                }
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentPosition" asp-all-route-data="paramdata">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+
+        <h4>@Localizer["Question2"]</h4>
+        <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
+            <a asp-page="../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter90" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["90%"]&nbsp;&nbsp;&nbsp;</a>
+            <a asp-page="../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter100" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["100%"]&nbsp;&nbsp;&nbsp;</a>
+        </div>
+    </section>
+}
+
+

@@ -120,17 +120,23 @@
   <data name="AllPositions" xml:space="preserve">
     <value>Choisissez parmi les postes ci-dessous</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrer</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Candidats externes postes à côté rivage</value>

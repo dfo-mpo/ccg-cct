@@ -8,6 +8,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="AllPositions">@Localizer["Categories"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Select"]</a></li>
+            </ol>
+        </div>
+    </nav>
     @{var routedataprevious = new Dictionary<string, string>
 {
     { "id",  Model.Id.ToString()},
@@ -47,7 +59,7 @@
                     if (level.Active != 0)
                     {
                         var routedata = new Dictionary<string, string>
-                                 {
+                                     {
                           { "id",  Model.Id},
                           { "level", level.LevelValue},
                           {"levelcode", level.LevelCode },
@@ -74,7 +86,7 @@
                     if (jp.Active != 0)
                     {
                         var routedata = new Dictionary<string, string>
-                                    {
+                                        {
                         { "id",  Model.Id},
                         { "level",  Model.Level},
                         {"levelcode", Model.LevelCode },

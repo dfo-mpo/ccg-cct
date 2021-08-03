@@ -31,7 +31,7 @@ namespace Web.Pages.Candidate.Shoreside
 
             _logger.LogInformation($"Candidate Shoreside Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
             JobGroup = await _jobgroupService.GetJobGroupById(id);
-            Positions = await _jobgroupService.GetJobPositionsByGroupId(id);
+            Positions = await _jobgroupService.GetJobPositionsByHLCategoryGroupId(id, 2);
 
             foreach(var position in Positions)
             {

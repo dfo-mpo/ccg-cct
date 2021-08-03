@@ -123,8 +123,11 @@
   <data name="Back" xml:space="preserve">
     <value>Précédent</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -137,5 +140,8 @@
   </data>
   <data name="Question1" xml:space="preserve">
     <value>Quel domaine aimeriez-vous explorer?</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
 </root>

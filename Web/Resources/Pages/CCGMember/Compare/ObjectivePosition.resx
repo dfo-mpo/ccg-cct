@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Candidate" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
   <data name="Compare" xml:space="preserve">
-    <value>Compare Positions</value>
+    <value>Compare</value>
+  </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Current Position</value>
+  </data>
+  <data name="geo" xml:space="preserve">
+    <value>Geographical Information</value>
   </data>
   <data name="h2Text" xml:space="preserve">
     <value>Select a level and position</value>
@@ -138,7 +147,19 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
   <data name="Select Position" xml:space="preserve">
     <value>Select Position</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>University</value>
   </data>
 </root>

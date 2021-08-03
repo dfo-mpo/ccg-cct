@@ -62,6 +62,23 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty]
         public List<int> AddedCompetencyValues { get; set; } = new List<int>();
         public List<int> SimilarSearchIds { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PercentMatch { get; set; }
+        [BindProperty]
+        public string RouteParameter { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PercentSelected { get; set; } = string.Empty;
+       
+        [BindProperty(SupportsGet = true)]
+        public string PreviousPageDetails { get; set; } = string.Empty;
+        public SimilarSearchDto SimilarJobIds100 { get; set; }
+        public SimilarSearchDto SimilarJobIds90 { get; set; }
+        public SimilarSearchDto SimilarJobIds80 { get; set; }
+        public SimilarSearchDto SimilarJobIds70 { get; set; }
+        public JobPositionDto[] HundredPercentPositions { get; set; } = new JobPositionDto[] { };
+        public JobPositionDto[] NinetyPercentPositions { get; set; } = new JobPositionDto[] { };
+        public JobPositionDto[] EightyPercentPositions { get; set; } = new JobPositionDto[] { };
+        public JobPositionDto[] SeventyPercentPositions { get; set; } = new JobPositionDto[] { };
 
         public SimilarSearchModel(ILogger<SimilarSearchModel> logger, SimilarService similarService, JobPositionService jobcompetencyService)
         {
@@ -71,7 +88,7 @@ namespace Web.Pages.CCGMember.Similar
         }
         public async Task OnGetAsync(int positionid)
         {
-            _logger.LogInformation($"Similar Position Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"CCG Member Similar Search page visited at {DateTime.UtcNow.ToLongTimeString()}");
             SimilarSearchIds = await _similarService.GetAllSimilarSearchIds();
             if (SimilarSearchIds.Contains(positionid))
             {
@@ -169,33 +186,50 @@ namespace Web.Pages.CCGMember.Similar
                 }
             }
                 if (!string.IsNullOrEmpty(PercentMatch)) {
-            if (PercentMatch == "&percentMatch=100")
-            {
-                SimilarJobIds = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
-            }
-            else if (PercentMatch == "&percentMatch=90")
-            {
-                SimilarJobIds = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
-            }
-            else if (PercentMatch == "&percentMatch=80")
-            {
-                SimilarJobIds = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
-            }
-            else
-            {
-                SimilarJobIds = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
-            }
+                    Position = await _similarService.GetJobPositionById(PositionId);
+                    if (PercentMatch == "&percentMatch=100")
+                    {
+                        SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds90 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                        SimilarJobIds80 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                        SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                    }
+                    else if (PercentMatch == "&percentMatch=90")
+                    {
+                        SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds80 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                        SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                    }
+                    else if (PercentMatch == "&percentMatch=80")
+                    {
+                        SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                    }
+                    else
+                    {
+                        SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                        SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
 
-                      RouteParameter = String.Format($"jobPositionId={positionid}&{SimilarJobIds.SimilarPositionIds}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
-                      Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);
+                    }
 
-            }
+                    RouteParameter = String.Format($"jobPositionId={positionid}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
+                    HundredPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds100?.SimilarPositionIds}");
+                    NinetyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds90?.SimilarPositionIds}");
+                    EightyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds80?.SimilarPositionIds}");
+                    SeventyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds70?.SimilarPositionIds}");
+
+                }
                 else
                 {
-                    var SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
-                    var SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
-                    var SimilarJobIds80 = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
-                    var SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
+                    SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                    SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                    SimilarJobIds80 = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
+                    SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
                 if(SimilarJobIds100.SimilarPositionIds == "" && SimilarJobIds90.SimilarPositionIds == "" && SimilarJobIds80.SimilarPositionIds == "" && SimilarJobIds70.SimilarPositionIds == "")
                     {
                         PageSubmit = "Error";
@@ -356,19 +390,10 @@ namespace Web.Pages.CCGMember.Similar
             }
 
         }
-        [BindProperty(SupportsGet = true)]
-        public string PercentMatch { get; set; }
-        [BindProperty]
-        public string RouteParameter { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string PercentSelected { get; set; } = string.Empty;
-        public SimilarSearchDto SimilarJobIds { get; set; }
-        public JobPositionDto[] Positions { get; set; } = new JobPositionDto[] { };
-        [BindProperty(SupportsGet = true)]
-        public string PreviousPageDetails { get; set; } = string.Empty;
+
         public async Task OnPostSubmit(int positionid)
         {
-            //_logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"CCG Member Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
             SameLevels = string.Empty;
             HigherLevels = string.Empty;
             SameOrHigherLevels = string.Empty;
@@ -407,22 +432,39 @@ namespace Web.Pages.CCGMember.Similar
             }
             if (PercentMatch == "&percentMatch=100")
             {
-                SimilarJobIds = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds90 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                SimilarJobIds80 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
             }
             else if (PercentMatch == "&percentMatch=90")
             {
-                SimilarJobIds = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds80 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
+                SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
             }
             else if (PercentMatch == "&percentMatch=80")
             {
-                SimilarJobIds = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds = string.Empty };
             }
             else
             {
-                SimilarJobIds = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
+
             }
-            RouteParameter = String.Format($"jobPositionId={positionid}&{SimilarJobIds.SimilarPositionIds}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
-            Positions = await _similarService.GetAllSimilarJobPositionsByPositionId(RouteParameter);
+
+            RouteParameter = String.Format($"jobPositionId={positionid}{RequiredCompetencies}{SameLevels}{HigherLevels}{SameOrHigherLevels}{AddedCompetencies}{Certificates}{PercentMatch}");
+            HundredPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds100?.SimilarPositionIds}");
+            NinetyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds90?.SimilarPositionIds}");
+            EightyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds80?.SimilarPositionIds}");
+            SeventyPercentPositions = await _similarService.GetAllSimilarJobPositionsByPositionId($"{RouteParameter}&{SimilarJobIds70?.SimilarPositionIds}");
         }
     }
 

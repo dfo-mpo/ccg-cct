@@ -55,7 +55,7 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            var Competency = await _context.Competencies.FindAsync(id);
+            Competency = await _jobCompetencyService.GetJobCompetencyById(id);
 
             if (Competency == null)
             {
@@ -66,14 +66,14 @@ namespace Admin.Pages.Competencies
             {
                 _jobCompetencyService.DeleteJobCompetency(Competency);
                 Thread.Sleep(5000);
-                return RedirectToPage("./Index");
+                return RedirectToPage("./List", new { typeId = Competency.TypeId });
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, ErrorMessage);
 
                 return RedirectToAction("./Delete",
-                                     new { id, saveChangesError = true });
+                                           new { id, saveChangesError = true });
             }
         }
     }

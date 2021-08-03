@@ -5,49 +5,48 @@
     ViewData["Title"] = "Student";
 }
 
-<section role="contentinfo">
-    <nav role="navigation">
-        <h2 class="wb-inv">Document navigation</h2>
-        <ul class="pager">
-            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-        </ul>
-    </nav>
-    <h2>@Localizer["Q1"]</h2>
-
-    <div class="col-sm-4">
-        <figure>
-            <a class="nav-link" asp-page="HighSchool/Index">
-                <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-            </a>
-            <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="HighSchool/AllPositions">@Localizer["HighSchool"]</a></h4></figcaption>
-        </figure>
-    </div>
-    <div class="col-sm-4">
-        <figure>
-            <a class="nav-link" asp-page="College/Index">
-                <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-            </a>
-            <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="College/Index">@Localizer["TechCollege"]</a></h4></figcaption>
-        </figure>
-    </div>
-    <div class="col-sm-4">
-        <figure>
-            <a class="nav-link" asp-page="University/Index">
-                <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-            </a>
-            <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="University/AllPositions">@Localizer["University"]</a></h4></figcaption>
-        </figure>
-    </div>
-
-    <!--    <div style="clear:both;">
-            <div class="col-lg-12">
-                <nav role="navigation">
-                    <h2 class="wb-inv">Document navigation</h2>
-                    <ul class="pager">
-                        <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-                    </ul>
-                </nav>
+    <section role="contentinfo">
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a href="../../Index">@Localizer["Home"]</a></li>
+                    <li><a href="../Index">@Localizer["Student"]</a></li>
+                </ol>
             </div>
+        </nav>
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+        <h2>@Localizer["Q1"]</h2>
+
+        <div class="col-sm-4">
+            <figure>
+                <a class="nav-link" asp-page="HighSchool/Index">
+                    <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="HighSchool/AllPositions">@Localizer["HighSchool"]</a></h4></figcaption>
+            </figure>
         </div>
-    -->
-</section>
+        <div class="col-sm-4">
+            <figure>
+                <a class="nav-link" asp-page="College/Index">
+                    <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="College/Index">@Localizer["TechCollege"]</a></h4></figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-4">
+            <figure>
+                <a class="nav-link" asp-page="University/Index">
+                    <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
+                </a>
+                <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="University/AllPositions">@Localizer["University"]</a></h4></figcaption>
+            </figure>
+        </div>
+    </section>

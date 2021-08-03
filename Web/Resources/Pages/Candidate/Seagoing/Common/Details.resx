@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Candidate" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDING OFFICER</value>
+  </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Current Position</value>
+  </data>
+  <data name="geo" xml:space="preserve">
+    <value>Geographical Information</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
@@ -140,5 +149,17 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Save PDF</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Shore side Positions</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>University</value>
   </data>
 </root>

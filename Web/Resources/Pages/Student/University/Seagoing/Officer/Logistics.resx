@@ -126,8 +126,11 @@
   <data name="noseagoing" xml:space="preserve">
     <value>No seagoing positions available</value>
   </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officer</value>
+  </data>
   <data name="position" xml:space="preserve">
-    <value>POSITIONS</value>
+    <value>POSITION</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
@@ -140,6 +143,9 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Save this page</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>University - Officer - Logistics Positions</value>

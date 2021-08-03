@@ -117,25 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Compare" xml:space="preserve">
-    <value>Compare Positions</value>
+  <data name="Details" xml:space="preserve">
+    <value>Such details may be found in Canada’s Marine Personnel Regulations:</value>
   </data>
-  <data name="h2Text" xml:space="preserve">
-    <value>Select a level and position</value>
+  <data name="Link" xml:space="preserve">
+    <value>https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf</value>
   </data>
-  <data name="Level" xml:space="preserve">
-    <value>Level</value>
+  <data name="save" xml:space="preserve">
+    <value>Save or print this document</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Next</value>
+  <data name="Text" xml:space="preserve">
+    <value>Seagoing navigation and engineering officers have additional requirements associated with a matrix of certification (i.e. completed training in a recognized institution), sea time (i.e. time logged at sea), and ship class (i.e. vessel size, power, type).</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Position</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="Select Position" xml:space="preserve">
-    <value>Select Position</value>
+  <data name="title" xml:space="preserve">
+    <value>Similar Position List</value>
   </data>
 </root>

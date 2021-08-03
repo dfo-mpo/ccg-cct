@@ -132,6 +132,12 @@
   <data name="engineeringphoto" xml:space="preserve">
     <value>Photo de trois membres de la Garde côtière canadienne debout dans la salle du génie</value>
   </data>
+  <data name="High School" xml:space="preserve">
+    <value>École secondaire</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
   </data>
@@ -149,6 +155,15 @@
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Choisissez un domaine qui vous intéresse</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>École secondaire - Postes en mer</value>

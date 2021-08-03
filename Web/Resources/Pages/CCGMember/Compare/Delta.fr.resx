@@ -144,6 +144,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
+  <data name="Compare Positions" xml:space="preserve">
+    <value>Comparer les postes</value>
+  </data>
   <data name="Computer Sciences" xml:space="preserve">
     <value>Sciences informatiques</value>
   </data>
@@ -157,13 +160,16 @@
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Position actuelle</value>
+    <value>Poste actuelle</value>
   </data>
   <data name="Current Position Level" xml:space="preserve">
     <value>Niveau de poste actuel</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>DESCRIPTIF</value>
   </data>
   <data name="DIFFERING CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS DIFFÉRENTES</value>
@@ -282,6 +288,9 @@
   <data name="Similar Positions" xml:space="preserve">
     <value>Postes similaires</value>
   </data>
+  <data name="Similar Search" xml:space="preserve">
+    <value>Recherche similaire</value>
+  </data>
   <data name="Social Sciences" xml:space="preserve">
     <value>Science sociale</value>
   </data>
@@ -290,6 +299,9 @@
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

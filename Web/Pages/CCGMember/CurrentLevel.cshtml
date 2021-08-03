@@ -6,7 +6,18 @@
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+            <li><a asp-page="AllPositions">@Localizer["Categories"]</a></li>
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Select"]</a></li>
+        </ol>
+    </div>
+</nav>
 <section role="contentinfo">
     <nav role="navigation" class="mrgn-bttm-lg">
         <h2 class="wb-inv">Document navigation</h2>
@@ -30,7 +41,7 @@
                     if (level.Active != 0)
                     {
                         var routedata = new Dictionary<string, string>
-                                {
+                                    {
                               { "id",  Model.Id.ToString()},
                               { "level", level.LevelValue},
                               {"levelcode", level.LevelCode },

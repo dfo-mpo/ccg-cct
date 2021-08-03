@@ -5,7 +5,22 @@
     ViewData["Title"] = Localizer["Computer"];
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
 }
-<section role="contentinfo">
+<section role="contentinfo">    
+      <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a href="../../../Index">@Localizer["Home"]</a></li>
+                    <li><a href="../../Index">@Localizer["Student"]</a></li>
+                    <li><a href="../Index">@Localizer["TechCollege"]</a></li>
+                    <li><a href="Index">@Localizer["Shoreside"]</a></li>
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Computer"]</a></li>
+                </ol>
+            </div>
+        </nav>
+
     <div class="mrgn-tp-md">
         <a title="@Localizer["save"]" target="_blank" href="@Url.Action("StudentShoresidePositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
         <nav role="navigation">
@@ -54,17 +69,5 @@
                 }
             </tbody>
         </table>
-
-        <!--    <div style="clear:both;">
-                <div class="col-lg-12">
-                    <nav role="navigation">
-                        <h2 class="wb-inv">Document navigation</h2>
-                        <ul class="pager">
-                            <li class="previous"><a asp-page="../Shoreside/Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        -->
     </div>
 </section>

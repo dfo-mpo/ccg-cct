@@ -5,6 +5,17 @@
 }
 
     <section role="contentinfo">
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>
+                @Localizer["You are here:"]
+            </h2>
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a href="../Index">@Localizer["Home"]</a></li>
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Candidate"]</a></li>
+                </ol>
+            </div>
+        </nav>
         <nav role="navigation">
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
@@ -32,31 +43,4 @@
             </div>
         </div>
 
-        <!-- <div style="clear:both;">
-                <div class="col-sm-6">
-            <figure>
-                <a class="nav-link" asp-page="Seagoing" asp-route-hlid="2">
-                    <img src="~/img/Candidate/shoreside.jpg" alt="@Localizer["PhotoShoreside"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                </a>
-                <figcaption><h4 class="text-center"><a style="text-decoration:none">@Localizer["Shoreside"]</a></h4></figcaption>
-            </figure>
-        </div>
-        <div class="col-sm-6">
-            <figure>
-                <a class="nav-link" asp-page="Shoreside" asp-route-hlid="1">
-                    <img src="~/img/Candidate/Seagoing.jpg" alt="@Localizer["PhotoSeagoing"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                </a>
-                <figcaption><h4 class="text-center"><a style="text-decoration:none">@Localizer["Seagoing"]</a></h4></figcaption>
-            </figure>
-        </div>
-          <div class="col-lg-12">
-              <nav role="navigation">
-                  <h2 class="wb-inv">Document navigation</h2>
-                  <ul class="pager">
-                      <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
-    -->
     </section>

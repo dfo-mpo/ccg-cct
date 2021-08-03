@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="level" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
@@ -127,7 +133,7 @@
     <value>Aucune position côté rivage disponible</value>
   </data>
   <data name="position" xml:space="preserve">
-    <value>POSTES</value>
+    <value>POSTE</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -141,7 +147,16 @@
   <data name="save" xml:space="preserve">
     <value>Sauvegarder cette page</value>
   </data>
+  <data name="Shoreside" xml:space="preserve">
+    <value>Positions côté rivage</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Université - Côté rivage - Affaires</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

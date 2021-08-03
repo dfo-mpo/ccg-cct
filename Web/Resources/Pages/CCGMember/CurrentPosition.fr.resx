@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="h2Text" xml:space="preserve">
     <value>Sélectionnez votre niveau et votre position actuels</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Niveau</value>
@@ -130,10 +136,13 @@
     <value>Photo de diverses carrières au sein de la Garde côtière canadienne</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Position</value>
+    <value>Poste</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
   <data name="Select Level" xml:space="preserve">
     <value>Sélectionnez un niveau</value>

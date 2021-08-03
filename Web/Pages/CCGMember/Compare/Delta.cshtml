@@ -63,17 +63,13 @@
                         {"previouspage", Model.PreviousPage}
 
                     };
-    var url = "../..";
+    var url = string.Empty;
 }
     <section role="contentinfo">
         <nav role="navigation" id="wb-bc" property="breadcrumb">
-
             <h2>
-
                 @Localizer["You are here:"]
-
             </h2>
-
             <div class="row">
                 <ol class="breadcrumb">
                     <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
@@ -108,7 +104,7 @@
                                 if (Model.PreviousPage.Contains("Officer"))
                                 {
                                     url = "../../Student/College/Seagoing/Officer/";
-                                    <li><a asp-page="../../Student/College/Shoreside/Officer/Index">@Localizer["Officer"]</a></li>
+                                    <li><a asp-page="../../Student/College/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
                                 }
                                 else
                                 {
@@ -132,7 +128,7 @@
                                 if (Model.PreviousPage.Contains("Officer"))
                                 {
                                     url = "../../Student/University/Seagoing/Officer/";
-                                    <li><a asp-page="../../Student/University/Shoreside/Officer/Index">@Localizer["Officer"]</a></li>
+                                    <li><a asp-page="../../Student/University/Seagoing/Officer/Index">@Localizer["Officer"]</a></li>
                                 }
                                 else
                                 {
@@ -273,6 +269,7 @@
                             }
                         }
                         <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+
                     }
                     else
                     {
@@ -284,20 +281,23 @@
                     @if (Model.PreviousPageDelta == "ObjectivePosition")
                     {
                         <li><a asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Compare"]</a></li>
-                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
                     }
                     else
                     {
                         if (Model.PreviousPageDetails.Contains("Candidate"))
                         {
+                            <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedatasimilar">@Localizer["Similar Search"]</a></li>
                             <li><a asp-page="../Similar/SimilarList" asp-all-route-data="routedata">@Localizer["Similar Positions"]</a></li>
                         }
                         else
                         {
+                            <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedatasimilar">@Localizer["Similar Search"]</a></li>
                             <li><a asp-page="../Similar/SimilarSearch" asp-all-route-data="routedatasimilar">@Localizer["Similar Positions"]</a></li>
                         }
                         <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
                     }
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Compare Positions"]</a></li>
                 </ol>
             </div>
         </nav>

@@ -135,6 +135,9 @@
   <data name="engineering" xml:space="preserve">
     <value>Ingénierie</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="language" xml:space="preserve">
     <value>(y compris les arts du langage)</value>
   </data>
@@ -176,5 +179,11 @@
   </data>
   <data name="social" xml:space="preserve">
     <value>Science sociale</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

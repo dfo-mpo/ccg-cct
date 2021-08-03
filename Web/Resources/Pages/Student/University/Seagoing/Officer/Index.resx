@@ -126,6 +126,9 @@
   <data name="Logistics" xml:space="preserve">
     <value>Logistics</value>
   </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officer</value>
+  </data>
   <data name="PhotoDeck" xml:space="preserve">
     <value>Photo of a Canadian Coast Guard navigation officer</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Q1" xml:space="preserve">
     <value>Please select your preferred field of employment</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>University - Seagoing - Officer</value>

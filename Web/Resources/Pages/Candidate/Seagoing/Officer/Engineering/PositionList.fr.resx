@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Candidate" xml:space="preserve">
+    <value>Candidat externe</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Ingénierie</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
+  </data>
+  <data name="Officer" xml:space="preserve">
+    <value>Officier</value>
   </data>
   <data name="POSITION" xml:space="preserve">
     <value>POSTE</value>
@@ -140,6 +152,9 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>Enregistrer ou imprimer ce document</value>
+  </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
   </data>
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSITIONS SIMILAIRES</value>

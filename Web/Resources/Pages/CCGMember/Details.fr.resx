@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
@@ -129,6 +132,9 @@
   <data name="Commanding Officer1" xml:space="preserve">
     <value>COMMANDANT</value>
   </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Poste actuelle</value>
+  </data>
   <data name="Current Position Details" xml:space="preserve">
     <value>Détails de la position actuelle</value>
   </data>
@@ -136,7 +142,7 @@
     <value>DESCRIPTIF</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Page d'accueil</value>
+    <value>Accueil</value>
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
@@ -182,6 +188,9 @@
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer au format PDF</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionnez</value>
   </data>
   <data name="USERACTION" xml:space="preserve">
     <value>Cliquez sur Suivant pour comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous.</value>

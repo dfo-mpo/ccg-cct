@@ -141,4 +141,7 @@
   <data name="Student" xml:space="preserve">
     <value>Student</value>
   </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
 </root>

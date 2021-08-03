@@ -144,6 +144,9 @@
   <data name="Q1" xml:space="preserve">
     <value>Choose an area that you are interested in</value>
   </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>College - Seagoing Positions</value>
   </data>

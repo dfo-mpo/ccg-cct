@@ -141,6 +141,12 @@
   <data name="Q1" xml:space="preserve">
     <value>Please select your preferred field of employment</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Seagoing Positions</value>
+  </data>
+  <data name="TechCollege" xml:space="preserve">
+    <value>Technical College</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>College - Seagoing - Officer</value>
   </data>

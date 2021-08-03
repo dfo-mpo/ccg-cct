@@ -117,13 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllPositions" xml:space="preserve">
-    <value>Choose a position to compare</value>
+  <data name="CERTIFICATIONS" xml:space="preserve">
+    <value>ATTESTATIONS</value>
   </data>
-  <data name="Fllter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
   </data>
-  <data name="NoResults" xml:space="preserve">
-    <value>No matching results found</value>
+  <data name="Commanding Officer" xml:space="preserve">
+    <value>COMMANDANT</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Comparer</value>
+  </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>DESCRIPTIF</value>
+  </data>
+  <data name="DIFFERING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES DIFFÉRENTES</value>
+  </data>
+  <data name="LEVEL" xml:space="preserve">
+    <value>NIVEAU</value>
+  </data>
+  <data name="MAOtext" xml:space="preserve">
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
+  </data>
+  <data name="MATCHING COMPETENCIES" xml:space="preserve">
+    <value>COMPÉTENCES ASSOCIÉES</value>
+  </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="noregions" xml:space="preserve">
+    <value>Aucune région disponible</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
+  </data>
+  <data name="POSITION DETAILS" xml:space="preserve">
+    <value>DÉTAILS DU POSTE</value>
+  </data>
+  <data name="Position Level" xml:space="preserve">
+    <value>Niveau du poste</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="print" xml:space="preserve">
+    <value>Imprimer au format PDF</value>
+  </data>
+  <data name="Question1" xml:space="preserve">
+    <value>Souhaitez-vous comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous?</value>
+  </data>
+  <data name="Question2" xml:space="preserve">
+    <value>En fonction des compétences de votre profil actuel, quel pourcentage de correspondance recherchez-vous?</value>
+  </data>
+  <data name="REGIONS" xml:space="preserve">
+    <value>RÉGIONS</value>
+  </data>
+  <data name="SAME CERTIFICATION" xml:space="preserve">
+    <value>MÊME ATTESTATION</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer au format PDF</value>
+  </data>
+  <data name="SELECT" xml:space="preserve">
+    <value>SÉLECTIONNER</value>
+  </data>
+  <data name="Similar" xml:space="preserve">
+    <value>Similaire</value>
   </data>
 </root>

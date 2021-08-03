@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Crew" xml:space="preserve">
+    <value>Équipage</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="level" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistique</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
@@ -127,7 +136,7 @@
     <value>Aucune position en mer disponible</value>
   </data>
   <data name="position" xml:space="preserve">
-    <value>POSTES</value>
+    <value>POSTE</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -141,7 +150,16 @@
   <data name="save" xml:space="preserve">
     <value>Sauvegarder cette page</value>
   </data>
+  <data name="Seagoing" xml:space="preserve">
+    <value>Positions en mer</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Université - Équipage - Postes logistiques</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Université</value>
   </data>
 </root>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Candidate" xml:space="preserve">
+    <value>External Candidate</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="CURRENT LEVEL" xml:space="preserve">
     <value>CURRENT LEVEL</value>
+  </data>
+  <data name="Current Position" xml:space="preserve">
+    <value>Current Position</value>
   </data>
   <data name="Current Position Level" xml:space="preserve">
     <value>Current Position Level</value>
