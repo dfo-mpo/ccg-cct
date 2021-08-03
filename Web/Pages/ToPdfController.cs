@@ -19,9 +19,9 @@ namespace Web.Pages
         {
             ViewData["Id"] = id;
             ViewData["SimilarJobIds100"] = similarjobids100;
-            ViewData["SimilarJobIds90"] = similarjobids90;
-            ViewData["SimilarJobIds80"] = similarjobids80;
-            ViewData["SimilarJobIds70"] = similarjobids70;
+            ViewData["SimilarJobIds90"] = similarjobids90 ?? "";
+            ViewData["SimilarJobIds80"] = similarjobids80 ?? "";
+            ViewData["SimilarJobIds70"] = similarjobids70 ?? "";
             ViewData["Language"] = language;
             ViewData["PositionId"] = positionid;
             return new ViewAsPdf("GetSimilarPositionsAsPdf", ViewData);
