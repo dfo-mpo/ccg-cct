@@ -45,6 +45,7 @@ namespace Business.Queries.JobPositions
                     RatingValue = e.CompetencyRatingLevel.Value,
                     CompetencyLevelReqDescEng = e.CompetencyLevelRequirement.DescEng,
                     CompetencyLevelReqDescFre = e.CompetencyLevelRequirement.DescFre,
+                    CompetencyLevelRequirementId = e.CompetencyLevelRequirement.Id,
                     Active = e.Competency.Active
                 })
                 .ToListAsync(cancellationToken);
