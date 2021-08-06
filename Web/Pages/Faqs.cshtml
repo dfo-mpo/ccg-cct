@@ -4,7 +4,17 @@
 @{
     ViewData["Title"] = Localizer["FAQs"];
 }
-
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a asp-page="Index">@Localizer["Home"]</a></li>
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["FAQs"]</a></li>
+        </ol>
+    </div>
+</nav>
 <h2 class="mrgn-bttm-lg">@Localizer["Title"]</h2>
 <ul class="list-unstyled mrgn-tp-md">
     <li>
