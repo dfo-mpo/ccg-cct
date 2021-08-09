@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
@@ -112,9 +110,9 @@ namespace Admin.Pages.Positions
             {
                 foreach (var certificate in PositionCertificates)
                 {
-                    AddedCertificateIds += certificate.Id + "&" + certificate.CertificateDescId + "-";
                     if (certificate != null)
                     {
+                        AddedCertificateIds += certificate.Id + "&" + certificate.CertificateDescId + "-";
                         AddedCertificates.Add(certificate);
                     }
                 }
@@ -124,11 +122,10 @@ namespace Admin.Pages.Positions
             {
                 foreach (var competency in competenciesType1)
                 {
-                    AddedKnowledgeCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyLevelRequirementId + "-";
-                    var competencyDto = await _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(competency.CompetencyId, competency.CompetencyLevelRequirementId);
-                    if (competencyDto != null)
+                    if (competency != null)
                     {
-                        AddedKnowledgeCompetencies.Add(competencyDto);
+                        AddedKnowledgeCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                        AddedKnowledgeCompetencies.Add(competency);
                     }
                 }
             }
@@ -138,39 +135,34 @@ namespace Admin.Pages.Positions
             {
                 foreach (var competency in competenciesType2)
                 {
-                    AddedTechnicalCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyLevelRequirementId + "-";
-                    var competencyDto = await _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(competency.CompetencyId, competency.CompetencyLevelRequirementId);
-                    if (competencyDto != null)
+                    if (competency != null)
                     {
-                        AddedTechnicalCompetencies.Add(competencyDto);
+                        AddedTechnicalCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                        AddedTechnicalCompetencies.Add(competency);
                     }
                 }
             }
-
             var competenciesType3 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 3);
             if (competenciesType3 != null)
             {
                 foreach (var competency in competenciesType3)
                 {
-                    AddedBehaviouralCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyLevelRequirementId + "-";
-                    var competencyDto = await _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(competency.CompetencyId, competency.CompetencyLevelRequirementId);
-                    if (competencyDto != null)
+                    if (competency != null)
                     {
-                        AddedBehaviouralCompetencies.Add(competencyDto);
+                        AddedBehaviouralCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                        AddedBehaviouralCompetencies.Add(competency);
                     }
                 }
             }
-
             var competenciesType4 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 4);
             if (competenciesType4 != null)
             {
                 foreach (var competency in competenciesType4)
                 {
-                    AddedExecutiveCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyLevelRequirementId + "-";
-                    var competencyDto = await _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(competency.CompetencyId, competency.CompetencyLevelRequirementId);
-                    if (competencyDto != null)
+                    if (competency != null)
                     {
-                        AddedExecutiveCompetencies.Add(competencyDto);
+                        AddedExecutiveCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                        AddedExecutiveCompetencies.Add(competency);
                     }
                 }
             }
