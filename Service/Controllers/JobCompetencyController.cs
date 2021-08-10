@@ -87,21 +87,21 @@ namespace Service.Controllers
         [HttpGet, Route("addjobcompetency")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> AddJobCompetency(
-                [FromQuery] int typeId,
-                [FromQuery] string nameEng,
-                [FromQuery] string nameFre,
-                [FromQuery] string  descEng,
-                [FromQuery] string  descFre,
-                [FromQuery] string level1DescEng,
-                [FromQuery] string level1DescFre,
-                [FromQuery] string level2DescEng,
-                [FromQuery] string level2DescFre,
-                [FromQuery] string level3DescEng,
-                [FromQuery] string level3DescFre,
-                [FromQuery] string level4DescEng,
-                [FromQuery] string level4DescFre,
-                [FromQuery] string level5DescEng,
-                [FromQuery] string level5DescFre)
+        [FromQuery] int typeId,
+        [FromQuery] string nameEng,
+        [FromQuery] string nameFre,
+        [FromQuery] string  descEng,
+        [FromQuery] string  descFre,
+        [FromQuery] string level1DescEng,
+        [FromQuery] string level1DescFre,
+        [FromQuery] string level2DescEng,
+        [FromQuery] string level2DescFre,
+        [FromQuery] string level3DescEng,
+        [FromQuery] string level3DescFre,
+        [FromQuery] string level4DescEng,
+        [FromQuery] string level4DescFre,
+        [FromQuery] string level5DescEng,
+        [FromQuery] string level5DescFre)
         {
             var query = new AddJobCompetencyCommand
             {

@@ -45,6 +45,7 @@ namespace Business.Queries.JobPositions
                     RatingNameFre = e.CompetencyRatingLevel.NameFre,
                     RatingDescEng = e.CompetencyRatingLevel.DescEng,
                     RatingDescFre = e.CompetencyRatingLevel.DescFre,
+                    CompetencyLevelRequirementId = e.CompetencyLevelRequirementId,
                     CompetencyLevelReqDescEng = e.CompetencyLevelRequirement.DescEng,
                     CompetencyLevelReqDescFre = e.CompetencyLevelRequirement.DescFre,
                     Active = e.Competency.Active

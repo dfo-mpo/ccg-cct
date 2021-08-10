@@ -58,7 +58,7 @@ namespace Service.Controllers
         }
 
         [HttpGet, Route("{Id}/JobLocationRegions")]
-        [ProducesResponseType(typeof(JobPositionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<JobLocationRegionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetJobLocationRegionsById([FromRoute] GetJobPositionLocationRegionsByJobPositionIdQuery query)
         {
             var results =
@@ -112,10 +112,10 @@ namespace Service.Controllers
         [HttpGet, Route("addjobpositiongetid")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> AddJobPositionGetId(
-        [FromQuery] string titleEng,
-        [FromQuery] string titleFre,
-        [FromQuery] string descriptionEng,
-        [FromQuery] string descriptionFre)
+            [FromQuery] string titleEng,
+            [FromQuery] string titleFre,
+            [FromQuery] string descriptionEng,
+            [FromQuery] string descriptionFre)
         {
             var query = new PostJobPositionCommandGetJobPositionIdQuery
             {
@@ -129,6 +129,7 @@ namespace Service.Controllers
             await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
+
         [HttpGet, Route("postjobpositionreturnid/{TitleEng}/{TitleFre}/{DescriptionEng}/{DescriptionFre}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<IActionResult> PostJobPositionGetId([FromRoute] PostJobPositionCommandGetJobPositionIdQuery query)
@@ -187,6 +188,15 @@ namespace Service.Controllers
         public async Task DeleteJobPosition([FromBody] DeleteJobPositionByIdCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+        }
+
+        [HttpGet, Route("{Id}/hlcategoryId")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetJobPositionHLCategoryIdByJobPositionId([FromRoute] GetJobPositionHLCategoryIdByJobPositionIdQuery query)
+        {
+            var results =
+                await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
     }
 }
