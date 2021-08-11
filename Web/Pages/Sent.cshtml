@@ -1,0 +1,25 @@
+﻿@page
+@model Web.Pages.SentModel
+@inject IViewLocalizer Localizer
+@{
+}
+
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a asp-page="Index">@Localizer["Home"]</a></li>
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Contact"]</a></li>
+        </ol>
+    </div>
+</nav>
+
+<section role="contentinfo">
+    <div class="container">
+        <div class="row mrgn-bttm-lg">
+            <h3>@Localizer["H3"]</h3>
+        </div>
+    </div>
+</section>

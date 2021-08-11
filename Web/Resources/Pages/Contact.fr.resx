@@ -117,16 +117,106 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="caption" xml:space="preserve">
-    <value>GCC GenPersonnel</value>
+  <data name="Cert-if no" xml:space="preserve">
+    <value>Si non, qu'est-ce qui doit être corrigé?</value>
   </data>
-  <data name="Inquiry" xml:space="preserve">
-    <value>Demandes de renseignements généraux</value>
+  <data name="CertCorrect" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les certifications étaient-elles correctes? (c’est-à-dire les bonnes certifications étaient-elles énumérées dans l’ensemble pour un poste).</value>
+  </data>
+  <data name="Comp definitions elaborate" xml:space="preserve">
+    <value>Si vous avez énuméré des compétences qui comportent des définitions qui, selon vous, devraient être modifiées, veuillez préciser le changement de libellé que vous recommandez et expliquer pourquoi.</value>
+  </data>
+  <data name="Comp definitions rating" xml:space="preserve">
+    <value>Dans votre examen d’un profil de compétences d’un poste donné dans l’OCC, les définitions des compétences énumérées ont-elles été notées correctement? (c’est-à-dire avec les notes de 1 à 5).</value>
+  </data>
+  <data name="Comp rating if no" xml:space="preserve">
+    <value>Si non, lesquelles et pourquoi?</value>
+  </data>
+  <data name="Comp-if no" xml:space="preserve">
+    <value>Si non :</value>
+  </data>
+  <data name="CompDefinitions" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les définitions de compétences énumérées étaient-elles rédigées correctement? (c’est-à-dire les définitions écrites des connaissances et des capacités techniques et comportementales dans l’ensemble et les descriptions écrites des niveaux).</value>
+  </data>
+  <data name="CompListing" xml:space="preserve">
+    <value>Dans votre examen du profil de compétences d’un poste donné dans l’OCC, les compétences énumérées étaient-elles appropriées? (c’est-à-dire les bonnes connaissances et les bonnes  capacités techniques et comportementales étaient-elles énumérées dans l’ensemble pour un poste).</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contactez-nous</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Veuillez fournir des renseignements qui pourraient servir à vous joindre</value>
+  </data>
+  <data name="Definitions-if no" xml:space="preserve">
+    <value>Si non, lesquelles?</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Adresse de courriel</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="one-added" xml:space="preserve">
+    <value>Une ou plusieurs doivent être ajoutées</value>
+  </data>
+  <data name="one-removed" xml:space="preserve">
+    <value>Une ou plusieurs doivent être supprimées</value>
   </data>
   <data name="para1" xml:space="preserve">
-    <value>Si vous avez une question ou avez des problèmes, ou avez des idées pour rendre notre site encore meilleur, nous voulons vous entendre. Votre contribution est importante pour nous.</value>
+    <value>Veuillez noter que ces compétences et évaluations sont le résultat de nombreuses recherches et consultations. Les demandes de modification peuvent entraîner des conséquences négatives ailleurs dans l'outil, car de nombreuses compétences sont nécessairement liées. Nous agirons sur des domaines de recommandations similaires plutôt que sur des actions ponctuelles. Dans vos commentaires, veuillez être très précis, en faisant référence à des compétences ou à des postes spécifiques. Veuillez également fournir vos coordonnées si nous avons besoin d'éclaircissements. Notez que toutes les modifications demandées ne seront pas apportées pour les raisons indiquées ci-dessus ; et nous n'enverrons normalement pas de messages de réponse indiquant si les demandes seront traitées ou non.</value>
   </data>
   <data name="para2" xml:space="preserve">
-    <value>Envoyez vos commentaires par courriel à l'adresse suivante : &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;.</value>
+    <value>Si vous avez des problèmes avec le formulaire suivant, vous pouvez envoyez vos commentaires à &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;. S'il vous plaît lire l'&lt;a href="#pics-ecrp"&gt;énoncé de collecte de renseignements personnels&lt;/a&gt; avant de compléter ce formulaire.</value>
+  </data>
+  <data name="PICS" xml:space="preserve">
+    <value>Énoncé de collecte de renseignements personnels</value>
+  </data>
+  <data name="PICS-para" xml:space="preserve">
+    <value>Tous les renseignements personnels créés, recueillis ou conservés par le ministère sont protégés par la &lt;em&gt;&lt;a href="http://laws-lois.justice.gc.ca/fra/lois/P-21/index.html" rel="external"&gt;Loi sur la protection des renseignements personnels&lt;/a&gt;&lt;/em&gt;. Cela signifie qu’on vous informera des fins auxquelles ces renseignements sont recueillis et de la façon dont vous pouvez exercer votre droit d'accès à ces renseignements. Le cas échéant, on vous demandera d’exprimer votre consentement par rapport à ces renseignements.</value>
+  </data>
+  <data name="Public Communications" xml:space="preserve">
+    <value>Communications publiques</value>
+  </data>
+  <data name="Public-para1" xml:space="preserve">
+    <value>Les renseignements personnels que vous fournissez dans une demande d’informations peuvent être utilisés pour préparer une réponse. Ces renseignements personnels sont recueillis conformément à la &lt;em class="highlight"&gt;[disposition pertinente de la loi habilitante du ministère]&lt;/em&gt;. Ces renseignements peuvent être utilisés à des fins d’évaluation, de compilation de statistiques et d’établissement de rapports. Ces informations sont versées dans le fichier de renseignements personnels &lt;em class="highlight"&gt;[Numéro du &lt;abbr title="fichier de renseignements personnels"&gt;FRP&lt;/abbr&gt; - Titre du &lt;abbr title="fichier de renseignements personnels"&gt;FRP&lt;/abbr&gt;]&lt;/em&gt;. Il se peut que ces renseignements soient communiqués aux services responsables des programmes et des activités de &lt;em class="highlight"&gt;[Titre d’usage du ministère]&lt;/em&gt; si votre demande porte sur les programmes ou les activités de ce ministère. Dans ces cas, ces renseignements sont compris dans le fichier de renseignements personnels du service responsable du programme ou de l’activité.</value>
+  </data>
+  <data name="Public-para2" xml:space="preserve">
+    <value>Si, après avoir lu cet avis, vous préférez ne pas présenter votre demande d'information par Internet, vous pouvez envoyer vos commentaires par courriel à &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;</value>
+  </data>
+  <data name="required" xml:space="preserve">
+    <value>(obligatoire)</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser le formulaire</value>
+  </data>
+  <data name="sectioncert" xml:space="preserve">
+    <value>Certifications</value>
+  </data>
+  <data name="sectioncomp" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="sectionContact" xml:space="preserve">
+    <value>Coordonnées</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Soumettre des commentaires</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Formulaire de demande de modification</value>
+  </data>
+  <data name="which-added" xml:space="preserve">
+    <value>Lesquelles faut-il ajouter?</value>
+  </data>
+  <data name="which-removed" xml:space="preserve">
+    <value>Lesquelles faut-il supprimer?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
   </data>
 </root>

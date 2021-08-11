@@ -16,20 +16,149 @@
         </ol>
     </div>
 </nav>
-<section role="contentinfo">
-    <div class="col-lg-9 col-sm-9">
-        <h2>@Localizer["Inquiry"]</h2>
-        <hr />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Localizer["Title"]</h3>
         <p>@Localizer["para1"]</p>
         <p>@Localizer["para2"]</p>
     </div>
+</div>
 
-    <div class="col-lg-3 col-sm-3">
-        <figure>
-            <img src="~/img/ForceGen-logo.png" class="img-responsive mrgn-tp-md" />
-        </figure>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form class="form form-horizontal" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <h3 style="color:#146094">@Localizer["sectioncert"]</h3>
+
+            <div class="form-group">
+                <label asp-for="Contact.Cert" class="col-md-12"><b>@Localizer["CertCorrect"]</b></label>
+                <div class="col-md-6">
+                    <input type="radio" asp-for="Contact.Cert" value="Yes" /> @Localizer["Yes"] <br />
+                    <input type="radio" asp-for="Contact.Cert" value="No" /> @Localizer["No"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CertNo" class="col-md-12 mrgn-tp-md"><b>@Localizer["Cert-if no"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CertNo" rows="6"></textarea>
+                </div>
+            </div>
+
+            <hr />
+            <h3 style="color:#146094">@Localizer["sectioncomp"]</h3>
+
+
+            <div class="form-group">
+                <label asp-for="Contact.CompListing" class="col-md-12"><b>@Localizer["CompListing"]</b></label>
+                <div class="col-md-6">
+                    <input type="radio" asp-for="Contact.CompListing" value="Yes" /> @Localizer["Yes"] <br />
+                    <input type="radio" asp-for="Contact.CompListing" value="No" /> @Localizer["No"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompListNo" class="col-md-12 mrgn-tp-md"><b>@Localizer["Comp-if no"]</b></label>
+                <div class="col-md-6">
+                    <input type="radio" asp-for="Contact.CompListNo" value="One or more should be removed" /> @Localizer["one-removed"]<br />
+                    <input type="radio" asp-for="Contact.CompListNo" value="One or more should be added" /> @Localizer["one-added"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompRemove" class="col-md-12 mrgn-tp-md"><b>@Localizer["which-removed"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CompRemove" rows="6"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompAdd" class="col-md-12 mrgn-tp-md"><b>@Localizer["which-added"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CompAdd" rows="6"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompDefinition" class="col-md-12 mrgn-tp-md"><b>@Localizer["CompDefinitions"]</b></label>
+                <div class="col-md-6">
+                    <input type="radio" asp-for="Contact.CompDefinition" value="Yes" /> @Localizer["Yes"] <br />
+                    <input type="radio" asp-for="Contact.CompDefinition" value="No" /> @Localizer["No"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompDefinitionNo" class="col-md-12 mrgn-tp-md"><b>@Localizer["Definitions-if no"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CompDefinitionNo" rows="6"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompDefinitionChange" class="col-md-12 mrgn-tp-md"><b>@Localizer["Comp definitions elaborate"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CompDefinitionChange" rows="6"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompRating" class="col-md-12 mrgn-tp-md"><b>@Localizer["Comp definitions rating"]</b></label>
+                <div class="col-md-6">
+                    <input type="radio" asp-for="Contact.CompRating" value="Yes" /> @Localizer["Yes"] <br />
+                    <input type="radio" asp-for="Contact.CompRating" value="No" /> @Localizer["No"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.CompRatingNo" class="col-md-12 mrgn-tp-md"><b>@Localizer["Comp rating if no"]</b></label>
+                <div class="col-md-12">
+                    <textarea class="col-md-6" asp-for="Contact.CompRatingNo" rows="6"></textarea>
+                </div>
+            </div>
+
+            <hr />
+
+            <h3 style="color:#146094">@Localizer["sectionContact"]</h3>
+            <p>@Localizer["ContactInfo"]</p>
+
+            <div class="form-group">
+                <label asp-for="Contact.Name" class="col-md-3 right mrgn-tp-md">@Localizer["Name"] <strong class="text-danger">@Localizer["required"]</strong></label>
+                <div class="col-md-9">
+                    <input asp-for="Contact.Name" class="form-control" required />
+                    <span asp-validation-for="Contact.Name" class="required"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact.Email" class="col-md-3 right mrgn-tp-md">@Localizer["Email"] <strong class="text-danger">@Localizer["required"]</strong></label>
+                <div class="col-md-9">
+                    <input asp-for="Contact.Email" class="form-control" required />
+                    <span asp-validation-for="Contact.Email" class="required"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" value="@Localizer["Submit"]" class="btn btn-primary"> <input type="reset" value="@Localizer["Reset"]" class="btn btn-default">
+                </div>
+            </div>
+        </form>
+        <section>
+            <h2 id="pics-ecrp">@Localizer["PICS"]</h2>
+            <p>@Localizer["PICS-para"]</p>
+            <section>
+                <h3 id="pc-cp">@Localizer["Public Communications"]</h3>
+                <p>@Localizer["Public-para1"]</p>
+                <p>@Localizer["Public-para2"]</p>
+            </section>
+        </section>
     </div>
-</section>
+</div>
+
 
 
 
