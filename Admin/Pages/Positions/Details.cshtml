@@ -55,7 +55,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="accordion" id="compOne">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne">
+                                <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne">
                                     @c.NameEng / @c.NameFre
                                 </button>
                                 <div id="@key" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
@@ -100,9 +100,9 @@
                             var key1 = "a" + c.CompetencyId.ToString();
                             var key2 = "b" + c.CompetencyId.ToString();
                             <tr>
-                                <td style="width:70%;">
+                                <td>
                                     <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
                                             @c.CompetencyNameEng / @c.CompetencyNameFre
                                         </button>
                                         <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
@@ -121,7 +121,7 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="accordion" id="levelOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
                                             @c.RatingValue
                                         </button>
                                         <div id="@key2" class="collapse" aria-labelledby="headingFour" data-parent="#levelOne">
@@ -156,5 +156,6 @@
 
 
 <div>
+    <a asp-page="./Edit" asp-route-id="@Model.Position.JobTitleId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

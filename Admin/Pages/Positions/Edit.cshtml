@@ -413,12 +413,12 @@
                             @foreach (var certificate in Model.AddedCertificates)
                             {
                                 <div class="row">
-                                    <div class="col-6">
-                                        <div class="accordion" id="compOne">
-                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <div class="col-9">
+                                        <div class="accordion" id="CertOne">
+                                            <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                 @certificate.NameEng / @certificate.NameFre
                                             </button>
-                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#CertOne">
                                                 <div class="card-body">
                                                     <p>
                                                         <b>English Description</b><br />
@@ -458,7 +458,7 @@
 
                                 };
                                         }
-                                        <button class="btn btn-link" asp-page-handler="deletecertificate" asp-all-route-data="@routedataremove">REMOVE</button>
+                                        <button class="btn btn-link text-right" asp-page-handler="deletecertificate" asp-all-route-data="@routedataremove">REMOVE</button>
                                     </div>
                                 </div>
 
@@ -489,13 +489,13 @@
                 <tr>
                     <th colspan="3" style="background-color:#f2f2f2">
                         <div class="row">
-                            <div class="col-6 m-auto">
+                            <div class="col-7 m-auto">
                                 KNOWLEDGE ELEMENTS / ÉLÉMENTS DE CONNAISSANCE
                             </div>
                             <div class="col-3 text-center m-auto">
                                 LEVEL / NIVEAU
                             </div>
-                            <div class="col-3 text-right">
+                            <div class="col-2 text-right">
                                 <!-- Button trigger modal add knowledge -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addknow">
                                     ADD
@@ -555,13 +555,15 @@
 
                         @foreach (var competency in Model.AddedKnowledgeCompetencies)
                         {
+                                var key1 = "a" + competency.CompetencyId.ToString();
+                                var key2 = "b" + competency.CompetencyId.ToString();
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="col-7">
+                                    <div class="accordion" id="KnowOne">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseTwo">
                                             @competency.CompetencyNameEng / @competency.CompetencyNameFre
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key1" class="collapse" aria-labelledby="headingTwo" data-parent="#KnowOne">
                                             <div class="card-body">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -576,11 +578,11 @@
                                     </div>
                                 </div>
                                 <div class="col-3 text-center m-auto">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
+                                    <div class="accordion" id="KnowRate">
+                                        <button class="btn btn-link collapsed align-text-top" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
                                             @competency.RatingValue
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key2" class="collapse" aria-labelledby="headingTwo" data-parent="#KnowRate">
                                             <div class="card-body align-text-top text-left">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -599,7 +601,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3 text-right">
+                                <div class="col-2 text-right">
                                     @{
                                         var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
@@ -635,13 +637,13 @@
                 <tr>
                     <th colspan="3" style="background-color:#f2f2f2">
                         <div class="row">
-                            <div class="col-6 m-auto">
+                            <div class="col-7 m-auto text-wrap">
                                 TECHNICAL ELEMENTS / ÉLÉMENTS TECHNIQUES
                             </div>
                             <div class="col-3 text-center m-auto">
                                 LEVEL / NIVEAU
                             </div>
-                            <div class="col-3 text-right">
+                            <div class="col-2 text-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addtech">
                                     ADD
                                 </button>
@@ -700,13 +702,15 @@
 
                         @foreach (var competency in Model.AddedTechnicalCompetencies)
                         {
+                            var key3 = "a" + competency.CompetencyId.ToString();
+                            var key4 = "b" + competency.CompetencyId.ToString();
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="col-7">
+                                    <div class="accordion" id="TechDesc">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key3" aria-expanded="false" aria-controls="collapseThree">
                                             @competency.CompetencyNameEng / @competency.CompetencyNameFre
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key3" class="collapse" aria-labelledby="headingTwo" data-parent="#TechDesc">
                                             <div class="card-body">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -721,11 +725,11 @@
                                     </div>
                                 </div>
                                 <div class="col-3 text-center m-auto">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
+                                    <div class="accordion" id="TechRate">
+                                        <button class="btn btn-link collapsed align-text-top" type="button" data-toggle="collapse" data-target="#@key4" aria-expanded="false" aria-controls="collapselevelOne">
                                             @competency.RatingValue
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key4" class="collapse" aria-labelledby="headingTwo" data-parent="#TechRate">
                                             <div class="card-body align-text-top text-left">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -744,7 +748,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3 text-right">
+                                <div class="col-2 text-right">
                                     @{
                                         var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
@@ -780,13 +784,13 @@
                 <tr>
                     <th colspan="3" style="background-color:#f2f2f2">
                         <div class="row">
-                            <div class="col-6 m-auto">
+                            <div class="col-7 m-auto text-wrap">
                                 BEHAVIOURAL ELEMENTS / ÉLÉMENTS DE COMPORTEMENT
                             </div>
                             <div class="col-3 text-center m-auto">
                                 LEVEL / NIVEAU
                             </div>
-                            <div class="col-3 text-right">
+                            <div class="col-2 text-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbehav">
                                     ADD
                                 </button>
@@ -845,13 +849,15 @@
 
                         @foreach (var competency in Model.AddedBehaviouralCompetencies)
                         {
+                            var key5 = "a" + competency.CompetencyId.ToString();
+                            var key6 = "b" + competency.CompetencyId.ToString();
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="col-7">
+                                    <div class="accordion" id="BehavDesc">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key5" aria-expanded="false" aria-controls="collapseFour">
                                             @competency.CompetencyNameEng / @competency.CompetencyNameFre
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key5" class="collapse" aria-labelledby="headingThree" data-parent="#BehavDesc">
                                             <div class="card-body">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -866,11 +872,11 @@
                                     </div>
                                 </div>
                                 <div class="col-3 text-center m-auto">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
+                                    <div class="accordion" id="BehavRate">
+                                        <button class="btn btn-link collapsed align-text-top" type="button" data-toggle="collapse" data-target="#@key6" aria-expanded="false" aria-controls="collapselevelOne">
                                             @competency.RatingValue
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key6" class="collapse" aria-labelledby="headingThree" data-parent="#BehavRate">
                                             <div class="card-body align-text-top text-left">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -889,7 +895,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3 text-right">
+                                <div class="col-2 text-right">
                                     @{
                                         var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
@@ -925,13 +931,13 @@
                 <tr>
                     <th colspan="3" style="background-color:#f2f2f2">
                         <div class="row">
-                            <div class="col-6 m-auto">
+                            <div class="col-7 m-auto text-wrap">
                                 EXECUTIVE COMPETENCIES / COMPÉTENCES EXÉCUTIVES
                             </div>
                             <div class="col-3 text-center m-auto">
                                 LEVEL / NIVEAU
                             </div>
-                            <div class="col-3 text-right">
+                            <div class="col-2 text-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addexec">
                                     ADD
                                 </button>
@@ -989,13 +995,15 @@
                         </div>
                         @foreach (var competency in Model.AddedExecutiveCompetencies)
                         {
+                            var key7 = "a" + competency.CompetencyId.ToString();
+                            var key8 = "b" + competency.CompetencyId.ToString();
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="col-7">
+                                    <div class="accordion" id="ExDesc">
+                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key7" aria-expanded="false" aria-controls="collapseFive">
                                             @competency.CompetencyNameEng / @competency.CompetencyNameFre
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key7" class="collapse" aria-labelledby="headingFour" data-parent="#ExDesc">
                                             <div class="card-body">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -1010,11 +1018,11 @@
                                     </div>
                                 </div>
                                 <div class="col-3 text-center m-auto">
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapselevelOne">
+                                    <div class="accordion" id="ExRate">
+                                        <button class="btn btn-link collapsed align-text-top" type="button" data-toggle="collapse" data-target="#@key8" aria-expanded="false" aria-controls="collapselevelOne">
                                             @competency.RatingValue
                                         </button>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compOne">
+                                        <div id="@key8" class="collapse" aria-labelledby="headingFour" data-parent="#ExRate">
                                             <div class="card-body align-text-top text-left">
                                                 <p>
                                                     <b>English Description</b><br />
@@ -1033,7 +1041,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3 text-right">
+                                <div class="col-2 text-right">
                                     @{
                                         var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
