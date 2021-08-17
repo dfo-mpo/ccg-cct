@@ -44,8 +44,8 @@ namespace Business.Queries.Compare
                      NameEng = e.JobLocationRegion.NameEng,
                      NameFre = e.JobLocationRegion.NameFre,
                      Id = e.JobLocationRegionId,
-                     CurrentPositionHas = "X",
-                     ObjectivePositionHas = string.Empty,
+                     CurrentPositionHas = "✔",
+                     ObjectivePositionHas = "x",
 
                  });
 
@@ -59,8 +59,8 @@ namespace Business.Queries.Compare
                   NameEng = e.JobLocationRegion.NameEng,
                   NameFre = e.JobLocationRegion.NameFre,
                   Id = e.JobLocationRegionId,
-                  CurrentPositionHas = string.Empty,
-                  ObjectivePositionHas = "X",
+                  CurrentPositionHas = "x",
+                  ObjectivePositionHas = "✔",
 
               });
 
