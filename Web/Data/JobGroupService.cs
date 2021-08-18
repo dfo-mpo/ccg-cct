@@ -24,8 +24,8 @@ namespace Web.Data
                 JobGroupDto jb1 = o1 as JobGroupDto;
                 JobGroupDto jb2 = o2 as JobGroupDto;
                 if (System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en")
-                { return string.Compare(jb1.NameEng, jb2.NameEng); }
-                else { return string.Compare(jb1.NameFre, jb2.NameFre); }
+                { return string.Compare(jb1.Code, jb2.Code); }
+                else { return string.Compare(jb1.Code, jb2.Code); }
             }
         }
 
