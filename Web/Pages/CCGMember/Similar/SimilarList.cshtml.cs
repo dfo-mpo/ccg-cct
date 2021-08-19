@@ -87,14 +87,14 @@ namespace Web.Pages.CCGMember.Similar
             {
                 SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
                 SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
-                SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds80 = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
                 SimilarJobIds70 = new SimilarSearchDto() { SimilarPositionIds= string.Empty};
             }
             else
             {
                 SimilarJobIds100 = await _similarService.GetAllHundredPercentSimilarPositionsByPositionId(positionid);
                 SimilarJobIds90 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
-                SimilarJobIds80 = await _similarService.GetAllNinetyPercentSimilarPositionsByPositionId(positionid);
+                SimilarJobIds80 = await _similarService.GetAllEightyPercentSimilarPositionsByPositionId(positionid);
                 SimilarJobIds70 = await _similarService.GetAllSeventyPercentSimilarPositionsByPositionId(positionid);
 
             }
