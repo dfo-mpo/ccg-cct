@@ -408,7 +408,7 @@ else if (!(Model.PageSubmit == "true"))
                 <div class="text-center">
                     <h4>@Localizer["PDAPText"]</h4>
                     @{var urlPDAP = Model.Position.JobTitleEng.Contains("MELDEV") ? Localizer["MELDEVUrl"] : Localizer["MCTSUrl"]; }
-                    <a href="@url" target="_blank">@urlPDAP</a>
+                    <a href="@urlPDAP" target="_blank">@urlPDAP</a>
                 </div>
             </div>
         }
