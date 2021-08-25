@@ -13,8 +13,8 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarListModel> _logger;
         private readonly SimilarService _similarService;
-
         [BindProperty(SupportsGet = true)]
+
         public int PositionId { get; set; }
         [BindProperty]
         public string RouteParameter { get; set; }
@@ -51,6 +51,7 @@ namespace Web.Pages.CCGMember.Similar
         public string PreviousPageSimilar { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
         public string PreviousPageDetails { get; set; } = string.Empty;
+        public JobPositionDto CurrentPosition { get; set; }
         public SimilarSearchDto SimilarJobIds100 { get; set; }
         public SimilarSearchDto SimilarJobIds90 { get; set; }
         public SimilarSearchDto SimilarJobIds80 { get; set; }
@@ -68,6 +69,7 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnGet(int positionid)
         {
             _logger.LogInformation($"Similar positions list page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            CurrentPosition = await _similarService.GetJobPositionById(positionid);
             Position = await _similarService.GetJobPositionById(PositionId);
             if (PercentMatch == "&percentMatch=100")
             {
