@@ -132,6 +132,9 @@
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
   </data>

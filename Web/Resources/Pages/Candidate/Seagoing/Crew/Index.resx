@@ -135,6 +135,15 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>
   </data>
+  <data name="searchdeck" xml:space="preserve">
+    <value>Link to seagoing crew deck positions</value>
+  </data>
+  <data name="searchengineering" xml:space="preserve">
+    <value>Link to seagoing crew engineering positions</value>
+  </data>
+  <data name="searchlogistics" xml:space="preserve">
+    <value>Link to seagoing crew logistics positions</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>External Canadidates - Seagoing - Crew</value>
   </data>

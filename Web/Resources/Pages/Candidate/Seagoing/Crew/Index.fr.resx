@@ -153,6 +153,15 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>
   </data>
+  <data name="searchdeck" xml:space="preserve">
+    <value>Lien vers les postes de pont de l'équipage en mer</value>
+  </data>
+  <data name="searchengineering" xml:space="preserve">
+    <value>Lien vers les postes d'ingénieurs navigants</value>
+  </data>
+  <data name="searchlogistics" xml:space="preserve">
+    <value>Lien vers les postes logistiques des équipages navigants</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Candidats externes - En mer - Équipage</value>
   </data>

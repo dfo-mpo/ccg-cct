@@ -25,23 +25,34 @@
 
 <div class="container">
     <div class="row">
-        <a asp-page="CCGMember/AllPositions">
-            <div class="col-md-4 col-sm-6">
-                <img src="~/img/CCG-employee.png" alt="@Localizer["PhotoMember"]" class="img-responsive center" />
-                <h3 style="text-align:center">@Localizer["CCGMember"]</h3>
-            </div>
-        </a>
-        <a asp-page="Candidate/Index">
-            <div class="col-md-4 col-sm-6">
-                <img src="~/img/external candidates.png" alt="@Localizer["PhotoExternal"]" class="img-responsive" />
-                <h3 style="text-align:center">@Localizer["ExternalCandidate"]</h3>
-            </div>
-        </a>
-        <a asp-page="Student/Index">
-            <div class="col-md-4 col-sm-6">
-                <img src="~/img/Students.png" alt="@Localizer["PhotoStudents"]" class="img-responsive" />
-                <h3 style="text-align:center">@Localizer["Student"]</h3>
-            </div>
-        </a>
+        
+
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a alt="@Localizer["searchmember"]" style="text-decoration:none" asp-page="CCGMember/AllPositions">
+                    <figcaption><h3 style="text-align:center">@Localizer["CCGMember"]</h3></figcaption>
+                        <img src="~/img/CCG-employee.png" alt="@Localizer["PhotoMember"]" class="img-responsive center" />
+                </a>
+            </figure>
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a alt="@Localizer["searchexternal"]" style="text-decoration:none" asp-page="Candidate/Index">
+                    <figcaption><h3 style="text-align:center">@Localizer["ExternalCandidate"]</h3></figcaption>
+                        <img src="~/img/external candidates.png" alt="@Localizer["PhotoExternal"]" class="img-responsive" />
+                </a>
+            </figure>
+        </div>
+        
+        <div class="col-md-4 col-sm-6">
+            <figure>
+                <a alt="@Localizer["searchstudent"]" style="text-decoration:none" asp-page="Student/Index">
+                    <figcaption><h3 style="text-align:center">@Localizer["Student"]</h3></figcaption>
+                        <img src="~/img/Students.png" alt="@Localizer["PhotoStudents"]" class="img-responsive" />
+                </a>
+            </figure>
+        </div>
     </div>
 </div>

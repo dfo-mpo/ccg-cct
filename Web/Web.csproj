@@ -79,7 +79,7 @@
   </ItemGroup>
 
  <ItemGroup>
-    <Content Update="wwwroot\favicon.ico">
+    <Content Update="wwwroot\themes-dist-8.0.1-gcweb\GCWeb\assets\favicon.ico">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

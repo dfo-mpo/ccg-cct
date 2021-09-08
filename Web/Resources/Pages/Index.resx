@@ -141,6 +141,15 @@
   <data name="Question1" xml:space="preserve">
     <value>To begin, tell us who you are</value>
   </data>
+  <data name="searchexternal" xml:space="preserve">
+    <value>Link to search External Canadidates positions</value>
+  </data>
+  <data name="searchmember" xml:space="preserve">
+    <value>Link to search CCG Members positions</value>
+  </data>
+  <data name="searchstudent" xml:space="preserve">
+    <value>Link to search student positions</value>
+  </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>
   </data>
