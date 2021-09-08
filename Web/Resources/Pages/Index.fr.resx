@@ -141,6 +141,15 @@
   <data name="Question1" xml:space="preserve">
     <value>Pour commencer, dites-nous qui vous êtes</value>
   </data>
+  <data name="searchexternal" xml:space="preserve">
+    <value>Lien pour rechercher des postes de candidats externes</value>
+  </data>
+  <data name="searchmember" xml:space="preserve">
+    <value>Lien pour rechercher des postes de membres de la GCC</value>
+  </data>
+  <data name="searchstudent" xml:space="preserve">
+    <value>Lien pour rechercher des postes étudiants</value>
+  </data>
   <data name="Student" xml:space="preserve">
     <value>Étudiant</value>
   </data>

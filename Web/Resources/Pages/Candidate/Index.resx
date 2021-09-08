@@ -132,6 +132,12 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>
   </data>
+  <data name="searchseagoing" xml:space="preserve">
+    <value>Link to search seagoing positions</value>
+  </data>
+  <data name="searchshoreside" xml:space="preserve">
+    <value>Link to search shore side positions</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
   </data>

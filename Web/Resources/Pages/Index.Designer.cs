@@ -133,6 +133,33 @@ namespace Web.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Link to search External Canadidates positions.
+        /// </summary>
+        public static string searchexternal {
+            get {
+                return ResourceManager.GetString("searchexternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link to search CCG Members positions.
+        /// </summary>
+        public static string searchmember {
+            get {
+                return ResourceManager.GetString("searchmember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link to search student positions.
+        /// </summary>
+        public static string searchstudent {
+            get {
+                return ResourceManager.GetString("searchstudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Student.
         /// </summary>
         public static string Student {

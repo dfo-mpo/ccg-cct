@@ -138,6 +138,12 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>
   </data>
+  <data name="searchseagoing" xml:space="preserve">
+    <value>Lien pour rechercher des postes en mer</value>
+  </data>
+  <data name="searchshoreside" xml:space="preserve">
+    <value>Lien pour rechercher des positions à terre</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Positions côté rivage</value>
   </data>
