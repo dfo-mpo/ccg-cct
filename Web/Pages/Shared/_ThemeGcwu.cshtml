@@ -7,7 +7,7 @@
     var isEnglish = twoLetter == "en";
     var page = contextAccessor.HttpContext.Request.RouteValues["page"];
     var routedata = new Dictionary<string, string>
-           {
+   {
                                 {"culture", Localizer["AlternateLanguageKey"].Value },
                            };
 
@@ -28,31 +28,34 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
     <meta name="description" content="The Career Competency Tool is a tool designed to allow you to search and compare various positions within the Canadian Coast Guard.">
-    <meta name="dcterms.title" content="Career Competency Tool">
+    <meta name="dcterms.title" content="Homepage - Career Competency Tool">
     <meta name="dcterms.creator" content="Canadian Coast Guard / Garde côtière canadienne">
     <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
     <meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
     <meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
     <meta name="dcterms.language" title="ISO639-2" content="eng">
-    <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="/themes-dist-8.0.1-gcweb/wet-boew/assets/favicon-mobile.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Meta data-->
+    <link rel="apple-touch-icon" sizes="57x57 72x72 114x114 144x144 150x150" class="wb-favicon" href="/themes-dist-8.0.1-gcweb/wet-boew/assets/favicon-mobile.png">
+
     <!--[if gte IE 9 | !IE ]><!-->
     <link href="~/themes-dist-8.0.1-gcweb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="~/themes-dist-8.0.1-gcweb/GCWeb/css/theme.min.css">
     <!--<![endif]-->
     <!--[if lt IE 9]>
     <link href="~/themes-dist-8.0.1-gcweb/GCWeb/assets/favicon.ico" rel="shortcut icon">
-         <link rel="stylesheet" href="~/themes-dist-8.0.1-gcweb/GCWeb/css/ie8-theme.min.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/ie8-wet-boew.min.js"></script>
+    <link rel="stylesheet" href="~/themes-dist-8.0.1-gcweb/GCWeb/css/ie8-theme.min.css" />
+    
     <![endif]-->
 
     <noscript><link rel="stylesheet" href="/themes-dist-8.0.1-gcweb/wet-boew/css/noscript.min.css" /></noscript>
-    <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/i18n/en.min.js"></script>
-    <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/deps/jquery.magnific-popup.min.js"></script>
+
+    <script>
+        document.write(wet.builder.refTop({
+        }));
+    </script>
+    
     <!-- Are you using the application templates? If so add the following CSS file -->
-   
+
 
 </head>
 <body vocab="https://schema.org/" typeof="WebPage">
@@ -162,15 +165,15 @@
 
     <partial name="_ThemeGcwuFooter" />
     <!--[if gte IE 9 | !IE ]><!-->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/wet-boew.min.js"></script>
     <!--<![endif]-->
     <!--[if lt IE 9]>
-            <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/ie8-wet-boew2.min.js"></script>
-
-            <![endif]-->
+    <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/ie8-wet-boew2.min.js"></script>
     <script src="~/themes-dist-8.0.1-gcweb/GCWeb/js/theme.min.js"></script>
+    <![endif]-->
+
 
     @RenderSection("Scripts", required: false)
 </body>
