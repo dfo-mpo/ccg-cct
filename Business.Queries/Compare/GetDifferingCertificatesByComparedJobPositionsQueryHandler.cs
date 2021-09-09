@@ -48,7 +48,7 @@ namespace Business.Queries.Compare
                      DescFre = e.CertificateDescription.DescFre,
                      Id = e.CertificateId,
                      Active = 1,
-                     CurrentPositionHas = "✔",
+                     CurrentPositionHas = "X",
                      ObjectivePositionHas = "N/A",
 
                  });
@@ -68,7 +68,7 @@ namespace Business.Queries.Compare
                          Id = e.CertificateId,
                          Active = 1,
                          CurrentPositionHas = "N/A",
-                         ObjectivePositionHas = "✔",
+                         ObjectivePositionHas = "X",
 
                       });
 
