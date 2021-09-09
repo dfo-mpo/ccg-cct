@@ -283,10 +283,12 @@
                           { "idobj",  jobgroup.Id.ToString()}
                          };
                             <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext">
-                                <div class="col-sm-4 mrgn-bttm-md">
-                                    <figure>
-                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                <div class="col-lg-4 col-sm-6">
+                                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                                        <div class="img-container">
+                                            <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        </div>
                                     </figure>
                                 </div>
                             </a>

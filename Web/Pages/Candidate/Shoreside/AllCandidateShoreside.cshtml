@@ -42,10 +42,12 @@
                         if (jobgroup.Active != 0)
                         {
                             <a asp-page="SimilarList" asp-route-id="@jobgroup.Id">
-                                <div class="col-md-4 col-sm-6">
-                                    <figure>
-                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
-                                        <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
+                                <div class="col-lg-4 col-sm-6">
+                                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                                        <div class="img-container">
+                                            <figcaption class="text-center"><h4 class="h6 mrgn-tp-sm">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h4></figcaption>
+                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                        </div>
                                     </figure>
                                 </div>
                             </a>
