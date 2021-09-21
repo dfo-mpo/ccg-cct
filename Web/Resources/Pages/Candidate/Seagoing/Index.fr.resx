@@ -121,13 +121,13 @@
     <value>Candidat externe</value>
   </data>
   <data name="Crew" xml:space="preserve">
-    <value>Équipage</value>
+    <value>Équipage des navires</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
   <data name="Officer" xml:space="preserve">
-    <value>Officier</value>
+    <value>Officier de navire</value>
   </data>
   <data name="PhotoCrew" xml:space="preserve">
     <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>

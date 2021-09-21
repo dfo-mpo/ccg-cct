@@ -26,7 +26,7 @@
 
     <section role="contentinfo">
         <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
+            <h2 class="wb-inv">
                 @Localizer["You are here:"]
             </h2>
             <div class="row">
@@ -45,23 +45,32 @@
                 <li class="previous"><a asp-page="Details" asp-all-route-data="@routedataprevious" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
-        <h2><b>@Localizer["Question1"]</b></h2>
-        <a asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata">
-            <div class="col-sm-6 mrgn-bttm-md">
-                <figure>
-                    <img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive thumbnail mrgn-bttm-sm" />
-                    <h4>@Localizer["Similar"]</h4>
-                </figure>
+        <h2 class="mrgn-bttm-md"><b>@Localizer["Question1"]</b></h2>
+        <div class="row">
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Similar"]</h3></figcaption>
+                            <img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-        </a>
-        <a asp-page="Compare/AllObjective" asp-all-route-data="routedata">
-            <div class="col-sm-6 mrgn-bttm-md">
-                <figure>
-                    <img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive thumbnail mrgn-bttm-sm" />
-                    <h4>@Localizer["Compare"]</h4>
-                </figure>
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" asp-page="Compare/AllObjective" asp-all-route-data="routedata">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Compare"]</h3></figcaption>
+                            <img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-        </a>
+            
+        </div>
         <!--    <div class="row">
             <div class="col-lg-12 mrgn-bttm-md">
                 <nav role="navigation" class="mrgn-bttm-lg">

@@ -151,7 +151,7 @@
     <value>Précédent</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrer ou imprimer ce document</value>
+    <value>Enregistrez ou téléchargez cette page sous forme de document PDF</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>

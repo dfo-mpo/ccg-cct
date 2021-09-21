@@ -24,9 +24,9 @@
             </ul>
         </nav>
         <div class="col-md-12">
-            <h2><b>@Localizer["AllPositions"]</b></h2>
+            <h2 class="mrgn-bttm-xl"><b>@Localizer["AllPositions"]</b></h2>
             <form>
-                <p>
+                <p class="mrgn-bttm-xl">
                     <input type="text" asp-for="Filter" />
                     <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
                 </p>
@@ -38,16 +38,17 @@
                     {
                         if (jobgroup.Active != 0)
                         {
-                            <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
-                                <div class="col-lg-4 col-sm-6">
+                            <div class="col-md-3 col-sm-2">
+                                <a style="text-decoration:none" asp-page="CurrentLevel" asp-route-id="@jobgroup.Id">
                                     <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
                                         <div class="img-container">
-                                            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h4></figcaption>
-                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive" />
+                                            <figcaption class="caption text-center"><h5 class="mrgn-tp-sm">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h5></figcaption>
+                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive center" />
                                         </div>
                                     </figure>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            
                         }
                     }
                 }

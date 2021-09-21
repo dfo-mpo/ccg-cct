@@ -23,32 +23,44 @@
                 <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
-        <h2>@Localizer["Q1"]</h2>
+        <h2 class="mrgn-bttm-xl">@Localizer["Q1"]</h2>
         <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <figure>
-                    <a alt="Link to seagoing crew deck positions" style="text-decoration:none" class="nav-link" asp-page="Deck/PositionList">
-                        <figcaption><h4 class="text-center">@Localizer["Deck"]</h4></figcaption>
-                        <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoDeck"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a alt="@Localizer["searchdeck"]" style="text-decoration:none" class="nav-link" asp-page="Deck/PositionList">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Deck"]</h3></figcaption>
+                            <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoDeck"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <figure>
-                    <a alt="Link to seagoing crew engineering positions" style="text-decoration:none" class="nav-link" asp-page="Engineering/PositionList">
-                        <figcaption><h4 class="text-center">@Localizer["Engineering"]</h4></figcaption>
-                        <img src="~/img/CCGMember/Oiler.jpg" alt="@Localizer["PhotoEngineer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a alt="@Localizer["searchengineering"]" style="text-decoration:none" class="nav-link" asp-page="Engineering/PositionList">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Engineering"]</h3></figcaption>
+                            <img src="~/img/CCGMember/Oiler.jpg" alt="@Localizer["PhotoEngineer"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <figure>
-                    <a alt="Link to seagoing crew logistics positions" style="text-decoration:none" class="nav-link" asp-page="Logistics/PositionList">
-                        <figcaption><h4 class="text-center">@Localizer["Logistics"]</h4></figcaption>
-                        <img src="~/img/CCGMember/GS.jpg" alt="@Localizer["PhotoLogistics"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a alt="@Localizer["searchlogistics"]" style="text-decoration:none" class="nav-link" asp-page="Logistics/PositionList">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Logistics"]</h3></figcaption>
+                            <img src="~/img/CCGMember/GS.jpg" alt="@Localizer["PhotoLogistics"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
+            
+
         </div>
     </section>
 

@@ -244,23 +244,23 @@
             <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-    <h2><b>@Localizer["h2Text"]</b></h2>
+    <h2 class="mrgn-bttm-lg"><b>@Localizer["h2Text"]</b></h2>
 
-    <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-    <div class="dropdown">
-        <div class="col-sm-3 mrgn-bttm-md">
-            <label><b>@Localizer["Level"]</b></label><br />
-            <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
-                @Localizer["Select Level"]
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
-                {
-                    if (level.Active != 0)
+    <h3 class="mrgn-bttm-xl"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+        <div class="dropdown">
+            <div class="col-sm-3 mrgn-bttm-md">
+                <label><b>@Localizer["Level"]</b></label><br />
+                <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
+                    @Localizer["Select Level"]
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
                     {
-                        var data = new Dictionary<string, string>
-                             {
+                        if (level.Active != 0)
+                        {
+                            var data = new Dictionary<string, string>
+                                     {
                        {"positionid",  Model.PositionId.ToString() },
                        { "id",  Model.Id.ToString()},
                        { "hlid", Model.HLId.ToString() },
@@ -275,19 +275,18 @@
                        {"levelcodeobj", level.LevelCode },
                        {"subgroupcodeobj", level.SubGroupCode }
                   };
-                        <li role="presentation">
-                            <a role="menuitem" tabindex="-1"
-                               asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
-                        </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
+                            </li>
+                        }
                     }
-                }
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /></figure>
 
-    <!--    <div class="row">
+        <!--    <div class="row">
             <div class="col-lg-12 mrgn-bttm-md">
                 <nav role="navigation" class="mrgn-bttm-lg">
                     <h2 class="wb-inv">Document navigation</h2>

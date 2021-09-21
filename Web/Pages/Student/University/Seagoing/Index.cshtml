@@ -6,7 +6,7 @@
 }
     <section role="contentinfo">
         <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
+            <h2 class="wb-inv">
                 @Localizer["You are here:"]
             </h2>
             <div class="row">
@@ -24,25 +24,27 @@
                 <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
-        <h2>@Localizer["Q1"]</h2>
-        <div class="col-md-6 col-sm-6">
-            <figure>
-                <div class="img-container">
-                    <a style="text-decoration:none" asp-page="Officer/Index">
-                        <figcaption><h4 class="text-center">@Localizer["Officer"]</h4></figcaption>
-                        <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </div>
-            </figure>
+        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <a style="text-decoration:none" asp-page="Officer/Index">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Officer"]</h3></figcaption>
+                            <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <a style="text-decoration:none" asp-page="Crew/Index">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Crew"]</h3></figcaption>
+                            <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
+            </div>
         </div>
-        <div class="col-md-6 col-sm-6">
-            <figure>
-                <div class="img-container">
-                    <a style="text-decoration:none" asp-page="Crew/Index">
-                        <figcaption><h4 class="text-center">@Localizer["Crew"]</h4></figcaption>
-                        <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </div>
-            </figure>
-        </div>
-    </section>
+</section>

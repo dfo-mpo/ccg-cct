@@ -25,28 +25,35 @@
             </ul>
         </nav>
 
-        <h2>@Localizer["Q1"]</h2>
+        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
 
-        <div class="col-sm-12 well text-center ">
+        <div class="col-sm-12 well">
             <p>@Localizer["Text"]</p>
-            <p>@Localizer["Details"]<a rel="external" target="_blank" href="@Localizer["Link"]">@Localizer["Link"]</a></p>
+            <p>@Localizer["Details"] <a style="text-decoration:none" rel="external" alt="@Localizer["linkalt"]" target="_blank" href="@Localizer["Link"]">@Localizer["Link"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
         </div>
+
         <div class="row">
-            <div class="col-sm-6">
-                <figure>
-                    <a class="nav-link" asp-page="Navigation/PositionList">
-                        <img src="~/img/CCGMember/Officer-Nav.jpg" alt="@Localizer["PhotoNav"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                    <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Navigation/PositionList">@Localizer["Nav"]</a></h4></figcaption>
-                </figure>
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" class="nav-link" asp-page="Navigation/PositionList">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Nav"]</h3></figcaption>
+                            <img src="~/img/CCGMember/Officer-Nav.jpg" alt="@Localizer["PhotoNav"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-            <div class="col-sm-6">
-                <figure>
-                    <a class="nav-link" asp-page="Engineering/PositionList">
-                        <img src="~/img/Candidate/Officer Chief Engineer.jpg" alt="@Localizer["PhotoEng"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                    <figcaption><h4 class="text-center"><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Eng"]</a></h4></figcaption>
-                </figure>
+            
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" class="nav-link" asp-page="Engineering/PositionList">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Eng"]</h3></figcaption>
+                            <img src="~/img/Candidate/Officer Chief Engineer.jpg" alt="@Localizer["PhotoEng"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
+          
         </div>
     </section>

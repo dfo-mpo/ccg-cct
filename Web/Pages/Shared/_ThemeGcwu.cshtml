@@ -40,25 +40,24 @@
     <!--[if gte IE 9 | !IE ]><!-->
     <link href="~/themes-dist-8.0.1-gcweb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="~/themes-dist-8.0.1-gcweb/wet-boew/css/theme.min.css">
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_27/cdts/compiled/soyutils.js"></script>
+    <script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_27/cdts/compiled/wet-en.js"></script>
     <!--<![endif]-->
     <!--[if lt IE 9]>
     <link href="~/themes-dist-8.0.1-gcweb/GCWeb/assets/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="~/themes-dist-8.0.1-gcweb/GCWeb/css/ie8-theme.min.css" />
-    
+
     <![endif]-->
 
     <noscript><link rel="stylesheet" href="/themes-dist-8.0.1-gcweb/wet-boew/css/noscript.min.css" /></noscript>
 
-    <script>
-        document.write(wet.builder.refTop({
-        }));
-    </script>
     
+
     <!-- Are you using the application templates? If so add the following CSS file -->
 
 
 </head>
-<body vocab="https://schema.org/" typeof="WebPage">
+<body id="wb-cont" vocab="https://schema.org/" typeof="WebPage">
     <nav>
         <ul id="wb-tphp" class="wb-init wb-disable-inited">
             <li class="wb-slc"> <a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
@@ -164,10 +163,14 @@
     <!-- END OF MAIN CONTENT -->
 
     <partial name="_ThemeGcwuFooter" />
+
+
     <!--[if gte IE 9 | !IE ]><!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+    
+
     <!--<![endif]-->
     <!--[if lt IE 9]>
     <script src="~/themes-dist-8.0.1-gcweb/wet-boew/js/ie8-wet-boew2.min.js"></script>

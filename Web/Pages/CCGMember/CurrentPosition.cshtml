@@ -73,7 +73,7 @@
         }
             </ul>
         </div>
-        <div class="col-sm-9 mrgn-bttm-md">
+        <div class="col-sm-6 mrgn-bttm-md">
             <label><b>@Localizer["Position"]</b></label><br />
             <button class="dropdown-toggle" id="menu1" type="button" width="100%" data-toggle="dropdown">
                 @(Model.PositionId == 0 ? Localizer["Select Position"].Value : (isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre))
@@ -100,6 +100,5 @@
         </div>
     </div>
 
-    <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-md" /> </figure>
 
 </section>

@@ -135,8 +135,14 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>
   </data>
+  <data name="seagoingincludes" xml:space="preserve">
+    <value>(includes Ships' Officer and Ships' Crew)</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
+  </data>
+  <data name="shoresideincludes" xml:space="preserve">
+    <value>(includes Administrative, Computer and Trades)</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student</value>

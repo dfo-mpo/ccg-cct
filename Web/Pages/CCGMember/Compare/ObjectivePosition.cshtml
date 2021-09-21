@@ -260,7 +260,7 @@
             <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
-                    <li><a class="btn btn-default pull-left" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+                    <li class="previous"><a class="btn btn-default pull-left" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
                 </ul>
             </nav>
         </div>
@@ -293,8 +293,8 @@
 
     <div class="clearfix"></div>
 
-    <h2><b>@Localizer["h2Text"]</b></h2>
-    <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+    <h2 class="mrgn-bttm-lg"><b>@Localizer["h2Text"]</b></h2>
+    <h3 class="mrgn-bttm-xl"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
     <div class="dropdown">
         <div class="col-sm-3 mrgn-bttm-md">
             <label><b>@Localizer["Level"]</b></label><br />
@@ -331,7 +331,7 @@
                 }
             </ul>
         </div>
-        <div class="col-sm-9 mrgn-bttm-md">
+        <div class="col-sm-6 mrgn-bttm-md">
             <label><b>@Localizer["Position"]</b></label><br />
             <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
                 @(Model.ObjectiveId==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
@@ -366,6 +366,5 @@
             </ul>
         </div>
     </div>
-    <figure><img src="~/img/CCGMember/Positions-full.jpg" alt="@Localizer["Photo"]" class="img-responsive thumbnail mrgn-tp-sm mrgn-bttm-sm" /> </figure>
 
 </section>

@@ -20,39 +20,43 @@
 </div>
 
 <div class="text-left">
-    <h2><b>@Localizer["Question1"]</b></h2>
+    <h2 class="mrgn-bttm-lg"><b>@Localizer["Question1"]</b></h2>
 </div>
 
 <div class="container">
     <div class="row">
-        
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchmember"]" style="text-decoration:none" asp-page="CCGMember/AllPositions">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["CCGMember"]</h3></figcaption>
+                        <img src="~/img/CCG-employee.jpg" alt="@Localizer["PhotoMember"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
+        </div>
 
-        <div class="col-md-4 col-sm-6">
-            <figure>
-                <a alt="@Localizer["searchmember"]" style="text-decoration:none" asp-page="CCGMember/AllPositions">
-                    <figcaption><h3 style="text-align:center">@Localizer["CCGMember"]</h3></figcaption>
-                        <img src="~/img/CCG-employee.png" alt="@Localizer["PhotoMember"]" class="img-responsive center" />
-                </a>
-            </figure>
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchexternal"]" style="text-decoration:none" asp-page="Candidate/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["ExternalCandidate"]</h3></figcaption>
+                        <img src="~/img/external candidates.jpg" alt="@Localizer["PhotoExternal"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
         </div>
-        
-        
-        <div class="col-md-4 col-sm-6">
-            <figure>
-                <a alt="@Localizer["searchexternal"]" style="text-decoration:none" asp-page="Candidate/Index">
-                    <figcaption><h3 style="text-align:center">@Localizer["ExternalCandidate"]</h3></figcaption>
-                        <img src="~/img/external candidates.png" alt="@Localizer["PhotoExternal"]" class="img-responsive" />
-                </a>
-            </figure>
+
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchstudent"]" style="text-decoration:none" asp-page="Student/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Student"]</h3></figcaption>
+                        <img src="~/img/Students.jpg" alt="@Localizer["PhotoStudents"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
         </div>
-        
-        <div class="col-md-4 col-sm-6">
-            <figure>
-                <a alt="@Localizer["searchstudent"]" style="text-decoration:none" asp-page="Student/Index">
-                    <figcaption><h3 style="text-align:center">@Localizer["Student"]</h3></figcaption>
-                        <img src="~/img/Students.png" alt="@Localizer["PhotoStudents"]" class="img-responsive" />
-                </a>
-            </figure>
-        </div>
+       
     </div>
 </div>

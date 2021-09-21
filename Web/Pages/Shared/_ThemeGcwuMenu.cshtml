@@ -3,26 +3,29 @@
 }
 @if (isEnglish)
 {
-    <nav class="home gcweb-menu wb-init gcweb-menu-inited" data-trgt="mb-pnl" typeof="SiteNavigationElement" id="wb-auto">
+    <nav class="gweb-v2 gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
         <div class="container">
             <h2 class="wb-inv">Menu</h2>
-            <button type="button" aria-haspopup="true" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">
-                <span class="wb-inv">Main</span> Menu
-                <span class="expicon glyphicon glyphicon-chevron-down"></span>
-            </button>
-            <ul role="menu" aria-orientation="vertical" class="mainmenu-item">
-                <li role="presentation"><a href="/en/" role="menuitem">Home</a></li>
-                <li role="presentation"><a href="/en/CCGMember/AllPositions" role="menuitem">CCG Member</a></li>
-                <li role="presentation"><a href="/en/Candidate/Index" role="menuitem">External Candidate</a></li>
-                <li role="presentation"><a href="/en/Student/Index" role="menuitem">Student</a></li>
-                <li role="presentation"><a href="/en/FAQs" role="menuitem">FAQs</a></li>
-                <li role="presentation"><a href="/en/Contact" role="menuitem">Contact us</a></li>
+            <button type="button" aria-haspopup="true" aria-controls="gc-mnu" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it."><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+            <ul id="gc-mnu" role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html" class="wb-init wb-data-ajax-replace-inited">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="gc-mnu-cct" aria-expanded="false" href="#">CCT Menu</a>
+                    <ul id="gc-mnu-cct" role="menu" aria-orientation="vertical">
+                        <li role="presentation"> <a role="menuitem" tabindex="-1" href="/en/Index">Home</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/en/CCGMember/AllPositions">CCG Member</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/en/Candidate/Index">External Candidate</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/en/Student/Index">Student</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/en/FAQs">FAQs</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/en/Contact">Contact Us</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
+
     <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
         <div class="container nvbar">
-            <h2>Topics menu</h2>
+            <h2 class="wb-inv">Topics menu</h2>
             <div class="row">
                 <ul class="list-inline menu">
                     <li><a href="/en/Index">Home</a></li>
@@ -39,23 +42,27 @@
 }
 else
 {
-    <nav class="home gcweb-menu wb-init gcweb-menu-inited" data-trgt="mb-pnl" typeof="SiteNavigationElement" id="wb-auto">
+    <nav class="gweb-v2 gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
         <div class="container">
             <h2 class="wb-inv">Menu</h2>
-            <button type="button" aria-haspopup="true" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it.">
-                <span class="wb-inv">Main</span> Menu
-                <span class="expicon glyphicon glyphicon-chevron-down"></span>
-            </button>
-            <ul role="menu" aria-orientation="vertical" class="mainmenu-item">
-                <li role="presentation"><a href="/fr/" role="menuitem">Accueil</a></li>
-                <li role="presentation"><a href="/fr/CCGMember/AllPositions" role="menuitem">Membre de la GCC</a></li>
-                <li role="presentation"><a href="/fr/Candidate/Index" role="menuitem">Candidat externe</a></li>
-                <li role="presentation"><a href="/fr/Student/Index" role="menuitem">Étudiant</a></li>
-                <li role="presentation"><a href="/fr/FAQs" role="menuitem">FAQs</a></li>
-                <li role="presentation"><a href="/fr/Contact" role="menuitem">Contactez-nous</a></li>
+            <button type="button" aria-haspopup="true" aria-controls="gc-mnu" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it."><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+            <ul id="gc-mnu" role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html" class="wb-init wb-data-ajax-replace-inited">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="gc-mnu-cct" aria-expanded="false" href="#">OCP Menu</a>
+                    <ul id="gc-mnu-cct" role="menu" aria-orientation="vertical">
+                        <li role="presentation"> <a role="menuitem" tabindex="-1" href="/fr/Index">Accueil</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/fr/CCGMember/AllPositions">Membre de la GCC</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/fr/Candidate/Index">Candidat externe</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/fr/Student/Index">Étudiant</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/fr/FAQs">FAQs</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/fr/Contact">Contactez-nous</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
+
+    
     <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
         <div class="container nvbar">
             <h2>Menu des sujets</h2>

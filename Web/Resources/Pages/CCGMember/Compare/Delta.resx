@@ -205,7 +205,7 @@
     <value>Print PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Save PDF</value>
+    <value>Save or download this page as a PDF document</value>
   </data>
   <data name="sciences" xml:space="preserve">
     <value>Sciences</value>

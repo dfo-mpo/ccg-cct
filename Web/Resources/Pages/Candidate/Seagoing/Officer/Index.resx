@@ -126,6 +126,9 @@
   <data name="Link" xml:space="preserve">
     <value>https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf</value>
   </data>
+  <data name="linkalt" xml:space="preserve">
+    <value>External link to view the Canada’s Marine Personnel Regulations PDF</value>
+  </data>
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>
   </data>

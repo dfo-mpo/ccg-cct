@@ -22,24 +22,31 @@
                 <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
-        <h2>@Localizer["Q1"]</h2>
+        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
+        
         <div class="row">
-            <div class="col-sm-6">
-                <figure>
-                    <a style="text-decoration:none" class="nav-link" asp-page="Officer/Index">
-                        <figcaption><h4 class="text-center">@Localizer["Officer"]</h4></figcaption>
-                        <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" class="nav-link" asp-page="Officer/Index">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Officer"]</h3></figcaption>
+                            <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-            <div class="col-sm-6">
-                <figure>
-                    <a style="text-decoration:none" class="nav-link" asp-page="Crew/Index">
-                        <figcaption><h4 class="text-center">@Localizer["Crew"]</h4></figcaption>
-                        <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a style="text-decoration:none" class="nav-link" asp-page="Crew/Index">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Crew"]</h3></figcaption>
+                            <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
+            
         </div>
 
         <!-- <div style="clear:both;">

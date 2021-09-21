@@ -121,10 +121,10 @@
     <value>External Candidate</value>
   </data>
   <data name="Crew" xml:space="preserve">
-    <value>Crew</value>
+    <value>Ships' Crew</value>
   </data>
   <data name="Officer" xml:space="preserve">
-    <value>Officer</value>
+    <value>Ships' Officer</value>
   </data>
   <data name="PhotoCrew" xml:space="preserve">
     <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>

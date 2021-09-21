@@ -295,6 +295,12 @@ td, th {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
+span.glyphicon.glyphicon-save-file {
+    font-size: 35px;
+}
+span.glyphicon.glyphicon-new-window {
+    font-size: 20px;
+}
 
 .glyphicon-asterisk:before {
     content: "\002a"
@@ -1494,7 +1500,7 @@ hr {
 }
 
 .h3, h3 {
-    font-size: 1.2em
+    font-size: 1.1em
 }
 
 .h4, h4 {
@@ -1502,11 +1508,11 @@ hr {
 }
 
 .h5, h5 {
-    font-size: 1em
+    font-size: .95em
 }
 
 .h6, h6 {
-    font-size: .95em
+    font-size: .90em
 }
 
 p {
@@ -2138,11 +2144,11 @@ pre {
     }
 
     .col-sm-2 {
-        width: 16.6666666667%
+        width: 22%;
     }
 
     .col-sm-3 {
-        width: 25%
+        width: 30%
     }
 
     .col-sm-4 {
@@ -2336,6 +2342,12 @@ pre {
     .col-sm-offset-12 {
         margin-left: 100%
     }
+    .col-md-2 {
+        width: 24%;
+        float: left;
+    }
+    
+    
 }
 
 @media (min-width:992px) {
@@ -2348,11 +2360,11 @@ pre {
     }
 
     .col-md-2 {
-        width: 16.6666666667%
+        width: 25%
     }
 
     .col-md-3 {
-        width: 25%
+        width: 30%; 
     }
 
     .col-md-4 {
@@ -5430,7 +5442,6 @@ a.badge:focus, a.badge:hover {
     }
 
     .thumbnail .caption {
-        padding: 9px;
         color: #333
     }
 
@@ -12826,7 +12837,7 @@ html {
 }
 
 main {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.65em
 }
 

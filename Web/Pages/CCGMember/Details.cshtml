@@ -30,8 +30,9 @@
         </nav>
         <div class="col-sm-12">
             <div class="mrgn-tp-md mrgn-bttm-md">
-                <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save pull-right" alt="@Localizer["Save PDF"]"></span></a>
+                <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
             </div>
+            <div class="clearfix"></div>
             <div class="row">
                 <nav role="navigation">
                     <h2 class="wb-inv">Document navigation</h2>
@@ -42,23 +43,28 @@
                 </nav>
             </div>
             <br />
-            @if (Model.Position.JobTitleEng.Contains("MELDEV") || Model.Position.JobTitleEng.Contains("MCTS"))
+            @if (Model.Position.JobTitleEng.Contains("MCTS"))
             {
-                <div class="col-md-offset-2 col-md-8" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
-                    <div class="text-center">
-                        <h4>@Localizer["PDAPText"]</h4>
-                        @{var url = Model.Position.JobTitleEng.Contains("MELDEV") ? Localizer["MELDEVUrl"] : Localizer["MCTSUrl"]; }
-                        <a href="@url" target="_blank">@url</a>
-                    </div>
+                <div class="col-sm-12 well">
+                    <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
+                    <p>@Localizer["MCTSdesc"]</p>
+                    <p><a style="text-decoration:none" alt="@Localizer["MCTSlinkalt"]" href="@Localizer["MCTSUrl"]" target="_blank">@Localizer["MCTSUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
                 </div>
             }
+            @if (Model.Position.JobTitleEng.Contains("MELDEV"))
+            {
+                <div class="col-sm-12 well">
+                    <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
+                    <p>@Localizer["MELDEVdesc"]</p>
+                    <p><a style="text-decoration:none" alt="@Localizer["MELDEVlinkalt"]" href="@Localizer["MELDEVUrl"]" target="_blank">@Localizer["MELDEVUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
+                </div>
+            }
+
             @if (Model.Position.JobTitleEng.Contains("Commanding"))
             {
-                <div class="col-md-offset-2 col-md-8 mrgn-bttm-md" style="background-color: #f2f2f2; padding-top: 10px; padding-bottom: 25px;">
-                    <div class="text-center">
-                        <h4>@Localizer["Commanding Officer"]</h4>
-                        <p>@Localizer["MAOtext"]</p>
-                    </div>
+                <div class="col-sm-12 well">
+                    <h4 class="mrgn-tp-0">@Localizer["Commanding Officer"]</h4>
+                    <p>@Localizer["MAOtext"]</p>
                 </div>
             }
             <div class="clearfix"></div>

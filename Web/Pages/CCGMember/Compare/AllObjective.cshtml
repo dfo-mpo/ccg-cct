@@ -34,7 +34,7 @@
 
     <section role="contentinfo">
         <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
+            <h2 class="wb-inv">
                 @Localizer["You are here:"]
             </h2>
             <div class="row">
@@ -255,9 +255,9 @@
         </nav>
         <div class="col-md-12">
 
-            <h2><b>@Localizer["AllPositions"]</b></h2>
+            <h2 class="mrgn-bttm-md"><b>@Localizer["AllPositions"]</b></h2>
             <form>
-                <p>
+                <p class="mrgn-bttm-xl">
                     <input type="text" asp-for="Filter" />
                     <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
                 </p>
@@ -270,7 +270,7 @@
                         if (jobgroup.Active != 0)
                         {
                             var routedatanext = new Dictionary<string, string>
-                             {
+                                 {
                           { "positionid",  Model.PositionId.ToString()},
                           { "level",  Model.Level},
                           { "levelcode", Model.LevelCode },
@@ -282,16 +282,17 @@
                           { "hlid", Model.HLId.ToString() },
                           { "idobj",  jobgroup.Id.ToString()}
                          };
-                            <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext">
-                                <div class="col-lg-4 col-sm-6">
+                            <div class="col-md-3 col-sm-2">
+                                <a style="text-decoration:none" asp-page="ObjectiveLevel" asp-all-route-data="routedatanext">
                                     <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
                                         <div class="img-container">
-                                            <figcaption class="text-center"><h6>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h6></figcaption>
-                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive thumbnail mrgn-bttm-sm" />
+                                            <figcaption class="caption text-center"><h5 class="mrgn-tp-sm">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h5></figcaption>
+                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive center" />
                                         </div>
                                     </figure>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            
                         }
                     }
                 }

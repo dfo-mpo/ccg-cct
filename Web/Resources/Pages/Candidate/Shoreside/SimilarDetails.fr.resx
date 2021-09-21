@@ -180,8 +180,20 @@
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
   </data>
+  <data name="MCTSdesc" xml:space="preserve">
+    <value>Le Programme de formation des Services de communications et de trafic maritimes (SCTM) est offert en 2 phases. La phase I, vous apprendrez les rudiments de l’exercice des fonctions d’officier et au cours de la phase II, vous apprendrez la géographie locale et les procédures régionales, tout en appliquant les normes nationales apprises lors de la phase 1. Pour plus d'informations sur le programme SCTM, cliquez sur le lien ci-dessous.</value>
+  </data>
+  <data name="MCTSlinkalt" xml:space="preserve">
+    <value>Lien externe pour en savoir plus ou présenter une demande au Programme des services de communications et de trafic maritimes de la marine de la Garde côtière canadienne</value>
+  </data>
   <data name="MCTSUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>
+  </data>
+  <data name="MELDEVdesc" xml:space="preserve">
+    <value>Le Programme de perfectionnement des technologues de l’électronique de la marine est un programme national de formation et de perfectionnement. Il est conçu pour recruter des technologues en électronique et leur offrir la formation nécessaire pour travailler à la Garde côtière canadienne.  Pour plus d'informations sur le programme MELDEV cliquez sur le lien ci-dessous.</value>
+  </data>
+  <data name="MELDEVlinkalt" xml:space="preserve">
+    <value>Lien externe pour en savoir plus ou présenter une demande au Programme de perfectionnement des technologues de l’électronique de la marine de la Garde côtière canadienne</value>
   </data>
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
@@ -223,7 +235,7 @@
     <value>RÉGIONS</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrer ou imprimer ce document</value>
+    <value>Enregistrez ou téléchargez cette page sous forme de document PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer le PDF</value>

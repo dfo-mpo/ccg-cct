@@ -32,6 +32,7 @@ namespace Web.Pages.CCGMember.Similar
         [BindProperty(SupportsGet = true)]
         public int ObjectiveId { get; set; }
         public JobPositionDto Position { get; set; }
+        public JobPositionDto CurrentPosition { get; set; }
         public JobCertificateDto[] PositionCertificates { get; set; }
         [BindProperty]
         public List<JobCompetencyRatingDto[]> PositionCompetencyRatings { get; set; } = new List<JobCompetencyRatingDto[]>();
