@@ -23,24 +23,31 @@
             </ul>
         </nav>
 
-        <h2>@Localizer["Question1"]</h2>
+        <h2 class="mrgn-bttm-lg">@Localizer["Question1"]</h2>
+
         <div class="row">
-            <div class="col-sm-6">
-                <figure>
-                    <a alt="@Localizer["searchshoreside"]" style="text-decoration:none" class="nav-link" asp-page="Shoreside/AllCandidateShoreside">
-                        <figcaption><h4 class="text-center">@Localizer["Shoreside"]</h4></figcaption>
-                        <img src="~/img/Candidate/shoreside.jpg" alt="@Localizer["PhotoShoreside"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a alt="@Localizer["searchshoreside"]" style="text-decoration:none" class="nav-link" asp-page="Shoreside/AllCandidateShoreside">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Shoreside"]</h3></figcaption>
+                            <img src="~/img/Candidate/shoreside.jpg" alt="@Localizer["PhotoShoreside"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
-            <div class="col-sm-6">
-                <figure>
-                    <a alt="@Localizer["searchseagoing"]" style="text-decoration:none" class="nav-link" asp-page="Seagoing/Index">
-                        <figcaption><h4 class="text-center">@Localizer["Seagoing"]</h4></figcaption>
-                        <img src="~/img/Candidate/Seagoing.jpg" alt="@Localizer["PhotoSeagoing"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                    </a>
-                </figure>
+
+            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+                <a alt="@Localizer["searchseagoing"]" style="text-decoration:none" class="nav-link" asp-page="Seagoing/Index">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Seagoing"]</h3></figcaption>
+                            <img src="~/img/Candidate/Seagoing.jpg" alt="@Localizer["PhotoSeagoing"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
+
         </div>
 
     </section>

@@ -5,10 +5,10 @@
     ViewData["Title"] = Localizer["Shoreside"];
 }
 
-    <section role="contentinfo">
+
         <section role="contentinfo">
             <nav role="navigation" id="wb-bc" property="breadcrumb">
-                <h2>
+                <h2 class="wb-inv">
                     @Localizer["You are here:"]
                 </h2>
                 <div class="row">
@@ -27,51 +27,50 @@
                 </ul>
             </nav>
 
-            <h2>@Localizer["Q1"]</h2>
+            <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
 
-            <div class="col-lg-4 col-sm-6">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <a style="text-decoration:none" href="@Localizer["link"]" target="_blank">
-                            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["ccgcollege"]</h4></figcaption>
-                            <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive" />
-                        </a>
-                    </div>
-                </figure>
+            <div class="col-lg-3 col-md-2">
+                <a style="text-decoration:none" href="@Localizer["link"]" target="_blank">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["ccgcollege"]</h3></figcaption>
+                            <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
 
-            <div class="col-lg-4 col-sm-6">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <a style="text-decoration:none" class="nav-link" asp-page="Administrative">
-                            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["admin"]</h4></figcaption>
-                            <img src="~/img/CCGMember/Admin.jpg" alt="@Localizer["PhotoAdmin"]" class="img-responsive" />
-                        </a>
-                    </div>
-                </figure>
+            <div class="col-lg-3 col-md-2">
+                <a style="text-decoration:none" class="nav-link" asp-page="Administrative">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["admin"]</h3></figcaption>
+                            <img src="~/img/CCGMember/Admin.jpg" alt="@Localizer["PhotoAdmin"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
 
-            <div class="col-lg-4 col-sm-6">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <a style="text-decoration:none" class="nav-link" asp-page="Computer">
-                            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["computer"]</h4></figcaption>
-                            <img src="~/img/CCGMember/CS.jpg" alt="@Localizer["PhotoComputer"]" class="img-responsive" />
-                        </a>
-                    </div>
-                </figure>
+            <div class="col-lg-3 col-md-2">
+                <a style="text-decoration:none" class="nav-link" asp-page="Computer">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["computer"]</h3></figcaption>
+                            <img src="~/img/CCGMember/CS.jpg" alt="@Localizer["PhotoComputer"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
 
-            <div class="col-lg-4 col-sm-6">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <a style="text-decoration:none" class="nav-link" asp-page="Trades">
-                            <figcaption class="caption text-center"><h4 class="h6 mrgn-tp-sm">@Localizer["trades"]</h4></figcaption>
-                            <img src="~/img/CCGMember/GL.jpg" alt="@Localizer["PhotoTrades"]" class="img-responsive" />
-                        </a>
-                    </div>
-                   
-                </figure>
+            <div class="col-lg-3 col-md-2">
+                <a style="text-decoration:none" class="nav-link" asp-page="Trades">
+                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                        <div class="img-container">
+                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["trades"]</h3></figcaption>
+                            <img src="~/img/CCGMember/GL.jpg" alt="@Localizer["PhotoTrades"]" class="img-responsive center" />
+                        </div>
+                    </figure>
+                </a>
             </div>
 
             <!-- <div style="clear:both;">

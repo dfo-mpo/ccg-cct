@@ -132,6 +132,12 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>
   </data>
+  <data name="seagoingincludes" xml:space="preserve">
+    <value>(includes Logistics, Deck and Engineering)</value>
+  </data>
+  <data name="shoreincludes" xml:space="preserve">
+    <value>(includes Administrative, Computer and Trades)</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
   </data>

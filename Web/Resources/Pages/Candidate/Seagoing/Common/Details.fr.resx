@@ -232,7 +232,7 @@
     <value>MÊME ATTESTATION</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrer au format PDF</value>
+    <value>Enregistrez ou téléchargez cette page sous forme de document PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer le PDF</value>

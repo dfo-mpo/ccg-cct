@@ -23,30 +23,36 @@
                 <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
             </ul>
         </nav>
-        <h2>@Localizer["Q1"]</h2>
+        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
 
-        <div class="col-sm-4">
-            <figure>
-                <a style="text-decoration:none" class="nav-link" asp-page="HighSchool/Index">
-                    <figcaption><h4 class="text-center">@Localizer["HighSchool"]</h4></figcaption>
-                    <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                </a>
-            </figure>
+        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+            <a style="text-decoration:none" class="nav-link" asp-page="HighSchool/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["HighSchool"]</h3></figcaption>
+                        <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
         </div>
-        <div class="col-sm-4">
-            <figure>
-                <a style="text-decoration:none" class="nav-link" asp-page="College/Index">
-                    <figcaption><h4 class="text-center">@Localizer["TechCollege"]</h4></figcaption>
-                    <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                </a>
-            </figure>
+        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+            <a style="text-decoration:none" class="nav-link" asp-page="College/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["TechCollege"]</h3></figcaption>
+                        <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
         </div>
-        <div class="col-sm-4">
-            <figure>
-                <a style="text-decoration:none" class="nav-link" asp-page="University/Index">
-                    <figcaption><h4 class="text-center">@Localizer["University"]</h4></figcaption>
-                    <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-thumbnail img-responsive mrgn-bttm-sm" />
-                </a>
-            </figure>
+        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+            <a style="text-decoration:none" class="nav-link" asp-page="University/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["University"]</h3></figcaption>
+                        <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
         </div>
     </section>

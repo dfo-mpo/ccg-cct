@@ -132,8 +132,14 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>
   </data>
+  <data name="seagoingincludes" xml:space="preserve">
+    <value>(includes Ships' Officer and Ships' Crew)</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
+  </data>
+  <data name="shoresideincludes" xml:space="preserve">
+    <value>(includes Business, Computer and Sciences)</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>University - Seagoing or Shore side</value>

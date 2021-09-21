@@ -141,8 +141,20 @@
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
   </data>
+  <data name="MCTSdesc" xml:space="preserve">
+    <value>The Marine Communications and Traffic Services (MCTS) training program is offered in 2 phases. Phase I teaches you the basics of performing the job of an officer and during Phase II you'll learn local geography and regional procedures, while applying the national standards learned in Phase I. For more information about the MCTS program click on the link below.</value>
+  </data>
+  <data name="MCTSlinkalt" xml:space="preserve">
+    <value>External link to learn more or apply to the Canadian Coast Guard's Marine Communications and Traffic Services program</value>
+  </data>
   <data name="MCTSUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
+  <data name="MELDEVdesc" xml:space="preserve">
+    <value>The Marine Electronic Development (MELDEV) training program is a national training and development program. It’s designed to recruit electronics technologists and train them for work with the Canadian Coast Guard. For more information about the MELDEV program click on the link below.</value>
+  </data>
+  <data name="MELDEVlinkalt" xml:space="preserve">
+    <value>External link to learn more or apply to the Canadian Coast Guard's Marine Electronic Development program </value>
   </data>
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
@@ -163,7 +175,7 @@
     <value>Print PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Save PDF</value>
+    <value>Save or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>

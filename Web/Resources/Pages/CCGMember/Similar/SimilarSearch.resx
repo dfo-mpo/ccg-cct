@@ -165,6 +165,9 @@
   <data name="SAME LEVEL" xml:space="preserve">
     <value>SAME LEVEL</value>
   </data>
+  <data name="Save PDF" xml:space="preserve">
+    <value>Save or download this page as a PDF document</value>
+  </data>
   <data name="Search Positions" xml:space="preserve">
     <value>Search Positions</value>
   </data>

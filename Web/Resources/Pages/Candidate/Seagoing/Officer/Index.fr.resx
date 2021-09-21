@@ -121,7 +121,7 @@
     <value>Candidat externe</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Ces détails peuvent être trouvés dans le Règlement sur le personnel maritime du Canada:</value>
+    <value>Ces détails peuvent être trouvés dans le Règlement sur le personnel maritime du Canada :</value>
   </data>
   <data name="Eng" xml:space="preserve">
     <value>Ingénierie</value>
@@ -131,6 +131,9 @@
   </data>
   <data name="Link" xml:space="preserve">
     <value>https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf</value>
+  </data>
+  <data name="linkalt" xml:space="preserve">
+    <value>Lien externe pour voir le Règlement sur le personnel maritime du Canada PDF</value>
   </data>
   <data name="Nav" xml:space="preserve">
     <value>Navigation</value>

@@ -7,7 +7,7 @@
 }
     <section role="contentinfo">
         <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
+            <h2 class="wb-inv">
                 @Localizer["You are here:"]
             </h2>
             <div class="row">
@@ -22,7 +22,7 @@
             </div>
         </nav>
         <div class="mrgn-tp-md">
-            <a title="@Localizer["save"]" target="_blank" href="@Url.Action("StudentSeagoingPositionsList", "ToPdf", new { SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save pull-right" alt="@Localizer["save"]"></span> </a>
+            <a title="@Localizer["save"]" target="_blank" href="@Url.Action("StudentSeagoingPositionsList", "ToPdf", new { SeagoingIds = Model.SeagoingPositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["save"]"></span> </a>
             <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
