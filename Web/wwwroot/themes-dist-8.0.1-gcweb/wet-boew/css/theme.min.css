@@ -2356,7 +2356,7 @@ pre {
     }
 
     .col-md-1 {
-        width: 8.3333333333%
+        width: 15%
     }
 
     .col-md-2 {
@@ -6325,10 +6325,12 @@ button.close {
 
 .modal-backdrop {
     position: absolute;
+    width: 100%;
+    height: 100%;
     top: 0;
     right: 0;
     left: 0;
-    background-color: #000
+    background-color: rgba(0,0,0,.5);
 }
 
     .modal-backdrop.fade {
@@ -6344,7 +6346,8 @@ button.close {
 .modal-header {
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
-    min-height: 16.44px
+    min-height: 16.44px;
+    text-align: left;
 }
 
     .modal-header .close {
@@ -6358,7 +6361,8 @@ button.close {
 
 .modal-body {
     position: relative;
-    padding: 15px
+    padding: 15px;
+    text-align: left;
 }
 
 .modal-footer {
@@ -9720,7 +9724,7 @@ body.wb-modal .modal-dialog summary {
 }
 
 .modal-body {
-    background: #fff
+    background: #f5f5f5
 }
 
 .mfp-gallery .modal-body {
@@ -10294,8 +10298,8 @@ body.wb-modal .modal-dialog summary {
 }
 
 .wb-popup-mid {
-    max-height: 90%;
-    max-width: 90%
+    max-height: 50%;
+    max-width: 60%
 }
 
 .wb-panel-l {
@@ -10321,7 +10325,8 @@ body.wb-modal .modal-dialog summary {
     margin: auto;
     right: 0;
     top: 0;
-    width: 90%
+    width: 60%;
+    background: #f5f5f5;
 }
 
 .wb-popup-full {

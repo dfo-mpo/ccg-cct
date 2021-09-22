@@ -238,9 +238,8 @@
             </ol>
         </div>
     </nav>
-    <div class="row mrgn-tp-md mrgn-bttm-md">
-        <div class="col-sm-6">
-            @{var routedataprevious = new Dictionary<string, string>
+    <div class="col-sm-6 pull-left">
+        @{var routedataprevious = new Dictionary<string, string>
                                 {
         {"id",  Model.Id.ToString()},
         {"hlid", Model.HLId.ToString() },
@@ -256,19 +255,19 @@
         {"subgroupcode", Model.SubGroupCode },
         {"subgroupcodeobj", Model.SubGroupCodeObj }
         };
-            }
-            <nav role="navigation">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a class="btn btn-default pull-left" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="col-sm-6">
-            @if (!string.IsNullOrEmpty(Model.ObjectiveId))
+        }
+        <nav role="navigation">
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default pull-left" type="button" rel="prev" asp-page="ObjectiveLevel" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-sm-6 pull-right">
+        @if (!string.IsNullOrEmpty(Model.ObjectiveId))
+        {
+            var routedatanext = new Dictionary<string, string>
             {
-                var routedatanext = new Dictionary<string, string>
-                {
             {"id",  Model.Id.ToString()},
             {"hlid", Model.HLId.ToString() },
             {"idobj",  Model.IdObj.ToString()},
@@ -286,17 +285,15 @@
             {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
             };
 
-                <a class="btn btn-primary pull-right mrgn-tp-sm" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
-            }
-        </div>
+            <a class="btn btn-primary pull-right mrgn-tp-sm" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
+        }
     </div>
-
     <div class="clearfix"></div>
 
-    <h2 class="mrgn-bttm-lg"><b>@Localizer["h2Text"]</b></h2>
-    <h3 class="mrgn-bttm-xl"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-    <div class="dropdown">
-        <div class="col-sm-3 mrgn-bttm-md">
+    <h2 class="mrgn-tp-0 mrgn-bttm-md"><b>@Localizer["h2Text"]</b></h2>
+    <div class="col-lg-12 well">
+        <h3 class="mrgn-tp-0 mrgn-bttm-lg"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+        <div class="col-md-1 dropdown mrgn-bttm-md">
             <label><b>@Localizer["Level"]</b></label><br />
             <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
                 @Model.LevelCodeObj &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -308,7 +305,7 @@
                     if (level.Active != 0)
                     {
                         var data = new Dictionary<string, string>
-                                             {
+                                                                 {
                      {"positionid", Model.PositionId.ToString()},
                      {"idobj",  Model.IdObj.ToString()},
                      {"id",  Model.Id.ToString()},
@@ -324,27 +321,26 @@
                      {"subgroupcodeobj", level.SubGroupCode }
                   };
                         <li role="presentation">
-                            <a role="menuitem" tabindex="-1"
-                               asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
+                            <a role="menuitem" tabindex="-1" asp-page="ObjectivePosition" asp-all-route-data="data">@level.LevelCode</a>
                         </li>
                     }
                 }
             </ul>
         </div>
-        <div class="col-sm-6 mrgn-bttm-md">
+        <div class="col-md-10 dropdown mrgn-bttm-md">
             <label><b>@Localizer["Position"]</b></label><br />
-            <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+            <button class="dropdown-toggle text-left" id="menu1" type="button" data-toggle="dropdown">
                 @(Model.ObjectiveId==null ? Localizer["Select Position"].Value : (isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre))
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <ul class="dropdown-menu text-left" role="menu" aria-labelledby="menu1">
 
                 @foreach (var jp in Model.JobGroupPositions)
                 {
                     if (jp.Active != 0)
                     {
                         var data = new Dictionary<string, string>
-                                                 {
+                                                                     {
                         {"id",  Model.Id.ToString()},
                         {"hlid", Model.HLId.ToString() },
                         {"idobj",  Model.IdObj.ToString()},
@@ -366,5 +362,4 @@
             </ul>
         </div>
     </div>
-
 </section>
