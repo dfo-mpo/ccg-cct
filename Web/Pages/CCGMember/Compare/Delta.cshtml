@@ -233,7 +233,7 @@
                 {
                     <li><a href="../../Candidate/Index">@Localizer["Candidate"]</a></li>
                     <li><a href="../../Candidate/Shoreside/AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
-                    <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
+                    <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.CurrentPosition.JobGroupId">@Localizer["Position List"]</a></li>
                     <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
                 }
                 else if (Model.PreviousPageDetails.Contains("Seagoing"))

@@ -14,6 +14,7 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarDetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
+        private readonly CompareService _compareService;
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]
@@ -66,6 +67,7 @@ namespace Web.Pages.CCGMember.Similar
         public async Task OnGetAsync(int objectiveid)
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            CurrentPosition = await _jobpositionService.GetJobPositionById(objectiveid);
             Position = await _jobpositionService.GetJobPositionById(objectiveid);
             LevelObj = Position.JobGroupLevelId.ToString();
             JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(objectiveid);
