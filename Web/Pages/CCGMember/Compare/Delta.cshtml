@@ -311,7 +311,7 @@
         </ul>
     </nav>
 
-    <h2 class="mrgn-bttm-lg"><b>@Localizer["h2Results"]</b></h2>
+    <h2 class="mrgn-tp-0 mrgn-bttm-lg"><b>@Localizer["h2Results"]</b></h2>
 
     <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
         <thead>
@@ -473,20 +473,20 @@
                             }
                             <tr>
                                 <td>
-                                    <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
-                                    <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
+                                    <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
                                         </header>
                                         <div class="modal-body ">
                                             <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
-                                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
                                         </div>
                                     </section>
                                 </td>
                                 <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
-                                    <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
+                                    <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
                                         </header>
@@ -500,12 +500,12 @@
                                         <div class="modal-body">
                                             <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
                                             <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
-                                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
                                         </div>
                                     </section>
                                 </td>
                                 <td class="text-center bg-info">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
+                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
                                 </td>
                             </tr>
                         }
@@ -549,20 +549,20 @@
                             }
                             <tr>
                                 <td>
-                                    <a href="#@key1" aria-controls="centred-popup" class="wb-lbx" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
-                                    <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
+                                    <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
                                         </header>
                                         <div class="modal-body ">
                                             <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
-                                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
                                         </div>
                                     </section>
                                 </td>
                                 <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
-                                    <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @d.RatingValueCur Summary">@currentrating</abbr></a>
+                                    <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                         <header class="modal-header">
                                             <h2 class="modal-title">@Localizer["Current Position Level"]: @d.RatingValueCur</h2>
                                         </header>
@@ -576,12 +576,12 @@
                                         <div class="modal-body">
                                             <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
                                             <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
-                                            <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
                                         </div>
                                     </section>
                                 </td>
                                 <td class="text-center bg-info">
-                                    <a href="#@key2" aria-controls="centred-popup" class="wb-lbx"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
+                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @d.RatingValueObj Summary">@d.RatingValueObj</abbr></a>
                                 </td>
                             </tr>
                         }

@@ -234,7 +234,7 @@ else if(!(Model.PageSubmit == "true"))
 {
 <section role="contentinfo">
     <nav role="navigation" id="wb-bc" property="breadcrumb">
-        <h2>
+        <h2 class="wb-inv">
             @Localizer["You are here:"]
         </h2>
         <div class="row">
@@ -453,7 +453,7 @@ else if(!(Model.PageSubmit == "true"))
     <form asp-all-route-data="RouteParameter" method="post">
         
         <div class="col-md-12 mrgn-bttm-xl">
-            <h3>@Localizer["Question1"]</h3>
+            <h3 class="mrgn-tp-0">@Localizer["Question1"]</h3>
             <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="routedatacompare" asp-page="../../../CCGMember/Compare/AllObjective">@Localizer["Compare"]</a>
             <button class="btn btn-primary mrgn-rght-md">@Localizer["Similar"]</button>
         </div>
@@ -527,33 +527,33 @@ else if(!(Model.PageSubmit == "true"))
                                 var key2 = "b" + c.CompetencyId.ToString();
                                 <tr>
                                     <td>
-                                        <a data-mfp-src="#@key1" href="#@key1" aria-controls="centred-popup" class="wb-lbx">
+                                        <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">
                                             @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
                                         </a>
-                                            <section id="@key1" class="mfp-hide modal-dialog modal-content overlay-def">
-                                                <header class="modal-header">
-                                                    <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
-                                                </header>
-                                                <div class="modal-body ">
-                                                    <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
-                                                </div>
-                                            </section>
+                                        <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
                                     </td>
                                     <td class="text-center">
-                                        <a data-mfp-src="#@key2" href="#@key2" aria-controls="centred-popup" class="wb-lbx" >
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
                                             <abbr title="Level @c.RatingValue Summary">
                                                 @c.RatingValue
                                             </abbr>
                                         </a>
-                                        <section id="@key2" class="mfp-hide modal-dialog modal-content overlay-def">
+                                        <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                             <header class="modal-header">
                                                 <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
                                             </header>
                                             <div class="modal-body ">
                                                 <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
                                                 <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
-                                                    <button class="btn btn-primary popup-modal-dismiss" type="button">@Localizer["Close"]</button>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
                                             </div>
                                         </section>
                                     </td>

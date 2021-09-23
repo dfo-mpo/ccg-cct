@@ -25,46 +25,45 @@
             <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="AllPositions">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-    <h2><b>@Localizer["h2Text"]</b></h2>
-
-    <h3><b>@(isEnglish? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-    <div class="dropdown">
-        <div class="col-sm-3 mrgn-bttm-md">
-            <label><b>@Localizer["Level"]</b></label><br />
-            <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-                @Localizer["Select Level"]
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                @foreach (var level in Model.JobGroupPositions.ToList())
-                {
-                    if (level.Active != 0)
+    <h2 class="mrgn-bttm-md"><b>@Localizer["h2Text"]</b></h2>
+    <div class="col-lg-12 well">
+        <h3 class="mrgn-tp-0 mrgn-bttm-lg"><b>@(isEnglish? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+            <div class="col-md-1 dropdown mrgn-bttm-md">
+                <label><b>@Localizer["Level"]</b></label><br />
+                <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                    @Localizer["Select Level"]
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu text-left" role="menu" aria-labelledby="menu1">
+                    @foreach (var level in Model.JobGroupPositions.ToList())
                     {
-                        var routedata = new Dictionary<string, string>
-                                    {
+                        if (level.Active != 0)
+                        {
+                            var routedata = new Dictionary<string, string>
+                                            {
                               { "id",  Model.Id.ToString()},
                               { "level", level.LevelValue},
                               {"levelcode", level.LevelCode },
                               {"subgroupcode", level.SubGroupCode }
                          };
-                        <li role="presentation">
-                            <a role="menuitem" tabindex="-1"
-                               asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode</a>
-                        </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode</a>
+                            </li>
+                        }
                     }
-                }
-            </ul>
-        </div>
-    </div>
-    <!--    <div class="row">
-            <div class="col-lg-12 mrgn-bttm-md">
-                <nav role="navigation" class="mrgn-bttm-lg">
-                    <h2 class="wb-inv">Document navigation</h2>
-                    <ul class="pager">
-                        <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="AllPositions">@Localizer["Previous"]</a></li>
-                    </ul>
-                </nav>
+                </ul>
             </div>
-        </div>
-    -->
+    </div>
+        <!--    <div class="row">
+                <div class="col-lg-12 mrgn-bttm-md">
+                    <nav role="navigation" class="mrgn-bttm-lg">
+                        <h2 class="wb-inv">Document navigation</h2>
+                        <ul class="pager">
+                            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="AllPositions">@Localizer["Previous"]</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        -->
 </section>
