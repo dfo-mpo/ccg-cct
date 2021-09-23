@@ -43,61 +43,60 @@
             }
         </ul>
     </nav>
-    <h2><b>@Localizer["h2Text"]</b></h2>
-
-    <h3><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-    <div class="dropdown">
-        <div class="col-sm-3 mrgn-bttm-md">
-            <label><b>@Localizer["Level"]</b></label><br />
-            <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-                @Model.LevelCode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
-                {
-                    if (level.Active != 0)
+    <h2 class="mrgn-bttm-md"><b>@Localizer["h2Text"]</b></h2>
+    <div class="col-lg-12 well">
+        <h3 class="mrgn-tp-0 mrgn-bttm-lg"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+            <div class="col-md-1 dropdown mrgn-bttm-md">
+                <label><b>@Localizer["Level"]</b></label><br />
+                <button class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                    @Model.LevelCode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    @foreach (var level in Model.JobGroupLevels.ToList().Distinct())
                     {
-                        var routedata = new Dictionary<string, string>
-                                     {
+                        if (level.Active != 0)
+                        {
+                            var routedata = new Dictionary<string, string>
+                                             {
                           { "id",  Model.Id},
                           { "level", level.LevelValue},
                           {"levelcode", level.LevelCode },
                           {"subgroupcode", level.SubGroupCode }
             };
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1"
-                       asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode </a>
-                </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1"
+                           asp-page="CurrentPosition" asp-all-route-data="routedata">@level.LevelCode </a>
+                    </li>
+                }
             }
-        }
-            </ul>
-        </div>
-        <div class="col-sm-6 mrgn-bttm-md">
-            <label><b>@Localizer["Position"]</b></label><br />
-            <button class="dropdown-toggle" id="menu1" type="button" width="100%" data-toggle="dropdown">
-                @(Model.PositionId == 0 ? Localizer["Select Position"].Value : (isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre))
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                </ul>
+            </div>
+            <div class="col-md-10 dropdown mrgn-bttm-md">
+                <label><b>@Localizer["Position"]</b></label><br />
+                <button class="dropdown-toggle text-left" id="menu1" type="button" width="100%" data-toggle="dropdown">
+                    @(Model.PositionId == 0 ? Localizer["Select Position"].Value : (isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre))
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu text-left" role="menu" aria-labelledby="menu1">
 
-                @foreach (var jp in Model.JobGroupPositions)
-                {
-                    if (jp.Active != 0)
+                    @foreach (var jp in Model.JobGroupPositions)
                     {
-                        var routedata = new Dictionary<string, string>
-                                        {
+                        if (jp.Active != 0)
+                        {
+                            var routedata = new Dictionary<string, string>
+                                                {
                         { "id",  Model.Id},
                         { "level",  Model.Level},
                         {"levelcode", Model.LevelCode },
                         {"subgroupcode", Model.SubGroupCode },
                         { "positionid", jp.JobTitleId.ToString()}
                      };
-                        <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="CurrentPosition" asp-all-route-data="routedata">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" asp-page="CurrentPosition" asp-all-route-data="routedata">@(isEnglish ? jp.JobTitleEng : jp.JobTitleFre)</a></li>
+                        }
                     }
-                }
-            </ul>
-        </div>
+                </ul>
+            </div>
     </div>
 
 

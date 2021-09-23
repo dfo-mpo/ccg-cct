@@ -27,10 +27,10 @@
                 <ul class="pager">
                     <li class="previous"><a asp-page="../Shoreside/Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
                 </ul>
-            </nav>`
+            </nav>
         </div>
-        <div class="mrgn-tp-md">
-            <h3 class="text-center">@Localizer["results"]</h3>
+
+            <h2>@Localizer["results"]</h2>
             <table class="table table-hover table-responsive table-bordered">
                 <thead>
                     <tr>
@@ -46,7 +46,7 @@
                         @foreach (var position in Model.ShoreSidePositions.Where(e => e.Active != 0))
                         {
                             var routedata = new Dictionary<string, string>
-                                     {
+                                             {
                     {"previouspage", "../../Student/HighSchool/Shoreside/Administrative" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };
@@ -68,5 +68,4 @@
                     }
                 </tbody>
             </table>
-        </div>
     </section>

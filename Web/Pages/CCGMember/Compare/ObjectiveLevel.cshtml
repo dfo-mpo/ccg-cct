@@ -244,23 +244,24 @@
             <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-    <h2 class="mrgn-bttm-lg"><b>@Localizer["h2Text"]</b></h2>
 
-    <h3 class="mrgn-bttm-xl"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
-        <div class="dropdown">
-            <div class="col-sm-3 mrgn-bttm-md">
+    <h2 class="mrgn-bttm-md"><b>@Localizer["h2Text"]</b></h2>
+
+    <div class="col-lg-12 well">
+        <h3 class="mrgn-tp-0 mrgn-bttm-lg"><b>@(isEnglish ? Model.JobGroup.NameEng : Model.JobGroup.NameFre) (@Model.JobGroup.Code)</b></h3>
+            <div class="col-md-1 dropdown mrgn-bttm-md">
                 <label><b>@Localizer["Level"]</b></label><br />
                 <button class="dropdown-toggle" width="100%" id="menu1" type="button" data-toggle="dropdown">
                     @Localizer["Select Level"]
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <ul class="dropdown-menu text-left" role="menu" aria-labelledby="menu1">
                     @foreach (var level in Model.JobGroupPositions.ToList().Distinct())
                     {
                         if (level.Active != 0)
                         {
                             var data = new Dictionary<string, string>
-                                     {
+                                                     {
                        {"positionid",  Model.PositionId.ToString() },
                        { "id",  Model.Id.ToString()},
                        { "hlid", Model.HLId.ToString() },
@@ -283,10 +284,10 @@
                     }
                 </ul>
             </div>
-        </div>
+    </div>
 
 
-        <!--    <div class="row">
+    <!--    <div class="row">
             <div class="col-lg-12 mrgn-bttm-md">
                 <nav role="navigation" class="mrgn-bttm-lg">
                     <h2 class="wb-inv">Document navigation</h2>
