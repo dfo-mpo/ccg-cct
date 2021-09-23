@@ -57,7 +57,7 @@ namespace Web.Pages.Candidate.Shoreside
                     CertificateIds.Add(id);
                 }
             }
-            _logger.LogInformation($"Seagoing Crew Engineering Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
+            _logger.LogInformation($"Candidate Shoreside Similar details page visited at {DateTime.UtcNow.ToLongTimeString()}");
             Position = await _jobpositionService.GetJobPositionById(positionid);
             JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(positionid);
             Id = Position.JobGroupId;
