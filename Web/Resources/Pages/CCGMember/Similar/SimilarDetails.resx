@@ -171,11 +171,8 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>
   </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Print PDF</value>
-  </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Save or download this page as a PDF document</value>
+    <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>

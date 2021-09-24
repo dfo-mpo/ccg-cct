@@ -120,6 +120,12 @@
   <data name="caption" xml:space="preserve">
     <value>CCG ForceGen</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Inquiry" xml:space="preserve">
     <value>General Inquiries</value>
   </data>

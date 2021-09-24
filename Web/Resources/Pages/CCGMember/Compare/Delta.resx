@@ -201,11 +201,8 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
-  <data name="Print PDF" xml:space="preserve">
-    <value>Print PDF</value>
-  </data>
   <data name="Save PDF" xml:space="preserve">
-    <value>Save or download this page as a PDF document</value>
+    <value>Print or download this page as a PDF document</value>
   </data>
   <data name="sciences" xml:space="preserve">
     <value>Sciences</value>

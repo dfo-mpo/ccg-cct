@@ -180,6 +180,12 @@
   <data name="A9" xml:space="preserve">
     <value>&lt;p&gt;Knowledge refers to the practical or theoretical understanding of a subject. It is information acquired by a person through experience or education. Technical competencies describe the skill-based application of the needed knowledge to perform the specific job and/or group of jobs efficiently and effectively, day to day, within an organization.&lt;/p&gt;</value>
   </data>
+  <data name="FAQs" xml:space="preserve">
+    <value>Frequently Asked Questions</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>What is the Career Competency Tool about?</value>
   </data>
