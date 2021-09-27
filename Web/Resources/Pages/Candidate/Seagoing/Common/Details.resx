@@ -138,9 +138,6 @@
   <data name="noregions" xml:space="preserve">
     <value>No regions available</value>
   </data>
-  <data name="print" xml:space="preserve">
-    <value>Print PDF</value>
-  </data>
   <data name="Question1" xml:space="preserve">
     <value>Would you like to compare or find similar positions within the organization to your selected position below?</value>
   </data>
@@ -148,7 +145,7 @@
     <value>Based on the competencies in your current profile, what percentage match are you seeking?</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save or download this page as a PDF document</value>
+    <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
     <value>Seagoing Positions</value>

@@ -180,6 +180,12 @@
   <data name="A9" xml:space="preserve">
     <value>&lt;p&gt;Le terme « connaissance » fait référence à la compréhension pratique et théorique d’un sujet. Il s’agit d’une information obtenue par une personne par l’expérience ou l’éducation. Les compétences techniques décrivent l’application axée sur les compétences des connaissances nécessaires à la réalisation efficace et efficiente d’une tâche spécifique ou d’un groupe de tâches, de façon quotidienne, au sein d’une organisation.&lt;/p&gt;</value>
   </data>
+  <data name="FAQs" xml:space="preserve">
+    <value>Foire aux questions</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="Q1" xml:space="preserve">
     <value>De quoi s’agit-il le Outil de compétence professionnelle (OCP)?</value>
   </data>

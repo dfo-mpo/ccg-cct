@@ -35,30 +35,42 @@
                 </p>
             </form>
             <form>
-                @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-                {
-                    @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-                    {
-                        if (jobgroup.Active != 0)
-                        {
-                            <div class="col-md-3 col-sm-2">
-                                <a style="text-decoration:none" asp-page="SimilarList" asp-route-id="@jobgroup.Id">
-                                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                                        <div class="img-container">
-                                            <figcaption class="caption text-center"><h5 class="mrgn-tp-sm">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</h5></figcaption>
-                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" alt="" class="img-responsive center" />
-                                        </div>
-                                    </figure>
-                                </a>
-                            </div>
-                                }
-                                }
-                                }
-                                else
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-unstyled row wb-eqht">
+
+                            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                            {
+                                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                                 {
-                                <h4>@Localizer["NoResults"]</h4>
+                                    if (jobgroup.Active != 0)
+                                    {
+
+
+                                        <li class="col-md-2">
+                                            <a asp-page="SimilarList" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well hght-inhrt">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xs-7">
+                                                        <p class="mrgn-bttm-sm"><strong class="h4">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</strong></p>
+                                                    </div>
+                                                    <div class="col-sm-12 col-xs-5">
+                                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    }
                                 }
-                        </form>
+                            }
+                            else
+                            {
+                                <h4>@Localizer["NoResults"]</h4>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
