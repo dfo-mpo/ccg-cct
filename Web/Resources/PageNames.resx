@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administratif</value>
+  </data>
   <data name="AllCandidateShoreside" xml:space="preserve">
-    <value>AllCandidateShoreside_FR</value>
+    <value>TousCandidatsCoteRivage</value>
   </data>
   <data name="AllObjective" xml:space="preserve">
     <value>TousObjectifs</value>
@@ -126,17 +129,35 @@
   <data name="AllPositions" xml:space="preserve">
     <value>TousPositions</value>
   </data>
+  <data name="Business" xml:space="preserve">
+    <value>Affaires</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
     <value>Candidat</value>
   </data>
   <data name="CCGMember" xml:space="preserve">
     <value>MembreGCC</value>
   </data>
+  <data name="College" xml:space="preserve">
+    <value>College</value>
+  </data>
   <data name="Common" xml:space="preserve">
     <value>Commun</value>
   </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
+  </data>
+  <data name="Computer" xml:space="preserve">
+    <value>Ordinateurs</value>
+  </data>
+  <data name="ComputerScience" xml:space="preserve">
+    <value>SciencesInformatiques</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacter</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cuisinier</value>
   </data>
   <data name="Crew" xml:space="preserve">
     <value>Equipage</value>
@@ -148,13 +169,40 @@
     <value>PositionCourrante</value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Deck_FR</value>
+    <value>Pont</value>
+  </data>
+  <data name="Delta" xml:space="preserve">
+    <value>Delta</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Electrique</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Electronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
-    <value>Engineering_FR</value>
+    <value>Ingenierie</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="GeneralArts" xml:space="preserve">
+    <value>ArtsGeneraux</value>
+  </data>
+  <data name="GeographicalInformation" xml:space="preserve">
+    <value>InformationGeographique</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>EcoleSecondaire</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistics_FR</value>
+    <value>Logistique</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation</value>
   </data>
   <data name="ObjectiveLevel" xml:space="preserve">
     <value>NiveauObjectif</value>
@@ -165,14 +213,29 @@
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
   </data>
+  <data name="PositionList" xml:space="preserve">
+    <value>ListeDePositions</value>
+  </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Sciences</value>
+  </data>
   <data name="Seagoing" xml:space="preserve">
     <value>Marin</value>
+  </data>
+  <data name="SeagoingDeck" xml:space="preserve">
+    <value>MarinPont</value>
+  </data>
+  <data name="SeagoingEngineer" xml:space="preserve">
+    <value>MarinIngenierie</value>
+  </data>
+  <data name="SeagoingLogistics" xml:space="preserve">
+    <value>MarinLogistique</value>
   </data>
   <data name="SearchType" xml:space="preserve">
     <value>TypeDeRecherche</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shoreside_FR</value>
+    <value>CoteRivage</value>
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Similaire</value>
@@ -180,7 +243,22 @@
   <data name="SimilarDetails" xml:space="preserve">
     <value>DetailsSimilaire</value>
   </data>
-  <data name="SimiliarList" xml:space="preserve">
+  <data name="SimilarList" xml:space="preserve">
     <value>ListeSimilaire</value>
+  </data>
+  <data name="SimilarSearch" xml:space="preserve">
+    <value>RechercheSimilaire</value>
+  </data>
+  <data name="SocialScience" xml:space="preserve">
+    <value>ScienceSociale</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Etudiant</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>MetiersGeneraux</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>Universite</value>
   </data>
 </root>

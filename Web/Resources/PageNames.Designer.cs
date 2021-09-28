@@ -61,7 +61,16 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AllCandidateShoreside_FR.
+        ///   Looks up a localized string similar to Administratif.
+        /// </summary>
+        public static string Administrative {
+            get {
+                return ResourceManager.GetString("Administrative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TousCandidatsCoteRivage.
         /// </summary>
         public static string AllCandidateShoreside {
             get {
@@ -88,6 +97,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Affaires.
+        /// </summary>
+        public static string Business {
+            get {
+                return ResourceManager.GetString("Business", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Candidat.
         /// </summary>
         public static string Candidate {
@@ -106,6 +124,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to College.
+        /// </summary>
+        public static string College {
+            get {
+                return ResourceManager.GetString("College", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commun.
         /// </summary>
         public static string Common {
@@ -120,6 +147,42 @@ namespace Web.Resources {
         public static string Compare {
             get {
                 return ResourceManager.GetString("Compare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordinateurs.
+        /// </summary>
+        public static string Computer {
+            get {
+                return ResourceManager.GetString("Computer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SciencesInformatiques.
+        /// </summary>
+        public static string ComputerScience {
+            get {
+                return ResourceManager.GetString("ComputerScience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacter.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cuisinier.
+        /// </summary>
+        public static string Cook {
+            get {
+                return ResourceManager.GetString("Cook", resourceCulture);
             }
         }
         
@@ -151,7 +214,7 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deck_FR.
+        ///   Looks up a localized string similar to Pont.
         /// </summary>
         public static string Deck {
             get {
@@ -160,7 +223,43 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Engineering_FR.
+        ///   Looks up a localized string similar to Delta.
+        /// </summary>
+        public static string Delta {
+            get {
+                return ResourceManager.GetString("Delta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electrique.
+        /// </summary>
+        public static string Electrical {
+            get {
+                return ResourceManager.GetString("Electrical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electronique.
+        /// </summary>
+        public static string Electronics {
+            get {
+                return ResourceManager.GetString("Electronics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingenierie.
         /// </summary>
         public static string Engineering {
             get {
@@ -169,11 +268,56 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logistics_FR.
+        ///   Looks up a localized string similar to Erreur.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ArtsGeneraux.
+        /// </summary>
+        public static string GeneralArts {
+            get {
+                return ResourceManager.GetString("GeneralArts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InformationGeographique.
+        /// </summary>
+        public static string GeographicalInformation {
+            get {
+                return ResourceManager.GetString("GeographicalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EcoleSecondaire.
+        /// </summary>
+        public static string HighSchool {
+            get {
+                return ResourceManager.GetString("HighSchool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logistique.
         /// </summary>
         public static string Logistics {
             get {
                 return ResourceManager.GetString("Logistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigation.
+        /// </summary>
+        public static string Navigation {
+            get {
+                return ResourceManager.GetString("Navigation", resourceCulture);
             }
         }
         
@@ -205,11 +349,56 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ListeDePositions.
+        /// </summary>
+        public static string PositionList {
+            get {
+                return ResourceManager.GetString("PositionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sciences.
+        /// </summary>
+        public static string Sciences {
+            get {
+                return ResourceManager.GetString("Sciences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marin.
         /// </summary>
         public static string Seagoing {
             get {
                 return ResourceManager.GetString("Seagoing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MarinPont.
+        /// </summary>
+        public static string SeagoingDeck {
+            get {
+                return ResourceManager.GetString("SeagoingDeck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MarinIngenierie.
+        /// </summary>
+        public static string SeagoingEngineer {
+            get {
+                return ResourceManager.GetString("SeagoingEngineer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MarinLogistique.
+        /// </summary>
+        public static string SeagoingLogistics {
+            get {
+                return ResourceManager.GetString("SeagoingLogistics", resourceCulture);
             }
         }
         
@@ -223,7 +412,7 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shoreside_FR.
+        ///   Looks up a localized string similar to CoteRivage.
         /// </summary>
         public static string Shoreside {
             get {
@@ -252,9 +441,54 @@ namespace Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to ListeSimilaire.
         /// </summary>
-        public static string SimiliarList {
+        public static string SimilarList {
             get {
-                return ResourceManager.GetString("SimiliarList", resourceCulture);
+                return ResourceManager.GetString("SimilarList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RechercheSimilaire.
+        /// </summary>
+        public static string SimilarSearch {
+            get {
+                return ResourceManager.GetString("SimilarSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ScienceSociale.
+        /// </summary>
+        public static string SocialScience {
+            get {
+                return ResourceManager.GetString("SocialScience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etudiant.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MetiersGeneraux.
+        /// </summary>
+        public static string Trades {
+            get {
+                return ResourceManager.GetString("Trades", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Universite.
+        /// </summary>
+        public static string University {
+            get {
+                return ResourceManager.GetString("University", resourceCulture);
             }
         }
     }
