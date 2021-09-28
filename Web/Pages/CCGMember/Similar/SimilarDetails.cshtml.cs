@@ -64,10 +64,10 @@ namespace Web.Pages.CCGMember.Similar
             _logger = logger;
             _jobpositionService = jobcompetencyService;
         }
-        public async Task OnGetAsync(int objectiveid)
+        public async Task OnGetAsync(int objectiveid, int positionid)
         {
             _logger.LogInformation($"Position details page visited at {DateTime.UtcNow.ToLongTimeString()}");
-            CurrentPosition = await _jobpositionService.GetJobPositionById(objectiveid);
+            CurrentPosition = await _jobpositionService.GetJobPositionById(positionid);
             Position = await _jobpositionService.GetJobPositionById(objectiveid);
             LevelObj = Position.JobGroupLevelId.ToString();
             JobLocationRegions = await _jobpositionService.GetJobLocationRegionsById(objectiveid);

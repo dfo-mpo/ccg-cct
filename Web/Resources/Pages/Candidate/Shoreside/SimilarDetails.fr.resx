@@ -235,7 +235,7 @@
     <value>RÉGIONS</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrez ou téléchargez cette page sous forme de document PDF</value>
+    <value>Imprimez ou téléchargez cette page au format PDF</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Enregistrer le PDF</value>

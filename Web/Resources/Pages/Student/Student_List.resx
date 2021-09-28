@@ -126,11 +126,8 @@
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
-  <data name="print" xml:space="preserve">
-    <value>Print this page</value>
-  </data>
   <data name="save" xml:space="preserve">
-    <value>Save or download this page as a PDF document</value>
+    <value>Print or download this page as a PDF document</value>
   </data>
   <data name="seagoing" xml:space="preserve">
     <value>SEAGOING POSITIONS</value>

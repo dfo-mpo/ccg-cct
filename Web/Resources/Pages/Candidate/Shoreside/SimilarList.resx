@@ -124,7 +124,7 @@
     <value>No similar positions are currently available for this position.</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save or print this document</value>
+    <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>

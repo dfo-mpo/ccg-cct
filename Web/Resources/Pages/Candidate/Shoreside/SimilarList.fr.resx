@@ -145,7 +145,7 @@
     <value>Précédent</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrer ou imprimer ce document</value>
+    <value>Imprimez ou téléchargez cette page au format PDF</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Positions côté rivage</value>
