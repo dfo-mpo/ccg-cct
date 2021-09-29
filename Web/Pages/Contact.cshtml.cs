@@ -8,7 +8,7 @@ using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages
 {
-    [Breadcrumb("Contact", FromPage = typeof(Pages.IndexModel))]
+    [Breadcrumb("Contact", FromPage = typeof(Pages.HomepageModel))]
     public class ContactModel : PageModel
     {
         public void OnGet()

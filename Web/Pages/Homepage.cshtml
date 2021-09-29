@@ -1,0 +1,58 @@
+﻿@page
+@model Web.Pages.HomepageModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Home";
+}
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Home"]</a></li>
+        </ol>
+    </div>
+</nav>
+
+<div class="text-left">
+    <h1 class="mrgn-bttm-lg"><b>@Localizer["Question1"]</b></h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchmember"]" style="text-decoration:none" asp-page="CCGMember/AllPositions">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["CCGMember"]</h3></figcaption>
+                        <img src="~/img/CCG-employee.jpg" alt="@Localizer["PhotoMember"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchexternal"]" style="text-decoration:none" asp-page="Candidate/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["ExternalCandidate"]</h3></figcaption>
+                        <img src="~/img/external candidates.jpg" alt="@Localizer["PhotoExternal"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <a alt="@Localizer["searchstudent"]" style="text-decoration:none" asp-page="Student/Index">
+                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                    <div class="img-container">
+                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Student"]</h3></figcaption>
+                        <img src="~/img/Students.jpg" alt="@Localizer["PhotoStudents"]" class="img-responsive center" />
+                    </div>
+                </figure>
+            </a>
+        </div>
+       
+    </div>
+</div>

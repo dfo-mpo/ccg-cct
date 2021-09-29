@@ -295,6 +295,9 @@ td, th {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
+span.glyphicon.glyphicon-info-sign.pull-right {
+    font-size: 20px;
+}
 span.glyphicon.glyphicon-save-file {
     font-size: 35px;
 }

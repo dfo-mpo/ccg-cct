@@ -61,16 +61,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\PageNames.Designer.cs">
+	<Compile Update="Resources\Pages\Homepage.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>PageNames.resx</DependentUpon>
+      <DependentUpon>Homepage.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Pages\Index.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Index.resx</DependentUpon>
-    </Compile>
+	<Compile Update="Resources\PageNames.Designer.cs">
+	  <DesignTime>True</DesignTime>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>PageNames.resx</DependentUpon>
+	</Compile>
     <Compile Update="Resources\Pages\Shared\_ThemeGcwu.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -135,14 +135,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\PageNames.resx">
+	<EmbeddedResource Update="Resources\Pages\Homepage.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PageNames.Designer.cs</LastGenOutput>
+      <LastGenOutput>Homepage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Pages\Index.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+	<EmbeddedResource Update="Resources\PageNames.resx">
+		<Generator>PublicResXFileCodeGenerator</Generator>
+		<LastGenOutput>PageNames.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
     <EmbeddedResource Update="Resources\Pages\Shared\_ThemeGcwu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_ThemeGcwu.Designer.cs</LastGenOutput>
