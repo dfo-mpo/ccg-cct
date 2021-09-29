@@ -198,6 +198,9 @@
   <data name="HighSchool" xml:space="preserve">
     <value>EcoleSecondaire</value>
   </data>
+  <data name="Homepage" xml:space="preserve">
+    <value>Acceuil</value>
+  </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>

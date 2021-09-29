@@ -304,6 +304,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acceuil.
+        /// </summary>
+        public static string Homepage {
+            get {
+                return ResourceManager.GetString("Homepage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logistique.
         /// </summary>
         public static string Logistics {
