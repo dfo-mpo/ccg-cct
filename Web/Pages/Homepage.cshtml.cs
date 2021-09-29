@@ -8,8 +8,8 @@ using SmartBreadcrumbs.Attributes;
 
 namespace Web.Pages
 {
-    [Breadcrumb("FAQs", FromPage = typeof(Pages.HomepageModel))]
-    public class FaqsModel : PageModel
+    [DefaultBreadcrumb("Home")]
+    public class HomepageModel : PageModel
     {
         public void OnGet()
         {
