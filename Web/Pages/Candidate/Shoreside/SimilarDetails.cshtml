@@ -195,8 +195,8 @@
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Current Position"]</a></li>
@@ -383,8 +383,8 @@ else if (!(Model.PageSubmit == "true"))
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Current Position"]</a></li>
@@ -729,8 +729,8 @@ else
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Current Position"]</a></li>
