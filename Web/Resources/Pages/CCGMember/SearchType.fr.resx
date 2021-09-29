@@ -123,8 +123,20 @@
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer ma position à une autre position</value>
+  </data>
+  <data name="Compare Function" xml:space="preserve">
+    <value>La fonction de comparaison</value>
+  </data>
+  <data name="contcompare" xml:space="preserve">
+    <value>Continuer à comparer</value>
+  </data>
+  <data name="contsimilar" xml:space="preserve">
+    <value>Continuer vers la recherche similaire</value>
   </data>
   <data name="Current Position" xml:space="preserve">
     <value>Poste actuelle</value>
@@ -132,11 +144,26 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="infosimilar" xml:space="preserve">
+    <value>Cliquez ici pour plus d'informations sur la fonction de recherche similaire</value>
+  </data>
+  <data name="modalcompare" xml:space="preserve">
+    <value>&lt;p&gt;Cette fonction vous permet de comparer votre poste actuellement sélectionné avec tout autre poste de la Garde côtière canadienne. En le sélectionnant, puis en un autre poste, la fonction produira les deux résultats de poste côte à côte afin que vous puissiez voir les différences d'emplacement, de certification, de compétences et d'évaluation. Si le poste auquel vous vous comparez est celui que vous recherchez, vous pouvez alors télécharger les résultats, les sauvegarder ou les imprimer, comme base d'un plan de formation.&lt;/p&gt;</value>
+  </data>
+  <data name="modalsimilar" xml:space="preserve">
+    <value>&lt;p&gt;Cette fonctionnalité vous permet de trouver des postes similaires à celui que vous avez déjà sélectionné. La recherche donnera des résultats en pourcentage par fonctionnalité (par exemple, ingénierie, administratif, logistique, etc.). Les résultats peuvent ne pas être au même niveau de rémunération que le poste que vous avez déjà sélectionné.&lt;/p&gt;
+                    &lt;p&gt;Si le poste auquel vous comparez (c'est-à-dire le poste que vous avez déjà sélectionné) est associé à des certificats, une case vous proposera de cliquer sur les certificats. Si vous cliquez sur un ou plusieurs, la recherche similaire produira des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;
+                    &lt;p&gt;Si vous ne sélectionnez pas de certificat ou si le poste auquel vous comparez n'a pas de certificat associé, vous pouvez simplement cliquer sur un pourcentage de correspondance. En cliquant sur 100%, vous obtiendrez des résultats au même niveau de classification, de niveau et de niveaux inférieurs et supérieurs. Si vous cliquez sur d'autres pourcentages, les résultats seront des positions de fonctionnalité similaire, mais pas de niveau.&lt;/p&gt;
+                    &lt;p&gt;Si vous cliquez sur une certification ET un pourcentage, la recherche similaire ne produira que des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;</value>
+  </data>
   <data name="PhotoCompare" xml:space="preserve">
     <value>Photo de deux postes au sein de la Garde côtière canadienne</value>
   </data>
   <data name="PhotoSimilar" xml:space="preserve">
     <value>Photo de quatre postes au sein de la Garde côtière canadienne</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
   </data>
   <data name="Question1" xml:space="preserve">
     <value>Comment souhaitez-vous effectuer votre recherche?</value>
@@ -149,5 +176,8 @@
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Trouver des postes similaires à mon poste actuel</value>
+  </data>
+  <data name="Similar Function" xml:space="preserve">
+    <value>Fonction de recherche similaire</value>
   </data>
 </root>
