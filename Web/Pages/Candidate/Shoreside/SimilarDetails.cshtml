@@ -459,17 +459,15 @@ else if (!(Model.PageSubmit == "true"))
                     </tr>
                 }
                 <tbody>
+                    <tr>
+                        <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                    </tr>
                     @if (Model.PositionCertificates.Any(e => e.Active != 0))
                     {
-                        <tr>
-                            <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                            <!--th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th-->
-                        </tr>
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
                             <tr>
                                 <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
-                                <!--td class="text-center"><input name="CertificateIds" value="@c.Id" onclick="" type="checkbox" /></td-->
                             </tr>
                         }
                     }
