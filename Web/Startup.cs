@@ -16,6 +16,7 @@ using System.Linq;
 using Rotativa.AspNetCore;
 using SmartBreadcrumbs.Extensions;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Microsoft.AspNetCore.Routing;
 
 namespace Web
 {
@@ -38,6 +39,8 @@ namespace Web
         {
             services.AddControllers();
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            services.Configure<RouteOptions>(options => options.ConstraintMap.Add("french", typeof(FrenchRouteConstraint)));
 
             services
                 .AddRazorPages()
