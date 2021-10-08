@@ -387,27 +387,27 @@ else if (Model.PageEdit)
                                     {
                                         var routedata = new Dictionary<string, string>
                                                                                                                               {
-                              {"requiredcompetencies", Model.RequiredCompetencies },
-                              {"previouspagesimilar", Model.PreviousPageSimilar },
-                              {"previouspage",Model.PreviousPage },
-                              {"positionid", Model.PositionId.ToString()},
-                              { "id",  Model.Id.ToString()},
-                              { "level",  Model.Level},
-                              { "subgroupcode", Model.SubGroupCode },
-                              { "levelcode", Model.LevelCode },
-                              {"higherlevels", Model.HigherLevels },
-                              {"samelevels", Model.SameLevels },
-                              {"sameorhigherlevels", Model.SameOrHigherLevels },
-                              {"addedcompetencies",Model.AddedCompetencies},
-                              {"certificates", Model.Certificates },
-                              { "competencyid",  competency.Id.ToString()}
-                         };
-                                <li role="presentation">
-                                    <button class="btn btn-link text-left"
-                                            asp-page-handler="competency" asp-all-route-data="@routedata">
-                                        @(isEnglish?competency.NameEng:competency.NameFre)
-                                    </button>
-                                </li>
+                                          {"requiredcompetencies", Model.RequiredCompetencies },
+                                          {"previouspagesimilar", Model.PreviousPageSimilar },
+                                          {"previouspage",Model.PreviousPage },
+                                          {"positionid", Model.PositionId.ToString()},
+                                          { "id",  Model.Id.ToString()},
+                                          { "level",  Model.Level},
+                                          { "subgroupcode", Model.SubGroupCode },
+                                          { "levelcode", Model.LevelCode },
+                                          {"higherlevels", Model.HigherLevels },
+                                          {"samelevels", Model.SameLevels },
+                                          {"sameorhigherlevels", Model.SameOrHigherLevels },
+                                          {"addedcompetencies",Model.AddedCompetencies},
+                                          {"certificates", Model.Certificates },
+                                          { "competencyid",  competency.Id.ToString()}
+                                     };
+                                        <li role="presentation">
+                                            <button class="btn btn-link text-left"
+                                                    asp-page-handler="competency" asp-all-route-data="@routedata">
+                                                @(isEnglish?competency.NameEng:competency.NameFre)
+                                            </button>
+                                        </li>
                             }
                                 }
                             }
@@ -510,31 +510,31 @@ else if (Model.PageEdit)
                     {
                         var routedatanext = new Dictionary<string, string>
                                          {
-        {"objectiveid",  position.JobTitleId.ToString()},
-        {"positionid",  Model.PositionId.ToString()},
-        {"id", Model.Id },
-        {"level", Model.Level },
-        { "subgroupcode", Model.SubGroupCode },
-        { "levelcode", Model.LevelCode },
-        {"pagesubmit", "false" },
-        {"previouspagesimilardetails","SimilarSearch" },
-        {"samelevels" , Model.SameLevels},
-        {"higherlevels", Model.HigherLevels },
-        {"addedcompetencies",Model.AddedCompetencies},
-        {"certificates", Model.Certificates },
-        {"sameorhigherlevels", Model.SameOrHigherLevels },
-        {"requiredcompetencies", Model.RequiredCompetencies },
-        {"percentmatch", Model.PercentMatch },
-        {"previouspagesimilar", Model.PreviousPageSimilar },
-        {"previouspagedetails", Model.PreviousPageDetails },
-        {"previouspage", Model.PreviousPage }
-        };
-        <tr>
-            <td>@position.LevelCode</td>
-            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-            <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
-        </tr>
-    }
+                                            {"objectiveid",  position.JobTitleId.ToString()},
+                                            {"positionid",  Model.PositionId.ToString()},
+                                            {"id", Model.Id },
+                                            {"level", Model.Level },
+                                            { "subgroupcode", Model.SubGroupCode },
+                                            { "levelcode", Model.LevelCode },
+                                            {"pagesubmit", "false" },
+                                            {"previouspagesimilardetails","SimilarSearch" },
+                                            {"samelevels" , Model.SameLevels},
+                                            {"higherlevels", Model.HigherLevels },
+                                            {"addedcompetencies",Model.AddedCompetencies},
+                                            {"certificates", Model.Certificates },
+                                            {"sameorhigherlevels", Model.SameOrHigherLevels },
+                                            {"requiredcompetencies", Model.RequiredCompetencies },
+                                            {"percentmatch", Model.PercentMatch },
+                                            {"previouspagesimilar", Model.PreviousPageSimilar },
+                                            {"previouspagedetails", Model.PreviousPageDetails },
+                                            {"previouspage", Model.PreviousPage }
+                                            };
+                            <tr>
+                                <td>@position.LevelCode</td>
+                                <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                                <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                            </tr>
+                    }
                 </tbody>
             </table>
         }

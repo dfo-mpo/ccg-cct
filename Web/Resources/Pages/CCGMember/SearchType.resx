@@ -135,6 +135,9 @@
   <data name="contsimilar" xml:space="preserve">
     <value>Continue to Similar Search</value>
   </data>
+  <data name="infocompare" xml:space="preserve">
+    <value>Click here for more information on the Compare function</value>
+  </data>
   <data name="infosimilar" xml:space="preserve">
     <value>Click here for more information on the Similar Search function</value>
   </data>
@@ -161,5 +164,11 @@
   </data>
   <data name="Similar Function" xml:space="preserve">
     <value>Similar Search Function</value>
+  </data>
+  <data name="textinfocompare" xml:space="preserve">
+    <value>(click here for more information on the compare function)</value>
+  </data>
+  <data name="textinfosimilar" xml:space="preserve">
+    <value>(click here for more information on the similar search function)</value>
   </data>
 </root>

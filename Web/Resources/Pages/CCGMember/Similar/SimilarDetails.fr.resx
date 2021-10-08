@@ -120,6 +120,15 @@
   <data name="Administrative" xml:space="preserve">
     <value>Administratif</value>
   </data>
+  <data name="altPhotoMap" xml:space="preserve">
+    <value>Image des régions de la GCC</value>
+  </data>
+  <data name="ArcticRegion" xml:space="preserve">
+    <value>La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.</value>
+  </data>
+  <data name="AtlanticRegion" xml:space="preserve">
+    <value>La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.</value>
+  </data>
   <data name="Business" xml:space="preserve">
     <value>Affaires</value>
   </data>
@@ -129,11 +138,17 @@
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
+  <data name="CentralRegion" xml:space="preserve">
+    <value>La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
+  </data>
+  <data name="CollegeRegion" xml:space="preserve">
+    <value>Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.</value>
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
@@ -180,6 +195,9 @@
   <data name="geo" xml:space="preserve">
     <value>Information géographique</value>
   </data>
+  <data name="HeadQRegion" xml:space="preserve">
+    <value>Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.</value>
+  </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
   </data>
@@ -189,11 +207,17 @@
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
+  <data name="linkmap" xml:space="preserve">
+    <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
+  </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
+  </data>
+  <data name="mapSummary" xml:space="preserve">
+    <value>Version texte</value>
   </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
@@ -215,6 +239,9 @@
   </data>
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
+  </data>
+  <data name="modalTitleMap" xml:space="preserve">
+    <value>Cartes des régions de la GCC</value>
   </data>
   <data name="No Certifications" xml:space="preserve">
     <value>Aucun certificat associées</value>
@@ -290,5 +317,8 @@
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
+  </data>
+  <data name="WesternRegion" xml:space="preserve">
+    <value>La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.</value>
   </data>
 </root>

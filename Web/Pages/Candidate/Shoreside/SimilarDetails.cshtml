@@ -401,7 +401,6 @@ else if (!(Model.PageSubmit == "true"))
                 </ul>
             </nav>
         </div>
-        <br />
         @if (Model.Position.JobTitleEng.Contains("MCTS"))
         {
             <div class="col-sm-12 well">
@@ -418,14 +417,33 @@ else if (!(Model.PageSubmit == "true"))
                 <p><a style="text-decoration:none" alt="@Localizer["MELDEVlinkalt"]" href="@Localizer["MELDEVUrl"]" target="_blank">@Localizer["MELDEVUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
             </div>
         }
+        <div class="clearfix"></div>
         <form asp-all-route-data="RouteParameter" method="post">
-            <div class="col-md-12 mrgn-bttm-xl">
+            <div class="col-md-12 mrgn-tp-0 mrgn-bttm-md">
                 <h3>@Localizer["Question1"]</h3>
                 <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="@paramdata" asp-page="../../CCGMember/Compare/AllObjective">@Localizer["Compare"]</a>
                 <button class="btn btn-primary mrgn-rght-md" asp-all-route-data="@paramdata">@Localizer["Similar"]</button>
-            </div>
+                <p><a style="text-decoration:none" title="@Localizer["infocomparesimilar"]" href="#info" aria-controls="mid-screen" class="overlay-lnk" role="button"><small>@Localizer["infocomparesimilar"]</small></a></p>
+                <section id="info" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                    <header class="modal-header">
+                        <h2 class="modal-title">@Localizer["Compare Function"]</h2>
+                    </header>
+                    <div class="modal-body ">
+                        @Localizer["modalcompare"]
+                        <a class="btn btn-primary pull-left" asp-all-route-data="@paramdata" asp-page="../../CCGMember/Compare/AllObjective">@Localizer["contcompare"]</a>
+                        <p>&nbsp;</p>
+                    </div>
 
-            <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <header class="modal-header">
+                        <h2 class="modal-title">@Localizer["Similar Function"]</h2>
+                    </header>
+                    <div class="modal-body ">
+                        @Localizer["modalsimilar"]
+                        <button class="btn btn-primary pull-left" asp-all-route-data="@paramdata">@Localizer["contsimilar"]</button> <button class="btn btn-default pull-left mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                    </div>
+                </section>
+            </div>
+            <table class="table table-hover table-bordered mrgn-tp-sm" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
                         <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
@@ -441,7 +459,29 @@ else if (!(Model.PageSubmit == "true"))
                     </tr>
                 }
                 <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                    <th style="background-color:#f2f2f2" colspan="2">
+                        @Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a>
+                        <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                            <header class="modal-header">
+                                <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                            </header>
+                            <div class="modal-body ">
+                                <div class="thumbnail img-responsive">
+                                    <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                                </div>
+                                <details>
+                                    <summary id="3">@Localizer["mapSummary"]</summary>
+                                    <p>@Localizer["ArcticRegion"]</p>
+                                    <p>@Localizer["WesternRegion"]</p>
+                                    <p>@Localizer["CentralRegion"]</p>
+                                    <p>@Localizer["AtlanticRegion"]</p>
+                                    <p>@Localizer["CollegeRegion"]</p>
+                                    <p>@Localizer["HeadQRegion"]</p>
+                                </details>
+                                <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                            </div>
+                        </section>
+                    </th>
                 </tr>
                 @if (Model.JobLocationRegions.Any())
                 {
@@ -459,12 +499,13 @@ else if (!(Model.PageSubmit == "true"))
                     </tr>
                 }
                 <tbody>
+                    <tr>
+                        <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                        <!--th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th-->
+                    </tr>
                     @if (Model.PositionCertificates.Any(e => e.Active != 0))
                     {
-                        <tr>
-                            <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                            <!--th style="background-color:#f2f2f2" class="text-center">@Localizer["SAME CERTIFICATION"]</th-->
-                        </tr>
+
                         @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                         {
                             <tr>

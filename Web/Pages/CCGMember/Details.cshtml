@@ -87,7 +87,7 @@
                     </tr>
                 }
                 <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                    <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
                 </tr>
                 @if (Model.JobLocationRegions.Any())
                 {
@@ -105,6 +105,26 @@
                         <td colspan="2">@Localizer["noregions"]</td>
                     </tr>
                 }
+                <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                    <header class="modal-header">
+                        <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                    </header>
+                    <div class="modal-body ">
+                        <div class="thumbnail img-responsive">
+                            <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                        </div>
+                        <details>
+                            <summary id="3">@Localizer["mapSummary"]</summary>
+                            <p>@Localizer["ArcticRegion"]</p>
+                            <p>@Localizer["WesternRegion"]</p>
+                            <p>@Localizer["CentralRegion"]</p>
+                            <p>@Localizer["AtlanticRegion"]</p>
+                            <p>@Localizer["CollegeRegion"]</p>
+                            <p>@Localizer["HeadQRegion"]</p>
+                        </details>
+                        <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                    </div>
+                </section>
                 <tr>
                     <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
@@ -130,48 +150,48 @@
                     {
                         if (competencytype.Any(e => e.Active != 0))
                         {
-                            <tr>
-                                <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
-                                <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
-                            </tr>
+            <tr>
+                <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
+            </tr>
 
                             foreach (var c in competencytype.Where(e => e.Active != 0))
                             {
                                 var key1 = "a" + c.CompetencyId.ToString();
                                 var key2 = "b" + c.CompetencyId.ToString();
-                                <tr>
-                                    <td>
-                                        <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                                            @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
-                                        </a>
-                                        <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                            <header class="modal-header">
-                                                <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
-                                            </header>
-                                            <div class="modal-body ">
-                                                <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
-                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
-                                            </div>
-                                        </section>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                                            <abbr title="Level @c.RatingValue Summary">
-                                                @c.RatingValue
-                                            </abbr>
-                                        </a>
-                                        <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                                <header class="modal-header">
-                                                    <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
-                                                </header>
-                                                <div class="modal-body ">
-                                                    <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
-                                                    <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
-                                                        <button class="btn btn-primary pull-left overlay-close" title="Close overlay" type="button">@Localizer["Close"]</button>
-                                                </div>
-                                        </section>
-                                    </td>
-                                </tr>
+            <tr>
+                <td>
+                    <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">
+                        @(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)
+                    </a>
+                    <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                        <header class="modal-header">
+                            <h2 class="modal-title">@(isEnglish ? c.CompetencyNameEng : c.CompetencyNameFre)</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>@(isEnglish ? c.CompetencyDescEng : c.CompetencyDescFre)</p>
+                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                        </div>
+                    </section>
+                </td>
+                <td class="text-center">
+                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
+                        <abbr title="Level @c.RatingValue Summary">
+                            @c.RatingValue
+                        </abbr>
+                    </a>
+                    <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                        <header class="modal-header">
+                            <h2 class="modal-title">@Localizer["Position Level"]: @c.RatingValue</h2>
+                        </header>
+                        <div class="modal-body ">
+                            <p>@(isEnglish ? c.RatingNameEng : c.RatingNameFre) @(isEnglish ? c.RatingDescEng : c.RatingDescFre)</p>
+                            <p>@(isEnglish ? c.CompetencyLevelReqDescEng : c.CompetencyLevelReqDescFre)<p>
+                                <button class="btn btn-primary pull-left overlay-close" title="Close overlay" type="button">@Localizer["Close"]</button>
+                        </div>
+                    </section>
+                </td>
+            </tr>
                             }
                         }
                     }

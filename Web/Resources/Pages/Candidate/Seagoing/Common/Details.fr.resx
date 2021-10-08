@@ -120,11 +120,23 @@
   <data name="Administrative" xml:space="preserve">
     <value>Administratif</value>
   </data>
+  <data name="altPhotoMap" xml:space="preserve">
+    <value>Image des régions de la GCC</value>
+  </data>
+  <data name="ArcticRegion" xml:space="preserve">
+    <value>La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.</value>
+  </data>
+  <data name="AtlanticRegion" xml:space="preserve">
+    <value>La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.</value>
+  </data>
   <data name="Business" xml:space="preserve">
     <value>Affaires</value>
   </data>
   <data name="Candidate" xml:space="preserve">
     <value>Candidat externe</value>
+  </data>
+  <data name="CentralRegion" xml:space="preserve">
+    <value>La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.</value>
   </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
@@ -132,17 +144,29 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="CollegeRegion" xml:space="preserve">
+    <value>Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.</value>
+  </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
   </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer</value>
   </data>
+  <data name="Compare Function" xml:space="preserve">
+    <value>La fonction de comparaison</value>
+  </data>
   <data name="Computer Sciences" xml:space="preserve">
     <value>Sciences informatiques</value>
   </data>
   <data name="Computer Systems" xml:space="preserve">
     <value>Ordinateurs</value>
+  </data>
+  <data name="contcompare" xml:space="preserve">
+    <value>Continuer à comparer</value>
+  </data>
+  <data name="contsimilar" xml:space="preserve">
+    <value>Continuer vers la recherche similaire</value>
   </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
@@ -174,14 +198,23 @@
   <data name="geo" xml:space="preserve">
     <value>Information géographique</value>
   </data>
+  <data name="HeadQRegion" xml:space="preserve">
+    <value>Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.</value>
+  </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="infocomparesimilar" xml:space="preserve">
+    <value>(cliquez ici pour plus d'informations sur les fonctions de comparaison et de recherche similaires)</value>
+  </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
+  </data>
+  <data name="linkmap" xml:space="preserve">
+    <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
@@ -189,8 +222,23 @@
   <data name="MAOtext" xml:space="preserve">
     <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
   </data>
+  <data name="mapSummary" xml:space="preserve">
+    <value>Version texte</value>
+  </data>
   <data name="MATCHING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES ASSOCIÉES</value>
+  </data>
+  <data name="modalcompare" xml:space="preserve">
+    <value>&lt;p&gt;Cette fonction vous permet de comparer votre poste actuellement sélectionné avec tout autre poste de la Garde côtière canadienne. En le sélectionnant, puis en un autre poste, la fonction produira les deux résultats de poste côte à côte afin que vous puissiez voir les différences d'emplacement, de certification, de compétences et d'évaluation. Si le poste auquel vous vous comparez est celui que vous recherchez, vous pouvez alors télécharger les résultats, les sauvegarder ou les imprimer, comme base d'un plan de formation.&lt;/p&gt;</value>
+  </data>
+  <data name="modalsimilar" xml:space="preserve">
+    <value>&lt;p&gt;Cette fonctionnalité vous permet de trouver des postes similaires à celui que vous avez déjà sélectionné. La recherche donnera des résultats en pourcentage par fonctionnalité (par exemple, ingénierie, administratif, logistique, etc.). Les résultats peuvent ne pas être au même niveau de rémunération que le poste que vous avez déjà sélectionné.&lt;/p&gt;
+                    &lt;p&gt;Si le poste auquel vous comparez (c'est-à-dire le poste que vous avez déjà sélectionné) est associé à des certificats, une case vous proposera de cliquer sur les certificats. Si vous cliquez sur un ou plusieurs, la recherche similaire produira des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;
+                    &lt;p&gt;Si vous ne sélectionnez pas de certificat ou si le poste auquel vous comparez n'a pas de certificat associé, vous pouvez simplement cliquer sur un pourcentage de correspondance. En cliquant sur 100%, vous obtiendrez des résultats au même niveau de classification, de niveau et de niveaux inférieurs et supérieurs. Si vous cliquez sur d'autres pourcentages, les résultats seront des positions de fonctionnalité similaire, mais pas de niveau.&lt;/p&gt;
+                    &lt;p&gt;Si vous cliquez sur une certification ET un pourcentage, la recherche similaire ne produira que des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;</value>
+  </data>
+  <data name="modalTitleMap" xml:space="preserve">
+    <value>Cartes des régions de la GCC</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -261,6 +309,9 @@
   <data name="Similar" xml:space="preserve">
     <value>Similaire</value>
   </data>
+  <data name="Similar Function" xml:space="preserve">
+    <value>Fonction de recherche similaire</value>
+  </data>
   <data name="Similar Positions" xml:space="preserve">
     <value>Postes similaires</value>
   </data>
@@ -276,10 +327,16 @@
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
   </data>
+  <data name="textjob" xml:space="preserve">
+    <value>(pourcentage de correspondance basé sur la fonctionnalité de l'emploi)</value>
+  </data>
   <data name="Trades" xml:space="preserve">
     <value>Métiers généraux</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
+  </data>
+  <data name="WesternRegion" xml:space="preserve">
+    <value>La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.</value>
   </data>
 </root>

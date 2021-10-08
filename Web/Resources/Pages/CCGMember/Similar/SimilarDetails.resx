@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="altPhotoMap" xml:space="preserve">
+    <value>Image of the CCG Regions</value>
+  </data>
+  <data name="ArcticRegion" xml:space="preserve">
+    <value>The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.</value>
+  </data>
+  <data name="AtlanticRegion" xml:space="preserve">
+    <value>The Atlantic Region consists of New Brunswick, Nova Scotia,  Prince Edward Island, and Newfoundland and Labrador, minus the Nunatsiavut  region in Labrador.</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
     <value>External Candidate</value>
+  </data>
+  <data name="CentralRegion" xml:space="preserve">
+    <value>The Central Region consists of  Ontario and Quebec, minus the Nunavik region in northern Quebec.</value>
+  </data>
+  <data name="CollegeRegion" xml:space="preserve">
+    <value>The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.</value>
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDING OFFICER</value>
@@ -132,14 +147,23 @@
   <data name="geo" xml:space="preserve">
     <value>Geographical Information</value>
   </data>
+  <data name="HeadQRegion" xml:space="preserve">
+    <value>The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Level</value>
   </data>
+  <data name="linkmap" xml:space="preserve">
+    <value>(click here to view the CCG regions map)</value>
+  </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
+  </data>
+  <data name="mapSummary" xml:space="preserve">
+    <value>Text version</value>
   </data>
   <data name="MCTSdesc" xml:space="preserve">
     <value>The Marine Communications and Traffic Services (MCTS) training program is offered in 2 phases. Phase I teaches you the basics of performing the job of an officer and during Phase II you'll learn local geography and regional procedures, while applying the national standards learned in Phase I. For more information about the MCTS program click on the link below.</value>
@@ -158,6 +182,9 @@
   </data>
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
+  <data name="modalTitleMap" xml:space="preserve">
+    <value>CCG Regions Map</value>
   </data>
   <data name="noregion" xml:space="preserve">
     <value>No regions available</value>
@@ -185,5 +212,8 @@
   </data>
   <data name="University" xml:space="preserve">
     <value>University</value>
+  </data>
+  <data name="WesternRegion" xml:space="preserve">
+    <value>The Western Region consists of  British Columbia, Alberta, Saskatchewan, Manitoba and Yukon, minus the Yukon slope.</value>
   </data>
 </root>

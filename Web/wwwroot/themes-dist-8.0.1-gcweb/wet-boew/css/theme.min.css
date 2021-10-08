@@ -10301,8 +10301,9 @@ body.wb-modal .modal-dialog summary {
 }
 
 .wb-popup-mid {
-    max-height: 50%;
-    max-width: 60%
+    max-height: max-content;
+    max-width: 60%;
+    padding-bottom: 35px
 }
 
 .wb-panel-l {

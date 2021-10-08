@@ -49,16 +49,16 @@
     <div class="row">
 
         <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-            
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-left">
-                            <a style="text-decoration:none" title="@Localizer["infosimilar"]" href="#similar" aria-controls="mid-screen" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-info-sign pull-right"></span></a>
-                            <h3 class="mrgn-tp-0 mrgn-lft-sm"><a style="text-decoration:none" asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata">@Localizer["Similar"]</a></h3>
-                        </figcaption>
-                        <a style="text-decoration:none" asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata"><img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive center" /></a>
-                    </div>
-                </figure>
+
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <figcaption class="caption text-left">
+                        <h3 class="mrgn-tp-0 mrgn-lft-sm"><a style="text-decoration:none" asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata">@Localizer["Similar"]</a></h3>
+                        <a style="text-decoration:none" title="@Localizer["infosimilar"]" href="#similar" aria-controls="mid-screen" class="overlay-lnk" role="button"><small>@Localizer["textinfosimilar"]</small></a>
+                    </figcaption>
+                    <a style="text-decoration:none" asp-page="Similar/SimilarSearch" asp-all-route-data="@routedata"><img src="~/img/CCGMember/similar.jpg" alt="@Localizer["PhotoSimilar"]" class="img-responsive center" /></a>
+                </div>
+            </figure>
             <section id="similar" class="wb-overlay modal-content overlay-def wb-popup-mid">
                 <header class="modal-header">
                     <h2 class="modal-title">@Localizer["Similar Function"]</h2>
@@ -71,14 +71,16 @@
         </div>
 
         <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-            <a style="text-decoration:none" href="#compare" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-left"><h3 class="mrgn-tp-0">@Localizer["Compare"]</h3></figcaption>
-                        <img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <figcaption class="caption text-left">
+                        <h3 class="mrgn-tp-0 mrgn-lft-sm"><a style="text-decoration:none" asp-page="Compare/AllObjective" asp-all-route-data="@routedata">@Localizer["Compare"]</a></h3>
+                        <a style="text-decoration:none" title="@Localizer["infocompare"]" href="#compare" aria-controls="mid-screen" class="overlay-lnk" role="button"><small>@Localizer["textinfocompare"]</small></a>
+                    </figcaption>
+                    <a style="text-decoration:none" asp-page="Compare/AllObjective" asp-all-route-data="@routedata"><img src="~/img/CCGMember/compare.jpg" alt="@Localizer["PhotoCompare"]" class="img-responsive center" /></a>
+                </div>
+            </figure>
+
             <section id="compare" class="wb-overlay modal-content overlay-def wb-popup-mid">
                 <header class="modal-header">
                     <h2 class="modal-title">@Localizer["Compare Function"]</h2>

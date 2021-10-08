@@ -117,14 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="altPhotoMap" xml:space="preserve">
+    <value>Image des régions de la GCC</value>
+  </data>
+  <data name="ArcticRegion" xml:space="preserve">
+    <value>La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.</value>
+  </data>
+  <data name="AtlanticRegion" xml:space="preserve">
+    <value>La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
+  </data>
+  <data name="CentralRegion" xml:space="preserve">
+    <value>La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.</value>
   </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
+  </data>
+  <data name="CollegeRegion" xml:space="preserve">
+    <value>Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.</value>
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
@@ -141,14 +156,23 @@
   <data name="DESCRIPTION" xml:space="preserve">
     <value>DESCRIPTIF</value>
   </data>
+  <data name="HeadQRegion" xml:space="preserve">
+    <value>Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
   <data name="LEVEL" xml:space="preserve">
     <value>NIVEAU</value>
   </data>
+  <data name="linkmap" xml:space="preserve">
+    <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
+  </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
+  </data>
+  <data name="mapSummary" xml:space="preserve">
+    <value>Version texte</value>
   </data>
   <data name="MCTSdesc" xml:space="preserve">
     <value>Le Programme de formation des Services de communications et de trafic maritimes (SCTM) est offert en 2 phases. La phase I, vous apprendrez les rudiments de l’exercice des fonctions d’officier et au cours de la phase II, vous apprendrez la géographie locale et les procédures régionales, tout en appliquant les normes nationales apprises lors de la phase 1. Pour plus d'informations sur le programme SCTM, cliquez sur le lien ci-dessous.</value>
@@ -167,6 +191,9 @@
   </data>
   <data name="MELDEVUrl" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
+  </data>
+  <data name="modalTitleMap" xml:space="preserve">
+    <value>Cartes des régions de la GCC</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -203,5 +230,8 @@
   </data>
   <data name="USERACTION" xml:space="preserve">
     <value>Cliquez sur Suivant pour comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous.</value>
+  </data>
+  <data name="WesternRegion" xml:space="preserve">
+    <value>La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.</value>
   </data>
 </root>
