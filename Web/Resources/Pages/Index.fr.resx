@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Certifications" xml:space="preserve">
+    <value>Attestations</value>
+  </data>
+  <data name="CertText" xml:space="preserve">
+    <value>Les attestations indiquent qu’un programme de formation donné a été suivi avec succès. Certaines attestations peuvent varier ou changer, même à un niveau de classification similaire.</value>
+  </data>
+  <data name="Competencies" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="CompText" xml:space="preserve">
+    <value>&lt;p&gt;Nous avons compilé ces renseignements à partir des compétences mentionnées dans toutes les offres d’emploi des dernières années. Chaque compétence a un niveau minimum requis pour le poste. Les compétences peuvent évoluer au fur et à mesure que les exigences des postes changent au sein de la Garde côtière.&lt;/p&gt;
+&lt;p&gt;Nous avons divisé les compétences liées aux postes en trois sections :&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Les éléments de connaissance sont une compréhension pratique ou théorique d’un sujet. Il s’agit des renseignements dont vous avez besoin (à partir de votre expérience ou de vos études) pour réussir dans le poste.&lt;/li&gt;
+&lt;li&gt;Les éléments techniques décrivent les capacités d’appliquer les connaissances pour exécuter efficacement le travail.&lt;/li&gt;
+&lt;li&gt;Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.&lt;/li&gt;&lt;/ul&gt;</value>
+  </data>
+  <data name="continue" xml:space="preserve">
+    <value>Cliquez ici pour commencer</value>
+  </data>
+  <data name="Intro" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
+  <data name="IntroText" xml:space="preserve">
+    <value>&lt;p&gt;L’outil de compétences professionnelles de la Garde côtière canadienne est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la Garde côtière. Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.&lt;/p&gt;
+&lt;p&gt;Une fois que vous avez identifié un poste pouvant vous intéresser, l’outil vous permet de trouver des postes similaires au sein de la Garde côtière ou de comparer les exigences du poste à celles d’autres postes. Pour chaque poste, l’outil fournit :&lt;/p&gt;&lt;ul&gt;&lt;li&gt;une brève description;&lt;/li&gt;
+&lt;li&gt;les régions dans lesquelles on peut trouver ce poste;&lt;/li&gt;
+&lt;li&gt;les certifications requises pour le poste;&lt;/li&gt;
+&lt;li&gt;une liste des compétences nécessaires ainsi que le niveau de compétence requis.&lt;/li&gt;&lt;/ul&gt;</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>L’outil de compétences professionnelles</value>
+  </data>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
+  </data>
+</root>

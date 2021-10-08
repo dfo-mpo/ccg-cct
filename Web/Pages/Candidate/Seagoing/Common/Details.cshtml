@@ -182,34 +182,34 @@
                     }
                     else if (Model.PreviousPage.Contains("PositionList"))
                     {
-                        <li><a href="../../Index">@Localizer["Candidate"]</a></li>
-                        <li><a href="../Index">@Localizer["Seagoing"]</a></li>
+                        <li><a asp-page="../../Index">@Localizer["Candidate"]</a></li>
+                        <li><a asp-page="../Index">@Localizer["Seagoing"]</a></li>
                         if (Model.PreviousPage.Contains("Officer"))
                         {
-                            <li><a href="../Officer/Index">@Localizer["Officer"]</a></li>
+                            <li><a asp-page="../Officer/Index">@Localizer["Officer"]</a></li>
                             if (Model.PreviousPage.Contains("Navigation"))
                             {
-                                <li><a href="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
+                                <li><a asp-page="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
                             }
                             else if (Model.PreviousPage.Contains("Engineering"))
                             {
-                                <li><a href="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                                <li><a asp-page="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                             }
                         }
                         else if (Model.PreviousPage.Contains("Crew"))
                         {
-                            <li><a href="../Crew/Index">@Localizer["Crew"]</a></li>
+                            <li><a asp-page="../Crew/Index">@Localizer["Crew"]</a></li>
                             if (Model.PreviousPage.Contains("Deck"))
                             {
-                                <li><a href="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
+                                <li><a asp-page="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
                             }
                             if (Model.PreviousPage.Contains("Engineering"))
                             {
-                                <li><a href="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                                <li><a asp-page="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                             }
                             if (Model.PreviousPage.Contains("Logistics"))
                             {
-                                <li><a href="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
+                                <li><a asp-page="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
                             }
                         }
                     }
@@ -397,34 +397,34 @@ else if(!(Model.PageSubmit == "true"))
                 }
                 else if (Model.PreviousPage.Contains("PositionList"))
                 {
-                    <li><a href="../../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="../Index">@Localizer["Seagoing"]</a></li>
+                    <li><a asp-page="../../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Seagoing"]</a></li>
                     if (Model.PreviousPage.Contains("Officer"))
                     {
-                        <li><a href="../Officer/Index">@Localizer["Officer"]</a></li>
+                        <li><a asp-page="../Officer/Index">@Localizer["Officer"]</a></li>
                         if (Model.PreviousPage.Contains("Navigation"))
                         {
-                            <li><a href="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
+                            <li><a asp-page="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
                         }
                         else if (Model.PreviousPage.Contains("Engineering"))
                         {
-                            <li><a href="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            <li><a asp-page="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                         }
                     }
                     else if (Model.PreviousPage.Contains("Crew"))
                     {
-                        <li><a href="../Crew/Index">@Localizer["Crew"]</a></li>
+                        <li><a asp-page="../Crew/Index">@Localizer["Crew"]</a></li>
                         if (Model.PreviousPage.Contains("Deck"))
                         {
-                            <li><a href="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
+                            <li><a asp-page="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
                         }
                         if (Model.PreviousPage.Contains("Engineering"))
                         {
-                            <li><a href="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            <li><a asp-page="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                         }
                         if (Model.PreviousPage.Contains("Logistics"))
                         {
-                            <li><a href="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
+                            <li><a asp-page="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
                         }
                     }
                 }
@@ -532,11 +532,11 @@ else if(!(Model.PageSubmit == "true"))
                         <td colspan="2">@Localizer["noregions"]</td>
                     </tr>
                 }
+                <tr>
+                    <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                </tr>
                 @if (Model.PositionCertificates.Any(e => e.Active != 0))
                 {
-                    <tr>
-                        <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                    </tr>
                     @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                     {
                         <tr>
@@ -783,34 +783,34 @@ else
                 }
                 else if (Model.PreviousPage.Contains("PositionList"))
                 {
-                    <li><a href="../../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="../Index">@Localizer["Seagoing"]</a></li>
+                    <li><a asp-page="../../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Seagoing"]</a></li>
                     if (Model.PreviousPage.Contains("Officer"))
                     {
-                        <li><a href="../Officer/Index">@Localizer["Officer"]</a></li>
+                        <li><a asp-page="../Officer/Index">@Localizer["Officer"]</a></li>
                         if (Model.PreviousPage.Contains("Navigation"))
                         {
-                            <li><a href="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
+                            <li><a asp-page="../Officer/Navigation/PositionList">@Localizer["Navigation"]</a></li>
                         }
                         else if (Model.PreviousPage.Contains("Engineering"))
                         {
-                            <li><a href="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            <li><a asp-page="../Officer/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                         }
                     }
                     else if (Model.PreviousPage.Contains("Crew"))
                     {
-                        <li><a href="../Crew/Index">@Localizer["Crew"]</a></li>
+                        <li><a asp-page="../Crew/Index">@Localizer["Crew"]</a></li>
                         if (Model.PreviousPage.Contains("Deck"))
                         {
-                            <li><a href="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
+                            <li><a asp-page="../Crew/Deck/PositionList">@Localizer["Deck"]</a></li>
                         }
                         if (Model.PreviousPage.Contains("Engineering"))
                         {
-                            <li><a href="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
+                            <li><a asp-page="../Crew/Engineering/PositionList">@Localizer["Engineering"]</a></li>
                         }
                         if (Model.PreviousPage.Contains("Logistics"))
                         {
-                            <li><a href="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
+                            <li><a asp-page="../Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
                         }
                     }
                 }

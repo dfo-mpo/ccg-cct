@@ -195,8 +195,8 @@
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Current Position"]</a></li>
@@ -383,8 +383,8 @@ else if (!(Model.PageSubmit == "true"))
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Current Position"]</a></li>
@@ -498,13 +498,22 @@ else if (!(Model.PageSubmit == "true"))
                         <td colspan="2">@Localizer["noregions"]</td>
                     </tr>
                 }
-            <tbody>
-                <tr>
-                    <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                </tr>
-                @if (Model.PositionCertificates.Any(e => e.Active != 0))
-                {
-                    @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
+
+                <tbody>
+                    <tr>
+                        <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                    </tr>
+                    @if (Model.PositionCertificates.Any(e => e.Active != 0))
+                    {
+                        @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                            </tr>
+                        }
+                    }
+                    else
+
                     {
                         <tr>
                             <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
@@ -767,8 +776,8 @@ else
                 }
                 else if (Model.PreviousPage.Contains("SimilarList"))
                 {
-                    <li><a href="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a href="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
+                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                    <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
                     <li><a asp-page="SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
                 }
                 <li><a asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Current Position"]</a></li>
