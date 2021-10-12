@@ -144,6 +144,9 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="infocompare" xml:space="preserve">
+    <value>Cliquez ici pour plus d'informations sur la fonction comparer</value>
+  </data>
   <data name="infosimilar" xml:space="preserve">
     <value>Cliquez ici pour plus d'informations sur la fonction de recherche similaire</value>
   </data>
@@ -179,5 +182,11 @@
   </data>
   <data name="Similar Function" xml:space="preserve">
     <value>Fonction de recherche similaire</value>
+  </data>
+  <data name="textinfocompare" xml:space="preserve">
+    <value>(cliquez ici pour plus d'informations sur la fonction comparer)</value>
+  </data>
+  <data name="textinfosimilar" xml:space="preserve">
+    <value>(cliquez ici pour plus d'informations sur la fonction de recherche similaire)</value>
   </data>
 </root>
