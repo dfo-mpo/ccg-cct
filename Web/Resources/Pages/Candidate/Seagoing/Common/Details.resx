@@ -117,11 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="altPhotoMap" xml:space="preserve">
+    <value>Image of the CCG Regions</value>
+  </data>
+  <data name="ArcticRegion" xml:space="preserve">
+    <value>The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.</value>
+  </data>
+  <data name="AtlanticRegion" xml:space="preserve">
+    <value>The Atlantic Region consists of New Brunswick, Nova Scotia,  Prince Edward Island, and Newfoundland and Labrador, minus the Nunatsiavut region in Labrador.</value>
+  </data>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>BEHAVIOURAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.&lt;/small&gt;</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
     <value>External Candidate</value>
   </data>
+  <data name="CentralRegion" xml:space="preserve">
+    <value>The Central Region consists of  Ontario and Quebec, minus the Nunavik region in northern Quebec.</value>
+  </data>
+  <data name="CollegeRegion" xml:space="preserve">
+    <value>The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.</value>
+  </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDING OFFICER</value>
+  </data>
+  <data name="Compare Function" xml:space="preserve">
+    <value>The Compare Function</value>
+  </data>
+  <data name="contcompare" xml:space="preserve">
+    <value>Continue to Compare</value>
+  </data>
+  <data name="contsimilar" xml:space="preserve">
+    <value>Continue to Similar Search</value>
   </data>
   <data name="Current Position" xml:space="preserve">
     <value>Current Position</value>
@@ -129,8 +156,35 @@
   <data name="geo" xml:space="preserve">
     <value>Geographical Information</value>
   </data>
+  <data name="HeadQRegion" xml:space="preserve">
+    <value>The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.</value>
+  </data>
+  <data name="infocomparesimilar" xml:space="preserve">
+    <value>(click here for more information on the compare and similar search functions)</value>
+  </data>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>KNOWLEDGE ELEMENTS: &lt;small style="font-weight:normal;"&gt;Knowledge elements are practical or theoretical understanding of a subject. It is the information you need (from past experience or education) to succeed in the position.&lt;/small&gt;</value>
+  </data>
+  <data name="linkmap" xml:space="preserve">
+    <value>(click here to view the CCG regions map)</value>
+  </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
+  </data>
+  <data name="mapSummary" xml:space="preserve">
+    <value>Text version</value>
+  </data>
+  <data name="modalcompare" xml:space="preserve">
+    <value>&lt;p&gt;This feature allows you to compare your currently selected position with any other position in the Canadian Coast Guard. By selecting it, and then another position, the function will yield both position results side by side so that you can view the differences in location, certification, competencies, and ratings. If the position you’re comparing to is one you seek, you can then download the results, save or print, as the basis of a training plan.&lt;/p&gt;</value>
+  </data>
+  <data name="modalsimilar" xml:space="preserve">
+    <value>&lt;p&gt;This feature allows you to find positions similar to the one you’ve already selected. The search will yield percentage results by functionality (e.g. engineering, administrative, logistics, etc.). Results may not be at the same pay level as the position you’ve already selected.&lt;/p&gt;
+&lt;p&gt;If the position you’re comparing to (i.e. the position you’ve already selected) has certificates associated with it, there will be a box offering you to click the certificates. If you click one or more, the similar search will yield positions with those certifications, regardless of level.&lt;/p&gt;
+&lt;p&gt;If you don’t select a certificate or the position you’re comparing to doesn’t have a certificate associated with it, you may simply click a percentage match. Clicking on 100% will yield results at the same classification, level, and levels below and above. If you click other percentages, the results will be positions of similar functionality, but not level.&lt;/p&gt;
+&lt;p&gt;If you click a certification AND a percentage, the similar search will only yield positions with those certifications, regardless of level.&lt;/p&gt;</value>
+  </data>
+  <data name="modalTitleMap" xml:space="preserve">
+    <value>CCG Regions Map</value>
   </data>
   <data name="NoPositions" xml:space="preserve">
     <value>No similar positions are currently available for this position.</value>
@@ -153,10 +207,22 @@
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>
   </data>
+  <data name="Similar Function" xml:space="preserve">
+    <value>Similar Search Function</value>
+  </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
   </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>TECHNICAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Technical elements describe abilities to apply knowledge to efficiently perform the job.&lt;/small&gt;</value>
+  </data>
+  <data name="textjob" xml:space="preserve">
+    <value>(percentage of match based on job funtionality)</value>
+  </data>
   <data name="University" xml:space="preserve">
     <value>University</value>
+  </data>
+  <data name="WesternRegion" xml:space="preserve">
+    <value>The Western Region consists of  British Columbia, Alberta, Saskatchewan, Manitoba and Yukon, minus the Yukon slope.</value>
   </data>
 </root>
