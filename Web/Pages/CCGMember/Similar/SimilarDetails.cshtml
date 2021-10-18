@@ -4,7 +4,7 @@
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var routedata = new Dictionary<string, string>
-    {
+{
         {"positionid" , Model.PositionId.ToString()},
         {"objectiveid",  Model.ObjectiveId.ToString()},
         {"id", Model.Id },
@@ -26,7 +26,7 @@
         {"previouspagedelta", "../Similar/SimilarDetails" }
     };
     var routedataCCG = new Dictionary<string, string>
-    {
+{
         {"positionid" , Model.PositionId.ToString()},
         {"objectiveid",  Model.ObjectiveId.ToString()},
         {"percentselected", "true" },
@@ -356,7 +356,7 @@
                 </tr>
             }
             <tr>
-                <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"]</th>
+                <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
             </tr>
             @if (Model.JobLocationRegions.Any())
             {
@@ -374,6 +374,26 @@
                     <td colspan="2">@Localizer["noregions"]</td>
                 </tr>
             }
+            <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                <header class="modal-header">
+                    <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                </header>
+                <div class="modal-body ">
+                    <div class="thumbnail img-responsive">
+                        <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                    </div>
+                    <details>
+                        <summary id="3">@Localizer["mapSummary"]</summary>
+                        <p>@Localizer["ArcticRegion"]</p>
+                        <p>@Localizer["WesternRegion"]</p>
+                        <p>@Localizer["CentralRegion"]</p>
+                        <p>@Localizer["AtlanticRegion"]</p>
+                        <p>@Localizer["CollegeRegion"]</p>
+                        <p>@Localizer["HeadQRegion"]</p>
+                    </details>
+                    <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                </div>
+            </section>
             <tr>
                 <th style="background-color:#f2f2f2" colspan="2">@Localizer["CERTIFICATIONS"]</th>
             </tr>
@@ -400,7 +420,7 @@
                     if (competencytype.Any(e => e.Active != 0))
                     {
                         <tr>
-                            <th style="background-color:#f2f2f2" width="80%"> @(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                            <th style="background-color:#f2f2f2" width="80%">@Localizer[(isEnglish ? competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() : competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
                             <th style="background-color:#f2f2f2" class="text-center" width="20%">@Localizer["LEVEL"]</th>
                         </tr>
 
@@ -447,6 +467,4 @@
             }
         </tbody>
     </table>
-
 </section>
-

@@ -339,11 +339,31 @@
         <div class="row col-lg-12">
             <h3>@Localizer["MATCHING REGIONS"]</h3>
         </div>
+        <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+            <header class="modal-header">
+                <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+            </header>
+            <div class="modal-body ">
+                <div class="thumbnail img-responsive">
+                    <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                </div>
+                <details>
+                    <summary id="3">@Localizer["mapSummary"]</summary>
+                    <p>@Localizer["ArcticRegion"]</p>
+                    <p>@Localizer["WesternRegion"]</p>
+                    <p>@Localizer["CentralRegion"]</p>
+                    <p>@Localizer["AtlanticRegion"]</p>
+                    <p>@Localizer["CollegeRegion"]</p>
+                    <p>@Localizer["HeadQRegion"]</p>
+                </details>
+                <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+            </div>
+        </section>
         <div class="col-md-6">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
-                        <th style="background-color:#f2f2f2">@Localizer["REGIONS"]</th>
+                        <th style="background-color:#f2f2f2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -365,7 +385,7 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["REGIONS"]</th>
+                    <th style="background-color:#f2f2f2" width="70%">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
                     <th class="text-center bg-success">@Localizer["Current Position"]</th>
                     <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                 </tr>
@@ -453,7 +473,7 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
                         <th class="text-center bg-success">@Localizer["Current Position"]</th>
                         <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
@@ -529,7 +549,7 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper())</th>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
                         <th class="text-center bg-success">@Localizer["Current Position"]</th>
                         <th class="text-center bg-info">@Localizer["Selected Position"]</th>
                     </tr>
