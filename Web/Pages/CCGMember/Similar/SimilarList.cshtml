@@ -334,31 +334,31 @@ else{
                                                 {"previouspage", Model.PreviousPage }
                                              };
 
-                                <tr>
-                                    <td>@position.LevelCode</td>
-                                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
-                                </tr>
-                        }
+                        <tr>
+                            <td>@position.LevelCode</td>
+                            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                            <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         }
-                else if (Model.EightyPercentPositions.Any(e => e.Active != 0))
+        else if (Model.EightyPercentPositions.Any(e => e.Active != 0))
         {
-                                    <table class="table table-hover table-responsive table-bordered">
-                                        <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (80%)</h3>
-                                        <h5>@Model.EightyPercentPositions.Length @Localizer[countmessage80]</h5>
-                                        <thead>
-                                            <tr>
-                                                <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
-                                                <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                                                <th class="bg-primary" width="13%"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var position in Model.EightyPercentPositions.Where(e => e.Active != 0))
-                                            {
-                                                var routedatanext = new Dictionary<string, string>
+            <table class="table table-hover table-responsive table-bordered">
+                <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (80%)</h3>
+                <h5>@Model.EightyPercentPositions.Length @Localizer[countmessage80]</h5>
+                <thead>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                        <th class="bg-primary" width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var position in Model.EightyPercentPositions.Where(e => e.Active != 0))
+                    {
+                        var routedatanext = new Dictionary<string, string>
                                                              {
                                                                 {"objectiveid",  position.JobTitleId.ToString()},
                                                                 {"positionid",  Model.PositionId.ToString()},
@@ -380,31 +380,31 @@ else{
                                                                 {"previouspage", Model.PreviousPage }
                                                                };
 
-                                                <tr>
-                                                    <td>@position.LevelCode</td>
-                                                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                                                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
+                        <tr>
+                            <td>@position.LevelCode</td>
+                            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                            <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-            else if (Model.NinetyPercentPositions.Any(e => e.Active != 0))
+        else if (Model.NinetyPercentPositions.Any(e => e.Active != 0))
         {
-                                    <table class="table table-hover table-responsive table-bordered">
-                                        <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (90%)</h3>
-                                        <h5>@Model.NinetyPercentPositions.Length @Localizer[countmessage90]</h5>
-                                        <thead>
-                                            <tr>
-                                                <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
-                                                <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                                                <th class="bg-primary" width="13%"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var position in Model.NinetyPercentPositions.Where(e => e.Active != 0))
-                                            {
-                                                var routedatanext = new Dictionary<string, string>
+            <table class="table table-hover table-responsive table-bordered">
+                <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (90%)</h3>
+                <h5>@Model.NinetyPercentPositions.Length @Localizer[countmessage90]</h5>
+                <thead>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                        <th class="bg-primary" width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var position in Model.NinetyPercentPositions.Where(e => e.Active != 0))
+                    {
+                        var routedatanext = new Dictionary<string, string>
                                                              {
                                                                 {"objectiveid",  position.JobTitleId.ToString()},
                                                                 {"positionid",  Model.PositionId.ToString()},
@@ -426,31 +426,31 @@ else{
                                                                 {"previouspage", Model.PreviousPage }
                                                              };
 
-                                                <tr>
-                                                    <td>@position.LevelCode</td>
-                                                    <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                                                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
-                                                </tr>
-                                             }
-                                        </tbody>
-                                    </table>
+                        <tr>
+                            <td>@position.LevelCode</td>
+                            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                            <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-            else if (Model.HundredPercentPositions.Any(e => e.Active != 0))
+        else if (Model.HundredPercentPositions.Any(e => e.Active != 0))
         {
-                                            <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (100%)</h3>
-                                            <h5>@Model.HundredPercentPositions.Length @Localizer[countmessage100]</h5>
-                                            <table class="table table-hover table-responsive table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
-                                                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                                                        <th class="bg-primary" width="13%"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var position in Model.HundredPercentPositions.Where(e => e.Active != 0))
-                                                    {
-                                                        var routedatanext = new Dictionary<string, string>
+            <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (100%)</h3>
+            <h5>@Model.HundredPercentPositions.Length @Localizer[countmessage100]</h5>
+            <table class="table table-hover table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
+                        <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
+                        <th class="bg-primary" width="13%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var position in Model.HundredPercentPositions.Where(e => e.Active != 0))
+                    {
+                        var routedatanext = new Dictionary<string, string>
                                                                              {
                                                                                 {"objectiveid",  position.JobTitleId.ToString()},
                                                                                 {"positionid",  Model.PositionId.ToString()},
@@ -472,15 +472,23 @@ else{
                                                                                 {"previouspage", Model.PreviousPage }
                                                                               };
 
-                                                            <tr>
-                                                                <td>@position.LevelCode</td>
-                                                                <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                                                                <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
-                                                            </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
-           }
+                        <tr>
+                            <td>@position.LevelCode</td>
+                            <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
+                            <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            var percentage = Model.PercentMatch.IndexOf("=") >= 0 ? "(" + Model.PercentMatch.Remove(0, Model.PercentMatch.IndexOf("=") + 1) + "%)" : "";
+            <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] @percentage</h3>
+            <div class="mrgn-tp-lg">
+                <h4>@Localizer["NoPositions"]</h4>
+            </div>
+        }
     </div>
 </section>
 }

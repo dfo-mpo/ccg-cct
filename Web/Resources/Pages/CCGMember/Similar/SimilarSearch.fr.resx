@@ -189,6 +189,9 @@
   <data name="No Certifications Found" xml:space="preserve">
     <value>Aucune certification trouvée</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>S/O</value>
+  </data>
   <data name="NoPositions" xml:space="preserve">
     <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
   </data>
@@ -257,5 +260,8 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Soumettre</value>
+  </data>
+  <data name="textjob" xml:space="preserve">
+    <value>(pourcentage de correspondance basé sur la fonctionnalité de l'emploi)</value>
   </data>
 </root>
