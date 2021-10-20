@@ -150,6 +150,9 @@
   <data name="No Certifications Found" xml:space="preserve">
     <value>No Certifications Found</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>N/A</value>
+  </data>
   <data name="NoPositions" xml:space="preserve">
     <value>No similar positions are currently available for this position.</value>
   </data>
@@ -176,5 +179,8 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="textjob" xml:space="preserve">
+    <value>(percentage of match based on job funtionality)</value>
   </data>
 </root>

@@ -194,7 +194,7 @@ else if (!(Model.PageSubmit == "true"))
                         {
                             <tr>
                                 <td class="bg-warning">@Localizer["No Certifications Found"]</td>
-                                <td class="text-center bg-warning"><input name="CertificateIds" type="checkbox" disabled="true" /></td>
+                                <td class="text-center bg-warning">@Localizer["None"]</td>
                             </tr>
                         }
 
@@ -308,7 +308,7 @@ else if (!(Model.PageSubmit == "true"))
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage }, { "subgroupcode", Model.SubGroupCode }, { "levelcode", Model.LevelCode }};
             }
             <h3>@Localizer["pageSubmitted"]</h3>
-            <p>(percentage of match based on job funtionality)</p>
+            <p>@Localizer["textjob"]</p>
             <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
                 <button asp-page-handler="submit" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</button>
                 <button asp-page-handler="submit" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</button>
@@ -584,7 +584,7 @@ else if (Model.PageEdit)
                 </tbody>
             </table>
         }
-         else if (Model.NinetyPercentPositions.Any(e => e.Active != 0))
+        else if (Model.NinetyPercentPositions.Any(e => e.Active != 0))
         {
             <table class="table table-hover table-responsive table-bordered">
                 <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (90%)</h3>
@@ -630,7 +630,7 @@ else if (Model.PageEdit)
                 </tbody>
             </table>
         }
-         else if (Model.HundredPercentPositions.Any(e => e.Active != 0))
+        else if (Model.HundredPercentPositions.Any(e => e.Active != 0))
         {
             <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] (100%)</h3>
             <h5>@Model.HundredPercentPositions.Length @Localizer[countmessage100]</h5>
@@ -675,6 +675,14 @@ else if (Model.PageEdit)
     }
                 </tbody>
             </table>
+        }
+        else
+        {
+            var percentage = Model.PercentMatch.IndexOf("=") >= 0 ? "(" + Model.PercentMatch.Remove(0, Model.PercentMatch.IndexOf("=") + 1) + "%)" : "" ;
+            <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] @percentage</h3>
+            <div class="mrgn-tp-lg">
+                <h4>@Localizer["NoPositions"]</h4>
+            </div>
         }
     </div>
 

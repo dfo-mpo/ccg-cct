@@ -180,6 +180,9 @@
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="NoPositions" xml:space="preserve">
+    <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
+  </data>
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
   </data>
