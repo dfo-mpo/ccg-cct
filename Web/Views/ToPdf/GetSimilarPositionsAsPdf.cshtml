@@ -12,7 +12,7 @@
     var countmessage = isEnglish ? "POSITION(S)" : "POSTE(S)";
     var currentposition = isEnglish ? "Current Position" : "Position actuelle";
     var noPositions = isEnglish ? "No similar positions are currently available for this position." : "Aucun poste similaire n'est actuellement disponible pour ce poste.";
-    var percentParam = ViewData["Id"].ToString().IndexOf("&") >= 0 ? ViewData["Id"].ToString().Remove(0, ViewData["Id"].ToString().IndexOf("&")) : "";
+    var percentParam = ViewData["Id"].ToString().LastIndexOf("&") >= 0 ? ViewData["Id"].ToString().Remove(0, ViewData["Id"].ToString().LastIndexOf("&")) : "";
     var percentage = percentParam.IndexOf("=") >= 0 ? "(" + percentParam.Remove(0, percentParam.IndexOf("=") + 1) + "%)" : "";
 }
     <div class="mrgn-tp-lg">
