@@ -117,17 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="altsearchseagoing" xml:space="preserve">
+    <value>Lien pour rechercher des postes en mer</value>
+  </data>
+  <data name="altsearchshoreside" xml:space="preserve">
+    <value>Lien pour rechercher des positions bord de mer</value>
+  </data>
   <data name="College" xml:space="preserve">
     <value>Collège</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
-  </data>
-  <data name="PhotoSeagoing" xml:space="preserve">
-    <value>Photo du navire Cape Kuper</value>
-  </data>
-  <data name="PhotoShoreside" xml:space="preserve">
-    <value>Photo d'un membre de la Garde côtière canadienne debout devant un phare</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -138,20 +138,26 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>
   </data>
-  <data name="seagoingincludes" xml:space="preserve">
-    <value>(comprend l'officier et l'équipage du navire)</value>
+  <data name="seagoingbutton" xml:space="preserve">
+    <value>Rechercher des postes en mer</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Positions côté rivage</value>
   </data>
-  <data name="shoresideincludes" xml:space="preserve">
-    <value>(comprend l'administration, l'informatique et les métiers)</value>
+  <data name="shoresidebutton" xml:space="preserve">
+    <value>Rechercher des positions bord de mer</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Étudiant</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Collège technique</value>
+  </data>
+  <data name="textseagoing" xml:space="preserve">
+    <value>La main-d'œuvre de la Garde côtière canadienne est composée d'environ 60 % de marins. Sur chaque navire au Canada et dans le monde, il existe deux types de marins : les officiers de navire (SO) et les équipages de navire (SC). Les officiers sont les responsables et les équipages effectuent le travail qualifié à bord du navire. De même, dans chaque navire, il y a trois départements principaux : pont/navigation, ingénierie et logistique. Au sein des cadres d'officiers et d'équipages, il existe des hiérarchies liées au temps consacré à un travail donné, à l'expérience de travail sur certaines plates-formes maritimes et à la formation. Le capitaine est l'officier supérieur d'un navire et un officier de navigation; le chef mécanicien est le plus haut mécanicien d'un navire. En dessous, il y a des officiers de rang inférieur, puis des membres d'équipage.</value>
+  </data>
+  <data name="textshoreside" xml:space="preserve">
+    <value>Environ 40 % de la main-d'œuvre de la Garde côtière canadienne est composée de personnes travaillant à terre. La fonction globale de ces postes est de soutenir les opérations de la Garde côtière. Ils n'impliquent pas de travailler sur des actifs flottants de la Garde côtière. Au lieu de cela, ils peuvent être opérationnels (par exemple, communications, environnement, logistique, etc.) ou administratifs (par exemple, gestion, planification, politique, etc.).</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Collège</value>
