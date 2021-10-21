@@ -483,7 +483,7 @@ else{
         }
         else
         {
-            var percentage = Model.PercentMatch.IndexOf("=") >= 0 ? "(" + Model.PercentMatch.Remove(0, Model.PercentMatch.IndexOf("=") + 1) + "%)" : "";
+            var percentage = Model.PercentMatch.LastIndexOf("=") >= 0 ? "(" + Model.PercentMatch.Remove(0, Model.PercentMatch.LastIndexOf("=") + 1) + "%)" : "";
             <h3 class="text-center">@Localizer["SIMILAR POSITIONS"] @percentage</h3>
             <div class="mrgn-tp-lg">
                 <h4>@Localizer["NoPositions"]</h4>

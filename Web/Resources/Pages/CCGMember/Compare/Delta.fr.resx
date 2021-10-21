@@ -246,6 +246,9 @@
   <data name="modalTitleMap" xml:space="preserve">
     <value>Cartes des régions de la GCC</value>
   </data>
+  <data name="N/A" xml:space="preserve">
+    <value>S/O</value>
+  </data>
   <data name="NoDiff" xml:space="preserve">
     <value>Pas de compétences différentes</value>
   </data>
