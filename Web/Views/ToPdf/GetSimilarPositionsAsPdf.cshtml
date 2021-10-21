@@ -5,116 +5,147 @@
 @{
     var isEnglish = ViewData["Language"].ToString() == "en";
     var Position = await _similarService.GetJobPositionById(int.Parse(ViewData["PositionId"].ToString()));
-    var Positions100 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds100"].ToString()}");
-    var Positions90 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds90"].ToString()}");
-    var Positions80 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds80"].ToString()}");
-    var Positions70 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds70"].ToString()}");
-
     var similarpositions = isEnglish ? "SIMILAR POSITIONS" : "POSITIONS SIMILAIRES";
     var level = isEnglish ? "LEVEL" : "NIVEAU";
     var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
     var positions = isEnglish ? "POSITION" : "POSTE";
-    var countmessage100 = Positions100.Length != 1 ? "POSITIONS" : "POSITION";
-    var countmessage90 = Positions90.Length != 1 ? "POSITIONS" : "POSITION";
-    var countmessage80 = Positions80.Length != 1 ? "POSITIONS" : "POSITION";
-    var countmessage70 = Positions70.Length != 1 ? "POSITIONS" : "POSITION";
-    if (!isEnglish)
-    {
-        countmessage100 = Positions100.Length != 1 ? "POSTES" : "POSTE";
-        countmessage90 = Positions90.Length != 1 ? "POSTES" : "POSTE";
-        countmessage80 = Positions80.Length != 1 ? "POSTES" : "POSTE";
-        countmessage70 = Positions70.Length != 1 ? "POSTES" : "POSTE";
-    }
+    var countmessage = isEnglish ? "POSITION(S)" : "POSTE(S)";
     var currentposition = isEnglish ? "Current Position" : "Position actuelle";
+    var noPositions = isEnglish ? "No similar positions are currently available for this position." : "Aucun poste similaire n'est actuellement disponible pour ce poste.";
+    var percentParam = ViewData["Id"].ToString().LastIndexOf("&") >= 0 ? ViewData["Id"].ToString().Remove(0, ViewData["Id"].ToString().LastIndexOf("&")) : "";
+    var percentage = percentParam.IndexOf("=") >= 0 ? "(" + percentParam.Remove(0, percentParam.IndexOf("=") + 1) + "%)" : "";
 }
     <div class="mrgn-tp-lg">
         <h4>@currentposition: @Position.JobGroupLevelCode - @(isEnglish ? Position.JobTitleEng : Position.JobTitleFre)</h4>
-        @if (Positions70.Any(e => e.Active != 0))
+        <h3 class="text-center">@similarpositions @percentage</h3>
+        @if (percentage.Contains("70") && ViewData["SimilarJobIds70"] != null)
         {
-            <h3 class="text-center">@similarpositions (70%)</h3>
-            <h5>@Positions70.Length @countmessage70</h5>
-            <table class="table table-hover table-responsive table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="bg-primary" width="25%">@level</td>
-                        <td class="bg-primary" width="75%">@positions</td>
-                    </tr>
-
-                    @foreach (var position in Positions70.Where(e => e.Active != 0))
-                    {
+            var Positions70 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds70"].ToString()}");
+            @if (Positions70.Any(e => e.Active != 0))
+            {
+                <h5>@Positions70.Length @countmessage</h5>
+                <table class="table table-hover table-responsive table-bordered">
+                    <tbody>
                         <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-
+                            <td class="bg-primary" width="25%">@level</td>
+                            <td class="bg-primary" width="75%">@positions</td>
                         </tr>
-                    }
-                </tbody>
-            </table>
+
+                        @foreach (var position in Positions70.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td>@position.LevelCode</td>
+                                <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="mrgn-tp-lg">
+                    <h4>@noPositions</h4>
+                </div>
+            }
         }
-        @if (Positions80.Any(e => e.Active != 0))
+        else if (percentage.Contains("80") && ViewData["SimilarJobIds80"] != null)
         {
-            <h3 class="text-center">@similarpositions (80%)</h3>
-            <h5>@Positions80.Length @countmessage80</h5>
-            <table class="table table-hover table-responsive table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="bg-primary" width="25%">@level</td>
-                        <td class="bg-primary" width="75%">@positions</td>
-                    </tr>
-
-                    @foreach (var position in Positions80.Where(e => e.Active != 0))
-                    {
+            var Positions80 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds80"].ToString()}");
+            if (Positions80.Any(e => e.Active != 0))
+            {
+                <h5>@Positions80.Length @countmessage</h5>
+                <table class="table table-hover table-responsive table-bordered">
+                    <tbody>
                         <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-
+                            <td class="bg-primary" width="25%">@level</td>
+                            <td class="bg-primary" width="75%">@positions</td>
                         </tr>
-                    }
-                </tbody>
-            </table>
+
+                        @foreach (var position in Positions80.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td>@position.LevelCode</td>
+                                <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="mrgn-tp-lg">
+                    <h4>@noPositions</h4>
+                </div>
+            }
         }
-        @if (Positions90.Any(e => e.Active != 0))
+        else if (percentage.Contains("90") && ViewData["SimilarJobIds90"] != null)
         {
-            <h3 class="text-center">@similarpositions (90%)</h3>
-            <h5>@Positions90.Length @countmessage90</h5>
-            <table class="table table-hover table-responsive table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="bg-primary" width="25%">@level</td>
-                        <td class="bg-primary" width="75%">@positions</td>
-                    </tr>
-
-                    @foreach (var position in Positions90.Where(e => e.Active != 0))
-                    {
+            var Positions90 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds90"].ToString()}");
+            if (Positions90.Any(e => e.Active != 0))
+            {
+                <h5>@Positions90.Length @countmessage</h5>
+                <table class="table table-hover table-responsive table-bordered">
+                    <tbody>
                         <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-
+                            <td class="bg-primary" width="25%">@level</td>
+                            <td class="bg-primary" width="75%">@positions</td>
                         </tr>
-                    }
-                </tbody>
-            </table>
+
+                        @foreach (var position in Positions90.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td>@position.LevelCode</td>
+                                <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="mrgn-tp-lg">
+                    <h4>@noPositions</h4>
+                </div>
+            }
         }
-        @if (Positions100.Any(e => e.Active != 0))
+        else if (percentage.Contains("100") && ViewData["SimilarJobIds100"] != null)
         {
-            <h3 class="text-center">@similarpositions (100%)</h3>
-            <h5>@Positions100.Length @countmessage100</h5>
-            <table class="table table-hover table-responsive table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="bg-primary" width="25%">@level</td>
-                        <td class="bg-primary" width="75%">@positions</td>
-                    </tr>
-
-                    @foreach (var position in Positions100.Where(e => e.Active != 0))
-                    {
+            var Positions100 = await _similarService.GetAllSimilarJobPositionsByPositionId($"{ViewData["Id"].ToString()}&{ViewData["SimilarJobIds100"].ToString()}");  
+            if (Positions100.Any(e => e.Active != 0))
+            {
+                <h5>@Positions100.Length @countmessage</h5>
+                <table class="table table-hover table-responsive table-bordered">
+                    <tbody>
                         <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-
+                            <td class="bg-primary" width="25%">@level</td>
+                            <td class="bg-primary" width="75%">@positions</td>
                         </tr>
-                    }
-                </tbody>
-            </table>
+
+                        @foreach (var position in Positions100.Where(e => e.Active != 0))
+                        {
+                            <tr>
+                                <td>@position.LevelCode</td>
+                                <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="mrgn-tp-lg">
+                    <h4>@noPositions</h4>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="mrgn-tp-lg">
+                <h4>@noPositions</h4>
+            </div>
         }
     </div>
