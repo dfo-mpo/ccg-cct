@@ -1609,6 +1609,7 @@ namespace DataModel.SeedData
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 57, CompetencyTypeId = 1},
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 18, CompetencyTypeId = 2},
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 58, CompetencyTypeId = 2},
+            new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 11, CompetencyTypeId = 2},
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 26, CompetencyTypeId = 3},
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 27, CompetencyTypeId = 3},
             new JobRolePositionCompetency {JobGroupId = 9, SubJobGroupId = 6, JobGroupLevelId = 5, JobPositionId = 97, CompetencyId = 28, CompetencyTypeId = 3},

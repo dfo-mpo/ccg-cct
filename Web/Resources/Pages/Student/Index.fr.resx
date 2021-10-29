@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="continue" xml:space="preserve">
+    <value>Rechercher des postes</value>
+  </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
+  </data>
+  <data name="modaltextHS" xml:space="preserve">
+    <value>Si vous êtes maintenant au lycée ou avez obtenu votre diplôme d'études secondaires sans autre éducation, cliquez sur cette section. On vous demandera d'abord si vous êtes intéressé à travailler en mer ou à terre, puis quelles que soient les sélections que vous ferez dans divers domaines professionnels, vous obtiendrez des résultats pour lesquels - même si certains peuvent nécessiter une formation professionnelle - vous devriez pouvoir postuler.</value>
+  </data>
+  <data name="modaltextTC" xml:space="preserve">
+    <value>Si vous préparez un programme menant à un certificat dans votre école de métiers ou votre collège, ou si vous avez obtenu votre diplôme, cliquez sur cette section. On vous demandera d'abord si vous êtes intéressé à travailler en mer ou à terre, puis quelles que soient les sélections que vous ferez dans divers domaines professionnels, vous obtiendrez des résultats pour lesquels vous pourriez être qualifié maintenant ou avoir besoin d'une certification professionnelle supplémentaire afin de postuler pour maintenant.</value>
+  </data>
+  <data name="modaltextU" xml:space="preserve">
+    <value>Si vous préparez un diplôme universitaire ou avez obtenu un diplôme universitaire, cliquez sur cette section. On vous demandera d'abord si vous êtes intéressé à travailler en mer ou à terre, puis quelles que soient les sélections que vous ferez dans divers domaines, vous obtiendrez des résultats que vous pourrez probablement appliquer pour le moment.</value>
   </data>
   <data name="PhotoHS" xml:space="preserve">
     <value>Photo d'élèves du secondaire dans le couloir</value>
