@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="continue" xml:space="preserve">
+    <value>Search Positions</value>
+  </data>
   <data name="HighSchool" xml:space="preserve">
     <value>High School</value>
+  </data>
+  <data name="modaltextHS" xml:space="preserve">
+    <value>If you are now in high school or have graduated from high school with no other education, click this section. You'll first be asked if you're interested in working at sea or ashore, and then whatever selections you make in various trades areas will yield results that - though some may require some occupational training - you should realistically be able to apply for.</value>
+  </data>
+  <data name="modaltextTC" xml:space="preserve">
+    <value>If you are working toward a certificated program in your trades school or college, or have graduated, click this section. You'll first be asked if you're interested in working at sea or ashore, and then whatever selections you make in various trades areas will yield results that you may either qualify for now or may need some further occupational certification in order to apply for now.</value>
+  </data>
+  <data name="modaltextU" xml:space="preserve">
+    <value>If you are working towards a university degree or have graduated with one, click this section. You'll first be asked if you're interested in working at sea or ashore, and then whatever selections you make in various fields will yield results that you may be able to likely apply for now.</value>
   </data>
   <data name="PhotoHS" xml:space="preserve">
     <value>Photo of High school students in the hallway</value>

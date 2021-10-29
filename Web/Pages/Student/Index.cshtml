@@ -5,54 +5,81 @@
     ViewData["Title"] = "Student";
 }
 
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
-                    <li>@Localizer["Student"]</li>
-                </ol>
-            </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
+                <li>@Localizer["Student"]</li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+    <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
 
-        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-            <a style="text-decoration:none" class="nav-link" asp-page="HighSchool/Index">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["HighSchool"]</h3></figcaption>
-                        <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-            <a style="text-decoration:none" class="nav-link" asp-page="College/Index">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["TechCollege"]</h3></figcaption>
-                        <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-            <a style="text-decoration:none" class="nav-link" asp-page="University/Index">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["University"]</h3></figcaption>
-                        <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-    </section>
+    <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+        <a style="text-decoration:none" class="overlay-lnk" href="#hs1" aria-controls="mid-screen" role="button">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["HighSchool"]</h3></figcaption>
+                    <img src="~/img/Student/Highschool.jpg" alt="@Localizer["PhotoHS"]" class="img-responsive center" />
+                </div>
+            </figure>
+        </a>
+        <section id="hs1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+            <header class="modal-header">
+                <h2 class="modal-title">@Localizer["HighSchool"]</h2>
+            </header>
+            <div class="modal-body ">
+                <p>@Localizer["modaltextHS"]</p>
+                <a class="btn btn-primary pull-left" asp-page="HighSchool/Index">@Localizer["continue"]</a><button class="btn btn-default pull-left mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+        <a style="text-decoration:none" class="overlay-lnk" href="#tc1" aria-controls="mid-screen" role="button">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["TechCollege"]</h3></figcaption>
+                    <img src="~/img/Student/TechCollege.jpg" alt="@Localizer["PhotoTC"]" class="img-responsive center" />
+                </div>
+            </figure>
+        </a>
+        <section id="tc1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+            <header class="modal-header">
+                <h2 class="modal-title">@Localizer["TechCollege"]</h2>
+            </header>
+            <div class="modal-body ">
+                <p>@Localizer["modaltextTC"]</p>
+                <a class="btn btn-primary pull-left" asp-page="College/Index">@Localizer["continue"]</a><button class="btn btn-default pull-left mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-4 col-sm-4 mrgn-bttm-md">
+        <a style="text-decoration:none" class="overlay-lnk" href="#u1" aria-controls="mid-screen" role="button">
+            <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
+                <div class="img-container">
+                    <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["University"]</h3></figcaption>
+                    <img src="~/img/Student/University.jpg" alt="@Localizer["PhotoU"]" class="img-responsive center" />
+                </div>
+            </figure>
+        </a>
+        <section id="u1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+            <header class="modal-header">
+                <h2 class="modal-title">@Localizer["University"]</h2>
+            </header>
+            <div class="modal-body ">
+                <p>@Localizer["modaltextU"]</p>
+                <a class="btn btn-primary pull-left" asp-page="University/Index">@Localizer["continue"]</a><button class="btn btn-default pull-left mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+            </div>
+        </section>
+    </div>
+</section>
