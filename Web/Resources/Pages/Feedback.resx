@@ -117,112 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="areacode" xml:space="preserve">
-    <value>including area code (for example, 999-999-9999)</value>
-  </data>
-  <data name="Comp definitions elaborate" xml:space="preserve">
-    <value>If you listed competencies with definitions you think should be changed, please elaborate with your wording change recommendations, and why.</value>
-  </data>
-  <data name="Comp definitions rating" xml:space="preserve">
-    <value>In your review of a given position competency profile in the CCT, were the listed competency definitions rated correctly? (i.e. the scores of 1-5).</value>
-  </data>
-  <data name="Comp rating if no" xml:space="preserve">
-    <value>If no, which ones, and why?</value>
-  </data>
-  <data name="ContactInfo" xml:space="preserve">
-    <value>Please provide information that we could use to contact you</value>
-  </data>
-  <data name="E-mail" xml:space="preserve">
-    <value>E-mail address</value>
-  </data>
   <data name="Feedback" xml:space="preserve">
-    <value>Feedback Form</value>
-  </data>
-  <data name="FormTitle" xml:space="preserve">
-    <value>Career Competency Tool (CCT)</value>
-  </data>
-  <data name="Home phone" xml:space="preserve">
-    <value>Home phone number</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="one-added" xml:space="preserve">
-    <value>One or more should be added</value>
-  </data>
-  <data name="one-removed" xml:space="preserve">
-    <value>One or more should be removed</value>
+    <value>Your Feedback</value>
   </data>
   <data name="para1" xml:space="preserve">
-    <value>Please note that these competencies are the fruit of much research and consultation. Requests to change competencies and ratings may result in negative consequences elsewhere in the tool, since many competencies are necessarily linked. We will action areas of many similar recommendations rather than one-offs. In your feedback, please be very specific, referencing specific competencies or positions.</value>
+    <value>Please note that these competencies and ratings are the result of much research and consultation. Requests to change them may result in negative consequences elsewhere in the tool, since many competencies are necessarily linked. We will action areas of similar recommendations rather than one-offs. In your feedback, please be very specific, referencing specific competencies or positions. Also, please provide contact information should we require clarification. Note that not all requested changes will be made for reasons stated above; and we will normally not send reply messages indicating whether or not requests will be actioned.</value>
   </data>
   <data name="para2" xml:space="preserve">
-    <value>If you have difficulty with the following form, you can email your comments to &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;. Please read the &lt;a href="#pics-ecrp"&gt;Personal Information Collection Statement&lt;/a&gt; before completing this form.</value>
-  </data>
-  <data name="PICS" xml:space="preserve">
-    <value>Personal Information Collection Statement</value>
-  </data>
-  <data name="PICS-para" xml:space="preserve">
-    <value>All personal information created, held or collected by this department is protected under the &lt;a href="http://laws-lois.justice.gc.ca/eng/acts/P-21/index.html" rel="external"&gt;&lt;em&gt;Privacy Act&lt;/em&gt;&lt;/a&gt;. This means that you will be informed of the purpose for which it is being collected and how to exercise your right of access to that information. You will be asked for your consent where appropriate.</value>
-  </data>
-  <data name="Public Communications" xml:space="preserve">
-    <value>Public Communications</value>
-  </data>
-  <data name="Public-para1" xml:space="preserve">
-    <value>Provision of the information requested on this form is voluntary. The personal information you include in an inquiry may be used to prepare a reply. The personal information is collected pursuant to the &lt;em class="highlight"&gt;[appropriate provision in department’s enabling statute]&lt;/em&gt;. Such information may be used for statistical, evaluation and reporting purposes. The information is included in the personal information bank &lt;em class="highlight"&gt;[&lt;abbr title="personal information bank"&gt;PIB&lt;/abbr&gt; Number - &lt;abbr title="personal information bank"&gt;PIB&lt;/abbr&gt; Title]&lt;/em&gt;. The information may be shared with programs and activities of &lt;em class="highlight"&gt;[Applied Title of the Department]&lt;/em&gt; should your inquiry pertain to a specific program or activity of the department. In such cases, the information is included in the personal information bank of the program or activity.</value>
-  </data>
-  <data name="Public-para2" xml:space="preserve">
-    <value>If after reading this statement, you prefer not to submit your inquiry via the Internet, you can email your comments to &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;</value>
-  </data>
-  <data name="Q1-certcorrect" xml:space="preserve">
-    <value>In your review of a given position’s competency profile in the CCT, were the certifications correct? (i.e. the right certifications listed overall for a position).</value>
-  </data>
-  <data name="Q1-comp if no" xml:space="preserve">
-    <value>If no:</value>
-  </data>
-  <data name="Q1-comp listing" xml:space="preserve">
-    <value>In your review of a given position’s competency profile in the CCT, were the competencies listed appropriate? (i.e. the right Knowledge, Technical, Behavioural competencies overall for a position).</value>
-  </data>
-  <data name="Q1-if no" xml:space="preserve">
-    <value>If no, what needs correction?</value>
-  </data>
-  <data name="Q2-comp definitions" xml:space="preserve">
-    <value>In your review of a given position’s competency profile in the CCT, were the listed competency definitions written correctly? (i.e. the written Knowledge, Technical, Behavioural overall definitions, and the written level descriptions).</value>
-  </data>
-  <data name="Q2-comp definitions if no" xml:space="preserve">
-    <value>If no, which ones?</value>
-  </data>
-  <data name="required" xml:space="preserve">
-    <value>(required)</value>
-  </data>
-  <data name="sectioncert" xml:space="preserve">
-    <value>Certifications</value>
-  </data>
-  <data name="sectioncomp" xml:space="preserve">
-    <value>Competencies</value>
-  </data>
-  <data name="sectionContact" xml:space="preserve">
-    <value>Contact Information</value>
+    <value>Email your comments to: &lt;a href="mailto:DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca?subject=Feedback from CCT website&amp;body=%0A%0A1. In your review of a given position’s competency profile in the CCT, were the certifications correct? (i.e. the right certifications listed overall for a position). YES/NO%0A%0A2. If no, what needs correction?%0A%0A3. In your review of a given position’s competency profile in the CCT, were the competencies listed appropriate? YES/NO%0A%0A4. If no, should one or more be added or removed?%0A%0A5. Which one(s) should be added or removed?%0A%0A6. In your review of a given position’s competency profile in the CCT, were the listed competency definitions written correctly? YES/NO%0A%0A7. If no, which ones?%0A%0A8. If you listed competencies with definitions you think should be changed, please elaborate with your wording change recommendations, and why.%0A%0A9. In your review of a given position competency profile in the CCT, were the listed competency definitions rated correctly? (i.e. the scores of 1-5). YES/NO%0A%0A10. If no, which ones, and why?"&gt;DFO.CCG.ForceGen-GCC.GenPersonnel.MPO@dfo-mpo.gc.ca&lt;/a&gt;.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Change Request Form</value>
-  </data>
-  <data name="which-added" xml:space="preserve">
-    <value>Which one/s should be added?</value>
-  </data>
-  <data name="which-removed" xml:space="preserve">
-    <value>Which one/s should be removed?</value>
-  </data>
-  <data name="Work ext" xml:space="preserve">
-    <value>Work phone number extension</value>
-  </data>
-  <data name="Work phone" xml:space="preserve">
-    <value>Work phone number</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Feedback</value>
   </data>
 </root>

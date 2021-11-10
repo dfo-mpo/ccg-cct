@@ -5,138 +5,26 @@
     ViewData["Title"] = Localizer["Feedback"];
 }
 
-<h1 id="wb-cont" property="name">@Localizer["FormTitle"]</h1>
-<h2 id="wb-cont">@Localizer["Title"]</h2>
-
-<p>@Localizer["para1"]</p>
-<p>@Localizer["para2"]</p>
-<div class="wb-frmvld wb-fdbck nojs-hide">
-    <hr />
-    <form action="#" method="get" id="fdbck-frm">
-
-        <h3 style="color:#146094">@Localizer["sectioncert"]</h3>
-
-        <section id="certification">
-            <div class="form-group">
-                <label for="fbcert"><span class="field-name">@Localizer["Q1-certcorrect"]</span></label>
-                <div class="checkbox">
-                    <label for="fbcert"><input type="radio" name="fbcert" id="fbcert" value="yes"> @Localizer["Yes"]</label>
-                </div>
-                <div class="checkbox">
-                    <label for="fbcert"><input type="radio" name="fbcert" id="fbcert" value="no"> @Localizer["No"]</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="fbcertcorrection"><span class="field-name">@Localizer["Q1-if no"] </span></label>
-                <textarea class="form-control" id="fbcertcorrection" name="fbcertcorrection" rows="5" cols="80"></textarea>
-            </div>
-        </section>
-
-        <hr />
-        <h3 style="color:#146094">@Localizer["sectioncomp"]</h3>
-
-        <section id="complist">
-            <div class="form-group">
-                <label for="fbcomp"><span class="field-name">@Localizer["Q1-comp listing"]</span></label>
-                <div class="checkbox">
-                    <label for="fbcomp"><input type="radio" name="fbcomp" id="fbcomp" value="yes"> @Localizer["Yes"]</label>
-                </div>
-                <div class="checkbox">
-                    <label for="fbcomp"><input type="radio" name="fbcomp" id="fbcomp" value="no"> @Localizer["No"]</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="fbcompaddremove"><span class="field-name">@Localizer["Q1-comp if no"]</span></label>
-                <div class="checkbox">
-                    <label for="fbcomp1"><input type="radio" name="fbcomp1" id="fbcomp1" value="One or more should be removed"> @Localizer["one-removed"]</label>
-                </div>
-                <div class="checkbox">
-                    <label for="fbcomp1"><input type="radio" name="fbcomp1" id="fbcomp1" value="One or more should be added"> @Localizer["one-added"]</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="fbcompremove"><span class="field-name">@Localizer["which-removed"]</span></label>
-                <textarea class="form-control" id="fbcompremove" name="fbcompremove" rows="5" cols="80"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="fbcompadd"><span class="field-name">@Localizer["which-added"]</span></label>
-                <textarea class="form-control" id="fbcompadd" name="fbcompadd" rows="5" cols="80"></textarea>
-            </div>
-        </section>
-
-        <section id="compdefinition">
-            <div class="form-group">
-                <label for="fbcompdef"><span class="field-name">@Localizer["Q2-comp definitions"]</span></label>
-                <div class="checkbox">
-                    <label for="fbcompdef"><input type="radio" name="fbcompdef" id="fbcompdef" value="yes"> @Localizer["Yes"]</label>
-                </div>
-                <div class="checkbox">
-                    <label for="fbcompdef"><input type="radio" name="fbcompdef" id="fbcompdef" value="no"> @Localizer["No"]</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="fbcompwritten"><span class="field-name">@Localizer["Q2-comp definitions if no"]</span></label>
-                <textarea class="form-control" id="fbcompwritten" name="fbcompwritten" rows="5" cols="80"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="fbcompwording"><span class="field-name">@Localizer["Comp definitions elaborate"]</span></label>
-                <textarea class="form-control" id="fbcompwording" name="fbcompwording" rows="5" cols="80"></textarea>
-            </div>
-        </section>
-        <section id="comprating">
-            <div class="form-group">
-                <label for="fbcomprating"><span class="field-name">@Localizer["Comp definitions rating"]</span></label>
-                <div class="checkbox">
-                    <label for="fbcomprating"><input type="radio" name="fbcomprating" id="fbcomprating" value="yes"> @Localizer["Yes"]</label>
-                </div>
-                <div class="checkbox">
-                    <label for="fbcomprating"><input type="radio" name="fbcomprating" id="fbcomprating" value="no"> @Localizer["No"]</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="fbcomprate"><span class="field-name">@Localizer["Comp rating if no"]</span></label>
-                <textarea class="form-control" id="fbcomprate" name="fbcomprate" rows="5" cols="80"></textarea>
-            </div>
-        </section>
-
-        <section id="fbinfo">
-            <h3>@Localizer["sectionContact"]</h3>
-            <fieldset>
-                <legend>@Localizer["ContactInfo"]</legend>
-                <div class="form-group">
-                    <label for="fbnm"><span class="field-name">@Localizer["Name"]</span></label>
-                    <input class="form-control" type="text" id="fbnm" name="fbnm" size="45" maxlength="45" pattern=".{2,}" data-rule-minlength="2">
-                </div>
-                <div class="form-group">
-                    <label for="fbeml" class="required"><span class="field-name">@Localizer["E-mail"]</span> <strong class="required">@Localizer["required"]</strong></label>
-                    <input class="form-control" type="email" id="fbeml" name="fbeml" size="45" maxlength="60" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="fbhphn"><span class="field-name">@Localizer["Home phone"]</span> @Localizer["areacode"]</label>
-                    <input class="form-control" type="tel" id="fbhphn" name="fbhphn" size="12" maxlength="12" data-rule-phoneus="true">
-                </div>
-                <div class="form-group">
-                    <label for="fbwphn"><span class="field-name">@Localizer["Work phone"]</span> @Localizer["areacode"]</label>
-                    <input class="form-control" type="tel" id="fbwphn" name="fbwphn" size="12" maxlength="12" data-rule-phoneus="true">
-                </div>
-                <div class="form-group">
-                    <label for="fbwphnxt"><span class="field-name">@Localizer["Work ext"]</span></label>
-                    <input class="form-control" type="text" id="fbwphnxt" name="fbwphnxt" size="8" maxlength="8">
-                </div>
-            </fieldset>
-        </section>
-
-        <input type="submit" name="fbsbmt" id="fbsbmt" value="Submit feedback" class="btn btn-primary"> <input type="reset" value="Reset" class="btn btn-default">
-    </form>
-    <section>
-        <h2 id="pics-ecrp">@Localizer["PICS"]</h2>
-        <p>@Localizer["PICS-para"]</p>
-        <section>
-            <h3 id="pc-cp">@Localizer["Public Communications"]</h3>
-            <p>@Localizer["Public-para1"]</p>
-            <p>@Localizer["Public-para2"]</p>
-        </section>
-    </section>
-</div>
+<nav id="wb-bc" property="breadcrumb" aria-labelledby="breadcrumbPosition">
+    <h2 id="breadcrumbPosition">You are here:</h2>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a asp-page="Index">@Localizer["Home"]</a></li>
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Title"]</a></li>
+        </ol>
+    </div>
+</nav>
+<section role="contentinfo">
+    <h1 id="wb-cont">@Localizer["Title"]</h1>
+    <div class="col-lg-9 col-sm-9">
+        <p class="mrgn-tp-md">@Localizer["para1"]</p>
+        <p>@Localizer["para2"]</p>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+        <figure>
+            <img src="~/img/ForceGen-logo.png" class="img-responsive" />
+        </figure>
+    </div>
+</section>
 
 
