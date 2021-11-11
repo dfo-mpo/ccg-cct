@@ -120,6 +120,9 @@
   <data name="Feedback" xml:space="preserve">
     <value>Rétroaction</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="para1" xml:space="preserve">
     <value>Veuillez noter que ces compétences et évaluations sont le résultat de nombreuses recherches et consultations. Les demandes de modification peuvent entraîner des conséquences négatives ailleurs dans l'outil, car de nombreuses compétences sont nécessairement liées. Nous agirons sur des domaines de recommandations similaires plutôt que sur des actions ponctuelles. Dans vos commentaires, veuillez être très précis, en faisant référence à des compétences ou à des postes spécifiques. Veuillez également fournir vos coordonnées si nous avons besoin d'éclaircissements. Notez que toutes les modifications demandées ne seront pas apportées pour les raisons indiquées ci-dessus ; et nous n'enverrons normalement pas de messages de réponse indiquant si les demandes seront traitées ou non.</value>
   </data>

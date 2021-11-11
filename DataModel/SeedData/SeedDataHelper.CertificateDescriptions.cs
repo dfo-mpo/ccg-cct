@@ -20,7 +20,9 @@ namespace DataModel.SeedData
                 new CertificateDescription { Id = 10, DescEng = "(under training)", DescFre ="(en formation)", Active = 1},
                 new CertificateDescription { Id = 11, DescEng = "(or Watchkeeping Mate, Near Coastal for MSPVs)", DescFre ="(ou Officier de pont de quart, à proximité du littoral pour NHRH)", Active = 1},
                 new CertificateDescription { Id = 12, DescEng = "(or Master 3000GT for Great Lakes/Mackenzie River)", DescFre ="(ou Capitaine, jauge brute de 3 000 pour les Grands Lacs et la rivière Mackenzie)", Active = 1},
-                new CertificateDescription { Id = 13, DescEng = "(or Master Mariner depending on voyage)", DescFre ="(ou Capitaine au long cours, selon le voyage)", Active = 1},
+                new CertificateDescription { Id = 13, DescEng = "or Master Mariner (dependent on voyage)", DescFre ="ou Capitaine au long cours (dépend du voyage)", Active = 1},
+                new CertificateDescription { Id = 14, DescEng = "or Master 3000GT Domestic (dependent on vessel)", DescFre ="ou Capitaine, jauge brute de 3 000, navigation intérieure (dépend du navire)", Active = 1},
+                new CertificateDescription { Id = 15, DescEng = "or Master 3000GT, Near Coastal (dependent on vessel)", DescFre ="ou Capitaine, jauge brute de 3 000, à proximité du littoral (dépend du navire)", Active = 1},
             };
 
 
