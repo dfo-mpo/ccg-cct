@@ -246,7 +246,7 @@ namespace DataModel.SeedData
 
 			new SearchSimilarJob() {Id = 119, Position = 119, HundredPercent = "&PositionId=115&PositionId=119", NinetyPercent = "&PositionId=252&PositionId=257", EightyPercent = "&PositionId=329&PositionId=330&PositionId=331&PositionId=332&PositionId=333&PositionId=334", SeventyPercent = "&PositionId=124&PositionId=125&PositionId=126" },
 
-			new SearchSimilarJob() {Id = 120, Position = 120, HundredPercent = "&PositionId=120&PositionId=127&PositionId=128&PositionId=130&PositionId=131&PositionId=389&PositionId=396", NinetyPercent = "&PositionId=290&PositionId=291&PositionId=292&PositionId=293&PositionId=294&PositionId=295&PositionId=296&PositionId=298&PositionId=299&PositionId=300", EightyPercent = "&PositionId=133&PositionId=139", SeventyPercent = "&PositionId=149&PositionId=150&PositionId=152" },
+			new SearchSimilarJob() {Id = 120, Position = 120, HundredPercent = "&PositionId=120&PositionId=127&PositionId=128&PositionId=130&PositionId=131&PositionId=389&PositionId=396", NinetyPercent = "&PositionId=290&PositionId=291&PositionId=292&PositionId=293&PositionId=294&PositionId=295&PositionId=296&PositionId=298&PositionId=299&PositionId=300", EightyPercent = "&PositionId=149&PositionId=150&PositionId=152", SeventyPercent = "&PositionId=133&PositionId=139" },
 
 			new SearchSimilarJob() {Id = 121, Position = 121, HundredPercent = "&PositionId=121&PositionId=122&PositionId=129", NinetyPercent = "&PositionId=166&PositionId=392", EightyPercent = "&PositionId=303&PositionId=306&PositionId=307&PositionId=310&PositionId=312", SeventyPercent = "&PositionId=36&PositionId=37&PositionId=38&PositionId=39&PositionId=40&PositionId=41&PositionId=44&PositionId=45&PositionId=46&PositionId=48&PositionId=54&PositionId=315" },
 
