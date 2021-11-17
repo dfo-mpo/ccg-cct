@@ -8,7 +8,7 @@ namespace DataModel.SeedData
     {
         public List<Certificate> Certificates = new List<Certificate>()
             {
-                new Certificate { Id = 1, DescEng = "", DescFre = "", NameEng = "Master, 150 GT, Domestic", NameFre = "Capitaine, jauge brute de 150, navigation intérieure", Active = 1 },
+                new Certificate { Id = 1, DescEng = "", DescFre = "", NameEng = "Master 150 GT, Domestic", NameFre = "Capitaine, jauge brute de 150, navigation intérieure", Active = 1 },
                 new Certificate { Id = 2, DescEng = "", DescFre = "", NameEng = "Master 500 GT, Domestic", NameFre = "Capitaine, jauge brute de 500, navigation intérieure", Active = 1 },
                 new Certificate { Id = 3, DescEng = "", DescFre = "", NameEng = "Inter-Provincial Journeyman Certification; Heavy Duty Mechanic", NameFre = "Certificat interprovincial de compagnon, mécanicien de machinerie lourde", Active = 1 },
                 new Certificate { Id = 4, DescEng = "", DescFre = "", NameEng = "Inter-Provincial Journeyman Certification; Automotive Mechanic", NameFre = "Certificat interprovincial de compagnon, mécanicien d'automobile", Active = 1 },
