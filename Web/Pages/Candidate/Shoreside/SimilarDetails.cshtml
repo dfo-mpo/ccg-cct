@@ -467,7 +467,7 @@ else if (!(Model.PageSubmit == "true"))
                     @foreach (var c in Model.JobLocationRegions)
                     {
                         <tr>
-                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            <td colspan="2">@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
                         </tr>
                     }
                 }
@@ -485,15 +485,6 @@ else if (!(Model.PageSubmit == "true"))
                         <div class="thumbnail img-responsive">
                             <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                         </div>
-                        <details>
-                            <summary id="3">@Localizer["mapSummary"]</summary>
-                            <p>@Localizer["ArcticRegion"]</p>
-                            <p>@Localizer["WesternRegion"]</p>
-                            <p>@Localizer["CentralRegion"]</p>
-                            <p>@Localizer["AtlanticRegion"]</p>
-                            <p>@Localizer["CollegeRegion"]</p>
-                            <p>@Localizer["HeadQRegion"]</p>
-                        </details>
                         <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
                     </div>
                 </section>
@@ -781,9 +772,11 @@ else
             <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="SimilarDetails" asp-all-route-data="paramdataprevious">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
+    <h2>@Localizer["Similar Function"]</h2>
+    @Localizer["modalsimilar"]
 
     <h3>@Localizer["Question2"]</h3>
-    <p>@Localizer["textjob"]</p>
+    <!-- <p>@Localizer["textjob"]</p> -->
     <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
         <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</a>
         <a asp-page="../../CCGMember/Similar/SimilarList" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</a>

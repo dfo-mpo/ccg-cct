@@ -14,7 +14,6 @@ namespace DataModel.SeedData
             new JobLocationRegion {Id = 4, NameEng = "National Headquarters", NameFre = "Siège national", Active = 1 },
             new JobLocationRegion {Id = 5, NameEng = "Central", NameFre = "Centre", Active = 1 },
             new JobLocationRegion {Id = 6, NameEng = "CCG College", NameFre = "Collège de la GCC", Active = 1 },
-            new JobLocationRegion {Id = 7, NameEng = "All Regions", NameFre = "Toutes les régions", Active = 1 }
         };
     }
 }

@@ -87,8 +87,9 @@ else if (!(Model.PageSubmit == "true"))
     </div>
 
     <div class="clearfix"></div>
-    <h1 class="mrgn-tp-0">@Localizer["h1Text"]</h1>
-    <!--h4>@Localizer["h4Text"]</h4-->
+    <h2 class="mrgn-tp-0">@Localizer["Similar Function"]</h2>
+    @Localizer["modalsimilar"]
+
     <form method="post">
         <!--div class="mrgn-bttm-xl">
                         @if (Model.AddedCompetencyValues.Any())
@@ -161,7 +162,7 @@ else if (!(Model.PageSubmit == "true"))
                         }
                     </div-->
         <div class="col-lg-12">
-            <h4>@Localizer["SelectionTitleCertificates"]</h4>
+            <!-- <h4>@Localizer["SelectionTitleCertificates"]</h4> -->
             <div class="mrgn-tp-lg mrgn-bttm-lg">
                 <table class="table dataTable table-responsive">
                     <thead>
@@ -308,7 +309,7 @@ else if (!(Model.PageSubmit == "true"))
                             {"sameorhigherlevels", Model.SameOrHigherLevels },{ "previouspagedetails","SimilarSearch"}, {"previouspagesimilar", Model.PreviousPageSimilar },{"previouspage",Model.PreviousPage }, { "subgroupcode", Model.SubGroupCode }, { "levelcode", Model.LevelCode }};
             }
             <h3>@Localizer["pageSubmitted"]</h3>
-            <p>@Localizer["textjob"]</p>
+           <!-- <p>@Localizer["textjob"]</p> -->
             <div class="row mrgn-tp-lg mrgn-lft-lg mr-2">
                 <button asp-page-handler="submit" asp-all-route-data="@RouteParameter70" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["70%"]&nbsp;&nbsp;&nbsp;</button>
                 <button asp-page-handler="submit" asp-all-route-data="@RouteParameter80" class="btn btn-primary mr-2">&nbsp;&nbsp;&nbsp;@Localizer["80%"]&nbsp;&nbsp;&nbsp;</button>
