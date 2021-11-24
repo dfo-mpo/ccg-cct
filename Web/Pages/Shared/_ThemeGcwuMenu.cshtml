@@ -3,7 +3,7 @@
 }
 @if (isEnglish)
 {
-    <nav class="gweb-v2 gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
+    <nav class="gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
         <div class="container">
             <h2 class="wb-inv">Menu</h2>
             <button type="button" aria-haspopup="true" aria-controls="glb-mn" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it."><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
@@ -17,25 +17,13 @@
         </div>
     </nav>
 
-    <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
-        <div class="container nvbar">
-            <h2 class="wb-inv">Topics menu</h2>
-            <div class="row">
-                <ul class="list-inline menu">
-                    <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/CCGMember/AllPositions">CCG Member</a></li>
-                    <li><a asp-page="/Candidate/Index">External Candidate</a></li>
-                    <li><a asp-page="/Student/Index">Student</a></li>
-                    <li><a asp-page="/Feedback">Feedback</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  
+
 
 }
 else
 {
-    <nav class="gweb-v2 gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
+    <nav class="gcweb-menu wb-init gcweb-menu-inited" typeof="SiteNavigationElement" id="wb-auto-2">
         <div class="container">
             <h2 class="wb-inv">Menu</h2>
             <button type="button" aria-haspopup="true" aria-controls="glb-mn" aria-expanded="false" aria-label="Press the SPACEBAR to expand or the escape key to collapse this menu. Use the Up and Down arrow keys to choose a submenu item. Press the Enter or Right arrow key to expand it, or the Left arrow or Escape key to collapse it. Use the Up and Down arrow keys to choose an item on that level and the Enter key to access it."><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
@@ -50,19 +38,6 @@ else
     </nav>
 
 
-    <nav role="navigation" id="wb-sm" data-ajax-fetch="/ajax/sitemenu-ccg-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
-        <div class="container nvbar">
-            <h2 class="wb-inv">Menu des sujets</h2>
-            <div class="row">
-                <ul class="list-inline menu">
-                    <li><a asp-page="/Index" class="item">Accueil</a></li>
-                    <li><a asp-page="/CCGMember/AllPositions">Membre de la GCC</a></li>
-                    <li><a asp-page="/Candidate/Index">Candidat externe</a></li>
-                    <li><a asp-page="/Student/Index">Étudiant</a></li>
-                    <li><a asp-page="/Feedback">Rétroaction</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
 
 }

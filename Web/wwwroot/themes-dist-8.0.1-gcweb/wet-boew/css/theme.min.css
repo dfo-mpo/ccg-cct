@@ -305,6 +305,51 @@ span.glyphicon.glyphicon-new-window {
     font-size: 20px;
 }
 
+.shr-pg .shr-lnk {
+    font-size: 115%;
+    line-height: 32px;
+    margin-bottom: 8px;
+    min-height: 32px;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+}
+    .shr-pg .shr-lnk:before {
+        content: " ";
+        display: inline-block;
+        height: 32px;
+        margin-right: 0.6em;
+        vertical-align: middle;
+        width: 32px;
+    }
+
+.shr-pg .email:before {
+    content: "\2709";
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-size: 32px;
+    margin-right: 0.3em;
+}
+.shr-pg .linkedin:before {
+    background-image: url(/themes-dist-8.0.1-gcweb/wet-boew/assets/sprites_share.png);
+    background-position: 0 -64px;
+    width: 32px;
+    height: 32px;
+}
+.shr-pg .facebook:before {
+    background-image: url(/themes-dist-8.0.1-gcweb/wet-boew/assets/sprites_share.png);
+    background-position: -32px -32px;
+    width: 32px;
+    height: 32px;
+}
+.shr-pg .twitter:before {
+    background-image: url(/themes-dist-8.0.1-gcweb/wet-boew/assets/sprites_share.png);
+    background-position: 0 -96px;
+    width: 32px;
+    height: 32px;
+}
+
+
 .glyphicon-asterisk:before {
     content: "\002a"
 }
@@ -12916,7 +12961,7 @@ h1 {
 }
 
 .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6, .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6 {
-    font-size: 1em;
+    font-size: 20px;
     margin-bottom: 5px;
     margin-top: 23px
 }
@@ -17075,10 +17120,6 @@ h1 ~ .provisional.gc-subway {
         float: right
     }
 
-    .gcweb-menu {
-        display: none;
-    }
-
     .wb-disable .gcweb-menu [role=menu] > li {
         float: left;
         padding-right: 5px;
@@ -17147,9 +17188,7 @@ h1 ~ .provisional.gc-subway {
 }
 
 @media screen and (min-width:1200px) {
-    .gcweb-menu {
-        display: none;
-    }
+   
 
     .well.header-rwd {
         width: 50%
@@ -17451,4 +17490,26 @@ header .gcweb-subtheme--menu .mainmenu-item {
                 display: none
             }
 
+@media screen and (min-width: 1000px) {
+    .cct-cover-img {
+        background-image: url(/img/home-accueil-3.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+}
 
+@media screen and (max-width: 425px) {
+    .cct-cover-hide-mobile {
+        background-image: url(none) !important;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .cct-cover-hide-tablet {
+        background-image: url(none) !important;
+    }
+} 

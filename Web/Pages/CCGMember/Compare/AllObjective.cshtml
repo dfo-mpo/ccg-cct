@@ -254,8 +254,10 @@
             </ul>
         </nav>
         <div class="col-md-12">
+            <h2 class="mrgn-tp-0 mrgn-bttm-md"><b>@Localizer["Compare Function"]</b></h2>
+            @Localizer["modalcompare"]
 
-            <h2 class="mrgn-tp-0 mrgn-bttm-md"><b>@Localizer["AllPositions"]</b></h2>
+            <h3 class="mrgn-tp-0 mrgn-bttm-md"><b>@Localizer["AllPositions"]</b></h3>
             <form>
                 <p class="mrgn-bttm-xl">
                     <input type="text" asp-for="Filter" />
@@ -274,7 +276,7 @@
                                     if (jobgroup.Active != 0)
                                     {
                                         var routedatanext = new Dictionary<string, string>
-                                                                                 {
+                                                                                                                 {
                                                   { "positionid",  Model.PositionId.ToString()},
                                                   { "level",  Model.Level},
                                                   { "levelcode", Model.LevelCode },

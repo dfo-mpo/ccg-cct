@@ -117,127 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+  <data name="Certifications" xml:space="preserve">
+    <value>Attestations</value>
   </data>
-  <data name="AllPositions" xml:space="preserve">
-    <value>Choisissez une position à comparer</value>
+  <data name="CertText" xml:space="preserve">
+    <value>Les attestations indiquent qu’un programme de formation donné a été suivi avec succès. Certaines attestations peuvent varier ou changer, même à un niveau de classification similaire.</value>
   </data>
-  <data name="Business" xml:space="preserve">
-    <value>Affaires</value>
+  <data name="Competencies" xml:space="preserve">
+    <value>Compétences</value>
   </data>
-  <data name="Candidate" xml:space="preserve">
-    <value>Candidat externe</value>
+  <data name="CompText" xml:space="preserve">
+    <value>&lt;p&gt;Nous avons compilé ces renseignements à partir des compétences mentionnées dans toutes les offres d’emploi des dernières années. Chaque compétence a un niveau minimum requis pour le poste. Les compétences peuvent évoluer au fur et à mesure que les exigences des postes changent au sein de la Garde côtière.&lt;/p&gt;
+&lt;p&gt;Nous avons divisé les compétences liées aux postes en trois sections :&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;Les éléments de connaissance sont une compréhension pratique ou théorique d’un sujet. Il s’agit des renseignements dont vous avez besoin (à partir de votre expérience ou de vos études) pour réussir dans le poste.&lt;/li&gt;
+&lt;li&gt;Les éléments techniques décrivent les capacités d’appliquer les connaissances pour exécuter efficacement le travail.&lt;/li&gt;
+&lt;li&gt;Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.&lt;/li&gt;&lt;/ul&gt;</value>
   </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Catégories</value>
+  <data name="continue" xml:space="preserve">
+    <value>Cliquez ici pour commencer</value>
   </data>
-  <data name="Compare" xml:space="preserve">
-    <value>Comparer</value>
+  <data name="Intro" xml:space="preserve">
+    <value>Introduction</value>
   </data>
-  <data name="Compare Function" xml:space="preserve">
-    <value>La fonction de comparaison</value>
+  <data name="IntroText" xml:space="preserve">
+    <value>&lt;p&gt;L’outil de compétences professionnelles de la Garde côtière canadienne est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la Garde côtière. Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.&lt;/p&gt;
+&lt;p&gt;Une fois que vous avez identifié un poste pouvant vous intéresser, l’outil vous permet de trouver des postes similaires au sein de la Garde côtière ou de comparer les exigences du poste à celles d’autres postes. Pour chaque poste, l’outil fournit :&lt;/p&gt;&lt;ul&gt;&lt;li&gt;une brève description;&lt;/li&gt;
+&lt;li&gt;les régions dans lesquelles on peut trouver ce poste;&lt;/li&gt;
+&lt;li&gt;les certifications requises pour le poste;&lt;/li&gt;
+&lt;li&gt;une liste des compétences nécessaires ainsi que le niveau de compétence requis.&lt;/li&gt;&lt;/ul&gt;</value>
   </data>
-  <data name="Computer Systems" xml:space="preserve">
-    <value>Ordinateurs</value>
+  <data name="Title" xml:space="preserve">
+    <value>L’outil de compétences professionnelles</value>
   </data>
-  <data name="Cook" xml:space="preserve">
-    <value>Cuisinier</value>
-  </data>
-  <data name="Crew" xml:space="preserve">
-    <value>Équipage</value>
-  </data>
-  <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
-  </data>
-  <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
-  </data>
-  <data name="Electrical" xml:space="preserve">
-    <value>Électrique</value>
-  </data>
-  <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
-  </data>
-  <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Filtrer</value>
-  </data>
-  <data name="General Arts" xml:space="preserve">
-    <value>Arts généraux</value>
-  </data>
-  <data name="geo" xml:space="preserve">
-    <value>Information géographique</value>
-  </data>
-  <data name="HighSchool" xml:space="preserve">
-    <value>École secondaire</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
-  </data>
-  <data name="modalcompare" xml:space="preserve">
-    <value>&lt;p&gt;Cette fonction vous permet de comparer votre poste actuellement sélectionné avec tout autre poste de la Garde côtière canadienne. En le sélectionnant, puis en un autre poste, la fonction produira les deux résultats de poste côte à côte afin que vous puissiez voir les différences d'emplacement, de certification, de compétences et d'évaluation. Si le poste auquel vous vous comparez est celui que vous recherchez, vous pouvez alors télécharger les résultats, les sauvegarder ou les imprimer, comme base d'un plan de formation.&lt;/p&gt;</value>
-  </data>
-  <data name="NoResults" xml:space="preserve">
-    <value>Aucun résultat correspondant trouvé</value>
-  </data>
-  <data name="Officer" xml:space="preserve">
-    <value>Officier</value>
-  </data>
-  <data name="Position Level" xml:space="preserve">
-    <value>Niveau du poste</value>
-  </data>
-  <data name="Position List" xml:space="preserve">
-    <value>Liste des postes</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Précédent</value>
-  </data>
-  <data name="Save PDF" xml:space="preserve">
-    <value>Enregistrer le PDF</value>
-  </data>
-  <data name="Sciences" xml:space="preserve">
-    <value>Les sciences</value>
-  </data>
-  <data name="Seagoing" xml:space="preserve">
-    <value>Positions en mer</value>
-  </data>
-  <data name="Search Type" xml:space="preserve">
-    <value>Type de recherche</value>
-  </data>
-  <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
-  </data>
-  <data name="Selected Position" xml:space="preserve">
-    <value>Position sélectionnée</value>
-  </data>
-  <data name="Selected Position Level" xml:space="preserve">
-    <value>Niveau de position sélectionné</value>
-  </data>
-  <data name="Shoreside" xml:space="preserve">
-    <value>Positions côté rivage</value>
-  </data>
-  <data name="Similar Positions" xml:space="preserve">
-    <value>Postes similaires</value>
-  </data>
-  <data name="Social Sciences" xml:space="preserve">
-    <value>Science sociale</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Étudiant</value>
-  </data>
-  <data name="TechCollege" xml:space="preserve">
-    <value>Collège technique</value>
-  </data>
-  <data name="Trades" xml:space="preserve">
-    <value>Métiers généraux</value>
-  </data>
-  <data name="University" xml:space="preserve">
-    <value>Université</value>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
   </data>
 </root>

@@ -180,6 +180,12 @@
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>
+  <data name="modalsimilar" xml:space="preserve">
+    <value>&lt;p&gt;Cette fonctionnalité vous permet de trouver des postes similaires à celui que vous avez déjà sélectionné. La recherche donnera des résultats en pourcentage par fonctionnalité (par exemple, ingénierie, administratif, logistique, etc.). Les résultats peuvent ne pas être au même niveau de rémunération que le poste que vous avez déjà sélectionné.&lt;/p&gt;
+&lt;p&gt;Si le poste auquel vous comparez (c'est-à-dire le poste que vous avez déjà sélectionné) est associé à des certificats, une case vous proposera de cliquer sur les certificats. Si vous cliquez sur un ou plusieurs, la recherche similaire produira des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;
+&lt;p&gt;Si vous ne sélectionnez pas de certificat ou si le poste auquel vous comparez n'a pas de certificat associé, vous pouvez simplement cliquer sur un pourcentage de correspondance. En cliquant sur 100%, vous obtiendrez des résultats au même niveau de classification, de niveau et de niveaux inférieurs et supérieurs. Si vous cliquez sur d'autres pourcentages, les résultats seront des positions de fonctionnalité similaire, mais pas de niveau.&lt;/p&gt;
+&lt;p&gt;Si vous cliquez sur une certification ET un pourcentage, la recherche similaire ne produira que des postes avec ces certifications, quel que soit le niveau.&lt;/p&gt;</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
@@ -251,6 +257,9 @@
   </data>
   <data name="SelectionTitleCertificates" xml:space="preserve">
     <value>Sélectionnez un ou plusieurs certificats, le cas échéant, pour affiner votre recherche de postes similaires à votre poste actuel.</value>
+  </data>
+  <data name="Similar Function" xml:space="preserve">
+    <value>Fonction de recherche similaire</value>
   </data>
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSTES SIMILAIRES</value>

@@ -95,7 +95,7 @@
                     {
                         var key = "d" + c.JobLocationRegionId.ToString();
                         <tr>
-                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            <td colspan="2">@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
                         </tr>
                     }
                 }
@@ -113,15 +113,6 @@
                         <div class="thumbnail img-responsive">
                             <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                         </div>
-                        <details>
-                            <summary id="3">@Localizer["mapSummary"]</summary>
-                            <p>@Localizer["ArcticRegion"]</p>
-                            <p>@Localizer["WesternRegion"]</p>
-                            <p>@Localizer["CentralRegion"]</p>
-                            <p>@Localizer["AtlanticRegion"]</p>
-                            <p>@Localizer["CollegeRegion"]</p>
-                            <p>@Localizer["HeadQRegion"]</p>
-                        </details>
                         <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
                     </div>
                 </section>

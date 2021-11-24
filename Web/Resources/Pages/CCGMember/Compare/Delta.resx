@@ -120,14 +120,14 @@
   <data name="altPhotoMap" xml:space="preserve">
     <value>Image of the CCG Regions</value>
   </data>
-  <data name="ArcticRegion" xml:space="preserve">
-    <value>The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.</value>
+  <data name="Arctic" xml:space="preserve">
+    <value>&lt;b&gt;Arctic:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.&lt;/small&gt;</value>
   </data>
   <data name="arts" xml:space="preserve">
     <value>General Arts</value>
   </data>
-  <data name="AtlanticRegion" xml:space="preserve">
-    <value>The Atlantic Region consists of New Brunswick, Nova Scotia,  Prince Edward Island, and Newfoundland and Labrador, minus the Nunatsiavut  region in Labrador.</value>
+  <data name="Atlantic" xml:space="preserve">
+    <value>&lt;b&gt;Atlantic:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Atlantic Region consists of New Brunswick, Nova Scotia,  Prince Edward Island, and Newfoundland and Labrador, minus the Nunatsiavut region in Labrador.&lt;/small&gt;</value>
   </data>
   <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
     <value>BEHAVIOURAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.&lt;/small&gt;</value>
@@ -138,17 +138,17 @@
   <data name="Candidate" xml:space="preserve">
     <value>External Candidate</value>
   </data>
-  <data name="CentralRegion" xml:space="preserve">
-    <value>The Central Region consists of  Ontario and Quebec, minus the Nunavik region in northern Quebec.</value>
+  <data name="CCG College" xml:space="preserve">
+    <value>&lt;b&gt;CCG College:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.&lt;/small&gt;</value>
+  </data>
+  <data name="Central" xml:space="preserve">
+    <value>&lt;b&gt;Central:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Central Region consists of  Ontario and Quebec, minus the Nunavik region in northern Quebec.&lt;/small&gt;</value>
   </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
-  </data>
-  <data name="CollegeRegion" xml:space="preserve">
-    <value>The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.</value>
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDING OFFICER</value>
@@ -174,9 +174,6 @@
   <data name="h2Results" xml:space="preserve">
     <value>Results comparing the two positions</value>
   </data>
-  <data name="HeadQRegion" xml:space="preserve">
-    <value>The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.</value>
-  </data>
   <data name="HighSchool" xml:space="preserve">
     <value>High School</value>
   </data>
@@ -197,6 +194,9 @@
   </data>
   <data name="modalTitleMap" xml:space="preserve">
     <value>CCG Regions Map</value>
+  </data>
+  <data name="National Headquarters" xml:space="preserve">
+    <value>&lt;b&gt;National Headquarters:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.&lt;/small&gt;</value>
   </data>
   <data name="NoDiff" xml:space="preserve">
     <value>No differing competencies</value>
@@ -267,7 +267,7 @@
   <data name="University" xml:space="preserve">
     <value>University</value>
   </data>
-  <data name="WesternRegion" xml:space="preserve">
-    <value>The Western Region consists of  British Columbia, Alberta, Saskatchewan, Manitoba and Yukon, minus the Yukon slope.</value>
+  <data name="Western" xml:space="preserve">
+    <value>&lt;b&gt;Western:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Western Region consists of  British Columbia, Alberta, Saskatchewan, Manitoba and Yukon, minus the Yukon slope.&lt;/small&gt;</value>
   </data>
 </root>

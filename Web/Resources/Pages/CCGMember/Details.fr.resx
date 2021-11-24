@@ -120,17 +120,17 @@
   <data name="altPhotoMap" xml:space="preserve">
     <value>Image des régions de la GCC</value>
   </data>
-  <data name="ArcticRegion" xml:space="preserve">
-    <value>La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.</value>
+  <data name="Arctique" xml:space="preserve">
+    <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
   </data>
-  <data name="AtlanticRegion" xml:space="preserve">
-    <value>La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.</value>
+  <data name="Atlantique" xml:space="preserve">
+    <value>&lt;b&gt;Atlantique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.&lt;/small&gt;</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
-  <data name="CentralRegion" xml:space="preserve">
-    <value>La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.</value>
+  <data name="Centre" xml:space="preserve">
+    <value>&lt;b&gt;Centre :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.&lt;/small&gt;</value>
   </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
@@ -138,8 +138,8 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
-  <data name="CollegeRegion" xml:space="preserve">
-    <value>Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.</value>
+  <data name="Collège de la GCC" xml:space="preserve">
+    <value>&lt;b&gt;Collège de la GCC ;&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.&lt;/small&gt;</value>
   </data>
   <data name="Commanding Officer" xml:space="preserve">
     <value>COMMANDANT</value>
@@ -155,9 +155,6 @@
   </data>
   <data name="DESCRIPTION" xml:space="preserve">
     <value>DESCRIPTIF</value>
-  </data>
-  <data name="HeadQRegion" xml:space="preserve">
-    <value>Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -204,6 +201,9 @@
   <data name="noregions" xml:space="preserve">
     <value>Aucune région disponible</value>
   </data>
+  <data name="Ouest" xml:space="preserve">
+    <value>&lt;b&gt;Ouest :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.&lt;/small&gt;</value>
+  </data>
   <data name="PDAPText" xml:space="preserve">
     <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
   </data>
@@ -228,11 +228,11 @@
   <data name="Select" xml:space="preserve">
     <value>Sélectionnez</value>
   </data>
+  <data name="Siège national" xml:space="preserve">
+    <value>&lt;b&gt;Siège national :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.&lt;/small&gt;</value>
+  </data>
   <data name="USERACTION" xml:space="preserve">
     <value>Cliquez sur Suivant pour comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous.</value>
-  </data>
-  <data name="WesternRegion" xml:space="preserve">
-    <value>La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.</value>
   </data>
   <data name="ÉLÉMENTS DE COMPORTEMENT" xml:space="preserve">
     <value>ÉLÉMENTS DE COMPORTEMENT : &lt;small style="font-weight:normal;"&gt;Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.&lt;/small&gt;</value>

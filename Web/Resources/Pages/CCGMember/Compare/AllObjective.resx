@@ -123,6 +123,9 @@
   <data name="Candidate" xml:space="preserve">
     <value>External Candidate</value>
   </data>
+  <data name="Compare Function" xml:space="preserve">
+    <value>Compare Function</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
     <value>Current Position</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="geo" xml:space="preserve">
     <value>Geographical Information</value>
+  </data>
+  <data name="modalcompare" xml:space="preserve">
+    <value>&lt;p&gt;This feature allows you to compare your currently selected position with any other position in the Canadian Coast Guard. By selecting it, and then another position, the function will yield both position results side by side so that you can view the differences in location, certification, competencies, and ratings. If the position you’re comparing to is one you seek, you can then download the results, save or print, as the basis of a training plan.&lt;/p&gt;</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>No matching results found</value>

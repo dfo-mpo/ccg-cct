@@ -347,19 +347,10 @@
                 <div class="thumbnail img-responsive">
                     <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                 </div>
-                <details>
-                    <summary id="3">@Localizer["mapSummary"]</summary>
-                    <p>@Localizer["ArcticRegion"]</p>
-                    <p>@Localizer["WesternRegion"]</p>
-                    <p>@Localizer["CentralRegion"]</p>
-                    <p>@Localizer["AtlanticRegion"]</p>
-                    <p>@Localizer["CollegeRegion"]</p>
-                    <p>@Localizer["HeadQRegion"]</p>
-                </details>
                 <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
             </div>
         </section>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
@@ -370,7 +361,7 @@
                     @foreach (var c in Model.MatchingJobLocationRegions)
                     {
                         <tr>
-                            <td>@(isEnglish ? c.NameEng : c.NameFre)</td>
+                            <td>@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
                         </tr>
                     }
                 </tbody>
@@ -395,7 +386,7 @@
                 {
                     var key = "c" + d.Id.ToString();
                     <tr>
-                        <td>@(isEnglish ? d.NameEng : d.NameFre)</td>
+                        <td>@Localizer[(isEnglish ? d.NameEng : d.NameFre).ToString()]</td>
                         <td class="text-center bg-success">@Localizer[d.CurrentPositionHas]</td>
                         <td class="text-center bg-info">@Localizer[d.ObjectivePositionHas]</td>
                     </tr>

@@ -156,6 +156,7 @@
 
 	<ItemGroup>
 		<Folder Include="Properties\" />
+		<Folder Include="wwwroot\themes-dist-8.0.1-gcweb\wet-boew\assets\" />
 	</ItemGroup>
 
   <ItemGroup>

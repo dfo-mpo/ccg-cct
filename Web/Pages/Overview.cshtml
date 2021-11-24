@@ -1,0 +1,28 @@
+﻿@page
+@model Web.Pages.OverviewModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Intro";
+}
+
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+    <h2>
+        @Localizer["You are here:"]
+    </h2>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Intro"]</a></li>
+        </ol>
+    </div>
+</nav>
+<div class="text-left">
+    <h1 class="display-4">@Localizer["Title"]</h1>
+    <p>@Localizer["IntroText"]</p>
+
+    <h2>@Localizer["Certifications"]</h2>
+    <p>@Localizer["CertText"]</p>
+
+    <h2>@Localizer["Competencies"]</h2>
+    <p>@Localizer["CompText"]</p>
+</div>
+<a class="btn btn-primary pull-left" asp-page="Homepage">@Localizer["continue"]</a>

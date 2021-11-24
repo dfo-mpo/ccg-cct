@@ -2,7 +2,7 @@
 @model Web.Pages.IndexModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Intro";
+    ViewData["Title"] = "Home";
 }
 
 <nav role="navigation" id="wb-bc" property="breadcrumb">
@@ -11,18 +11,87 @@
     </h2>
     <div class="row">
         <ol class="breadcrumb">
-            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Intro"]</a></li>
+            <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Home"]</a></li>
         </ol>
     </div>
 </nav>
-<div class="text-left">
-    <h1 class="display-4">@Localizer["Title"]</h1>
-    <p>@Localizer["IntroText"]</p>
 
-    <h2>@Localizer["Certifications"]</h2>
-    <p>@Localizer["CertText"]</p>
-
-    <h2>@Localizer["Competencies"]</h2>
-    <p>@Localizer["CompText"]</p>
+<div class="cct-cover-img cct-cover-hide-mobile cct-cover-hide-tablet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 property="name" id="wb-cont" style="vertical-align: top;">@Localizer["H1"]</h1>
+                <p>@Localizer["intro"]</p>
+                <p>@Localizer["intro-2"]</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
-<a class="btn btn-primary pull-left" asp-page="Homepage">@Localizer["continue"]</a>
+<hr />
+<!-- Services and information  -->
+<section class="gc-srvinfo col-md-12 mrgn-bttm-lg">
+    <div class="container">
+        <div class="row">
+            <h2 class="mrgn-tp-0">@Localizer["services"]</h2>
+            <div class="wb-eqht wb-init wb-eqht-inited" id="wb-auto-4">
+                <section class="col-md-4" style="vertical-align: top; min-height: 163px;">
+                    <h3>
+                        <a href="/Overview">@Localizer["Overview"]</a>
+                    </h3>
+                    <p>@Localizer["brief"]</p>
+                </section>
+                <section class="col-md-4" style="vertical-align: top; min-height: 163px;">
+                    <h3>
+                        <a href="/CCGMember/AllPositions">@Localizer["member"]</a>
+                    </h3>
+                    <p>@Localizer["membersearch"]</p>
+
+                </section>
+                <section class="col-md-4" style="vertical-align: top; min-height: 163px;">
+                    <h3>
+                        <a href="/Candidate/Index">@Localizer["external"]</a>
+                    </h3>
+                    <p>@Localizer["externalsearch"]</p>
+
+                </section>
+                <section class="col-md-4" style="vertical-align: top; min-height: 138px;">
+                    <h3>
+                        <a href="/Student/Index">@Localizer["student"]</a>
+                    </h3>
+                    <p>@Localizer["studentsearch"]</p>
+
+                </section>
+                <section class="col-md-4" style="vertical-align: top; min-height: 138px;">
+                    <h3>
+                        <a href="/Feedback">@Localizer["feedback"]</a>
+                    </h3>
+                    <p>@Localizer["feedbacktext"]</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+<div class="wb-share col-sm-4 col-md-3 pull-right wb-init wb-share-inited" data-wb-share="{&quot;filter&quot;: [&quot;email&quot;, &quot;facebook&quot;, &quot;linkedin&quot;, &quot;twitter&quot;], &quot;pnlId&quot;: &quot;pnl5&quot;,&quot;lnkClass&quot;: &quot;btn btn-default btn-block&quot;}" id="wb-auto-6">
+
+    <a href="#share" aria-controls="mid-screen" class="shr-opn btn btn-default btn-block overlay-lnk">
+        <span class="glyphicon glyphicon-share"></span>@Localizer["sharebutton"]
+    </a>
+    <section id="share" class="shr-pg modal-dialog wb-overlay modal-content overlay-def wb-popup-mid">
+        <header class="modal-header">
+            <h2 class="modal-title">@Localizer["sharebutton"]</h2>
+        </header>
+        <div class="modal-body ">
+            <ul class="list-unstyled colcount-xs-2">
+                <li><a href="mailto:?to=%20&amp;body=https%3A%2F%2Fwww.ccg-gcc.gc.ca%2Findex-eng.html%0A" class="shr-lnk email btn btn-default" target="_blank" rel="noreferrer noopener">@Localizer["Email"]</a></li>
+                <li><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.ccg-gcc.gc.ca%2Findex-eng.html&amp;t=Canadian%20Coast%20Guard" class="shr-lnk facebook btn btn-default" target="_blank" rel="noreferrer noopener">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.ccg-gcc.gc.ca%2Findex-eng.html&amp;title=Canadian%20Coast%20Guard&amp;ro=false&amp;summary=&amp;source=" class="shr-lnk linkedin btn btn-default" target="_blank" rel="noreferrer noopener">LinkedIn®</a></li>
+                <li><a href="https://twitter.com/intent/tweet?text=Canadian%20Coast%20Guard&amp;url=https%3A%2F%2Fwww.ccg-gcc.gc.ca%2Findex-eng.html" class="shr-lnk twitter btn btn-default" target="_blank" rel="noreferrer noopener">Twitter</a></li>
+            </ul>
+            <p>@Localizer["sharetext"]</p>
+            <button class="btn btn-primary pull-left mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+        </div>
+    </section>
+</div>
+
