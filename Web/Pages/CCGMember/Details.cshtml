@@ -21,7 +21,7 @@
         </h2>
         <div class="row">
             <ol class="breadcrumb">
-                <li><a asp-page="../Homepage">@Localizer["Home"]</a></li>
+                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
                 <li><a asp-page="AllPositions">@Localizer["Categories"]</a></li>
                 <li><a asp-page="CurrentPosition" asp-all-route-data="@routedata">@Localizer["Select"]</a></li>
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Current Position"]</a></li>
@@ -38,7 +38,7 @@
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
                     <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
-                    <li class="next"><a class="btn btn-default" type="button" rel="next" asp-page="SearchType" asp-all-route-data="routedata">@Localizer["Next"]</a></li>
+                    <li class="next"><a class="btn btn-primary" type="button" rel="next" asp-page="SearchType" asp-all-route-data="routedata">@Localizer["Next"]</a></li>
                 </ul>
             </nav>
         </div>

@@ -132,7 +132,6 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 125},
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 126},
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 127},
-            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 128},
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 129},
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 130},
             new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 131},

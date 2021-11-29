@@ -349,11 +349,7 @@ namespace DataModel.SeedData
             new JobRolePositionCertificate
                 {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 127, CertificateId = 20, CertificateDescriptionId = 1},
             new JobRolePositionCertificate
-                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 127, CertificateId = 87, CertificateDescriptionId = 11},
-            new JobRolePositionCertificate
-                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 128, CertificateId = 20, CertificateDescriptionId = 1},
-            new JobRolePositionCertificate
-                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 128, CertificateId = 38, CertificateDescriptionId = 3},
+                {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 5, JobPositionId = 127, CertificateId = 87, CertificateDescriptionId = 18},
             new JobRolePositionCertificate
                 {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 129, CertificateId = 40, CertificateDescriptionId = 1},
             new JobRolePositionCertificate

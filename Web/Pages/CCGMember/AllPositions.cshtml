@@ -5,71 +5,84 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
 }
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2 class="wb-inv">
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../Homepage">@Localizer["Home"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Categories"]</a></li>
-                </ol>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2 class="wb-inv">
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Categories"]</a></li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Homepage" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+    <div class="cct-member-img cct-member-hide-mobile cct-member-hide-tablet">
+        <div class="container">
+            <div class="row mrgn-bttm-lg">
+                <div class="col-md-7">
+                    <h2 class="mrgn-bttm-lg">@Localizer["AllPositions"]</h2>
+                </div>
+                <div class="clearfix"></div>
             </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Homepage" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-        <div class="col-md-12">
-            <h2 class="mrgn-tp-0 mrgn-bttm-lg"><b>@Localizer["AllPositions"]</b></h2>
-            <form>
-                <p class="mrgn-bttm-xl">
-                    <input type="text" asp-for="Filter" />
-                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-                </p>
-            </form>
-            <form>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <ul class="list-unstyled row wb-eqht">
-                            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+
+        <form>
+            <p class="mrgn-bttm-xl">
+                <input type="text" asp-for="Filter" />
+                <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+            </p>
+        </form>
+        <form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-unstyled row wb-eqht">
+                        @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                        {
+                            @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                             {
-                                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                                if (jobgroup.Active != 0)
                                 {
-                                    if (jobgroup.Active != 0)
-                                    {
 
-                                        <li class="col-md-2">
-                                            <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well hght-inhrt">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-xs-7">
-                                                        <p class="mrgn-bttm-sm"><strong class="h4">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</strong></p>
-                                                    </div>
-                                                    <div class="col-sm-12 col-xs-5">
-                                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
-                                                    </div>
+                                    <li class="col-md-2">
+                                        <a asp-page="CurrentLevel" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well">
+                                            <div class="row">
+                                                <div class="col-sm-12 mrgn-tp-sm">
+                                                    <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
                                                 </div>
-                                            </a>
-                                        </li>
+                                                <!-- <div class="col-sm-12 col-xs-5">
+                                                    <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
+                                                    </div> -->
+                                            </div>
+                                        </a>
+                                    </li>
 
 
 
-                                    }
                                 }
                             }
-                            else
-                            {
-                                <h4>@Localizer["NoResults"]</h4>
-                            }
-                        </ul>
-                    </div>
+                        }
+                        else
+                        {
+                            <h4>@Localizer["NoResults"]</h4>
+                        }
+                    </ul>
                 </div>
-            </form>
-        </div>
-        <!--    <div style="clear:both;">
+            </div>
+        </form>
+    </div>
+    <!--    <div style="clear:both;">
             <div class="col-lg-12">
                 <nav role="navigation">
                     <h2 class="wb-inv">Document navigation</h2>
@@ -80,5 +93,5 @@
             </div>
         </div>
     -->
-    </section>
+</section>
 

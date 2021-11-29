@@ -4,42 +4,51 @@
     ViewData["Title"] = Localizer["title"];
 }
 
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
-                @Localizer["You are here:"]
-            </h2>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Candidate"]</a></li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+    <div class="cct-external-img cct-external-hide-mobile cct-external-hide-tablet">
+        <div class="container">
             <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../Homepage">@Localizer["Home"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Candidate"]</a></li>
-                </ol>
-            </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-
-        <h2 class="mrgn-bttm-lg">@Localizer["Question1"]</h2>
-
-        <div class="row wb-eqht wb-init">
-            <div class="col-sm-6">
-                <div class="well well-sm brdr-rds-0 eqht-trgt position-relative" style="vertical-align: top; min-height: 394px;">
-                    <h3 class="mrgn-tp-0">@Localizer["Shoreside"]</h3>
-                    <p>@Localizer["textshoreside"]</p>
-                    <a asp-page="Shoreside/AllCandidateShoreside" alt="@Localizer["altsearchshoreside"]" class="btn btn-primary">@Localizer["shoresidebutton"]</a>
+                <div class="col-md-7">
+                    <h2 class="mrgn-bttm-lg">@Localizer["Question1"]</h2>
                 </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="well well-sm brdr-rds-0 eqht-trgt position-relative" style="vertical-align: top; min-height: 394px;">
-                    <h3 class="mrgn-tp-0">@Localizer["Seagoing"]</h3>
-                    <p>@Localizer["textseagoing"]</p>
-                    <a asp-page="Seagoing/Index" alt="@Localizer["altsearchseagoing"]" class="btn btn-primary">@Localizer["seagoingbutton"]</a>
-                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div class="row wb-eqht wb-init mrgn-tp-lg">
+        <div class="col-sm-6">
+            <div class="well well-sm brdr-rds-0 eqht-trgt position-relative" style="vertical-align: top; min-height: 394px;">
+                <h3 class="mrgn-tp-sm">@Localizer["Shoreside"]</h3>
+                <p>@Localizer["textshoreside"]</p>
+                <a asp-page="Shoreside/AllCandidateShoreside" alt="@Localizer["altsearchshoreside"]" class="btn btn-primary">@Localizer["shoresidebutton"]</a>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="well well-sm brdr-rds-0 eqht-trgt position-relative" style="vertical-align: top; min-height: 394px;">
+                <h3 class="mrgn-tp-sm">@Localizer["Seagoing"]</h3>
+                <p>@Localizer["textseagoing"]</p>
+                <a asp-page="Seagoing/Index" alt="@Localizer["altsearchseagoing"]" class="btn btn-primary">@Localizer["seagoingbutton"]</a>
+            </div>
+        </div>
+    </div>
+</section>
