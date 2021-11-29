@@ -3589,36 +3589,40 @@ a.btn.disabled, fieldset[disabled] a.btn {
         color: #eaebed;
         background-color: #335075
     }
-
+a.btn.btn-primary:hover {
+    color: #26374a;
+    background-color: #eee;
+    border-color: #f6f6f6;
+}
 .btn-primary {
     color: #fff;
-    background-color: #2572b4;
-    border-color: #143c5f
+    background-color: #26374a;
+    border-color: #26374a
 }
 
     .btn-primary.focus, .btn-primary:focus {
-        color: #fff;
-        background-color: #1c578a;
-        border-color: #000
+        color: #26374a;
+        background-color: #eee;
+        border-color: #f6f6f6
     }
 
     .btn-primary:hover {
-        color: #fff;
-        background-color: #1c578a;
-        border-color: #091c2d
+        color: #26374a;
+        background-color: #eee;
+        border-color: #f6f6f6
     }
 
     .btn-primary.active, .btn-primary:active, .open > .btn-primary.dropdown-toggle {
-        color: #fff;
-        background-color: #1c578a;
+        color: #26374a;
+        background-color: #eee;
         background-image: none;
-        border-color: #091c2d
+        border-color: #f6f6f6
     }
 
         .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open > .btn-primary.dropdown-toggle.focus, .open > .btn-primary.dropdown-toggle:focus, .open > .btn-primary.dropdown-toggle:hover {
-            color: #fff;
-            background-color: #16446c;
-            border-color: #000
+            color: #26374a;
+            background-color: #eee;
+            border-color: #f6f6f6
         }
 
     .btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
@@ -5280,8 +5284,16 @@ tbody.collapse.in {
             }
 
     .pager .next > a, .pager .next > span {
-        float: right
+        float: right;
+        color:#fff;
+        background-color: #26374a;
+        border-color: #26374a;
     }
+
+         .pager .next > a:hover {
+            background-color: #eee;
+            color: #26374a;
+        }
 
     .pager .previous > a, .pager .previous > span {
         float: left
@@ -17499,10 +17511,46 @@ header .gcweb-subtheme--menu .mainmenu-item {
         margin-top: 15px;
         padding-bottom: 65px;
     }
+    .cct-member-img {
+        background-image: url(/img/member-all.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 25px;
+    }
+    .cct-external-img {
+        background-image: url(/img/external.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-student-img {
+        background-image: url(/img/student-banner.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
 }
 
 @media screen and (max-width: 425px) {
     .cct-cover-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-member-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-external-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-student-hide-mobile {
         background-image: url(none) !important;
     }
 }
@@ -17510,6 +17558,15 @@ header .gcweb-subtheme--menu .mainmenu-item {
 
 @media screen and (max-width: 800px) {
     .cct-cover-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-member-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-external-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-student-hide-tablet {
         background-image: url(none) !important;
     }
 } 

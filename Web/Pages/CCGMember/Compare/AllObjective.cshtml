@@ -39,7 +39,7 @@
             </h2>
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
+                    <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
                     @if (Model.PreviousPage.Contains("Student"))
                     {
                         <li><a asp-page="../../Student/Index">@Localizer["Student"]</a></li>
@@ -290,14 +290,14 @@
                                                  };
 
                                         <li class="col-md-2">
-                                            <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext" class="btn btn-default btn-block well hght-inhrt">
+                                            <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext" class="btn btn-default btn-block well">
                                                 <div class="row">
-                                                    <div class="col-sm-12 col-xs-7">
-                                                        <p class="mrgn-bttm-sm"><strong class="h4">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</strong></p>
+                                                    <div class="col-sm-12 mrgn-tp-sm">
+                                                        <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
                                                     </div>
-                                                    <div class="col-sm-12 col-xs-5">
-                                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
-                                                    </div>
+                                                    <!-- <div class="col-sm-12 col-xs-5">
+                                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
+                                                     </div> -->
                                                 </div>
                                             </a>
                                         </li>

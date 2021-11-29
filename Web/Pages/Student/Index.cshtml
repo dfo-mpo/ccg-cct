@@ -12,7 +12,7 @@
         </h2>
         <div class="row">
             <ol class="breadcrumb">
-                <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
+                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
                 <li>@Localizer["Student"]</li>
             </ol>
         </div>
@@ -23,8 +23,46 @@
             <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-    <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
 
+    <div class="cct-student-img cct-student-hide-mobile cct-student-hide-tablet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2 class="mrgn-bttm-xl">@Localizer["Q1"]</h2>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row wb-eqht mrgn-tp-lg ">
+        <div class="col-sm-4">
+            <div class="well well-sm brdr-rds-0 position-relative" style="vertical-align: top; min-height: 390px;">
+                <h3 class="mrgn-tp-sm">@Localizer["HighSchool"]</h3>
+                <p>@Localizer["modaltextHS"]</p>
+                <a class="btn btn-primary pull-left" asp-page="HighSchool/Index">@Localizer["continue"]</a>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well well-sm brdr-rds-0 position-relative" style="vertical-align: top; min-height: 390px;">
+                <h3 class="mrgn-tp-sm">@Localizer["TechCollege"]</h3>
+                <p>@Localizer["modaltextTC"]</p>
+                <a class="btn btn-primary pull-left" asp-page="College/Index">@Localizer["continue"]</a>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well well-sm brdr-rds-0 position-relative" style="vertical-align: top; min-height: 390px;">
+                <h3 class="mrgn-tp-sm">@Localizer["University"]</h3>
+                <p>@Localizer["modaltextU"]</p>
+                <a class="btn btn-primary pull-left" asp-page="University/Index">@Localizer["continue"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+<!--
     <div class="col-md-4 col-sm-4 mrgn-bttm-md">
         <a style="text-decoration:none" class="overlay-lnk" href="#hs1" aria-controls="mid-screen" role="button">
             <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
@@ -44,6 +82,9 @@
             </div>
         </section>
     </div>
+
+
+
     <div class="col-md-4 col-sm-4 mrgn-bttm-md">
         <a style="text-decoration:none" class="overlay-lnk" href="#tc1" aria-controls="mid-screen" role="button">
             <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
@@ -63,6 +104,10 @@
             </div>
         </section>
     </div>
+
+
+
+
     <div class="col-md-4 col-sm-4 mrgn-bttm-md">
         <a style="text-decoration:none" class="overlay-lnk" href="#u1" aria-controls="mid-screen" role="button">
             <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
@@ -82,4 +127,5 @@
             </div>
         </section>
     </div>
+-->
 </section>

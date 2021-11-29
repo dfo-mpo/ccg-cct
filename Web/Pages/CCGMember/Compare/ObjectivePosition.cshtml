@@ -29,7 +29,7 @@
         </h2>
         <div class="row">
             <ol class="breadcrumb">
-                <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
+                <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
                 @if (Model.PreviousPage.Contains("Student"))
                 {
                     <li><a asp-page="../../Student/Index">@Localizer["Student"]</a></li>
@@ -284,10 +284,12 @@
             {"subgroupcodeobj", Model.SubGroupCodeObj },
             {"objectiveid",  Model.ObjectivePosition?.JobTitleId.ToString()}
             };
+        <ul class="pager">
+            <li class="next"><a class="btn btn-primary pull-right mrgn-tp-sm" rel="next" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a></li>
+        </ul>
+            }
 
-            <a class="btn btn-primary pull-right mrgn-tp-sm" role="button" asp-page="Delta" asp-all-route-data="routedatanext">@Localizer["Compare"]</a>
-        }
-    </div>
+</div>
     <div class="clearfix"></div>
 
     <h2 class="mrgn-tp-0 mrgn-bttm-md"><b>@Localizer["h2Text"]</b></h2>

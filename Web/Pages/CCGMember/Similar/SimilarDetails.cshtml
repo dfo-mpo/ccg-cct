@@ -81,7 +81,7 @@
         </h2>
         <div class="row">
             <ol class="breadcrumb">
-                <li><a asp-page="../../Homepage">@Localizer["Home"]</a></li>
+                <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
                 @if (Model.PreviousPage.Contains("Student"))
                 {
                     <li><a asp-page="../../Student/Index">@Localizer["Student"]</a></li>
@@ -312,7 +312,7 @@
         <h2 class="wb-inv">Document navigation</h2>
         <ul class="pager">
             <li class="previous"><a class="btn btn-default mrgn-lft-md" rel="prev" asp-page="@Model.PreviousPageSimilarDetails" asp-all-route-data="routedataprevious">@Localizer["Previous"]</a></li>
-            <li class="next"><a class="btn btn-default pull-right mrgn-lft-md" rel="next" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a></li>
+            <li class="next"><a class="btn btn-primary pull-right mrgn-lft-md" rel="next" type="button" asp-page="../Compare/Delta" asp-all-route-data="@routedata">@Localizer["Compare"]</a></li>
         </ul>
     </nav>
     @if (Model.Position.JobTitleEng.Contains("MCTS"))
@@ -364,7 +364,7 @@
                 {
                     var key = "d" + c.JobLocationRegionId.ToString();
                     <tr>
-                        <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre)</td>
+                        <td colspan="2">@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
                     </tr>
                 }
             }
@@ -382,15 +382,6 @@
                     <div class="thumbnail img-responsive">
                         <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                     </div>
-                    <details>
-                        <summary id="3">@Localizer["mapSummary"]</summary>
-                        <p>@Localizer["ArcticRegion"]</p>
-                        <p>@Localizer["WesternRegion"]</p>
-                        <p>@Localizer["CentralRegion"]</p>
-                        <p>@Localizer["AtlanticRegion"]</p>
-                        <p>@Localizer["CollegeRegion"]</p>
-                        <p>@Localizer["HeadQRegion"]</p>
-                    </details>
                     <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
                 </div>
             </section>
