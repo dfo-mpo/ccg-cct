@@ -783,7 +783,6 @@ namespace DataModel.SeedData
 			new SearchSimilarJob() {Id = 388, Position = 395, HundredPercent = "&PositionId=130&PositionId=131&PositionId=389&PositionId=395", NinetyPercent = "&PositionId=133&PositionId=290&PositionId=291&PositionId=292&PositionId=293&PositionId=294&PositionId=295&PositionId=296&PositionId=298&PositionId=299&PositionId=300", EightyPercent = "&PositionId=139", SeventyPercent = "&PositionId=149&PositionId=150" },
 
 			new SearchSimilarJob() {Id = 389, Position = 396, HundredPercent = "&PositionId=101&PositionId=396", NinetyPercent = "&PositionId=102&PositionId=91&PositionId=92&PositionId=172&PositionId=173&PositionId=198&PositionId=215&PositionId=283&PositionId=284&PositionId=286&PositionId=287&PositionId=288&PositionId=289", EightyPercent = "&PositionId=103&PositionId=82&PositionId=83&PositionId=88&PositionId=89&PositionId=387&PositionId=214&PositionId=210&PositionId=211&PositionId=87&PositionId=88&PositionId=393", SeventyPercent = "" },
-
 		};
 	}
 }
