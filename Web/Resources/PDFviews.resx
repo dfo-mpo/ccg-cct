@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Arctic" xml:space="preserve">
+    <value>Arctic: The Arctic Region is inclusive of the Yukon North slope, Northwest Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This boundary is inclusive of Inuit Nunangat.</value>
+  </data>
+  <data name="Arctique" xml:space="preserve">
+    <value>Arctique: La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.</value>
+  </data>
+  <data name="Atlantic" xml:space="preserve">
+    <value>Atlantic: The Atlantic Region consists of New Brunswick, Nova Scotia, Prince Edward Island, and Newfoundland and Labrador, minus the Nunatsiavut region in Labrador.</value>
+  </data>
+  <data name="Atlantique" xml:space="preserve">
+    <value>Atlantique : La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.</value>
+  </data>
+  <data name="behavCompDesc" xml:space="preserve">
+    <value>Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.</value>
+  </data>
+  <data name="behavCompDescFr" xml:space="preserve">
+    <value>Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.</value>
+  </data>
+  <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
+    <value>BEHAVIOURAL ELEMENTS:</value>
+  </data>
+  <data name="CCG College" xml:space="preserve">
+    <value>CCG College: The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.</value>
+  </data>
+  <data name="Central" xml:space="preserve">
+    <value>Central: The Central Region consists of Ontario and Quebec, minus the Nunavik region in northern Quebec.</value>
+  </data>
+  <data name="Centre" xml:space="preserve">
+    <value>Centre: La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.</value>
+  </data>
+  <data name="certifications" xml:space="preserve">
+    <value>CERTIFICATIONS</value>
+  </data>
+  <data name="certificationsFr" xml:space="preserve">
+    <value>ATTESTATIONS</value>
+  </data>
+  <data name="Collège de la GCC" xml:space="preserve">
+    <value>Collège de la GCC: Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.</value>
+  </data>
+  <data name="compareHeading" xml:space="preserve">
+    <value>Results comparing the two positions</value>
+  </data>
+  <data name="compareHeadingFr" xml:space="preserve">
+    <value>Résultats comparant les deux positions</value>
+  </data>
+  <data name="currPosition" xml:space="preserve">
+    <value>Current Position</value>
+  </data>
+  <data name="currPositionFr" xml:space="preserve">
+    <value>Position actuelle</value>
+  </data>
+  <data name="diffCertifications" xml:space="preserve">
+    <value>DIFFERING CERTIFICATIONS</value>
+  </data>
+  <data name="diffCertificationsFr" xml:space="preserve">
+    <value>ATTESTATIONS DIFFÉRENTES</value>
+  </data>
+  <data name="diffCompetencies" xml:space="preserve">
+    <value>DIFFERING COMPETENCIES</value>
+  </data>
+  <data name="diffCompetenciesFr" xml:space="preserve">
+    <value>COMPÉTENCES DIFFÉRENTES</value>
+  </data>
+  <data name="diffRegion" xml:space="preserve">
+    <value>DIFFERING REGIONS</value>
+  </data>
+  <data name="diffRegionFr" xml:space="preserve">
+    <value>RÉGIONS DIFFÉRENTES</value>
+  </data>
+  <data name="h2Results" xml:space="preserve">
+    <value>Current Position Details</value>
+  </data>
+  <data name="h2ResultsFr" xml:space="preserve">
+    <value>Détails de la position actuelle</value>
+  </data>
+  <data name="knowCompDesc" xml:space="preserve">
+    <value>Knowledge elements are practical or theoretical understanding of a subject. It is the information you need (from past experience or education) to succeed in the position.</value>
+  </data>
+  <data name="knowCompDescFr" xml:space="preserve">
+    <value>Les éléments de connaissance sont une compréhension pratique ou théorique d’un sujet. Il s’agit des renseignements dont vous avez besoin (à partir de votre expérience ou de vos études) pour réussir dans le poste.</value>
+  </data>
+  <data name="KNOWLEDGE ELEMENTS" xml:space="preserve">
+    <value>KNOWLEDGE ELEMENTS: </value>
+  </data>
+  <data name="level" xml:space="preserve">
+    <value>LEVEL</value>
+  </data>
+  <data name="levelFr" xml:space="preserve">
+    <value>NIVEAU</value>
+  </data>
+  <data name="matchCertifications" xml:space="preserve">
+    <value>MATCHING CERTIFICATES</value>
+  </data>
+  <data name="matchCertificationsFr" xml:space="preserve">
+    <value>ATTESTATIONS ASSOCIÉES</value>
+  </data>
+  <data name="matchCompetencies" xml:space="preserve">
+    <value>MATCHING COMPETENCIES</value>
+  </data>
+  <data name="matchCompetenciesFr" xml:space="preserve">
+    <value>COMPÉTENCES ASSOCIÉES</value>
+  </data>
+  <data name="matchRegion" xml:space="preserve">
+    <value>MATCHING REGIONS</value>
+  </data>
+  <data name="matchRegionFr" xml:space="preserve">
+    <value>RÉGIONS ASSOCIÉES</value>
+  </data>
+  <data name="MCTSUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-eng.html</value>
+  </data>
+  <data name="MCTSUrlFr" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/college/MCTS-training-formation-SCTM/index-fra.html</value>
+  </data>
+  <data name="MELDEVUrl" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-eng.html</value>
+  </data>
+  <data name="MELDEVUrlFr" xml:space="preserve">
+    <value>https://www.ccg-gcc.gc.ca/careers-carrieres/MELDEV-training-formation-PPTEM/index-fra.html</value>
+  </data>
+  <data name="N/A" xml:space="preserve">
+    <value>S/O</value>
+  </data>
+  <data name="National Headquarters" xml:space="preserve">
+    <value>National Headquarters: The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.</value>
+  </data>
+  <data name="noCertifications" xml:space="preserve">
+    <value>No Certifications</value>
+  </data>
+  <data name="noCertificationsFr" xml:space="preserve">
+    <value>Aucun certificat associées</value>
+  </data>
+  <data name="noPositions" xml:space="preserve">
+    <value>No similar positions are currently available for this position.</value>
+  </data>
+  <data name="noPositionsFr" xml:space="preserve">
+    <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
+  </data>
+  <data name="noRegions" xml:space="preserve">
+    <value>No regions available</value>
+  </data>
+  <data name="noRegionsFr" xml:space="preserve">
+    <value>Aucune région disponible</value>
+  </data>
+  <data name="noSeagoing" xml:space="preserve">
+    <value>No seagoing positions available</value>
+  </data>
+  <data name="noSeagoingFr" xml:space="preserve">
+    <value>Aucune position en mer disponible</value>
+  </data>
+  <data name="noShoreside" xml:space="preserve">
+    <value>No shore side positions available</value>
+  </data>
+  <data name="noShoresideFr" xml:space="preserve">
+    <value>Aucune position côté rivage disponible</value>
+  </data>
+  <data name="Ouest" xml:space="preserve">
+    <value>Ouest : La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.</value>
+  </data>
+  <data name="PDAPText" xml:space="preserve">
+    <value>Professional Development Apprenticeship Program (PDAP)</value>
+  </data>
+  <data name="PDAPTextFr" xml:space="preserve">
+    <value>Programme d'apprentissage de perfectionnement professionnel (PDAP)</value>
+  </data>
+  <data name="position" xml:space="preserve">
+    <value>POSITION</value>
+  </data>
+  <data name="positionDescription" xml:space="preserve">
+    <value>DESCRIPTION</value>
+  </data>
+  <data name="positionDescriptionFr" xml:space="preserve">
+    <value>DESCRIPTIF</value>
+  </data>
+  <data name="positionDetails" xml:space="preserve">
+    <value>POSITION DETAILS</value>
+  </data>
+  <data name="positionDetailsFr" xml:space="preserve">
+    <value>DÉTAILS DU POSTE</value>
+  </data>
+  <data name="positionFr" xml:space="preserve">
+    <value>POSTE</value>
+  </data>
+  <data name="positionResults" xml:space="preserve">
+    <value>POSITION RESULTS</value>
+  </data>
+  <data name="positionResultsFr" xml:space="preserve">
+    <value>RÉSULTATS DE POSITION</value>
+  </data>
+  <data name="positions" xml:space="preserve">
+    <value>POSITION(S)</value>
+  </data>
+  <data name="positionsFr" xml:space="preserve">
+    <value>POSTE(S)</value>
+  </data>
+  <data name="regions" xml:space="preserve">
+    <value>REGIONS</value>
+  </data>
+  <data name="regionsFr" xml:space="preserve">
+    <value>RÉGIONS</value>
+  </data>
+  <data name="selPosition" xml:space="preserve">
+    <value>Selected Position</value>
+  </data>
+  <data name="selPositionFr" xml:space="preserve">
+    <value>Position sélectionnée</value>
+  </data>
+  <data name="simPositions" xml:space="preserve">
+    <value>SIMILAR POSITIONS</value>
+  </data>
+  <data name="simPositionsFr" xml:space="preserve">
+    <value>POSITIONS SIMILAIRES</value>
+  </data>
+  <data name="Siège national" xml:space="preserve">
+    <value>Siège national: Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.</value>
+  </data>
+  <data name="techCompDesc" xml:space="preserve">
+    <value>Technical elements describe abilities to apply knowledge to efficiently perform the job.</value>
+  </data>
+  <data name="techCompDescFr" xml:space="preserve">
+    <value>Les éléments techniques décrivent les capacités d’appliquer les connaissances pour exécuter efficacement le travail.</value>
+  </data>
+  <data name="TECHNICAL ELEMENTS" xml:space="preserve">
+    <value>TECHNICAL ELEMENTS:</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>Western: The Western Region consists of British Columbia, Alberta, Saskatchewan, Manitoba and Yukon, minus the Yukon slope.</value>
+  </data>
+  <data name="ÉLÉMENTS DE COMPORTEMENT" xml:space="preserve">
+    <value>ÉLÉMENTS DE COMPORTEMENT :</value>
+  </data>
+  <data name="ÉLÉMENTS DE CONNAISSANCE" xml:space="preserve">
+    <value>ÉLÉMENTS DE CONNAISSANCE :</value>
+  </data>
+  <data name="ÉLÉMENTS TECHNIQUES" xml:space="preserve">
+    <value>ÉLÉMENTS TECHNIQUES :</value>
+  </data>
+</root>

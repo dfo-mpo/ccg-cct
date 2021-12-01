@@ -1,53 +1,48 @@
 ﻿@inject Web.Data.JobPositionService _jobpositionService
+@using System.Resources;
 @{
     Layout = "_ThemePdf";
 }
 @{
+    ResourceManager pdfTranslations = Web.Resources.PDFviews.ResourceManager;
     var isEnglish = ViewData["Language"].ToString() == "en";
     var shoresidePositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["shoresideId"].ToString());
     var seagoingPositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["seagoingId"].ToString());
-    var seagoingtitle = isEnglish ? "SEAGOING POSITIONS" : "POSITIONS EN MER";
-    var shoresidetitle = isEnglish ? "SHORESIDE POSITIONS" : "POSITIONS À TERRE";
-    var level = isEnglish ? "Level" : "Niveau";
-    var positiondetails = isEnglish ? "POSITION DETAILS" : "DÉTAILS DU POSTE";
-    var positions = isEnglish ? "POSITION" : "POSTE";
-    var noshoreside = isEnglish ? "No shore side positions available" : "Aucune position à terre disponible";
-    var noseagoing = isEnglish ? "No seagoing positions available" : "Aucune position en mer disponible";
 }
 
 <div class="mrgn-tp-lg">
     @if (seagoingPositions.Any(e => e.Active != 0))
     {
-        <h3 class="text-center">@seagoingtitle</h3>
+        <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
         <table class="table table-hover table-responsive table-bordered">
             <tbody>
                 <tr>
-                    <td class="bg-primary" width="25%">@level</td>
-                    <td class="bg-primary" width="75%">@positions</td>
+                    <td class="bg-primary" width="25%">@(isEnglish ? pdfTranslations.GetString("level") : pdfTranslations.GetString("levelFr"))</td>
+                    <td class="bg-primary" width="75%">@(isEnglish ? pdfTranslations.GetString("position") : pdfTranslations.GetString("positionFr"))</td>
                 </tr>
 
                 @foreach (var position in seagoingPositions.Where(e => e.Active != 0))
                 {
-                        <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-                        </tr>
-                    }
-                </tbody>
+                    <tr>
+                        <td>@position.LevelCode</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                    </tr>
+                }
+            </tbody>
         </table>
     }
     else
     {
-        <h3 class="text-center">@seagoingtitle</h3>
+        <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
         <table class="table table-hover table-responsive table-bordered">
             <tbody>
                 <tr>
-                    <td class="bg-primary" width="25%">@level</td>
-                    <td class="bg-primary" width="75%">@positions</td>
+                    <td class="bg-primary" width="25%">@(isEnglish ? pdfTranslations.GetString("level") : pdfTranslations.GetString("levelFr"))</td>
+                    <td class="bg-primary" width="75%">@(isEnglish ? pdfTranslations.GetString("position") : pdfTranslations.GetString("positionFr"))</td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>@noseagoing</td>
+                    <td>@(isEnglish ? pdfTranslations.GetString("noSeagoing") : pdfTranslations.GetString("noSeagoingFr"))</td>
                 </tr>
             </tbody>
         </table>
@@ -56,36 +51,36 @@
 <div class="mrgn-tp-lg">
     @if (shoresidePositions.Any(e => e.Active != 0))
     {
-        <h3 class="text-center">@shoresidetitle</h3>
+        <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
         <table class="table table-hover table-responsive table-bordered">
             <tbody>
                 <tr>
-                    <td class="bg-primary" width="25%">@level</td>
-                    <td class="bg-primary" width="75%">@positions</td>
+                    <td class="bg-primary" width="25%">@(isEnglish ? pdfTranslations.GetString("level") : pdfTranslations.GetString("levelFr"))</td>
+                    <td class="bg-primary" width="75%">@(isEnglish ? pdfTranslations.GetString("position") : pdfTranslations.GetString("positionFr"))</td>
                 </tr>
 
                 @foreach (var position in shoresidePositions.Where(e => e.Active != 0))
                 {
-                        <tr>
-                            <td>@position.LevelCode</td>
-                            <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-                        </tr>
-                    }
-                </tbody>
+                    <tr>
+                        <td>@position.LevelCode</td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
+                    </tr>
+                }
+            </tbody>
         </table>
     }
     else
     {
-        <h3 class="text-center">@seagoingtitle</h3>
+        <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
         <table class="table table-hover table-responsive table-bordered">
             <tbody>
                 <tr>
-                    <td class="bg-primary" width="25%">@level</td>
-                    <td class="bg-primary" width="75%">@positions</td>
+                    <td class="bg-primary" width="25%">@(isEnglish ? pdfTranslations.GetString("level") : pdfTranslations.GetString("levelFr"))</td>
+                    <td class="bg-primary" width="75%">@(isEnglish ? pdfTranslations.GetString("position") : pdfTranslations.GetString("positionFr"))</td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>@noshoreside</td>
+                    <td>@(isEnglish ? pdfTranslations.GetString("noShoreside") : pdfTranslations.GetString("noShoresideFr"))</td>
                 </tr>
             </tbody>
         </table>

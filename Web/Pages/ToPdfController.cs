@@ -28,10 +28,11 @@ namespace Web.Pages
         }
 
         [Route("SimilarListCandidate")]
-        public ActionResult SimilarListCandidate(int id, int hlid, string language)
+        public ActionResult SimilarListCandidate(int id, int hlid, string positionIds, string language)
         {
             ViewData["Id"] = id;
-            ViewData["HLId"] = hlid;
+            ViewData["HLId"] = hlid; 
+            ViewData["PositionsIds"] = positionIds;
             ViewData["Language"] = language;
             return new ViewAsPdf("GetSimilarPositionsCandidateAsPdf", ViewData);
         }
@@ -53,12 +54,12 @@ namespace Web.Pages
             return new ViewAsPdf("GetStudentShoresidePositionsAsPdf", ViewData);
         }
 
-        [Route("StudentSeagoingPositionsList")]
-        public ActionResult StudentSeagoingPositionsList(string seagoingIds, string language)
+        [Route("SeagoingPositionsList")]
+        public ActionResult SeagoingPositionsList(string seagoingIds, string language)
         {
             ViewData["seagoingId"] = seagoingIds;
             ViewData["Language"] = language;
-            return new ViewAsPdf("GetStudentSeagoingPositionsAsPdf", ViewData);
+            return new ViewAsPdf("GetSeagoingPositionsAsPdf", ViewData);
         }
 
         [Route("Delta")]

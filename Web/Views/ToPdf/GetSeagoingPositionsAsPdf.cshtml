@@ -6,15 +6,15 @@
 @{
     ResourceManager pdfTranslations = Web.Resources.PDFviews.ResourceManager;
     var isEnglish = ViewData["Language"].ToString() == "en";
-    var shoresidePositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["shoresideId"].ToString());
+    var seagoingPositions = await _jobpositionService.GetJobPositionByIdValues(ViewData["seagoingId"].ToString());
     var MELDEVUrl = isEnglish ? pdfTranslations.GetString("MELDEVUrl") : pdfTranslations.GetString("MELDEVUrlFr");
     var MCTSUrl = isEnglish ? pdfTranslations.GetString("MCTSUrl") : pdfTranslations.GetString("MCTSUrlFr");
 }
 
 <div class="mrgn-tp-lg">
-    @if (shoresidePositions.Any(e => e.Active != 0))
+    @if (seagoingPositions.Any(e => e.Active != 0))
     {
-    <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
+        <h3 class="text-center">@(isEnglish ? pdfTranslations.GetString("positionResults") : pdfTranslations.GetString("positionResultsFr"))</h3>
         <table class="table table-hover table-responsive table-bordered">
             <tbody>
                 <tr>
@@ -22,19 +22,11 @@
                     <td class="bg-primary" width="75%">@(isEnglish ? pdfTranslations.GetString("position") : pdfTranslations.GetString("positionFr"))</td>
                 </tr>
 
-                @foreach (var position in shoresidePositions.Where(e => e.Active != 0))
+                @foreach (var position in seagoingPositions.Where(e => e.Active != 0))
                 {
                     <tr>
                         <td>@position.LevelCode</td>
-                        <td>
-                            @(isEnglish ? position.JobTitleEng : position.JobTitleFre)
-                            @if (position.JobTitleEng.Contains("MELDEV") || position.JobTitleEng.Contains("MCTS"))
-                            { 
-                                <a target="_blank" href=@(position.JobTitleEng.Contains("MELDEV") ? @MELDEVUrl : @MCTSUrl)> 
-                                    @(isEnglish ? pdfTranslations.GetString("PDAPText") : pdfTranslations.GetString("PDAPTextFr")) 
-                                </a>
-                            }
-                        </td>
+                        <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
                     </tr>
                 }
             </tbody>
@@ -51,9 +43,10 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>@(isEnglish ? pdfTranslations.GetString("noShoreside") : pdfTranslations.GetString("noShoresideFr"))</td>
+                    <td>@(isEnglish ? pdfTranslations.GetString("noSeagoing") : pdfTranslations.GetString("noSeagoingFr"))</td>
                 </tr>
             </tbody>
         </table>
     }
 </div>
+
