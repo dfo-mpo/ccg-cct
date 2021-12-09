@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Computer" xml:space="preserve">
-    <value>Ordinateurs</value>
+    <value>Technologies de l'information</value>
   </data>
   <data name="High School" xml:space="preserve">
     <value>École secondaire</value>
@@ -169,6 +169,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>École secondaire - Côté rivage - Postes en systèmes informatiques</value>
+    <value>École secondaire - Côté rivage - Technologies de l'information</value>
   </data>
 </root>

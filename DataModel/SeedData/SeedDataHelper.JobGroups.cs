@@ -10,7 +10,7 @@ namespace DataModel.SeedData
         {
             new JobGroup {Id = 1, Code = "GT", NameEng = "General Technician", NameFre = "Techniciens divers", Active = 1 },
             new JobGroup {Id = 2, Code = "AS", NameEng = "Administrative Services", NameFre = "Services administratif", Active = 1 },
-            new JobGroup {Id = 3, Code = "CS", NameEng = "Computer Systems", NameFre = "Systèmes d'ordinateurs", Active = 1 },
+            new JobGroup {Id = 3, Code = "IT", NameEng = "Information Technology", NameFre = "Technologies de l'information", Active = 1 },
             new JobGroup {Id = 4, Code = "GS", NameEng = "General Services", NameFre = "Services divers", Active = 1 },
             new JobGroup {Id = 5, Code = "LI", NameEng = "Lightkeepers", NameFre = "Gardiens de phares", Active = 1 },
             new JobGroup {Id = 6, Code = "EG", NameEng = "Engineering and Scientific Support", NameFre = "Soutien technologique et scientifique", Active = 1 },
