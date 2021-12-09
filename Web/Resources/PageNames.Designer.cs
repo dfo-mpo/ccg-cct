@@ -160,7 +160,7 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SciencesInformatiques.
+        ///   Looks up a localized string similar to TechnologiesdelInformation.
         /// </summary>
         public static string ComputerScience {
             get {

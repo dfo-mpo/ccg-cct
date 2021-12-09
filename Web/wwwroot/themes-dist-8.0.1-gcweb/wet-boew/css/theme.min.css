@@ -17538,6 +17538,15 @@ header .gcweb-subtheme--menu .mainmenu-item {
         margin-top: 15px;
         padding-bottom: 65px;
     }
+    .cct-shoreside-img {
+        background-image: url(/img/shoreside-banner.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 25px;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -17551,6 +17560,9 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-image: url(none) !important;
     }
     .cct-student-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-shoreside-hide-mobile {
         background-image: url(none) !important;
     }
 }
@@ -17567,6 +17579,9 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-image: url(none) !important;
     }
     .cct-student-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-shoreside-hide-tablet {
         background-image: url(none) !important;
     }
 } 

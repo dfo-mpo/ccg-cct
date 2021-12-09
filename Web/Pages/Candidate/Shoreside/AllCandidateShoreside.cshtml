@@ -6,71 +6,80 @@
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var imagefolder = "~/img/CCGMember/";
 }
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2 class="wb-inv">
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
-                    <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Shoreside"]</a></li>
-                </ol>
-            </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="../Index">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-
-        <div class="col-md-12">
-            <h2 class="mrgn-bttm-xl"><b>@Localizer["AllPositions"]</b></h2>
-            <form>
-                <p class="mrgn-bttm-xl">
-                    <input type="text" asp-for="Filter" />
-                    <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-                </p>
-            </form>
-            <form>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <ul class="list-unstyled row wb-eqht">
-
-                            @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-                            {
-                                @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
-                                {
-                                    if (jobgroup.Active != 0)
-                                    {
-
-
-                                        <li class="col-md-2">
-                                            <a asp-page="SimilarList" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well">
-                                                <div class="row">
-                                                    <div class="col-sm-12 mrgn-tp-sm">
-                                                        <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
-                                                    </div>
-                                                    <!-- <div class="col-sm-12 col-xs-5">
-                                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
-                                                        </div> -->
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                <h4>@Localizer["NoResults"]</h4>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </form>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2 class="wb-inv">
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Shoreside"]</a></li>
+            </ol>
         </div>
-    </section>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="../Index">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+    <div class="cct-shoreside-img cct-shoreside-hide-mobile cct-shoreside-hide-tablet">
+        <div class="container">
+            <div class="row mrgn-bttm-lg">
+                <div class="col-md-7">
+                    <h2 class="mrgn-bttm-lg">@Localizer["AllPositions"]</h2>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <form>
+         <p class="mrgn-bttm-xl">
+             <input type="text" asp-for="Filter" />
+             <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
+         </p>
+     </form>
+     -->
+    <form>
+        <div class="row">
+            <div class="col-sm-12 mrgn-tp-lg">
+                <ul class="list-unstyled row wb-eqht">
+
+                    @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                    {
+                        @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
+                        {
+                            if (jobgroup.Active != 0)
+                            {
+
+
+                                <li class="col-md-2">
+                                    <a asp-page="SimilarList" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well">
+                                        <div class="row">
+                                            <div class="col-sm-12 mrgn-tp-sm">
+                                                <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
+                                            </div>
+                                            <!-- <div class="col-sm-12 col-xs-5">
+                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
+                                    </div> -->
+                                        </div>
+                                    </a>
+                                </li>
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h4>@Localizer["NoResults"]</h4>
+                    }
+                </ul>
+            </div>
+        </div>
+    </form>
+</section>
 

@@ -88,7 +88,7 @@ namespace Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Computer Systems.
+        ///   Looks up a localized string similar to Information Technology.
         /// </summary>
         public static string Computer {
             get {
@@ -97,7 +97,7 @@ namespace Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Computer Sciences.
+        ///   Looks up a localized string similar to Information Technology.
         /// </summary>
         public static string ComputerScience {
             get {
