@@ -163,7 +163,7 @@
     <value>(click here to view the CCG regions map)</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
-    <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
+    <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform. Such details may be found in Canada’s Marine Personnel Regulations: &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
   </data>
   <data name="mapSummary" xml:space="preserve">
     <value>Text version</value>
