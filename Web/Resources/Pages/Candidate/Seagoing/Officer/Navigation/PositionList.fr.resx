@@ -129,6 +129,9 @@
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Postes de navigation</value>
+  </data>
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
   </data>
@@ -154,6 +157,6 @@
     <value>Positions en mer</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Candidats externes - En mer - Officier - Postes de navigation</value>
+    <value>Postes de navigation</value>
   </data>
 </root>

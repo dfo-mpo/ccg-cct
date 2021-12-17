@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="NoPositions" xml:space="preserve">
     <value>No similar positions are currently available for this position.</value>
@@ -127,7 +127,7 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Similar Position List</value>

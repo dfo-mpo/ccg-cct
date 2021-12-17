@@ -110,7 +110,7 @@ namespace DataModel.SeedData
                 new Certificate { Id = 101, DescEng = "", DescFre = "", NameEng = "Incident Command System (ICS-300)", NameFre = "Système de commandement d'intervention (SCI-300)", Active = 1 },
                 new Certificate { Id = 102, DescEng = "", DescFre = "", NameEng = "Master, Near Coastal", NameFre = "Capitaine, à proximité du littoral", Active = 1 },
                 new Certificate { Id = 103, DescEng = "", DescFre = "", NameEng = "Master 500 GT, Near Coastal", NameFre = "Capitaine, jauge brute de 500, à proximité du littoral", Active = 1 },
-                new Certificate { Id = 104, DescEng = "", DescFre = "", NameEng = "First Aid or Marine Advanced First Aid", NameFre = "Secourisme ou Secourisme avancé en mer", Active = 1 }
+                new Certificate { Id = 104, DescEng = "", DescFre = "", NameEng = "First Aid, Marine First Aid or Marine Advanced First Aid", NameFre = "Secourisme, Secourisme en mer ou Secourisme avancé en mer", Active = 1 }
         };
     }
 }

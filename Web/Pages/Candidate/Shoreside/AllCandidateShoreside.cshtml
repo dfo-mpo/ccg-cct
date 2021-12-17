@@ -37,17 +37,10 @@
         </div>
     </div>
 
-    <!-- <form>
-         <p class="mrgn-bttm-xl">
-             <input type="text" asp-for="Filter" />
-             <input type="submit" text=@Localizer["Keywords"] value=@Localizer["Filter"] />
-         </p>
-     </form>
-     -->
     <form>
         <div class="row">
             <div class="col-sm-12 mrgn-tp-lg">
-                <ul class="list-unstyled row wb-eqht">
+                <ul>
 
                     @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                     {
@@ -55,19 +48,8 @@
                         {
                             if (jobgroup.Active != 0)
                             {
-
-
-                                <li class="col-md-2">
-                                    <a asp-page="SimilarList" asp-route-id="@jobgroup.Id" class="btn btn-default btn-block well">
-                                        <div class="row">
-                                            <div class="col-sm-12 mrgn-tp-sm">
-                                                <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
-                                            </div>
-                                            <!-- <div class="col-sm-12 col-xs-5">
-                                        <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
-                                    </div> -->
-                                        </div>
-                                    </a>
+                                <li class="col-sm-6">
+                                    <a style="text-decoration:none" asp-page="SimilarList" asp-route-id="@jobgroup.Id">@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</a>
                                 </li>
 
                             }

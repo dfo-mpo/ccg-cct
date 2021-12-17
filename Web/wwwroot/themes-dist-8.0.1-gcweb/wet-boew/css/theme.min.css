@@ -17516,12 +17516,36 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: right;
-        padding-top: 25px;
-        margin-top: 15px;
-        padding-bottom: 25px;
     }
     .cct-external-img {
         background-image: url(/img/external.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-HS-img {
+        background-image: url(/img/student-HS.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-TC-img {
+        background-image: url(/img/student-TC.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-U-img {
+        background-image: url(/img/student-U.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: right;
@@ -17559,6 +17583,15 @@ header .gcweb-subtheme--menu .mainmenu-item {
     .cct-external-hide-mobile {
         background-image: url(none) !important;
     }
+    .cct-HS-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-TC-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-hide-mobile {
+        background-image: url(none) !important;
+    }
     .cct-student-hide-mobile {
         background-image: url(none) !important;
     }
@@ -17576,6 +17609,15 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-image: url(none) !important;
     }
     .cct-external-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-HS-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-TC-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-hide-tablet {
         background-image: url(none) !important;
     }
     .cct-student-hide-tablet {

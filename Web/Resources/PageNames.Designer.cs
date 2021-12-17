@@ -277,6 +277,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retroaction.
+        /// </summary>
+        public static string Feedback {
+            get {
+                return ResourceManager.GetString("Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ArtsGeneraux.
         /// </summary>
         public static string GeneralArts {
@@ -354,6 +363,15 @@ namespace Web.Resources {
         public static string Officer {
             get {
                 return ResourceManager.GetString("Officer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apercu.
+        /// </summary>
+        public static string Overview {
+            get {
+                return ResourceManager.GetString("Overview", resourceCulture);
             }
         }
         

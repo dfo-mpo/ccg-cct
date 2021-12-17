@@ -120,14 +120,29 @@
   <data name="altPhotoMap" xml:space="preserve">
     <value>Image des régions de la GCC</value>
   </data>
+  <data name="Arctic" xml:space="preserve">
+    <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
+  </data>
   <data name="Arctique" xml:space="preserve">
     <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
+  </data>
+  <data name="Atlantic" xml:space="preserve">
+    <value>&lt;b&gt;Atlantique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.&lt;/small&gt;</value>
   </data>
   <data name="Atlantique" xml:space="preserve">
     <value>&lt;b&gt;Atlantique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.&lt;/small&gt;</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
+  </data>
+  <data name="CCG College" xml:space="preserve">
+    <value>&lt;b&gt;Collège de la GCC :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.&lt;/small&gt;</value>
+  </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>Membre de la GCC</value>
+  </data>
+  <data name="Central" xml:space="preserve">
+    <value>&lt;b&gt;Centre :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.&lt;/small&gt;</value>
   </data>
   <data name="Centre" xml:space="preserve">
     <value>&lt;b&gt;Centre :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.&lt;/small&gt;</value>
@@ -151,7 +166,10 @@
     <value>Poste actuelle</value>
   </data>
   <data name="Current Position Details" xml:space="preserve">
-    <value>Détails de la position actuelle</value>
+    <value>Détails du poste actuel</value>
+  </data>
+  <data name="currentposition" xml:space="preserve">
+    <value>Détails du poste actuel</value>
   </data>
   <data name="DESCRIPTION" xml:space="preserve">
     <value>DESCRIPTIF</value>
@@ -166,7 +184,7 @@
     <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
-    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée.</value>
+    <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée. Ces détails peuvent être trouvés dans le Règlement sur le personnel maritime du Canada : &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
   </data>
   <data name="mapSummary" xml:space="preserve">
     <value>Version texte</value>
@@ -191,6 +209,9 @@
   </data>
   <data name="modalTitleMap" xml:space="preserve">
     <value>Cartes des régions de la GCC</value>
+  </data>
+  <data name="National Headquarters" xml:space="preserve">
+    <value>&lt;b&gt;Siège national :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.&lt;/small&gt;</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -226,13 +247,22 @@
     <value>Imprimez ou téléchargez cette page au format PDF</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
+    <value>Sélectionner poste actuel</value>
+  </data>
+  <data name="Select Position" xml:space="preserve">
+    <value>Sélectionner une position</value>
   </data>
   <data name="Siège national" xml:space="preserve">
     <value>&lt;b&gt;Siège national :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.&lt;/small&gt;</value>
   </data>
   <data name="USERACTION" xml:space="preserve">
     <value>Cliquez sur Suivant pour comparer ou trouver des postes similaires au sein de l'organisation à votre poste sélectionné ci-dessous.</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>&lt;b&gt;Ouest :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.&lt;/small&gt;</value>
+  </data>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
   </data>
   <data name="ÉLÉMENTS DE COMPORTEMENT" xml:space="preserve">
     <value>ÉLÉMENTS DE COMPORTEMENT : &lt;small style="font-weight:normal;"&gt;Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.&lt;/small&gt;</value>

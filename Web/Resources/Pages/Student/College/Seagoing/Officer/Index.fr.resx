@@ -132,15 +132,6 @@
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
   </data>
-  <data name="PhotoDeck" xml:space="preserve">
-    <value>Photo d'un officier de navigation de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo d'un officier du génie de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoLogistics" xml:space="preserve">
-    <value>Photo d'un membre de la Garde côtière canadienne debout sur les quais devant un navire</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
@@ -157,6 +148,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - Navigateur - Officier</value>
+    <value>Officier</value>
   </data>
 </root>

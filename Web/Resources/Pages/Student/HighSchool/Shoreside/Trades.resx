@@ -142,9 +142,12 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>High School - Shore side - Trades Positions</value>
+    <value>Trades positions</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Trades positions</value>
   </data>
 </root>

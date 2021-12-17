@@ -109,9 +109,19 @@
                             url += "Engineering";
                             <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
                         }
+                        else if (Model.PreviousPage.Contains("SeagoingEngineer"))
+                        {
+                            url += "SeagoingEngineer";
+                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
+                        }
                         else if (Model.PreviousPage.Contains("Logistics"))
                         {
                             url += "Logistics";
+                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
+                        }
+                        else if (Model.PreviousPage.Contains("SeagoingLogistics"))
+                        {
+                            url += "SeagoingLogistics";
                             <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
                         }
                         else if (Model.PreviousPage.Contains("Cook"))
@@ -169,16 +179,8 @@
                             url += "Business";
                             <li><a asp-page="@url">@Localizer["Business"]</a></li>
                         }
-                        else if (Model.PreviousPage.Contains("SeagoingLogistics"))
-                        {
-                            url += "SeagoingLogistics";
-                            <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
-                        }
-                        else if (Model.PreviousPage.Contains("SeagoingEngineer"))
-                        {
-                            url += "SeagoingEngineer";
-                            <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
-                        }
+
+                        
                     }
                     else if (Model.PreviousPage.Contains("PositionList"))
                     {
@@ -513,17 +515,26 @@ else if(!(Model.PageSubmit == "true"))
                         <td colspan="2">@Localizer["noregions"]</td>
                     </tr>
                 }
-                <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                    <header class="modal-header">
-                        <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
-                    </header>
-                    <div class="modal-body ">
-                        <div class="thumbnail img-responsive">
-                            <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
-                        </div>
-                        <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+            <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                <header class="modal-header">
+                    <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                </header>
+                <div class="modal-body ">
+                    <div class="thumbnail img-responsive">
+                        <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                     </div>
-                </section>
+                    <details>
+                        <summary id="3">@Localizer["mapSummary"]</summary>
+                        <p>@Localizer["Arctic"]</p>
+                        <p>@Localizer["Western"]</p>
+                        <p>@Localizer["Central"]</p>
+                        <p>@Localizer["Atlantic"]</p>
+                        <p>@Localizer["CCG College"]</p>
+                        <p>@Localizer["National Headquarters"]</p>
+                    </details>
+                    <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                </div>
+            </section>
                 <tr>
                     <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>
@@ -807,7 +818,7 @@ else
                     }
                 }
                 <li><a asp-page="Details" asp-all-route-data="paramdata">@Localizer["Current Position"]</a></li>
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar Search"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar search"]</a></li>
             </ol>
         </div>
     </nav>

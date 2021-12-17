@@ -144,6 +144,9 @@
   <data name="save" xml:space="preserve">
     <value>Imprimez ou téléchargez cette page au format PDF</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Postes en sciences</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Positions côté rivage</value>
   </data>
@@ -151,7 +154,7 @@
     <value>Étudiant</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Université - Côté rivage - Sciences</value>
+    <value>Postes en sciences</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

@@ -132,6 +132,9 @@
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>Membre de la GCC</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>ATTESTATIONS</value>
   </data>
@@ -142,7 +145,7 @@
     <value>NIVEAU ACTUEL</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Current Position Level" xml:space="preserve">
     <value>Niveau de poste actuel</value>
@@ -243,11 +246,11 @@
   <data name="Search Type" xml:space="preserve">
     <value>Type de recherche</value>
   </data>
-  <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
-  </data>
   <data name="Select Competency" xml:space="preserve">
     <value>Sélectionnez une compétence</value>
+  </data>
+  <data name="selectcurrent" xml:space="preserve">
+    <value>Sélectionner poste actuel</value>
   </data>
   <data name="Selected Position" xml:space="preserve">
     <value>Position sélectionnée</value>
@@ -264,13 +267,19 @@
   <data name="SIMILAR POSITIONS" xml:space="preserve">
     <value>POSTES SIMILAIRES</value>
   </data>
-  <data name="Similar Search" xml:space="preserve">
+  <data name="Similar search" xml:space="preserve">
     <value>Recherche similaire</value>
+  </data>
+  <data name="similarpositions" xml:space="preserve">
+    <value>Postes similaires</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Soumettre</value>
   </data>
   <data name="textjob" xml:space="preserve">
     <value>(pourcentage de correspondance basé sur la fonctionnalité de l'emploi)</value>
+  </data>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
   </data>
 </root>

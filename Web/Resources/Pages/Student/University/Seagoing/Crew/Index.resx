@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Crew" xml:space="preserve">
+    <value>Crew</value>
+  </data>
   <data name="Deck" xml:space="preserve">
     <value>Deck</value>
   </data>
@@ -126,15 +129,6 @@
   <data name="Logistics" xml:space="preserve">
     <value>Logistics</value>
   </data>
-  <data name="PhotoDeck" xml:space="preserve">
-    <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard member checking the oil</value>
-  </data>
-  <data name="PhotoLogistics" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard cook preparing some fruits and vegetables</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
@@ -142,9 +136,9 @@
     <value>Please select your preferred field of employment</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Seagoing - Crew</value>
+    <value>Crew positions</value>
   </data>
 </root>

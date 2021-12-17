@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+    <value>Postes administratifs</value>
   </data>
   <data name="Business" xml:space="preserve">
     <value>Affaires</value>
@@ -126,38 +126,47 @@
   <data name="Candidate" xml:space="preserve">
     <value>Candidat externe</value>
   </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Catégories</value>
+  <data name="CCGmember" xml:space="preserve">
+    <value>Membre de la GCC</value>
   </data>
   <data name="Compare" xml:space="preserve">
     <value>Comparer les positions</value>
   </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Technologies de l'information</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Postes en technologies de l'information</value>
+  </data>
   <data name="Cook" xml:space="preserve">
-    <value>Cuisinier</value>
+    <value>Postes de cuisinier</value>
   </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
+    <value>Détails du poste actuel</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
+    <value>Positions de pont</value>
   </data>
   <data name="Electrical" xml:space="preserve">
-    <value>Électrique</value>
+    <value>Positions électriques</value>
   </data>
   <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+    <value>Postes en électronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="General Arts" xml:space="preserve">
     <value>Arts généraux</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Information géographique</value>
+    <value>Positions d'information géographique</value>
   </data>
   <data name="h2Text" xml:space="preserve">
     <value>Sélectionnez un niveau et une position</value>
@@ -172,7 +181,10 @@
     <value>Niveau</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
+    <value>Postes logistiques</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Postes de navigation</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -186,7 +198,7 @@
   <data name="Position Level" xml:space="preserve">
     <value>Niveau du poste</value>
   </data>
-  <data name="Position List" xml:space="preserve">
+  <data name="Position list" xml:space="preserve">
     <value>Liste des postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
@@ -204,7 +216,7 @@
   <data name="Seagoing" xml:space="preserve">
     <value>Positions en mer</value>
   </data>
-  <data name="Search Type" xml:space="preserve">
+  <data name="Search type" xml:space="preserve">
     <value>Type de recherche</value>
   </data>
   <data name="Select" xml:space="preserve">
@@ -212,6 +224,9 @@
   </data>
   <data name="Select Level" xml:space="preserve">
     <value>Sélectionnez un niveau</value>
+  </data>
+  <data name="Select Objective" xml:space="preserve">
+    <value>Sélectionnez une position objective</value>
   </data>
   <data name="Select Position" xml:space="preserve">
     <value>Sélectionner une position</value>
@@ -238,7 +253,7 @@
     <value>Collège technique</value>
   </data>
   <data name="Trades" xml:space="preserve">
-    <value>Métiers généraux</value>
+    <value>Postes de métiers</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

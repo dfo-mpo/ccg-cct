@@ -18,10 +18,11 @@
                            {
                               { "id",  Model.Id},
                               { "level",  Model.Level},
-                              { "subgroupcode", Model.SubGroupCode },   
+                              { "subgroupcode", Model.SubGroupCode },
                               { "levelcode", Model.LevelCode },
                               {"positionid", Model.PositionId.ToString()}
                             };
+    ViewData["Title"] = @Localizer["Search type"];
 }
 
 <section role="contentinfo">
@@ -32,10 +33,10 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a asp-page="../Index">@Localizer["Home"]</a></li>
-                <li><a asp-page="AllPositions">@Localizer["Categories"]</a></li>
+                <li><a asp-page="AllPositions">@Localizer["CCGmember"]</a></li>
                 <li><a asp-page="CurrentPosition" asp-all-route-data="@routedataprevious">@Localizer["Select"]</a></li>
-                <li><a asp-page="Details" asp-all-route-data="@routedataprevious">@Localizer["Current Position"]</a></li>
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Search Type"]</a></li>
+                <li><a asp-page="Details" asp-all-route-data="@routedataprevious">@Localizer["Current Position Details"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Search type"]</a></li>
             </ol>
         </div>
     </nav>

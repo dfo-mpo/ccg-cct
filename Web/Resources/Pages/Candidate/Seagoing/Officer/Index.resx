@@ -142,12 +142,12 @@
     <value>Please select your preferred field of employment</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Seagoing navigation and engineering officers have additional requirements associated with a matrix of certification (i.e. completed training in a recognized institution), sea time (i.e. time logged at sea), and ship class (i.e. vessel size, power, type).</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>External Canadidates - Seagoing - Officer</value>
+    <value>Officer</value>
   </data>
 </root>

@@ -129,15 +129,6 @@
   <data name="Officer" xml:space="preserve">
     <value>Officer</value>
   </data>
-  <data name="PhotoDeck" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard navigation officer</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard engineering officer</value>
-  </data>
-  <data name="PhotoLogistics" xml:space="preserve">
-    <value>Photo of a member of the Canadian Coast Guard standing on the docks in front of a ship</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
@@ -145,9 +136,9 @@
     <value>Please select your preferred field of employment</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Seagoing - Officer</value>
+    <value>Officer</value>
   </data>
 </root>

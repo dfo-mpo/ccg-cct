@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ComputerScience" xml:space="preserve">
-    <value>Technologies de l'information</value>
+    <value>Postes en technologies de l'information</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -154,7 +154,7 @@
     <value>Étudiant</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Université - Côté rivage - Technologies de l'information</value>
+    <value>Postes en technologies de l'information</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

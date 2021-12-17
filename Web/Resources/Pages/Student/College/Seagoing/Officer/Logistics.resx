@@ -120,6 +120,9 @@
   <data name="level" xml:space="preserve">
     <value>LEVEL</value>
   </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>More Details</value>
   </data>
@@ -127,7 +130,7 @@
     <value>No seagoing positions available</value>
   </data>
   <data name="Officer" xml:space="preserve">
-    <value>Ships' Officer</value>
+    <value>Officer</value>
   </data>
   <data name="position" xml:space="preserve">
     <value>POSITION</value>
@@ -145,12 +148,12 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>College - Officer - Logistics Positions</value>
+    <value>Logistics positions</value>
   </data>
 </root>

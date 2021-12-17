@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="PhotoDeck" xml:space="preserve">
     <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>
@@ -133,7 +133,7 @@
     <value>Please select your preferred field of employment</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="searchdeck" xml:space="preserve">
     <value>Link to seagoing crew deck positions</value>

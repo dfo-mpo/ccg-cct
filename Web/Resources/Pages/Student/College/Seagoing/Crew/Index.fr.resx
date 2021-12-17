@@ -132,15 +132,6 @@
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>
-  <data name="PhotoDeck" xml:space="preserve">
-    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo d'un membre de la Garde côtière canadienne vérifiant l'huile</value>
-  </data>
-  <data name="PhotoLogistics" xml:space="preserve">
-    <value>Photo d'un cuisinier de la Garde côtière canadienne préparant des fruits et légumes</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
@@ -157,6 +148,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - Navigation - Équipage</value>
+    <value>Équipage</value>
   </data>
 </root>

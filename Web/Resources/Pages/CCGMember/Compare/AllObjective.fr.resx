@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+    <value>Postes administratifs</value>
   </data>
   <data name="AllPositions" xml:space="preserve">
     <value>Choisissez une position à comparer</value>
@@ -132,35 +132,44 @@
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>Membre de la GCC</value>
+  </data>
   <data name="Compare" xml:space="preserve">
-    <value>Comparer</value>
+    <value>Comparer les positions</value>
   </data>
   <data name="Compare Function" xml:space="preserve">
     <value>La fonction de comparaison</value>
   </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Technologies de l'information</value>
+  </data>
   <data name="Computer Systems" xml:space="preserve">
-    <value>Ordinateurs</value>
+    <value>Postes en technologies de l'information</value>
   </data>
   <data name="Cook" xml:space="preserve">
-    <value>Cuisinier</value>
+    <value>Postes de cuisinier</value>
   </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
   </data>
-  <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
+  <data name="Current position" xml:space="preserve">
+    <value>Détails du poste actuel</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
+    <value>Poistions de pont</value>
   </data>
   <data name="Electrical" xml:space="preserve">
-    <value>Électrique</value>
+    <value>Positions électriques</value>
   </data>
   <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+    <value>Postes en électronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrer</value>
@@ -169,7 +178,7 @@
     <value>Arts généraux</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Information géographique</value>
+    <value>Positions d'information géographique</value>
   </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
@@ -178,10 +187,13 @@
     <value>Accueil</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
+    <value>Postes logistiques</value>
   </data>
   <data name="modalcompare" xml:space="preserve">
     <value>&lt;p&gt;Cette fonction vous permet de comparer votre poste actuellement sélectionné avec tout autre poste de la Garde côtière canadienne. En le sélectionnant, puis en un autre poste, la fonction produira les deux résultats de poste côte à côte afin que vous puissiez voir les différences d'emplacement, de certification, de compétences et d'évaluation. Si le poste auquel vous vous comparez est celui que vous recherchez, vous pouvez alors télécharger les résultats, les sauvegarder ou les imprimer, comme base d'un plan de formation.&lt;/p&gt;</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Postes de navigation</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>Aucun résultat correspondant trouvé</value>
@@ -192,7 +204,7 @@
   <data name="Position Level" xml:space="preserve">
     <value>Niveau du poste</value>
   </data>
-  <data name="Position List" xml:space="preserve">
+  <data name="Position list" xml:space="preserve">
     <value>Liste des postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
@@ -211,7 +223,7 @@
     <value>Type de recherche</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
+    <value>Sélectionner poste actuel</value>
   </data>
   <data name="Selected Position" xml:space="preserve">
     <value>Position sélectionnée</value>
@@ -235,9 +247,12 @@
     <value>Collège technique</value>
   </data>
   <data name="Trades" xml:space="preserve">
-    <value>Métiers généraux</value>
+    <value>Postes de métiers</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
+  </data>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
   </data>
 </root>

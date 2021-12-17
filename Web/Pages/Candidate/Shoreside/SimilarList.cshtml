@@ -2,7 +2,7 @@
 @model Web.Pages.Candidate.Shoreside.SimilarListModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = Localizer["title"];
+    ViewData["Title"] = Localizer["Position list"];
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
     var countmessage = Model.Positions.Length != 1 ? "POSITIONS" : "POSITION";
 }
@@ -16,7 +16,7 @@
                     <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
                     <li><a asp-page="../Index">@Localizer["Candidate"]</a></li>
                     <li><a asp-page="AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Position List"]</a></li>
+                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Position list"]</a></li>
                 </ol>
             </div>
         </nav>

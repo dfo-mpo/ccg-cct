@@ -159,6 +159,9 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="Intro" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistique</value>
   </data>

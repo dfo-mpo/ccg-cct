@@ -124,7 +124,7 @@
     <value>Équipage</value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
+    <value>Positions de pont</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -157,6 +157,6 @@
     <value>Positions en mer</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Candidats externes - En mer - Équipage - Postes de pont</value>
+    <value>Positions de pont</value>
   </data>
 </root>

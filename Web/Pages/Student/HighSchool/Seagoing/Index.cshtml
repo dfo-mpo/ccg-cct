@@ -5,70 +5,36 @@
     ViewData["Title"] = Localizer["Seagoing"];
 }
 
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2 class="wb-inv">
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
-                    <li><a asp-page="../../Index">@Localizer["Student"]</a></li>
-                    <li><a asp-page="../Index">@Localizer["High School"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Seagoing"]</a></li>
-                </ol>
-            </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2 class="wb-inv">
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../../Index">@Localizer["Student"]</a></li>
+                <li><a asp-page="../Index">@Localizer["High School"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Seagoing"]</a></li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+    <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list">
+                <li><a href="@Localizer["link"]" target="_blank">@Localizer["ccgcollege"] <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <li><a asp-page="SeagoingDeck">@Localizer["deck"]</a></li>
+                <li><a asp-page="SeagoingEngineer">@Localizer["engineer"]</a></li>
+                <li><a asp-page="SeagoingLogistics">@Localizer["logistics"]</a></li>
             </ul>
-        </nav>
-
-        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
-
-        <div class="col-lg-3 col-md-2">
-            <a style="text-decoration:none" href="@Localizer["link"]" target="_blank">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <h4 class="mrgn-tp-0 mrgn-bttm-sm">@Localizer["ccgcollege"] <span style="color:#000; font-size:12px;" class="glyphicon glyphicon-new-window"></span></h4>
-                        <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
         </div>
-
-        <div class="col-lg-3 col-md-2">
-            <a style="text-decoration:none" class="nav-link" asp-page="SeagoingLogistics">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["logistics"]</h3></figcaption>
-                        <img src="~/img/Student/HS-Cook.jpg" alt="@Localizer["logisticsphoto"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-2">
-            <a style="text-decoration:none" class="nav-link" asp-page="SeagoingDeck">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["deck"]</h3></figcaption>
-                        <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["deckphoto"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-2">
-            <a style="text-decoration:none" class="nav-link" asp-page="SeagoingEngineer">
-                <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                    <div class="img-container">
-                        <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["engineer"]</h3></figcaption>
-                        <img src="~/img/Student/Marine Engineer - College CCT.jpg" alt="@Localizer["engineeringphoto"]" class="img-responsive center" />
-                    </div>
-                </figure>
-            </a>
-        </div>
-    </section>
+    </div>
+</section>

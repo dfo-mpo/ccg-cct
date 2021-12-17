@@ -142,9 +142,12 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Social science positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Shore side - Social Science</value>
+    <value>Social science positions</value>
   </data>
 </root>

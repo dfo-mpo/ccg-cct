@@ -144,27 +144,6 @@
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
   </data>
-  <data name="PhotoArts" xml:space="preserve">
-    <value>Photo d'une personne travaillant à son bureau</value>
-  </data>
-  <data name="PhotoBusiness" xml:space="preserve">
-    <value>Photo d'un groupe de membres de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo du Collège de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoComputer" xml:space="preserve">
-    <value>Photo de systèmes informatiques</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo de l'atelier de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoSciences" xml:space="preserve">
-    <value>Photo d'une infirmière de la Garde côtière canadienne vérifiant la tension artérielle d'une personne</value>
-  </data>
-  <data name="PhotoSocial" xml:space="preserve">
-    <value>Photo d'un groupe de personnes lors d'une réunion</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>

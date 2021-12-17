@@ -117,32 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administrative positions</value>
+  </data>
+  <data name="Business" xml:space="preserve">
+    <value>Business positions</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
+  </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Information Technology</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Information technology positions</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cook positions</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Current Position</value>
+    <value>Current position details</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Deck positions</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Electrical positions</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Electronics positions</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Engineering positions</value>
+  </data>
+  <data name="General Arts" xml:space="preserve">
+    <value>General Arts positions</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Geographical Information</value>
+    <value>Geographical information positions</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation positions</value>
   </data>
   <data name="NoPositions" xml:space="preserve">
     <value>No similar positions are currently available for this position.</value>
   </data>
+  <data name="Position List" xml:space="preserve">
+    <value>Position list</value>
+  </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Print or download this page as a PDF document</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Sciences positions</value>
+  </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="Similar" xml:space="preserve">
-    <value>Similar Positions</value>
+    <value>Similar positions</value>
+  </data>
+  <data name="Similar Search" xml:space="preserve">
+    <value>Similar search</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Social Sciences positions</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Trades positions</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>University</value>

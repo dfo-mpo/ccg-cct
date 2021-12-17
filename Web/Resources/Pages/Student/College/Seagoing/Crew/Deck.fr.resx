@@ -121,7 +121,7 @@
     <value>Équipage </value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
+    <value>Postes de pont</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -160,6 +160,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - Équipage - Postes de pont</value>
+    <value>Postes de pont</value>
   </data>
 </root>

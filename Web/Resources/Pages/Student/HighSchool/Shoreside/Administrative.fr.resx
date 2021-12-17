@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+    <value>Postes administratifs</value>
   </data>
   <data name="High School" xml:space="preserve">
     <value>École secondaire</value>
@@ -160,6 +160,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>École secondaire - Côté rivage - Postes administratifs</value>
+    <value>Postes administratifs</value>
   </data>
 </root>

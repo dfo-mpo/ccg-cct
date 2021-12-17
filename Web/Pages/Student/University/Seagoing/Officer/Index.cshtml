@@ -28,35 +28,12 @@
 
         <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
         <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <a style="text-decoration:none" class="nav-link" asp-page="Deck">
-                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                        <div class="img-container">
-                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Deck"]</h3></figcaption>
-                            <img src="~/img/CCGMember/Officer-Nav.jpg" alt="@Localizer["PhotoDeck"]" class="img-responsive center" />
-                        </div>
-                    </figure>
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <a style="text-decoration:none" class="nav-link" asp-page="Engineering">
-                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                        <div class="img-container">
-                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Engineering"]</h3></figcaption>
-                            <img src="~/img/Candidate/Officer Chief Engineer.jpg" alt="@Localizer["PhotoEngineer"]" class="img-responsive center" />
-                        </div>
-                    </figure>
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <a style="text-decoration:none" class="nav-link" asp-page="Logistics">
-                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                        <div class="img-container">
-                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Logistics"]</h3></figcaption>
-                            <img src="~/img/Student/OfficerLogistics.jpg" alt="@Localizer["PhotoLogistics"]" class="img-responsive center" />
-                        </div>
-                    </figure>
-                </a>
+            <div class="col-sm-12">
+                <ul class="list">
+                    <li><a style="text-decoration:none" asp-page="Deck">@Localizer["Deck"]</a></li>
+                    <li><a style="text-decoration:none" asp-page="Engineering">@Localizer["Engineering"]</a></li>
+                    <li><a style="text-decoration:none" asp-page="Logistics">@Localizer["Logistics"]</a></li>
+                </ul>
             </div>
         </div>
     </section>

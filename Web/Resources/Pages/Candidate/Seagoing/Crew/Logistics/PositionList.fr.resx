@@ -130,7 +130,7 @@
     <value>NIVEAU</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
+    <value>Postes logistiques</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
@@ -157,6 +157,6 @@
     <value>Positions en mer</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Candidats externes - En mer - Équipage - Postes logistiques</value>
+    <value>Postes logistiques</value>
   </data>
 </root>

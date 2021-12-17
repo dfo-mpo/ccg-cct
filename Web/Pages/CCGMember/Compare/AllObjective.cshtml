@@ -30,6 +30,7 @@
                        {"pagesubmit", "true" }
                };
     var url = string.Empty;
+    ViewData["Title"] = @Localizer["Compare"];
     }
 
     <section role="contentinfo">
@@ -193,14 +194,14 @@
                             url += "SeagoingEngineer";
                             <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
                         }
-                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current position"]</a></li>
                     }
                     else if (Model.PreviousPageDetails.Contains("Shoreside"))
                     {
                         <li><a asp-page="../../Candidate/Index">@Localizer["Candidate"]</a></li>
                         <li><a asp-page="../../Candidate/Shoreside/AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
-                        <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.Id">@Localizer["Position List"]</a></li>
-                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.Id">@Localizer["Position list"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position Details"]</a></li>
                     }
                     else if (Model.PreviousPageDetails.Contains("Seagoing"))
                     {
@@ -234,13 +235,13 @@
                                 <li><a asp-page="../../Candidate/Seagoing/Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
                             }
                         }
-                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current position"]</a></li>
                     }
                     else
                     {
-                        <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
+                        <li><a asp-page="../AllPositions">@Localizer["CCGmember"]</a></li>
                         <li><a asp-page="../CurrentPosition" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
-                        <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                        <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position Details"]</a></li>
                         <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["Search Type"]</a></li>
                     }
                     <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Compare"]</a></li>
@@ -263,7 +264,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <ul class="list-unstyled row wb-eqht">
+                        <ul>
                             @if (Model.JobGroups.Any(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
                             {
                                 @foreach (var jobgroup in Model.JobGroups.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()) || e.Code.ToLower().Contains(@Model.Filter.ToLower())))
@@ -284,26 +285,19 @@
                                                   { "idobj",  jobgroup.Id.ToString()}
                                                  };
 
-                                        <li class="col-md-2">
-                                            <a asp-page="ObjectiveLevel" asp-all-route-data="routedatanext" class="btn btn-default btn-block well">
-                                                <div class="row">
-                                                    <div class="col-sm-12 mrgn-tp-sm">
-                                                        <p><b>@(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)</b></p>
-                                                    </div>
-                                                    <!-- <div class="col-sm-12 col-xs-5">
-                                                            <img src="@Url.Content(imagefolder + jobgroup.Code + ".jpg")" class="img-responsive center-block" />
-                                                     </div> -->
-                                                </div>
-                                            </a>
-                                        </li>
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                <h4>@Localizer["NoResults"]</h4>
-                            }
-                        </ul>
+                            <li class="col-sm-6 mrgn-bttm-sm">
+                                <a style="text-decoration:none" asp-page="ObjectiveLevel" asp-all-route-data="routedatanext">
+                                    @(isEnglish ? jobgroup.NameEng : jobgroup.NameFre) (@jobgroup.Code)
+                                </a>
+                            </li>
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <h4>@Localizer["NoResults"]</h4>
+                                            }
+                         </ul>
                     </div>
                 </div>
             </form>

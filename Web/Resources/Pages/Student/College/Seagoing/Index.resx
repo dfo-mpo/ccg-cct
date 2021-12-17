@@ -129,15 +129,6 @@
   <data name="Officer" xml:space="preserve">
     <value>Ships' Officer</value>
   </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo of the Canadian Coast Guard College</value>
-  </data>
-  <data name="PhotoCrew" xml:space="preserve">
-    <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>
-  </data>
-  <data name="PhotoOfficer" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard Officer</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>

@@ -136,8 +136,11 @@
   <data name="continue" xml:space="preserve">
     <value>Cliquez ici pour commencer</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
   <data name="Intro" xml:space="preserve">
-    <value>Introduction</value>
+    <value>Aperçu</value>
   </data>
   <data name="IntroText" xml:space="preserve">
     <value>&lt;p&gt;L’outil de compétences professionnelles de la Garde côtière canadienne est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la Garde côtière. Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.&lt;/p&gt;
@@ -147,7 +150,7 @@
 &lt;li&gt;une liste des compétences nécessaires ainsi que le niveau de compétence requis.&lt;/li&gt;&lt;/ul&gt;</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>L’outil de compétences professionnelles</value>
+    <value>Aperçu de l'outil de compétences professionnelles</value>
   </data>
   <data name="You are here:" xml:space="preserve">
     <value>Vous êtes ici :</value>
