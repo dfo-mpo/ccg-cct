@@ -30,127 +30,17 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <ul class="list-unstyled row wb-eqht">
-                <li class="col-md-2">
-                    <a href="@Localizer["link"]" target="_blank" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <h4 class="mrgn-tp-0 mrgn-bttm-sm">@Localizer["ccgcollege"] <span style="color:#000; font-size:12px;" class="glyphicon glyphicon-new-window"></span></h4>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Administrative" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["admin"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/Admin.jpg" alt="@Localizer["PhotoAdmin"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Computer" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["computer"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/CS.jpg" alt="@Localizer["PhotoComputer"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Cook" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["cook"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/GS.jpg" alt="@Localizer["PhotoCook"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Electrical" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["electrical"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/GT.jpg" alt="@Localizer["PhotoElectrical"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Electronics" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["electronics"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/EL.jpg" alt="@Localizer["PhotoElectronics"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="GeographicalInformation" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["geo"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/geo.jpg" alt="@Localizer["PhotoGeo"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Engineering" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["engineering"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/ENG.jpg" alt="@Localizer["PhotoEngineer"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Trades" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["trades"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/GL.jpg" alt="@Localizer["PhotoTrades"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
+            <ul class="list">
+                <li><a style="text-decoration:none" href="@Localizer["link"]" target="_blank">@Localizer["ccgcollege"] <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <li><a style="text-decoration:none" asp-page="Administrative">@Localizer["admin"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Computer">@Localizer["computer"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Cook">@Localizer["cook"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Electrical">@Localizer["electrical"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Electronics">@Localizer["electronics"]</a></li>
+                <li><a style="text-decoration:none" asp-page="GeographicalInformation">@Localizer["geo"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Engineering">@Localizer["engineering"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Trades">@Localizer["trades"]</a></li>
             </ul>
         </div>
     </div>
-                <!--    <div style="clear:both;">
-                        <div class="col-lg-12">
-                            <nav role="navigation">
-                                <h2 class="wb-inv">Document navigation</h2>
-                                <ul class="pager">
-                                    <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                -->
 </section>

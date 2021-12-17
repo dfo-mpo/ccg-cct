@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CCGmember" xml:space="preserve">
+    <value>CCG Member</value>
+  </data>
   <data name="h2Text" xml:space="preserve">
     <value>Select your current level and position</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select current position</value>
   </data>
   <data name="Select Level" xml:space="preserve">
     <value>Select Level</value>

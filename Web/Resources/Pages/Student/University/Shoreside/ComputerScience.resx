@@ -121,7 +121,7 @@
     <value>Information Technology</value>
   </data>
   <data name="ComputerScience" xml:space="preserve">
-    <value>Information Technology</value>
+    <value>Information technology positions</value>
   </data>
   <data name="level" xml:space="preserve">
     <value>LEVEL</value>
@@ -148,9 +148,9 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Shore side - Information Technology</value>
+    <value>Information technology positions</value>
   </data>
 </root>

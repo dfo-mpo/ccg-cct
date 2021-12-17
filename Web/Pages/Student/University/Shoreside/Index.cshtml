@@ -31,91 +31,14 @@
     
     <div class="row">
         <div class="col-sm-12">
-            <ul class="list-unstyled row wb-eqht">
-                <li class="col-md-2">
-                    <a href="@Localizer["link"]" target="_blank" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <h4 class="mrgn-tp-0 mrgn-bttm-sm">@Localizer["ccgcollege"] <span style="color:#000; font-size:12px;" class="glyphicon glyphicon-new-window"></span></h4>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                    <img src="~/img/Student/CCGCollege.jpg" alt="@Localizer["PhotoCollege"]" class="img-responsive center-block" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Business" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["business"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/Business.jpg" class="img-responsive center-block" alt="@Localizer["PhotoBusiness"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="ComputerScience" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["computer"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/CCGMember/CS.jpg" class="img-responsive center-block" alt="@Localizer["PhotoComputer"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Engineering" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["engineering"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/ENG.jpg" class="img-responsive center-block" alt="@Localizer["PhotoEngineer"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="GeneralArts" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["arts"]<br /><small>@Localizer["language"]</small></strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/General Arts.jpg" class="img-responsive center-block" alt="@Localizer["PhotoArts"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="Sciences" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["sciences"]</strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/Nurse2.jpg" class="img-responsive center-block" alt="@Localizer["PhotoSciences"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="col-md-2">
-                    <a asp-page="SocialScience" class="btn btn-default btn-block well hght-inhrt">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-7">
-                                <p class="mrgn-bttm-sm"><strong class="h4">@Localizer["social"]<br /><small>@Localizer["economics"]</small></strong></p>
-                            </div>
-                            <div class="col-sm-12 col-xs-5">
-                                <img src="~/img/Student/Social Science.jpg" class="img-responsive center-block" alt="@Localizer["PhotoSocial"]" />
-                            </div>
-                        </div>
-                    </a>
-                </li>
+            <ul class="list">
+                <li><a style="text-decoration:none" href="@Localizer["link"]" target="_blank">@Localizer["ccgcollege"] <span class="glyphicon glyphicon-new-window"></span></a></li>
+                <li><a style="text-decoration:none" asp-page="Business">@Localizer["business"]</a></li>
+                <li><a style="text-decoration:none" asp-page="ComputerScience">@Localizer["computer"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Engineering">@Localizer["engineering"]</a></li>
+                <li><a style="text-decoration:none" asp-page="GeneralArts">@Localizer["arts"] <small>@Localizer["language"]</small></a></li>
+                <li><a style="text-decoration:none" asp-page="Sciences">@Localizer["sciences"]</a></li>
+                <li><a style="text-decoration:none" asp-page="SocialScience">@Localizer["social"] <small>@Localizer["economics"]</small></a></li>
             </ul>
         </div>
     </div>

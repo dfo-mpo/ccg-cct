@@ -123,26 +123,14 @@
   <data name="deck" xml:space="preserve">
     <value>Deck</value>
   </data>
-  <data name="deckphoto" xml:space="preserve">
-    <value>Photo of Canadian Coast Guard crew members working on the deck of a vessel</value>
-  </data>
   <data name="engineer" xml:space="preserve">
     <value>Engineering</value>
-  </data>
-  <data name="engineeringphoto" xml:space="preserve">
-    <value>Photo of three Canadian Coast Guard members standing in the engineering room</value>
   </data>
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-eng.html</value>
   </data>
   <data name="logistics" xml:space="preserve">
     <value>Logistics</value>
-  </data>
-  <data name="logisticsphoto" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard cook preparing some fruits and vegetables</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo of the Canadian Coast Guard College</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
@@ -151,9 +139,9 @@
     <value>Choose an area that you are interested in</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>High School - Seagoing Positions</value>
+    <value>High School - Seagoing positions</value>
   </data>
 </root>

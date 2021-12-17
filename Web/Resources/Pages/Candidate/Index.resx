@@ -124,7 +124,7 @@
     <value>Link to search shore side positions</value>
   </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="Question1" xml:space="preserve">
     <value>Which area would you like to explore?</value>
@@ -148,6 +148,6 @@
     <value>About 40% of the Canadian Coast Guard workforce is made up of people working in shore-based jobs. The overall function of these positions is to support coast guard operations. They do not involve working on coast guard floating assets. Instead, they can be operational (e.g. communications, environmental, logistics, etc.) or administrative (e.g. management, planning, policy, etc.).</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
 </root>

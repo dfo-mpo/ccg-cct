@@ -4,45 +4,37 @@
 @{
     ViewData["Title"] = Localizer["Seagoing"];
 }
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2 class="wb-inv">
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
-                    <li><a asp-page="../../Index">@Localizer["Student"]</a></li>
-                    <li><a asp-page="../Index">@Localizer["TechCollege"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Seagoing"]</a></li>
-                </ol>
-            </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2 class="wb-inv">
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../../Index">@Localizer["Student"]</a></li>
+                <li><a asp-page="../Index">@Localizer["TechCollege"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Seagoing"]</a></li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+    <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list">
+                <li><a style="text-decoration:none" asp-page="Officer/Index">@Localizer["Officer"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Crew/Index">@Localizer["Crew"]</a></li>
             </ul>
-        </nav>
-        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
-        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-                    <a style="text-decoration:none" asp-page="Officer/Index">
-                        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                            <div class="img-container">
-                                <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Officer"]</h3></figcaption>
-                                <img src="~/img/CCGMember/SO.jpg" alt="@Localizer["PhotoOfficer"]" class="img-responsive center" />
-                            </div>
-                        </figure>
-                    </a>
         </div>
-        <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-                    <a style="text-decoration:none" asp-page="Crew/Index">
-                        <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                            <div class="img-container">
-                                <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Crew"]</h3></figcaption>
-                                <img src="~/img/CCGMember/SC.jpg" alt="@Localizer["PhotoCrew"]" class="img-responsive center" />
-                            </div>
-                        </figure>
-                    </a>
-        </div>
-    </section>
+    </div>
+</section>

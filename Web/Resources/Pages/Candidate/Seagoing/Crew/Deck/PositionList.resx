@@ -118,15 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Deck positions</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>External Canadidates - Seagoing - Crew - Deck Positions</value>
+    <value>Deck positions</value>
   </data>
 </root>

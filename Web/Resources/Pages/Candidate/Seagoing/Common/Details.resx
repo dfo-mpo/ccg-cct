@@ -130,7 +130,7 @@
     <value>BEHAVIOURAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.&lt;/small&gt;</value>
   </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="CCG College" xml:space="preserve">
     <value>&lt;b&gt;CCG College:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.&lt;/small&gt;</value>
@@ -151,10 +151,19 @@
     <value>Continue to Similar Search</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Current Position</value>
+    <value>Current position details</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Deck positions</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Engineering positions</value>
   </data>
   <data name="geo" xml:space="preserve">
     <value>Geographical Information</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
   </data>
   <data name="infocomparesimilar" xml:space="preserve">
     <value>(click here for more information on the compare and similar search functions)</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="linkmap" xml:space="preserve">
     <value>(click here to view the CCG regions map)</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
@@ -186,6 +198,9 @@
   <data name="National Headquarters" xml:space="preserve">
     <value>&lt;b&gt;National Headquarters:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.&lt;/small&gt;</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation positions</value>
+  </data>
   <data name="NoPositions" xml:space="preserve">
     <value>No similar positions are currently available for this position.</value>
   </data>
@@ -202,7 +217,7 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
     <value>Shore side Positions</value>

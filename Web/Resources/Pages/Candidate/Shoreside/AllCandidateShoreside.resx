@@ -121,7 +121,7 @@
     <value>Choose from the positions below</value>
   </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="Fllter" xml:space="preserve">
     <value>Filter</value>
@@ -130,7 +130,7 @@
     <value>No matching results found</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>External Candidate shore side positions</value>

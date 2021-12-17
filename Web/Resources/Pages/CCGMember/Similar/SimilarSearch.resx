@@ -120,6 +120,9 @@
   <data name="Candidate" xml:space="preserve">
     <value>External Candidate</value>
   </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>CCG Member</value>
+  </data>
   <data name="CERTIFICATIONS" xml:space="preserve">
     <value>CERTIFICATIONS</value>
   </data>
@@ -130,7 +133,7 @@
     <value>CURRENT LEVEL</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Current Position</value>
+    <value>Current position details</value>
   </data>
   <data name="Current Position Level" xml:space="preserve">
     <value>Current Position Level</value>
@@ -174,11 +177,20 @@
   <data name="Search Positions" xml:space="preserve">
     <value>Search Positions</value>
   </data>
+  <data name="Search Type" xml:space="preserve">
+    <value>Search type</value>
+  </data>
+  <data name="selectcurrent" xml:space="preserve">
+    <value>Select current position</value>
+  </data>
   <data name="SelectionTitleCertificates" xml:space="preserve">
     <value>Select one or more certificates, if appropriate, to narrow your search for positions similar to your current position.</value>
   </data>
   <data name="Similar Function" xml:space="preserve">
     <value>Similar Search Function</value>
+  </data>
+  <data name="similarpositions" xml:space="preserve">
+    <value>Similar positions</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>

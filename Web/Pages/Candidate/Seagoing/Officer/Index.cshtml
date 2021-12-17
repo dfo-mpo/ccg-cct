@@ -33,27 +33,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-                <a style="text-decoration:none" class="nav-link" asp-page="Navigation/PositionList">
-                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                        <div class="img-container">
-                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Nav"]</h3></figcaption>
-                            <img src="~/img/CCGMember/Officer-Nav.jpg" alt="@Localizer["PhotoNav"]" class="img-responsive center" />
-                        </div>
-                    </figure>
-                </a>
+            <div class="col-sm-12">
+                <ul class="list">
+                    <li><a style="text-decoration:none" asp-page="Navigation/PositionList">@Localizer["Nav"]</a></li>
+                    <li><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Eng"]</a></li>
+                </ul>
             </div>
-            
-            <div class="col-md-4 col-sm-4 mrgn-bttm-md">
-                <a style="text-decoration:none" class="nav-link" asp-page="Engineering/PositionList">
-                    <figure class="thumbnail eqht-trgt" style="vertical-align: top;">
-                        <div class="img-container">
-                            <figcaption class="caption text-center"><h3 class="mrgn-tp-0">@Localizer["Eng"]</h3></figcaption>
-                            <img src="~/img/Candidate/Officer Chief Engineer.jpg" alt="@Localizer["PhotoEng"]" class="img-responsive center" />
-                        </div>
-                    </figure>
-                </a>
-            </div>
-          
+
         </div>
     </section>

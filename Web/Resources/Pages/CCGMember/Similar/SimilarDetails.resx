@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administrative positions</value>
+  </data>
   <data name="altPhotoMap" xml:space="preserve">
     <value>Image of the CCG Regions</value>
   </data>
@@ -129,11 +132,17 @@
   <data name="BEHAVIOURAL ELEMENTS" xml:space="preserve">
     <value>BEHAVIOURAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.&lt;/small&gt;</value>
   </data>
+  <data name="Business" xml:space="preserve">
+    <value>Business positions</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
   </data>
   <data name="CCG College" xml:space="preserve">
     <value>&lt;b&gt;CCG College:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard College is a national maritime training facility located on Cape Breton Island, Nova Scotia. It delivers programs in French and English to support the College’s mission and mandate in marine safety, security and environmental protection.&lt;/small&gt;</value>
+  </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>CCG Member</value>
   </data>
   <data name="Central" xml:space="preserve">
     <value>&lt;b&gt;Central:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Central Region consists of  Ontario and Quebec, minus the Nunavik region in northern Quebec.&lt;/small&gt;</value>
@@ -144,11 +153,38 @@
   <data name="Compare" xml:space="preserve">
     <value>Compare Positions</value>
   </data>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Information Technology</value>
+  </data>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Information technology positions</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cook positions</value>
+  </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Current Position</value>
+    <value>Current position details</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Deck positions</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Electrical positions</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Electronics positions</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Engineering positions</value>
+  </data>
+  <data name="General Arts" xml:space="preserve">
+    <value>General Arts positions</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Geographical Information</value>
+    <value>Geographical information positions</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -161,6 +197,9 @@
   </data>
   <data name="linkmap" xml:space="preserve">
     <value>(click here to view the CCG regions map)</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform.</value>
@@ -189,6 +228,9 @@
   <data name="National Headquarters" xml:space="preserve">
     <value>&lt;b&gt;National Headquarters:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Canadian Coast Guard (CCG) National Headquarters is located in Ottawa, Ontario.&lt;/small&gt;</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation positions</value>
+  </data>
   <data name="noregion" xml:space="preserve">
     <value>No regions available</value>
   </data>
@@ -201,20 +243,35 @@
   <data name="POSITION DETAILS" xml:space="preserve">
     <value>POSITION DETAILS</value>
   </data>
+  <data name="Position List" xml:space="preserve">
+    <value>Position list</value>
+  </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Print or download this page as a PDF document</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Sciences positions</value>
+  </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
+  </data>
+  <data name="selectcurrent" xml:space="preserve">
+    <value>Select current position</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Social Sciences positions</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
   </data>
   <data name="TECHNICAL ELEMENTS" xml:space="preserve">
     <value>TECHNICAL ELEMENTS: &lt;small style="font-weight:normal;"&gt;Technical elements describe abilities to apply knowledge to efficiently perform the job.&lt;/small&gt;</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Trades positions</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>University</value>

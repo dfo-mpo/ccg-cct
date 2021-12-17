@@ -129,18 +129,6 @@
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-eng.html</value>
   </data>
-  <data name="PhotoAdmin" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard administrative personnel working at her desk</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo of the Canadian Coast Guard College</value>
-  </data>
-  <data name="PhotoComputer" xml:space="preserve">
-    <value>Photo of computer systems</value>
-  </data>
-  <data name="PhotoTrades" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard welder at work</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
@@ -148,7 +136,7 @@
     <value>Choose an area that you are interested in</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>High School - Shoreside</value>

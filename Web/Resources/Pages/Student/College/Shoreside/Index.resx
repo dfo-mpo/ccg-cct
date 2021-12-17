@@ -147,33 +147,6 @@
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-eng.html</value>
   </data>
-  <data name="PhotoAdmin" xml:space="preserve">
-    <value>Photo of administrative personnel working at her desk</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo of the Canadian Coast Guard College</value>
-  </data>
-  <data name="PhotoComputer" xml:space="preserve">
-    <value>Photo of computer systems</value>
-  </data>
-  <data name="PhotoCook" xml:space="preserve">
-    <value>Photo of a Canadian Coast Guard cook serving lunch</value>
-  </data>
-  <data name="PhotoElectrical" xml:space="preserve">
-    <value>Photo of an individual working on a electrical device</value>
-  </data>
-  <data name="PhotoElectronics" xml:space="preserve">
-    <value>Photo of two Canadian Coast Guard members working on electronic wiring</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo of Canadian Coast Guard engineers</value>
-  </data>
-  <data name="PhotoGeo" xml:space="preserve">
-    <value>Photo of a map showing the Artic Zones</value>
-  </data>
-  <data name="PhotoTrades" xml:space="preserve">
-    <value>Photo of a welder at work</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
@@ -181,13 +154,13 @@
     <value>Choose an area that you are interested in</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>College - Shore Side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="trades" xml:space="preserve">
     <value>Trades</value>

@@ -141,10 +141,13 @@
   <data name="save" xml:space="preserve">
     <value>Print or download this page as a PDF document</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Sciences positions</value>
+  </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Shore side - Sciences</value>
+    <value>Sciences positions</value>
   </data>
 </root>

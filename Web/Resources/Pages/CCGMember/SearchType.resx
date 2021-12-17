@@ -120,6 +120,9 @@
   <data name="Available" xml:space="preserve">
     <value>What positions are available to me now</value>
   </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>CCG Member</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="contsimilar" xml:space="preserve">
     <value>Continue to Similar Search</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Current position details</value>
   </data>
   <data name="infocompare" xml:space="preserve">
     <value>Click here for more information on the Compare function</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="Question1" xml:space="preserve">
     <value>How would you like to perform your search?</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select current position</value>
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Find similar positions to my current position</value>

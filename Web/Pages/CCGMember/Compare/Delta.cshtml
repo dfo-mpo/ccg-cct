@@ -64,6 +64,7 @@
 
                     };
     var url = string.Empty;
+    ViewData["Title"] = @Localizer["compareresults"];
 }
 <section role="contentinfo">
     <nav role="navigation" id="wb-bc" property="breadcrumb">
@@ -147,11 +148,6 @@
                         url += "Deck";
                         <li><a asp-page="@url">@Localizer["Deck"]</a></li>
                     }
-                    else if (Model.PreviousPage.Contains("SeagoingDeck"))
-                    {
-                        url += "SeagoingDeck";
-                        <li><a asp-page="@url">@Localizer["Deck"]</a></li>
-                    }
                     else if (Model.PreviousPage.Contains("Engineering"))
                     {
                         url += "Engineering";
@@ -222,19 +218,24 @@
                         url += "SeagoingLogistics";
                         <li><a asp-page="@url">@Localizer["Logistics"]</a></li>
                     }
+                    else if (Model.PreviousPage.Contains("SeagoingDeck"))
+                    {
+                        url += "SeagoingDeck";
+                        <li><a asp-page="@url">@Localizer["Deck"]</a></li>
+                    }
                     else if (Model.PreviousPage.Contains("SeagoingEngineer"))
                     {
                         url += "SeagoingEngineer";
                         <li><a asp-page="@url">@Localizer["Engineering"]</a></li>
                     }
-                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["currentposition"]</a></li>
                 }
                 else if (Model.PreviousPageDetails.Contains("Shoreside"))
                 {
                     <li><a asp-page="../../Candidate/Index">@Localizer["Candidate"]</a></li>
                     <li><a asp-page="../../Candidate/Shoreside/AllCandidateShoreside">@Localizer["Shoreside"]</a></li>
-                    <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.CurrentPosition.JobGroupId">@Localizer["Position List"]</a></li>
-                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    <li><a asp-page="../../Candidate/Shoreside/SimilarList" asp-route-id="@Model.CurrentPosition.JobGroupId">@Localizer["Position list"]</a></li>
+                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["currentposition"]</a></li>
                 }
                 else if (Model.PreviousPageDetails.Contains("Seagoing"))
                 {
@@ -268,20 +269,20 @@
                             <li><a asp-page="../../Candidate/Seagoing/Crew/Logistics/PositionList">@Localizer["Logistics"]</a></li>
                         }
                     }
-                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
+                    <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedata">@Localizer["currentposition"]</a></li>
 
                 }
                 else
                 {
-                    <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
-                    <li><a asp-page="../CurrentPosition" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
-                    <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["Current Position"]</a></li>
-                    <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["Search Type"]</a></li>
+                    <li><a asp-page="../AllPositions">@Localizer["CCGmember"]</a></li>
+                    <li><a asp-page="../CurrentPosition" asp-all-route-data="routedata">@Localizer["selectcurrent"]</a></li>
+                    <li><a asp-page="../Details" asp-all-route-data="routedata">@Localizer["currentposition"]</a></li>
+                    <li><a asp-page="../SearchType" asp-all-route-data="routedata">@Localizer["searchtype"]</a></li>
                 }
                 @if (Model.PreviousPageDelta == "ObjectivePosition")
                 {
                     <li><a asp-page="@Model.PreviousPageCompare" asp-all-route-data="routedata">@Localizer["Compare"]</a></li>
-                    <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Select"]</a></li>
+                    <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["selectobjective"]</a></li>
                 }
                 else
                 {
@@ -295,9 +296,9 @@
                         <li><a asp-page="@Model.PreviousPageDetails" asp-all-route-data="routedatasimilar">@Localizer["Similar Search"]</a></li>
                         <li><a asp-page="../Similar/SimilarSearch" asp-all-route-data="routedatasimilar">@Localizer["Similar Positions"]</a></li>
                     }
-                    <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selected Position"]</a></li>
+                    <li><a asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Selectedposition"]</a></li>
                 }
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Compare Positions"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["compareresults"]</a></li>
             </ol>
         </div>
     </nav>
@@ -347,6 +348,15 @@
                 <div class="thumbnail img-responsive">
                     <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
                 </div>
+                <details>
+                    <summary id="3">@Localizer["mapSummary"]</summary>
+                    <p>@Localizer["Arctic"]</p>
+                    <p>@Localizer["Western"]</p>
+                    <p>@Localizer["Central"]</p>
+                    <p>@Localizer["Atlantic"]</p>
+                    <p>@Localizer["CCG College"]</p>
+                    <p>@Localizer["National Headquarters"]</p>
+                </details>
                 <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
             </div>
         </section>

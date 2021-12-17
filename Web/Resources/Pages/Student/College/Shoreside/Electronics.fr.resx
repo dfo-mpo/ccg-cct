@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+    <value>Postes en électronique</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -163,6 +163,6 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - Côté rivage - Postes électroniques</value>
+    <value>Postes en électronique</value>
   </data>
 </root>

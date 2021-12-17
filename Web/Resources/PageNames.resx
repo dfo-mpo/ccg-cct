@@ -189,6 +189,9 @@
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Retroaction</value>
+  </data>
   <data name="GeneralArts" xml:space="preserve">
     <value>ArtsGeneraux</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Officer" xml:space="preserve">
     <value>Officier</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Apercu</value>
   </data>
   <data name="PositionList" xml:space="preserve">
     <value>ListeDePositions</value>

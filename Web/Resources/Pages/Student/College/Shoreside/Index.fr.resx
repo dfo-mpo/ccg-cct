@@ -153,33 +153,6 @@
   <data name="link" xml:space="preserve">
     <value>https://www.ccg-gcc.gc.ca/college/index-fra.html</value>
   </data>
-  <data name="PhotoAdmin" xml:space="preserve">
-    <value>Photo du personnel administratif travaillant à son bureau</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo du Collège de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoComputer" xml:space="preserve">
-    <value>Photo de systèmes informatiques</value>
-  </data>
-  <data name="PhotoCook" xml:space="preserve">
-    <value>Photo d'un cuisinier de la Garde côtière canadienne servant le déjeuner</value>
-  </data>
-  <data name="PhotoElectrical" xml:space="preserve">
-    <value>Photo d'une personne travaillant sur un appareil électrique</value>
-  </data>
-  <data name="PhotoElectronics" xml:space="preserve">
-    <value>Photo de deux membres de la Garde côtière canadienne travaillant sur le câblage électronique</value>
-  </data>
-  <data name="PhotoEngineer" xml:space="preserve">
-    <value>Photo des ingénieurs de la Garde côtière canadienne</value>
-  </data>
-  <data name="PhotoGeo" xml:space="preserve">
-    <value>Photo d'une carte montrant les zones arctiques</value>
-  </data>
-  <data name="PhotoTrades" xml:space="preserve">
-    <value>Photo d'un soudeur au travail</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
   </data>
@@ -196,7 +169,7 @@
     <value>Collège technique</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Collège - Postes à côté rivage</value>
+    <value>Postes à côté rivage</value>
   </data>
   <data name="trades" xml:space="preserve">
     <value>Métiers généraux</value>

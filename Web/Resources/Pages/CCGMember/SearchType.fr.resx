@@ -123,6 +123,9 @@
   <data name="Categories" xml:space="preserve">
     <value>Catégories</value>
   </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>Membre de la GCC</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Current Position" xml:space="preserve">
     <value>Poste actuelle</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -171,11 +177,11 @@
   <data name="Question1" xml:space="preserve">
     <value>Comment souhaitez-vous effectuer votre recherche?</value>
   </data>
-  <data name="Search Type" xml:space="preserve">
+  <data name="Search type" xml:space="preserve">
     <value>Type de recherche</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
+    <value>Sélectionner poste actuel</value>
   </data>
   <data name="Similar" xml:space="preserve">
     <value>Trouver des postes similaires à mon poste actuel</value>
@@ -188,5 +194,8 @@
   </data>
   <data name="textinfosimilar" xml:space="preserve">
     <value>(cliquez ici pour plus d'informations sur la fonction de recherche similaire)</value>
+  </data>
+  <data name="You are here:" xml:space="preserve">
+    <value>Vous êtes ici :</value>
   </data>
 </root>

@@ -118,19 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+    <value>Postes administratifs</value>
   </data>
   <data name="altPhotoMap" xml:space="preserve">
     <value>Image des régions de la GCC</value>
   </data>
+  <data name="Arctic" xml:space="preserve">
+    <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
+  </data>
   <data name="Arctique" xml:space="preserve">
     <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
+  </data>
+  <data name="Atlantic" xml:space="preserve">
+    <value>&lt;b&gt;Atlantique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.&lt;/small&gt;</value>
   </data>
   <data name="Atlantique" xml:space="preserve">
     <value>&lt;b&gt;Atlantique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Atlantique comprend le Nouveau-Brunswick, la Nouvelle-Écosse, l'Île-du-Prince-Édouard et Terre-Neuve-et-Labrador, moins la région du Nunatsiavut au Labrador.&lt;/small&gt;</value>
   </data>
   <data name="Candidate" xml:space="preserve">
     <value>Candidat externe</value>
+  </data>
+  <data name="CCG College" xml:space="preserve">
+    <value>&lt;b&gt;Collège de la GCC :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le Collège de la Garde côtière canadienne est une installation de formation maritime nationale qui se trouve sur l'île du Cap-Breton, en Nouvelle-Écosse. Il offre des programmes en français et en anglais à l’appui de sa mission et de son mandat en matière de sûreté et de sécurité maritimes et de protection de l’environnement.&lt;/small&gt;</value>
+  </data>
+  <data name="Central" xml:space="preserve">
+    <value>&lt;b&gt;Centre :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.&lt;/small&gt;</value>
   </data>
   <data name="Centre" xml:space="preserve">
     <value>&lt;b&gt;Centre :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région du Centre comprend l'Ontario et le Québec, moins la région du Nunavik dans le nord du Québec.&lt;/small&gt;</value>
@@ -151,10 +163,10 @@
     <value>La fonction de comparaison</value>
   </data>
   <data name="Computer Sciences" xml:space="preserve">
-    <value>Sciences informatiques</value>
+    <value>Technologies de l'information</value>
   </data>
   <data name="Computer Systems" xml:space="preserve">
-    <value>Ordinateurs</value>
+    <value>Postes en technologies de l'information</value>
   </data>
   <data name="contcompare" xml:space="preserve">
     <value>Continuer à comparer</value>
@@ -162,11 +174,14 @@
   <data name="contsimilar" xml:space="preserve">
     <value>Continuer vers la recherche similaire</value>
   </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Postes de cuisinier</value>
+  </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Deck" xml:space="preserve">
     <value>Pont</value>
@@ -177,17 +192,20 @@
   <data name="DIFFERING COMPETENCIES" xml:space="preserve">
     <value>COMPÉTENCES DIFFÉRENTES</value>
   </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Positions électriques</value>
+  </data>
   <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+    <value>Postes en électronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="General Arts" xml:space="preserve">
     <value>Arts généraux</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Information géographique</value>
+    <value>Positions d'information géographique</value>
   </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
@@ -205,7 +223,7 @@
     <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
+    <value>Postes logistiques</value>
   </data>
   <data name="mapSummary" xml:space="preserve">
     <value>Version texte</value>
@@ -243,6 +261,9 @@
   <data name="modalTitleMap" xml:space="preserve">
     <value>Cartes des régions de la GCC</value>
   </data>
+  <data name="National Headquarters" xml:space="preserve">
+    <value>&lt;b&gt;Siège national :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;Le siège social national de la Garde côtière canadienne (GCC) est situé à Ottawa, en Ontario.&lt;/small&gt;</value>
+  </data>
   <data name="NoPositions" xml:space="preserve">
     <value>Aucun poste similaire n'est actuellement disponible pour ce poste.</value>
   </data>
@@ -264,7 +285,7 @@
   <data name="Position Level" xml:space="preserve">
     <value>Niveau du poste</value>
   </data>
-  <data name="Position List" xml:space="preserve">
+  <data name="Position list" xml:space="preserve">
     <value>Liste de postes</value>
   </data>
   <data name="Previous" xml:space="preserve">
@@ -343,10 +364,13 @@
     <value>Détails de poste similaires</value>
   </data>
   <data name="Trades" xml:space="preserve">
-    <value>Métiers généraux</value>
+    <value>Postes de métiers</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>&lt;b&gt;Ouest :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l'Ouest comprend la Colombie-Britannique, l'Alberta, la Saskatchewan, le Manitoba et le Yukon, moins le versant du Yukon.&lt;/small&gt;</value>
   </data>
   <data name="ÉLÉMENTS DE COMPORTEMENT" xml:space="preserve">
     <value>ÉLÉMENTS DE COMPORTEMENT : &lt;small style="font-weight:normal;"&gt;Les éléments de comportement sont les comportements ou les attitudes nécessaires pour tout emploi au sein de la Garde côtière canadienne. Nous en avons déterminé sept (7) et inclus un niveau de compétence requis pour chaque poste.&lt;/small&gt;</value>

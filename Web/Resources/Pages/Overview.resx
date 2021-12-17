@@ -137,7 +137,7 @@
     <value>Click here to begin</value>
   </data>
   <data name="Intro" xml:space="preserve">
-    <value>Introduction</value>
+    <value>Overview</value>
   </data>
   <data name="IntroText" xml:space="preserve">
     <value>&lt;p&gt;The Canadian Coast Guard’s career competency tool is an online tool that provides information about the requirements for jobs across the coast guard. The tool is for both existing coast guard employees and those interested in working for the Canadian Coast Guard. For coast guard members, the tool empowers you to take charge of your own career development.&lt;/p&gt;
@@ -147,7 +147,7 @@
 &lt;li&gt;a list of necessary competencies along with the level of proficiency required&lt;/li&gt;&lt;/ul&gt;</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Career Competency Tool</value>
+    <value>Career Competency Tool Overview</value>
   </data>
   <data name="You are here:" xml:space="preserve">
     <value />

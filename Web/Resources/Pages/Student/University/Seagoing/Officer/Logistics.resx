@@ -120,6 +120,9 @@
   <data name="level" xml:space="preserve">
     <value>LEVEL</value>
   </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
+  </data>
   <data name="More Details" xml:space="preserve">
     <value>More Details</value>
   </data>
@@ -145,9 +148,9 @@
     <value>Print or download this page as a PDF document</value>
   </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>University - Officer - Logistics Positions</value>
+    <value>Logistics positions</value>
   </data>
 </root>

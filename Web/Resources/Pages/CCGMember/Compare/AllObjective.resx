@@ -117,38 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administrative positions</value>
+  </data>
   <data name="AllPositions" xml:space="preserve">
     <value>Choose a position to compare</value>
   </data>
+  <data name="Business" xml:space="preserve">
+    <value>Business positions</value>
+  </data>
   <data name="Candidate" xml:space="preserve">
-    <value>External Candidate</value>
+    <value>External candidate</value>
+  </data>
+  <data name="CCGmember" xml:space="preserve">
+    <value>CCG Member</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Compare positions</value>
   </data>
   <data name="Compare Function" xml:space="preserve">
     <value>Compare Function</value>
   </data>
-  <data name="Current Position" xml:space="preserve">
-    <value>Current Position</value>
+  <data name="Computer Sciences" xml:space="preserve">
+    <value>Information technology positions</value>
   </data>
-  <data name="Fllter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="Computer Systems" xml:space="preserve">
+    <value>Information technology positions</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cook positions</value>
+  </data>
+  <data name="Current position" xml:space="preserve">
+    <value>Current position details</value>
+  </data>
+  <data name="Current Position Details" xml:space="preserve">
+    <value>Current position details</value>
+  </data>
+  <data name="Deck" xml:space="preserve">
+    <value>Deck positions</value>
+  </data>
+  <data name="Electrical" xml:space="preserve">
+    <value>Electrical positions</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Electronics positions</value>
+  </data>
+  <data name="Engineering" xml:space="preserve">
+    <value>Engineering positions</value>
+  </data>
+  <data name="General Arts" xml:space="preserve">
+    <value>General Arts positions</value>
   </data>
   <data name="geo" xml:space="preserve">
     <value>Geographical Information</value>
   </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics positions</value>
+  </data>
   <data name="modalcompare" xml:space="preserve">
     <value>&lt;p&gt;This feature allows you to compare your currently selected position with any other position in the Canadian Coast Guard. By selecting it, and then another position, the function will yield both position results side by side so that you can view the differences in location, certification, competencies, and ratings. If the position you’re comparing to is one you seek, you can then download the results, save or print, as the basis of a training plan.&lt;/p&gt;</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation positions</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>No matching results found</value>
   </data>
+  <data name="Sciences" xml:space="preserve">
+    <value>Sciences positions</value>
+  </data>
   <data name="Seagoing" xml:space="preserve">
-    <value>Seagoing Positions</value>
+    <value>Seagoing positions</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select current position</value>
   </data>
   <data name="Shoreside" xml:space="preserve">
-    <value>Shore side Positions</value>
+    <value>Shore side positions</value>
+  </data>
+  <data name="Social Sciences" xml:space="preserve">
+    <value>Social Sciences positions</value>
   </data>
   <data name="TechCollege" xml:space="preserve">
     <value>Technical College</value>
+  </data>
+  <data name="Trades" xml:space="preserve">
+    <value>Trades positions</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>University</value>

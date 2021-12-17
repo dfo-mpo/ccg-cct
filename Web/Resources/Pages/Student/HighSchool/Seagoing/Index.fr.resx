@@ -123,14 +123,8 @@
   <data name="deck" xml:space="preserve">
     <value>Équipage</value>
   </data>
-  <data name="deckphoto" xml:space="preserve">
-    <value>Photo de membres d'équipage de la Garde côtière canadienne travaillant sur le pont d'un navire</value>
-  </data>
   <data name="engineer" xml:space="preserve">
     <value>Ingénierie</value>
-  </data>
-  <data name="engineeringphoto" xml:space="preserve">
-    <value>Photo de trois membres de la Garde côtière canadienne debout dans la salle du génie</value>
   </data>
   <data name="High School" xml:space="preserve">
     <value>École secondaire</value>
@@ -143,12 +137,6 @@
   </data>
   <data name="logistics" xml:space="preserve">
     <value>Logistique</value>
-  </data>
-  <data name="logisticsphoto" xml:space="preserve">
-    <value>Photo d'un cuisinier de la Garde côtière canadienne préparant des fruits et légumes</value>
-  </data>
-  <data name="PhotoCollege" xml:space="preserve">
-    <value>Photo du Collège de la Garde côtière canadienne</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>

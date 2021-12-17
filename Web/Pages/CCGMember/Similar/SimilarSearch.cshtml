@@ -39,6 +39,7 @@
         {"previouspagesimilar", Model.PreviousPageSimilar },
         {"previouspagedetails", Model.PreviousPageDetails }
     };
+    ViewData["Title"] = @Localizer["Similar search"];
 }
 @if (Model.PageSubmit == "Error")
 {
@@ -69,11 +70,11 @@ else if (!(Model.PageSubmit == "true"))
         <div class="row">
             <ol class="breadcrumb">
                 <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
-                <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
-                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["Select"]</a></li>
+                <li><a asp-page="../AllPositions">@Localizer["CCGmember"]</a></li>
+                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["selectcurrent"]</a></li>
                 <li><a asp-page="../Details" asp-all-route-data="routedataprevious">@Localizer["Current Position"]</a></li>
                 <li><a asp-page="../SearchType" asp-all-route-data="routedataprevious">@Localizer["Search Type"]</a></li>
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar Search"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar search"]</a></li>
             </ol>
         </div>
     </nav>
@@ -473,12 +474,12 @@ else if (Model.PageEdit)
         <div class="row">
             <ol class="breadcrumb">
                 <li><a asp-page="../../Index">@Localizer["Home"]</a></li>
-                <li><a asp-page="../AllPositions">@Localizer["Categories"]</a></li>
-                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["Select"]</a></li>
+                <li><a asp-page="../AllPositions">@Localizer["CCGmember"]</a></li>
+                <li><a asp-page="../CurrentPosition" asp-all-route-data="routedataprevious">@Localizer["selectcurrent"]</a></li>
                 <li><a asp-page="../Details" asp-all-route-data="routedataprevious">@Localizer["Current Position"]</a></li>
                 <li><a asp-page="../SearchType" asp-all-route-data="routedataprevious">@Localizer["Search Type"]</a></li>
-                <li><a asp-page="SimilarSearch" asp-all-route-data="routedataprevious">@Localizer["Similar Search"]</a></li>
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Similar Positions"]</a></li>
+                <li><a asp-page="SimilarSearch" asp-all-route-data="routedataprevious">@Localizer["Similar search"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["similarpositions"]</a></li>
             </ol>
         </div>
     </nav>

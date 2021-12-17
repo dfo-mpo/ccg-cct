@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Administrative" xml:space="preserve">
-    <value>Administratif</value>
+    <value>Postes administratifs</value>
   </data>
   <data name="Business" xml:space="preserve">
     <value>Affaires</value>
@@ -130,37 +130,37 @@
     <value>Catégories</value>
   </data>
   <data name="Computer Sciences" xml:space="preserve">
-    <value>Sciences informatiques</value>
+    <value>Technologies de l'information</value>
   </data>
   <data name="Computer Systems" xml:space="preserve">
-    <value>Ordinateurs</value>
+    <value>Postes en technologies de l'information</value>
   </data>
   <data name="Cook" xml:space="preserve">
-    <value>Cuisinier</value>
+    <value>Postes de cuisinier</value>
   </data>
   <data name="Crew" xml:space="preserve">
     <value>Équipage</value>
   </data>
   <data name="Current Position" xml:space="preserve">
-    <value>Poste actuelle</value>
+    <value>Détails du poste actuel</value>
   </data>
   <data name="Deck" xml:space="preserve">
-    <value>Pont</value>
+    <value>Positions de pont</value>
   </data>
   <data name="Electrical" xml:space="preserve">
-    <value>Électrique</value>
+    <value>Positions électriques</value>
   </data>
   <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+    <value>Postes en électronique</value>
   </data>
   <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="General Arts" xml:space="preserve">
     <value>Arts généraux</value>
   </data>
   <data name="geo" xml:space="preserve">
-    <value>Information géographique</value>
+    <value>Positions d'information géographique</value>
   </data>
   <data name="HighSchool" xml:space="preserve">
     <value>École secondaire</value>
@@ -172,10 +172,13 @@
     <value>NIVEAU</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistique</value>
+    <value>Postes logistiques</value>
   </data>
   <data name="More Details" xml:space="preserve">
     <value>Plus de détails</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Postes de navigation</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
@@ -244,7 +247,7 @@
     <value>Collège technique</value>
   </data>
   <data name="Trades" xml:space="preserve">
-    <value>Métiers généraux</value>
+    <value>Postes de métiers</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>

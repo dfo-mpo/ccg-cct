@@ -2,6 +2,7 @@
 @model Web.Pages.CCGMember.CurrentPositionModel
 @inject IViewLocalizer Localizer
 @{ 
+    ViewData["Title"] = @Localizer["Select"];
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
  }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,7 +16,7 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a asp-page="../Index">@Localizer["Home"]</a></li>
-                <li><a asp-page="AllPositions">@Localizer["Categories"]</a></li>
+                <li><a asp-page="AllPositions">@Localizer["CCGmember"]</a></li>
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Select"]</a></li>
             </ol>
         </div>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Engineering" xml:space="preserve">
-    <value>Ingénierie</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
@@ -157,7 +157,7 @@
     <value>Étudiant</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Université - Officier - Postes d'ingénieur</value>
+    <value>Postes d'ingénieur</value>
   </data>
   <data name="University" xml:space="preserve">
     <value>Université</value>
