@@ -4,41 +4,51 @@
     ViewData["Title"] = Localizer["title"];
 }
 
-    <section role="contentinfo">
-        <nav role="navigation" id="wb-bc" property="breadcrumb">
-            <h2>
-                @Localizer["You are here:"]
-            </h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
-                    <li><a asp-page="../../Index">@Localizer["Candidate"]</a></li>
-                    <li><a asp-page="../Index">@Localizer["Seagoing"]</a></li>
-                    <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Officer"]</a></li>
-                </ol>
+<section role="contentinfo">
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+        <h2>
+            @Localizer["You are here:"]
+        </h2>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a asp-page="../../../Index">@Localizer["Home"]</a></li>
+                <li><a asp-page="../../Index">@Localizer["Candidate"]</a></li>
+                <li><a asp-page="../Index">@Localizer["Seagoing"]</a></li>
+                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["Officer"]</a></li>
+            </ol>
+        </div>
+    </nav>
+    <nav role="navigation">
+        <h2 class="wb-inv">Document navigation</h2>
+        <ul class="pager">
+            <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="cct-External-Officer-img cct-External-Officer-hide-mobile cct-External-Officer-hide-tablet">
+        <div class="container">
+            <div class="row mrgn-tp-lg mrgn-bttm-lg">
+                <div class="col-md-7">
+                    <h2>@Localizer["Q1"]</h2>
+                </div>
+                <div class="clearfix"></div>
             </div>
-        </nav>
-        <nav role="navigation">
-            <h2 class="wb-inv">Document navigation</h2>
-            <ul class="pager">
-                <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
-            </ul>
-        </nav>
-
-        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
-
+        </div>
+    </div>
+    <div class="row mrgn-tp-sm">
         <div class="col-sm-12 well">
             <p>@Localizer["Text"]</p>
             <p>@Localizer["Details"] <a style="text-decoration:none" rel="external" alt="@Localizer["linkalt"]" target="_blank" href="@Localizer["Link"]">@Localizer["Link"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
         </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="list">
-                    <li><a style="text-decoration:none" asp-page="Navigation/PositionList">@Localizer["Nav"]</a></li>
-                    <li><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Eng"]</a></li>
-                </ul>
-            </div>
-
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list">
+                <li><a style="text-decoration:none" asp-page="Navigation/PositionList">@Localizer["Nav"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Engineering/PositionList">@Localizer["Eng"]</a></li>
+            </ul>
         </div>
-    </section>
+
+    </div>
+</section>

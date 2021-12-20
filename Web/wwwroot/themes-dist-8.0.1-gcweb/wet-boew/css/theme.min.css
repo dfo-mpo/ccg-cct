@@ -16727,7 +16727,7 @@ h1 ~ .provisional.gc-subway {
     }
 
     .pager {
-        margin-bottom: 50px
+        margin-bottom: 10px
     }
 
     .pagedetails .pull-right {
@@ -17526,6 +17526,33 @@ header .gcweb-subtheme--menu .mainmenu-item {
         margin-top: 15px;
         padding-bottom: 65px;
     }
+    .cct-External-OffCrew-img {
+        background-image: url(/img/external-officer-crew.jpg );
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-External-Officer-img {
+        background-image: url(/img/external-Officer-eng.jpg );
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-External-Crew-img {
+        background-image: url(/img/external-crew-log.jpg );
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
     .cct-HS-img {
         background-image: url(/img/student-HS.jpg);
         background-repeat: no-repeat;
@@ -17533,7 +17560,25 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-position: right;
         padding-top: 25px;
         margin-top: 15px;
-        padding-bottom: 65px;
+        padding-bottom: 35px;
+    }
+    .cct-HS-shore-img {
+        background-image: url(/img/student-HS-shoreside.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-HS-sea-img {
+        background-image: url(/img/student-HS-seagoing.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
     }
     .cct-TC-img {
         background-image: url(/img/student-TC.jpg);
@@ -17542,10 +17587,10 @@ header .gcweb-subtheme--menu .mainmenu-item {
         background-position: right;
         padding-top: 25px;
         margin-top: 15px;
-        padding-bottom: 65px;
+        padding-bottom: 35px;
     }
-    .cct-U-img {
-        background-image: url(/img/student-U.jpg);
+    .cct-student-img {
+        background-image: url(/img/student-banner.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: right;
@@ -17553,8 +17598,35 @@ header .gcweb-subtheme--menu .mainmenu-item {
         margin-top: 15px;
         padding-bottom: 65px;
     }
-    .cct-student-img {
-        background-image: url(/img/student-banner.jpg);
+    .cct-collegeshore-img {
+        background-image: url(/img/student-TC-shoreside.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-collegesea-img {
+        background-image: url(/img/student-TC-seagoing.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-collegecrew-img {
+        background-image: url(/img/student-TC-crew.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 65px;
+    }
+    .cct-collegeofficer-img {
+        background-image: url(/img/student-TC-officer.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: right;
@@ -17571,6 +17643,51 @@ header .gcweb-subtheme--menu .mainmenu-item {
         margin-top: 15px;
         padding-bottom: 25px;
     }
+    .cct-U-img {
+        background-image: url(/img/student-U.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-U-shoreside-img {
+        background-image: url(/img/student-U-shore.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-U-seagoing-img {
+        background-image: url(/img/student-U-sea.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-U-Officer-img {
+        background-image: url(/img/student-U-officer-sea.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
+    .cct-U-Crew-img {
+        background-image: url(/img/student-U-crew-sea.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        padding-top: 25px;
+        margin-top: 15px;
+        padding-bottom: 35px;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -17583,19 +17700,59 @@ header .gcweb-subtheme--menu .mainmenu-item {
     .cct-external-hide-mobile {
         background-image: url(none) !important;
     }
+    .cct-External-OffCrew-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-External-Officer-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-External-Crew-hide-mobile {
+        background-image: url(none) !important;
+    }
     .cct-HS-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-HS-shore-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-HS-sea-hide-mobile {
         background-image: url(none) !important;
     }
     .cct-TC-hide-mobile {
         background-image: url(none) !important;
     }
-    .cct-U-hide-mobile {
-        background-image: url(none) !important;
-    }
+    
     .cct-student-hide-mobile {
         background-image: url(none) !important;
     }
+    .cct-collegeshore-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-collegesea-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-collegecrew-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-collegeofficer-hide-mobile {
+        background-image: url(none) !important;
+    }
     .cct-shoreside-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-shoreside-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-seagoing-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-Officer-hide-mobile {
+        background-image: url(none) !important;
+    }
+    .cct-U-Crew-hide-mobile {
         background-image: url(none) !important;
     }
 }
@@ -17611,19 +17768,59 @@ header .gcweb-subtheme--menu .mainmenu-item {
     .cct-external-hide-tablet {
         background-image: url(none) !important;
     }
+    .cct-External-OffCrew-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-External-Officer-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-External-Crew-hide-tablet {
+        background-image: url(none) !important;
+    }
     .cct-HS-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-HS-shore-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-HS-sea-hide-tablet {
         background-image: url(none) !important;
     }
     .cct-TC-hide-tablet {
         background-image: url(none) !important;
     }
-    .cct-U-hide-tablet {
-        background-image: url(none) !important;
-    }
+    
     .cct-student-hide-tablet {
         background-image: url(none) !important;
     }
+    .cct-collegeshore-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-collegesea-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-collegecrew-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-collegeofficer-hide-tablet {
+        background-image: url(none) !important;
+    }
     .cct-shoreside-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-shoreside-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-seagoing-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-Officer-hide-tablet {
+        background-image: url(none) !important;
+    }
+    .cct-U-Crew-hide-tablet {
         background-image: url(none) !important;
     }
 } 
