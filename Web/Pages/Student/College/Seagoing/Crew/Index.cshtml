@@ -25,18 +25,26 @@
             <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-
-        <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="list">
-                    <li><a style="text-decoration:none" asp-page="Deck">@Localizer["Deck"]</a></li>
-                    <li><a style="text-decoration:none" asp-page="Engineering">@Localizer["Engineering"]</a></li>
-                    <li><a style="text-decoration:none" asp-page="Logistics">@Localizer["Logistics"]</a></li>
-                </ul>
+    <div class="cct-collegecrew-img cct-collegecrew-hide-mobile cct-collegecrew-hide-tablet">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2 class="mrgn-bttm-xl">@Localizer["Q1"]</h2>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
+    </div>
+
+    <div class="row mrgn-tp-md">
+        <div class="col-sm-12">
+            <ul class="list">
+                <li><a style="text-decoration:none" asp-page="Deck">@Localizer["Deck"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Engineering">@Localizer["Engineering"]</a></li>
+                <li><a style="text-decoration:none" asp-page="Logistics">@Localizer["Logistics"]</a></li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 

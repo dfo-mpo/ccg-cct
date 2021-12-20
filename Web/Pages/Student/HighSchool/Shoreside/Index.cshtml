@@ -26,16 +26,24 @@
             <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
         </ul>
     </nav>
-
-    <h2 class="mrgn-bttm-lg">@Localizer["Q1"]</h2>
-
+    <div class="cct-HS-shore-img cct-HS-shore-hide-mobile cct-HS-shore-hide-tablet">
+        <div class="container">
+            <div class="row mrgn-tp-lg mrgn-bttm-lg">
+                <div class="col-md-7">
+                    <h2>@Localizer["Q1"]</h2>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col-sm-12">
             <ul class="list">
                 <li><a href="@Localizer["link"]" target="_blank">@Localizer["ccgcollege"] <span class="glyphicon glyphicon-new-window"></span></a></li>
                 <li><a asp-page="Administrative">@Localizer["admin"]</a></li>
                 <li><a asp-page="Computer">@Localizer["computer"]</a></li>
-                <li><a asp-page="Trades" >@Localizer["trades"]</a></li>
+                <li><a asp-page="Trades">@Localizer["trades"]</a></li>
             </ul>
         </div>
     </div>
