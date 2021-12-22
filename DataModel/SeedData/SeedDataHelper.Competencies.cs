@@ -227,7 +227,7 @@ namespace DataModel.SeedData
             },
             new Competency
             {
-                Id = 37, NameEng = "Canadian Coast Guard Cultural Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne",
+                Id = 37, NameEng = "Canadian Coast Guard Culture Awareness", NameFre = "Sensibilisation à la culture de la Garde côtière canadienne",
                 DescEng = "The extent that members believe in the mission, mandate, and values of the Coast Guard and project that commitment through their actions and attitudes towards the organization and its stakeholders. Employee statements and deportment reflect a natural enthusiasm for the Coast Guard, what it does, and how it is viewed by the public.",
                 DescFre = "La mesure dans laquelle les membres croient en la mission, le mandat et les valeurs de la Garde côtière et projettent cet engagement par leurs actions et leurs attitudes envers l'organisation et ses intervenants. Les déclarations et la conduite des employés reflètent un enthousiasme naturel pour la Garde côtière, ce qu'elle fait et comment elle est perçue par le public.",
                 Active = 1

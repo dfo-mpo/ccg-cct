@@ -166,6 +166,6 @@
     <value>Student</value>
   </data>
   <data name="studentsearch" xml:space="preserve">
-    <value>If you are an student, you can begin your search here.</value>
+    <value>If you are a student, you can begin your search here.</value>
   </data>
 </root>
