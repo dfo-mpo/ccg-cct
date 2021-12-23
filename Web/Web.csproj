@@ -41,19 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\AS.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EC.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ED.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EG.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\ENG.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\EU.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GL.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\GS.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\LI.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\img\CCGMember\LS.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
@@ -90,46 +77,6 @@
 
  <ItemGroup>
     <Content Update="wwwroot\themes-dist-8.0.1-gcweb\GCWeb\assets\favicon.ico">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\NU.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\OE.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\Officer-Eng.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\Officer-Nav.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\Oiler.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\PG.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\PM.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\Positions-full.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\RO.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\img\CCGMember\SC.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
