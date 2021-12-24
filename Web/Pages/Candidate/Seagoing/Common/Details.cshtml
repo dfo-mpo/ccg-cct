@@ -496,6 +496,9 @@ else if(!(Model.PageSubmit == "true"))
                     </tr>
                 }
                 <tr>
+                    <td colspan="2"><b>@Localizer["RoP"]</b> @Localizer["RoPtext"]</td>
+                </tr>
+                <tr>
                     <th style="background-color:#f2f2f2" colspan="2">
                         @Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a>
                     </th>
@@ -515,26 +518,26 @@ else if(!(Model.PageSubmit == "true"))
                         <td colspan="2">@Localizer["noregions"]</td>
                     </tr>
                 }
-            <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                <header class="modal-header">
-                    <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
-                </header>
-                <div class="modal-body ">
-                    <div class="thumbnail img-responsive">
-                        <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                    <header class="modal-header">
+                        <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                    </header>
+                    <div class="modal-body ">
+                        <div class="thumbnail img-responsive">
+                            <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                        </div>
+                        <details>
+                            <summary id="3">@Localizer["mapSummary"]</summary>
+                            <p>@Localizer["Arctic"]</p>
+                            <p>@Localizer["Western"]</p>
+                            <p>@Localizer["Central"]</p>
+                            <p>@Localizer["Atlantic"]</p>
+                            <p>@Localizer["CCG College"]</p>
+                            <p>@Localizer["National Headquarters"]</p>
+                        </details>
+                        <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
                     </div>
-                    <details>
-                        <summary id="3">@Localizer["mapSummary"]</summary>
-                        <p>@Localizer["Arctic"]</p>
-                        <p>@Localizer["Western"]</p>
-                        <p>@Localizer["Central"]</p>
-                        <p>@Localizer["Atlantic"]</p>
-                        <p>@Localizer["CCG College"]</p>
-                        <p>@Localizer["National Headquarters"]</p>
-                    </details>
-                    <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
-                </div>
-            </section>
+                </section>
                 <tr>
                     <th colspan="2" style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
                 </tr>

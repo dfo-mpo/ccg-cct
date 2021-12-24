@@ -333,282 +333,286 @@
                     <td class="bg-info" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
                 </tr>
             }
+            <tr>
+                <td colspan="2"><b>@Localizer["RoP"]</b> @Localizer["RoPtext"]</td>
+            </tr>
         </tbody>
     </table>
-    @if (Model.MatchingJobLocationRegions.Any())
-    {
-        <div class="row col-lg-12">
-            <h3>@Localizer["MATCHING REGIONS"]</h3>
-        </div>
-        <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
-            <header class="modal-header">
-                <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
-            </header>
-            <div class="modal-body ">
-                <div class="thumbnail img-responsive">
-                    <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
-                </div>
-                <details>
-                    <summary id="3">@Localizer["mapSummary"]</summary>
-                    <p>@Localizer["Arctic"]</p>
-                    <p>@Localizer["Western"]</p>
-                    <p>@Localizer["Central"]</p>
-                    <p>@Localizer["Atlantic"]</p>
-                    <p>@Localizer["CCG College"]</p>
-                    <p>@Localizer["National Headquarters"]</p>
-                </details>
-                <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+   
+        @if (Model.MatchingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["MATCHING REGIONS"]</h3>
             </div>
-        </section>
-        <div class="col-md-12">
-            <table class="table table-responsive table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var c in Model.MatchingJobLocationRegions)
-                    {
+            <section id="map" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                <header class="modal-header">
+                    <h2 class="modal-title">@Localizer["modalTitleMap"]</h2>
+                </header>
+                <div class="modal-body ">
+                    <div class="thumbnail img-responsive">
+                        <img src="~/img/region-ccg-gcc-canada.jpg" alt="@Localizer["altPhotoMap"]" class="img-responsive center" />
+                    </div>
+                    <details>
+                        <summary id="3">@Localizer["mapSummary"]</summary>
+                        <p>@Localizer["Arctic"]</p>
+                        <p>@Localizer["Western"]</p>
+                        <p>@Localizer["Central"]</p>
+                        <p>@Localizer["Atlantic"]</p>
+                        <p>@Localizer["CCG College"]</p>
+                        <p>@Localizer["National Headquarters"]</p>
+                    </details>
+                    <button class="btn btn-default pull-left mrgn-tp-md mrgn-lft-md overlay-close" type="button">@Localizer["Close"]</button>
+                </div>
+            </section>
+            <div class="col-md-12">
+                <table class="table table-responsive table-bordered">
+                    <thead>
                         <tr>
-                            <td>@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
+                            <th style="background-color:#f2f2f2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    }
-    @if (Model.DifferingJobLocationRegions.Any())
-    {
-        <div class="row col-lg-12">
-            <h3>@Localizer["DIFFERING REGIONS"]</h3>
-        </div>
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
-                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var d in Model.DifferingJobLocationRegions)
-                {
-                    var key = "c" + d.Id.ToString();
-                    <tr>
-                        <td>@Localizer[(isEnglish ? d.NameEng : d.NameFre).ToString()]</td>
-                        <td class="text-center bg-success">@Localizer[d.CurrentPositionHas]</td>
-                        <td class="text-center bg-info">@Localizer[d.ObjectivePositionHas]</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    @if (Model.MatchingCertificates.Any(e => e.Active != 0))
-    {
-        <div class="row col-lg-12">
-            <h3>@Localizer["MATCHING CERTIFICATIONS"]</h3>
-        </div>
-        <div class="col-md-12">
-            <table class="table table-responsive table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var c in Model.MatchingCertificates)
-                    {
-                        if (c.Active != 0)
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.MatchingJobLocationRegions)
                         {
                             <tr>
-                                <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                                <td>@Localizer[(isEnglish ? c.NameEng : c.NameFre).ToString()]</td>
                             </tr>
                         }
-                    }
-                </tbody>
-            </table>
-        </div>
-    }
-    @if (Model.DifferingCertificates.Any(e => e.Active != 0))
-    {
-        <div class="row col-lg-12">
-            <h3>@Localizer["DIFFERING CERTIFICATIONS"]</h3>
-        </div>
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
-                    <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                    <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var d in Model.DifferingCertificates)
-                {
-                    if (d.Active != 0)
+                    </tbody>
+                </table>
+            </div>
+        }
+        @if (Model.DifferingJobLocationRegions.Any())
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["DIFFERING REGIONS"]</h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.DifferingJobLocationRegions)
                     {
                         var key = "c" + d.Id.ToString();
                         <tr>
-                            <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
+                            <td>@Localizer[(isEnglish ? d.NameEng : d.NameFre).ToString()]</td>
                             <td class="text-center bg-success">@Localizer[d.CurrentPositionHas]</td>
                             <td class="text-center bg-info">@Localizer[d.ObjectivePositionHas]</td>
                         </tr>
                     }
+                </tbody>
+            </table>
+        }
+        @if (Model.MatchingCertificates.Any(e => e.Active != 0))
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["MATCHING CERTIFICATIONS"]</h3>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2">@Localizer["CERTIFICATIONS"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.MatchingCertificates)
+                        {
+                            if (c.Active != 0)
+                            {
+                                <tr>
+                                    <td>@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        @if (Model.DifferingCertificates.Any(e => e.Active != 0))
+        {
+            <div class="row col-lg-12">
+                <h3>@Localizer["DIFFERING CERTIFICATIONS"]</h3>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f2f2f2" width="70%">@Localizer["CERTIFICATIONS"]</th>
+                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.DifferingCertificates)
+                    {
+                        if (d.Active != 0)
+                        {
+                            var key = "c" + d.Id.ToString();
+                            <tr>
+                                <td>@(isEnglish ? d.NameEng : d.NameFre) @(isEnglish ? d.DescEng : d.DescFre)</td>
+                                <td class="text-center bg-success">@Localizer[d.CurrentPositionHas]</td>
+                                <td class="text-center bg-info">@Localizer[d.ObjectivePositionHas]</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+        @foreach (var competencies in Model.MatchingCompetencies)
+        {
+            @if (competencies.Any(e => e.Active != 0))
+            {
+                @if (!matchingcompetencies)
+                {
+                    <div class="row col-lg-12">
+                        <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
+                    </div>
+                    matchingcompetencies = true;
                 }
-            </tbody>
-        </table>
-    }
-    @foreach (var competencies in Model.MatchingCompetencies)
-    {
-        @if (competencies.Any(e => e.Active != 0))
-        {
-            @if (!matchingcompetencies)
-            {
-                <div class="row col-lg-12">
-                    <h3>@Localizer["MATCHING COMPETENCIES"]</h3>
-                </div>
-                matchingcompetencies = true;
-            }
 
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
-                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var d in competencies)
-                    {
-                        if (d.Active != 0)
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
+                            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var d in competencies)
                         {
-                            var key1 = "a" + d.CompetencyId.ToString();
-                            var key2 = "b" + d.CompetencyId.ToString();
-                            var currentrating = d.RatingValueCur;
-                            var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
-                            if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
+                            if (d.Active != 0)
                             {
-                                currentrating = Localizer["Added"].Value;
+                                var key1 = "a" + d.CompetencyId.ToString();
+                                var key2 = "b" + d.CompetencyId.ToString();
+                                var currentrating = d.RatingValueCur;
+                                var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
+                                if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
+                                {
+                                    currentrating = Localizer["Added"].Value;
+                                }
+                                <tr>
+                                    <td>
+                                        <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
+                                        <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
+                                    </td>
+                                    <td class="text-center bg-success">
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
+                                        <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[@d.RatingValueCur]</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? d.RatingNameCurEng : d.RatingNameCurFre) @(isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre)</p>
+                                                <p>@(isEnglish ? d.CompetencyLevelReqDescCurEng : d.CompetencyLevelReqDescCurFre)</p>
+                                            </div>
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@Localizer["Selected Position Level"]: @Localizer[d.RatingValueObj]</h2>
+                                            </header>
+                                            <div class="modal-body">
+                                                <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
+                                                <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
+                                    </td>
+                                    <td class="text-center bg-info">
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
+                                    </td>
+                                </tr>
                             }
-                            <tr>
-                                <td>
-                                    <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
-                                    <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
-                                        </header>
-                                        <div class="modal-body ">
-                                            <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
-                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
-                                        </div>
-                                    </section>
-                                </td>
-                                <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
-                                    <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[@d.RatingValueCur]</h2>
-                                        </header>
-                                        <div class="modal-body ">
-                                            <p>@(isEnglish ? d.RatingNameCurEng : d.RatingNameCurFre) @(isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre)</p>
-                                            <p>@(isEnglish ? d.CompetencyLevelReqDescCurEng : d.CompetencyLevelReqDescCurFre)</p>
-                                        </div>
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@Localizer["Selected Position Level"]: @Localizer[d.RatingValueObj]</h2>
-                                        </header>
-                                        <div class="modal-body">
-                                            <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
-                                            <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
-                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
-                                        </div>
-                                    </section>
-                                </td>
-                                <td class="text-center bg-info">
-                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
-                                </td>
-                            </tr>
                         }
-                    }
-                </tbody>
-            </table>
-        }
-    }
-    @foreach (var competencies in Model.DifferingCompetencies)
-    {
-        @if (competencies.Any(e => e.Active != 0))
-        {
-            @if (!differingcompetencies)
-            {
-                <div class="row col-lg-12">
-                    <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
-                </div>
-                differingcompetencies = true;
+                    </tbody>
+                </table>
             }
-
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
-                        <th class="text-center bg-success">@Localizer["Current Position"]</th>
-                        <th class="text-center bg-info">@Localizer["Selected Position"]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var d in competencies)
-                    {
-                        if (d.Active != 0)
-                        {
-                            var key1 = "a" + d.CompetencyId.ToString();
-                            var key2 = "b" + d.CompetencyId.ToString();
-                            var currentrating = d.RatingValueCur;
-                            var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
-                            if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
-                            {
-                                currentrating = Localizer["Added"].Value;
-                            }
-                            <tr>
-                                <td>
-                                    <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
-                                    <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
-                                        </header>
-                                        <div class="modal-body ">
-                                            <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
-                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
-                                        </div>
-                                    </section>
-                                </td>
-                                <td class="text-center bg-success">
-                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
-                                    <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[d.RatingValueCur]</h2>
-                                        </header>
-                                        <div class="modal-body ">
-                                            <p>@(isEnglish ? d.RatingNameCurEng : d.RatingNameCurFre) @(isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre)</p>
-                                            <p>@(isEnglish ? d.CompetencyLevelReqDescCurEng : d.CompetencyLevelReqDescCurFre)</p>
-                                        </div>
-                                        <header class="modal-header">
-                                            <h2 class="modal-title">@Localizer["Selected Position Level"]: @Localizer[d.RatingValueObj]</h2>
-                                        </header>
-                                        <div class="modal-body">
-                                            <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
-                                            <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
-                                            <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
-                                        </div>
-                                    </section>
-                                </td>
-                                <td class="text-center bg-info">
-                                    <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
         }
-    }
+        @foreach (var competencies in Model.DifferingCompetencies)
+        {
+            @if (competencies.Any(e => e.Active != 0))
+            {
+                @if (!differingcompetencies)
+                {
+                    <div class="row col-lg-12">
+                        <h3>@Localizer["DIFFERING COMPETENCIES"]</h3>
+                    </div>
+                    differingcompetencies = true;
+                }
+
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="background-color:#f2f2f2" width="70%">@Localizer[(isEnglish ? competencies.FirstOrDefault()?.TypeNameEng.ToUpper() : competencies.FirstOrDefault()?.TypeNameFre.ToUpper()).ToString()]</th>
+                            <th class="text-center bg-success">@Localizer["Current Position"]</th>
+                            <th class="text-center bg-info">@Localizer["Selected Position"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var d in competencies)
+                        {
+                            if (d.Active != 0)
+                            {
+                                var key1 = "a" + d.CompetencyId.ToString();
+                                var key2 = "b" + d.CompetencyId.ToString();
+                                var currentrating = d.RatingValueCur;
+                                var currentratingdesc = isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre;
+                                if (d.RatingValueCur == "N/A" && Model.AddedCompetencyId.Contains(d.CompetencyId))
+                                {
+                                    currentrating = Localizer["Added"].Value;
+                                }
+                                <tr>
+                                    <td>
+                                        <a href="#@key1" aria-controls="mid-screen" class="overlay-lnk" role="button">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</a>
+                                        <section id="@key1" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@(isEnglish ? d.CompetencyNameEng : d.CompetencyNameFre)</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? d.CompetencyDescEng : d.CompetencyDescFre)</p>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
+                                    </td>
+                                    <td class="text-center bg-success">
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
+                                        <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[d.RatingValueCur]</h2>
+                                            </header>
+                                            <div class="modal-body ">
+                                                <p>@(isEnglish ? d.RatingNameCurEng : d.RatingNameCurFre) @(isEnglish ? d.RatingDescCurEng : d.RatingDescCurFre)</p>
+                                                <p>@(isEnglish ? d.CompetencyLevelReqDescCurEng : d.CompetencyLevelReqDescCurFre)</p>
+                                            </div>
+                                            <header class="modal-header">
+                                                <h2 class="modal-title">@Localizer["Selected Position Level"]: @Localizer[d.RatingValueObj]</h2>
+                                            </header>
+                                            <div class="modal-body">
+                                                <p>@(isEnglish ? d.RatingNameObjEng : d.RatingNameObjFre) @(isEnglish ? d.RatingDescObjEng : d.RatingDescObjFre)</p>
+                                                <p>@(isEnglish ? d.CompetencyLevelReqDescObjEng : d.CompetencyLevelReqDescObjFre)</p>
+                                                <button class="btn btn-primary pull-left overlay-close" type="button">@Localizer["Close"]</button>
+                                            </div>
+                                        </section>
+                                    </td>
+                                    <td class="text-center bg-info">
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            }
+        }
 </section>

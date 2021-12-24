@@ -71,6 +71,7 @@
             </div>
         }
         <div class="clearfix"></div>
+        
         <h2 class="mrgn-tp-0"><b>@Localizer["Current Position Details"]</b></h2>
         <h4>@Localizer["USERACTION"]</h4>
         <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -80,6 +81,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
                 {
                     <tr>
@@ -89,6 +91,9 @@
                         <td colspan="2">@(isEnglish ? Model.Position.JobDescriptionEng : Model.Position.JobDescriptionFre)</td>
                     </tr>
                 }
+                <tr>
+                    <td colspan="2"><b>@Localizer["RoP"]</b> @Localizer["RoPtext"]</td>
+                </tr>
                 <tr>
                     <th style="background-color:#f2f2f2" colspan="2">@Localizer["REGIONS"] <a title="@Localizer["linkmap"]" href="#map" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer["linkmap"]</a></th>
                 </tr>
