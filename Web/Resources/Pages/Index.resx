@@ -156,8 +156,11 @@
   <data name="RoP" xml:space="preserve">
     <value>Rates of Pay</value>
   </data>
+  <data name="RoPlink" xml:space="preserve">
+    <value>https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-eng.asp</value>
+  </data>
   <data name="RoPtext" xml:space="preserve">
-    <value>To review rates of pay for all classifications listed in the &lt;abbr title="Career Competency Tool"&gt;CCT&lt;/abbr&gt;, visit the website of the  &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-eng.asp" target="_blank"&gt;Treasury Board of Canada Secretariat&lt;/a&gt;&amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;.</value>
+    <value>Rates of pay for all classifications listed in the Career Competency Tool. &amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;</value>
   </data>
   <data name="services" xml:space="preserve">
     <value>Services and information</value>
