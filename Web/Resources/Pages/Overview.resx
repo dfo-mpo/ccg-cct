@@ -126,12 +126,14 @@
   <data name="Competencies" xml:space="preserve">
     <value>Competencies</value>
   </data>
+  <data name="CompLevel" xml:space="preserve">
+    <value>Competency levels</value>
+  </data>
   <data name="CompText" xml:space="preserve">
-    <value>&lt;p&gt;We compiled this information from the competencies included in all job posters for the past few years. Each competency has a minimum level of proficiency needed for the position. The competencies may evolve as job requirements change within the coast guard.&lt;/p&gt;
-&lt;p&gt;We divided job competencies into three sections:&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;Knowledge elements are practical or theoretical understanding of a subject. It is the information you need (from past experience or education) to succeed in the position.&lt;/li&gt;
-&lt;li&gt;Technical elements describe abilities to apply knowledge to efficiently perform the job.&lt;/li&gt;
-&lt;li&gt;Behaviour elements are the behaviours or attitudes needed for any job with the Canadian Coast Guard. We identified 7 and included a level of competency required for each job.&lt;/li&gt;&lt;/ul&gt;</value>
+    <value>&lt;p&gt;Each position includes a breakdown of the competencies required. This information is compiled from the competencies included in job posters for that position, over the past few years. Each competency has a minimum level of proficiency needed for the position. Job competencies are divided into three sections:&lt;/p&gt;
+&lt;ol&gt;&lt;li&gt;&lt;b&gt;Knowledge elements&lt;/b&gt; are practical or theoretical understanding of a subject. It is the information you need (from past experience or education) to succeed in the position.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Technical elements&lt;/b&gt; describe abilities to apply knowledge to efficiently perform the job.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Behaviour elements&lt;/b&gt; are the behaviours or attitudes needed for any job with the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;. Seven behaviour elements and a level of competency required for each job are included in the tool.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;The competencies may evolve as job requirements change within the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;.&lt;/p&gt;</value>
   </data>
   <data name="continue" xml:space="preserve">
     <value>Click here to begin</value>
@@ -140,16 +142,19 @@
     <value>Overview</value>
   </data>
   <data name="IntroText" xml:space="preserve">
-    <value>&lt;p&gt;The Canadian Coast Guard’s career competency tool is an online tool that provides information about the requirements for jobs across the coast guard. The tool is for both existing coast guard employees and those interested in working for the Canadian Coast Guard. For coast guard members, the tool empowers you to take charge of your own career development.&lt;/p&gt;
-&lt;p&gt;Once you identify a position, the tool also allows you to find similar positions or compare the job requirements to other positions within the coast guard. For each position, the tool provides:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;a brief description&lt;/li&gt;
-&lt;li&gt;the regions with the position&lt;/li&gt;
-&lt;li&gt;certifications required for the position&lt;/li&gt;
+    <value>&lt;p&gt;The Canadian Coast Guard (CCG)’s Career Competency Tool (CCT) is an online tool that provides information about the requirements for jobs across the coast guard. The tool is for both existing &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; employees and those interested in working for the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;. For &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; members, the tool empowers you to take charge of your own career development.&lt;/p&gt;
+&lt;p&gt;Once you identify a position, the tool also allows you to find similar positions or compare the job requirements to other positions within the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;. For each position, the tool provides:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;a brief description&lt;/li&gt;
+&lt;li&gt;a list of regions that offer the position&lt;/li&gt;
+&lt;li&gt;certifications required&lt;/li&gt;
 &lt;li&gt;a list of necessary competencies along with the level of proficiency required&lt;/li&gt;&lt;/ul&gt;</value>
+  </data>
+  <data name="levels" xml:space="preserve">
+    <value>&lt;p&gt;Each competency is assigned a level. These levels are based on the knowledge and skills required for each position.&lt;/p&gt;&lt;p&gt;These levels range from 1 to 5:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;1 = &lt;b&gt;fundamental awareness&lt;/b&gt; (common knowledge or an understanding of basic techniques and concepts)&lt;/li&gt;&lt;li&gt;2 = &lt;b&gt;novice&lt;/b&gt; (a level of experience has been obtained; may need help when performing a task/skill)&lt;/li&gt;&lt;li&gt;3 = &lt;b&gt;intermediate&lt;/b&gt; (able to successfully complete the necessary tasks in this competency. Some assistance may still be needed but can usually perform the task independently)&lt;/li&gt;&lt;li&gt;4 = &lt;b&gt;advanced&lt;/b&gt; (performs the actions associated with this skill without assistance. Able to provide assistance to other colleagues when questions arise regarding this skill)&lt;/li&gt;&lt;li&gt;5 = &lt;b&gt;expert&lt;/b&gt; (provides guidance, troubleshoots, and answer questions related to this area of expertise and the field where the skill is used)&lt;/li&gt;&lt;/ul&gt;</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Career Competency Tool Overview</value>
   </data>
   <data name="You are here:" xml:space="preserve">
-    <value />
+    <value>You are here:</value>
   </data>
 </root>
