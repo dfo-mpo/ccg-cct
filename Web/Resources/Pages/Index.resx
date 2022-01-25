@@ -121,7 +121,7 @@
     <value>A brief overview of the Career Competency Tool.</value>
   </data>
   <data name="emaillink" xml:space="preserve">
-    <value>mailto:?to=%20&amp;amp;body=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index%20&amp;amp;subject=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
+    <value>mailto:?to=%20&amp;body=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index%20&amp;subject=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
   </data>
   <data name="external" xml:space="preserve">
     <value>External Candidate</value>
