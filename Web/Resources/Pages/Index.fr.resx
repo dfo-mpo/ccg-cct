@@ -126,11 +126,17 @@
   <data name="Email" xml:space="preserve">
     <value>Courriel</value>
   </data>
+  <data name="emaillink" xml:space="preserve">
+    <value>mailto:?to=%20&amp;amp;body=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index%20&amp;amp;subject=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles</value>
+  </data>
   <data name="external" xml:space="preserve">
     <value>Candidat externe</value>
   </data>
   <data name="externalsearch" xml:space="preserve">
     <value>Si vous êtes un candidat externe, vous pouvez commencer votre recherche ici.</value>
+  </data>
+  <data name="facebooklink" xml:space="preserve">
+    <value>https://www.facebook.com/sharer.php?u=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index&amp;amp;t=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles</value>
   </data>
   <data name="feedback" xml:space="preserve">
     <value>Rétroaction</value>
@@ -149,6 +155,9 @@
   </data>
   <data name="intro-2" xml:space="preserve">
     <value>Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.</value>
+  </data>
+  <data name="linkedinlink" xml:space="preserve">
+    <value>https://www.linkedin.com/shareArticle?mini=true&amp;amp;url=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index&amp;amp;title=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles&amp;amp;ro=false&amp;amp;summary=&amp;amp;source=</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Membre de la Garde côtière</value>
@@ -182,5 +191,8 @@
   </data>
   <data name="studentsearch" xml:space="preserve">
     <value>Si vous êtes étudiant, vous pouvez commencer votre recherche ici.</value>
+  </data>
+  <data name="twitterlink" xml:space="preserve">
+    <value>https://twitter.com/intent/tweet?text=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles&amp;amp;url=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index</value>
   </data>
 </root>
