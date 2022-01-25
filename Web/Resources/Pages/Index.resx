@@ -130,7 +130,7 @@
     <value>If you are an external candidate, you can begin your search here.</value>
   </data>
   <data name="facebooklink" xml:space="preserve">
-    <value>https://www.facebook.com/sharer.php?u=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index&amp;amp;t=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
+    <value>https://www.facebook.com/sharer.php?u=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index&amp;t=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
   </data>
   <data name="feedback" xml:space="preserve">
     <value>Feedback</value>
@@ -151,7 +151,7 @@
     <value>The tool is for both existing coast guard employees and those interested in working for the Canadian Coast Guard. For coast guard members, the tool empowers you to take charge of your own career development.</value>
   </data>
   <data name="linkedinlink" xml:space="preserve">
-    <value>https://www.linkedin.com/shareArticle?mini=true&amp;amp;url=https%3A%2F%2Fwww.ccg-cct.azure.cloud.dfo-mpo.gc.ca%2Fen%2FIndex&amp;amp;title=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;amp;ro=false&amp;amp;summary=&amp;amp;source=</value>
+    <value>https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.ccg-cct.azure.cloud.dfo-mpo.gc.ca%2Fen%2FIndex&amp;title=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;ro=false&amp;summary=&amp;source=</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Coast Guard Member</value>
@@ -187,6 +187,6 @@
     <value>If you are a student, you can begin your search here.</value>
   </data>
   <data name="twitterlink" xml:space="preserve">
-    <value>https://twitter.com/intent/tweet?text=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;amp;url=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index</value>
+    <value>https://twitter.com/intent/tweet?text=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;url=https://www.ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index</value>
   </data>
 </root>
