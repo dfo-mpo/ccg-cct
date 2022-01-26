@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="altPhotoMap" xml:space="preserve">
-    <value>Image des régions de la GCC</value>
+    <value>Image des régions de la Garde côtière canadienne</value>
   </data>
   <data name="Arctic" xml:space="preserve">
     <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
@@ -181,7 +181,7 @@
     <value>NIVEAU</value>
   </data>
   <data name="linkmap" xml:space="preserve">
-    <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
+    <value>(cliquez ici pour voir la carte des régions de la Garde côtière canadienne)</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Les positions de commandement des navires diffèrent en outre et de manière significative, en fonction de la taille de la plate-forme, de la puissance, du programme et de la durée sur une plate-forme donnée. Ces détails peuvent être trouvés dans le Règlement sur le personnel maritime du Canada : &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
