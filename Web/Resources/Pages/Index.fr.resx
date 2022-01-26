@@ -142,7 +142,7 @@
     <value>Rétroaction</value>
   </data>
   <data name="feedbacktext" xml:space="preserve">
-    <value>Pour nous envoyer vos rétroaction ou commentaires sur l'outil de compétences professionnelles</value>
+    <value>Pour nous envoyer vos rétroactions ou commentaires sur l'outil de compétences professionnelles</value>
   </data>
   <data name="H1" xml:space="preserve">
     <value>Garde côtière canadienne&lt;br /&gt;L’outil de compétences professionnelles</value>
@@ -151,10 +151,10 @@
     <value>Accueil</value>
   </data>
   <data name="intro" xml:space="preserve">
-    <value>L’outil de compétences professionnelles de la Garde côtière canadienne est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la Garde côtière.</value>
+    <value>L’outil de compétences professionnelles (OCP) de la Garde côtière canadienne (GCC) est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la <abbr title="Garde côtière canadienne">GCC</abbr>.</value>
   </data>
   <data name="intro-2" xml:space="preserve">
-    <value>Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.</value>
+    <value>Il s’adresse aux employés actuels de la <abbr title="Garde côtière canadienne">GCC</abbr> et aux personnes qui souhaiteraient travailler pour la <abbr title="Garde côtière canadienne">GCC</abbr>. Pour les membres de la <abbr title="Garde côtière canadienne">GCC</abbr>, l’outil vous permet de prendre en main votre perfectionnement professionnel.</value>
   </data>
   <data name="linkedinlink" xml:space="preserve">
     <value>https://www.linkedin.com/shareArticle?mini=true&amp;url=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index&amp;title=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles&amp;ro=false&amp;summary=&amp;source=</value>
@@ -163,7 +163,7 @@
     <value>Membre de la Garde côtière</value>
   </data>
   <data name="membersearch" xml:space="preserve">
-    <value>Si vous êtes membre de la GCC, vous pouvez commencer votre recherche ici.</value>
+    <value>Si vous êtes membre de la <abbr title="Garde côtière canadienne">GCC</abbr>, vous pouvez commencer votre recherche ici.</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Aperçu</value>
