@@ -145,10 +145,10 @@
     <value>Home</value>
   </data>
   <data name="intro" xml:space="preserve">
-    <value>The Canadian Coast Guard’s career competency tool is an online tool that provides information about the requirements for jobs across the coast guard.</value>
+    <value>The Canadian Coast Guard(CCG)’s Career Competency Tool (CCT) is an online tool that provides information about the requirements for jobs across the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;.</value>
   </data>
   <data name="intro-2" xml:space="preserve">
-    <value>The tool is for both existing coast guard employees and those interested in working for the Canadian Coast Guard. For coast guard members, the tool empowers you to take charge of your own career development.</value>
+    <value>The tool is for both existing &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; employees and those interested in working for the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;. For &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; members, the tool empowers you to take charge of your own career development.</value>
   </data>
   <data name="linkedinlink" xml:space="preserve">
     <value>https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fccg-cct.azure.cloud.dfo-mpo.gc.ca%2Fen%2FIndex&amp;title=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;ro=false&amp;summary=&amp;source=</value>
@@ -157,7 +157,7 @@
     <value>Coast Guard Member</value>
   </data>
   <data name="membersearch" xml:space="preserve">
-    <value>If you are a CCG member, you can begin your search here.</value>
+    <value>If you are a &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; member, you can begin your search here.</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
