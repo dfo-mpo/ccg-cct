@@ -121,7 +121,7 @@
     <value>Administrative positions</value>
   </data>
   <data name="altPhotoMap" xml:space="preserve">
-    <value>Image of the CCG Regions</value>
+    <value>Image of the Canadian Coast Guard Regions</value>
   </data>
   <data name="Arctic" xml:space="preserve">
     <value>&lt;b&gt;Arctic:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.&lt;/small&gt;</value>
@@ -190,7 +190,7 @@
     <value>KNOWLEDGE ELEMENTS: &lt;small style="font-weight:normal;"&gt;Knowledge elements are practical or theoretical understanding of a subject. It is the information you need (from past experience or education) to succeed in the position.&lt;/small&gt;</value>
   </data>
   <data name="linkmap" xml:space="preserve">
-    <value>(click here to view the CCG regions map)</value>
+    <value>(click here to view the Canadian Coast Guard regions map)</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistics positions</value>

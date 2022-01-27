@@ -121,7 +121,7 @@
     <value>Postes administratifs</value>
   </data>
   <data name="altPhotoMap" xml:space="preserve">
-    <value>Image des régions de la GCC</value>
+    <value>Image des régions de la Garde côtière canadienne</value>
   </data>
   <data name="Arctic" xml:space="preserve">
     <value>&lt;b&gt;Arctique :&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;La région de l’Arctique comprend le versant nord du Yukon, les Territoires du Nord-Ouest, le Nunavut, le Nunavik, le Nunatsiavut, la baie d’Hudson et la baie James. Ces limites englobent l’Inuit Nunangat.&lt;/small&gt;</value>
@@ -220,7 +220,7 @@
     <value>NIVEAU</value>
   </data>
   <data name="linkmap" xml:space="preserve">
-    <value>(cliquez ici pour voir la carte des régions de la GCC)</value>
+    <value>(cliquez ici pour voir la carte des régions de la Garde côtière canadienne)</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Postes logistiques</value>
