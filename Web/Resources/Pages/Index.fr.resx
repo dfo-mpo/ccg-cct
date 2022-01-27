@@ -126,17 +126,23 @@
   <data name="Email" xml:space="preserve">
     <value>Courriel</value>
   </data>
+  <data name="emaillink" xml:space="preserve">
+    <value>mailto:?to=%20&amp;body=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index%20&amp;subject=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles</value>
+  </data>
   <data name="external" xml:space="preserve">
     <value>Candidat externe</value>
   </data>
   <data name="externalsearch" xml:space="preserve">
     <value>Si vous êtes un candidat externe, vous pouvez commencer votre recherche ici.</value>
   </data>
+  <data name="facebooklink" xml:space="preserve">
+    <value>https://www.facebook.com/sharer.php?u=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index&amp;t=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles</value>
+  </data>
   <data name="feedback" xml:space="preserve">
     <value>Rétroaction</value>
   </data>
   <data name="feedbacktext" xml:space="preserve">
-    <value>Pour nous envoyer vos rétroaction ou commentaires sur l'outil de compétences professionnelles</value>
+    <value>Pour nous envoyer vos rétroactions ou commentaires sur l'outil de compétences professionnelles</value>
   </data>
   <data name="H1" xml:space="preserve">
     <value>Garde côtière canadienne&lt;br /&gt;L’outil de compétences professionnelles</value>
@@ -145,16 +151,19 @@
     <value>Accueil</value>
   </data>
   <data name="intro" xml:space="preserve">
-    <value>L’outil de compétences professionnelles de la Garde côtière canadienne est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la Garde côtière.</value>
+    <value>L’outil de compétences professionnelles (OCP) de la Garde côtière canadienne (GCC) est un outil en ligne qui fournit des renseignements sur les exigences des postes dans l’ensemble de la &lt;abbr title="Garde côtière canadienne"&gt;GCC&lt;/abbr&gt;..</value>
   </data>
   <data name="intro-2" xml:space="preserve">
-    <value>Il s’adresse aux employés actuels de la Garde côtière et aux personnes qui souhaiteraient travailler pour la Garde côtière canadienne. Pour les membres de la Garde côtière, l’outil vous permet de prendre en main votre perfectionnement professionnel.</value>
+    <value>Il s’adresse aux employés actuels de la &lt;abbr title="Garde côtière canadienne"&gt;GCC&lt;/abbr&gt; et aux personnes qui souhaiteraient travailler pour la &lt;abbr title="Garde côtière canadienne"&gt;GCC&lt;/abbr&gt;. Pour les membres de la &lt;abbr title="Garde côtière canadienne"&gt;GCC&lt;/abbr&gt;, l’outil vous permet de prendre en main votre perfectionnement professionnel.</value>
+  </data>
+  <data name="linkedinlink" xml:space="preserve">
+    <value>https://www.linkedin.com/shareArticle?mini=true&amp;url=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index&amp;title=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles&amp;ro=false&amp;summary=&amp;source=</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Membre de la Garde côtière</value>
   </data>
   <data name="membersearch" xml:space="preserve">
-    <value>Si vous êtes membre de la GCC, vous pouvez commencer votre recherche ici.</value>
+    <value>Si vous êtes membre de la &lt;abbr title="Garde côtière canadienne"&gt;GCC&lt;/abbr&gt;, vous pouvez commencer votre recherche ici.</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Aperçu</value>
@@ -182,5 +191,8 @@
   </data>
   <data name="studentsearch" xml:space="preserve">
     <value>Si vous êtes étudiant, vous pouvez commencer votre recherche ici.</value>
+  </data>
+  <data name="twitterlink" xml:space="preserve">
+    <value>https://twitter.com/intent/tweet?text=Garde%20côtière%20canadienne%20L’outil%20de%20compétences%20professionnelles&amp;url=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/fr/Index</value>
   </data>
 </root>

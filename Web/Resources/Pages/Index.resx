@@ -120,11 +120,17 @@
   <data name="brief" xml:space="preserve">
     <value>A brief overview of the Career Competency Tool.</value>
   </data>
+  <data name="emaillink" xml:space="preserve">
+    <value>mailto:?to=%20&amp;body=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index%20&amp;subject=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
+  </data>
   <data name="external" xml:space="preserve">
     <value>External Candidate</value>
   </data>
   <data name="externalsearch" xml:space="preserve">
     <value>If you are an external candidate, you can begin your search here.</value>
+  </data>
+  <data name="facebooklink" xml:space="preserve">
+    <value>https://www.facebook.com/sharer.php?u=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index&amp;t=Canadian%20Coast%20Guard%20Career%20Competency%20Tool</value>
   </data>
   <data name="feedback" xml:space="preserve">
     <value>Feedback</value>
@@ -139,16 +145,19 @@
     <value>Home</value>
   </data>
   <data name="intro" xml:space="preserve">
-    <value>The Canadian Coast Guard’s career competency tool is an online tool that provides information about the requirements for jobs across the coast guard.</value>
+    <value>The Canadian Coast Guard(CCG)’s Career Competency Tool (CCT) is an online tool that provides information about the requirements for jobs across the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;.</value>
   </data>
   <data name="intro-2" xml:space="preserve">
-    <value>The tool is for both existing coast guard employees and those interested in working for the Canadian Coast Guard. For coast guard members, the tool empowers you to take charge of your own career development.</value>
+    <value>The tool is for both existing &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; employees and those interested in working for the &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt;. For &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; members, the tool empowers you to take charge of your own career development.</value>
+  </data>
+  <data name="linkedinlink" xml:space="preserve">
+    <value>https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fccg-cct.azure.cloud.dfo-mpo.gc.ca%2Fen%2FIndex&amp;title=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;ro=false&amp;summary=&amp;source=</value>
   </data>
   <data name="member" xml:space="preserve">
     <value>Coast Guard Member</value>
   </data>
   <data name="membersearch" xml:space="preserve">
-    <value>If you are a CCG member, you can begin your search here.</value>
+    <value>If you are a &lt;abbr title="Canadian Coast Guard"&gt;CCG&lt;/abbr&gt; member, you can begin your search here.</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
@@ -176,5 +185,8 @@
   </data>
   <data name="studentsearch" xml:space="preserve">
     <value>If you are a student, you can begin your search here.</value>
+  </data>
+  <data name="twitterlink" xml:space="preserve">
+    <value>https://twitter.com/intent/tweet?text=Canadian%20Coast%20Guard%20Career%20Competency%20Tool&amp;url=https://ccg-cct.azure.cloud.dfo-mpo.gc.ca/en/Index</value>
   </data>
 </root>

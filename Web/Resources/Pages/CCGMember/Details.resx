@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="altPhotoMap" xml:space="preserve">
-    <value>Image of the CCG Regions</value>
+    <value>Image of the Canadian Coast Guard Regions</value>
   </data>
   <data name="Arctic" xml:space="preserve">
     <value>&lt;b&gt;Arctic:&lt;/b&gt; &lt;small style="font-weight:normal;"&gt;The Arctic Region is inclusive of the Yukon North slope, Northwest  Territories, Nunavut, Nunavik, Nunatsiavut, and Hudson and James Bay. This  boundary is inclusive of Inuit Nunangat.&lt;/small&gt;</value>
@@ -160,7 +160,7 @@
     <value>Level</value>
   </data>
   <data name="linkmap" xml:space="preserve">
-    <value>(click here to view the CCG regions map)</value>
+    <value>(click here to view the Canadian Coast Guard regions map)</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
     <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform. Such details may be found in Canada’s Marine Personnel Regulations: &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
