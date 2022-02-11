@@ -20,7 +20,9 @@ namespace DataModel.SeedData
             new JobGroupLevel() {Id = 10, LevelValue = "10", Active = 1 },
             new JobGroupLevel() {Id = 11, LevelValue = "11", Active = 1 },
             new JobGroupLevel() {Id = 12, LevelValue = "12", Active = 1 },
-            new JobGroupLevel() {Id = 13, LevelValue = "13", Active = 1 }
+            new JobGroupLevel() {Id = 13, LevelValue = "13", Active = 1 },
+            new JobGroupLevel() {Id = 14, LevelValue = "14", Active = 1 },
+            new JobGroupLevel() {Id = 15, LevelValue = "15", Active = 1 }
         };
     }
 }
