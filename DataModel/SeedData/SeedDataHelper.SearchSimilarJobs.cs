@@ -302,15 +302,15 @@ namespace DataModel.SeedData
 
 			new SearchSimilarJob() {Id = 148, Position = 148, HundredPercent = "&PositionId=148", NinetyPercent = "&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=320&PositionId=321&PositionId=323", EightyPercent = "&PositionId=325&PositionId=149&PositionId=150", SeventyPercent = "&PositionId=382&PositionId=383&PositionId=234&PositionId=152&PositionId=153" },
 
-			new SearchSimilarJob() {Id = 149, Position = 149, HundredPercent = "&PositionId=149&PositionId=150", NinetyPercent = "&PositionId=144&PositionId=152&PositionId=153&PositionId=174&PositionId=177", EightyPercent = "&PositionId=146&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=319&PositionId=320&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=178&PositionId=382" },
+			new SearchSimilarJob() {Id = 149, Position = 149, HundredPercent = "&PositionId=149&PositionId=150&PositionId=151&PositionId=177&PositionId=403", NinetyPercent = "&PositionId=190", EightyPercent = "&PositionId=152&PositionId=153&PositionId=178", SeventyPercent = "&PositionId=293" },
 
-			new SearchSimilarJob() {Id = 150, Position = 150, HundredPercent = "&PositionId=149&PositionId=150", NinetyPercent = "&PositionId=144&PositionId=152&PositionId=153&PositionId=174&PositionId=177", EightyPercent = "&PositionId=146&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=319&PositionId=320&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=178&PositionId=382" },
+			new SearchSimilarJob() {Id = 150, Position = 150, HundredPercent = "&PositionId=149&PositionId=150&PositionId=151&PositionId=177&PositionId=403", NinetyPercent = "&PositionId=190", EightyPercent = "&PositionId=152&PositionId=153&PositionId=178", SeventyPercent = "&PositionId=293" },
 
-			new SearchSimilarJob() {Id = 151, Position = 151, HundredPercent = "&PositionId=149&PositionId=151", NinetyPercent = "&PositionId=143&PositionId=174&PositionId=177", EightyPercent = "&PositionId=145&PositionId=152&PositionId=267&PositionId=268&PositionId=269&PositionId=270&PositionId=271", SeventyPercent = "&PositionId=147&PositionId=178&PositionId=322&PositionId=382&PositionId=335&PositionId=336&PositionId=338&PositionId=339&PositionId=340&PositionId=341&PositionId=342&PositionId=343" },
+			new SearchSimilarJob() {Id = 151, Position = 151, HundredPercent = "&PositionId=149&PositionId=150&PositionId=151&PositionId=177&PositionId=403", NinetyPercent = "&PositionId=143&PositionId=174", EightyPercent = "&PositionId=145&PositionId=152&PositionId=267&PositionId=268&PositionId=269&PositionId=270&PositionId=271", SeventyPercent = "&PositionId=147&PositionId=178&PositionId=322&PositionId=382&PositionId=335&PositionId=336&PositionId=338&PositionId=339&PositionId=340&PositionId=341&PositionId=342&PositionId=343" },
 
-			new SearchSimilarJob() {Id = 152, Position = 152, HundredPercent = "&PositionId=152&PositionId=153", NinetyPercent = "&PositionId=144", EightyPercent = "&PositionId=146&PositionId=178&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=321&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=382" },
+			new SearchSimilarJob() {Id = 152, Position = 152, HundredPercent = "&PositionId=152&PositionId=153&PositionId=178", NinetyPercent = "&PositionId=144", EightyPercent = "&PositionId=146&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=321&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=382" },
 
-			new SearchSimilarJob() {Id = 153, Position = 153, HundredPercent = "&PositionId=152&PositionId=153", NinetyPercent = "&PositionId=144", EightyPercent = "&PositionId=146&PositionId=178&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=321&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=382" },
+			new SearchSimilarJob() {Id = 153, Position = 153, HundredPercent = "&PositionId=152&PositionId=153&PositionId=178", NinetyPercent = "&PositionId=144", EightyPercent = "&PositionId=146&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=321&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=382" },
 
 			new SearchSimilarJob() {Id = 154, Position = 154, HundredPercent = "&PositionId=154&PositionId=225", NinetyPercent = "&PositionId=1&PositionId=2&PositionId=3&PositionId=4&PositionId=81&PositionId=155", EightyPercent = "&PositionId=5&PositionId=6&PositionId=7&PositionId=8&PositionId=9&PositionId=10&PositionId=11&PositionId=12&PositionId=13&PositionId=14&PositionId=156", SeventyPercent = "&PositionId=15&PositionId=16&PositionId=17&PositionId=18&PositionId=19&PositionId=20&PositionId=21&PositionId=22&PositionId=23&PositionId=24&PositionId=157&PositionId=224" },
 
@@ -358,9 +358,9 @@ namespace DataModel.SeedData
 
 			new SearchSimilarJob() {Id = 176, Position = 176, HundredPercent = "&PositionId=175&PositionId=176", NinetyPercent = "&PositionId=177&PositionId=174", EightyPercent = "&PositionId=178", SeventyPercent = "&PositionId=167&PositionId=168&PositionId=190" },
 
-			new SearchSimilarJob() {Id = 177, Position = 177, HundredPercent = "&PositionId=174&PositionId=177", NinetyPercent = "&PositionId=178", EightyPercent = "&PositionId=150&PositionId=151&PositionId=175&PositionId=176", SeventyPercent = "&PositionId=167&PositionId=168&PositionId=190" },
+			new SearchSimilarJob() {Id = 177, Position = 177, HundredPercent = "&PositionId=149&PositionId=150&PositionId=151&PositionId=177&PositionId=403", NinetyPercent = "&PositionId=152&PositionId=153&PositionId=174", EightyPercent = "&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=319&PositionId=320&PositionId=323", SeventyPercent = "&PositionId=144" },
 
-			new SearchSimilarJob() {Id = 178, Position = 178, HundredPercent = "&PositionId=178", NinetyPercent = "&PositionId=175&PositionId=176", EightyPercent = "&PositionId=152&PositionId=174", SeventyPercent = "&PositionId=382" },
+			new SearchSimilarJob() {Id = 178, Position = 178, HundredPercent = "&PositionId=152&PositionId=153&PositionId=178", NinetyPercent = "&PositionId=144", EightyPercent = "&PositionId=146&PositionId=313&PositionId=314&PositionId=315&PositionId=316&PositionId=321&PositionId=323", SeventyPercent = "&PositionId=148&PositionId=382" },
 
 			new SearchSimilarJob() {Id = 179, Position = 179, HundredPercent = "&PositionId=179", NinetyPercent = "&PositionId=180&PositionId=275&PositionId=276&PositionId=277&PositionId=278&PositionId=279&PositionId=280&PositionId=281&PositionId=282&PositionId=194&PositionId=195&PositionId=84", EightyPercent = "&PositionId=181", SeventyPercent = "&PositionId=182" },
 
@@ -795,7 +795,8 @@ namespace DataModel.SeedData
 			new SearchSimilarJob() {Id = 394, Position = 401, HundredPercent = "&PositionId=335&PositionId=336&PositionId=337&PositionId=338&PositionId=339&PositionId=340&PositionId=341&PositionId=342&PositionId=343&PositionId=344&PositionId=401", NinetyPercent = "&PositionId=260&PositionId=261&PositionId=365&PositionId=345&PositionId=346&PositionId=347&PositionId=348&PositionId=349&PositionId=350&PositionId=351", EightyPercent = "&PositionId=119&PositionId=124&PositionId=125&PositionId=126", SeventyPercent = "&PositionId=123&PositionId=366&PositionId=367&PositionId=368&PositionId=369&PositionId=370&PositionId=371&PositionId=372" },
 
 			new SearchSimilarJob() {Id = 395, Position = 402, HundredPercent = "&PositionId=345&PositionId=346&PositionId=347&PositionId=348&PositionId=349&PositionId=350&PositionId=351&PositionId=402", NinetyPercent = "&PositionId=352&PositionId=260&PositionId=261&PositionId=265&PositionId=266&PositionId=268", EightyPercent = "&PositionId=134&PositionId=136&PositionId=137&PositionId=138&PositionId=141&PositionId=373&PositionId=374&PositionId=375&PositionId=376", SeventyPercent = "&PositionId=377&PositionId=378&PositionId=379&PositionId=380&PositionId=381" },
-
+			
+			new SearchSimilarJob() {Id = 396, Position = 403, HundredPercent = "&PositionId=149&PositionId=150&PositionId=151&PositionId=177&PositionId=403", NinetyPercent = "&PositionId=190", EightyPercent = "&PositionId=152&PositionId=153&PositionId=178", SeventyPercent = "&PositionId=293" },
 		};
 	}
 }

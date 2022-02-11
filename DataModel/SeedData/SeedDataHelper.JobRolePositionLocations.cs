@@ -543,8 +543,8 @@ namespace DataModel.SeedData
             new JobRolePositionLocation {JobGroupId = 14, SubJobGroupId = 13, JobGroupLevelId = 1, JobPositionId = 174, JobLocationRegionId = 6},
             new JobRolePositionLocation {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 175, JobLocationRegionId = 6},
             new JobRolePositionLocation {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 176, JobLocationRegionId = 6},
-            new JobRolePositionLocation {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 1, JobPositionId = 177, JobLocationRegionId = 6},
-            new JobRolePositionLocation {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 2, JobPositionId = 178, JobLocationRegionId = 6},
+            new JobRolePositionLocation {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 177, JobLocationRegionId = 6},
+            new JobRolePositionLocation {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 2, JobPositionId = 178, JobLocationRegionId = 6},
             new JobRolePositionLocation {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 179, JobLocationRegionId = 2},
             new JobRolePositionLocation {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 179, JobLocationRegionId = 3},
             new JobRolePositionLocation {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 179, JobLocationRegionId = 1},
@@ -1433,8 +1433,7 @@ namespace DataModel.SeedData
             new JobRolePositionLocation {JobGroupId = 4, SubJobGroupId = 12, JobGroupLevelId = 6, JobPositionId = 400, JobLocationRegionId = 5},
             new JobRolePositionLocation {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 401, JobLocationRegionId = 4},
             new JobRolePositionLocation {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 402, JobLocationRegionId = 4},
-
-
+            new JobRolePositionLocation {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 403, JobLocationRegionId = 6},
         };
     }
 }
