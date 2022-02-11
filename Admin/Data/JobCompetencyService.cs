@@ -29,6 +29,7 @@ namespace Admin.Data
                 else { return string.Compare(jb1.NameFre, jb2.NameFre); }
             }
         }
+       
         public class CompareByLevelCode : IComparer
         {
             int IComparer.Compare(object o1, object o2)
@@ -49,6 +50,18 @@ namespace Admin.Data
                 else { return string.Compare(jb1.NameFre, jb2.NameFre); }
             }
         }
+
+        public class CompareByTitleName : IComparer
+        {
+            int IComparer.Compare(object o1, object o2)
+            {
+                JobCertificateDto jb1 = o1 as JobCertificateDto;
+                JobCertificateDto jb2 = o2 as JobCertificateDto;
+                if (System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en")
+                { return string.Compare(jb1.NameEng, jb2.NameEng); }
+                else { return string.Compare(jb1.NameFre, jb2.NameFre); }
+            }
+        }
         public async Task<JobGroupDto[]> GetJobGroups()
         {
             CompareByGroupName comparebyname = new CompareByGroupName();
@@ -59,8 +72,10 @@ namespace Admin.Data
         }
         public async Task<JobCertificateDto[]> GetJobCertificates()
         {
+            CompareByTitleName comparebytitlename = new CompareByTitleName();
             using var httpClient = _clientFactory.CreateClient("api");
             var list = await httpClient.GetJsonAsync<JobCertificateDto[]>("/api/jobcertificates");
+            Array.Sort(list, comparebytitlename);
             return list;
         }
         public async Task<JobCertificateDto> GetJobCertificateById(int Id)
@@ -92,7 +107,6 @@ namespace Admin.Data
 
         public async Task<JobCompetencyDto[]> GetJobCompetenciesByTypeId(int? TypeId)
         {
-
             string url = $"/api/jobcompetencies/{TypeId}/jobcompetencies";
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyDto[]>(url);
