@@ -8,7 +8,7 @@ namespace DataModel.SeedData
     {
         public List<JobGroup> JobGroups = new List<JobGroup>()
         {
-            new JobGroup {Id = 1, Code = "GT", NameEng = "General Technician", NameFre = "Techniciens divers", Active = 1 },
+            new JobGroup {Id = 1, Code = "GT", NameEng = "General Technical", NameFre = "Techniciens divers", Active = 1 },
             new JobGroup {Id = 2, Code = "AS", NameEng = "Administrative Services", NameFre = "Services administratif", Active = 1 },
             new JobGroup {Id = 3, Code = "IT", NameEng = "Information Technology", NameFre = "Technologies de l'information", Active = 1 },
             new JobGroup {Id = 4, Code = "GS", NameEng = "General Services", NameFre = "Services divers", Active = 1 },

@@ -181,7 +181,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 175, TitleEng = "Instructor, English as a Second Language", TitleFre = "Instructeur, anglais langue seconde", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 176, TitleEng = "Instructor, French as a Second Language", TitleFre = "Instructeur, français langue seconde", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 177, TitleEng = "Science Instructor", TitleFre = "Instructeur de science", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 178, TitleEng = "Head, Arts, Science & Language", TitleFre = "Chef, arts, science et langue", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 178, TitleEng = "Superintendent of Sciences and Languages", TitleFre = "Surintendant des sciences et des langues", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 179, TitleEng = "Lightkeeper", TitleFre = "Gardien de phare", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 180, TitleEng = "Lightkeeper", TitleFre = "Gardien de phare", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 181, TitleEng = "Lightkeeper", TitleFre = "Gardien de phare", Active = 1, PositionDescEng = "", PositionDescFre = "" },
@@ -400,7 +400,13 @@ namespace DataModel.SeedData
             new JobPosition {Id = 394, TitleEng = "Supervisor, Asset Management System (AMS)", TitleFre = "Superviseur, Système de gestion des avoirs", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 395, TitleEng = "Commanding Officer Small Vessels", TitleFre = "Commandant de petit navire", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 396, TitleEng = "Carpenter", TitleFre = "Charpentier", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 397, TitleEng = "Regional Wellness Manager", TitleFre = "Gestionnaire régionale du bien-être", Active = 1, PositionDescEng = "", PositionDescFre = "" }
+            new JobPosition {Id = 397, TitleEng = "Regional Wellness Manager", TitleFre = "Gestionnaire régionale du bien-être", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 398, TitleEng = "Storeperson", TitleFre = "Magasinier", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 399, TitleEng = "Stores & Services Supervisor/Supply Technician", TitleFre = "Superviseur des magasins et services/technicien en approvisionnement", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 400, TitleEng = "Senior Supply Technician", TitleFre = "Technicien principal en approvisionnement", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 401, TitleEng = "Life Cycle Management Systems Engineer", TitleFre = "Ingénieur en systèmes de gestion du cycle de vie", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 402, TitleEng = "Manager, Maintenance Management", TitleFre = "Gestionnaire, gestion de l'entretien", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 403, TitleEng = "Marine Environment & Emergency Response Instructor", TitleFre = "Instructeur en environnement marin et en intervention d'urgence", Active = 1, PositionDescEng = "", PositionDescFre = "" }
 
         };
     }
