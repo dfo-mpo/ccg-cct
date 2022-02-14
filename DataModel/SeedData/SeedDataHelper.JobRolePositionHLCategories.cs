@@ -180,8 +180,8 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory {JobGroupId = 14, SubJobGroupId = 13, JobGroupLevelId = 1, JobPositionId = 174, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 175, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 176, JobHLCategoryId = 2},
-            new JobRolePositionHLCategory {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 1, JobPositionId = 177, JobHLCategoryId = 2},
-            new JobRolePositionHLCategory {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 2, JobPositionId = 178, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 177, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 2, JobPositionId = 178, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 179, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 180, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 181, JobHLCategoryId = 2},
@@ -406,6 +406,7 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory {JobGroupId = 4, SubJobGroupId = 12, JobGroupLevelId = 6, JobPositionId = 400, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 401, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 402, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 403, JobHLCategoryId = 2},
         };
     }
 }

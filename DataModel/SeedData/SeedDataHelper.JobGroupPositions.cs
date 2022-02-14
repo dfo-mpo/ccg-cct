@@ -180,8 +180,8 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 14, SubJobGroupId = 13, JobGroupLevelId = 1, JobPositionId = 174},
             new JobGroupPosition {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 175},
             new JobGroupPosition {JobGroupId = 14, SubJobGroupId = 14, JobGroupLevelId = 1, JobPositionId = 176},
-            new JobGroupPosition {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 1, JobPositionId = 177},
-            new JobGroupPosition {JobGroupId = 14, SubJobGroupId = 15, JobGroupLevelId = 2, JobPositionId = 178},
+            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 177},
+            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 2, JobPositionId = 178},
             new JobGroupPosition {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 179},
             new JobGroupPosition {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 180},
             new JobGroupPosition {JobGroupId = 5, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 181},
@@ -406,6 +406,7 @@ namespace DataModel.SeedData
             new JobGroupPosition {JobGroupId = 4, SubJobGroupId = 12, JobGroupLevelId = 6, JobPositionId = 400},
             new JobGroupPosition {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 401},
             new JobGroupPosition {JobGroupId = 11, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 402},
+            new JobGroupPosition {JobGroupId = 10, SubJobGroupId = 10, JobGroupLevelId = 1, JobPositionId = 403},
         };
     }
 }
