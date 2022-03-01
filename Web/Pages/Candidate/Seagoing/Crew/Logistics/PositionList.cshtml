@@ -22,8 +22,8 @@
             </div>
         </nav>
         <div class="mrgn-tp-md">
-           <!-- <a target="_blank" title="@Localizer["save"]" href="@Url.Action("SeagoingPositionsList","ToPdf", new { seagoingIds = Model.PositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["save"]"></span> </a> -->
             <nav role="navigation">
+                <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
                     <li class="previous"><a asp-page="../Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
@@ -31,23 +31,21 @@
             </nav>
         </div>
         <div class="mrgn-tp-sm">
-            <h2>@Localizer["POSITION RESULTS"]</h2>
+            <h3>@Localizer["POSITION RESULTS"]</h3>
             <h5>@Model.Positions.Length @Localizer[countmessage]</h5>
             <table class="table table-hover table-responsive table-bordered">
-                <thead>
+                <tbody>
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
                         <th class="bg-primary" width="13%"></th>
                     </tr>
-                </thead>
-                <tbody>
                     @foreach (var position in Model.Positions)
                     {
                         if (position.Active != 0)
                         {
                             var routedata = new Dictionary<string, string>
-                             {
+                                     {
                     {"previouspage", "../Crew/Logistics/PositionList" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };

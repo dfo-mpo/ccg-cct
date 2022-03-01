@@ -434,9 +434,9 @@ else if(!(Model.PageSubmit == "true"))
             </ol>
         </div>
     </nav>
-    <div class="mrgn-tp-md">
-      <!--  <a title="@Localizer["save"]" target="_blank" href="@Url.Action("PositionDetails", "ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName })"><span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["save"]"></span> </a> -->
+    <div class="mrgn-tp-0 mrgn-bttm-md">
         <nav role="navigation">
+            <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
             <h2 class="wb-inv">Document navigation</h2>
             <ul class="pager">
                 <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPage">@Localizer["Previous"]</a></li>
@@ -455,6 +455,7 @@ else if(!(Model.PageSubmit == "true"))
     <form asp-all-route-data="RouteParameter" method="post">
 
         <div class="col-md-12 mrgn-tp-0 mrgn-bttm-md">
+            <h2 class="mrgn-tp-0">@Localizer["curdetails"]</h2>
             <h3 class="mrgn-tp-0">@Localizer["Question1"]</h3>
             <a class="btn btn-primary mrgn-rght-md" type="button" asp-all-route-data="routedatacompare" asp-page="../../../CCGMember/Compare/AllObjective">@Localizer["Compare"]</a>
             <button class="btn btn-primary mrgn-rght-md">@Localizer["Similar"]</button>
@@ -480,12 +481,10 @@ else if(!(Model.PageSubmit == "true"))
         </div>
 
         <table class="table table-hover table-bordered mrgn-tp-md" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <thead>
+            <tbody>
                 <tr>
                     <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
                 </tr>
-            </thead>
-            <tbody>
                 @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
                 {
                     <tr>
@@ -588,9 +587,7 @@ else if(!(Model.PageSubmit == "true"))
                                     </td>
                                     <td class="text-center">
                                         <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                                            <abbr title="Level @c.RatingValue Summary">
-                                                @c.RatingValue
-                                            </abbr>
+                                            @c.RatingValue <abbr title="Level @c.RatingValue Summary"> </abbr>
                                         </a>
                                         <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                             <header class="modal-header">

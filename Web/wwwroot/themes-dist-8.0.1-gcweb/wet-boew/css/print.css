@@ -1,0 +1,61 @@
+﻿@media print {
+    header[role="banner"], footer {
+        display: none !important
+    }
+    #container #content #main {
+        width: 90%;
+        margin: 0px;
+        padding: 0px;
+    }
+    
+
+    nav[role="navigation"] {
+        display:none
+    }
+    a, a:visited {
+        text-decoration: none
+    }
+
+        a[href]:after {
+            content: " (" attr(href) ")"
+        }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")"
+    }
+
+    a[href^="#"]:after, a[href^="javascript:"]:after {
+        content: ""
+    }
+
+    .table-bordered thead {
+        display: table-header-group;
+        background-color: #f2f2f2 !important
+    }
+
+    img {
+        display: none
+    }
+
+    h2, h3, p {
+        orphans: 3;
+        widows: 3
+    }
+
+    h2, h3 {
+        page-break-after: avoid
+    }
+
+    .table {
+        border-collapse: collapse !important
+    }
+    .table td abbr{display:none}
+    .table td, .table th {
+        font-size: 12px;
+        background-color: #f2f2f2 !important
+    }
+
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #ddd !important
+    }
+}

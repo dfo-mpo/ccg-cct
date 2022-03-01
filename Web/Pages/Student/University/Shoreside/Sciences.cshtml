@@ -20,9 +20,9 @@
                 </ol>
             </div>
         </nav>
-        <div class="mrgn-tp-md">
-          <!--  <a title="@Localizer["save"]" target="_blank" href="@Url.Action("StudentShoresidePositionsList", "ToPdf", new { ShoresideIds = Model.ShoresidePositionIds, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["save"]"></span> </a> -->
+        <div class="mrgn-tp-0">
             <nav role="navigation">
+                <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
                 <h2 class="wb-inv">Document navigation</h2>
                 <ul class="pager">
                     <li class="previous"><a asp-page="Index" class="btn btn-default" type="button" rel="prev">@Localizer["Previous"]</a></li>
@@ -30,23 +30,20 @@
             </nav>
         </div>
 
-            <h2>@Localizer["results"]</h2>
+            <h3>@Localizer["results"]</h3>
             <table class="table table-hover table-responsive table-bordered">
-                <thead>
-                    <tr>
-                        <th class="bg-primary" width="15%">@Localizer["level"]</th>
-                        <th class="bg-primary" width="73%">@Localizer["position"]</th>
-                        <th class="bg-primary" width="12%"></th>
-                    </tr>
-                </thead>
-
                 <tbody>
+                    <tr>
+                        <th class="bg-primary" width="12%">@Localizer["level"]</th>
+                        <th class="bg-primary" width="73%">@Localizer["position"]</th>
+                        <th class="bg-primary" width="15%"></th>
+                    </tr>
                     @if (Model.ShoreSidePositions.Any(e => e.Active != 0))
                     {
                         @foreach (var position in Model.ShoreSidePositions.Where(e => e.Active != 0))
                         {
                             var routedata = new Dictionary<string, string>
-                             {
+                                     {
                     {"previouspage", "../../Student/University/Shoreside/Sciences" },
                     { "positionid",  position.JobTitleId.ToString()},
                  };

@@ -298,7 +298,7 @@
     <value>TAUX DE RÉMUNÉRATION :</value>
   </data>
   <data name="RoPtext" xml:space="preserve">
-    <value>Pour consulter les taux de rémunération pour toutes les classifications énumérées dans l'&lt;abbr title="Outil de compétences professionnelles"&gt;OCP&lt;/abbr&gt;, visitez le site web du &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-fra.asp" target="_blank"&gt;Secrétariat du Conseil du Trésor du Canada&lt;/a&gt;&amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;.</value>
+    <value>Pour consulter les taux de rémunération pour toutes les classifications énumérées dans l'Outil de compétences professionnelles (OCP), visitez le site web du &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-fra.asp" target="_blank"&gt;Secrétariat du Conseil du Trésor du Canada&lt;/a&gt;&amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;.</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Imprimez ou téléchargez cette page au format PDF</value>
