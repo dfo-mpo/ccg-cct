@@ -304,9 +304,10 @@
 
             </ol>
         </div>
+        <div class="mrgn-tp-md">
+            <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
+        </div>
     </nav>
-   <!-- <a title="@Localizer["Save PDF"]" class="mrgn-tp-md pull-right" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"><span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span> </a> -->
-
     <div class="clearfix"></div>
 
     <nav role="navigation">
@@ -341,13 +342,10 @@
         </div>
     }
     <table class="table table-hover table-bordered mrgn-tp-lg" width="100%" border="0" cellspacing="0" cellpadding="0">
-        <thead>
+        <tbody>
             <tr>
                 <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.LevelCode @(isEnglish ? Model.Position.JobTitleEng : Model.Position.JobTitleFre)</th>
             </tr>
-        </thead>
-        <tbody>
-
             @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
             {
                 <tr>
@@ -450,9 +448,8 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                                        <abbr title="Level @c.RatingValue Summary">
-                                            @c.RatingValue
-                                        </abbr>
+                                        @c.RatingValue
+                                        <abbr title="Level @c.RatingValue Summary"></abbr>
                                     </a>
                                     <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                         <header class="modal-header">
