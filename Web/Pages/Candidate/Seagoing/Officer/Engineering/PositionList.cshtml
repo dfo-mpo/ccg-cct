@@ -38,7 +38,7 @@
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                        <th class="bg-primary" width="13%"></th>
+                        <th class="bg-primary hidden-print" width="13%"></th>
                     </tr>
                     @foreach (var position in Model.Positions)
                     {
@@ -53,7 +53,7 @@
                             <tr>
                                 <td>@position.LevelCode</td>
                                 <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-                                <td><a asp-page="../../Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                                <td class="hidden-print"><a asp-page="../../Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                             </tr>
                         }
                     }

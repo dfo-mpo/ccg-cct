@@ -30,13 +30,13 @@
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["currentposition"]</a></li>
             </ol>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-12 mrgn-bttm-md">
             <div class="mrgn-tp-0 mrgn-bttm-md">
                 <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
             </div>
         </div>
     </nav>
-        <div class="clearfix"></div>
+
         <div class="row">
             <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
@@ -46,7 +46,6 @@
                 </ul>
             </nav>
         </div>
-        <br />
         @if (Model.Position.JobTitleEng.Contains("MCTS"))
         {
             <div class="col-sm-12 well">
@@ -74,7 +73,7 @@
         <div class="clearfix"></div>
         
         <h2 class="mrgn-tp-0"><b>@Localizer["Current Position Details"]</b></h2>
-        <h4>@Localizer["USERACTION"]</h4>
+        <h4 class="hidden-print">@Localizer["USERACTION"]</h4>
         <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tbody>
                 <tr>

@@ -37,7 +37,7 @@
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["level"]</th>
                         <th class="bg-primary" width="73%">@Localizer["position"]</th>
-                        <th class="bg-primary" width="15%"></th>
+                        <th class="bg-primary hidden-print" width="15%"></th>
                     </tr>
                     @if (Model.SeagoingPositions.Any(e => e.Active != 0))
                     {
@@ -52,7 +52,7 @@
                             <tr>
                                 <td>@position.LevelCode</td>
                                 <td>@(isEnglish ? position.JobTitleEng : position.JobTitleFre)</td>
-                                <td><a asp-page="../../../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
+                                <td class="hidden-print"><a asp-page="../../../../Candidate/Seagoing/Common/Details" asp-all-route-data="@routedata" role="button">@Localizer["More Details"]</a></td>
                             </tr>
                         }
                     }
