@@ -502,7 +502,7 @@ else if (Model.PageEdit)
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                        <th class="bg-primary" width="13%"></th>
+                        <th class="bg-primary hidden-print" width="13%"></th>
                     </tr>
                     @foreach (var position in Model.SeventyPercentPositions.Where(e => e.Active != 0))
                     {
@@ -530,7 +530,7 @@ else if (Model.PageEdit)
                 <tr>
                     <td>@position.LevelCode</td>
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                    <td class="hidden-print"><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
                 </tr>
             }
                 </tbody>
@@ -545,7 +545,7 @@ else if (Model.PageEdit)
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                        <th class="bg-primary" width="13%"></th>
+                        <th class="bg-primary hidden-print" width="13%"></th>
                     </tr>
                     @foreach (var position in Model.EightyPercentPositions.Where(e => e.Active != 0))
                     {
@@ -574,7 +574,7 @@ else if (Model.PageEdit)
                 <tr>
                     <td>@position.LevelCode</td>
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                    <td class="hidden-print"><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
                 </tr>
             }
                 </tbody>
@@ -589,7 +589,7 @@ else if (Model.PageEdit)
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                        <th class="bg-primary" width="13%"></th>
+                        <th class="bg-primary hidden-print" width="13%"></th>
                     </tr>
                     @foreach (var position in Model.NinetyPercentPositions.Where(e => e.Active != 0))
                     {
@@ -618,7 +618,7 @@ else if (Model.PageEdit)
                 <tr>
                     <td>@position.LevelCode</td>
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                    <td class="hidden-print"><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
                 </tr>
             }
                 </tbody>
@@ -633,7 +633,7 @@ else if (Model.PageEdit)
                     <tr>
                         <th class="bg-primary" width="12%">@Localizer["LEVEL"]</th>
                         <th class="bg-primary" width="75%">@Localizer["POSITION"]</th>
-                        <th class="bg-primary" width="13%"></th>
+                        <th class="bg-primary hidden-print" width="13%"></th>
                     </tr>
                     @foreach (var position in Model.HundredPercentPositions.Where(e => e.Active != 0))
                     {
@@ -662,7 +662,7 @@ else if (Model.PageEdit)
                 <tr>
                     <td>@position.LevelCode</td>
                     <td>@(isEnglish? position.JobTitleEng: position.JobTitleFre)</td>
-                    <td><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
+                    <td class="hidden-print"><a asp-page="SimilarDetails" asp-all-route-data="@routedatanext" role="button">@Localizer["More Details"]</a></td>
                 </tr>
             }
                 </tbody>
