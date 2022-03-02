@@ -30,12 +30,13 @@
                 <li><a class="breadcrumb-item active" aria-current="page">@Localizer["currentposition"]</a></li>
             </ol>
         </div>
+        <div class="col-sm-12 mrgn-bttm-md">
+            <div class="mrgn-tp-0 mrgn-bttm-md">
+                <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
+            </div>
+        </div>
     </nav>
-    <div class="col-sm-12">
-       <!-- <div class="mrgn-tp-0 mrgn-bttm-md">
-            <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("PositionDetails","ToPdf", new { id = Model.Position.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
-        </div> -->
-        <div class="clearfix"></div>
+
         <div class="row">
             <nav role="navigation">
                 <h2 class="wb-inv">Document navigation</h2>
@@ -45,7 +46,6 @@
                 </ul>
             </nav>
         </div>
-        <br />
         @if (Model.Position.JobTitleEng.Contains("MCTS"))
         {
             <div class="col-sm-12 well">
@@ -73,14 +73,12 @@
         <div class="clearfix"></div>
         
         <h2 class="mrgn-tp-0"><b>@Localizer["Current Position Details"]</b></h2>
-        <h4>@Localizer["USERACTION"]</h4>
+        <h4 class="hidden-print">@Localizer["USERACTION"]</h4>
         <table class="table table-hover table-bordered" width="100%" border="0" cellspacing="0" cellpadding="0">
-            <thead>
+            <tbody>
                 <tr>
                     <th class="bg-primary" colspan="2">@Localizer["POSITION DETAILS"]: @Model.Position.JobGroupLevelCode @(isEnglish? Model.Position.JobTitleEng: Model.Position.JobTitleFre)</th>
                 </tr>
-            </thead>
-            <tbody>
 
                 @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
                 {
@@ -184,9 +182,8 @@
                                     </td>
                                     <td class="text-center">
                                         <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">
-                                            <abbr title="Level @c.RatingValue Summary">
-                                                @c.RatingValue
-                                            </abbr>
+                                            @c.RatingValue
+                                            <abbr title="Level @c.RatingValue Summary"> </abbr>
                                         </a>
                                         <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                             <header class="modal-header">

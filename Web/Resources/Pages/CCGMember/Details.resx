@@ -217,7 +217,7 @@
     <value>RATES OF PAY:</value>
   </data>
   <data name="RoPtext" xml:space="preserve">
-    <value>To review rates of pay for all classifications listed in the &lt;abbr title="Career Competency Tool"&gt;CCT&lt;/abbr&gt;, visit the website of the  &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-eng.asp" target="_blank"&gt;Treasury Board of Canada Secretariat&lt;/a&gt;&amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;.</value>
+    <value>To review rates of pay for all classifications listed in the Career Competency Tool (CCT), visit the website of the  &lt;a href="https://www.tbs-sct.gc.ca/pubs_pol/hrpubs/coll_agre/rates-taux-eng.asp" target="_blank"&gt;Treasury Board of Canada Secretariat&lt;/a&gt;&amp;nbsp;&lt;span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;.</value>
   </data>
   <data name="Save PDF" xml:space="preserve">
     <value>Print or download this page as a PDF document</value>

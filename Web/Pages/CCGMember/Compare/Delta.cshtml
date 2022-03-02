@@ -302,43 +302,43 @@
             </ol>
         </div>
     </nav>
-    <!--<div class="mrgn-tp-md">
-        <a title="@Localizer["Save PDF"]" target="_blank" href="@Url.Action("Delta","ToPdf", new { id = Model.CurrentPosition.JobTitleId, obj = Model.ObjectivePosition.JobTitleId, language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName})"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
-    </div> -->
-    <nav role="navigation">
-        <h2 class="wb-inv">Document navigation</h2>
-        <ul class="pager">
-            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
-        </ul>
-    </nav>
+    <div class="mrgn-tp-0">
+        <nav role="navigation">
+            <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
+            <h2 class="wb-inv">Document navigation</h2>
+            <ul class="pager">
+                <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="@Model.PreviousPageDelta" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+            </ul>
+        </nav>
+    </div>
+        <div class="clearfix"></div>
+        <h2 class="mrgn-tp-0 mrgn-bttm-lg"><b>@Localizer["h2Results"]</b></h2>
 
-    <h2 class="mrgn-tp-0 mrgn-bttm-lg"><b>@Localizer["h2Results"]</b></h2>
-
-    <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
-        <thead>
-            <tr>
-                <th class="bg-success" width="50%">@Localizer["Current Position"]</th>
-                <th class="bg-info" width="50%">@Localizer["Selected Position"]</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="bg-success" width="50%">@Model.CurrentPosition.JobGroupLevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
-                <td class="bg-info" width="50%"> @Model.ObjectivePosition.JobGroupLevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
-            </tr>
-            @if (currentdescription != "" || objectivedescription != "")
-            {
+        <table class="table table-bordered table-responsive" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
                 <tr>
-                    <td class="bg-success" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre)</td>
-                    <td class="bg-info" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
+                    <th class="bg-success" width="50%">@Localizer["Current Position"]</th>
+                    <th class="bg-info" width="50%">@Localizer["Selected Position"]</th>
                 </tr>
-            }
-            <tr>
-                <td colspan="2"><b>@Localizer["RoP"]</b> @Localizer["RoPtext"]</td>
-            </tr>
-        </tbody>
-    </table>
-   
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bg-success" width="50%">@Model.CurrentPosition.JobGroupLevelCode - @(isEnglish ? Model.CurrentPosition.JobTitleEng : Model.CurrentPosition.JobTitleFre)</td>
+                    <td class="bg-info" width="50%"> @Model.ObjectivePosition.JobGroupLevelCode - @(isEnglish ? Model.ObjectivePosition.JobTitleEng : Model.ObjectivePosition.JobTitleFre)</td>
+                </tr>
+                @if (currentdescription != "" || objectivedescription != "")
+                {
+                    <tr>
+                        <td class="bg-success" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.CurrentPosition.JobDescriptionEng : Model.CurrentPosition.JobDescriptionFre)</td>
+                        <td class="bg-info" width="50%"><b>@Localizer["DESCRIPTION"]:</b> @(isEnglish ? Model.ObjectivePosition.JobDescriptionEng : Model.ObjectivePosition.JobDescriptionFre)</td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="2"><b>@Localizer["RoP"]</b> @Localizer["RoPtext"]</td>
+                </tr>
+            </tbody>
+        </table>
+
         @if (Model.MatchingJobLocationRegions.Any())
         {
             <div class="row col-lg-12">
@@ -510,7 +510,7 @@
                                         </section>
                                     </td>
                                     <td class="text-center bg-success">
-                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer[currentrating] <abbr title="Level @Localizer[d.RatingValueCur] Summary"></abbr></a>
                                         <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                             <header class="modal-header">
                                                 <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[@d.RatingValueCur]</h2>
@@ -530,7 +530,7 @@
                                         </section>
                                     </td>
                                     <td class="text-center bg-info">
-                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer[d.RatingValueObj] <abbr title="Level @Localizer[d.RatingValueObj] Summary"></abbr></a>
                                     </td>
                                 </tr>
                             }
@@ -586,7 +586,7 @@
                                         </section>
                                     </td>
                                     <td class="text-center bg-success">
-                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueCur] Summary">@Localizer[currentrating]</abbr></a>
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer[currentrating] <abbr title="Level @Localizer[d.RatingValueCur] Summary"></abbr></a>
                                         <section id="@key2" class="wb-overlay modal-content overlay-def wb-popup-mid">
                                             <header class="modal-header">
                                                 <h2 class="modal-title">@Localizer["Current Position Level"]: @Localizer[d.RatingValueCur]</h2>
@@ -606,7 +606,7 @@
                                         </section>
                                     </td>
                                     <td class="text-center bg-info">
-                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button"><abbr title="Level @Localizer[d.RatingValueObj] Summary">@Localizer[d.RatingValueObj]</abbr></a>
+                                        <a href="#@key2" aria-controls="mid-screen" class="overlay-lnk" role="button">@Localizer[d.RatingValueObj] <abbr title="Level @Localizer[d.RatingValueObj] Summary"></abbr></a>
                                     </td>
                                 </tr>
                             }
