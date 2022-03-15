@@ -15,29 +15,29 @@ namespace Web.Pages.Student.College.Shoreside
     {
         private readonly ILogger<GeographicalInformationModel> _logger;
         private readonly JobGroupService _jobgroupService;
-        public List<JobPositionDto> ShoreSidePositions = new List<JobPositionDto> { };
-        [BindProperty(SupportsGet = true)]
+        private readonly JobPositionService _jobpositionService;
+
         public string PositionIds { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string ShoresidePositionIds { get; set; } = "&PositionId=";
-        public GeographicalInformationModel(ILogger<GeographicalInformationModel> logger, JobGroupService jobgroupService)
+
+        public JobPositionDto[] ShoreSidePositions { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ShoresidePositionIds { get; set; }
+        public GeographicalInformationModel(ILogger<GeographicalInformationModel> logger, JobGroupService jobgroupService, JobPositionService jobcompetencyService)
         {
             _logger = logger;
             _jobgroupService = jobgroupService;
+            _jobpositionService = jobcompetencyService;
         }
+
         public async Task OnGet()
         {
             _logger.LogInformation($"College Student Geographical Information positions page visited at {DateTime.UtcNow.ToLongTimeString()}");
 
-            //Engineering and Scientific Support EG-05 
-            foreach (var position in await _jobgroupService.GetJobGroupPositionsByLevel(6, "05"))
-            {
-                if (!position.Equals(null))
-                {
-                    ShoresidePositionIds += String.Format($"&PositionId={position.JobTitleId}");
-                    ShoreSidePositions.Add(position);
-                }
-            }
+            //Shoreside
+            //Student Geo Info 
+            ShoresidePositionIds = "&PositionId=255&PositionId=256&PositionId=258&PositionId=259";
+            ShoreSidePositions = await _jobpositionService.GetJobPositionByIdValues(ShoresidePositionIds);
         }
     }
 }

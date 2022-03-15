@@ -258,6 +258,7 @@ namespace DataModel.SeedData
             {
                 Id = 43,
                 DescEng = "Comprehends program and/or project goals, participants’ roles, and the importance of program/project management principles. Able to participate in program/project support activities (i.e. gathering needed information). Able to participate, under supervision, with others in small and well defined components of the program/project.",
+
                 DescFre = "Comprend les objectifs du programme et/ou du projet, les rôles des participants et l'importance des principes de gestion du programme/projet. Capable de participer à des activités d’appui (c’est-à-dire la collecte des informations nécessaires). Participe, sous supervision, avec d’autres personnes à des composantes petites et bien définies du programme/projet.",
             },
             new CompetencyLevelRequirement
@@ -2771,6 +2772,7 @@ namespace DataModel.SeedData
                 Id = 488,
                 DescEng = "Follows transit of vessels through ice within AOR. Calculates AIRSS data. Monitors ice conditions using ice charts. Receives icebreakers assistance requests directly from ships owners, ship operators or by MCTS. Uses IODIS as required. Receives requests for ice routing from VTS and ships; asks for all necessary information in order to action them, consolidates it in a standardized way and forwards the requests to the ISS. Uses appropriate email templates for ship’s tasking’s. Prepares the daily SitRep of CCG assets’ location for internal partners. General understanding the ice Egg code.",
                 DescFre = "Suivre le passage des navires dans les glaces d’une zone de responsabilité (AOR). Calculer les données du système des régimes de glaces pour la navigation dans l’Arctique (SRGNA). Surveiller l’état des glaces au moyen de cartes des glaces. Recevoir les demandes d’aide des brise-glaces directement de la part des propriétaires ou exploitants des navires ou encore des Services de communication et de trafic maritimes (SCTM). Utiliser le système d’information et de données pour les opérations de déglaçage (SIDOD), au besoin. Recevoir les demandes de conseil sur la navigation dans les glaces de la part des Service du trafic maritime (STM) et des navires, demander tous les renseignements nécessaires pour y donner suite, en faire la synthèse de façon normalisée et transmettre les demandes aux spécialistes du service des glaces (SSG). Utiliser les modèles appropriés de courriels pour l’affectation des navires. Préparer le RAPSIT quotidien sur la position des actifs de la GCC pour les partenaires internes. Comprendre le code de l'œuf en général."
+
             },
             new CompetencyLevelRequirement
             {
@@ -2840,6 +2842,7 @@ namespace DataModel.SeedData
             },
             new CompetencyLevelRequirement
             {
+
                 Id = 500,
                 DescEng = "Knowledge of project management methodologies in a communications context. Provides strategic communications advice to management/senior officials. Develops and implements marketing and/or advertising plans, storyboards, and videos. Evaluates communications plans and develops associated communications products. Coordinates and/or works within inter-governmental or multi-departmental communications initiatives, projects, or strategies. Meets and works with subject matter and methodology experts while executing segmentation and audience analysis. Leads meetings and works with clients or stakeholders.",
                 DescFre = "Connaître les méthodes de gestion de projet dans le contexte de la communication. Conseiller la direction et les hauts fonctionnaires sur les communications stratégiques. Élaborer et mettre en œuvre des plans, des scénarimages et des vidéos de marketing ou de publicité. Évaluer les plans de communication et élaborer les produits de communication connexes. Assurer la coordination d’initiatives, de projets ou de stratégies de communications intergouvernementales ou interministérielles ou y collaborer. Rencontrer des experts en la matière et en méthodologie, collaborer avec eux, puis effectuer une analyse par segmentation et une analyse de l’audience. Diriger des réunions et collaborer avec des clients ou des intervenants."
@@ -2955,8 +2958,8 @@ namespace DataModel.SeedData
             new CompetencyLevelRequirement
             {
                 Id = 519,
-                DescEng = "Provides consultation and technical assistance to design and conduct experiments, as well as to analyze and interpret data.",
-                DescFre = "Fournit des conseils et une assistance technique pour concevoir et mener des expériences, ainsi que pour analyser et interpréter les données."
+                DescEng = "Provides consultation and technical assistance to design and conduct experiments, as well as to analyze and interpret data. Captures, analyzes, processes, presents, disseminates, and manages this data to support CCG operations.",
+                DescFre = "Fournit des conseils et une assistance technique pour concevoir et mener des expériences, ainsi que pour analyser et interpréter les données. Capture, analyse, traite, présente, diffuse et gère ces données pour soutenir les opérations de la GCC."
             },
             new CompetencyLevelRequirement
             {

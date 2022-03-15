@@ -18,59 +18,58 @@
 }
 
 <section role="contentinfo">
-    <nav role="navigation" id="wb-bc" property="breadcrumb">
-        <h2>
-            @Localizer["You are here:"]
-        </h2>
-        <div class="row">
-            <ol class="breadcrumb">
-                <li><a asp-page="../Index">@Localizer["Home"]</a></li>
-                <li><a asp-page="AllPositions">@Localizer["CCGmember"]</a></li>
-                <li><a asp-page="CurrentPosition" asp-all-route-data="@routedata">@Localizer["Select"]</a></li>
-                <li><a class="breadcrumb-item active" aria-current="page">@Localizer["currentposition"]</a></li>
-            </ol>
-        </div>
-        <div class="col-sm-12 mrgn-bttm-md">
-            <div class="mrgn-tp-0 mrgn-bttm-md">
-                <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
-            </div>
-        </div>
-    </nav>
-
-        <div class="row">
-            <nav role="navigation">
-                <h2 class="wb-inv">Document navigation</h2>
-                <ul class="pager">
-                    <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
-                    <li class="next"><a class="btn btn-primary" type="button" rel="next" asp-page="SearchType" asp-all-route-data="routedata">@Localizer["Next"]</a></li>
-                </ul>
+            <nav role="navigation" id="wb-bc" property="breadcrumb">
+                <h2>
+                    @Localizer["You are here:"]
+                </h2>
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a asp-page="../Index">@Localizer["Home"]</a></li>
+                        <li><a asp-page="AllPositions">@Localizer["CCGmember"]</a></li>
+                        <li><a asp-page="CurrentPosition" asp-all-route-data="@routedata">@Localizer["Select"]</a></li>
+                        <li><a class="breadcrumb-item active" aria-current="page">@Localizer["currentposition"]</a></li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 mrgn-bttm-md">
+                    <div class="mrgn-tp-0 mrgn-bttm-md">
+                        <a title="@Localizer["Save PDF"]" onclick="print()"> <span class="glyphicon glyphicon-save-file pull-right" alt="@Localizer["Save PDF"]"></span></a>
+                    </div>
+                </div>
             </nav>
-        </div>
-        @if (Model.Position.JobTitleEng.Contains("MCTS"))
-        {
-            <div class="col-sm-12 well">
-                <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
-                <p>@Localizer["MCTSdesc"]</p>
-                <p><a style="text-decoration:none" alt="@Localizer["MCTSlinkalt"]" href="@Localizer["MCTSUrl"]" target="_blank">@Localizer["MCTSUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
-            </div>
-        }
-        @if (Model.Position.JobTitleEng.Contains("MELDEV"))
-        {
-            <div class="col-sm-12 well">
-                <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
-                <p>@Localizer["MELDEVdesc"]</p>
-                <p><a style="text-decoration:none" alt="@Localizer["MELDEVlinkalt"]" href="@Localizer["MELDEVUrl"]" target="_blank">@Localizer["MELDEVUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
-            </div>
-        }
 
-        @if (Model.Position.JobTitleEng.Contains("Commanding"))
-        {
-            <div class="col-sm-12 well">
-                <h4 class="mrgn-tp-0">@Localizer["Commanding Officer"]</h4>
-                <p>@Localizer["MAOtext"]</p>
-            </div>
-        }
-        <div class="clearfix"></div>
+                <div class="row">
+                    <nav role="navigation">
+                        <h2 class="wb-inv">Document navigation</h2>
+                        <ul class="pager">
+                            <li class="previous"><a class="btn btn-default" type="button" rel="prev" asp-page="CurrentPosition" asp-all-route-data="routedata">@Localizer["Previous"]</a></li>
+                            <li class="next"><a class="btn btn-primary" type="button" rel="next" asp-page="SearchType" asp-all-route-data="routedata">@Localizer["Next"]</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                    @if (Model.Position.JobTitleEng.Contains("MCTS"))
+                    {
+                        <div class="col-sm-12 well">
+                            <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
+                            <p>@Localizer["MCTSdesc"]</p>
+                            <p><a style="text-decoration:none" alt="@Localizer["MCTSlinkalt"]" href="@Localizer["MCTSUrl"]" target="_blank">@Localizer["MCTSUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
+                        </div>
+                    }
+                    @if (Model.Position.JobTitleEng.Contains("MELDEV"))
+                    {
+                        <div class="col-sm-12 well">
+                            <h4 class="mrgn-tp-0">@Localizer["PDAPText"]</h4>
+                            <p>@Localizer["MELDEVdesc"]</p>
+                            <p><a style="text-decoration:none" alt="@Localizer["MELDEVlinkalt"]" href="@Localizer["MELDEVUrl"]" target="_blank">@Localizer["MELDEVUrl"] &nbsp;&nbsp;<span style="color:#000" class="glyphicon glyphicon-new-window"></span></a></p>
+                        </div>
+                    }
+
+                    @if (Model.Position.JobTitleEng.Contains("Commanding") != Model.Position.JobTitleEng.Contains("Chief Officer") != Model.Position.JobTitleEng.Contains("Senior Engineering") != Model.Position.JobTitleEng.Contains("Chief Engineer") != Model.Position.JobTitleEng.Contains("Engineering Officer") != Model.Position.JobTitleEng.Contains("3rd") != Model.Position.JobTitleEng.Contains("2nd") != Model.Position.JobTitleEng.Contains("Fishing Officer") != Model.Position.JobTitleEng.Contains("Officer in Charge"))
+                    {
+                        <div class="col-sm-12 well">
+                            <p>@Localizer["MAOtext"]</p>
+                        </div>
+                    }
+                <div class="clearfix"></div>
         
         <h2 class="mrgn-tp-0"><b>@Localizer["Current Position Details"]</b></h2>
         <h4 class="hidden-print">@Localizer["USERACTION"]</h4>
@@ -203,5 +202,4 @@
                 }
             </tbody>
         </table>
-    </div>
 </section>
