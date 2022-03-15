@@ -334,10 +334,9 @@
         </div>
     }
 
-    @if (Model.Position.JobTitleEng.Contains("Commanding"))
+    @if (Model.Position.JobTitleEng.Contains("Commanding") != Model.Position.JobTitleEng.Contains("Chief Officer") != Model.Position.JobTitleEng.Contains("Senior Engineering") != Model.Position.JobTitleEng.Contains("Chief Engineer") != Model.Position.JobTitleEng.Contains("Engineering Officer") != Model.Position.JobTitleEng.Contains("3rd") != Model.Position.JobTitleEng.Contains("2nd") != Model.Position.JobTitleEng.Contains("Fishing Officer") != Model.Position.JobTitleEng.Contains("Officer in Charge"))
     {
         <div class="col-sm-12 well">
-            <h4 class="mrgn-tp-0">@Localizer["Commanding Officer"]</h4>
             <p>@Localizer["MAOtext"]</p>
         </div>
     }

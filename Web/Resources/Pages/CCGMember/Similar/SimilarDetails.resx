@@ -202,7 +202,7 @@
     <value>Logistics positions</value>
   </data>
   <data name="MAOtext" xml:space="preserve">
-    <value>Ship command positions differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform. Such details may be found in Canada’s Marine Personnel Regulations: &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
+    <value>Seagoing officer positions, both navigation and engineering, differ additionally, and significantly, dependent on platform size, power, program, and length of time on a given platform. Such details may be found in Canada’s Marine Personnel Regulations: &lt;a href="https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf" target="_blank"&gt;https://laws-lois.justice.gc.ca/PDF/SOR-2007-115.pdf&amp;nbsp;&amp;nbsp;&lt;span style="color:#000" class="glyphicon glyphicon-new-window"&gt;&lt;/span&gt;&lt;/a&gt;</value>
   </data>
   <data name="MCTSdesc" xml:space="preserve">
     <value>The Marine Communications and Traffic Services (MCTS) training program is offered in 2 phases. Phase I teaches you the basics of performing the job of an officer and during Phase II you'll learn local geography and regional procedures, while applying the national standards learned in Phase I. For more information about the MCTS program click on the link below.</value>
