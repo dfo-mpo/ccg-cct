@@ -44,7 +44,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
     <PackageReference Include="SmartBreadcrumbs" Version="3.6.1" />
   </ItemGroup>
 
@@ -68,11 +67,6 @@
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>BreadcrumbResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\PDFviews.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>PDFviews.resx</DependentUpon>
 	  </Compile>
   </ItemGroup>
 
@@ -105,14 +99,11 @@
 		<Generator>PublicResXFileCodeGenerator</Generator>
 		<LastGenOutput>BreadcrumbResources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
-	<EmbeddedResource Update="Resources\PDFviews.resx">
-	  <Generator>PublicResXFileCodeGenerator</Generator>
-	  <LastGenOutput>PDFviews.Designer.cs</LastGenOutput>
-	</EmbeddedResource>
   </ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="Properties\" />
+		<Folder Include="Views\" />
 		<Folder Include="wwwroot\themes-dist-8.0.1-gcweb\wet-boew\assets\" />
 	</ItemGroup>
 
@@ -129,8 +120,6 @@
     <None Include="Pages\Candidate\Shoreside\AllCandidateShoreside.cshtml" />
     <None Include="Pages\Candidate\Shoreside\SimilarDetails.cshtml" />
     <None Include="Pages\Candidate\Shoreside\SimilarList.cshtml" />
-    <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
-    <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
 
   <ItemGroup>
