@@ -3,7 +3,6 @@
 @model Web.Pages.CCGMember.Compare.AllObjectiveModel
 @{
     var isEnglish = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "en";
-    var imagefolder = "~/img/CCGMember/";
     var routedata = new Dictionary<string, string>
                  {
                        {"positionid",  Model.PositionId.ToString() },

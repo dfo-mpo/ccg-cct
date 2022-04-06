@@ -1430,6 +1430,19 @@ namespace DataModel.SeedData
             new JobRolePositionLocation {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 411, JobLocationRegionId = 2},
             new JobRolePositionLocation {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 7, JobPositionId = 412, JobLocationRegionId = 6},
             new JobRolePositionLocation {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 7, JobPositionId = 413, JobLocationRegionId = 5},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 2, JobPositionId = 414, JobLocationRegionId = 1},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 2, JobPositionId = 415, JobLocationRegionId = 6},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 416, JobLocationRegionId = 3},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 417, JobLocationRegionId = 1},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 418, JobLocationRegionId = 5},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 419, JobLocationRegionId = 5},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 420, JobLocationRegionId = 2},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 421, JobLocationRegionId = 1},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 421, JobLocationRegionId = 2},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 421, JobLocationRegionId = 3},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 421, JobLocationRegionId = 5},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 422, JobLocationRegionId = 5},
+            new JobRolePositionLocation {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 423, JobLocationRegionId = 5},
         };
     }
 }
