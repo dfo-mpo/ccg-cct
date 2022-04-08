@@ -431,7 +431,8 @@ namespace DataModel.SeedData
             new JobPosition {Id = 427, TitleEng = "Monitoring & Evaluation Officer / Q&A Coordinator", TitleFre = "Officier du suivi et de l'évaluation / Coordonnateur de l'assurance qualité", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 428, TitleEng = "Ops Requirements Analyst, AtoN Program", TitleFre = "Analyse des exigences opérationnelles, Programme AtoN", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 429, TitleEng = "Ops Requirements Analyst, Icebreaking Program", TitleFre = "Analyse des exigences opérationnelles, Programme de déglaçage", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 430, TitleEng = "Ops Requirements Analyst, RAMSARD", TitleFre = "Analyse des exigences opérationnelles, RAMSARD", Active = 1, PositionDescEng = "", PositionDescFre = "" }
+            new JobPosition {Id = 430, TitleEng = "Ops Requirements Analyst, RAMSARD", TitleFre = "Analyse des exigences opérationnelles, RAMSARD", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 431, TitleEng = "Ops Requirements Analyst, MCTS Program", TitleFre = "Analyse des exigences opérationnelles, Programme SCTM", Active = 1, PositionDescEng = "", PositionDescFre = "" }
         };
     }
 }

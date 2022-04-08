@@ -7971,7 +7971,31 @@ namespace DataModel.SeedData
             new JobPositionCompetency {JobPositionId = 430, CompetencyId = 33, CompetencyTypeId = 3},
             new JobPositionCompetency {JobPositionId = 430, CompetencyId = 34, CompetencyTypeId = 3},
             new JobPositionCompetency {JobPositionId = 430, CompetencyId = 36, CompetencyTypeId = 3},
-            new JobPositionCompetency {JobPositionId = 430, CompetencyId = 37, CompetencyTypeId = 3}
+            new JobPositionCompetency {JobPositionId = 430, CompetencyId = 37, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 1, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 2, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 38, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 47, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 90, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 59, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 70, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 93, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 6, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 68, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 71, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 4, CompetencyTypeId = 1},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 103, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 9, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 10, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 55, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 24, CompetencyTypeId = 2},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 26, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 27, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 28, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 33, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 34, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 36, CompetencyTypeId = 3},
+            new JobPositionCompetency {JobPositionId = 431, CompetencyId = 37, CompetencyTypeId = 3}
         };
     }
 }
