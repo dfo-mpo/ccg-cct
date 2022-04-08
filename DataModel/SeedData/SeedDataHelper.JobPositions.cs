@@ -431,32 +431,7 @@ namespace DataModel.SeedData
             new JobPosition {Id = 427, TitleEng = "Monitoring & Evaluation Officer / Q&A Coordinator", TitleFre = "Officier du suivi et de l'évaluation / Coordonnateur de l'assurance qualité", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 428, TitleEng = "Ops Requirements Analyst, AtoN Program", TitleFre = "Analyse des exigences opérationnelles, Programme AtoN", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 429, TitleEng = "Ops Requirements Analyst, Icebreaking Program", TitleFre = "Analyse des exigences opérationnelles, Programme de déglaçage", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 430, TitleEng = "Ops Requirements Analyst, RAMSARD", TitleFre = "Analyse des exigences opérationnelles, RAMSARD", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 431, TitleEng = "Ops Requirements Analyst, MCTS Program", TitleFre = "Analyse des exigences opérationnelles, Programme SCTM", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 432, TitleEng = "Ops Requirements Analyst, VOC Commercial & Inventory", TitleFre = "Analyse des exigences opérationnelles, VOC Commercial et Inventaire", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 433, TitleEng = "Ops Requirements Analyst, CCGA", TitleFre = "Analyse des exigences opérationnelles, GCAC", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 434, TitleEng = "Project Technologist", TitleFre = "Technicien spécialiste de projets", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 435, TitleEng = "Regional Supervisor, Marine SAR / MRSC", TitleFre = "Superviseur Régional, Marin SAR / CSSM", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 436, TitleEng = "Superintendent, MSOC", TitleFre = "Surintendant, COSM", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 437, TitleEng = "Regional Environmental Response Asset Manager", TitleFre = "Gestionnaire régional des actifs d'intervention environnementale", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 438, TitleEng = "Class Manager, MCTS", TitleFre = "Gestionnaire des classes, SCTM", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 439, TitleEng = "Class Manager, Vessels", TitleFre = "Gestionnaire des classes, navires", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 440, TitleEng = "Deputy Superintendent, Marine Engineering", TitleFre = "Surintendant adjoint, Ingénierie navale", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 441, TitleEng = "Head, Performance Measurement and QA", TitleFre = "Chef, Mesure du rendement et AQ", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 442, TitleEng = "Head, Cont. Improvement and Investigation", TitleFre = "Chef, Amélioration et enquête", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 443, TitleEng = "Manager, NCC", TitleFre = "Gestionnaire, CNC", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 444, TitleEng = "Maritime and Civil Infrastructure (MCI) Technician", TitleFre = "Technicien en infrastructure maritime et civile (IMC)", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 445, TitleEng = "National Asset Class Manager, VLE", TitleFre = "Gestionnaire national des classes, PVN", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 446, TitleEng = "IT Technologist", TitleFre = "Technologue informatique", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 447, TitleEng = "Electronics & Informatics Portfolio Manager", TitleFre = "Gestionnaire de portefeuille électronique et informatique", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 448, TitleEng = "Environmental Response Superintendent", TitleFre = "Surintendant de l'intervention environnementale", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 449, TitleEng = "Manager, Operational Requirements (Fleet) / Project Manager, Small Vessels", TitleFre = "Gestionnaire, Besoins opérationnels (Flotte) / Gestionnaire de projet, petits navires", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 450, TitleEng = "Manager, Project Business", TitleFre = "Gestionnaire, affaires de projet", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 451, TitleEng = "National Manager, Aids to Navigation (AToN) and Waterways", TitleFre = "Gestionnaire national, des aides à la navigation (AToN) et voies navigables", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 452, TitleEng = "National Manager, Marine Communications and Traffic System (MCTS)", TitleFre = "Gestionnaire national, Système de communications et de trafic maritimes (SCTM)", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 453, TitleEng = "National Manager, Environmental Response (ER)", TitleFre = "Gestionnaire national, de l'intervention environnementale (IE)", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 454, TitleEng = "National Manager, Icebreaking and Arctic", TitleFre = "Gestionnaire national, Déglaçage et Arctique", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 455, TitleEng = "National Manager, Maritime Security", TitleFre = "Gestionnaire national, Sûreté Maritime", Active = 1, PositionDescEng = "", PositionDescFre = "" }
+            new JobPosition {Id = 430, TitleEng = "Ops Requirements Analyst, RAMSARD", TitleFre = "Analyse des exigences opérationnelles, RAMSARD", Active = 1, PositionDescEng = "", PositionDescFre = "" }
         };
     }
 }
