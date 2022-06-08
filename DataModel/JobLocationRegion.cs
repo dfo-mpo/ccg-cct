@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-
+using System.ComponentModel.DataAnnotations;
 
 namespace DataModel
 {
@@ -10,8 +9,10 @@ namespace DataModel
     {
         public int Id { get; set; }
 
+        [Display(Name = "English Name")]
         public string NameEng { get; set; } // ex : Atlantic, Western
 
+        [Display(Name = "French Name")]
         public string NameFre { get; set; }
 
         public int Active { get; set; }  // ex : 0 = Location deleted, 1 = Location active
