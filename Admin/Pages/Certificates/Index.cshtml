@@ -5,49 +5,76 @@
     ViewData["Title"] = "Certificates";
 }
 
-<h2>Certificates</h2>
+<h1>Certificates</h1>
 
+<p class="space-btns">
+    <a class="btn btn-dark" asp-page="Create">Create New</a>
+    <a class="btn btn-secondary pull-right" href="/Certificates/Descriptions">Certificate Descriptions</a>
+    <a class="btn btn-info pull-right" href="/Certificates">Certificates</a>
+</p>
 
-<a class="btn btn-dark" asp-page="Create">Create New</a>
-<a class="btn btn-dark pull-right" asp-page="Descriptions/Index">Descriptions</a>
+@{
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
 
+    var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
+        || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
+        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
+        && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+}
 
 <form>
     <div class="form-actions no-color">
         <h6>
-            Find certificates:
-            <input type="text" asp-for="@Model.Filter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to Full List</a>
+            <label for="Filter">Find certificates:</label>
+            <input type="text" asp-for="@Model.Filter" value="@filterValue" />
+            <input type="submit" value="Search" class="btn btn-primary" /> 
+            @if (!String.IsNullOrWhiteSpace(Model.Filter))
+            {
+                <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
+            }
         </h6>
     </div>
 </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Certificate English</th>
-            <th>Certificate French</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Certificates.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
-        {
-            if (item.Active != 0) { 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameFre)
-                </td>
-                <td style="width:15%">
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-            }
-        }
-    </tbody>
-</table>
+
+@if (itemsThatMatchFilter.Count() > 0)
+{
+    <div id="table-container">
+        <table class="table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    <th><b>Certificate English</b></th>
+                    <th><b>Certificate French</b></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in itemsThatMatchFilter)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameFre)
+                        </td>
+                        <td style="width:15%">
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+} 
+else
+{
+    <h4 class="no-results">No certificates match the filter "@Model.Filter"</h4>
+}

@@ -15,6 +15,7 @@ namespace Admin.Pages.Competencies
     {
         private readonly DataModel.CctDbContext _context;
         private readonly JobCompetencyService _jobCompetencyService;
+        private static readonly int[] AccepetedTypeIds = { 1, 2, 3, 4 };
 
         public ListModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService)
         {
@@ -28,14 +29,14 @@ namespace Admin.Pages.Competencies
 
         public async Task OnGetAsync(int typeId)
         {
-            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
+            if (!AccepetedTypeIds.Contains(typeId))
             {
                 Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
-                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
+                Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
             }
             else { 
-            Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
-            Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
+                Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
+                Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
             }
         }
         public async Task OnPostAsync(int typeId)
