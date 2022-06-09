@@ -24,7 +24,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" href="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Certificates">Certificates</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Certificates/Descriptions">Certificate Descriptions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Positions">Positions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Competencies/List?typeid=1">Competencies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Similar">Similar Positions</a>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +54,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Admin - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - Canadian Coast Guard Career Competency Tool | Admin
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></</script>
