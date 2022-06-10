@@ -122,8 +122,9 @@ namespace Admin.Pages.Similar
                     {
                         NumberOfMatchingPositionsPerPecrentagePerPosition.Add(position.JobTitleId, "-&-&-&-");
                     }
-                } // foreach
-            } // if
-        } // OnGetAsync()
-    } // IndexModel class
-} // namespace
+                }
+            }
+        }
+
+    }
+}

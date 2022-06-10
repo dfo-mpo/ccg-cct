@@ -15,15 +15,15 @@ const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
 function qsa(selector, parent = document) {
     if ((!selector) || (!parent)) {
         return [];
-    } // if
+    } 
     let result = parent.querySelectorAll(selector);
     let nodeResults = [];
     for (let i = 0; i < result.length; i++) {
         let currentNode = /** @type {HTMLElement} */ (result[i]);
         nodeResults[i] = currentNode;
-    } // for
+    } 
     return nodeResults;
-} // qsa()
+} 
 
 /**
  * 
@@ -36,9 +36,9 @@ function qsa(selector, parent = document) {
 function qs(selector, parent = document) {
     if ((!selector) || (!parent)) {
         return null;
-    } // if
+    } 
     return /** @type {HTMLElement} */ (parent.querySelector(selector));
-} // qs()
+} 
 
 /**
  * This function is used on basically all Index pages, where there is a long list of elements to display. It handles setting the height of the element which contains the table and that can be scrolled through to make sure it takes up as much height as it can on screen without hiding anything. The minimum height for it is 300px.
@@ -52,10 +52,10 @@ function setTableContainerMaxHeight() {
         let newHeight = windowHeight - footer.getBoundingClientRect().height - tableContainer.getBoundingClientRect().y - MARGIN_BETWEEN_FOOTER_AND_TABLE;
         if (newHeight < 300) {
             newHeight = 300;
-        } // if
+        } 
         tableContainer.style.maxHeight = `${newHeight}px`;
-    } // if
-} // setTableContainerMaxHeight()
+    } 
+} 
 
 /**
  * Actions in forms which will cause the same page to be displayed can cause this function to be called which temporarily stores the current scroll offset of the window, which be applied once the page reloads (look at the checkIfWindowShouldBeScrolled() function). In order for the page scroll to be stored, the HTML element which causes the page to be reloaded (for example, the button to save changes after adding a competency in the add/edit position page) must have the css class of "resetWindowHeight".
@@ -63,7 +63,7 @@ function setTableContainerMaxHeight() {
 function storeCurrentScrollPosition() {
     let scrollValue = window.scrollY;
     localStorage.setItem(localStorageScrollStr, scrollValue.toString());
-} // storeCurrentScrollPosition()
+} 
 
 /**
  * This function gets called whenever a page loads, and simply checks localStorage to see if a window scroll offset it set there (which can be set by the storeCurrentScrollPosition() function). If there is, it will apply this offset to the window, bringing you back to the same scroll position you had before reloading the page (useful in certain forms)
@@ -76,10 +76,10 @@ function checkIfWindowShouldBeScrolled() {
             let numScroll = Number(scrollValue);
             if (!isNaN(numScroll)) {
                 window.scrollTo(window.scrollX, numScroll);
-            } // if
-        } // if
-    } // if
-} // checkIfWindowShouldBeScrolled()
+            } 
+        } 
+    } 
+} 
 
 /**
  * This function makes it so whenever you click on the "All Regions" checkbox on the add/edit position page, all other region checkboxes' state will match the one of the "All Regions" one. This allows you to click once to select all regions at once (and unselect them all at once as well).
@@ -91,9 +91,9 @@ function toggleRegionCheckboxes() {
     if (allRegionsCheckbox && otherCheckboxes) {
         for (let i = 0; i < otherCheckboxes.length; i++) {
             (/** @type {HTMLInputElement} */ (otherCheckboxes[i])).checked = allRegionsCheckbox.checked;
-        } // for
-    } // if
-} // toggleRegionCheckboxes()
+        } 
+    } 
+} 
 
 /**
  * 
@@ -106,10 +106,10 @@ function toggleRegionCheckboxes() {
 function findNearestParentOfType(el, parentTagName) {
     if ((!el) || (!parentTagName)) {
         return null;
-    } // if
+    } 
     if ((!el.parentElement)) {
         return null;
-    } // if
+    } 
 
     parentTagName = parentTagName.toLowerCase();
     let reachedRootNode = false;
@@ -117,17 +117,17 @@ function findNearestParentOfType(el, parentTagName) {
     while (el.tagName.toLowerCase() !== parentTagName && !reachedRootNode) {
         if (el.tagName.toLowerCase() === "html" || (!el.parentElement)) {
             reachedRootNode = true;
-        } // if
+        } 
         else {
             el = el.parentElement;
-        } // else
-    } // while
+        } 
+    } 
 
     if (!reachedRootNode) {
         return /** @type {HTMLElement} */ (el);
-    } // if
+    } 
     return null;
-} // findNearestParentOfType()
+} 
 
 /**
  * 
@@ -151,8 +151,8 @@ function toggleExpandableElementsInNextRows(el) {
             let currentRow = allTableRows[i];
             if (currentRow.contains(el)) {
                 startingRowIndex = i;
-            } // if
-        } // for
+            } 
+        } 
 
         for (let i = startingRowIndex + 1; i < allTableRows.length && endingRowIndex === -1; i++) {
             let currentRow = allTableRows[i];
@@ -160,12 +160,12 @@ function toggleExpandableElementsInNextRows(el) {
             for (let j = 0; j < nodesInRow.length; j++) {
                 if (nodesInRow[j].tagName.toLowerCase() === "th") {
                     endingRowIndex = i;
-                } // if
-            } // for
+                } 
+            } 
             if (i === allTableRows.length - 1 && endingRowIndex === -1) {
                 endingRowIndex = allTableRows.length;
-            } // if
-        } // for
+            } 
+        } 
 
         rowsToExpand = allTableRows.slice(startingRowIndex + 1, endingRowIndex);
 
@@ -175,22 +175,22 @@ function toggleExpandableElementsInNextRows(el) {
     
                 if (el.classList.contains("second-column")) { // this is for the competency rows/tables, where you can expand both the competency names or the levels associated to them
                     columnAffected = 2;
-                } // if
+                } 
     
                 let expandingItems = el.classList.contains("closed");
                 if (expandingItems) {
                     el.classList.remove("closed");
                     el.classList.add("opened");
-                } // if
+                } 
                 else {
                     el.classList.add("closed");
                     el.classList.remove("opened");
-                } // else
+                } 
 
                 // in the case of the add/edit position page, all expandable elements will be within the same table row. However, each item will be within a separate div.row. So, if we only have one row, and that row has at least one div.row, instead of looping through multiple table rows, we will now loop through those div.row. The rest of the code behaves the same
                 if (qsa("td div.row", rowsToExpand[0]).length > 0 && rowsToExpand.length === 1) {
                     rowsToExpand = qsa("td div.row", rowsToExpand[0]);
-                } // if
+                } 
     
                 for (let i = 0; i < rowsToExpand.length; i++) {
                     let btnsInRow = qsa("button.btn", rowsToExpand[i]);
@@ -199,13 +199,13 @@ function toggleExpandableElementsInNextRows(el) {
                         if ((i + 1) === columnAffected) {
                             if ((expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "false") || (!expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "true"))
                             btnsInRow[i].click();
-                        } // if
-                    } // for
-                } // for
-            } // if
-        } // if
-    } // if
-} // toggleExpandableElementsInNextRows()
+                        } 
+                    } 
+                } 
+            } 
+        } 
+    } 
+} 
 
 /**
  * 
@@ -227,11 +227,11 @@ function checkCompetencyLevelButtonsState(dropdown) {
 
     if (currentValue === minValue) {
         minusButton.classList.add("disabled");
-    } // if
+    } 
     if (currentValue === maxValue) {
         plusButton.classList.add("disabled");
-    } // if
-} // checkCompetencyLevelButtonsState()
+    } 
+} 
 
 /**
  * 
@@ -247,11 +247,11 @@ function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
         let dropdownValues = [];
         for (let i = 0; i < dropdownOptions.length; i++) {
             dropdownValues[i] = /** @type {Number} */ ((/** @type {HTMLInputElement} */ (dropdownOptions[i])).value);
-        } // for
+        } 
         return maximum ? Math.max(...dropdownValues) : Math.min(...dropdownValues);
-    } // if
+    } 
     return null;
-} // getMaximumValueFromDropdown()
+} 
 
 /**
  * 
@@ -269,17 +269,17 @@ function changeCompetencyLevelValue(el, newNum = null) {
         valueChanged = true;
         newDropdownValue = newNum;
         dropdown = el;
-    } // if
+    } 
     else {
         let increment = true;
     
         if (el.classList.contains("minus-icon")) {
             dropdown = el.nextElementSibling;
             increment = false;
-        } // if
+        } 
         else {
             dropdown = el.previousElementSibling;
-        } // else
+        } 
         dropdown = /** @type {HTMLInputElement} */ (dropdown);
     
         let originalDropdownValue = Number(dropdown.value);
@@ -288,14 +288,14 @@ function changeCompetencyLevelValue(el, newNum = null) {
 
         if (increment && originalDropdownValue < maxDropdownValue) {
             dropdown.value = originalDropdownValue + 1;
-        } // if
+        } 
         if (!increment && originalDropdownValue > minDropdownValue) {
             dropdown.value = originalDropdownValue - 1;
-        } // if
+        } 
 
         newDropdownValue = Number(dropdown.value);
         valueChanged = (originalDropdownValue !== newDropdownValue);
-    } // else
+    } 
 
     if (valueChanged) {
         checkCompetencyLevelButtonsState(dropdown);
@@ -318,7 +318,7 @@ function changeCompetencyLevelValue(el, newNum = null) {
             case "exec":
                 fullCompetencyStr = "addedexecutivecompetencyids";
                 break;
-        } // switch
+        } 
         fullCompetencyStr = /** @type {String} */ (fullCompetencyStr);
 
         for (let i = 0; i < formActionElements.length; i++) {
@@ -341,9 +341,9 @@ function changeCompetencyLevelValue(el, newNum = null) {
             let updatedFormActionStr = formActionStrArr.join('');
     
             formActionElement.setAttribute("formaction", updatedFormActionStr);
-        } // for
-    } // if
-} // changeCompetencyLevelValue()
+        } 
+    } 
+} 
 
 /**
  * 
@@ -359,10 +359,10 @@ function changeCompetencyLevelValue(el, newNum = null) {
             if (target.classList.contains("changeCompetencyLevelDropdown")) {
                 changeCompetencyLevelValue(target, target.value);
                 return;
-            } // if
-        } // if
-    } // if
-} // handleChange()
+            } 
+        } 
+    } 
+} 
 
 /**
  * 
@@ -378,24 +378,24 @@ function changeCompetencyLevelValue(el, newNum = null) {
             if (target.classList.contains("resetWindowHeight")) {
                 storeCurrentScrollPosition();
                 return;
-            } // if
+            } 
             if (target.classList.contains("expand-elements-in-next-rows")) {
                 toggleExpandableElementsInNextRows(target);
                 return;
-            } // if
+            } 
             if (target.classList.contains("plus-minus-icon")) {
                 changeCompetencyLevelValue(target);
                 return;
-            } // if
-        } // if
+            } 
+        } 
         if (target.id) {
             if (target.id === "allRegionsCheckbox") {
                 toggleRegionCheckboxes();
                 return;
-            } // if
-        } // if
-    } // if
-} // handleClick()
+            } 
+        } 
+    } 
+} 
 
 // Page setup when it has loaded. Adds the appropriate event listeners and such
 window.addEventListener("load", () => {
@@ -417,5 +417,5 @@ window.addEventListener("load", () => {
             windowHeight = window.innerHeight;
             setTableContainerMaxHeight();
         });
-    } // if
+    } 
 });
