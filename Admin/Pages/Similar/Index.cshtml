@@ -1,60 +1,120 @@
 ﻿@page
 @model Admin.Pages.Similar.IndexModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Similar Positions";
 }
 
 <h1>Similar Positions</h1>
 
+@{
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
+        || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
+        || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
+        || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
+        && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
+}
+
 <form>
     <div class="form-actions no-color">
         <h6>
-            Find similar positions:
+            <label for="Filter">Find positions:</label>
             <input type="text" asp-for="@Model.Filter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to Full List</a>
-        </h6>
-    </div>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th width="7%"><b>Level</b></th>
-            <th width="35%"><b>Title English</b></th>
-            <th width="35%"><b>Title French</b></th>
-            <th width="15%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower()) || e.LevelCode.ToLower().Contains(@Model.Filter.ToLower())))
-        {
-            if (item.Active != 0) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LevelCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobTitleEng)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobTitleFre)
-            </td>
-            @if (Model.SimilarSearchIds.Contains(item.JobTitleId))
+            <input type="submit" value="Search" class="btn btn-primary" /> 
+            @if (!String.IsNullOrWhiteSpace(Model.Filter))
             {
-                <td>
-                    <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a>
-                </td>
+                <span><span class="vertical-bar">|</span> <a href="/Similar@(Model.DisplayNumberOfJobsForEachMatchingPercentage ? "?numMatching=true" : "")">
+                    Back to Full List</a></span>
+            }
+            @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
+            {
+                <a class="pull-right" href="/Similar?filter=@filterValue">Hide Number of Matching Positions Per Percentage</a>
             }
             else
             {
-                <td>
-                    <a asp-page="./Create" asp-route-id="@item.JobTitleId">Create</a>
-                </td>
+                <a class="pull-right" href="/Similar?numMatching=true&filter=@filterValue">View Number of Matching Positions Per Percentage</a>
             }
-        </tr>
-            }
-        }
-    </tbody>
-</table>
+        </h6>
+    </div>
+</form>
+
+@if (itemsThatMatchFilter.Count() > 0)
+{
+    <div id="table-container">
+        <table class="table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
+                    {
+                        <th class="col-1"><b>Level</b></th>
+                        <th class="col-3"><b>Title English</b></th>
+                        <th class="col-3"><b>Title French</b></th>
+                        <th class="col-3"><div class="four-col-grid"><span>100%</span><span>90%</span>
+                            <span>80%</span><span>70%</span></div></th>
+                        <th class="col-2"></th>
+                    }
+                    else
+                    {
+                        <th class="col-1"><b>Level</b></th>
+                        <th class="col-4"><b>Title English</b></th>
+                        <th class="col-5"><b>Title French</b></th>
+                        <th class="col-2"></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in itemsThatMatchFilter)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.LevelCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitleEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitleFre)
+                        </td>
+                        @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
+                        {
+                            <td class="four-col-grid">
+                                @{
+                                    foreach (var positionCount in 
+                                                Model.NumberOfMatchingPositionsPerPecrentagePerPosition[item.JobTitleId].Split("&"))
+                                    {
+                                        <span>@positionCount</span>
+                                    }
+                                }
+                            </td>
+                        }
+                        @if (Model.SimilarSearchIds.Contains(item.JobTitleId))
+                        {
+                            <td class="text-center">
+                                <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
+                                <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-center">
+                                <a asp-page="./Create" asp-route-id="@item.JobTitleId">Create</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h4 class="no-results">No positions match the filter "@Model.Filter"</h4>
+}
 

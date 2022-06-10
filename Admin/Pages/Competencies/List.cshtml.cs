@@ -28,28 +28,18 @@ namespace Admin.Pages.Competencies
 
         public async Task OnGetAsync(int typeId)
         {
-            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
+            var accepetedTypeIds = _context.CompetencyTypes.Select(c => c.Id).ToList();
+
+            if (!accepetedTypeIds.Contains(typeId))
             {
                 Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
-                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
+                Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
             }
             else { 
-            Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
-            Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
-            }
-        }
-        public async Task OnPostAsync(int typeId)
-        {
-            if (typeId == 0 && !string.IsNullOrEmpty(Filter))
-            {
-                Type = await _jobCompetencyService.GetJobCompetencyTypeById(1);
-                Competencies = await _jobCompetencyService.GetAllJobCompetencies();
-            }
-            else
-            {
                 Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
                 Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
             }
         }
+
     }
 }

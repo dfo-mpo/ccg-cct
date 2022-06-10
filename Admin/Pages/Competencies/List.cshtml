@@ -1,69 +1,96 @@
 ﻿@page
 @model Admin.Pages.Competencies.ListModel
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Competencies";
+    string typeid = Model.Type.Id.ToString();
+    string classSelectedComp = "btn-info", classUnselectedComp = "btn-secondary";
 }
 
+@{
+    var filterdata = new Dictionary<string, string>
+    {
+            { "typeid", typeid },
+            {"filter", Model.Filter }
+    };
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.Competencies.Where(e => (Model.Filter == null
+        || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())
+        || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()))
+        && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+}
 
 <h1>@Model.Type.NameEng / @Model.Type.NameFre</h1>
 
-<p>
+<p class="space-btns">
     <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
+    <a href="@("/Competencies/List?typeid=4&filter=" + filterValue)" class="btn pull-right @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
+    <a href="@("/Competencies/List?typeid=3&filter=" + filterValue)" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
+    <a href="@("/Competencies/List?typeid=2&filter=" + filterValue)" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
+    <a href="@("/Competencies/List?typeid=1&filter=" + filterValue)" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
 </p>
-@{ 
-            var filterdata = new Dictionary<string, string>
-    {
-            { "typeid", Model.Type.Id.ToString() },
-            {"filter", Model.Filter }
-    };
-}
 <form method="post">
     <div class="form-actions no-color">
         <h6>
-            Find competencies:
+            <label for="Filter">Find competencies:</label>
             <input type="text" asp-for="@Model.Filter"/>
-            <input type="submit" value="Search" class="btn btn-primary" asp-all-route-data="@filterdata" /> |
-            <a asp-page="./List" asp-route-typeid="@Model.Type.Id">Back to Full List</a>
+            <input type="submit" value="Search" class="btn btn-primary" asp-all-route-data="@filterdata" /> 
+            @if (!String.IsNullOrWhiteSpace(Model.Filter))
+            {
+                <span><span class="vertical-bar">|</span> <a href="/Competencies/List?typeid=@typeid">Back to Full List</a></span>
+            }
         </h6>
     </div>
 </form>
 
-<hr />
-
-<table class="table">
-    <thead>
-        <tr>
-            <th><b>Competency English</b></th>
-            <th><b>Competency French</b></th>
-            <th><b>Description English</b></th>
-            <th><b>Description French</b></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Competencies.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
-        {
-            if (item.Active != 0) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameFre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DescEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DescFre)
-                </td>
-                <td>
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-            }
-        }
-    </tbody>
-</table>
+@if (itemsThatMatchFilter.Count() > 0)
+{
+    <div id="table-container">
+        <table class="table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    <th class="col-2"><b>Competency English</b></th>
+                    <th class="col-2"><b>Competency French</b></th>
+                    <th class="col-3"><b>Description English</b></th>
+                    <th class="col-4"><b>Description French</b></th>
+                    <th class="col-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in itemsThatMatchFilter)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameFre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescFre)
+                        </td>
+                        <td class="text-center">
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h4 class="no-results">No @Model.Type.NameEng.ToLower() match the filter "@Model.Filter"</h4>
+}
