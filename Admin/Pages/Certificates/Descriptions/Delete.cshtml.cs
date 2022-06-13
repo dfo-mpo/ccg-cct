@@ -26,22 +26,33 @@ namespace Admin.Pages.Certificates.Descriptions
         }
 
         [BindProperty]
-        public JobCertificateDto Certificate { get; set; }
+        public CertificateDescription Certificate { get; set; }
         public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Certificate = await _jobCertificateService.GetJobCertificateDescriptionById(id);
+            Certificate = await _context.CertificateDescriptions.FindAsync(id);
 
             if (Certificate == null)
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
+
+            // this is debatable, but I've made it so you can't view/edit/delete the description that is empty, since it is kind of unique
+            if (string.IsNullOrWhiteSpace(Certificate.DescEng) && string.IsNullOrWhiteSpace(Certificate.DescFre))
+            {
+                return NotFound();
+            }
+
             if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
@@ -66,12 +77,12 @@ namespace Admin.Pages.Certificates.Descriptions
             try
             {
                 _jobCertificateService.DeleteJobCertificateDescription(Certificate);
+                Thread.Sleep(5000);
                 return RedirectToPage("./Index");
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, ErrorMessage);
-                Thread.Sleep(5000);
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });
             }

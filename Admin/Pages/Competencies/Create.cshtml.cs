@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
 using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Admin.Pages.Competencies
 {
@@ -18,15 +20,28 @@ namespace Admin.Pages.Competencies
             _jobCompetencyService = jobCompetencyService;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? typeid)
         {
+            if (typeid == null)
+            {
+                return Redirect("/Competencies/Create?typeid=1");
+            }
+            else
+            {
+                int[] typeids = { 1, 2, 3, 4 };
+                if (!typeids.Contains(typeid.Value))
+                {
+                    return Redirect("/Competencies/Create?typeid=1");
+                }
+            }
+
             return Page();
         }
 
         [BindProperty]
         public JobCompetencyDto Competency { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int TypeId { get; set; } = 1;
+        public int TypeId { get; set; }
 
         [BindProperty]
         public int CompetencyType { get; set; } 

@@ -38,6 +38,17 @@ namespace Admin.Pages.Certificates.Descriptions
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
+
+            // this is debatable, but I've made it so you can't view/edit the description that is empty, since it is kind of unique
+            if (string.IsNullOrWhiteSpace(Certificate.DescEng) && string.IsNullOrWhiteSpace(Certificate.DescFre))
+            {
+                return NotFound();
+            }
+
             return Page();
         }
 

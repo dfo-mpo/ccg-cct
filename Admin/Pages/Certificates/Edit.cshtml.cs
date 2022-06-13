@@ -44,6 +44,10 @@ namespace Admin.Pages.Certificates
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
             return Page();
         }
 

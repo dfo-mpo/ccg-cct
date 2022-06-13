@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Business.Dtos.JobCompetencies;
 using Admin.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.Pages.Certificates
 {
@@ -16,9 +17,22 @@ namespace Admin.Pages.Certificates
 
         public JobCertificateDto Certificate { get; set; }
 
-        public async Task OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Certificate = await _jobCertificateService.GetJobCertificateById(id); 
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Certificate = await _jobCertificateService.GetJobCertificateById(id.Value);
+            if (Certificate == null)
+            {
+                return NotFound();
+            }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
+            return Page();
         }
     }
 }
