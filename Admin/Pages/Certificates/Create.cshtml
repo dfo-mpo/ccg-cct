@@ -10,31 +10,33 @@
 <h4>Certificate</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Certificate.NameEng" class="control-label"></label>
-                <input asp-for="Certificate.NameEng" class="form-control" required />
+                <textarea class="form-control" asp-for="Certificate.NameEng" required></textarea>
                 <span asp-validation-for="Certificate.NameEng" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.NameFre" class="control-label"></label>
-                <input asp-for="Certificate.NameFre" class="form-control" required />
+                <textarea asp-for="Certificate.NameFre" class="form-control" required></textarea>
                 <span asp-validation-for="Certificate.NameFre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescEng" class="control-label"></label>
-                <input asp-for="Certificate.DescEng" class="form-control" />
+                <textarea asp-for="Certificate.DescEng" class="form-control"></textarea>
                 <span asp-validation-for="Certificate.DescEng" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescFre" class="control-label"></label>
-                <input asp-for="Certificate.DescFre" class="form-control" />
+                <textarea asp-for="Certificate.DescFre" class="form-control"></textarea>
                 <span asp-validation-for="Certificate.DescFre" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group space-btns medium-margin-top padding-top">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-secondary" href="/Certificates">Cancel</a>
             </div>
         </form>
     </div>

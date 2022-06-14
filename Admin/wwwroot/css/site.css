@@ -363,6 +363,19 @@ textarea.form-control {
   padding: 10px !important;
 }
 
+.margin-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.small-margin-top {
+  margin-top: 25px;
+}
+
+.padding-left {
+  padding-left: 15px;
+}
+
 /* header {
   position: fixed !important;
   top: 0px;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -36,11 +38,23 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
+            var compExists = _context.Competencies.Where(x => x.Id == id.Value).FirstOrDefault();
+
+            if (compExists == null)
+            {
+                return NotFound();
+            }
+            if (compExists.Active != 1)
+            {
+                return NotFound();
+            }
+
             Competency = await _jobCompetencyService.GetJobCompetencyById(id);
             if (Competency == null)
             {
                 return NotFound();
             }
+
             if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format("Delete {ID} failed. Try again", id);

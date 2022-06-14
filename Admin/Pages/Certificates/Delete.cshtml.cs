@@ -43,6 +43,10 @@ namespace Admin.Pages.Certificates
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
             if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format("Delete {ID} failed. Try again", id);

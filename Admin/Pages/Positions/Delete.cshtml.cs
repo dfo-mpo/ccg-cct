@@ -45,6 +45,10 @@ namespace Admin.Pages.Positions
             {
                 return NotFound();
             }
+            if (JobPosition.Active != 1)
+            {
+                return NotFound();
+            }
             if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
@@ -68,7 +72,6 @@ namespace Admin.Pages.Positions
             catch (DbUpdateException ex)
             {
                 _logger.LogError(ex, ErrorMessage);
-
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });
             }

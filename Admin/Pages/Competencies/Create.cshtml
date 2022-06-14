@@ -1,17 +1,18 @@
 ﻿@page
 @model Admin.Pages.Competencies.CreateModel
 @{
-    ViewData["Title"] = "Create New Competency";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Create a new Competency</h1>
+<h1>Create</h1>
 
+<h4>Competency</h4>
 <hr />
 
 <div class="col-md-12">
     <form method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <h3 style="margin-bottom:15px;">Choose a competency to add</h3>
+        <h3 style="margin-bottom:15px;">Choose the competency type</h3>
         <div class="form-group">
             <input type="radio" id="knowledge" asp-for="@Model.TypeId" name="CompetencyType" value="1">
             <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="knowledge">Knowledge</label>
@@ -42,7 +43,9 @@
             <textarea asp-for="Competency.DescFre" class="form-control" rows="5" cols="50"></textarea>
             <span asp-validation-for="Competency.DescFre" class="text-danger"></span>
         </div>
-        <h3 style="margin-bottom:15px;">Add a description for each Level</h3>
+
+        <h3 class="small-margin-bottom small-margin-top">Add a description for each level</h3>
+
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 1 - English</b></label>
@@ -103,14 +106,16 @@
                 <span asp-validation-for="Competency.Level5DescFre" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group space-btns padding-top">
             <input type="submit" value="Create" class="btn btn-primary" />
+            <a class="btn btn-secondary" asp-page="List" asp-route-typeid="@Model.TypeId">Cancel</a>
         </div>
     </form>
 </div>
 
 
-<div>
+<div class="padding-left">
     <a asp-page="List" asp-route-typeid="@Model.TypeId">Back to List</a>
 </div>
 
