@@ -41,7 +41,8 @@ namespace Admin.Pages.Certificates.Descriptions
                 return NotFound();
             }
 
-            // this is debatable, but I've made it so you can't view/edit/delete the description that is empty, since it is kind of unique
+            // the empty certificate description should not be accessible directly from the index page, since it is unique.
+            // It shouldn't be mofidied, deleted, or viewed, it should simply be an option to select when adding a certificate to a position
             if (string.IsNullOrWhiteSpace(Description.DescEng) && string.IsNullOrWhiteSpace(Description.DescFre))
             {
                 return NotFound();
