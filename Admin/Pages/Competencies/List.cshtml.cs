@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Business.Dtos.JobCompetencies;
 using Admin.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace Admin.Pages.Competencies
 {
@@ -26,6 +27,8 @@ namespace Admin.Pages.Competencies
         public JobCompetencyDto[] Competencies { get; set; }
         public JobCompetencyTypeDto Type { get; set; }
 
+        public bool DisplayTopOfPage { get; set; }
+
         public async Task OnGetAsync(int typeId)
         {
             var accepetedTypeIds = _context.CompetencyTypes.Select(c => c.Id).ToList();
@@ -38,6 +41,16 @@ namespace Admin.Pages.Competencies
             else { 
                 Type = await _jobCompetencyService.GetJobCompetencyTypeById(typeId);
                 Competencies = await _jobCompetencyService.GetJobCompetenciesByTypeId(typeId);
+            }
+
+            DisplayTopOfPage = true;
+            var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (sessionStr.ToLower() == "false")
+                {
+                    DisplayTopOfPage = false;
+                }
             }
         }
 
