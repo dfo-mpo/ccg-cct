@@ -5,44 +5,46 @@
     ViewData["Title"] = "Certificates";
 }
 
-<h1>Certificates</h1>
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    <h1>Certificates</h1>
 
-<p class="space-btns">
-    <a class="btn btn-dark" asp-page="Create">Create New</a>
-    <a class="btn btn-secondary pull-right" href="/Certificates/Descriptions">Certificate Descriptions</a>
-    <a class="btn btn-info pull-right" href="/Certificates">Certificates</a>
-</p>
+    <p class="space-btns">
+        <a class="btn btn-dark" asp-page="Create">Create New</a>
+        <a class="btn btn-secondary pull-right" href="/Certificates/Descriptions">Certificate Descriptions</a>
+        <a class="btn btn-info pull-right" href="/Certificates">Certificates</a>
+    </p>
 
-@{
-    string? filterValue = Model.Filter;
-    if (filterValue != null)
-    {
-        filterValue = filterValue.Trim();
+    @{
+        string? filterValue = Model.Filter;
+        if (filterValue != null)
+        {
+            filterValue = filterValue.Trim();
+        }
+
+        var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
+            || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
+            || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
+            && (e.Active == 1));
+
+        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
     }
 
-    var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
-        || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
-        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
-        && (e.Active == 1));
+    <form>
+        <div class="form-actions no-color">
+            <h6>
+                <label for="Filter">Find certificates:</label>
+                <input type="text" asp-for="@Model.Filter" value="@filterValue" />
+                <input type="submit" value="Search" class="btn btn-primary" /> 
+                @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                {
+                    <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
+                }
+            </h6>
+        </div>
+    </form>
+</div>
 
-    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
-}
-
-<form>
-    <div class="form-actions no-color">
-        <h6>
-            <label for="Filter">Find certificates:</label>
-            <input type="text" asp-for="@Model.Filter" value="@filterValue" />
-            <input type="submit" value="Search" class="btn btn-primary" /> 
-            @if (!String.IsNullOrWhiteSpace(Model.Filter))
-            {
-                <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
-            }
-        </h6>
-    </div>
-</form>
-
-@if (itemsThatMatchFilter.Count() > 0)
+@if (itemsThatMatchFilter.Any())
 {
     <div id="table-container">
         <table class="table">
@@ -50,7 +52,13 @@
                 <tr class="table-header-row text-center">
                     <th><b>Certificate English</b></th>
                     <th><b>Certificate French</b></th>
-                    <th></th>
+                    <th>
+                        <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                        class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
+                        aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page"
+                        title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -76,5 +84,12 @@
 } 
 else
 {
-    <h4 class="no-results">No certificates match the filter "@Model.Filter"</h4>
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        <h4 class="no-results">No certificates match the filter "@Model.Filter"</h4>
+    }
+    else
+    {
+        <h4 class="no-results">There are currently no certificates</h4>
+    }
 }

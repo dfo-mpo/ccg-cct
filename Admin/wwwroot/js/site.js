@@ -2,6 +2,7 @@
 let tableContainer;
 let footer;
 let localStorageScrollStr = "CCG_CCT_WindowScroll";
+
 const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
 
 /**
@@ -15,15 +16,15 @@ const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
 function qsa(selector, parent = document) {
     if ((!selector) || (!parent)) {
         return [];
-    } 
+    }
     let result = parent.querySelectorAll(selector);
     let nodeResults = [];
     for (let i = 0; i < result.length; i++) {
         let currentNode = /** @type {HTMLElement} */ (result[i]);
         nodeResults[i] = currentNode;
-    } 
+    }
     return nodeResults;
-} 
+}
 
 /**
  * 
@@ -36,9 +37,9 @@ function qsa(selector, parent = document) {
 function qs(selector, parent = document) {
     if ((!selector) || (!parent)) {
         return null;
-    } 
+    }
     return /** @type {HTMLElement} */ (parent.querySelector(selector));
-} 
+}
 
 /**
  * This function is used on basically all Index pages, where there is a long list of elements to display. It handles setting the height of the element which contains the table and that can be scrolled through to make sure it takes up as much height as it can on screen without hiding anything. The minimum height for it is 300px.
@@ -52,10 +53,11 @@ function setTableContainerMaxHeight() {
         let newHeight = windowHeight - footer.getBoundingClientRect().height - tableContainer.getBoundingClientRect().y - MARGIN_BETWEEN_FOOTER_AND_TABLE;
         if (newHeight < 300) {
             newHeight = 300;
-        } 
+        }
         tableContainer.style.maxHeight = `${newHeight}px`;
-    } 
-} 
+        tableContainer.style.minHeight = `${newHeight}px`;
+    }
+}
 
 /**
  * Actions in forms which will cause the same page to be displayed can cause this function to be called which temporarily stores the current scroll offset of the window, which be applied once the page reloads (look at the checkIfWindowShouldBeScrolled() function). In order for the page scroll to be stored, the HTML element which causes the page to be reloaded (for example, the button to save changes after adding a competency in the add/edit position page) must have the css class of "resetWindowHeight".
@@ -63,7 +65,7 @@ function setTableContainerMaxHeight() {
 function storeCurrentScrollPosition() {
     let scrollValue = window.scrollY;
     localStorage.setItem(localStorageScrollStr, scrollValue.toString());
-} 
+}
 
 /**
  * This function gets called whenever a page loads, and simply checks localStorage to see if a window scroll offset it set there (which can be set by the storeCurrentScrollPosition() function). If there is, it will apply this offset to the window, bringing you back to the same scroll position you had before reloading the page (useful in certain forms)
@@ -76,10 +78,10 @@ function checkIfWindowShouldBeScrolled() {
             let numScroll = Number(scrollValue);
             if (!isNaN(numScroll)) {
                 window.scrollTo(window.scrollX, numScroll);
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
 
 /**
  * This function makes it so whenever you click on the "All Regions" checkbox on the add/edit position page, all other region checkboxes' state will match the one of the "All Regions" one. This allows you to click once to select all regions at once (and unselect them all at once as well).
@@ -91,9 +93,9 @@ function toggleRegionCheckboxes() {
     if (allRegionsCheckbox && otherCheckboxes) {
         for (let i = 0; i < otherCheckboxes.length; i++) {
             (/** @type {HTMLInputElement} */ (otherCheckboxes[i])).checked = allRegionsCheckbox.checked;
-        } 
-    } 
-} 
+        }
+    }
+}
 
 /**
  * 
@@ -106,10 +108,10 @@ function toggleRegionCheckboxes() {
 function findNearestParentOfType(el, parentTagName) {
     if ((!el) || (!parentTagName)) {
         return null;
-    } 
+    }
     if ((!el.parentElement)) {
         return null;
-    } 
+    }
 
     parentTagName = parentTagName.toLowerCase();
     let reachedRootNode = false;
@@ -117,17 +119,17 @@ function findNearestParentOfType(el, parentTagName) {
     while (el.tagName.toLowerCase() !== parentTagName && !reachedRootNode) {
         if (el.tagName.toLowerCase() === "html" || (!el.parentElement)) {
             reachedRootNode = true;
-        } 
+        }
         else {
             el = el.parentElement;
-        } 
-    } 
+        }
+    }
 
     if (!reachedRootNode) {
         return /** @type {HTMLElement} */ (el);
-    } 
+    }
     return null;
-} 
+}
 
 /**
  * 
@@ -151,8 +153,8 @@ function toggleExpandableElementsInNextRows(el) {
             let currentRow = allTableRows[i];
             if (currentRow.contains(el)) {
                 startingRowIndex = i;
-            } 
-        } 
+            }
+        }
 
         for (let i = startingRowIndex + 1; i < allTableRows.length && endingRowIndex === -1; i++) {
             let currentRow = allTableRows[i];
@@ -160,12 +162,12 @@ function toggleExpandableElementsInNextRows(el) {
             for (let j = 0; j < nodesInRow.length; j++) {
                 if (nodesInRow[j].tagName.toLowerCase() === "th") {
                     endingRowIndex = i;
-                } 
-            } 
+                }
+            }
             if (i === allTableRows.length - 1 && endingRowIndex === -1) {
                 endingRowIndex = allTableRows.length;
-            } 
-        } 
+            }
+        }
 
         rowsToExpand = allTableRows.slice(startingRowIndex + 1, endingRowIndex);
 
@@ -175,22 +177,22 @@ function toggleExpandableElementsInNextRows(el) {
     
                 if (el.classList.contains("second-column")) { // this is for the competency rows/tables, where you can expand both the competency names or the levels associated to them
                     columnAffected = 2;
-                } 
+                }
     
                 let expandingItems = el.classList.contains("closed");
                 if (expandingItems) {
                     el.classList.remove("closed");
                     el.classList.add("opened");
-                } 
+                }
                 else {
                     el.classList.add("closed");
                     el.classList.remove("opened");
-                } 
+                }
 
                 // in the case of the add/edit position page, all expandable elements will be within the same table row. However, each item will be within a separate div.row. So, if we only have one row, and that row has at least one div.row, instead of looping through multiple table rows, we will now loop through those div.row. The rest of the code behaves the same
                 if (qsa("td div.row", rowsToExpand[0]).length > 0 && rowsToExpand.length === 1) {
                     rowsToExpand = qsa("td div.row", rowsToExpand[0]);
-                } 
+                }
     
                 for (let i = 0; i < rowsToExpand.length; i++) {
                     let btnsInRow = qsa("button.btn", rowsToExpand[i]);
@@ -199,13 +201,13 @@ function toggleExpandableElementsInNextRows(el) {
                         if ((i + 1) === columnAffected) {
                             if ((expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "false") || (!expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "true"))
                             btnsInRow[i].click();
-                        } 
-                    } 
-                } 
-            } 
-        } 
-    } 
-} 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /**
  * 
@@ -227,15 +229,15 @@ function checkCompetencyLevelButtonsState(dropdown) {
 
     if (currentValue === minValue) {
         minusButton.classList.add("disabled");
-    } 
+    }
     if (currentValue === maxValue) {
         plusButton.classList.add("disabled");
-    } 
-} 
+    }
+}
 
 /**
  * 
- * @param {HTMLElement} dropdown - The "select" HTML element
+ * @param {HTMLSelectElement} dropdown - The "select" HTML element
  * @param {Boolean} maximum - True by default. If set to true, will return the maximum, and the minimum otherwise
  * @returns Number
  * 
@@ -247,11 +249,54 @@ function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
         let dropdownValues = [];
         for (let i = 0; i < dropdownOptions.length; i++) {
             dropdownValues[i] = /** @type {Number} */ ((/** @type {HTMLInputElement} */ (dropdownOptions[i])).value);
-        } 
+        }
         return maximum ? Math.max(...dropdownValues) : Math.min(...dropdownValues);
-    } 
+    }
     return null;
-} 
+}
+
+/**
+ * 
+ * @param {HTMLSelectElement} dropdown - The dropdown representing the competency level which had its value modified
+ * 
+ * This function gets called whenever the user modifies the level of a competency in edit position, either by using the buttons, or by using the dropdown. It will adjust the competency level description to match that of the new level. You can see this description by expanding the "LEVEL / NIVEAU" column of the competency tables. (Note, the data for the competency level descriptions is simply hidden in the page, and it gets queried from there)
+ */
+function setCompetencyLevelDescription(dropdown) {
+    if (dropdown) {
+        let div = findNearestParentOfType(dropdown, "div");
+        let value = dropdown.value;
+        let textValue = /** @type {Number} */ (qsa("option", div)[dropdown.selectedIndex].textContent);
+        if (div) {
+            let englishLeveDesc = qs(".engLevelDesc", div);
+            let frenchLevelDesc = qs(".freLevelDesc", div);
+            if (englishLeveDesc && frenchLevelDesc) {
+                let levelDescriptions = qsa(".competencyLevelDesc");
+                if (levelDescriptions) {
+                    let newEnglishLevelDesc = qs(".eng", levelDescriptions[value - 1]).textContent;
+                    let newFrenchLevelDesc = qs(".fre", levelDescriptions[value - 1]).textContent;
+                    if (newFrenchLevelDesc && newEnglishLevelDesc) {
+                        englishLeveDesc.textContent = newEnglishLevelDesc;
+                        frenchLevelDesc.textContent = newFrenchLevelDesc;
+                    }
+                }
+            }
+            let compLevelReqDescEng = qs(".compLevelReqDescEng", div);
+            let compLevelReqDescFre = qs(".compLevelReqDescFre", div);
+            if (compLevelReqDescEng && compLevelReqDescFre) {
+                let englishCompLevelDescs = qsa(".compDescEng", div);
+                let frenchCompLevelDescs = qsa(".compDescFre", div);
+                if (englishCompLevelDescs && frenchCompLevelDescs) {
+                    let newCompLevelReqDescEng = englishCompLevelDescs[textValue - 1].textContent;
+                    let newCompLevelReqDescFre = frenchCompLevelDescs[textValue - 1].textContent;
+                    if (newCompLevelReqDescEng && newCompLevelReqDescFre) {
+                        compLevelReqDescEng.textContent = newCompLevelReqDescEng;
+                        compLevelReqDescFre.textContent = newCompLevelReqDescFre;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /**
  * 
@@ -269,18 +314,18 @@ function changeCompetencyLevelValue(el, newNum = null) {
         valueChanged = true;
         newDropdownValue = newNum;
         dropdown = el;
-    } 
+    }
     else {
         let increment = true;
     
         if (el.classList.contains("minus-icon")) {
             dropdown = el.nextElementSibling;
             increment = false;
-        } 
+        }
         else {
             dropdown = el.previousElementSibling;
-        } 
-        dropdown = /** @type {HTMLInputElement} */ (dropdown);
+        }
+        dropdown = /** @type {HTMLSelectElement} */ (dropdown);
     
         let originalDropdownValue = Number(dropdown.value);
         let maxDropdownValue = getMaximumOrMinimumValueFromDropdown(dropdown);
@@ -288,17 +333,18 @@ function changeCompetencyLevelValue(el, newNum = null) {
 
         if (increment && originalDropdownValue < maxDropdownValue) {
             dropdown.value = originalDropdownValue + 1;
-        } 
+        }
         if (!increment && originalDropdownValue > minDropdownValue) {
             dropdown.value = originalDropdownValue - 1;
-        } 
+        }
 
         newDropdownValue = Number(dropdown.value);
         valueChanged = (originalDropdownValue !== newDropdownValue);
-    } 
+    }
 
     if (valueChanged) {
         checkCompetencyLevelButtonsState(dropdown);
+        setCompetencyLevelDescription(dropdown);
         const ENCODED_AMPERSAND = encodeURIComponent("&");
         let formActionElements = qsa(`[formaction]`);
         let shortCompetencyStr = dropdown.id.substring(0, dropdown.id.indexOf("-"));
@@ -318,7 +364,7 @@ function changeCompetencyLevelValue(el, newNum = null) {
             case "exec":
                 fullCompetencyStr = "addedexecutivecompetencyids";
                 break;
-        } 
+        }
         fullCompetencyStr = /** @type {String} */ (fullCompetencyStr);
 
         for (let i = 0; i < formActionElements.length; i++) {
@@ -341,9 +387,144 @@ function changeCompetencyLevelValue(el, newNum = null) {
             let updatedFormActionStr = formActionStrArr.join('');
     
             formActionElement.setAttribute("formaction", updatedFormActionStr);
-        } 
-    } 
-} 
+        }
+    }
+}
+
+/**
+ * 
+ * @param {string} key - The key to set
+ * @param {string} value - The value to give to the key
+ * 
+ * This function is a simple API to set session variables on the server. There is a corresponding route in the app which receives a key value pair and sets it accordingly in the session.
+ */
+function setSessionVariable(key, value) {
+    if (key && value) {
+        fetch(`/Session/SetValue?key=${key}&value=${value}`);
+    }
+}
+
+/**
+ * This function gets called whenever a page loads. It indicates in the navigation in which group of pages the user is currently in by adding a blue border below the link
+ */
+function setSelectedNavItem() {
+    let url = window.location.href.toLowerCase();
+    url = url.substring(url.indexOf("/", new String("https://").length) + 1, (url.indexOf("?") > 0 ? url.indexOf("?") : url.length));
+
+    let selectedItem;
+    if (url === "" || url === "index") {
+        selectedItem = "navHome";
+    }
+    else {
+        if (url.includes("positions")) {
+            selectedItem = "navPositions";
+        }
+        else if (url.includes("competencies")) {
+            selectedItem = "navCompetencies";
+        }
+        else if (url.includes("similar")) {
+            selectedItem = "navSimilar";
+        }
+        else if (url.includes("certificates") && url.includes("descriptions")) {
+            selectedItem = "navCertDesc";
+        }
+        else if (url.includes("certificates") && !url.includes("descriptions")) {
+            selectedItem = "navCertificates";
+        }
+    }
+
+    let navBtn = qs(`#${selectedItem}`);
+    navBtn.classList.add("selected");
+
+    let navItems = qsa(".nav-item");
+    for (let i = 0; i < navItems.length; i++) {
+        if (!navItems[i].classList.contains("selected")) {
+            qs(".nav-link", navItems[i]).classList.add("smooth-underline");
+        }
+    }
+    qs(".navbar-brand").classList.add("smooth-underline");
+}
+
+/**
+ * 
+ * @param {HTMLElement} el - The dropdown that was double clicked
+ * 
+ * This function gets called when the user double clicks a dropdown that lets them change a competency's level on the position create/edit page. It toggles expanding/collapsing the competency's description individually.
+ */
+function toggleExpandableItem(el) {
+    if (el) {
+        let div = findNearestParentOfType(el, "div");
+        if (div) {
+            let btn = qs("button.btn", div);
+            if (btn) {
+                btn.click();
+            }
+        }
+    }
+}
+
+// Handling Events VVVVV -------------------------------------------------------------------------------------------------------------------
+
+/**
+ * 
+ * @param {Event} e - The event object
+ * @param {boolean} canRecurse - Whether the function can call itself again, true by default (the function can call itself without recursing though)
+ * @param {boolean} firstCall - Whether this is the first time it is called for this animation. Recursive calls have it set to false, and it is false by default
+ * 
+ * This function gets called whenever a transitionstart event is fired, so when an element is expanded/collapsed. It is mainly used on the index pages for toggling the top portion of the page.
+ */
+function transitionStarted(e, canRecurse = true, firstCall = false) {
+    let target = /** @type {HTMLInputElement} */ (e.target);
+
+    if (tableContainer) {
+        if (target.id === "collapsibleTop") {
+             // this means we are on an index page, which means that the animation that started has to do with the toggling of the top part of the page
+            setTableContainerMaxHeight();
+
+            footer = /** @type {HTMLElement} */ (footer);
+            if (firstCall) {
+                qs("body").classList.add("overflow-hidden");
+                footer.style.position = "fixed";
+                let arrowIcon = qs(`[data-target="#collapsibleTop"]`);
+
+                if (target.style.height) {
+                    // expanding the top
+                    arrowIcon.setAttribute("src", arrowIcon.getAttribute("src").substring(0, arrowIcon.getAttribute("src").lastIndexOf("/")) + "/up_arrow.png");
+                    arrowIcon.setAttribute("alt", "Collapse the top of the page");
+                    arrowIcon.setAttribute("title", "Collapse the top of the page");
+                    setSessionVariable("displayTopOfPage", "true");
+                }
+                else {
+                    // collapsing the top
+                    arrowIcon.setAttribute("src", arrowIcon.getAttribute("src").substring(0, arrowIcon.getAttribute("src").lastIndexOf("/")) + "/down_arrow.png");
+                    arrowIcon.setAttribute("alt", "Expand the top of the page");
+                    arrowIcon.setAttribute("title", "Expand the top of the page");
+                    setSessionVariable("displayTopOfPage", "false");
+                }
+            }
+            if (canRecurse) {
+                if (qs(".collapsing")) {
+                    setTimeout(() => { // this produces a smooth animation as the top part is animated
+                        transitionStarted(e, true, false);
+                    }, 20);
+                }
+                else {
+                    // this gets fired once the animation finishes
+                    transitionStarted(e, false);
+                    setTableContainerMaxHeight();
+                }
+            }
+            else {
+                footer.style.position = "absolute";
+                qs("body").classList.remove("overflow-hidden");
+                setTableContainerMaxHeight();
+                setTimeout(() => { // this delayed call ensures that there can't be a desync, otherwise, it can happen, very rarely
+                    setTableContainerMaxHeight();
+                }, 100);
+            }
+        }
+    }
+}
 
 /**
  * 
@@ -352,17 +533,35 @@ function changeCompetencyLevelValue(el, newNum = null) {
  * 
  * This function gets called whenever an input element has its value change, and in certain cases, it will call other functions to handle special baheviour.
  */
- function handleChange(e) {
+function handleChange(e) {
     let target = /** @type {HTMLInputElement} */ (e.target);
     if (target) {
         if (target.classList) {
             if (target.classList.contains("changeCompetencyLevelDropdown")) {
                 changeCompetencyLevelValue(target, target.value);
                 return;
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
+
+/**
+ * 
+ * @param {Event} e - The double click event
+ * @returns - void
+ * 
+ * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
+ */
+ function handleDoubleClick(e) {
+    let target = /** @type {HTMLElement} */ (e.target);
+    if (target) {
+        if (target.classList) {
+            if (target.classList.contains("changeCompetencyLevelDropdown")) {
+                toggleExpandableItem(target);
+            }
+        }
+    }
+}
 
 /**
  * 
@@ -371,44 +570,55 @@ function changeCompetencyLevelValue(el, newNum = null) {
  * 
  * This function gets called whenever something is clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
- function handleClick(e) {
+function handleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
     if (target) {
         if (target.classList) {
             if (target.classList.contains("resetWindowHeight")) {
                 storeCurrentScrollPosition();
                 return;
-            } 
+            }
             if (target.classList.contains("expand-elements-in-next-rows")) {
                 toggleExpandableElementsInNextRows(target);
                 return;
-            } 
+            }
             if (target.classList.contains("plus-minus-icon")) {
                 changeCompetencyLevelValue(target);
                 return;
-            } 
-        } 
+            }
+        }
         if (target.id) {
             if (target.id === "allRegionsCheckbox") {
                 toggleRegionCheckboxes();
                 return;
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
 
-// Page setup when it has loaded. Adds the appropriate event listeners and such
+// Handling Events ^^^^^ -------------------------------------------------------------------------------------------------------------------
+
+// Page setup VVVVV ------------------------------------------------------------------------------------------------------------------------
+
 window.addEventListener("load", () => {
     windowHeight = window.innerHeight;
     tableContainer = qs("#table-container");
     footer = qs("footer");
-    qs("body").addEventListener("click", (e) => {
+    let body = qs("body");
+    body.addEventListener("click", (e) => {
         handleClick(e);
     });
-    qs("body").addEventListener("change", (e) => {
+    body.addEventListener("dblclick", (e) => {
+        handleDoubleClick(e);
+    });
+    body.addEventListener("change", (e) => {
         handleChange(e);
     });
+    document.addEventListener("transitionstart", (e) => {
+        transitionStarted(e, true, true);
+    });
 
+    setSelectedNavItem();
     checkIfWindowShouldBeScrolled();
 
     if (tableContainer && footer) {
@@ -417,5 +627,5 @@ window.addEventListener("load", () => {
             windowHeight = window.innerHeight;
             setTableContainerMaxHeight();
         });
-    } 
+    }
 });

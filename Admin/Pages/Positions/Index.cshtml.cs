@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Admin.Data;
 using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Admin.Pages.Positions
 {
@@ -19,6 +20,8 @@ namespace Admin.Pages.Positions
             _jobPositionService = jobPositionService;
         }
 
+        public bool DisplayTopOfPage { get; set; }
+
         public IList<JobPositionDto> JobPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
@@ -26,6 +29,16 @@ namespace Admin.Pages.Positions
         public async Task OnGetAsync()
         {
             JobPositions = await _jobPositionService.GetAllJobPositions();
+
+            DisplayTopOfPage = true;
+            var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (sessionStr.ToLower() == "false")
+                {
+                    DisplayTopOfPage = false;
+                }
+            }
         }
     }
 }
