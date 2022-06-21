@@ -1,0 +1,572 @@
+﻿@model Admin.Pages.Positions.EditModel
+@using Admin.Data.PartialModels
+@using Business.Dtos.JobCompetencies
+
+@{
+    bool expandableItemsOpenNewWindows = true;
+
+    var routedataknow = Model.GetRouteData();
+    routedataknow["competencytypename"] = "knowledge";
+
+    var routedatatech = Model.GetRouteData();
+    routedatatech["competencytypename"] = "technical";
+
+    var routedatabehav = Model.GetRouteData();
+    routedatabehav["competencytypename"] = "behavioural";
+
+    var routedataexec = Model.GetRouteData();
+    routedataexec["competencytypename"] = "executive";
+
+    var routedata = Model.GetRouteData();
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="JobPosition.Id" />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="table-header-row">POSITION / POSTE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="form-group m-2">
+                    <label class="control-label" for="titleEng"><b>Title English</b></label>
+                    <textarea class="form-control" name="titleEng" required id="titleEng">@Model.TitleEng</textarea>
+                    <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <label class="control-label" for="titleFre"><b>Title French</b></label>
+                    <textarea class="form-control" name="titleFre" required id="titleFre">@Model.TitleFre</textarea>
+                    <span asp-validation-for="JobPosition.TitleFre" class="text-danger"></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group m-2">
+                    <label class="control-label" for="descEng"><b>Description English</b></label>
+                    <textarea class="form-control" name="descriptionEng" id="descEng">@Model.DescriptionEng</textarea>
+                    <span asp-validation-for="JobPosition.PositionDescEng" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <label class="control-label" for="descFre"><b>Description French</b></label>
+                    <textarea class="form-control" name="descriptionFre" id="descFre">@Model.DescriptionFre</textarea>
+                    <span asp-validation-for="JobPosition.PositionDescFre" class="text-danger"></span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="table-header-row">AREA / DOMAINE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="form-group">
+                    @{
+                        bool onLand = true;
+                        if (Model.JobHLCategory == "1")
+                        {
+                            onLand = false;
+                        }
+                    }
+                    @if (onLand)
+                    {
+                        <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2" checked>
+                    }
+                    else
+                    {
+                        <input class="m-3" type="radio" id="Shoreside" name="JobHLCategory" value="2">
+                    }
+                    <label class="mr-3" for="Shoreside">Shore side / À terre</label>
+
+                    @if (!onLand)
+                    {
+                        <input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1" checked>
+                    }
+                    else
+                    {
+                        <input class="m-3" type="radio" id="Seagoing" name="JobHLCategory" value="1">
+                    }
+                    <label class="mr-3" for="Seagoing">Seagoing / En mer</label>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th colspan="2" class="table-header-row">REGION / RÉGION</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            var splitRegionsIds = Model.RegionIds.Split("-").Distinct().ToList();
+        }
+
+        <tr>
+            <td>
+                <label class="mr-3 no-highlight" for="allRegionsCheckbox">All Regions / Toutes les régions</label>
+            </td>
+            @*  
+                Old code:    
+                @if (Model.RegionIds.Split("-").ToList().Contains(7.ToString()))
+                {
+                    <td class="text-center"><input name="SelectedRegionIds" id="allRegions" value="7" type="checkbox" checked /></td>
+                }
+                else
+                {
+                    <td class="text-center"><input name="SelectedRegionIds" id="allRegions" value="7" type="checkbox" /></td>
+                }*@
+            <td class="text-center"><input id="allRegionsCheckbox" type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>
+
+                <label class="mr-3" for="atlantic">Atlantic / Atlantique</label>
+            </td>
+            @if (splitRegionsIds.Contains(1.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="atlantic" value="1" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="atlantic" value="1" type="checkbox" /></td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <label class="mr-3" for="central">Central / Centre</label>
+            </td>
+            @if (splitRegionsIds.Contains(5.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="central" value="5" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="central" value="5" type="checkbox" /></td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <label class="mr-3" for="western">Western / Ouest</label>
+            </td>
+            @if (splitRegionsIds.Contains(2.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="western" value="2" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="western" value="2" type="checkbox" /></td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <label class="mr-3" for="arctic">Arctic / Arctique</label>
+            </td>
+            @if (splitRegionsIds.Contains(3.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="arctic" value="3" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="arctic" value="3" type="checkbox" /></td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <label class="mr-3" for="nationalHq">National Headquarters / Siège national</label>
+            </td>
+            @if (splitRegionsIds.Contains(4.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="nationalHq" value="4" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="nationalHq" value="4" type="checkbox" /></td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <label class="mr-3" for="ccgCollege">CCG College / Collège de la GCC</label>
+            </td>
+            @if (splitRegionsIds.Contains(6.ToString()))
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="ccgCollege" value="6" type="checkbox" checked /></td>
+            }
+            else
+            {
+                <td class="text-center"><input name="SelectedRegionIds" id="ccgCollege" value="6" type="checkbox" /></td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+<span asp-validation-for="SelectedRegionIds"></span>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="table-header-row">CLASSIFICATION & LEVEL / CLASSIFICATION ET NIVEAU</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="row margin-auto col-12">
+                    <div class="dropdown col-8 m-1">
+                        <label class="control-label" for="menu1"><b>Classification</b></label><br />
+
+                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                            (@Model.CurrentSelectedJobGroup.Code) @Model.CurrentSelectedJobGroup.NameEng / @Model.CurrentSelectedJobGroup.NameFre
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            @{
+                                var jobGroups = Model.JobGroups.OrderBy(x => x.Code.ToLower()).Distinct().ToList();
+                            }
+                            @foreach (var jobgroup in jobGroups)
+                            {
+                                var routedatagroup = new Dictionary<string, string> {
+                                        {"id", Model.Id.ToString() },
+                                        {"titleeng", Model.TitleEng },
+                                        {"titlefre", Model.TitleFre },
+                                        {"descriptioneng", Model.DescriptionEng },
+                                        {"descriptionfre", Model.DescriptionFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId", Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                        {"jobgroupid", jobgroup.Id.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
+                                        {"addedcertificateids", Model.AddedCertificateIds },
+                                        {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
+                                        {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
+                                        {"addedbehaviouralcompetencyids", Model.AddedBehaviouralCompetencyIds },
+                                        {"addedexecutivecompetencyids", Model.AddedExecutiveCompetencyIds },
+                                };
+                                <li role="presentation">
+                                    <button class="btn btn-light resetWindowHeight" asp-page-handler="group" asp-all-route-data="routedatagroup">
+                                        (@jobgroup.Code) @jobgroup.NameEng / @jobgroup.NameFre
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="dropdown col-3 m-1">
+                        <label class="control-label" for="levelValue"><b>Level / Niveau</b></label><br />
+                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="levelValue" name="LevelValue">
+                            @{
+                                var jobGroupPositions = Model.JobGroupPositions.OrderBy(x => x.LevelCode.ToLower()).Distinct().ToList();
+                            }
+                            @foreach (var level in jobGroupPositions)
+                            {
+                                if (level.LevelCode != Model.LevelCode)
+                                {
+                                    <option value="@level.SubJobGroupId/@level.LevelId/@level.LevelCode">
+                                        @level.LevelCode
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@level.SubJobGroupId/@level.LevelId/@level.LevelCode" selected>
+                                        @level.LevelCode
+                                    </option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@{
+    var addedCertificates = Model.AddedCertificates.Where(x => x.Active == 1).OrderBy(x => x.NameEng.ToLower()).ToList();
+    bool atLeastOneCert = addedCertificates.Any();
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="table-header-row">
+                <div class="row">
+                    <div class="col-9 m-auto">
+                        <span class="@(atLeastOneCert ? "expand-elements-in-next-rows" : "") closed" id="certTableHeader">CERTIFICATIONS / ATTESTATIONS</span>
+                    </div>
+                    <div class="col-3 text-right">
+                        @{
+                            List<int> certIds = new List<int>();
+                            foreach (var cert in Model.AddedCertificates.Where(x => x.Active == 1))
+                            {
+                                certIds.Add(cert.Id);
+                            }
+                            var remainingCertificatesToAdd = Model.JobCertificates.Where(x => (x.Active == 1
+                                && !certIds.Contains(x.Id))).Distinct();
+                        }
+                        @if (remainingCertificatesToAdd.Any())
+                        {
+                            remainingCertificatesToAdd = remainingCertificatesToAdd.OrderBy(x => x.NameEng.ToLower());
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcert">
+                                Add
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn disabled-btn">
+                                Add
+                            </button>
+                        }
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="modal fade bd-modal-xl" id="addcert" tabindex="-1" role="dialog" aria-labelledby="addcertModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addcertModalTitle">ADD A CERTIFICATE</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body table-header-row">
+                                    <div class="mb-3">
+                                        <label class="control-label" for="certificate"><b>Certificates</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="certificate" name="certificate">
+                                            @foreach (var certificate in remainingCertificatesToAdd)
+                                            {
+                                                <option value="@certificate.Id">@certificate.NameEng / @certificate.NameFre</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label" for="CertificateDescriptionId"><b>Description</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="CertificateDescriptionId" name="CertificateDescriptionId">
+                                            @{
+                                                var certDescs = Model.JobCertificateDescriptions.Where(x => x.Active == 1).OrderBy(x => x.DescEng.ToLower()).Distinct().ToList();
+                                            }
+                                            @foreach (var certificate in certDescs)
+                                            {
+                                                <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary resetWindowHeight" asp-page-handler="certificate" asp-all-route-data="@routedata">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (atLeastOneCert)
+                {
+                    addedCertificates = addedCertificates.GroupBy(x => x.Id).Select(x => x.First()).ToList();
+
+                    @foreach (var certificate in addedCertificates)
+                    {
+                        var key1 = "cert" + certificate.Id.ToString();
+                        var divKey = "certDiv" + certificate.Id.ToString();
+
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="accordion" id="@divKey">
+                                    <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
+                                        @certificate.NameEng / @certificate.NameFre
+                                    </button>
+                                    <div id="@key1" class="collapse" aria-labelledby="#certTableHeader" data-parent="#@divKey">
+                                        <div class="card-body">
+                                            @if (string.IsNullOrWhiteSpace(certificate.DescEng) && string.IsNullOrWhiteSpace(certificate.DescFre))
+                                            {
+                                                <p class="no-margins">
+                                                    <b>No description selected</b>
+                                                </p>
+                                                <div class="expanded-item-navigation">
+                                                    <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                        Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a>
+                                                    <hr />
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    <b>English Description</b><br />
+                                                    <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescEng) ? "No description specified in English" : certificate.DescEng)</span>
+                                                </p>
+                                                <p>
+                                                    <b>French Description</b><br />
+                                                    <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescFre) ? "Aucune description specifée en français" : certificate.DescFre)</span>
+                                                </p>
+                                                <div class="expanded-item-navigation">
+                                                    <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                        Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a> <span class="small-padding-left">|</span>
+                                                    <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                        Edit Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+                                                    <hr />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 text-right">
+                                @{
+                                    var routedataremove = new Dictionary<string, string> {
+                                        {"id", Model.Id.ToString() },
+                                        {"titleeng",Model.TitleEng },
+                                        {"titlefre",Model.TitleFre },
+                                        {"descriptioneng",Model.DescriptionEng },
+                                        {"descriptionfre",Model.DescriptionFre },
+                                        {"levelcode", Model.LevelCode },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"regionids", Model.RegionIds },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                        {"jobgroupid", Model.JobGroupId.ToString() },
+                                        {"jobhlcategory", Model.JobHLCategory },
+                                        {"addedcertificateids", Model.AddedCertificateIds },
+                                        {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
+                                        {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
+                                        {"addedbehaviouralcompetencyids", Model.AddedBehaviouralCompetencyIds },
+                                        {"addedexecutivecompetencyids", Model.AddedExecutiveCompetencyIds },
+                                        {"certificateId", certificate.Id.ToString() }
+                                    };
+                                }
+                                <button class="btn btn-link text-right remove-btn resetWindowHeight" asp-page-handler="deletecertificate" asp-all-route-data="@routedataremove">REMOVE</button>
+                            </div>
+                        </div>
+
+                    }
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="no-competency">This position does not currently have any certifications associated to it</p>
+                        </div>
+                    </div>
+                }
+                <hr />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="dontShow">
+    @{
+        var levels = await Model.GetCompetencyLevelDescriptions();
+        foreach (var level in levels)
+        {
+            string engStr = level.NameEng;
+            if (!string.IsNullOrWhiteSpace(level.DescEng))
+            {
+                engStr += " " + level.DescEng;
+            }
+            string freStr = level.NameFre;
+            if (!string.IsNullOrWhiteSpace(level.DescFre))
+            {
+                freStr += " " + level.DescFre;
+            }
+            <div class="competencyLevelDesc">
+                <span class="eng">@engStr</span>
+                <span class="fre">@freStr</span>
+            </div>
+        }
+    }
+</div>
+
+@{
+    var compKnowModel = new CompetencyPartialModel
+    {
+        AmountToAddToCompetencyRating = 0,
+        FullModel = Model,
+        FullCompetencyNameEng = "Knowledge Elements",
+        FullCompetencyNameFre = "Éléments de connaissance",
+        FullCompetencyNameOneWord = "Knowledge",
+        ShortCompetencyName = "know",
+        FullCompetencyList = Model.JobCompetenciesKnowledge,
+        AddedCompetenciesList = Model.AddedKnowledgeCompetencies,
+        ExpandableItemsOpenNewWindows = expandableItemsOpenNewWindows,
+        RouteDataForCompetency = routedataknow
+    };
+}
+
+<partial name="_Competency" model="@compKnowModel" />
+
+@{
+    var compTechModel = new CompetencyPartialModel
+    {
+        AmountToAddToCompetencyRating = 0,
+        FullModel = Model,
+        FullCompetencyNameEng = "Technical Elements",
+        FullCompetencyNameFre = "Éléments techniques",
+        FullCompetencyNameOneWord = "Technical",
+        ShortCompetencyName = "tech",
+        FullCompetencyList = Model.JobCompetenciesTechnical,
+        AddedCompetenciesList = Model.AddedTechnicalCompetencies,
+        ExpandableItemsOpenNewWindows = expandableItemsOpenNewWindows,
+        RouteDataForCompetency = routedatatech
+    };
+}
+
+<partial name="_Competency" model="@compTechModel" />
+
+@{
+    var compBehaModel = new CompetencyPartialModel
+    {
+        AmountToAddToCompetencyRating = 0,
+        FullModel = Model,
+        FullCompetencyNameEng = "Behavioural Elements",
+        FullCompetencyNameFre = "Éléments de comportement",
+        FullCompetencyNameOneWord = "Behavioural",
+        ShortCompetencyName = "beha",
+        FullCompetencyList = Model.JobCompetenciesBehavioural,
+        AddedCompetenciesList = Model.AddedBehaviouralCompetencies,
+        ExpandableItemsOpenNewWindows = expandableItemsOpenNewWindows,
+        RouteDataForCompetency = routedatabehav
+    };
+}
+
+<partial name="_Competency" model="@compBehaModel" />
+
+@{
+    var compExecModel = new CompetencyPartialModel
+    {
+        AmountToAddToCompetencyRating = 5,
+        FullModel = Model,
+        FullCompetencyNameEng = "Executive Competencies",
+        FullCompetencyNameFre = "Compétences exécutives",
+        FullCompetencyNameOneWord = "Executive",
+        ShortCompetencyName = "exec",
+        FullCompetencyList = Model.JobCompetenciesExecutive,
+        AddedCompetenciesList = Model.AddedExecutiveCompetencies,
+        ExpandableItemsOpenNewWindows = expandableItemsOpenNewWindows,
+        RouteDataForCompetency = routedataexec,
+        UseAn = true,
+        UseElement = false
+    };
+}
+
+<partial name="_Competency" model="@compExecModel" />

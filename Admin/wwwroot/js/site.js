@@ -172,13 +172,13 @@ function toggleExpandableElementsInNextRows(el) {
         rowsToExpand = allTableRows.slice(startingRowIndex + 1, endingRowIndex);
 
         if (qsa(".collapsing", nearestParentTable).length === 0) { // this is to make sure that nothing happens if elements are currently being expanded/closed, otherwise the state might be slightly off
-        
+
             if (qsa(".accordion", rowsToExpand[0]).length > 0) { // this is just to determine if there is something expandable in the rows, if not, there's no point in trying to expand the elements
-    
+
                 if (el.classList.contains("second-column")) { // this is for the competency rows/tables, where you can expand both the competency names or the levels associated to them
                     columnAffected = 2;
                 }
-    
+
                 let expandingItems = el.classList.contains("closed");
                 if (expandingItems) {
                     el.classList.remove("closed");
@@ -193,14 +193,14 @@ function toggleExpandableElementsInNextRows(el) {
                 if (qsa("td div.row", rowsToExpand[0]).length > 0 && rowsToExpand.length === 1) {
                     rowsToExpand = qsa("td div.row", rowsToExpand[0]);
                 }
-    
+
                 for (let i = 0; i < rowsToExpand.length; i++) {
                     let btnsInRow = qsa("button.btn", rowsToExpand[i]);
-            
+
                     for (let i = 0; i < btnsInRow.length; i++) {
                         if ((i + 1) === columnAffected) {
                             if ((expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "false") || (!expandingItems && btnsInRow[i].getAttribute("aria-expanded") === "true"))
-                            btnsInRow[i].click();
+                                btnsInRow[i].click();
                         }
                     }
                 }
@@ -317,7 +317,7 @@ function changeCompetencyLevelValue(el, newNum = null) {
     }
     else {
         let increment = true;
-    
+
         if (el.classList.contains("minus-icon")) {
             dropdown = el.nextElementSibling;
             increment = false;
@@ -326,7 +326,7 @@ function changeCompetencyLevelValue(el, newNum = null) {
             dropdown = el.previousElementSibling;
         }
         dropdown = /** @type {HTMLSelectElement} */ (dropdown);
-    
+
         let originalDropdownValue = Number(dropdown.value);
         let maxDropdownValue = getMaximumOrMinimumValueFromDropdown(dropdown);
         let minDropdownValue = getMaximumOrMinimumValueFromDropdown(dropdown, false);
@@ -369,23 +369,23 @@ function changeCompetencyLevelValue(el, newNum = null) {
 
         for (let i = 0; i < formActionElements.length; i++) {
             let formActionElement = formActionElements[i];
-            let formActionStr = formActionElement.getAttribute("formaction");  
-    
-            let competencyIdsStr = formActionStr.substring((formActionStr.indexOf(fullCompetencyStr) + fullCompetencyStr.length + 1), 
+            let formActionStr = formActionElement.getAttribute("formaction");
+
+            let competencyIdsStr = formActionStr.substring((formActionStr.indexOf(fullCompetencyStr) + fullCompetencyStr.length + 1),
                 (formActionStr.indexOf("-&", (formActionStr.indexOf(fullCompetencyStr) + 1))));
 
             let endIndex = competencyIdsStr.indexOf("-", (competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND)))) < 0 ? competencyIdsStr.length :
                 competencyIdsStr.indexOf("-", (competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND))));
 
-            let competencyToUpdateStr = competencyIdsStr.substring((competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND))), 
-            endIndex);
+            let competencyToUpdateStr = competencyIdsStr.substring((competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND))),
+                endIndex);
 
             let updatedCompetencyStr = competencyToUpdateStr.substring(0, competencyToUpdateStr.indexOf(ENCODED_AMPERSAND) + ENCODED_AMPERSAND.length).concat(newDropdownValue.toString());
 
             let formActionStrArr = formActionStr.split('');
             formActionStrArr.splice(formActionStr.indexOf(competencyToUpdateStr), competencyToUpdateStr.length, updatedCompetencyStr);
             let updatedFormActionStr = formActionStrArr.join('');
-    
+
             formActionElement.setAttribute("formaction", updatedFormActionStr);
         }
     }
@@ -410,6 +410,7 @@ function setSessionVariable(key, value) {
 function setSelectedNavItem() {
     let url = window.location.href.toLowerCase();
     url = url.substring(url.indexOf("/", new String("https://").length) + 1, (url.indexOf("?") > 0 ? url.indexOf("?") : url.length));
+    // the url variable is the "route" portion of the entire url
 
     let selectedItem;
     if (url === "" || url === "index") {
@@ -447,18 +448,36 @@ function setSelectedNavItem() {
 
 /**
  * 
- * @param {HTMLElement} el - The dropdown that was double clicked
+ * @param {HTMLElement} el - The element that was clicked
  * 
- * This function gets called when the user double clicks a dropdown that lets them change a competency's level on the position create/edit page. It toggles expanding/collapsing the competency's description individually.
+ * This function gets called when the user double clicks anywhere on the page, but it only does something if they clicked on a competency that can be expanded (on the edit position page). If they clicked on such a competency, this function will toggle expanding/collapsing that competency
  */
-function toggleExpandableItem(el) {
+function attemptToExpandCompetency(el) {
     if (el) {
-        let div = findNearestParentOfType(el, "div");
-        if (div) {
-            let btn = qs("button.btn", div);
-            if (btn) {
-                btn.click();
+        let parentDiv = null;
+        let currentEl = el;
+        if (currentEl.classList) {
+            if (!currentEl.classList.contains("plus-minus-icon")) { // the element should not be toggled if you double-clicked on the + or - buttons
+                while (!parentDiv) {
+                    if (currentEl.classList) {
+                        if (currentEl.classList.contains("compLevelDescContainer")) {
+                            parentDiv = currentEl;
+                        }
+                    }
+                    if (!parentDiv) {
+                        if (currentEl.parentElement) {
+                            currentEl = currentEl.parentElement;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
             }
+        }
+
+        if (parentDiv) {
+            qs(".btn.dontShow", parentDiv).click();
         }
     }
 }
@@ -478,7 +497,7 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
 
     if (tableContainer) {
         if (target.id === "collapsibleTop") {
-             // this means we are on an index page, which means that the animation that started has to do with the toggling of the top part of the page
+            // this means we are on an index page, which means that the animation that started has to do with the toggling of the top part of the page
             setTableContainerMaxHeight();
 
             footer = /** @type {HTMLElement} */ (footer);
@@ -552,14 +571,10 @@ function handleChange(e) {
  * 
  * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
- function handleDoubleClick(e) {
+function handleDoubleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
     if (target) {
-        if (target.classList) {
-            if (target.classList.contains("changeCompetencyLevelDropdown")) {
-                toggleExpandableItem(target);
-            }
-        }
+        attemptToExpandCompetency(target);
     }
 }
 
