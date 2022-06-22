@@ -19,11 +19,11 @@ namespace DataModel
                     if (valueList.Count > 0)
                     {
                         return ValidationResult.Success;
-                    } // if
-                } // if
+                    }
+                }
                 return new ValidationResult(errMsg);
-            } // IsValid()
-        } // CheckOneRegionSelected class
+            }
+        }
 
-    } // CustomValidation class
-} // namespace
+    }
+}

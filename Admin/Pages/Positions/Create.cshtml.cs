@@ -7,7 +7,12 @@ using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobGroups;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
+using Business.Dtos.JobPositions;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using static DataModel.CustomValidation;
 
 namespace Admin.Pages.Positions
 {
@@ -16,12 +21,15 @@ namespace Admin.Pages.Positions
         private readonly DataModel.CctDbContext _context;
 
         private readonly JobCompetencyService _jobCompetencyService;
+        private readonly JobCertificateService _jobCertificateService;
 
-        public CreateModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService)
+        public CreateModel(DataModel.CctDbContext context, JobCompetencyService jobCompetencyService, JobCertificateService jobCertificateService)
         {
             _context = context;
             _jobCompetencyService = jobCompetencyService;
+            _jobCertificateService = jobCertificateService;
         }
+
         [BindProperty]
         public JobPosition JobPosition { get; set; }
         public List<JobCertificateDto> AddedCertificates = new List<JobCertificateDto>() { };
@@ -68,6 +76,7 @@ namespace Admin.Pages.Positions
         [BindProperty(SupportsGet = true)]
         public string JobHLCategory { get; set; }
         [BindProperty]
+        [CheckOneRegionSelected]
         public List<string> SelectedRegionIds { get; set; } = new List<string> { };
         [BindProperty(SupportsGet = true)]
         public int JobGroupLevelId { get; set; }
@@ -78,6 +87,22 @@ namespace Admin.Pages.Positions
         [BindProperty(SupportsGet = true)]
         public string LevelValue { get; set; }
 
+        // Normally, the three private properties shouldn't be accessible, but it was necessary in order to use the partial view
+
+        public CctDbContext GetContext()
+        {
+            return _context;
+        }
+
+        public JobCompetencyService GetJobCompetencyService()
+        {
+            return _jobCompetencyService;
+        }
+
+        public JobCertificateService GetJobCertificateService()
+        {
+            return _jobCertificateService;
+        }
 
         public async Task OnGetAsync()
         {
@@ -126,7 +151,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedKnowledgeCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -142,7 +170,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedTechnicalCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -158,7 +189,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedBehaviouralCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -174,18 +208,24 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedExecutiveCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
-                    AddedCertificates.Add(certificateDto);
+                    if (certificateDto != null)
+                    {
+                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        AddedCertificates.Add(certificateDto);
+                    }
                 }
             }
 
@@ -225,7 +265,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedKnowledgeCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -241,7 +284,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedTechnicalCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -257,7 +303,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedBehaviouralCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -273,21 +322,26 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedExecutiveCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
-                    AddedCertificates.Add(certificateDto);
+                    if (certificateDto != null)
+                    {
+                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        AddedCertificates.Add(certificateDto);
+                    }
                 }
             }
-
         }
         public async Task OnPostCompetency(string competencytypename)
         {         
@@ -341,7 +395,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedKnowledgeCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -357,7 +414,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedTechnicalCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -373,7 +433,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedBehaviouralCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -389,18 +452,24 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedExecutiveCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
-                    AddedCertificates.Add(certificateDto);
+                    if (certificateDto != null)
+                    {
+                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        AddedCertificates.Add(certificateDto);
+                    }
                 }
             }
         }
@@ -434,7 +503,13 @@ namespace Admin.Pages.Positions
                     if (cidInt != certificateid)
                     {
                         var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                        certificateDto.CertificateDescId = certificateDescDto.Id;
+                        if (certificateDescDto.Active == 1)
+                        {
+                            certificateDto.DescEng = certificateDescDto.DescEng;
+                            certificateDto.DescFre = certificateDescDto.DescFre;
+                        }
                         AddedCertificates.Add(certificateDto);
                     }
                 }
@@ -456,7 +531,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedKnowledgeCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -472,7 +550,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedBehaviouralCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -488,7 +569,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedTechnicalCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -504,7 +588,10 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedExecutiveCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
                     }
                 }
             }
@@ -531,14 +618,17 @@ namespace Admin.Pages.Positions
             {
                 RegionIds += id + "-";
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
-                    AddedCertificates.Add(certificateDto);
+                    if (certificateDto != null)
+                    {
+                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        AddedCertificates.Add(certificateDto);
+                    }
                 }
             }
             foreach (var cid in AddedKnowledgeCompetencyIds.Split("-"))
@@ -555,7 +645,10 @@ namespace Admin.Pages.Positions
                         {
                             var cLevel = int.Parse(clevel);
                             var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                            AddedKnowledgeCompetencies.Add(competency);
+                            if (competency != null)
+                            {
+                                AddedKnowledgeCompetencies.Add(competency);
+                            }
                         }
                     }
                 }
@@ -574,7 +667,10 @@ namespace Admin.Pages.Positions
                         {
                             var cLevel = int.Parse(clevel);
                             var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                            AddedBehaviouralCompetencies.Add(competency);
+                            if (competency != null)
+                            {
+                                AddedBehaviouralCompetencies.Add(competency);
+                            }
                         }
                     }
                 }
@@ -593,7 +689,10 @@ namespace Admin.Pages.Positions
                         {
                             var cLevel = int.Parse(clevel);
                             var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                            AddedTechnicalCompetencies.Add(competency);
+                            if (competency != null)
+                            {
+                                AddedTechnicalCompetencies.Add(competency);
+                            }
                         }
                     }
                 }
@@ -612,7 +711,10 @@ namespace Admin.Pages.Positions
                         {
                             var cLevel = int.Parse(clevel);
                             var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                            AddedExecutiveCompetencies.Add(competency);
+                            if (competency != null)
+                            {
+                                AddedExecutiveCompetencies.Add(competency);
+                            }
                         }
                     }
                 }
@@ -651,21 +753,31 @@ namespace Admin.Pages.Positions
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             LevelCode = LevelValue.Split("/")[2];
             RegionIds = string.Empty;
-            foreach (var id in SelectedRegionIds)
+            var acceptedRegionIds = _context.JobLocationRegions.Select(x => x.Id).ToList();
+            foreach (var id in SelectedRegionIds.Distinct())
             {
-                RegionIds += id + "-";
+                if (int.TryParse(id, out int intId))
+                {
+                    if (acceptedRegionIds.Contains(intId))
+                    {
+                        RegionIds += id + "-";
+                    }
+                }
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
-                    AddedCertificates.Add(certificateDto);
+                    if (certificateDto != null)
+                    {
+                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        AddedCertificates.Add(certificateDto);
+                    }
                 }
             }
-            foreach (var cid in AddedKnowledgeCompetencyIds.Split("-"))
+            foreach (var cid in AddedKnowledgeCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -677,11 +789,14 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedKnowledgeCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedTechnicalCompetencyIds.Split("-"))
+            foreach (var cid in AddedTechnicalCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -693,11 +808,14 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedTechnicalCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedBehaviouralCompetencyIds.Split("-"))
+            foreach (var cid in AddedBehaviouralCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -709,11 +827,14 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedBehaviouralCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
                     }
                 }
             }
-            foreach (var cid in AddedExecutiveCompetencyIds.Split("-"))
+            foreach (var cid in AddedExecutiveCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -725,10 +846,28 @@ namespace Admin.Pages.Positions
                         var cidInt = int.Parse(cidc);
                         var cLevel = int.Parse(clevel);
                         var competency = await _jobCompetencyService.GetJobCompetencyLevelByIdLevelId(cidInt, cLevel);
-                        AddedExecutiveCompetencies.Add(competency);
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
                     }
                 }
             }
+
+            bool validModel = false;
+
+            if (ModelState.IsValid || ModelState.ErrorCount == 1)   // the ModelState seems to always have at least one error, but it's something
+                                                                    // that should not matter
+            {
+                validModel = true;
+            }
+
+            if (!validModel)    // the model can't be validated right at the beginning of this function, otherwise the DTO
+                                // won't be in the proper state, since its properties won't have been set, yet
+            {
+                return Page();
+            }
+
             var parameters = string.Format($"&titleEng={TitleEng}&titleFre={TitleFre}&descriptionEng={DescriptionEng}&descriptionFre={DescriptionFre}");
             var jobPositionId = await _jobCompetencyService.PostJobPositionGetId(parameters);
 
@@ -738,21 +877,19 @@ namespace Admin.Pages.Positions
                 JobPositionId = jobPositionId,
                 SubJobGroupId = int.Parse(LevelValue.Split("/")[0]),
                 JobGroupLevelId = int.Parse(LevelValue.Split("/")[1]),
-
-
-        };
+            };
              _jobCompetencyService.PostJobGroupPosition(jobGroupPosition);
             foreach(var competency in AddedKnowledgeCompetencies)
             {
                 var jobrolepositioncompetency = new JobRolePositionCompetencyRating() { 
-                JobPositionId = jobPositionId,              
-                CompetencyId = competency.CompetencyId,
-                CompetencyLevelRequirementId = competency.CompetencyLevelRequirementId,
-                CompetencyTypeId = 1,
-                CompetencyRatingLevelId = competency.CompetencyRatingLevelId,
-                SubJobGroupId = int.Parse(LevelValue.Split("/")[0]),
-                JobGroupLevelId = int.Parse(LevelValue.Split("/")[1]),
-                JobGroupId = JobGroupId
+                    JobPositionId = jobPositionId,              
+                    CompetencyId = competency.CompetencyId,
+                    CompetencyLevelRequirementId = competency.CompetencyLevelRequirementId,
+                    CompetencyTypeId = 1,
+                    CompetencyRatingLevelId = competency.CompetencyRatingLevelId,
+                    SubJobGroupId = int.Parse(LevelValue.Split("/")[0]),
+                    JobGroupLevelId = int.Parse(LevelValue.Split("/")[1]),
+                    JobGroupId = JobGroupId
                 };
                _jobCompetencyService.PostJobRolePositionCompetency(jobrolepositioncompetency);
             }
@@ -761,7 +898,6 @@ namespace Admin.Pages.Positions
                     var jobrolepositioncompetency = new JobRolePositionCompetencyRating()
                     {
                         JobPositionId = jobPositionId,
-
                         CompetencyId = competency.CompetencyId,
                         CompetencyLevelRequirementId = competency.CompetencyLevelRequirementId,
                         CompetencyTypeId = 2,
@@ -817,7 +953,15 @@ namespace Admin.Pages.Positions
                     };
                     _jobCompetencyService.PostJobRolePositionLocation(jobrolepositionlocation);
                 }
-                
+
+                var acceptedHLCategoryIds = _context.JobHLCategories.Select(x => x.Id).ToList();
+                if (int.TryParse(JobHLCategory, out int jobHLId))
+                {
+                    if (!acceptedHLCategoryIds.Contains(jobHLId))
+                    {
+                        JobHLCategory = "1";
+                    }
+                }
                 var jobrolepositionhlcategory = new JobRolePositionHLCategory()
                 {
                     JobGroupId = JobGroupId,
@@ -843,19 +987,7 @@ namespace Admin.Pages.Positions
                 }
             Thread.Sleep(10000);
             return RedirectToPage("Details", new { positionid = jobPositionId });
-
-            
-     
-
-            
-
-
         }
-        private bool JobPositionExists(int id)
 
-        {
-            return _context.JobPositions.Any(e => e.Id == id);
-        }
     }
-
 }

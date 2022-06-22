@@ -13,6 +13,8 @@
             {"filter", Model.Filter }
     };
 
+    bool maintainFilter = false;
+
     string? filterValue = Model.Filter;
     if (filterValue != null)
     {
@@ -32,10 +34,10 @@
 
     <p class="space-btns">
         <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
-        <a href="@("/Competencies/List?typeid=4&filter=" + filterValue)" class="btn pull-right @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
-        <a href="@("/Competencies/List?typeid=3&filter=" + filterValue)" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
-        <a href="@("/Competencies/List?typeid=2&filter=" + filterValue)" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
-        <a href="@("/Competencies/List?typeid=1&filter=" + filterValue)" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
+        <a href="@("/Competencies/List?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
+        <a href="@("/Competencies/List?typeid=3" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
+        <a href="@("/Competencies/List?typeid=2" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
+        <a href="@("/Competencies/List?typeid=1" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
     </p>
     <form method="post">
         <div class="form-actions no-color">
