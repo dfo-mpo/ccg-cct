@@ -1,41 +1,84 @@
 ﻿@page
 @model Admin.Pages.Positions.DetailsModel
 
+@{
+    ViewData["Title"] = "Details";
+    bool expandableItemsOpenNewWindows = true;
+}
+
 <h1>Position Details / Détails du poste</h1>
 
-<div style="margin-top:55px;">
-    <h4>@Html.DisplayFor(model => model.Position.JobTitleEng) <br /><br /> @Html.DisplayFor(model => model.Position.JobTitleFre)</h4>
+<div>
+    <h4>@Html.DisplayFor(model => model.Position.JobTitleEng)</h4>
+    <h4 class="medium-margin-top small-margin-bottom">@Html.DisplayFor(model => model.Position.JobTitleFre)</h4>
+    <hr />
 
-    <table class="table table-bordered">
+    <table class="table table-bordered cell-padding">
         <tbody>
             <tr>
-                <th colspan="2" style="background-color:#f2f2f2">CLASSIFICATION & LEVEL / CLASSIFICATION ET NIVEAU</th>
+                <th colspan="2" class="table-header-row">CLASSIFICATION & LEVEL / CLASSIFICATION ET NIVEAU</th>
             </tr>
             <tr>
                 <td colspan="2">
                     @Model.Position.JobGroupTitleEng Level (@Model.Position.LevelCode) / @Model.Position.JobGroupTitleFre Niveau (@Model.Position.LevelCode)
                 </td>
             </tr>
-            @if (Model.Position.JobDescriptionEng != "" && Model.Position.JobDescriptionFre != "")
+
+            <tr>
+                <th class="table-header-row" colspan="2">DESCRIPTION / DESCRIPTIF</th>
+            </tr>
+            @if (string.IsNullOrWhiteSpace(Model.Position.JobDescriptionEng) && string.IsNullOrWhiteSpace(Model.Position.JobDescriptionFre))
             {
                 <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">DESCRIPTION</th>
-                </tr>
-                <tr>
-                    <td colspan="2">@Model.Position.JobDescriptionEng</td>
-                </tr>
-                <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">DESCRIPTIF</th>
-                </tr>
-                <tr>
-                    <td colspan="2">@Model.Position.JobDescriptionFre</td>
+                    <td colspan="2" class="bold no-border">No description provided</td>
                 </tr>
             }
-            @if (Model.JobLocationRegions.Any())
+            else
             {
                 <tr>
-                    <th style="background-color:#f2f2f2" colspan="2">REGIONS / RÉGIONS</th>
+                    <td colspan="2" class="no-border">
+                        @if (string.IsNullOrWhiteSpace(Model.Position.JobDescriptionEng))
+                        {
+                            <b>No description provided</b>
+                        }
+                        else
+                        {
+                            <span>@Model.Position.JobDescriptionEng</span>
+                        }
+                        <span> / <br /></span>
+                        @if (string.IsNullOrWhiteSpace(Model.Position.JobDescriptionFre))
+                        {
+                            <b>Aucun descriptif fourni</b>
+                        }
+                        else
+                        {
+                            <span>@Model.Position.JobDescriptionFre</span>
+                        }
+                    </td>
                 </tr>
+            }
+          
+           <tr>
+               <th class="table-header-row" colspan="2">AREA / DOMAINE</th>
+           </tr>
+            <tr>
+                <td colspan="2">
+                    @if (Model.JobHLCategory == "2")
+                    {
+                        <span>Shore side / À terre</span>
+                    }
+                    else
+                    {
+                        <span>Seagoing / En mer</span>
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <th class="table-header-row" colspan="2">REGIONS / RÉGIONS</th>
+            </tr>
+            @if (Model.JobLocationRegions.Any())
+            {
                 @foreach (var c in Model.JobLocationRegions)
                 {
                     <tr>
@@ -43,31 +86,66 @@
                     </tr>
                 }
             }
-            @if (Model.PositionCertificates.Any(e => e.Active != 0))
+            else
             {
                 <tr>
-                    <th colspan="2" style="background-color:#f2f2f2">CERTIFICATIONS / ATTESTATIONS</th>
+                    <td colspan="2" class="red-text bold">
+                        This position is is not offered in any region
+                    </td>
                 </tr>
-                @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
+            }
+
+            <tr>
+                <th colspan="2" class="table-header-row"><span class="expand-elements-in-next-rows closed">CERTIFICATIONS / ATTESTATIONS</span></th>
+            </tr>
+            @{
+                var certificates = Model.PositionCertificates.Where(e => e.Active == 1).OrderBy(x => x.NameEng.ToLower()).ToList();
+            }
+            @if (certificates.Any())
+            {
+                @foreach (var certificate in certificates)
                 {
-                    var key = "c" + c.Id.ToString();
+                    var key = "cert" + certificate.Id.ToString();
+                    var divKey = "certDiv" + certificate.Id.ToString();
 
                     <tr>
                         <td colspan="2">
-                            <div class="accordion" id="compOne">
-                                <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne">
-                                    @c.NameEng / @c.NameFre
+                            <div class="accordion" id="@divKey">
+                                <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne">
+                                    @certificate.NameEng / @certificate.NameFre
                                 </button>
-                                <div id="@key" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
+                                <div id="@key" class="collapse" aria-labelledby="headingFour" data-parent="#@divKey">
                                     <div class="card-body">
-                                        <p>
-                                            <b>English Description</b><br />
-                                            @c.DescEng
-                                        </p>
-                                        <p>
-                                            <b>French Description</b><br />
-                                            @c.DescFre
-                                        </p>
+                                        @if (string.IsNullOrWhiteSpace(certificate.DescEng) && string.IsNullOrWhiteSpace(certificate.DescFre))
+                                        {
+                                            <p class="no-margins">
+                                                <b>No description selected</b>
+                                            </p>
+                                            <div class="expanded-item-navigation">
+                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                <b>English Description</b><br />
+                                                <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescEng) ? "No description specified in English" : certificate.DescEng)</span>
+                                            </p>
+                                            <p>
+                                                <b>French Description</b><br />
+                                                <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescFre) ? "Aucune description specifée en français" : certificate.DescFre)</span>
+                                            </p>
+                                            <div class="expanded-item-navigation">
+                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a> <span class="small-padding-left">|</span>
+                                                <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -78,66 +156,101 @@
             else
             {
                 <tr>
-                    <td colspan="2">
-                        No Certifications / Aucun certificat associées
+                    <td colspan="2" class="bold">
+                        This position does not have any certifications associated to it
                     </td>
                 </tr>
             }
+
+            @{
+                var levels = await Model.GetCompetencyLevelDescriptions();
+                int executiveId = Model.CompetencyTypeNames.Where(x => x.NameEng.ToLower().Contains("executive")).Select(x => x.Id).FirstOrDefault();
+            }
+
+
             @if (Model.PositionCompetencyRatings.Any())
             {
+                int loopCounter = 0;
                 @foreach (var competencytype in Model.PositionCompetencyRatings)
                 {
                     if (competencytype.Any(e => e.Active != 0))
                     {
-
-
+                        var competenciesOfType = competencytype.Where(e => e.Active != 0).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
                         <tr>
-                            <th style="background-color:#f2f2f2">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</th>
-                            <th class="text-center" style="background-color:#f2f2f2">Level / Niveau</th>
+                            <th class="col-7 table-header-row"><span class="expand-elements-in-next-rows closed">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</span></th>
+                            <th class="text-center col-3 table-header-row"><span class="expand-elements-in-next-rows closed second-column">LEVEL / NIVEAU</span></th>
                         </tr>
-                        foreach (var c in competencytype.Where(e => e.Active != 0))
+                        foreach (var c in competenciesOfType)
                         {
                             var key1 = "a" + c.CompetencyId.ToString();
                             var key2 = "b" + c.CompetencyId.ToString();
+                            var divKey = "compDiv" + c.CompetencyId.ToString();
+                            var rateDivKey = "compRateDiv" + c.CompetencyId.ToString();
                             <tr>
-                                <td>
-                                    <div class="accordion" id="compOne">
-                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
+                                <td class="col-7 no-padding">
+                                    <div class="accordion" id="@divKey">
+                                        <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
                                             @c.CompetencyNameEng / @c.CompetencyNameFre
                                         </button>
-                                        <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#compOne">
+                                        <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#@divKey">
                                             <div class="card-body">
                                                 <p>
                                                     <b>English Description</b><br />
-                                                    @c.CompetencyDescEng
+                                                    <span class="small-padding-top display-block">@c.CompetencyDescEng</span>
                                                 </p>
                                                 <p>
                                                     <b>French Description</b><br />
-                                                    @c.CompetencyDescFre
+                                                    <span class="small-padding-top display-block">@c.CompetencyDescFre</span>
                                                 </p>
+                                                <div class="expanded-item-navigation">
+                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                        Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">
-                                    <div class="accordion" id="levelOne">
-                                        <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
+                                <td class="text-center col-3">
+                                    <div class="accordion" id="@rateDivKey">
+                                        <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="collapselevelOne">
                                             @c.RatingValue
                                         </button>
-                                        <div id="@key2" class="collapse" aria-labelledby="headingFour" data-parent="#levelOne">
+                                        <div id="@key2" class="collapse" aria-labelledby="headingFour" data-parent="#@rateDivKey">
                                             <div class="card-body text-left">
                                                 <p>
                                                     <b>English Description</b><br />
-                                                    @c.RatingNameEng @c.RatingDescEng
-                                                    <br /><br />
+                                                    @if (c.TypeId == executiveId)
+                                                    {
+                                                        var level = levels.ElementAt(c.CompetencyRatingLevelId + (c.CompetencyRatingLevelId <= 5 ? 4 : -1));
+                                                        <span class="small-padding-top display-block">@level.NameEng</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="small-padding-top display-block">@c.RatingNameEng @c.RatingDescEng</span>
+                                                    }
+                                                    <br />
                                                     @c.CompetencyLevelReqDescEng
                                                 </p>
                                                 <p>
                                                     <b>French Description</b><br />
-                                                    @c.RatingNameFre @c.RatingDescFre
-                                                    <br /><br />
+                                                    @if (c.TypeId == executiveId)
+                                                    {
+                                                        var level = levels.ElementAt(c.CompetencyRatingLevelId + (c.CompetencyRatingLevelId <= 5 ? 4 : -1));
+                                                        <span class="small-padding-top display-block">@level.NameFre</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="small-padding-top display-block">@c.RatingNameFre @c.RatingDescFre</span>
+                                                    }
+                                                    <br />
                                                     @c.CompetencyLevelReqDescFre
                                                 </p>
+                                                <div class="expanded-item-navigation">
+                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                        Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -145,15 +258,24 @@
                             </tr>
                         }
                     }
+                    else
+                    {
+                        var compType = Model.CompetencyTypeNames.ElementAt(loopCounter);
+                        <tr>
+                            <th class="col-7 table-header-row"><span class="closed">@compType.NameEng.ToUpper() / @compType.NameFre.ToUpper()</span></th>
+                            <th class="text-center col-3 table-header-row"><span class="closed second-column">LEVEL / NIVEAU</span></th>
+                        </tr>
+                        <tr>
+                            <td class="col-7"><span class="bold">This position requires no competencies of this type</span></td>
+                            <td class="col-3 text-center bold">-</td>
+                        </tr>
+                    }
+                    loopCounter++;
                 }
-
             }
         </tbody>
-        </table>
-        </div>
-
-
-
+    </table>
+</div>
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Position.JobTitleId">Edit</a> |
