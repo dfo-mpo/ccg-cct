@@ -1371,7 +1371,7 @@ namespace DataModel.SeedData
             new JobRolePositionLocation {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 5},
             new JobRolePositionLocation {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 4},
             new JobRolePositionLocation {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobLocationRegionId = 6},
-            new JobRolePositionLocation {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 5, JobPositionId = 386, JobLocationRegionId = 4},
+            new JobRolePositionLocation {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386, JobLocationRegionId = 4},
             new JobRolePositionLocation {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387, JobLocationRegionId = 1},
             new JobRolePositionLocation {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388, JobLocationRegionId = 1},
             new JobRolePositionLocation {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobLocationRegionId = 2},
