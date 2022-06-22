@@ -309,7 +309,7 @@ namespace DataModel.SeedData
             new JobRole() {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 2},
             new JobRole() {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 3},
             new JobRole() {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4},
-            new JobRole() {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 5},
+            new JobRole() {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1},
             new JobRole() {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 1},
             new JobRole() {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 2},
             new JobRole() {JobGroupId = 17, SubJobGroupId = 25, JobGroupLevelId = 3},
