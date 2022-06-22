@@ -1,0 +1,519 @@
+﻿@model Admin.Data.PartialModels.SimilarEditPartialModel
+@using Business.Dtos.JobPositions
+@using Business.Dtos.JobGroups
+@using Admin.Data.PartialModels
+
+@* Note, despite this file being called "_SimilarEdit", it is also used by the create similar positions page *@
+
+@{
+    var allAddedSimilarJobsIds = new Dictionary<int, int>();
+    // start by finding all jobs that have been added to the 4 percent matches
+
+    foreach (var posId in Model.OneHundredPercentIds.Split("-").Distinct())
+    {
+        if (!string.IsNullOrWhiteSpace(posId))
+        {
+            allAddedSimilarJobsIds.TryAdd(Int32.Parse(posId), 100);
+        }
+    }
+    foreach (var posId in Model.NinetyPercentIds.Split("-").Distinct())
+    {
+        if (!string.IsNullOrWhiteSpace(posId))
+        {
+            allAddedSimilarJobsIds.TryAdd(Int32.Parse(posId), 90);
+        }
+    }
+    foreach (var posId in Model.EightyPercentIds.Split("-").Distinct())
+    {
+        if (!string.IsNullOrWhiteSpace(posId))
+        {
+            allAddedSimilarJobsIds.TryAdd(Int32.Parse(posId), 80);
+        }
+    }
+    foreach (var posId in Model.SeventyPercentIds.Split("-").Distinct())
+    {
+        if (!string.IsNullOrWhiteSpace(posId))
+        {
+            allAddedSimilarJobsIds.TryAdd(Int32.Parse(posId), 70);
+        }
+    }
+
+    var allJobsThatCanBeAdded = new List<JobPositionDto>();
+
+    var groupLevelCodesWithAtLeastOneJob = new List<string>();
+    var groupLevelsThatCanBeSelected = new List<JobGroupPositionDto>();
+
+    var jobGroupCodesWithAtLeastOneJob = new List<string>();
+    var jobGroupsThatCanBeSelected = new List<JobGroupDto>();
+
+    var specificJobsThatCanBeAdded = new List<JobPositionDto>(); 
+
+    var actualSelectedJobGroup = new JobGroupDto();
+    var actualSelectedJobGroupLevel = new JobGroupPositionDto();
+
+    int intValue;
+    var allActiveJobs = Model.AllActiveJobs;
+
+    foreach (var job in allActiveJobs)
+    {
+
+        // this loop identifies which jobs can be added as similar jobs (the ones that can appear in the dropdown).
+        // It also identifies which levels (for example, AS-01) have at least one job that can be added. This is important,
+        // because levels that have no jobs to that can be added can't be selected. This loop does the same thing for
+        // groups (example, AS), to identify which ones have at least one job that can be added
+
+        if (!allAddedSimilarJobsIds.TryGetValue(job.JobTitleId, out intValue)) // this makes sure you can't add the same position twice
+        {
+            bool illegalSubGroupCode = false;
+
+            if (job.SubGroupCode != "")
+            {
+                if (job.SubGroupCode == "DM") // for now, this group can't be added, since it has some inconsistent behaviour
+                {
+                    illegalSubGroupCode = true;
+                }
+            }
+
+            if (!illegalSubGroupCode)
+            {
+                jobGroupCodesWithAtLeastOneJob.Add(job.JobGroupCode.ToUpper());
+                allJobsThatCanBeAdded.Add(job);
+                groupLevelCodesWithAtLeastOneJob.Add(job.LevelCode.ToUpper());
+            }
+        }
+    }
+    groupLevelCodesWithAtLeastOneJob = groupLevelCodesWithAtLeastOneJob.Distinct().ToList().OrderBy(x => x.ToLower()).ToList();
+    jobGroupCodesWithAtLeastOneJob = jobGroupCodesWithAtLeastOneJob.Distinct().ToList().OrderBy(x => x.ToLower()).ToList();
+
+    var routedataadd = Model.RouteDataAdd;
+
+    if (allJobsThatCanBeAdded.Any())
+    {
+
+        // now that we know which levels and groups have at least one position, we now have to figure out which group and level will be 
+        // displayed in their "dropdown". The code tries first to apply whichever ones were last selected. However, since there may no longer
+        // be any jobs to add from that level, the next level in line may have to be selected. And if every level of a group no longer
+        // has positions to add (for example, if you've added every AS position), the code has to select the next group in line
+
+
+        // First: finding the job group
+
+        jobGroupsThatCanBeSelected = Model.JobGroups.Where(x => jobGroupCodesWithAtLeastOneJob.Contains(x.Code.ToUpper()))
+                                        .OrderBy(x => x.Code.ToLower()).ToList();
+        bool foundSelectedJobGroup = false;
+
+        if (Model.CurrentSelectedJobGroup == null)
+        {
+            actualSelectedJobGroup = Model.JobGroups.First();
+        }
+        else
+        {
+            foreach (var jobGroupCode in jobGroupCodesWithAtLeastOneJob)
+            {
+                if (!foundSelectedJobGroup)
+                {
+                    if (jobGroupCode == Model.CurrentSelectedJobGroup.Code)
+                    {
+                        actualSelectedJobGroup = Model.CurrentSelectedJobGroup;
+                        foundSelectedJobGroup = true;
+                        break;
+                    }
+                }
+            }
+        }
+        // if the group that was previously selected still has at least one job, select it, otherwise, get the next one in the list
+        if (!foundSelectedJobGroup)
+        {
+            actualSelectedJobGroup = jobGroupsThatCanBeSelected.FirstOrDefault();
+        }
+
+
+        // Second: finding the levels part of the group selected
+
+        var groupLevelsPartOfSelectedJobGroup = new List<JobGroupPositionDto>();
+        if (Model.IsInEditMode)
+        {
+            groupLevelsPartOfSelectedJobGroup = (await Model.EditModel.GetJobGroupPositionLevelsById(actualSelectedJobGroup.Id)).ToList();
+        }
+        else
+        {
+            groupLevelsPartOfSelectedJobGroup = (await Model.CreateModel.GetJobGroupPositionLevelsById(actualSelectedJobGroup.Id)).ToList();
+        }
+
+        groupLevelsThatCanBeSelected = groupLevelsPartOfSelectedJobGroup
+                                            .Where(x => groupLevelCodesWithAtLeastOneJob
+                                            .Contains(x.LevelCode.ToUpper()))
+                                            .OrderBy(x => x.LevelCode.ToLower()).ToList();
+
+        if (Model.CurrentSelectedLevelCode == null || (!foundSelectedJobGroup))
+        {
+            actualSelectedJobGroupLevel = groupLevelsThatCanBeSelected.FirstOrDefault();
+        }
+        else
+        {
+            var selectedGroupLevel = groupLevelsThatCanBeSelected.Where(x => x.LevelCode.ToLower() == Model.CurrentSelectedLevelCode.ToLower()).FirstOrDefault();
+            if (selectedGroupLevel == null)
+            {
+                // previously selected group level is no longer available, so get the next one in the list (go up a level)
+
+                int previouslyRequestedLevel = Int32.Parse(Model.CurrentSelectedLevelCode.Substring(Model.CurrentSelectedLevelCode.IndexOf("-") + 1));
+                string previouslyRequestedLevelGroup = Model.CurrentSelectedLevelCode.Substring(0, Model.CurrentSelectedLevelCode.IndexOf("-"));
+
+                var levelsOfSameGroup = groupLevelsThatCanBeSelected.Where(x => 
+                                            (x.LevelCode.Substring(0, x.LevelCode.IndexOf("-")) == previouslyRequestedLevelGroup)).ToList();
+
+                if (!levelsOfSameGroup.Any())
+                {
+                    actualSelectedJobGroupLevel = groupLevelsThatCanBeSelected.FirstOrDefault();
+                }
+                else
+                {
+                    var higherGroupLevels = levelsOfSameGroup.Where(x => (
+                        (Int32.Parse(x.LevelCode.Substring(x.LevelCode.IndexOf("-") + 1)) > previouslyRequestedLevel)
+                        )).ToList();
+
+                    if (!higherGroupLevels.Any())
+                    {
+                        actualSelectedJobGroupLevel = levelsOfSameGroup.FirstOrDefault();
+                    }
+                    else
+                    {
+                        actualSelectedJobGroupLevel = higherGroupLevels.FirstOrDefault();
+                    }
+                }
+            }
+            else
+            {
+                // the previously selected level is still available, so keep it selected
+                actualSelectedJobGroupLevel = selectedGroupLevel;
+            }
+        }
+
+        // Third: now that we have our group and level, we have to finds which jobs are part of it, so that the dropdown
+        // for jobs to add can be populated
+
+        specificJobsThatCanBeAdded = allJobsThatCanBeAdded.Where(x => x.LevelCode == actualSelectedJobGroupLevel.LevelCode).ToList();
+        specificJobsThatCanBeAdded = specificJobsThatCanBeAdded.OrderBy(x => x.JobTitleEng.ToLower()).ToList();
+
+        routedataadd["jobgroupid"] = actualSelectedJobGroup.Id.ToString();
+        routedataadd["levelcode"] = actualSelectedJobGroupLevel.LevelCode;
+    }
+    else
+    {
+        // in this case, evey single job has been added as similar to another. There still needs to be a group selected, however,
+        // so that jobs that can be removed, so just take the first one
+        actualSelectedJobGroup = Model.JobGroups.First();
+    }
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" data-val="true" data-val-required="The Position field is required." 
+                id="JobPosition_Position" name="JobPosition.Position" value="@Model.JobPositionId" />
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="table-header-row">ADD SIMILAR POSITION</th>
+                    </tr>
+                    <tr>
+                        <th class="space-btns small-padding">
+                            <button class="btn resetWindowHeight @(Model.PercentMatch == 100 ? "btn-info" : "btn-secondary")" asp-page-handler="selectonehundredpercent" asp-all-route-data="@routedataadd">
+                                &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
+                            </button>
+                            <button class="btn resetWindowHeight @(Model.PercentMatch == 90 ? "btn-info" : "btn-secondary")" asp-page-handler="selectninetypercent" asp-all-route-data="@routedataadd">
+                                &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
+                            </button>
+                            <button class="btn resetWindowHeight @(Model.PercentMatch == 80 ? "btn-info" : "btn-secondary")" asp-page-handler="selecteightypercent" asp-all-route-data="@routedataadd">
+                                &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
+                            </button>
+                            <button class="btn resetWindowHeight @(Model.PercentMatch == 70 ? "btn-info" : "btn-secondary")" asp-page-handler="selectseventypercent" asp-all-route-data="@routedataadd">
+                                &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @if (specificJobsThatCanBeAdded.Any())
+                        {
+                            <td>
+                                <div class="row mrgn-bttm-md col-12 small-padding-bottom margin-auto">
+                                    <div class="dropdown col-2">
+                                        <label class="control-label" for="menu1"><b>Job Group</b></label><br />
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
+                                            @actualSelectedJobGroup.Code
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            @foreach (var jobgroup in jobGroupsThatCanBeSelected)
+                                            {
+                                                var routedatagroup = new Dictionary<string, string> {
+                                                    {"id" , Model.JobPositionId.ToString() },
+                                                    {"levelcode", actualSelectedJobGroupLevel.LevelCode },
+                                                    {"levelvalue", Model.LevelValue },
+                                                    {"AddedOneHundredPercentIds", Model.OneHundredPercentIds },
+                                                    {"AddedNinetyPercentIds", Model.NinetyPercentIds },
+                                                    {"AddedEightyPercentIds", Model.EightyPercentIds },
+                                                    {"AddedSeventyPercentIds", Model.SeventyPercentIds },
+                                                    {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                    {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                    {"jobgroupid",jobgroup.Id.ToString() }
+                                                };
+
+                                                <li>
+                                                    @{
+                                                        string displayStr = "(" + jobgroup.Code + ") " + jobgroup.NameEng + " / " + jobgroup.NameFre;
+                                                    }
+                                                    @if (Model.PercentMatch == 100)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="grouponehundredpercent" asp-all-route-data="routedatagroup">
+                                                            @displayStr
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 90)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="groupninetypercent" asp-all-route-data="routedatagroup">
+                                                            @displayStr
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 80)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="groupeightypercent" asp-all-route-data="routedatagroup">
+                                                            @displayStr
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 70)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="groupseventypercent" asp-all-route-data="routedatagroup">
+                                                            @displayStr
+                                                        </button>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-2">
+                                        <label class="control-label" for="menu2"><b>Level / Niveau</b></label><br />
+
+                                        <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu2" type="button" data-toggle="dropdown">
+                                            @actualSelectedJobGroupLevel.LevelCode
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu2" name="LevelCode">
+                                            @foreach (var level in groupLevelsThatCanBeSelected)
+                                            {
+                                                var routedatalevel = new Dictionary<string, string> {
+                                                    {"id", Model.JobPositionId.ToString() },
+                                                    {"jobgroupid", actualSelectedJobGroup.Id.ToString() },
+                                                    {"AddedOneHundredPercentIds", Model.OneHundredPercentIds },
+                                                    {"AddedNinetyPercentIds", Model.NinetyPercentIds },
+                                                    {"AddedEightyPercentIds", Model.EightyPercentIds },
+                                                    {"AddedSeventyPercentIds", Model.SeventyPercentIds },
+                                                    {"levelvalue", level.LevelValue},
+                                                    {"levelcode", level.LevelCode },
+                                                    {"subgroupcode", level.SubGroupCode },
+                                                    {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                                    {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                                };
+
+                                                <li role="presentation">
+                                                    @if (Model.PercentMatch == 100)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="levelonehundredpercent" asp-all-route-data="routedatalevel">
+                                                            @level.LevelCode
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 90)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="levelninetypercent" asp-all-route-data="routedatalevel">
+                                                            @level.LevelCode
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 80)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="leveleightypercent" asp-all-route-data="routedatalevel">
+                                                            @level.LevelCode
+                                                        </button>
+                                                    }
+                                                    else if (Model.PercentMatch == 70)
+                                                    {
+                                                        <button class="btn btn-light resetWindowHeight" asp-page-handler="levelseventypercent" asp-all-route-data="routedatalevel">
+                                                            @level.LevelCode
+                                                        </button>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown col-7">
+                                        <label class="control-label" for="SelectedJobPositionId"><b>Position / Poste</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md col-12" id="SelectedJobPositionId" name="SelectedJobPositionId">
+                                            @foreach (var jp in specificJobsThatCanBeAdded)
+                                            {
+                                                <option value="@jp.JobTitleId">
+                                                    @jp.JobTitleEng / @jp.JobTitleFre
+                                                </option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-1">
+                                        <br />
+                                        @if (Model.PercentMatch == 100)
+                                        {
+                                            <button class="btn btn-primary resetWindowHeight display-block margin-auto" asp-page-handler="addonehundredpercentsimilarposition" asp-all-route-data="@routedataadd">
+                                                Add
+                                            </button>           
+                                        }
+                                        else if (Model.PercentMatch == 90)
+                                        {
+                                            <button class="btn btn-primary resetWindowHeight display-block margin-auto" asp-page-handler="addninetypercentsimilarposition" asp-all-route-data="@routedataadd">
+                                                Add
+                                            </button>        
+                                        }
+                                        else if (Model.PercentMatch == 80)
+                                        {
+                                            <button class="btn btn-primary resetWindowHeight display-block margin-auto" asp-page-handler="addeightypercentsimilarposition" asp-all-route-data="@routedataadd">
+                                                Add
+                                            </button>          
+                                        }
+                                        else if (Model.PercentMatch == 70)
+                                        {
+                                            <button class="btn btn-primary resetWindowHeight display-block margin-auto" asp-page-handler="addseventypercentsimilarposition" asp-all-route-data="@routedataadd">
+                                                Add
+                                            </button>          
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <h4 class="no-results medium-margin-top medium-margin-bottom">There are no more jobs to add as similar</h4>
+                            </td>
+                        } 
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered small-margin-top">
+                <thead>
+                    <tr>
+                        <th class="table-header-row">SIMILAR POSITIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            @{
+                                var positionList = Model.JobPositions
+                                    .Where(e => e.Active != 0)
+                                    .OrderBy(x => x.JobTitleEng.ToLower())
+                                    .OrderBy(x => x.JobGroupLevelCode.ToLower())
+                                    .ToList();
+                            }
+
+                            @if (positionList.Any())
+                            {
+
+                                // this section of code tries to find the position being edited in the list of added similar positions.
+                                // If it finds it, it will display first in the list. For example, if you are editing the similar
+                                // positions for Deckhand, and the deckhand position has been added under the 100% match, it will display
+                                // first in the list of 100% similar jobs (and be bolded)
+
+                                JobPositionDto samePosition = positionList.Where(x => x.JobTitleId == Model.JobPositionId).FirstOrDefault();
+                                if (samePosition != null)
+                                {
+                                    positionList.Remove(samePosition);
+                                    positionList.Insert(0, samePosition);
+                                }
+
+                                @foreach (var position in positionList)
+                                {
+                                    var routedataremove = new Dictionary<string, string> {
+                                        {"id", Model.JobPositionId.ToString() },
+                                        {"deletepositionid", position.JobTitleId.ToString() },
+                                        {"levelvalue", Model.LevelValue },
+                                        {"jobgroupid", actualSelectedJobGroup.Id.ToString() },
+                                        {"levelcode", actualSelectedJobGroupLevel.LevelCode },
+                                        {"AddedOneHundredPercentIds", Model.OneHundredPercentIds },
+                                        {"AddedNinetyPercentIds", Model.NinetyPercentIds },
+                                        {"AddedEightyPercentIds", Model.EightyPercentIds },
+                                        {"AddedSeventyPercentIds", Model.SeventyPercentIds },
+                                        {"subgroupcode", Model.SubGroupCode },
+                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                    };
+
+                                    <div class="row">
+                                        <div class="col-10 @(position.JobTitleId == Model.JobPositionId ? "same-position" : "")">
+                                            <a target="_blank" class="btn btn-link text-left text-wrap" href="/Positions/Details?positionid=@position.JobTitleId">
+                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre 
+                                                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                            </a>
+                                        </div>
+                                        <div class="col-2">
+                                            @if (Model.PercentMatch == 100)
+                                            {
+                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteonehundredpercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                    REMOVE
+                                                </button>
+                                            }
+                                            else if (Model.PercentMatch == 90)
+                                            {
+                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteninetypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                    REMOVE
+                                                </button>
+                                            }
+                                            else if (Model.PercentMatch == 80)
+                                            {
+                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteeightypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                    REMOVE
+                                                </button>
+                                            }
+                                            else if (Model.PercentMatch == 70)
+                                            {
+                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteseventypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                    REMOVE
+                                                </button>
+                                            }
+                                        </div>
+                                        <div class="col-12">
+                                            <hr />
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <h4 class="no-results medium-margin-top medium-margin-bottom">This position currently does not have any similar positions at @Model.PercentMatch% match</h4>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @if (Model.IsInEditMode)
+            {
+                <div class="form-group space-btns">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="@routedataadd">
+                        Save Changes
+                    </button>
+                    <a class="btn btn-secondary" href="/Similar/Details?id=@Model.JobPositionId">Cancel</a>
+                </div>
+            }
+            else
+            {
+                <div class="form-group space-btns">
+                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="@routedataadd">
+                        Create
+                    </button>
+                    <a class="btn btn-secondary" href="/Similar">Cancel</a>
+                </div>
+            }
+        </form>
+    </div>
+</div>

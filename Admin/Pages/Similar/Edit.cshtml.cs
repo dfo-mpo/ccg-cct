@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -69,34 +70,58 @@ namespace Admin.Pages.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedSeventyPercentIds { get; set; } = string.Empty;
 
+        public async Task<List<JobPositionDto>> GetAllActiveJobs()
+        {
+            var jobs = await _jobPositionService.GetAllJobPositions();
+            return jobs.Where(x => x.Active == 1).ToList();
+        }
+
+        public async Task<JobGroupPositionDto[]> GetJobGroupPositionLevelsById(int id)
+        {
+            return await _jobPositionService.GetJobGroupPositionLevelsById(id);
+        }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            PercentSelection = "100";
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+
+            if (CurrentPosition == null)
+            {
+                return NotFound();
+            }
+
+            JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
+
+            if (JobPosition == null)
+            {
+                return Redirect("/Similar/Create?id=" + CurrentPosition.JobTitleId);
+            }
+
+            PercentSelection = "100";
             JobGroups = await _jobPositionService.GetJobGroups();
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
+            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(CurrentPosition.JobGroupId);
             JobGroupLevelPositions = string.IsNullOrEmpty(JobGroupPositions.FirstOrDefault().SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().SubGroupCode, JobGroupPositions.FirstOrDefault().LevelValue);
             SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
             JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            LevelCode = CurrentPosition.LevelCode;
             SubGroupCode = JobGroupPositions.FirstOrDefault().SubGroupCode;
             LevelValue = JobGroupPositions.FirstOrDefault().LevelValue;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e=>e.Active!=0).FirstOrDefault();
+            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
             if (CurrentSelectedPosition != null)
             {
                 CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
                 CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
                 SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
             }
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
             AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.HundredPercent);
-            foreach (var added in JobPosition.HundredPercent.Split("&PositionId="))
+            foreach (var added in JobPosition.HundredPercent.Split("&PositionId=").Distinct())
             {
                 if (!string.IsNullOrEmpty(added))
                 {
@@ -108,7 +133,7 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
-            foreach (var added in JobPosition.NinetyPercent.Split("&PositionId="))
+            foreach (var added in JobPosition.NinetyPercent.Split("&PositionId=").Distinct())
             {
                 if (!string.IsNullOrEmpty(added))
                 {
@@ -120,7 +145,7 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
-            foreach (var added in JobPosition.EightyPercent.Split("&PositionId="))
+            foreach (var added in JobPosition.EightyPercent.Split("&PositionId=").Distinct())
             {
                 if (!string.IsNullOrEmpty(added))
                 {
@@ -132,7 +157,7 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
-            foreach (var added in JobPosition.SeventyPercent.Split("&PositionId="))
+            foreach (var added in JobPosition.SeventyPercent.Split("&PositionId=").Distinct())
             {
                 if (!string.IsNullOrEmpty(added))
                 {
@@ -143,10 +168,6 @@ namespace Admin.Pages.Similar
                         AddedSeventyPercentIds += number.ToString() + '-';
                     }
                 }
-            }
-            if (JobPosition == null)
-            {
-                return NotFound();
             }
             return Page();
         }
@@ -161,7 +182,7 @@ namespace Admin.Pages.Similar
             }
 
             var querystring100 = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
+            foreach (var id in AddedOneHundredPercentIds.Split('-').Distinct())
             {
                 if (!string.IsNullOrEmpty(id))
                 {
@@ -174,7 +195,7 @@ namespace Admin.Pages.Similar
                 }
             }
             var querystring90 = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
+            foreach (var id in AddedNinetyPercentIds.Split('-').Distinct())
             {
                 if (!string.IsNullOrEmpty(id))
                 {
@@ -187,7 +208,7 @@ namespace Admin.Pages.Similar
                 }
             }
             var querystring80 = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
+            foreach (var id in AddedEightyPercentIds.Split('-').Distinct())
             {
                 if (!string.IsNullOrEmpty(id))
                 {
@@ -200,7 +221,7 @@ namespace Admin.Pages.Similar
                 }
             }
             var querystring70 = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
+            foreach (var id in AddedSeventyPercentIds.Split('-').Distinct())
             {
                 if (!string.IsNullOrEmpty(id))
                 {
@@ -677,7 +698,7 @@ namespace Admin.Pages.Similar
             }
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
             JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
+            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(CurrentPosition.JobGroupId);
             JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
             AddedNinetyPercentIds += SelectedJobPositionId.ToString() + '-';
             var querystring = string.Empty;
