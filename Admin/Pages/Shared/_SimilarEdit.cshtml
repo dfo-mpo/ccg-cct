@@ -64,22 +64,9 @@
 
         if (!allAddedSimilarJobsIds.TryGetValue(job.JobTitleId, out intValue)) // this makes sure you can't add the same position twice
         {
-            bool illegalSubGroupCode = false;
-
-            if (job.SubGroupCode != "")
-            {
-                if (job.SubGroupCode == "DM") // for now, this group can't be added, since it has some inconsistent behaviour
-                {
-                    illegalSubGroupCode = true;
-                }
-            }
-
-            if (!illegalSubGroupCode)
-            {
-                jobGroupCodesWithAtLeastOneJob.Add(job.JobGroupCode.ToUpper());
-                allJobsThatCanBeAdded.Add(job);
-                groupLevelCodesWithAtLeastOneJob.Add(job.LevelCode.ToUpper());
-            }
+            jobGroupCodesWithAtLeastOneJob.Add(job.JobGroupCode.ToUpper());
+            allJobsThatCanBeAdded.Add(job);
+            groupLevelCodesWithAtLeastOneJob.Add(job.LevelCode.ToUpper());
         }
     }
     groupLevelCodesWithAtLeastOneJob = groupLevelCodesWithAtLeastOneJob.Distinct().ToList().OrderBy(x => x.ToLower()).ToList();

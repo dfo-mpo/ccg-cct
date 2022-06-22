@@ -19,7 +19,6 @@ namespace Admin.Pages.Similar
         private readonly ILogger<EditModel> _logger;
         private readonly JobPositionService _jobPositionService;
 
-
         public EditModel(DataModel.CctDbContext context,
             ILogger<EditModel> logger, JobPositionService jobPositionService)
         {
