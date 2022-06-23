@@ -112,6 +112,17 @@ function setSessionVariable(key, value) {
 
 // Utility functions ^^^^^ -----------------------------------------------------------------------------------------------------------------
 
+// Misc. functions VVVVV -------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Actions in forms which will cause the same page to be displayed can cause this function to be called which temporarily stores the current scroll offset of the window, which be applied once the page reloads (look at the checkIfWindowShouldBeScrolled() function). In order for the page scroll to be stored, the HTML element which causes the page to be reloaded (for example, the button to save changes after adding a competency in the add/edit position page) must have the css class of "resetWindowHeight".
+ */
+function storeCurrentScrollPosition() {
+    localStorage.setItem(localStorageScrollStr, window.scrollY.toString());
+}
+
+// Misc. functions ^^^^^ -------------------------------------------------------------------------------------------------------------------
+
 // Competency level functions VVVVV --------------------------------------------------------------------------------------------------------
 
 /**
@@ -771,11 +782,7 @@ function handleChange(e) {
 function handleDoubleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
     if (target) {
-        if (target.classList) {
-            if (target.classList.contains("changeCompetencyLevelDropdown")) {
-                toggleExpandableItem(target);
-            }
-        }
+        attemptToExpandCompetency(target);
     }
 }
 
@@ -844,6 +851,10 @@ window.addEventListener("load", () => {
 
     setSelectedNavItem();
     checkIfWindowShouldBeScrolled();
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
     if (tableContainer && footer) {
         setTableContainerMaxHeight();
