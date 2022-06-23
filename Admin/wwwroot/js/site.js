@@ -593,13 +593,7 @@ function sortColumn(el, sortPercents = false) {
             }
 
             if (!comparingNumbers) {
-                if (textContentA < textContentB) {
-                    return flipOperator * -1;
-                }
-                else if (textContentA > textContentB) {
-                    return flipOperator * 1;
-                }
-                return 0;
+                return textContentA.localeCompare(textContentB) * flipOperator;
             }
             else {
                 if (numberA < numberB) {
