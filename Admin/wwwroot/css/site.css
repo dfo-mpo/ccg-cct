@@ -343,7 +343,7 @@ textarea.form-control {
 .four-col-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: auto;
+    margin: 0px auto 0px auto;
 }
 
     .four-col-grid span {
@@ -477,6 +477,58 @@ a:hover .external-link {
 
 .home-page-card {
     width: 20rem;
+}
+
+.sort-column, .sort-column-percents {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sort-column:hover, .sort-column-percents:hover {
+    opacity: 0.7;
+}
+
+.sort-column.sorted::after, .sort-column-percents.sorted::after, 
+.sort-column.reverse-sorted::after, .sort-column-percents.reverse-sorted::after {
+    position: relative;
+    left: 4px;
+    font-family: 'Segoe UI Symbol';
+    font-size: 0.65em;
+}
+
+.sort-column.sorted::after, .sort-column-percents.sorted::after {
+    content: "\1f53a";
+    bottom: 5px;
+}
+
+.sort-column.reverse-sorted::after, .sort-column-percents.reverse-sorted::after {
+    content: "\1f53b";
+    top: 0px;
+}
+
+.glyphicon-save-file:before {
+    content:"\e202";
+}
+
+.glyphicon {
+    font-size: 35px;
+    background:#fff;
+    border-radius:999px;
+    position: relative;
+    top: 15px;
+}
+
+.glyphicon:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+@media print {
+
+    .glyphicon {
+        display: none !important;
+    }
+    
 }
 
 /* header {

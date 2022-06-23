@@ -7,6 +7,9 @@
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
     <h1>Similar Positions</h1>
+    <p>
+        <a class="btn btn-dark" target="_blank" asp-page="ExecutiveSummary">Print Executive Summary</a>
+    </p>
 
     @{
         string? filterValue = Model.Filter;
@@ -56,11 +59,12 @@
                 <tr class="table-header-row text-center">
                     @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
                     {
-                        <th class="col-1"><b>Level</b></th>
-                        <th class="col-3"><b>Title English</b></th>
-                        <th class="col-3"><b>Title French</b></th>
-                        <th class="col-3"><div class="four-col-grid"><span>100%</span><span>90%</span>
-                            <span>80%</span><span>70%</span></div></th>
+                        <th class="col-1"><b class="sort-column-percents">Level</b></th>
+                        <th class="col-3"><b class="sort-column-percents">Title English</b></th>
+                        <th class="col-3"><b class="sort-column-percents">Title French</b></th>
+                        <th class="col-3"><div class="four-col-grid"><span class="sort-column-percents">100%</span>
+                            <span class="sort-column-percents">90%</span><span class="sort-column-percents">80%</span>
+                            <span class="sort-column-percents">70%</span></div></th>
                         <th class="col-2">
                             <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                             class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
@@ -70,9 +74,9 @@
                     }
                     else
                     {
-                        <th class="col-1"><b>Level</b></th>
-                        <th class="col-4"><b>Title English</b></th>
-                        <th class="col-5"><b>Title French</b></th>
+                        <th class="col-1"><b class="sort-column">Level</b></th>
+                        <th class="col-4"><b class="sort-column">Title English</b></th>
+                        <th class="col-5"><b class="sort-column">Title French</b></th>
                         <th class="col-2">
                             <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                             class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
@@ -106,13 +110,13 @@
                 @foreach (var item in itemsList)
                 {
                     <tr>
-                        <td class="text-center">
+                        <td class="text-center sort-percents">
                             @Html.DisplayFor(modelItem => item.LevelCode)
                         </td>
-                        <td>
+                        <td class="sort-percents">
                             @Html.DisplayFor(modelItem => item.JobTitleEng)
                         </td>
-                        <td>
+                        <td class="sort-percents">
                             @Html.DisplayFor(modelItem => item.JobTitleFre)
                         </td>
                         @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
@@ -122,7 +126,7 @@
                                     foreach (var positionCount in 
                                                 Model.NumberOfMatchingPositionsPerPecrentagePerPosition[item.JobTitleId].Split("&"))
                                     {
-                                        <span>@positionCount</span>
+                                        <span class="sort-percents">@positionCount</span>
                                     }
                                 }
                             </td>
