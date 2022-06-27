@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -21,11 +22,22 @@ namespace Admin.Pages.Certificates.Descriptions
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
 
+        public bool DisplayTopOfPage { get; set; }
         public IList<JobCertificateDto> Descriptions { get; set; }
 
         public async Task OnGetAsync(string searchString)
         {
             Descriptions = await _jobCertificateService.GetAllJobCertificateDescriptions();
+
+            DisplayTopOfPage = true;
+            var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (sessionStr.ToLower() == "false")
+                {
+                    DisplayTopOfPage = false;
+                }
+            }
         }
     }
 }

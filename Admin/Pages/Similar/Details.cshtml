@@ -1,273 +1,55 @@
 ﻿@page
 @model Admin.Pages.Similar.DetailsModel
-@{
-    var routedataadd = new Dictionary<string, string> {
-                                                        {"id" , Model.Id.ToString() },
-                                                        {"levelvalue", Model.LevelValue },
-                                                        {"jobgroupid",Model.JobGroupId.ToString() },
-                                                        {"levelcode", Model.LevelCode },
-                                                        {"AddedOneHundredPercentIds", Model.AddedOneHundredPercentIds },
-                                                        {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
-                                                        {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
-                                                        {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
-                                                        {"selectedjobpositionid",Model.SelectedJobPositionId.ToString() },
-                                                        {"subgroupcode", Model.SubGroupCode },
-                                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
-                                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
-                                                        };
+@using Admin.Data.PartialModels
 
+@{
+    ViewData["Title"] = "Details";
 }
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-<h4>Current Position: @Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleEng</h4>
-<h4>Position actuelle: @Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleFre</h4>
-<h1>Details</h1>
+
+@{
+    // The model is in Admin/Data/PartialModels (the models used for partial views)
+    var detailsModel = new SimilarDetailsPartialModel
+    {
+        JobPositionId = Model.CurrentPosition.JobTitleId,
+    };
+}
+
+<h1>Similar Position Details</h1>
+
+<h4>Current Position: <a href="/Positions/Details?positionid=@Model.CurrentPosition.JobTitleId">@Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleEng</a></h4>
+<h4 class="medium-margin-top small-margin-bottom">Position actuelle: <a href="/Positions/Details?positionid=@Model.CurrentPosition.JobTitleId">@Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleFre</a></h4>
+<hr />
+
 @if (Model.PercentSelection == "100")
 {
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post">
-
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="JobPosition.Position" />
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">PERCENT MATCH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <button class="btn btn-info" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
-                                </button>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                @foreach (var position in Model.AddedOneHundredPercentJobPositions.Where(e => e.Active != 0))
-                                {
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a class="btn btn-link col-12 text-left text-wrap">
-                                                 @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre 
-                                            </a>
-                                            <hr />
-                                        </div>
-                                    </div>
-                                }
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    </div>
+    detailsModel.PercentMatch = 100;
+    detailsModel.JobPositions = Model.AddedOneHundredPercentJobPositions.Where(x => x.Active == 1).ToArray();
+    <partial name="_SimilarDetails" model="@detailsModel" />
 }
 else if (Model.PercentSelection == "90")
 {
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="JobPosition.Position" />
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">PERCENT MATCH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-info" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
-                                </button>
-                            </th>
-                        </tr>
-                    <tbody>
-                </table>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                @foreach (var position in Model.AddedNinetyPercentJobPositions.Where(e => e.Active != 0))
-                                {
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a class="btn btn-link col-12 text-left text-wrap">
-                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
-                                            </a>
-                                            <hr />
-                                        </div>
-                                    </div>
-                                }
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    </div>
+    detailsModel.PercentMatch = 90;
+    detailsModel.JobPositions = Model.AddedNinetyPercentJobPositions.Where(x => x.Active == 1).ToArray();
+    <partial name="_SimilarDetails" model="@detailsModel" />
 }
 else if (Model.PercentSelection == "80")
 {
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="JobPosition.Position" />
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">PERCENT MATCH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-info" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
-                                </button>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                @foreach (var position in Model.AddedEightyPercentJobPositions.Where(e => e.Active != 0))
-                                {
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a class="btn btn-link col-12 text-left text-wrap">
-                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
-                                            </a>
-                                            <hr />
-                                        </div>
-                                    </div>
-                                }
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    </div>
+    detailsModel.PercentMatch = 80;
+    detailsModel.JobPositions = Model.AddedEightyPercentJobPositions.Where(x => x.Active == 1).ToArray();
+    <partial name="_SimilarDetails" model="@detailsModel" />
 }
 else if (Model.PercentSelection == "70")
 {
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="JobPosition.Position" />
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">PERCENT MATCH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <button class="btn btn-primary" asp-page-handler="selectonehundredpercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selectninetypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;90%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-primary" asp-page-handler="selecteightypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;80%&nbsp;&nbsp;&nbsp;
-                                </button>
-                                <button class="btn btn-info" asp-page-handler="selectseventypercent" asp-all-route-data="routedataadd">
-                                    &nbsp;&nbsp;&nbsp;70%&nbsp;&nbsp;&nbsp;
-                                </button>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#f2f2f2">SIMILAR POSITIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                @foreach (var position in Model.AddedSeventyPercentJobPositions.Where(e => e.Active != 0))
-                                {
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a class="btn btn-link col-12 text-left text-wrap">
-                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre
-                                            </a>
-                                            <hr />
-                                        </div>
-                                    </div>
-                                }
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    </div>
+    detailsModel.PercentMatch = 70;
+    detailsModel.JobPositions = Model.AddedSeventyPercentJobPositions.Where(x => x.Active == 1).ToArray();
+    <partial name="_SimilarDetails" model="@detailsModel" />
 }
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CurrentPosition.JobTitleId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

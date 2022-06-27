@@ -10,6 +10,9 @@ using Business.Dtos.JobCompetencies;
 using Business.Dtos.JobGroups;
 using Business.Dtos.JobPositions;
 using System.Threading;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using static DataModel.CustomValidation;
 
 namespace Admin.Pages.Positions
 {
@@ -18,12 +21,15 @@ namespace Admin.Pages.Positions
         private readonly CctDbContext _context;
 
         private readonly JobCompetencyService _jobCompetencyService;
+        private readonly JobCertificateService _jobCertificateService;
 
-        public EditModel(CctDbContext context, JobCompetencyService jobCompetencyService)
+        public EditModel(CctDbContext context, JobCompetencyService jobCompetencyService, JobCertificateService jobCertificateService)
         {
             _context = context;
             _jobCompetencyService = jobCompetencyService;
+            _jobCertificateService = jobCertificateService;
         }
+
         [BindProperty]
         public JobPosition JobPosition { get; set; }
         public List<JobCertificateDto> AddedCertificates = new List<JobCertificateDto>() { };
@@ -71,8 +77,11 @@ namespace Admin.Pages.Positions
         public JobCertificateDto[] JobCertificates { get; set; }
         [BindProperty(SupportsGet = true)]
         public string JobHLCategory { get; set; } = string.Empty;
+
         [BindProperty]
+        [CheckOneRegionSelected]
         public List<string> SelectedRegionIds { get; set; } = new List<string> { };
+
         [BindProperty(SupportsGet = true)]
         public int JobGroupLevelId { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -82,11 +91,68 @@ namespace Admin.Pages.Positions
         [BindProperty(SupportsGet = true)]
         public string LevelValue { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public Dictionary<string, string> GetRouteData(EditModel model = null)
         {
+            EditModel modelObj = model;
+            if (modelObj == null)
+            {
+                modelObj = this;
+            }
+            return new Dictionary<string, string> {
+                        {"id", modelObj.Id.ToString() },
+                        {"titleeng", modelObj.TitleEng },
+                        {"titlefre", modelObj.TitleFre },
+                        {"descriptioneng", modelObj.DescriptionEng },
+                        {"descriptionfre", modelObj.DescriptionFre },
+                        {"levelcode", modelObj.LevelCode },
+                        {"levelvalue", modelObj.LevelValue },
+                        {"jobhlcategory", modelObj.JobHLCategory },
+                        {"regionids", modelObj.RegionIds },
+                        {"subjobgroupId", modelObj.SubJobGroupId.ToString() },
+                        {"jobgrouplevelid", modelObj.JobGroupLevelId.ToString() },
+                        {"jobgroupid", modelObj.JobGroupId.ToString() },
+                        {"addedcertificateids", modelObj.AddedCertificateIds },
+                        {"addedknowledgecompetencyids", modelObj.AddedKnowledgeCompetencyIds },
+                        {"addedtechnicalcompetencyids", modelObj.AddedTechnicalCompetencyIds },
+                        {"addedbehaviouralcompetencyids", modelObj.AddedBehaviouralCompetencyIds },
+                        {"addedexecutivecompetencyids", modelObj.AddedExecutiveCompetencyIds },
+                    };
+        }
 
+        public async Task<List<DataModel.CompetencyRatingLevel>> GetCompetencyLevelDescriptions()
+        {
+            return await _context.CompetencyRatingLevels.ToListAsync();
+        }
+
+        public async Task<List<DataModel.CompetencyLevelRequirement>> GetCompetencyDescriptions(int compId)
+        {
+            var levelReqIds = await _context.CompetencyRatingGroups.Where(x => x.CompetencyId == compId)
+                                        .OrderBy(x => x.CompetencyLevelRequirementId).ToListAsync();
+            var compDescs = await _context.CompetencyLevelRequirements
+                                    .Where(x => levelReqIds.Select(x => x.CompetencyLevelRequirementId).ToList().Contains(x.Id))
+                                    .ToListAsync();
+            var orderedCompDescs = new List<DataModel.CompetencyLevelRequirement>();
+            for (int i = 0; i < levelReqIds.Count(); i++)
+            {
+                orderedCompDescs.Add(compDescs.Where(x => x.Id == levelReqIds.ElementAt(i).CompetencyLevelRequirementId).First());
+            }
+            // the goal is to get the five different competency level descriptions, in the order of the level (without assuming that
+            // those five descriptions are entered in the database in the order of the levels)
+            return compDescs;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
             JobPosition = await _context.JobPositions.FirstOrDefaultAsync(m => m.Id == id);
             if (JobPosition == null)
+            {
+                return NotFound();
+            }
+            if (JobPosition.Active != 1)
             {
                 return NotFound();
             }
@@ -96,11 +162,11 @@ namespace Admin.Pages.Positions
             DescriptionEng = JobPosition.PositionDescEng;
             DescriptionFre = JobPosition.PositionDescFre;
 
-            CurrentJobPosition = await _jobCompetencyService.GetJobPositionById(id);
-            var PositionCertificates = await _jobCompetencyService.GetJobCertificatesById(id);
-            var jobHLCategory = await _jobCompetencyService.GetJobPositionHLCategoryIdByPositionId(id);
+            CurrentJobPosition = await _jobCompetencyService.GetJobPositionById(id.Value);
+            var PositionCertificates = await _jobCompetencyService.GetJobCertificatesById(id.Value);
+            var jobHLCategory = await _jobCompetencyService.GetJobPositionHLCategoryIdByPositionId(id.Value);
             JobHLCategory = jobHLCategory.ToString();
-            var selectedRegionIds = await _jobCompetencyService.GetJobLocationRegionsById(id);
+            var selectedRegionIds = await _jobCompetencyService.GetJobLocationRegionsById(id.Value);
             foreach (var rid in selectedRegionIds)
             {
                 RegionIds += rid.JobLocationRegionId.ToString() + "-";
@@ -112,12 +178,21 @@ namespace Admin.Pages.Positions
                 {
                     if (certificate != null)
                     {
-                        AddedCertificateIds += certificate.Id + "&" + certificate.CertificateDescId + "-";
-                        AddedCertificates.Add(certificate);
+                        if (certificate.Active == 1)
+                        {
+                            var certDesc = _context.CertificateDescriptions.Where(x => x.Id == certificate.CertificateDescId).FirstOrDefault();
+                            if (certDesc.Active != 1)
+                            {
+                                certificate.DescFre = "";
+                                certificate.DescEng = "";
+                            }
+                            AddedCertificateIds += certificate.Id + "&" + certificate.CertificateDescId + "-";
+                            AddedCertificates.Add(certificate);
+                        }
                     }
                 }
             }
-            var competenciesType1 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 1);
+            var competenciesType1 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 1);
             if (competenciesType1 != null)
             {
                 foreach (var competency in competenciesType1)
@@ -130,7 +205,7 @@ namespace Admin.Pages.Positions
                 }
             }
 
-            var competenciesType2 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 2);
+            var competenciesType2 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 2);
             if (competenciesType2 != null)
             {
                 foreach (var competency in competenciesType2)
@@ -142,7 +217,7 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            var competenciesType3 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 3);
+            var competenciesType3 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 3);
             if (competenciesType3 != null)
             {
                 foreach (var competency in competenciesType3)
@@ -154,14 +229,15 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            var competenciesType4 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id, 4);
+            var competenciesType4 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 4);
             if (competenciesType4 != null)
             {
                 foreach (var competency in competenciesType4)
                 {
                     if (competency != null)
                     {
-                        AddedExecutiveCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                        AddedExecutiveCompetencyIds += competency.CompetencyId + "&" + (competency.CompetencyRatingLevelId + 
+                            (competency.CompetencyRatingLevelId <= 5 ? 5 : 0)) + "-";
                         AddedExecutiveCompetencies.Add(competency);
                     }
                 }
@@ -287,7 +363,13 @@ namespace Admin.Pages.Positions
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                    var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                    certificateDto.CertificateDescId = certificateDescDto.Id;
+                    if (certificateDescDto.Active == 1)
+                    {
+                        certificateDto.DescEng = certificateDescDto.DescEng;
+                        certificateDto.DescFre = certificateDescDto.DescFre;
+                    }
                     AddedCertificates.Add(certificateDto);
                 }
             }
@@ -399,7 +481,13 @@ namespace Admin.Pages.Positions
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                    var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                    certificateDto.CertificateDescId = certificateDescDto.Id;
+                    if (certificateDescDto.Active == 1)
+                    {
+                        certificateDto.DescEng = certificateDescDto.DescEng;
+                        certificateDto.DescFre = certificateDescDto.DescFre;
+                    }
                     AddedCertificates.Add(certificateDto);
                 }
             }
@@ -529,7 +617,13 @@ namespace Admin.Pages.Positions
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                    var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                    certificateDto.CertificateDescId = certificateDescDto.Id;
+                    if (certificateDescDto.Active == 1)
+                    {
+                        certificateDto.DescEng = certificateDescDto.DescEng;
+                        certificateDto.DescFre = certificateDescDto.DescFre;
+                    }
                     AddedCertificates.Add(certificateDto);
                 }
             }
@@ -566,11 +660,18 @@ namespace Admin.Pages.Positions
                     if (cidInt != certificateid)
                     {
                         var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                        certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                        var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                        certificateDto.CertificateDescId = certificateDescDto.Id;
+                        if (certificateDescDto.Active == 1)
+                        {
+                            certificateDto.DescEng = certificateDescDto.DescEng;
+                            certificateDto.DescFre = certificateDescDto.DescFre;
+                        }
                         AddedCertificates.Add(certificateDto);
                     }
                 }
             }
+
             AddedCertificateIds = string.Empty;
             foreach (var certificate in AddedCertificates)
             {
@@ -683,7 +784,13 @@ namespace Admin.Pages.Positions
                 {
                     var cidInt = int.Parse(cid.Split("&")[0]);
                     var certificateDto = await _jobCompetencyService.GetJobCertificateById(cidInt);
-                    certificateDto.CertificateDescId = int.Parse(cid.Split("&")[1]);
+                    var certificateDescDto = await _jobCertificateService.GetJobCertificateDescriptionById(int.Parse(cid.Split("&")[1]));
+                    certificateDto.CertificateDescId = certificateDescDto.Id;
+                    if (certificateDescDto.Active == 1)
+                    {
+                        certificateDto.DescEng = certificateDescDto.DescEng;
+                        certificateDto.DescFre = certificateDescDto.DescFre;
+                    }
                     AddedCertificates.Add(certificateDto);
                 }
             }
@@ -798,10 +905,6 @@ namespace Admin.Pages.Positions
         }
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
             JobPosition = await _context.JobPositions.FirstOrDefaultAsync(m => m.Id == Id);
             CurrentJobPosition = await _jobCompetencyService.GetJobPositionById(Id);
             JobCertificates = await _jobCompetencyService.GetJobCertificates();
@@ -815,11 +918,17 @@ namespace Admin.Pages.Positions
             JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
             LevelCode = LevelValue.Split("/")[2];
             RegionIds = string.Empty;
-            foreach (var id in SelectedRegionIds)
+            var acceptedRegionIds = _context.JobLocationRegions.Select(x => x.Id).ToList();
+            foreach (var id in SelectedRegionIds.Distinct())
             {
-                RegionIds += id + "-";
+                if (int.TryParse(id, out int intId))
+                {
+                    if (acceptedRegionIds.Contains(intId)) {
+                        RegionIds += id + "-";
+                    }
+                }
             }
-            foreach (var cid in AddedKnowledgeCompetencyIds.Split("-"))
+            foreach (var cid in AddedKnowledgeCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -838,7 +947,7 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            foreach (var cid in AddedTechnicalCompetencyIds.Split("-"))
+            foreach (var cid in AddedTechnicalCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -857,7 +966,7 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            foreach (var cid in AddedBehaviouralCompetencyIds.Split("-"))
+            foreach (var cid in AddedBehaviouralCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -876,7 +985,7 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            foreach (var cid in AddedExecutiveCompetencyIds.Split("-"))
+            foreach (var cid in AddedExecutiveCompetencyIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -895,7 +1004,7 @@ namespace Admin.Pages.Positions
                     }
                 }
             }
-            foreach (var cid in AddedCertificateIds.Split("-"))
+            foreach (var cid in AddedCertificateIds.Split("-").Distinct())
             {
                 if (!string.IsNullOrEmpty(cid))
                 {
@@ -907,6 +1016,12 @@ namespace Admin.Pages.Positions
                         AddedCertificates.Add(certificateDto);
                     }
                 }
+            }
+
+            if (!ModelState.IsValid) // the model can't be validated right at the beginning of this function, otherwise the DTO
+                                     // won't be in the proper state, since its properties won't have been set, yet
+            {
+                return Page();
             }
 
             var jobgrouppositions = _context.JobGroupPositions.Where(e => e.JobPositionId == JobPosition.Id).ToList();
@@ -961,7 +1076,6 @@ namespace Admin.Pages.Positions
                 var jobrolepositioncompetency = new JobRolePositionCompetencyRating()
                 {
                     JobPositionId = JobPosition.Id,
-
                     CompetencyId = competency.CompetencyId,
                     CompetencyLevelRequirementId = competency.CompetencyLevelRequirementId,
                     CompetencyTypeId = 2,
@@ -1018,6 +1132,14 @@ namespace Admin.Pages.Positions
                 _jobCompetencyService.PostJobRolePositionLocation(jobrolepositionlocation);
             }
 
+            var acceptedHLCategoryIds = _context.JobHLCategories.Select(x => x.Id).ToList();
+            if (int.TryParse(JobHLCategory, out int jobHLId))
+            {
+                if (!acceptedHLCategoryIds.Contains(jobHLId))
+                {
+                    JobHLCategory = "1";
+                }
+            }
             var jobrolepositionhlcategory = new JobRolePositionHLCategory()
             {
                 JobGroupId = JobGroupId,
