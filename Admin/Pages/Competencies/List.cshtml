@@ -60,15 +60,15 @@
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">
-                    <th class="col-2"><b class="sort-column">Competency English</b></th>
-                    <th class="col-2"><b class="sort-column">Competency French</b></th>
-                    <th class="col-3"><b class="sort-column">Description English</b></th>
-                    <th class="col-4"><b class="sort-column">Description French</b></th>
+                    <th class="col-2"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Competency English</b></th>
+                    <th class="col-2"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Competency French</b></th>
+                    <th class="col-3"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Description English</b></th>
+                    <th class="col-4"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Description French</b></th>
                     <th class="col-1">
                         <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                         class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
                         aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
-                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page"
+                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
                         title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
                     </th>
                 </tr>

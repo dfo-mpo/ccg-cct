@@ -90,6 +90,7 @@ body {
     --btnPrimary: #0069d9;
     --btnSecondaryColour: #5a6268;
     --btnDangerColour: #dc3545;
+    --lightBlue: rgb(108, 213, 254);
     /* --scrollbarTrack: #2e3338; */
     --tableHeaderBgColour: #f2f2f2;
     --scrollbarTrack: #5a6268;
@@ -185,8 +186,13 @@ h4.no-results {
     user-select: none;
 }
 
+.expand-all-children:hover, .expand-elements-in-next-rows:hover {
+    opacity: 0.8;
+}
+
 .remove-btn {
     color: red;
+    font-weight: bold;
 }
 
     .remove-btn:hover {
@@ -242,7 +248,7 @@ h4.no-results {
         #table-container table thead {
             position: sticky;
             top: 0px;
-            z-index: 300000 !important;
+            z-index: 100 !important;
             background-color: white;
         }
 
@@ -320,6 +326,7 @@ textarea.form-control {
     display: inline !important;
     width: fit-content;
     margin: 5px 10px;
+    user-select: none;
 }
 
 .dontShow, *.dontShow {
@@ -392,6 +399,23 @@ textarea.form-control {
     padding-bottom: 6px;
 }
 
+.navbar-nav {
+    user-select: none !important;
+}
+
+.navbar-light .navbar-nav .nav-item a.nav-link {
+    opacity: 1;
+    color: rgba(0, 0, 0, 1);
+}
+
+.nav-item.selected .nav-link {
+    cursor: default !important;
+}
+
+.nav-item:not(.selected) .nav-link:hover, .navbar-brand:hover, .nav-item:not(.selected) .nav-link:active, .navbar-brand:active {
+    color: var(--btnPrimary) !important;
+}
+
     .nav-item:not(.selected) .nav-link::after, .smooth-underline::after {
         content: '';
         display: block;
@@ -409,7 +433,7 @@ textarea.form-control {
     }
 
 .smooth-underline::after {
-    background-color: black !important;
+    background-color: var(--btnPrimary) !important;
     opacity: 0 !important;
     transition: opacity 0.15s, transform 0.15s !important;
     transform: scale(0) !important;
@@ -507,13 +531,13 @@ a:hover .external-link {
 }
 
 .glyphicon-save-file:before {
-    content:"\e202";
+    content: "\e202";
 }
 
 .glyphicon {
     font-size: 35px;
-    background:#fff;
-    border-radius:999px;
+    background: #fff;
+    border-radius: 999px;
     position: relative;
     top: 15px;
 }
@@ -521,6 +545,19 @@ a:hover .external-link {
 .glyphicon:hover {
     cursor: pointer;
     opacity: 0.7;
+}
+
+.remove-all-btn {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.bottom-two-px {
+    top: -2px !important;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px !important;
 }
 
 @media print {

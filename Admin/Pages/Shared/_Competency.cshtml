@@ -10,13 +10,39 @@
     <tr>
         <th colspan="3" class="table-header-row">
             <div class="row">
-                <div class="col-7 m-auto">
-                    <span class="@(atLeastOneCompetency ? "expand-elements-in-next-rows" : "") closed" id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">@Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()</span>
+                <div class="col-6 m-auto">
+                    @{
+                        if (atLeastOneCompetency)
+                        {
+                            <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">
+                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">
+                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()
+                            </span>
+                        }
+                    }
                 </div>
                 <div class="col-3 text-center m-auto">
-                    <span class="@(atLeastOneCompetency ? "expand-elements-in-next-rows" : "") closed second-column" id="@("levelHeader_" + Model.FullCompetencyNameOneWord)">LEVEL / NIVEAU</span>
+                    @{
+                        if (atLeastOneCompetency)
+                        {
+                            <span class="expand-elements-in-next-rows closed second-column" data-toggle="tooltip" title="Toggle expandable elements" id="@("levelHeader_" + Model.FullCompetencyNameOneWord)">
+                                LEVEL / NIVEAU
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="@("levelHeader_" + Model.FullCompetencyNameOneWord)">
+                                LEVEL / NIVEAU
+                            </span>
+                        }
+                    } 
                 </div>
-                <div class="col-2 text-right">
+                <div class="col-3 text-right">
                         @{
                             List<int> addedCompIds = new List<int>();
                             foreach (var comp in Model.AddedCompetenciesList.Where(x => x.Active == 1))
@@ -25,6 +51,63 @@
                             }
                             var remainingCompetenciesToAdd = Model.FullCompetencyList.Where(x => x.Active == 1 
                                 && !addedCompIds.Contains(x.Id)).Distinct();
+                        }
+                        @if (addedCompetencies.Count() > 1)
+                        {
+                            var routedataremoveall = new Dictionary<string, string> {
+                                {"id", FullPageModel.Id.ToString() },
+                                {"titleeng", FullPageModel.TitleEng },
+                                {"titlefre", FullPageModel.TitleFre },
+                                {"descriptioneng", FullPageModel.DescriptionEng },
+                                {"descriptionfre", FullPageModel.DescriptionFre },
+                                {"levelcode", FullPageModel.LevelCode },
+                                {"levelvalue", FullPageModel.LevelValue },
+                                {"regionids", FullPageModel.RegionIds },
+                                {"subjobgroupId", FullPageModel.SubJobGroupId.ToString() },
+                                {"jobgrouplevelid", FullPageModel.JobGroupLevelId.ToString() },
+                                {"jobgroupid", FullPageModel.JobGroupId.ToString() },
+                                {"jobhlcategory", FullPageModel.JobHLCategory },
+                                {"addedknowledgecompetencyids", FullPageModel.AddedKnowledgeCompetencyIds },
+                                {"addedtechnicalcompetencyids", FullPageModel.AddedTechnicalCompetencyIds },
+                                {"addedbehaviouralcompetencyids", FullPageModel.AddedBehaviouralCompetencyIds },
+                                {"addedexecutivecompetencyids", FullPageModel.AddedExecutiveCompetencyIds }
+                            };
+
+                            var strToRemoveFromDictionary = "added" + Model.FullCompetencyNameOneWord.ToLower() + "competencyids";
+                            routedataremoveall.Remove(strToRemoveFromDictionary);
+
+                            <button class="btn btn-danger remove-all-btn" type="button" 
+                                data-toggle="modal" data-target="#@("removeall-" + Model.FullCompetencyNameOneWord)">
+                                REMOVE ALL
+                            </button>
+
+                            <div class="modal fade bd-modal-xl" id="@("removeall-" + Model.FullCompetencyNameOneWord)" tabindex="-1" role="dialog" 
+                                aria-labelledby="@("removeall-" + Model.FullCompetencyNameOneWord + "ModelTitle")" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="@("removeall-" + Model.FullCompetencyNameOneWord + "ModelTitle")">
+                                                REMOVE ALL @(Model.FullCompetencyNameEng.ToUpper())
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body text-center">
+                                                <h3 class="text-center">Are you sure you want to remove all @Model.FullCompetencyNameEng.ToLower() that have been added to this position?</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="delete" 
+                                                    asp-all-route-data="@routedataremoveall">
+                                                    Yes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
                         @if (remainingCompetenciesToAdd.Any())
                         {
@@ -92,12 +175,12 @@
                 
                 @foreach (var competency in addedCompetencies)
                 {
-                        var key1 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_a_" + competency.CompetencyId.ToString();
-                        var key2 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_b_" + competency.CompetencyId.ToString();
-                        var divKey = Model.ShortCompetencyName.ToLower() + "Div-" + competency.CompetencyId.ToString();
-                        var rateDivKey = Model.ShortCompetencyName.ToLower() + "RateDiv-" + competency.CompetencyId.ToString();
+                    var key1 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_a_" + competency.CompetencyId.ToString();
+                    var key2 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_b_" + competency.CompetencyId.ToString();
+                    var divKey = Model.ShortCompetencyName.ToLower() + "Div-" + competency.CompetencyId.ToString();
+                    var rateDivKey = Model.ShortCompetencyName.ToLower() + "RateDiv-" + competency.CompetencyId.ToString();
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-6">
                             <div class="accordion" id="@divKey">
                                 <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="@key1">
                                     @competency.CompetencyNameEng / @competency.CompetencyNameFre
@@ -180,7 +263,7 @@
                             </div>
                         </div>
 
-                        <div class="col-2 text-right">
+                        <div class="col-3 text-right">
                             @{
                                 var routedataremove = new Dictionary<string, string> {
                                     {"id", FullPageModel.Id.ToString() },
@@ -204,15 +287,14 @@
                             }
                             <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="delete" asp-all-route-data="@routedataremove">REMOVE</button>
                         </div>
-                    </div>
-
+                    </div> 
                 }
             }
             else
             {
                 <div class="row">
                     <div class="col-9">
-                        <p class="no-competency">This position does not currently have any @Model.FullCompetencyNameOneWord.ToLower() competencies associated to it</p>
+                        <p class="no-competency">This position does not currently have any @Model.FullCompetencyNameEng.ToLower() associated to it</p>
                     </div>
                 </div>
             }
