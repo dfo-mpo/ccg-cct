@@ -50,13 +50,13 @@
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">
-                    <th><b class="sort-column">Certificate English</b></th>
-                    <th><b class="sort-column">Certificate French</b></th>
+                    <th><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Certificate English</b></th>
+                    <th><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Certificate French</b></th>
                     <th>
                         <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                         class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
                         aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
-                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page"
+                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
                         title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
                     </th>
                 </tr>

@@ -95,14 +95,19 @@
                 </tr>
             }
 
-            <tr>
-                <th colspan="2" class="table-header-row"><span class="expand-elements-in-next-rows closed">CERTIFICATIONS / ATTESTATIONS</span></th>
-            </tr>
             @{
                 var certificates = Model.PositionCertificates.Where(e => e.Active == 1).OrderBy(x => x.NameEng.ToLower()).ToList();
             }
             @if (certificates.Any())
             {
+                <tr>
+                    <th colspan="2" class="table-header-row">
+                        <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements">
+                            CERTIFICATIONS / ATTESTATIONS
+                        </span>
+                    </th>
+                </tr>
+
                 @foreach (var certificate in certificates)
                 {
                     var key = "cert" + certificate.Id.ToString();
@@ -156,6 +161,9 @@
             else
             {
                 <tr>
+                    <th colspan="2" class="table-header-row"><span>CERTIFICATIONS / ATTESTATIONS</span></th>
+                </tr>
+                <tr>
                     <td colspan="2" class="bold">
                         This position does not have any certifications associated to it
                     </td>
@@ -173,12 +181,12 @@
                 int loopCounter = 0;
                 @foreach (var competencytype in Model.PositionCompetencyRatings)
                 {
-                    if (competencytype.Any(e => e.Active != 0))
+                    var competenciesOfType = competencytype.Where(e => e.Active != 0).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+                    if (competenciesOfType.Any())
                     {
-                        var competenciesOfType = competencytype.Where(e => e.Active != 0).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
                         <tr>
-                            <th class="col-7 table-header-row"><span class="expand-elements-in-next-rows closed">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</span></th>
-                            <th class="text-center col-3 table-header-row"><span class="expand-elements-in-next-rows closed second-column">LEVEL / NIVEAU</span></th>
+                            <th class="col-7 table-header-row"><span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</span></th>
+                            <th class="text-center col-3 table-header-row"><span class="expand-elements-in-next-rows closed second-column" data-toggle="tooltip" title="Toggle expandable elements">LEVEL / NIVEAU</span></th>
                         </tr>
                         foreach (var c in competenciesOfType)
                         {
@@ -277,7 +285,12 @@
     </table>
 </div>
 
+<div class="form-group space-btns small-margin-top">
+    <a asp-page="./Edit" asp-route-id="@Model.Position.JobTitleId" class="btn btn-primary">Edit</a>
+    <a class="btn btn-info" href="/Positions/Create?id=@Model.Position.JobTitleId"
+    data-toggle="tooltip" title="Create a new position with the same details as current selection">Save a Copy</a>
+</div>
+
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Position.JobTitleId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

@@ -3,6 +3,8 @@ let tableContainer;
 let footer;
 let localStorageScrollStr = "CCG_CCT_WindowScroll";
 
+const EMPTY_CERT_DESC_ID = 1;
+const ENCODED_AMPERSAND = encodeURIComponent("&");
 const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
 
 // Utility functions VVVVV -----------------------------------------------------------------------------------------------------------------
@@ -121,6 +123,35 @@ function storeCurrentScrollPosition() {
     localStorage.setItem(localStorageScrollStr, window.scrollY.toString());
 }
 
+/**
+ * 
+ * @param {string} formActionStr - The string that correponds to the "formaction" attribute of the element being updated
+ * @param {string} portionToUpdate - This string represents the portion of the formaction string that is of concern, for example, "addedcertificateids"
+ * @param {Number} elementId - The database id of the element in the portion to update to be updated. For example, if the element being updated was a competency, this parameter would be the id of the competency
+ * @param {Number} newId - The value to apply to that specific element. This won't change the id, but the value of the item associated with that id. For example, for competencies, this is the value of the new level of the competency. For certificates, this is the id of the new certificate description
+ * @returns string
+ * 
+ * This function updates the formaction string of an element whenever a certificate's description is changed, or whenever a competency level is modified.
+ */
+function updateFormActionString(formActionStr, portionToUpdate, elementId, newId) {
+    let itemsIdsStr = formActionStr.substring((formActionStr.indexOf(portionToUpdate) + portionToUpdate.length + 1),
+        (formActionStr.indexOf("-&", (formActionStr.indexOf(portionToUpdate) + 1))));
+
+    let endIndex = itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND)))) < 0 ? itemsIdsStr.length :
+        itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))));
+
+    let itemToUpdateStr = itemsIdsStr.substring((itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))),
+        endIndex);
+
+    let updatedStr = itemToUpdateStr.substring(0, itemToUpdateStr.indexOf(ENCODED_AMPERSAND) + ENCODED_AMPERSAND.length).concat(newId.toString());
+
+    let formActionStrArr = formActionStr.split('');
+    formActionStrArr.splice(formActionStr.indexOf(itemToUpdateStr), itemToUpdateStr.length, updatedStr);
+    let updatedFormActionStr = formActionStrArr.join('');
+
+    return updatedFormActionStr;
+}
+
 // Misc. functions ^^^^^ -------------------------------------------------------------------------------------------------------------------
 
 // Competency level functions VVVVV --------------------------------------------------------------------------------------------------------
@@ -205,27 +236,28 @@ function toggleExpandableElementsInNextRows(el) {
 
 /**
  * 
- * @param {HTMLElement} dropdown - The dropdown which had its value updated
+ * @param {HTMLSelectElement} dropdown - The dropdown which had its value updated
  * 
  * This function gets called whenever a dropdown to change a competency's level gets updated, either by the dropdown itself, or by the + or - buttons. It ensures that if the dropdown is at its maximum or minimum value, the corresponding button gets disabled (and re-enabled if the value changes again and is no longer at an extreme).
  */
 function checkCompetencyLevelButtonsState(dropdown) {
-    let dropDown = /** @type {HTMLInputElement} */ (dropdown);
-    let minusButton = dropDown.previousElementSibling;
-    let plusButton = dropDown.nextElementSibling;
-
-    let currentValue = Number(dropDown.value);
-    let maxValue = getMaximumOrMinimumValueFromDropdown(dropDown);
-    let minValue = getMaximumOrMinimumValueFromDropdown(dropDown, false);
-
-    minusButton.classList.remove("disabled");
-    plusButton.classList.remove("disabled");
-
-    if (currentValue === minValue) {
-        minusButton.classList.add("disabled");
-    }
-    if (currentValue === maxValue) {
-        plusButton.classList.add("disabled");
+    if (dropdown) {
+        let minusButton = dropdown.previousElementSibling;
+        let plusButton = dropdown.nextElementSibling;
+    
+        let currentValue = Number(dropdown.value);
+        let maxValue = getMaximumOrMinimumValueFromDropdown(dropdown);
+        let minValue = getMaximumOrMinimumValueFromDropdown(dropdown, false);
+    
+        minusButton.classList.remove("disabled");
+        plusButton.classList.remove("disabled");
+    
+        if (currentValue === minValue) {
+            minusButton.classList.add("disabled");
+        }
+        if (currentValue === maxValue) {
+            plusButton.classList.add("disabled");
+        }
     }
 }
 
@@ -233,7 +265,7 @@ function checkCompetencyLevelButtonsState(dropdown) {
  * 
  * @param {HTMLSelectElement} dropdown - The dropdown representing the competency level which had its value modified
  * 
- * This function gets called whenever the user modifies the level of a competency in edit position, either by using the buttons, or by using the dropdown. It will adjust the competency level description to match that of the new level. You can see this description by expanding the "LEVEL / NIVEAU" column of the competency tables. (Note, the data for the competency level descriptions is simply hidden in the page, and it gets queried from there)
+ * This function gets called whenever the user modifies the level of a competency in edit/create position, either by using the buttons, or by using the dropdown. It will adjust the competency level description to match that of the new level. You can see this description by expanding the "LEVEL / NIVEAU" column of the competency tables. (Note, the data for the competency level descriptions is simply hidden in the page, and it gets queried from there).
  */
 function setCompetencyLevelDescription(dropdown) {
     if (dropdown) {
@@ -319,7 +351,6 @@ function changeCompetencyLevelValue(el, newNum = null) {
     if (valueChanged) {
         checkCompetencyLevelButtonsState(dropdown);
         setCompetencyLevelDescription(dropdown);
-        const ENCODED_AMPERSAND = encodeURIComponent("&");
         let formActionElements = qsa(`[formaction]`);
         let shortCompetencyStr = dropdown.id.substring(0, dropdown.id.indexOf("-"));
         let fullCompetencyStr;
@@ -342,25 +373,7 @@ function changeCompetencyLevelValue(el, newNum = null) {
         fullCompetencyStr = /** @type {String} */ (fullCompetencyStr);
 
         for (let i = 0; i < formActionElements.length; i++) {
-            let formActionElement = formActionElements[i];
-            let formActionStr = formActionElement.getAttribute("formaction");
-
-            let competencyIdsStr = formActionStr.substring((formActionStr.indexOf(fullCompetencyStr) + fullCompetencyStr.length + 1),
-                (formActionStr.indexOf("-&", (formActionStr.indexOf(fullCompetencyStr) + 1))));
-
-            let endIndex = competencyIdsStr.indexOf("-", (competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND)))) < 0 ? competencyIdsStr.length :
-                competencyIdsStr.indexOf("-", (competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND))));
-
-            let competencyToUpdateStr = competencyIdsStr.substring((competencyIdsStr.indexOf(compId.toString().concat(ENCODED_AMPERSAND))),
-                endIndex);
-
-            let updatedCompetencyStr = competencyToUpdateStr.substring(0, competencyToUpdateStr.indexOf(ENCODED_AMPERSAND) + ENCODED_AMPERSAND.length).concat(newDropdownValue.toString());
-
-            let formActionStrArr = formActionStr.split('');
-            formActionStrArr.splice(formActionStr.indexOf(competencyToUpdateStr), competencyToUpdateStr.length, updatedCompetencyStr);
-            let updatedFormActionStr = formActionStrArr.join('');
-
-            formActionElement.setAttribute("formaction", updatedFormActionStr);
+            formActionElements[i].setAttribute("formaction", updateFormActionString(formActionElements[i].getAttribute("formaction"), fullCompetencyStr, compId, newDropdownValue));
         }
     }
 }
@@ -434,6 +447,43 @@ function setTableContainerMaxHeight() {
         }
         tableContainer.style.maxHeight = `${newHeight}px`;
         tableContainer.style.minHeight = `${newHeight}px`;
+    }
+}
+
+/**
+ * 
+ * @param {HTMLSelectElement} dropdown - The certificate description dropdown that was modified
+ * 
+ * This function gets called when the user changes a certificate that has been added to a position's description, by selecting it in the dropdown. Similarly to the changeCompetencyLevelValue() function, this function changes the formaction attribute of all elements in the page that have it to update the certificate description id of the certificate that was updated. This function also handles hiding/showing/updating the link that leads to the certificate description (it becomes hidden if the description selected is the empty one).
+ */
+function changeCertificateDescription(dropdown) {
+    let selectedCertDescId = Number(dropdown.value);
+    let certId = Number(dropdown.id.substring(dropdown.id.lastIndexOf("-") + 1));
+    let selectedEmptyDesc = false;
+    if (selectedCertDescId === EMPTY_CERT_DESC_ID) {
+        selectedEmptyDesc = true;
+    }
+
+    let parentDiv = findNearestParentOfType(dropdown, "div");
+    let verticalBar = qs(".vertical-bar-cert-desc", parentDiv);
+    let certDescLink = qs(".cert-desc-link", parentDiv);
+
+    if (selectedEmptyDesc) {
+        certDescLink.classList.add("dontShow");
+        verticalBar.classList.add("dontShow");
+        dropdown.classList.add("bold");
+    }
+    else {
+        certDescLink.classList.remove("dontShow");
+        verticalBar.classList.remove("dontShow");
+        dropdown.classList.remove("bold");
+    }
+
+    certDescLink.setAttribute("href", `${certDescLink.getAttribute("href").substring(0, certDescLink.getAttribute("href").indexOf("=") + 1)}${selectedCertDescId}`);
+
+    let formActionElements = qsa(`[formaction]`);
+    for (let i = 0; i < formActionElements.length; i++) {
+        formActionElements[i].setAttribute("formaction", updateFormActionString(formActionElements[i].getAttribute("formaction"), "addedcertificateids", certId, selectedCertDescId));
     }
 }
 
@@ -621,6 +671,16 @@ function sortColumn(el, sortPercents = false) {
     }
 }
 
+/**
+ * 
+ * @param {HTMLElement} el - The link that was clicked
+ * 
+ * This function gets called if users click on a link that says "Overwrite" when copying similar positions over. It sets up the link used by the modal window that makes users aware that they may overwrite data by copying over the similar positions. Since there is only one modal window and that it may be used by all "Overwrite" links, this function just makes sure that the modal window will have a link to the appropriate position.
+ */
+function prepareOverwriteSimilarModalLink(el) {
+    qs("#btn-modal-overwrite-similar").setAttribute("href", `/Similar/Create?id=${el.getAttribute("value")}&copyid=${qs("#position-copied-id").textContent}`);
+}
+
 // Page interaction functions ^^^^^ --------------------------------------------------------------------------------------------------------
 
 // Page startup functions VVVVV ------------------------------------------------------------------------------------------------------------
@@ -631,6 +691,7 @@ function sortColumn(el, sortPercents = false) {
 function setSelectedNavItem() {
     let url = window.location.href.toLowerCase();
     url = url.substring(url.indexOf("/", new String("https://").length) + 1, (url.indexOf("?") > 0 ? url.indexOf("?") : url.length));
+    // the url variable should represent the routing portion of the entire url (ex: /Positions/Create)
 
     let selectedItem;
     if (url === "" || url === "index") {
@@ -663,7 +724,6 @@ function setSelectedNavItem() {
             qs(".nav-link", navItems[i]).classList.add("smooth-underline");
         }
     }
-    qs(".navbar-brand").classList.add("smooth-underline");
 }
 
 /**
@@ -708,18 +768,22 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
                 footer.style.position = "fixed";
                 let arrowIcon = qs(`[data-target="#collapsibleTop"]`);
 
+                let attrArr = [ "alt", "title", "data-original-title" ];
+
                 if (target.style.height) {
                     // expanding the top
                     arrowIcon.setAttribute("src", arrowIcon.getAttribute("src").substring(0, arrowIcon.getAttribute("src").lastIndexOf("/")) + "/up_arrow.png");
-                    arrowIcon.setAttribute("alt", "Collapse the top of the page");
-                    arrowIcon.setAttribute("title", "Collapse the top of the page");
+                    for (let i = 0; i < attrArr.length; i++) {
+                        arrowIcon.setAttribute(attrArr[i], "Collapse the top of the page");
+                    }
                     setSessionVariable("displayTopOfPage", "true");
                 }
                 else {
                     // collapsing the top
                     arrowIcon.setAttribute("src", arrowIcon.getAttribute("src").substring(0, arrowIcon.getAttribute("src").lastIndexOf("/")) + "/down_arrow.png");
-                    arrowIcon.setAttribute("alt", "Expand the top of the page");
-                    arrowIcon.setAttribute("title", "Expand the top of the page");
+                    for (let i = 0; i < attrArr.length; i++) {
+                        arrowIcon.setAttribute(attrArr[i], "Expand the top of the page");
+                    }
                     setSessionVariable("displayTopOfPage", "false");
                 }
             }
@@ -760,6 +824,10 @@ function handleChange(e) {
         if (target.classList) {
             if (target.classList.contains("changeCompetencyLevelDropdown")) {
                 changeCompetencyLevelValue(target, target.value);
+                return;
+            }
+            if (target.classList.contains("cert-desc-dropdown")) {
+                changeCertificateDescription(target);
                 return;
             }
         }
@@ -811,6 +879,10 @@ function handleClick(e) {
                 sortColumn(target);
                 return;
             }
+            if (target.classList.contains("overwrite-similar-link")) {
+                prepareOverwriteSimilarModalLink(target);
+                return;
+            }
         }
         if (target.id) {
             if (target.id === "allRegionsCheckbox") {
@@ -848,6 +920,7 @@ window.addEventListener("load", () => {
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        $('[tooltip]').tooltip();
     });
 
     if (tableContainer && footer) {

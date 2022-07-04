@@ -71,6 +71,10 @@ namespace Admin.Pages.Positions
         public string RegionIds { get; set; } = string.Empty;
         [BindProperty]
         public JobGroupDto[] JobGroups { get; set; }
+
+        [BindProperty]
+        public JobPositionDto CurrentJobPosition { get; set; } // used for the "save a copy" feature
+
         public JobGroupDto CurrentSelectedJobGroup { get; set; }
         public JobCertificateDto[] JobCertificates { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -104,21 +108,141 @@ namespace Admin.Pages.Positions
             return _jobCertificateService;
         }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            JobCompetenciesKnowledge = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
-            JobCompetenciesTechnical = await _jobCompetencyService.GetJobCompetenciesByTypeId(2);
-            JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
-            JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
-            JobCertificates = await _jobCompetencyService.GetJobCertificates();
-            JobGroups = await _jobCompetencyService.GetJobGroups();
-            JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
-            CurrentSelectedJobGroup = JobGroups[0];
-            JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
-            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
-            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            // the id paremeter corresponds to the id of the position you want to copy (if applicable)
 
+            bool savePositonsAs = false;
+            if (id != null)
+            {
+                JobPosition = await _context.JobPositions.FirstOrDefaultAsync(m => m.Id == id);
+                if (JobPosition != null)
+                {
+                    if (JobPosition.Active == 1)
+                    {
+                        savePositonsAs = true;
+                    }
+                } 
+            }
+
+            if (savePositonsAs)
+            {
+                Id = 0;
+                DescriptionEng = JobPosition.PositionDescEng;
+                DescriptionFre = JobPosition.PositionDescFre;
+
+                CurrentJobPosition = await _jobCompetencyService.GetJobPositionById(id.Value);
+                var PositionCertificates = await _jobCompetencyService.GetJobCertificatesById(id.Value);
+                var jobHLCategory = await _jobCompetencyService.GetJobPositionHLCategoryIdByPositionId(id.Value);
+                JobHLCategory = jobHLCategory.ToString();
+                var selectedRegionIds = await _jobCompetencyService.GetJobLocationRegionsById(id.Value);
+                foreach (var rid in selectedRegionIds)
+                {
+                    RegionIds += rid.JobLocationRegionId.ToString() + "-";
+                    SelectedRegionIds.Add(rid.ToString());
+                }
+                if (PositionCertificates != null)
+                {
+                    foreach (var certificate in PositionCertificates)
+                    {
+                        if (certificate != null)
+                        {
+                            if (certificate.Active == 1)
+                            {
+                                var certDesc = _context.CertificateDescriptions.Where(x => x.Id == certificate.CertificateDescId).FirstOrDefault();
+                                if (certDesc.Active != 1)
+                                {
+                                    certificate.DescFre = "";
+                                    certificate.DescEng = "";
+                                }
+                                AddedCertificateIds += certificate.Id + "&" + certificate.CertificateDescId + "-";
+                                AddedCertificates.Add(certificate);
+                            }
+                        }
+                    }
+                }
+                var competenciesType1 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 1);
+                if (competenciesType1 != null)
+                {
+                    foreach (var competency in competenciesType1)
+                    {
+                        if (competency != null)
+                        {
+                            AddedKnowledgeCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                            AddedKnowledgeCompetencies.Add(competency);
+                        }
+                    }
+                }
+
+                var competenciesType2 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 2);
+                if (competenciesType2 != null)
+                {
+                    foreach (var competency in competenciesType2)
+                    {
+                        if (competency != null)
+                        {
+                            AddedTechnicalCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                            AddedTechnicalCompetencies.Add(competency);
+                        }
+                    }
+                }
+                var competenciesType3 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 3);
+                if (competenciesType3 != null)
+                {
+                    foreach (var competency in competenciesType3)
+                    {
+                        if (competency != null)
+                        {
+                            AddedBehaviouralCompetencyIds += competency.CompetencyId + "&" + competency.CompetencyRatingLevelId + "-";
+                            AddedBehaviouralCompetencies.Add(competency);
+                        }
+                    }
+                }
+                var competenciesType4 = await _jobCompetencyService.GetJobCompetencyRatingsByTypeId(id.Value, 4);
+                if (competenciesType4 != null)
+                {
+                    foreach (var competency in competenciesType4)
+                    {
+                        if (competency != null)
+                        {
+                            AddedExecutiveCompetencyIds += competency.CompetencyId + "&" + (competency.CompetencyRatingLevelId +
+                                (competency.CompetencyRatingLevelId <= 5 ? 5 : 0)) + "-";
+                            AddedExecutiveCompetencies.Add(competency);
+                        }
+                    }
+                }
+
+                JobCompetenciesKnowledge = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
+                JobCompetenciesTechnical = await _jobCompetencyService.GetJobCompetenciesByTypeId(2);
+                JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
+                JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
+                JobCertificates = await _jobCompetencyService.GetJobCertificates();
+                JobGroups = await _jobCompetencyService.GetJobGroups();
+                JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
+                JobGroupId = CurrentJobPosition.JobGroupId;
+                CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(CurrentJobPosition.JobGroupId);
+                JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroupId);
+                SubJobGroupId = CurrentJobPosition.SubJobGroupId;
+                JobGroupLevelId = CurrentJobPosition.JobGroupLevelId;
+                LevelCode = CurrentJobPosition.LevelCode;
+            }
+            else
+            {
+                JobCompetenciesKnowledge = await _jobCompetencyService.GetJobCompetenciesByTypeId(1);
+                JobCompetenciesTechnical = await _jobCompetencyService.GetJobCompetenciesByTypeId(2);
+                JobCompetenciesBehavioural = await _jobCompetencyService.GetJobCompetenciesByTypeId(3);
+                JobCompetenciesExecutive = await _jobCompetencyService.GetJobCompetenciesByTypeId(4);
+                JobCertificates = await _jobCompetencyService.GetJobCertificates();
+                JobGroups = await _jobCompetencyService.GetJobGroups();
+                JobCertificateDescriptions = await _jobCompetencyService.GetAllJobCertificateDescriptions();
+                CurrentSelectedJobGroup = JobGroups[0];
+                JobGroupPositions = await _jobCompetencyService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
+                SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
+                JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
+                LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            }
+
+            return Page();
         }
         public async Task OnPostGroup()
         {

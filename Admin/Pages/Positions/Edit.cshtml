@@ -20,10 +20,11 @@
             <form method="post">
     
                 <partial name="_Position" model="Model" />
-
+                @* Create a new position with the same details as current selection*@
                 <div class="form-group space-btns">
                     <button class="btn btn-primary" asp-page-handler="create" asp-all-route-data="routedata">Save Changes</button>
-                    @*<a class="btn btn-info" href="/Positions/Index">Save a Copy</a>*@
+                    <a class="btn btn-info" href="/Positions/Create?id=@Model.Id"
+                    data-toggle="tooltip" title="Create a new position with the same details as current selection">Save a Copy</a>
                     <a class="btn btn-secondary" href="/Positions/Details?positionid=@Model.Id">Cancel</a>
                 </div>
             </form>

@@ -117,7 +117,7 @@
 
         <tr>
             <td>
-                <label class="mr-3 no-highlight" for="allRegionsCheckbox">All Regions / Toutes les régions</label>
+                <label class="mr-3 no-highlight" for="allRegionsCheckbox" data-toggle="tooltip" title="Toggle all other checkboxes">All Regions / Toutes les régions</label>
             </td>
             @*  
                 Old code:    
@@ -304,7 +304,18 @@
             <th class="table-header-row">
                 <div class="row">
                     <div class="col-9 m-auto">
-                        <span class="@(atLeastOneCert ? "expand-elements-in-next-rows" : "") closed" id="certTableHeader">CERTIFICATIONS / ATTESTATIONS</span>
+                        @{
+                            if (atLeastOneCert)
+                            {
+                                <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="certTableHeader">
+                                    CERTIFICATIONS / ATTESTATIONS
+                                </span>
+                            }
+                            else
+                            {
+                                <span id="certTableHeader">CERTIFICATIONS / ATTESTATIONS</span>
+                            }
+                        } 
                     </div>
                     <div class="col-3 text-right">
                         @{
@@ -316,9 +327,59 @@
                             var remainingCertificatesToAdd = Model.JobCertificates.Where(x => (x.Active == 1
                                 && !certIds.Contains(x.Id))).Distinct();
                         }
+                        @if (addedCertificates.Count() > 1)
+                        {
+                            var routedataremoveall = new Dictionary<string, string> {
+                                {"id", Model.Id.ToString() },
+                                {"titleeng", Model.TitleEng },
+                                {"titlefre", Model.TitleFre },
+                                {"descriptioneng", Model.DescriptionEng },
+                                {"descriptionfre", Model.DescriptionFre },
+                                {"levelcode", Model.LevelCode },
+                                {"levelvalue", Model.LevelValue },
+                                {"regionids", Model.RegionIds },
+                                {"subjobgroupId", Model.SubJobGroupId.ToString() },
+                                {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                {"jobgroupid", Model.JobGroupId.ToString() },
+                                {"jobhlcategory", Model.JobHLCategory },
+                                {"addedknowledgecompetencyids", Model.AddedKnowledgeCompetencyIds },
+                                {"addedtechnicalcompetencyids", Model.AddedTechnicalCompetencyIds },
+                                {"addedbehaviouralcompetencyids", Model.AddedBehaviouralCompetencyIds },
+                                {"addedexecutivecompetencyids", Model.AddedExecutiveCompetencyIds }
+                            };
+                            <button class="btn btn-danger remove-all-btn resetWindowHeight" type="button" 
+                                data-toggle="modal" data-target="#removeallcerts">
+                                REMOVE ALL
+                            </button>
+
+                            <div class="modal fade bd-modal-xl" id="removeallcerts" tabindex="-1" role="dialog" aria-labelledby="removeAllCertsModalTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="removeAllCertsModalTitle">REMOVE ALL CERTIFICATES</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body text-center">
+                                                <h3 class="text-center">Are you sure you want to remove all certificates that have been added to this position?</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="deletecertificate" 
+                                                    asp-all-route-data="@routedataremoveall">
+                                                    Yes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         @if (remainingCertificatesToAdd.Any())
                         {
-                            remainingCertificatesToAdd = remainingCertificatesToAdd.OrderBy(x => x.NameEng.ToLower());
+                            remainingCertificatesToAdd = remainingCertificatesToAdd.OrderBy(x => x.NameEng.ToLower()).ToList();
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcert">
                                 Add
                             </button>
@@ -365,7 +426,14 @@
                                             }
                                             @foreach (var certificate in certDescs)
                                             {
-                                                <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
+                                                if (certificate.DescEng == "" && certificate.DescFre == "")
+                                                {
+                                                    <option value="@certificate.Id">No description</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
+                                                }
                                             }
                                         </select>
                                     </div>
@@ -380,7 +448,7 @@
                 </div>
                 @if (atLeastOneCert)
                 {
-                    addedCertificates = addedCertificates.GroupBy(x => x.Id).Select(x => x.First()).ToList();
+                    addedCertificates = addedCertificates.GroupBy(x => x.Id).Select(x => x.First()).ToList(); // remove duplicates
 
                     @foreach (var certificate in addedCertificates)
                     {
@@ -395,37 +463,45 @@
                                     </button>
                                     <div id="@key1" class="collapse" aria-labelledby="#certTableHeader" data-parent="#@divKey">
                                         <div class="card-body">
-                                            @if (string.IsNullOrWhiteSpace(certificate.DescEng) && string.IsNullOrWhiteSpace(certificate.DescFre))
-                                            {
-                                                <p class="no-margins">
-                                                    <b>No description selected</b>
-                                                </p>
-                                                <div class="expanded-item-navigation">
-                                                    <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
-                                                        Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
-                                                    </a>
-                                                    <hr />
-                                                </div>
+
+                                            @{
+                                                bool emptySelectedCertDesc = (certificate.DescEng == "" && certificate.DescFre == "");
                                             }
-                                            else
-                                            {
-                                                <p>
-                                                    <b>English Description</b><br />
-                                                    <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescEng) ? "No description specified in English" : certificate.DescEng)</span>
-                                                </p>
-                                                <p>
-                                                    <b>French Description</b><br />
-                                                    <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescFre) ? "Aucune description specifée en français" : certificate.DescFre)</span>
-                                                </p>
-                                                <div class="expanded-item-navigation">
-                                                    <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
-                                                        Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
-                                                    </a> <span class="small-padding-left">|</span>
-                                                    <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
-                                                        Edit Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
-                                                    <hr />
-                                                </div>
-                                            }
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md cert-desc-dropdown 
+                                                @(emptySelectedCertDesc ? "bold" : "")" id="cert-desc-@certificate.Id">
+                                                @foreach (var desc in certDescs)
+                                                {
+                                                    bool emptyDescInDropdown = (desc.DescEng == "" && desc.DescFre == "");
+                                                    if (certificate.DescEng.ToLower() == desc.DescEng.ToLower())
+                                                    {
+                                                        <option selected value="@desc.Id" class="@(emptyDescInDropdown ? "bold" : "")">
+                                                            @(emptyDescInDropdown ? "No description" : desc.DescEng + " / " + desc.DescFre)
+                                                        </option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@desc.Id" class="@(emptyDescInDropdown ? "bold" : "")">
+                                                            @(emptyDescInDropdown ? "No description" : desc.DescEng + " / " + desc.DescFre)
+                                                        </option>
+                                                    }
+                                                }
+                                            </select>
+
+                                            <div class="expanded-item-navigation">
+                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a> 
+                                                <span class="small-padding-left vertical-bar-cert-desc @(emptySelectedCertDesc ? "dontShow" : "")">|</span>
+                                                <a class="cert-desc-link @(emptySelectedCertDesc ? "dontShow" : "")" 
+                                                    href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" 
+                                                    target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Certificate Description
+                                                        <img src="~/images/icons/external_link_icon.png" 
+                                                        class="external-link" alt="Open link in new tab" />
+                                                </a>
+                                                <hr />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -435,14 +511,14 @@
                                 @{
                                     var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
-                                        {"titleeng",Model.TitleEng },
-                                        {"titlefre",Model.TitleFre },
-                                        {"descriptioneng",Model.DescriptionEng },
-                                        {"descriptionfre",Model.DescriptionFre },
+                                        {"titleeng", Model.TitleEng },
+                                        {"titlefre", Model.TitleFre },
+                                        {"descriptioneng", Model.DescriptionEng },
+                                        {"descriptionfre", Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
-                                        {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                        {"subjobgroupId", Model.SubJobGroupId.ToString() },
                                         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
                                         {"jobgroupid", Model.JobGroupId.ToString() },
                                         {"jobhlcategory", Model.JobHLCategory },
