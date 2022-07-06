@@ -39,7 +39,8 @@
         AllActiveJobs = await Model.GetAllActiveJobs(),
         CurrentSelectedLevelCode = Model.LevelCode,
         CurrentSelectedPosition = Model.CurrentSelectedPosition,
-        EditModel = Model
+        EditModel = Model,
+        HadSimilarPositionsOnLoadingPage = await Model.HasSimilarPositionsOnLoadingPage(Model.Id)
     };
 }
 

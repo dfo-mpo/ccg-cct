@@ -17,7 +17,8 @@
         {"selectedjobpositionid",Model.SelectedJobPositionId.ToString() },
         {"subgroupcode", Model.SubGroupCode },
         {"subjobgroupId" , Model.SubJobGroupId.ToString() },
-        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+        {"copyingaposition", Model.CopyingAPosition.ToString() }
     };
     
     var createModel = new SimilarEditPartialModel
@@ -41,11 +42,19 @@
         CurrentSelectedLevelCode = Model.LevelCode,
         CurrentSelectedPosition = Model.CurrentSelectedPosition,
         CreateModel = Model,
-        IsInEditMode = false
+        IsInEditMode = false,
+        CopyingAPosition = Model.CopyingAPosition
     };
 }
 
-<h1>Create Similar Positions</h1>
+@if (Model.CopyingAPosition)
+{
+    <h1>Applying Similar Positions</h1>
+}
+else
+{
+    <h1>Create Similar Positions</h1>   
+}
 
 <h4>Current Position: <a target="_blank" href="/Positions/Details?positionid=@Model.CurrentPosition.JobTitleId">@Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleEng
     <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a></h4>
@@ -53,6 +62,14 @@
 <h4 class="medium-margin-top small-margin-bottom">Position actuelle: <a target="_blank" href="/Positions/Details?positionid=@Model.CurrentPosition.JobTitleId">
     @Model.CurrentPosition.JobGroupLevelCode @Model.CurrentPosition.JobTitleFre
     <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a></h4>
+
+@if (Model.CopyingAPosition)
+{
+    <div class="alert alert-primary" role="alert">
+        Note: in order for the similar positions copied to be applied, you must click on the "Save Changes" button. 
+        <b>Doing so will overwrite any previously saved similar positions</b>
+    </div>
+}
 
 <hr />
 

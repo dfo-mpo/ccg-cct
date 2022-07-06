@@ -68,6 +68,8 @@ namespace Admin.Pages.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedSeventyPercentIds { get; set; } = string.Empty;
 
+        public bool HasMultipleSimilarPositions { get; set; } = false;
+
         public async Task<IActionResult> OnGetAsync(int? id, string? percent)
         {
             if (id == null)
@@ -75,7 +77,14 @@ namespace Admin.Pages.Similar
                 return NotFound();
             }
 
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            try
+            {
+                CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            }
+            catch
+            {
+                return NotFound();
+            }
 
             if (CurrentPosition == null)
             {
@@ -111,10 +120,40 @@ namespace Admin.Pages.Similar
                 }
             }
 
+            var activePositionIds = await _context.JobPositions.Where(x => x.Active == 1).Select(x => x.Id).ToListAsync();
+
             AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.HundredPercent);
             AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.NinetyPercent);
             AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.EightyPercent);
             AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.SeventyPercent);
+
+            JobPositionDto[][] positionsArray = { AddedOneHundredPercentJobPositions, AddedNinetyPercentJobPositions, 
+                AddedEightyPercentJobPositions, AddedSeventyPercentJobPositions };
+            
+            foreach (var group in positionsArray)
+            {
+                if (!HasMultipleSimilarPositions)
+                {
+                    foreach (var pos in group)
+                    {
+                        if (!HasMultipleSimilarPositions)
+                        {
+                            if (activePositionIds.Contains(pos.JobTitleId))
+                            {
+                                HasMultipleSimilarPositions = true;
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             return Page();
         }

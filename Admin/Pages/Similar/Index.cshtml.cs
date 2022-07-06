@@ -34,10 +34,47 @@ namespace Admin.Pages.Similar
 
         public bool DisplayNumberOfJobsForEachMatchingPercentage { get; set; } = false;
 
+        private const string PercentageSessionString = "DisplayNumberOfJobsForEachMatchingPercentage";
+
+        public bool CopyingAPosition { get; set; } = false;
+
+        public JobPositionDto PositionBeingCopied { get; set; }
+
         public Dictionary<int, string> NumberOfMatchingPositionsPerPecrentagePerPosition { get; set; }
 
-        public async Task OnGetAsync(string? numMatching)
+        public async Task<IActionResult> OnGetAsync(string? numMatching, int? copyid)
         {
+            if (copyid != null)
+            {
+                try
+                {
+                    PositionBeingCopied = await _jobPositionService.GetJobPositionById(copyid.Value);
+                }
+                catch
+                {
+                    return Redirect("/Similar");
+                }
+
+                if (PositionBeingCopied == null)
+                {
+                    return Redirect("/Similar");
+                }
+                if (PositionBeingCopied.Active != 1)
+                {
+                    return Redirect("/Similar");
+                }
+
+                JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == copyid.Value);
+
+                if (JobPosition == null)
+                {
+                    return Redirect("/Similar");
+                }
+
+                CopyingAPosition = true;
+                DisplayNumberOfJobsForEachMatchingPercentage = true;
+            }
+
             DisplayTopOfPage = true;
             var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
             if (!string.IsNullOrEmpty(sessionStr))
@@ -48,34 +85,36 @@ namespace Admin.Pages.Similar
                 }
             }
 
-            string? dislpayNumMatchingStr = HttpContext.Session.GetString("DisplayNumberOfJobsForEachMatchingPercentage");
-            if (!string.IsNullOrEmpty(dislpayNumMatchingStr))
+            if (!CopyingAPosition)
             {
-                if (dislpayNumMatchingStr.ToLower() == "true")
+                string? dislpayNumMatchingStr = HttpContext.Session.GetString(PercentageSessionString);
+                if (!string.IsNullOrEmpty(dislpayNumMatchingStr))
                 {
-                    DisplayNumberOfJobsForEachMatchingPercentage = true;
+                    if (dislpayNumMatchingStr.ToLower() == "true")
+                    {
+                        DisplayNumberOfJobsForEachMatchingPercentage = true;
+                    }
+                    else
+                    {
+                        DisplayNumberOfJobsForEachMatchingPercentage = false;
+                    }
                 }
-                else
+                if (numMatching != null)
                 {
-                    DisplayNumberOfJobsForEachMatchingPercentage = false;
-                }
-            }
-            if (numMatching != null)
-            {
-                if (numMatching.ToLower() == "true")
-                {
-                    DisplayNumberOfJobsForEachMatchingPercentage = true;
-                    HttpContext.Session.SetString("DisplayNumberOfJobsForEachMatchingPercentage", "true");
-                }
-                else if (numMatching.ToLower() == "false")
-                {
-                    DisplayNumberOfJobsForEachMatchingPercentage = false;
-                    HttpContext.Session.SetString("DisplayNumberOfJobsForEachMatchingPercentage", "false");
+                    if (numMatching.ToLower() == "true")
+                    {
+                        DisplayNumberOfJobsForEachMatchingPercentage = true;
+                        HttpContext.Session.SetString(PercentageSessionString, "true");
+                    }
+                    else if (numMatching.ToLower() == "false")
+                    {
+                        DisplayNumberOfJobsForEachMatchingPercentage = false;
+                        HttpContext.Session.SetString(PercentageSessionString, "false");
+                    }
                 }
             }
 
-            JobPositions = await _jobPositionService.GetAllJobPositions();
-            JobPositions = JobPositions.Where(x => x.Active == 1).ToList();
+            JobPositions = (await _jobPositionService.GetAllJobPositions()).Where(x => x.Active == 1).ToList();
 
             var jobsToLoop = JobPositions;
 
@@ -177,6 +216,7 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
+            return Page();
         }
 
     }
