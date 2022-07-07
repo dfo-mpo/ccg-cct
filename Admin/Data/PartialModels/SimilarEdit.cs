@@ -65,5 +65,9 @@ namespace Admin.Data.PartialModels
 
         public JobPositionDto CurrentSelectedPosition { get; set; }
 
+        public bool CopyingAPosition { get; set; } = false;
+
+        public bool HadSimilarPositionsOnLoadingPage { get; set; } = false;
+
     }
 }

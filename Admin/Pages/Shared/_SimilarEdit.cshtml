@@ -38,6 +38,8 @@
         }
     }
 
+    var allActiveJobs = Model.AllActiveJobs;
+
     var allJobsThatCanBeAdded = new List<JobPositionDto>();
 
     var groupLevelCodesWithAtLeastOneJob = new List<string>();
@@ -52,7 +54,6 @@
     var actualSelectedJobGroupLevel = new JobGroupPositionDto();
 
     int intValue;
-    var allActiveJobs = Model.AllActiveJobs;
 
     foreach (var job in allActiveJobs)
     {
@@ -62,7 +63,7 @@
         // because levels that have no jobs to that can be added can't be selected. This loop does the same thing for
         // groups (example, AS), to identify which ones have at least one job that can be added
 
-        if (!allAddedSimilarJobsIds.TryGetValue(job.JobTitleId, out intValue)) // this makes sure you can't add the same position twice
+        if (!allAddedSimilarJobsIds.TryGetValue(job.JobTitleId, out intValue)) // we are only retrieving the jobs that have NOT been added yet
         {
             jobGroupCodesWithAtLeastOneJob.Add(job.JobGroupCode.ToUpper());
             allJobsThatCanBeAdded.Add(job);
@@ -248,7 +249,8 @@
                                                     {"AddedSeventyPercentIds", Model.SeventyPercentIds },
                                                     {"subjobgroupId" , Model.SubJobGroupId.ToString() },
                                                     {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
-                                                    {"jobgroupid",jobgroup.Id.ToString() }
+                                                    {"jobgroupid",jobgroup.Id.ToString() },
+                                                    {"copyingaposition", Model.CopyingAPosition.ToString() }
                                                 };
 
                                                 <li>
@@ -303,7 +305,8 @@
                                                     {"levelcode", level.LevelCode },
                                                     {"subgroupcode", level.SubGroupCode },
                                                     {"subjobgroupId" , Model.SubJobGroupId.ToString() },
-                                                    {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                                    {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                                    {"copyingaposition", Model.CopyingAPosition.ToString() }
                                                 };
 
                                                 <li role="presentation">
@@ -385,24 +388,124 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="table table-bordered small-margin-top">
+
+            @{
+                var positionList = Model.JobPositions
+                    .Where(e => e.Active != 0)
+                    .OrderBy(x => x.JobTitleEng.ToLower())
+                    .OrderBy(x => x.JobGroupLevelCode.ToLower())
+                    .ToList()
+                    .GroupBy(x => x.JobTitleId)
+                    .Select(x => x.First())
+                    .ToList();
+            }
+
+            <table class="table table-bordered small-margin-top no-margin-bottom">
                 <thead>
                     <tr>
-                        <th class="table-header-row">SIMILAR POSITIONS</th>
+                        <th class="table-header-row">
+                            <div class="row">
+                                <div class="col-6 m-auto">
+                                    SIMILAR POSITIONS
+                                </div>
+                                <div class="col-6 text-right">
+                                    @if (positionList.Count() > 1)
+                                    {
+                                        var routedataremoveall = new Dictionary<string, string> {
+                                            {"id", Model.JobPositionId.ToString() },
+                                            {"levelvalue", Model.LevelValue },
+                                            {"jobgroupid", actualSelectedJobGroup.Id.ToString() },
+                                            {"levelcode", actualSelectedJobGroupLevel.LevelCode },
+                                            {"AddedOneHundredPercentIds", Model.OneHundredPercentIds },
+                                            {"AddedNinetyPercentIds", Model.NinetyPercentIds },
+                                            {"AddedEightyPercentIds", Model.EightyPercentIds },
+                                            {"AddedSeventyPercentIds", Model.SeventyPercentIds },
+                                            {"subgroupcode", Model.SubGroupCode },
+                                            {"subjobgroupId" , Model.SubJobGroupId.ToString() },
+                                            {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                            {"copyingaposition", Model.CopyingAPosition.ToString() }
+                                        };
+
+                                        switch (Model.PercentMatch) {
+                                             case 100:
+                                                routedataremoveall.Remove("AddedOneHundredPercentIds");
+                                                break;
+                                            case 90:
+                                                routedataremoveall.Remove("AddedNinetyPercentIds");
+                                                break;
+                                            case 80:
+                                                routedataremoveall.Remove("AddedEightyPercentIds");
+                                                break;
+                                            case 70:
+                                                routedataremoveall.Remove("AddedSeventyPercentIds");
+                                                break;
+                                        }
+
+                                        <button class="btn btn-danger remove-all-btn" type="button" 
+                                            data-toggle="modal" data-target="#removeallsimilar">
+                                            REMOVE ALL
+                                        </button>
+
+                                        <div class="modal fade bd-modal-xl" id="removeallsimilar" tabindex="-1" role="dialog" 
+                                            aria-labelledby="removeallsimilarModalTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="removeallsimilarModalTitle">
+                                                            REMOVE ALL POSITIONS AT @Model.PercentMatch.ToString()% MATCH
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="card-body text-center">
+                                                            <h3 class="text-center">Are you sure you want to remove all similar positions added at @Model.PercentMatch.ToString()% match?</h3>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            @if (Model.PercentMatch == 100)
+                                                            {
+                                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="deleteonehundredpercentsimilarposition" 
+                                                                    asp-all-route-data="@routedataremoveall">
+                                                                    Yes
+                                                                </button>
+                                                            }
+                                                            else if (Model.PercentMatch == 90)
+                                                            {
+                                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="deleteninetypercentsimilarposition" 
+                                                                    asp-all-route-data="@routedataremoveall">
+                                                                    Yes
+                                                                </button>
+                                                            }
+                                                            else if (Model.PercentMatch == 80)
+                                                            {
+                                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="deleteeightypercentsimilarposition" 
+                                                                    asp-all-route-data="@routedataremoveall">
+                                                                    Yes
+                                                                </button>
+                                                            }
+                                                            else if (Model.PercentMatch == 70)
+                                                            {
+                                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="deleteseventypercentsimilarposition" 
+                                                                    asp-all-route-data="@routedataremoveall">
+                                                                    Yes
+                                                                </button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-
-                            @{
-                                var positionList = Model.JobPositions
-                                    .Where(e => e.Active != 0)
-                                    .OrderBy(x => x.JobTitleEng.ToLower())
-                                    .OrderBy(x => x.JobGroupLevelCode.ToLower())
-                                    .ToList();
-                            }
-
                             @if (positionList.Any())
                             {
 
@@ -432,38 +535,41 @@
                                         {"AddedSeventyPercentIds", Model.SeventyPercentIds },
                                         {"subgroupcode", Model.SubGroupCode },
                                         {"subjobgroupId" , Model.SubJobGroupId.ToString() },
-                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
+                                        {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
+                                        {"copyingaposition", Model.CopyingAPosition.ToString() }
                                     };
 
                                     <div class="row">
                                         <div class="col-10 @(position.JobTitleId == Model.JobPositionId ? "same-position" : "")">
                                             <a target="_blank" class="btn btn-link text-left text-wrap" href="/Positions/Details?positionid=@position.JobTitleId">
-                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre 
+                                                @position.JobGroupLevelCode @position.JobTitleEng 
+                                                <span class="bold @(position.JobTitleId == Model.JobPositionId ? "text-dark" : "")">/</span> 
+                                                @position.JobTitleFre 
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-2 text-right">
                                             @if (Model.PercentMatch == 100)
                                             {
-                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteonehundredpercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="deleteonehundredpercentsimilarposition" asp-all-route-data="@routedataremove">
                                                     REMOVE
                                                 </button>
                                             }
                                             else if (Model.PercentMatch == 90)
                                             {
-                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteninetypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="deleteninetypercentsimilarposition" asp-all-route-data="@routedataremove">
                                                     REMOVE
                                                 </button>
                                             }
                                             else if (Model.PercentMatch == 80)
                                             {
-                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteeightypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="deleteeightypercentsimilarposition" asp-all-route-data="@routedataremove">
                                                     REMOVE
                                                 </button>
                                             }
                                             else if (Model.PercentMatch == 70)
                                             {
-                                                <button class="btn btn-link remove-btn resetWindowHeight text-center display-block margin-auto" asp-page-handler="deleteseventypercentsimilarposition" asp-all-route-data="@routedataremove">
+                                                <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="deleteseventypercentsimilarposition" asp-all-route-data="@routedataremove">
                                                     REMOVE
                                                 </button>
                                             }
@@ -483,24 +589,21 @@
                 </tbody>
             </table>
 
-            @if (Model.IsInEditMode)
-            {
-                <div class="form-group space-btns">
-                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="@routedataadd">
-                        Save Changes
-                    </button>
-                    <a class="btn btn-secondary" href="/Similar/Details?id=@Model.JobPositionId">Cancel</a>
-                </div>
-            }
-            else
-            {
-                <div class="form-group space-btns">
-                    <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="@routedataadd">
-                        Create
-                    </button>
-                    <a class="btn btn-secondary" href="/Similar">Cancel</a>
-                </div>
-            }
+            <div class="form-group space-btns small-margin-top">
+                <button class="btn btn-primary" asp-page-handler="edit" asp-all-route-data="@routedataadd">
+                    Save Changes
+                </button>
+                @if (Model.HadSimilarPositionsOnLoadingPage && Model.IsInEditMode && !Model.CopyingAPosition)
+                {
+                    <a class="btn btn-info" href="/Similar?copyid=@Model.JobPositionId"
+                        data-toggle="tooltip" title="Applies these similar positions to another position of your choice">
+                        Copy Similar Positions
+                    </a>
+                }
+                <a class="btn btn-secondary" href="@(Model.IsInEditMode ? "/Similar/Details?id=" + Model.JobPositionId : "/Similar")">
+                    Cancel
+                </a>
+            </div>
         </form>
     </div>
 </div>

@@ -23,7 +23,8 @@
                 </tr>
             </tbody>
         </table>
-        <table class="table table-bordered">
+
+        <table class="table table-bordered no-margin-bottom">
             <thead>
                 <tr>
                     @{
@@ -59,7 +60,9 @@
                                 <div class="row">
                                     <div class="col-12 @(position.JobTitleId == Model.JobPositionId ? "same-position" : "")">
                                         <a class="btn btn-link col-12 text-left text-wrap" href="/Positions/Details?positionid=@position.JobTitleId">
-                                                @position.JobGroupLevelCode @position.JobTitleEng / @position.JobTitleFre 
+                                                @position.JobGroupLevelCode @position.JobTitleEng 
+                                                <span class="bold @(position.JobTitleId == Model.JobPositionId ? "text-dark" : "")">/</span> 
+                                                @position.JobTitleFre 
                                         </a>
                                         <hr />
                                     </div>

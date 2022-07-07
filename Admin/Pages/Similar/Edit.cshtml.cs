@@ -18,13 +18,15 @@ namespace Admin.Pages.Similar
         private readonly DataModel.CctDbContext _context;
         private readonly ILogger<EditModel> _logger;
         private readonly JobPositionService _jobPositionService;
+        private readonly JobGroupService _jobGroupService;
 
         public EditModel(DataModel.CctDbContext context,
-            ILogger<EditModel> logger, JobPositionService jobPositionService)
+            ILogger<EditModel> logger, JobPositionService jobPositionService, JobGroupService jobGroupService)
         {
             _context = context;
             _logger = logger;
             _jobPositionService = jobPositionService;
+            _jobGroupService = jobGroupService;
         }
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
@@ -80,16 +82,53 @@ namespace Admin.Pages.Similar
             return await _jobPositionService.GetJobGroupPositionLevelsById(id);
         }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<bool> HasSimilarPositionsOnLoadingPage(int posId)
+        {
+            var activePositionIds = await _context.JobPositions.Where(x => x.Active == 1).Select(x => x.Id).ToListAsync();
+            SearchSimilarJob position = await _context.SearchSimilarJobs.Where(x => x.Position == posId).FirstOrDefaultAsync();
+
+            var hundred = await _jobPositionService.GetJobPositionByIdValues(position.HundredPercent);
+            var ninety = await _jobPositionService.GetJobPositionByIdValues(position.NinetyPercent);
+            var eighty = await _jobPositionService.GetJobPositionByIdValues(position.EightyPercent);
+            var seventy = await _jobPositionService.GetJobPositionByIdValues(position.SeventyPercent);
+
+            JobPositionDto[][] positionsArray = { hundred, ninety,
+                eighty, seventy };
+
+            foreach (var group in positionsArray)
+            {
+                foreach (var pos in group)
+                {
+                    if (activePositionIds.Contains(pos.JobTitleId))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? id, int? percent, int? groupId, string? level)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            try
+            {
+                CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            }
+            catch
+            {
+                return NotFound();
+            }
 
             if (CurrentPosition == null)
+            {
+                return NotFound();
+            }
+            if (CurrentPosition.Active != 1)
             {
                 return NotFound();
             }
@@ -102,6 +141,23 @@ namespace Admin.Pages.Similar
             }
 
             PercentSelection = "100";
+
+            if (percent != null)
+            {
+                if (percent == 90)
+                {
+                    PercentSelection = "90";
+                }
+                else if (percent == 80)
+                {
+                    PercentSelection = "80";
+                }
+                else if (percent == 70)
+                {
+                    PercentSelection = "70";
+                }
+            }
+
             JobGroups = await _jobPositionService.GetJobGroups();
             JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroups[0].Id);
             CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(CurrentPosition.JobGroupId);
@@ -119,7 +175,35 @@ namespace Admin.Pages.Similar
                 SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
             }
 
+            if (groupId != null)
+            {
+                JobGroupDto group = null;
+                try
+                {
+                    group = await _jobPositionService.GetJobGroupById(groupId.Value);
+                }
+                catch { }
+
+                if (group != null)
+                {
+                    CurrentSelectedJobGroup = group;
+                }
+            }
+
+            if (level != null)
+            {
+                var levels = (await _jobGroupService.GetJobGroupPositionsById(CurrentSelectedJobGroup.Id)).ToList().Select(e => e.LevelCode.ToUpper());
+
+                if (levels.Contains(level.ToUpper()))
+                {
+                    LevelCode = level.ToUpper();
+                }
+            }
+
             AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.HundredPercent);
+            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.NinetyPercent);
+            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.EightyPercent);
+            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.SeventyPercent);
             foreach (var added in JobPosition.HundredPercent.Split("&PositionId=").Distinct())
             {
                 if (!string.IsNullOrEmpty(added))

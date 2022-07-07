@@ -152,6 +152,32 @@ function updateFormActionString(formActionStr, portionToUpdate, elementId, newId
     return updatedFormActionStr;
 }
 
+/**
+ * 
+ * @param {Number} columnIndex - The index of the column from which the table cells should be retrieved
+ * @param {HTMLElement[]} tableRows - The HTML "tr" elements of the main table
+ * @returns HTMLElement[]
+ * 
+ * This function is used to retrieve the td elements that are not empty in the table column specified by the parameter. This happens when sorting/reversing the column. There is logic in place to ensure that only the elements that are not empty are retrieved, since the table in question (the results of the located similar position) may not have an equal number of elements per row, so some cells may be empty.
+ */
+function getNonEmptyTableCellsInColumn(columnIndex, tableRows) {
+    let allRowElements = [];
+    for (let i = 0; i < tableRows.length; i++) {
+        let elements = qsa("td", tableRows[i]);
+        let element = elements[columnIndex];
+        for (let j = 0; j < element.childElementCount; j++) {
+            if (elements[columnIndex].children[j].nodeName) {
+                if (elements[columnIndex].children[j].nodeName.toLowerCase() === "a") {
+                    if (elements[columnIndex].children[j].textContent.trim() !== "") {
+                        allRowElements[i] = /** @type {HTMLElement} */ (elements[columnIndex].cloneNode(true));
+                    }
+                }
+            }
+        }
+    }
+    return allRowElements;
+}
+
 // Misc. functions ^^^^^ -------------------------------------------------------------------------------------------------------------------
 
 // Competency level functions VVVVV --------------------------------------------------------------------------------------------------------
@@ -244,14 +270,14 @@ function checkCompetencyLevelButtonsState(dropdown) {
     if (dropdown) {
         let minusButton = dropdown.previousElementSibling;
         let plusButton = dropdown.nextElementSibling;
-    
+
         let currentValue = Number(dropdown.value);
         let maxValue = getMaximumOrMinimumValueFromDropdown(dropdown);
         let minValue = getMaximumOrMinimumValueFromDropdown(dropdown, false);
-    
+
         minusButton.classList.remove("disabled");
         plusButton.classList.remove("disabled");
-    
+
         if (currentValue === minValue) {
             minusButton.classList.add("disabled");
         }
@@ -447,6 +473,17 @@ function setTableContainerMaxHeight() {
         }
         tableContainer.style.maxHeight = `${newHeight}px`;
         tableContainer.style.minHeight = `${newHeight}px`;
+
+        // this code handles centering vertically the text that appears when a position could not be found in a percentage in the locate similar position feature
+        let noResultColumns = qsa(".no-matching-positions-at-percent");
+        if (noResultColumns.length > 0) {
+            let thead = qs("thead", tableContainer);
+            for (let i = 0; i < noResultColumns.length; i++) {
+                let span = qs("span", noResultColumns[i]);
+                let top = ((tableContainer.getBoundingClientRect().height - span.getBoundingClientRect().height - thead.getBoundingClientRect().height) / 2) + thead.getBoundingClientRect().height;
+                span.style.top = `${top}px`;
+            }
+        }
     }
 }
 
@@ -672,6 +709,84 @@ function sortColumn(el, sortPercents = false) {
 }
 
 /**
+ * This function sorts every column individually in the table displaying results for located similar positions. It is only called when switching the language of the job titles displayed, in order to keep the jobs sorted properly.
+ */
+function sortEveryColumn() {
+    let tableHeaders = qsa("th b", tableContainer);
+    let numColumns = tableHeaders.length;
+    let rows = qsa("tbody tr", tableContainer);
+    for (let i = 0; i < numColumns; i++) {
+        if (tableHeaders[i].classList.contains("flip-column")) { // this means this table column contains elements
+            let elementsToSort = getNonEmptyTableCellsInColumn(i, rows);
+            let flipOperator = tableHeaders[i].classList.contains("sorted") ? 1 : -1;
+            let sortedElements = elementsToSort.sort((a, b) => {
+                let textA = qs("a:not(.dontShow)", a).textContent.toLowerCase();
+                let textB = qs("a:not(.dontShow)", b).textContent.toLowerCase();
+
+                return textA.localeCompare(textB) * flipOperator;
+            });
+
+            for (let j = 0; j < sortedElements.length; j++) {
+                if (sortedElements[j].firstElementChild.classList.contains("bold")) {
+                    let el = sortedElements[j];
+                    sortedElements.splice(j, 1);
+                    if (flipOperator === 1) {
+                        sortedElements.unshift(el);
+                    }
+                    else {
+                        sortedElements.push(el);
+                    }
+                }
+            }
+
+            for (let j = 0; j < elementsToSort.length; j++) {
+                let elements = qsa("td", rows[j]);
+                elements[i].replaceWith(sortedElements[j]);
+            }
+        }
+    }
+}
+
+/**
+ * 
+ * @param {HTMLElement} el - The column header that was clicked
+ * 
+ * This function reverses the elements in the table column. It is only used by the results table for located similar positions.
+ */
+function flipColumn(el) {
+    if (el) {
+        let table = findNearestParentOfType(el, "table");
+        let rows = qsa("tbody tr", table);
+        let allColumnHeaders = qsa("th b");
+        let columnToFlipIndex = -1;
+
+        let originalSortDirection = el.classList.contains("sorted") ? 1 : -1;
+
+        for (let i = 0; i < allColumnHeaders.length; i++) {
+            if (allColumnHeaders[i] === el) {
+                columnToFlipIndex = i;
+                allColumnHeaders[i].classList.remove("sorted");
+                allColumnHeaders[i].classList.remove("reverse-sorted");
+            }
+        }
+
+        let allRowElements = getNonEmptyTableCellsInColumn(columnToFlipIndex, rows);
+
+        for (let i = 0; i < allRowElements.length; i++) {
+            let elements = qsa("td", rows[i]);
+            elements[columnToFlipIndex].replaceWith(allRowElements[allRowElements.length - 1 - i]);
+        }
+
+        if (originalSortDirection === 1) {
+            el.classList.add("reverse-sorted");
+        }
+        else {
+            el.classList.add("sorted");
+        }
+    }
+}
+
+/**
  * 
  * @param {HTMLElement} el - The link that was clicked
  * 
@@ -679,6 +794,54 @@ function sortColumn(el, sortPercents = false) {
  */
 function prepareOverwriteSimilarModalLink(el) {
     qs("#btn-modal-overwrite-similar").setAttribute("href", `/Similar/Create?id=${el.getAttribute("value")}&copyid=${qs("#position-copied-id").textContent}`);
+}
+
+/**
+ * 
+ * @param {HTMLElement} el - The link that was clicked
+ * 
+ * This function gets called whenever a link is clicked on the located position results page. It helps users keep track of which links they have clicked by making them a different colour.
+ */
+function makeLinkVisited(el) {
+    if (el.classList) {
+        if (!el.classList.contains("visited")) {
+            el.classList.add("visited");
+            let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
+            sibling.classList.add("visited");
+        }
+    }
+}
+
+/**
+ * 
+ * @param {HTMLInputElement} el - The radio button that was clicked
+ * 
+ * This function is used on the located position results screen to alternate between displaying the French and English titles of positions. It is called by clicking the radio buttons associated to the languages. All this does is change CSS classes to hide/show elements.
+ */
+function swapJobTitleLanguage(el) {
+    let changingToEnglish = el.value.toLowerCase() === "eng";
+    let englishElements = qsa("a[lang='en']");
+    let frenchElements = qsa("a[lang='fr']");
+    if (changingToEnglish) {
+        qs("#jobTitleEng").classList.remove("dontShow");
+        qs("#jobTitleFre").classList.add("dontShow");
+    }
+    else {
+        qs("#jobTitleEng").classList.add("dontShow");
+        qs("#jobTitleFre").classList.remove("dontShow");
+    }
+    for (let i = 0; i < englishElements.length; i++) {
+        if (changingToEnglish) {
+            englishElements[i].classList.remove("dontShow");
+            frenchElements[i].classList.add("dontShow");
+        }
+        else {
+            englishElements[i].classList.add("dontShow");
+            frenchElements[i].classList.remove("dontShow");
+        }
+    }
+    setTableContainerMaxHeight();
+    sortEveryColumn();
 }
 
 // Page interaction functions ^^^^^ --------------------------------------------------------------------------------------------------------
@@ -742,6 +905,19 @@ function checkIfWindowShouldBeScrolled() {
     }
 }
 
+/**
+ * This function removes the "title" attribute of elements that have the "tooltip" attribute on page startup.
+ */
+function removeTitleAttributes() {
+    let items = qsa('[tooltip]');
+    if (items.length > 0) {
+        for (let i = 0; i < items.length; i++) {
+            items[i].setAttribute("data-original-title", items[i].getAttribute("title"));
+            items[i].setAttribute("title", "");
+        }
+    }
+}
+
 // Page startup functions ^^^^^ ------------------------------------------------------------------------------------------------------------
 
 // Handling Events VVVVV -------------------------------------------------------------------------------------------------------------------
@@ -768,7 +944,7 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
                 footer.style.position = "fixed";
                 let arrowIcon = qs(`[data-target="#collapsibleTop"]`);
 
-                let attrArr = [ "alt", "title", "data-original-title" ];
+                let attrArr = ["alt", "data-original-title"];
 
                 if (target.style.height) {
                     // expanding the top
@@ -831,6 +1007,10 @@ function handleChange(e) {
                 return;
             }
         }
+        if (target.getAttribute("name") === "changeLang") {
+            swapJobTitleLanguage(target);
+            return
+        }
     }
 }
 
@@ -879,8 +1059,16 @@ function handleClick(e) {
                 sortColumn(target);
                 return;
             }
+            if (target.classList.contains("flip-column")) {
+                flipColumn(target);
+                return;
+            }
             if (target.classList.contains("overwrite-similar-link")) {
                 prepareOverwriteSimilarModalLink(target);
+                return;
+            }
+            if (target.classList.contains("rememberIfVisited")) {
+                makeLinkVisited(target);
                 return;
             }
         }
@@ -898,6 +1086,7 @@ function handleClick(e) {
 // Page setup VVVVV ------------------------------------------------------------------------------------------------------------------------
 
 window.addEventListener("load", () => {
+    checkIfWindowShouldBeScrolled();
     windowHeight = window.innerHeight;
     tableContainer = qs("#table-container");
     footer = qs("footer");
@@ -916,12 +1105,13 @@ window.addEventListener("load", () => {
     });
 
     setSelectedNavItem();
-    checkIfWindowShouldBeScrolled();
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
         $('[tooltip]').tooltip();
     });
+
+    removeTitleAttributes();
 
     if (tableContainer && footer) {
         setTableContainerMaxHeight();

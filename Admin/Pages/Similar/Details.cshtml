@@ -10,7 +10,7 @@
     // The model is in Admin/Data/PartialModels (the models used for partial views)
     var detailsModel = new SimilarDetailsPartialModel
     {
-        JobPositionId = Model.CurrentPosition.JobTitleId,
+        JobPositionId = Model.CurrentPosition.JobTitleId
     };
 }
 
@@ -45,8 +45,22 @@ else if (Model.PercentSelection == "70")
     <partial name="_SimilarDetails" model="@detailsModel" />
 }
 
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.CurrentPosition.JobTitleId">Edit</a> |
+@if (Model.HasMultipleSimilarPositions)
+{
+    <div class="form-group space-btns small-margin-top">
+        <a asp-page="./Edit" asp-route-id="@Model.CurrentPosition.JobTitleId" class="btn btn-primary">Edit</a>
+        <a class="btn btn-info" href="/Similar?copyid=@Model.CurrentPosition.JobTitleId"
+            data-toggle="tooltip" title="Applies these similar positions to another position of your choice">
+            Copy Similar Positions
+        </a>
+    </div>
+}
+
+<div class="@(!Model.HasMultipleSimilarPositions ? "small-margin-top" : "")">
+    @if (!Model.HasMultipleSimilarPositions)
+    {
+        <a href="/Similar/Edit?id=@Model.CurrentPosition.JobTitleId">Edit</a> <span>|</span>
+    }
     <a asp-page="./Index">Back to List</a>
 </div>
 

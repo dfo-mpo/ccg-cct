@@ -6,10 +6,27 @@
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>Similar Positions</h1>
-    <p>
-        <a class="btn btn-dark" target="_blank" asp-page="ExecutiveSummary">Print Executive Summary</a>
-    </p>
+    @if (Model.CopyingAPosition)
+    {
+        <h4 class="small-margin-bottom">Copying Similar Positions From: 
+            <a target="_blank" href="/Positions/Details?positionid=@Model.PositionBeingCopied.JobTitleId" data-toggle="tooltip"
+                title="@Model.PositionBeingCopied.JobGroupLevelCode @Model.PositionBeingCopied.JobTitleFre">
+                @Model.PositionBeingCopied.JobGroupLevelCode @Model.PositionBeingCopied.JobTitleEng
+                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+            </a>
+        </h4>
+    }
+    else
+    {
+        <h1>Similar Positions</h1>
+    }
+    @if (!Model.CopyingAPosition)
+    {
+        <p>
+            <a class="btn btn-dark" target="_blank" asp-page="ExecutiveSummary">View / Print List</a>
+            <a class="btn btn-secondary pull-right bold" asp-page="Locate">Locate Positions</a>
+        </p> 
+    }
 
     @{
         string? filterValue = Model.Filter;
@@ -33,18 +50,37 @@
             <h6>
                 <label for="Filter">Find positions:</label>
                 <input type="text" asp-for="@Model.Filter" />
+
+                @if (Model.CopyingAPosition)
+                {
+                    <input name="copyid" type="hidden" value="@Model.PositionBeingCopied.JobTitleId" />
+                }
+
                 <input type="submit" value="Search" class="btn btn-primary" /> 
                 @if (!String.IsNullOrWhiteSpace(Model.Filter))
                 {
-                    <span><span class="vertical-bar">|</span> <a href="/Similar">Back to Full List</a></span>
+                    <span><span class="vertical-bar">|</span> 
+                        <a href="@("/Similar" + (Model.CopyingAPosition ? "?copyid=" + @Model.PositionBeingCopied.JobTitleId : ""))">
+                            Back to Full List
+                        </a>
+                    </span>
                 }
-                @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
+                @if (!Model.CopyingAPosition)
                 {
-                    <a class="pull-right" href="/Similar?numMatching=false&filter=@filterValue">Hide Number of Matching Positions Per Percentage</a>
+                    @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
+                    {
+                        <a class="pull-right" href="/Similar?numMatching=false&filter=@filterValue">Hide Number of Matching Positions Per Percentage</a>
+                    }
+                    else
+                    {
+                        <a class="pull-right" href="/Similar?numMatching=true&filter=@filterValue">View Number of Matching Positions Per Percentage</a>
+                    }
                 }
                 else
                 {
-                    <a class="pull-right" href="/Similar?numMatching=true&filter=@filterValue">View Number of Matching Positions Per Percentage</a>
+                    <a class="btn btn-danger pull-right bottom-two-px bold" href="/Similar/Details?id=@Model.PositionBeingCopied.JobTitleId">
+                        Cancel Copy
+                    </a>
                 }
             </h6>
         </div>
@@ -59,29 +95,35 @@
                 <tr class="table-header-row text-center">
                     @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
                     {
-                        <th class="col-1"><b class="sort-column-percents">Level</b></th>
-                        <th class="col-3"><b class="sort-column-percents">Title English</b></th>
-                        <th class="col-3"><b class="sort-column-percents">Title French</b></th>
-                        <th class="col-3"><div class="four-col-grid"><span class="sort-column-percents">100%</span>
-                            <span class="sort-column-percents">90%</span><span class="sort-column-percents">80%</span>
-                            <span class="sort-column-percents">70%</span></div></th>
+                        <th class="col-1"><b class="sort-column-percents sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                        <th class="col-3"><b class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                        <th class="col-3"><b class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
+                        <th class="col-3">
+                            <div class="four-col-grid">
+                                <span class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">100%</span>
+                                <span class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">90%</span>
+                                <span class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">80%</span>
+                                <span class="sort-column-percents" data-toggle="tooltip" title="Click to sort column">70%</span>
+                            </div>
+                        </th>
                         <th class="col-2">
                             <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                             class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
                             aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
-                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                            title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
                         </th>
                     }
                     else
                     {
-                        <th class="col-1"><b class="sort-column">Level</b></th>
-                        <th class="col-4"><b class="sort-column">Title English</b></th>
-                        <th class="col-5"><b class="sort-column">Title French</b></th>
+                        <th class="col-1"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                        <th class="col-4"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                        <th class="col-5"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
                         <th class="col-2">
                             <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                             class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
                             aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
-                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page"
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
                             title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
                         </th>
                     }
@@ -109,6 +151,8 @@
                 }
                 @foreach (var item in itemsList)
                 {
+                    bool positionHasSimilarOnes = false;
+
                     <tr>
                         <td class="text-center sort-percents">
                             @Html.DisplayFor(modelItem => item.LevelCode)
@@ -124,31 +168,95 @@
                             <td class="four-col-grid">
                                 @{
                                     foreach (var positionCount in 
-                                                Model.NumberOfMatchingPositionsPerPecrentagePerPosition[item.JobTitleId].Split("&"))
+                                        Model.NumberOfMatchingPositionsPerPecrentagePerPosition[item.JobTitleId].Split("&"))
                                     {
+                                        if (!positionHasSimilarOnes)
+                                        {
+                                            int result;
+                                            if (int.TryParse(positionCount, out result))
+                                            {
+                                                if (result > 0)
+                                                {
+                                                    positionHasSimilarOnes = true;
+                                                }
+                                            }
+                                        }
                                         <span class="sort-percents">@positionCount</span>
                                     }
                                 }
                             </td>
                         }
-                        @if (Model.SimilarSearchIds.Contains(item.JobTitleId))
+                        @if (Model.CopyingAPosition)
                         {
-                            <td class="text-center">
-                                <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
-                                <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a>
-                            </td>
+                            if (positionHasSimilarOnes)
+                            {
+                                <td class="text-center">
+                                    <a href="" data-toggle="modal" data-target="#modalOverwriteSimilar" 
+                                        class="overwrite-similar-link" value="@item.JobTitleId">Overwrite</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center">
+                                    <a href="/Similar/Create?id=@item.JobTitleId&copyid=@Model.PositionBeingCopied.JobTitleId">Apply</a>
+                                </td>
+                            }
                         }
                         else
                         {
-                            <td class="text-center">
-                                <a asp-page="./Create" asp-route-id="@item.JobTitleId">Create</a>
-                            </td>
+                            @if (Model.SimilarSearchIds.Contains(item.JobTitleId))
+                            {
+                                <td class="text-center">
+                                    <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
+                                    <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center">
+                                    <a asp-page="./Create" asp-route-id="@item.JobTitleId">Create</a>
+                                </td>
+                            }
                         }
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+
+    @if (Model.CopyingAPosition)
+    {
+         <div class="modal fade bd-modal-xl" id="modalOverwriteSimilar" tabindex="-1" role="dialog" 
+            aria-labelledby="modalOverwriteSimilarTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalOverwriteSimilarTitle">
+                            OVERWRITE SIMILAR POSITIONS WARNING 
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body text-center">
+                            <h3 class="text-center">
+                                The position you have selected already has similar positions. 
+                                By proceeding, you may overwrite this data and permanently lose it (only if you 
+                                decide to save changes on the next screen, however). Do you wish to proceed?
+                            </h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" id="btn-modal-overwrite-similar">Yes</a>
+                            @* The href of this links gets set when the user clicks on an "Overwrite" link using javascript *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="dontShow" id="position-copied-id">@Model.PositionBeingCopied.JobTitleId</p>
+    }
 }
 else
 {
@@ -161,4 +269,3 @@ else
         <h4 class="no-results">There are currently no positions</h4>
     }
 }
-

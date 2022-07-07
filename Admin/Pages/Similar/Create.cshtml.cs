@@ -70,6 +70,11 @@ namespace Admin.Pages.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedSeventyPercentIds { get; set; } = string.Empty;
 
+        [BindProperty(SupportsGet = true)]
+        public bool CopyingAPosition { get; set; } = false;
+
+        public JobPositionDto PositionBeingCopied { get; set; }
+
         public async Task<List<JobPositionDto>> GetAllActiveJobs()
         {
             var jobs = await _jobPositionService.GetAllJobPositions();
@@ -81,25 +86,70 @@ namespace Admin.Pages.Similar
             return await _jobPositionService.GetJobGroupPositionLevelsById(id);
         }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? copyid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            try
+            {
+                CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            }
+            catch
+            {
+                return NotFound();
+            }
 
             if (CurrentPosition == null)
             {
                 return NotFound();
             }
-
-            JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
-
-            if (JobPosition != null) // if the position already has some similar jobs, you should see the edit page
+            if (CurrentPosition.Active != 1)
             {
-                return Redirect("/Similar/Edit?id=" + CurrentPosition.JobTitleId);
+                return NotFound();
+            }
+
+            var copiedPositionSimilar = new SearchSimilarJob();
+            if (copyid != null)
+            {
+                try
+                {
+                    PositionBeingCopied = await _jobPositionService.GetJobPositionById(copyid.Value);
+                }
+                catch
+                {
+                    return NotFound();
+                }
+
+                if (PositionBeingCopied == null)
+                {
+                    return NotFound();
+                }
+                if (PositionBeingCopied.Active != 1)
+                {
+                    return NotFound();
+                }
+
+                copiedPositionSimilar = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == copyid.Value);
+
+                if (copiedPositionSimilar == null)
+                {
+                    return NotFound();
+                }
+
+                CopyingAPosition = true;
+            }
+
+            if (!CopyingAPosition)
+            {
+                JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
+
+                if (JobPosition != null) // if the position already has some similar jobs, you should see the edit page
+                {
+                    return Redirect("/Similar/Edit?id=" + CurrentPosition.JobTitleId);
+                }
             }
 
             PercentSelection = "100";
@@ -118,7 +168,61 @@ namespace Admin.Pages.Similar
                 CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
                 CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
                 SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }         
+            }
+
+            if (CopyingAPosition)
+            {
+                AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(copiedPositionSimilar.HundredPercent);
+                foreach (var added in copiedPositionSimilar.HundredPercent.Split("&PositionId=").Distinct())
+                {
+                    if (!string.IsNullOrEmpty(added))
+                    {
+                        int number;
+                        bool success = int.TryParse(added, out number);
+                        if (success)
+                        {
+                            AddedOneHundredPercentIds += number.ToString() + '-';
+                        }
+                    }
+                }
+                foreach (var added in copiedPositionSimilar.NinetyPercent.Split("&PositionId=").Distinct())
+                {
+                    if (!string.IsNullOrEmpty(added))
+                    {
+                        int number;
+                        bool success = int.TryParse(added, out number);
+                        if (success)
+                        {
+                            AddedNinetyPercentIds += number.ToString() + '-';
+                        }
+                    }
+                }
+                foreach (var added in copiedPositionSimilar.EightyPercent.Split("&PositionId=").Distinct())
+                {
+                    if (!string.IsNullOrEmpty(added))
+                    {
+                        int number;
+                        bool success = int.TryParse(added, out number);
+                        if (success)
+                        {
+                            AddedEightyPercentIds += number.ToString() + '-';
+                        }
+                    }
+                }
+                foreach (var added in copiedPositionSimilar.SeventyPercent.Split("&PositionId=").Distinct())
+                {
+                    if (!string.IsNullOrEmpty(added))
+                    {
+                        int number;
+                        bool success = int.TryParse(added, out number);
+                        if (success)
+                        {
+                            AddedSeventyPercentIds += number.ToString() + '-';
+                        }
+                    }
+                }
+            }
+
             return Page();
         }
 
@@ -183,14 +287,37 @@ namespace Admin.Pages.Similar
                     }
                 }
             }
-            _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
+
+            bool creatingSimilarPositions = true;
+
+            if (CopyingAPosition)
             {
-                Position = Id,
-                HundredPercent = querystring100,
-                NinetyPercent = querystring90,
-                EightyPercent = querystring80,
-                SeventyPercent = querystring70,
-            });
+                if (_context.SearchSimilarJobs.Where(x => x.Position == Id).Any())
+                {
+                    creatingSimilarPositions = false;
+                }
+            }
+
+            if (creatingSimilarPositions)
+            {
+                _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
+                {
+                    Position = Id,
+                    HundredPercent = querystring100,
+                    NinetyPercent = querystring90,
+                    EightyPercent = querystring80,
+                    SeventyPercent = querystring70,
+                });
+            }
+            else
+            {
+                JobPosition.HundredPercent = querystring100;
+                JobPosition.NinetyPercent = querystring90;
+                JobPosition.EightyPercent = querystring80;
+                JobPosition.SeventyPercent = querystring70;
+                _jobPositionService.UpdateSimilarPositions(JobPosition);
+            }
+
             Thread.Sleep(5000);
             return RedirectToPage("Details", new { Id });
         }
