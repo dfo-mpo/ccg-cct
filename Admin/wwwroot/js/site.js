@@ -112,6 +112,17 @@ function setSessionVariable(key, value) {
     }
 }
 
+/**
+ * 
+ * @param {HTMLElement} el 
+ * @returns boolean
+ * 
+ * This function determines if an element can be scrolled (has a scrollbar)
+ */
+function canElementBeScrolled(el) {
+    return el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+}
+
 // Utility functions ^^^^^ -----------------------------------------------------------------------------------------------------------------
 
 // Misc. functions VVVVV -------------------------------------------------------------------------------------------------------------------
@@ -121,6 +132,42 @@ function setSessionVariable(key, value) {
  */
 function storeCurrentScrollPosition() {
     localStorage.setItem(localStorageScrollStr, window.scrollY.toString());
+}
+
+/**
+ * This function gets called when the page loads and when the window is resized. It makes sure that on index pages, if there are buttons on the right side of the screen (buttons that switch between competency types for example), they stay aligned with the end of the table, based on if it can scroll or not
+ */
+function checkIfTableCanBeScrolled() {
+    let btn = qs(".index-right-button");
+    let saveFileIcon = qs(".index-save-file-icon");
+    let locateBtn = qs(".right-button-locate");
+    let windowCanScroll = canElementBeScrolled(tableContainer);
+    if (btn) {
+        if (!windowCanScroll) {
+            btn.classList.remove("index-right-button");
+            btn.classList.add("index-right-button-no-scroll");
+            if (saveFileIcon) {
+                saveFileIcon.style.right = "-6px";
+            }
+        }
+        else {
+            btn.classList.add("index-right-button");
+            btn.classList.remove("index-right-button-no-scroll");
+            if (saveFileIcon) {
+                saveFileIcon.style.right = "3px";
+            }
+        }
+    }
+    if (locateBtn) {
+        if (windowCanScroll) {
+            locateBtn.classList.remove("no-margin-right");
+            locateBtn.style.marginRight = "8px";
+        }
+        else {
+            locateBtn.style.marginRight = "";
+            locateBtn.classList.add("no-margin-right");
+        }
+    }
 }
 
 /**
@@ -799,15 +846,20 @@ function prepareOverwriteSimilarModalLink(el) {
 /**
  * 
  * @param {HTMLElement} el - The link that was clicked
+ * @param {boolean} targetSibling - Whether or not the sibling link should be made visited as well. It is true when the link comes from the locate positions page
  * 
- * This function gets called whenever a link is clicked on the located position results page. It helps users keep track of which links they have clicked by making them a different colour.
+ * This function gets called whenever a link is clicked on the located position results page, or in the navigation. It helps users keep track of which links they have clicked by making them a different colour. In the navigation, it just makes sure the link has the proper colour when loading the next page.
  */
-function makeLinkVisited(el) {
+function makeLinkVisited(el, targetSibling = true) {
     if (el.classList) {
         if (!el.classList.contains("visited")) {
-            el.classList.add("visited");
-            let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
-            sibling.classList.add("visited");
+            if (!qs(".nav-link.visited")) {
+                el.classList.add("visited");
+                if (targetSibling) {
+                    let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
+                    sibling.classList.add("visited");
+                }
+            }
         }
     }
 }
@@ -842,6 +894,29 @@ function swapJobTitleLanguage(el) {
     }
     setTableContainerMaxHeight();
     sortEveryColumn();
+}
+
+/**
+ * 
+ * @param {HTMLFormElement} el - The form being submitted
+ */
+function trimFormFields(el) {
+    if (el) {
+        let inputs =  /** @type {HTMLInputElement[]} */ (qsa("input[type='text']", el));
+        let textareas = /** @type {HTMLInputElement[]} */ (qsa("textarea", el));
+
+        if (inputs.length > 0) {
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = inputs[i].value.trim();
+            }
+        }
+
+        if (textareas.length > 0) {
+            for (let i = 0; i < textareas.length; i++) {
+                textareas[i].value = textareas[i].value.trim();
+            }
+        }
+    }
 }
 
 // Page interaction functions ^^^^^ --------------------------------------------------------------------------------------------------------
@@ -990,7 +1065,7 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
 /**
  * 
  * @param {Event} e - The change event
- * @returns - void
+ * @returns void
  * 
  * This function gets called whenever an input element has its value change, and in certain cases, it will call other functions to handle special baheviour.
  */
@@ -1016,22 +1091,42 @@ function handleChange(e) {
 
 /**
  * 
+ * @param {Event} e - The form submit event
+ * @returns void
+ * 
+ * This function gets called whenever a form is submitted and triggers other functions if necessary.
+ */
+function formSubmitted(e) {
+    let target = /** @type {HTMLElement} */ (e.target);
+    if (target) {
+        if (target.classList) {
+            if (target.classList.contains("trimFormWhenSubmitting")) {
+                trimFormFields(target);
+            }
+        }
+    }
+}
+
+/**
+ * 
  * @param {Event} e - The double click event
- * @returns - void
+ * @returns void
  * 
  * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
 function handleDoubleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
+    e.preventDefault();
     if (target) {
         attemptToExpandCompetency(target);
+        return;
     }
 }
 
 /**
  * 
  * @param {Event} e - The click event
- * @returns - void
+ * @returns void
  * 
  * This function gets called whenever something is clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
@@ -1068,7 +1163,7 @@ function handleClick(e) {
                 return;
             }
             if (target.classList.contains("rememberIfVisited")) {
-                makeLinkVisited(target);
+                makeLinkVisited(target, target.classList.contains("nextOrPreviousLink"));
                 return;
             }
         }
@@ -1100,6 +1195,9 @@ window.addEventListener("load", () => {
     body.addEventListener("change", (e) => {
         handleChange(e);
     });
+    body.addEventListener("submit", (e) => {
+        formSubmitted(e);
+    });
     document.addEventListener("transitionstart", (e) => {
         transitionStarted(e, true, true);
     });
@@ -1115,9 +1213,11 @@ window.addEventListener("load", () => {
 
     if (tableContainer && footer) {
         setTableContainerMaxHeight();
+        checkIfTableCanBeScrolled();
         window.addEventListener("resize", () => {
             windowHeight = window.innerHeight;
             setTableContainerMaxHeight();
+            checkIfTableCanBeScrolled();
         });
     }
 });

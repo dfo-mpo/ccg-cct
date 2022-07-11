@@ -43,6 +43,12 @@
 
         itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
         var itemsList = itemsThatMatchFilter.ToList();
+
+        if (Model.CopyingAPosition)
+        {
+            // this is so that you can't copy similar positions onto the same position
+            itemsList = itemsList.Where(x => x.JobTitleId != Model.PositionBeingCopied.JobTitleId).ToList();
+        }
     }
 
     <form>
