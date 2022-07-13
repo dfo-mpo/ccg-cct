@@ -300,14 +300,19 @@ namespace Admin.Pages.Similar
 
             if (creatingSimilarPositions)
             {
-                _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
+
+                try
                 {
-                    Position = Id,
-                    HundredPercent = querystring100,
-                    NinetyPercent = querystring90,
-                    EightyPercent = querystring80,
-                    SeventyPercent = querystring70,
-                });
+                    await _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
+                    {
+                        Position = Id,
+                        HundredPercent = querystring100,
+                        NinetyPercent = querystring90,
+                        EightyPercent = querystring80,
+                        SeventyPercent = querystring70,
+                    });
+                }
+                catch { }
             }
             else
             {
@@ -315,10 +320,14 @@ namespace Admin.Pages.Similar
                 JobPosition.NinetyPercent = querystring90;
                 JobPosition.EightyPercent = querystring80;
                 JobPosition.SeventyPercent = querystring70;
-                _jobPositionService.UpdateSimilarPositions(JobPosition);
+
+                try
+                {
+                    await _jobPositionService.UpdateSimilarPositions(JobPosition);
+                }
+                catch { }
             }
 
-            Thread.Sleep(5000);
             return RedirectToPage("Details", new { Id });
         }
         public async Task OnPostGroupOneHundredPercent()

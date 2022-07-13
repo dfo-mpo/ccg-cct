@@ -440,19 +440,19 @@ textarea.form-control {
     cursor: default !important;
 }
 
-.nav-item:not(.selected) .nav-link:hover, .navbar-brand:hover, .nav-item:not(.selected) .nav-link:active, .navbar-brand:active {
+.nav-item:not(.selected) .nav-link:hover, .navbar-brand:hover, .nav-item:not(.selected), .nav-link.visited, .navbar-brand.visited {
     color: var(--btnPrimary) !important;
 }
 
-.nav-item:not(.selected) .nav-link::after, .smooth-underline::after {
-    content: '';
-    display: block;
-    position: relative;
-    top: 2px;
-    width: auto;
-    height: 2px;
-    opacity: 0;
-}
+    .nav-item:not(.selected) .nav-link::after, .smooth-underline::after {
+        content: '';
+        display: block;
+        position: relative;
+        top: 2px;
+        width: auto;
+        height: 2px;
+        opacity: 0;
+    }
 
 .nav-item.selected {
     padding-bottom: 0px;
@@ -577,10 +577,10 @@ a:hover .external-link {
     top: 15px;
 }
 
-    .glyphicon:hover {
-        cursor: pointer;
-        opacity: 0.7;
-    }
+.glyphicon:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
 
 .remove-all-btn {
     margin-right: 5px;
@@ -647,6 +647,32 @@ textarea.big-textarea {
     min-height: 250px;
 }
 
+.index-save-file-icon {
+    top: 10px;
+    right: 3px;
+}
+
+.index-right-button {
+    margin-right: 8px !important;
+}
+
+.index-right-button-no-scroll {
+    margin-right: 0px !important;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.margin-left-link-spacing {
+    margin-left: 6px;
+}
+
+* {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
 @media print {
 
     .glyphicon {
@@ -661,21 +687,26 @@ textarea.big-textarea {
         display: none !important;
     }
 
-    .col-3 {
-        width: 25% !important;
+    .col-1 {
+        width: 8.33% !important;
     }
 
     .col-2 {
         width: 16.66% !important;
     }
 
-    .col-1 {
-        width: 8.33% !important;
+    .col-3 {
+        width: 25% !important;
+    }
+
+    .col-4 {
+        width: 33.33% !important;
     }
 
     #table-container {
         max-height: none !important;
         min-height: none !important;
+        height: fit-content !important;
     }
 
     .external-link {
@@ -693,7 +724,6 @@ textarea.big-textarea {
     .table-cell {
         display: table-cell !important;
     }
-
 }
 
 /* header {

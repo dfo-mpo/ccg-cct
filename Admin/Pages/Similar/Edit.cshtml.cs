@@ -320,8 +320,13 @@ namespace Admin.Pages.Similar
             JobPosition.NinetyPercent = querystring90;
             JobPosition.EightyPercent = querystring80;
             JobPosition.SeventyPercent = querystring70;
-            _jobPositionService.UpdateSimilarPositions(JobPosition);
-            Thread.Sleep(5000);
+
+            try
+            {
+                await _jobPositionService.UpdateSimilarPositions(JobPosition);
+            }
+            catch { }
+
             return RedirectToPage("Details", new { Id });
         }
         public async Task OnPostGroupOneHundredPercent()
