@@ -1,5 +1,6 @@
 ﻿@page
 @model Admin.Pages.Certificates.DeleteModel
+@inject Admin.Data.FormattingService Formatter
 
 @{
     ViewData["Title"] = "Delete";
@@ -31,7 +32,45 @@
         @if (!string.IsNullOrWhiteSpace(Model.Certificate.DescEng))
         {
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Certificate.DescEng)
+                @{
+                    var descPortions = Model.Certificate.DescEng.Split("\r\n");
+                    bool oneLinkAdded = false;
+                    foreach (var desc in descPortions)
+                    {
+                        bool containsALink = false;
+                        if (desc.Contains("http"))
+                        {
+                            containsALink = true;
+                        }
+                        if (!containsALink)
+                        {
+                            <span>@desc</span>
+                            <br />
+                        }
+                        else
+                        {
+                            var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                            var href = formattedLink[0];
+                            var displayStr = formattedLink[1];
+                            
+                            if (oneLinkAdded)
+                            {
+                                <span class="inline-block margin-left-link-spacing">| </span>
+                            }
+
+                            <a href="@href" target="_blank">
+                                @displayStr
+                                <img src="~/images/icons/external_link_icon.png" 
+                                class="external-link" alt="Open link in new tab" />
+                            </a>
+
+                            if (!oneLinkAdded)
+                            {
+                                oneLinkAdded = true;
+                            }
+                        }
+                    }
+                }
             </dd>
         }
         else
@@ -46,7 +85,44 @@
         @if (!string.IsNullOrWhiteSpace(Model.Certificate.DescFre))
         {
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Certificate.DescFre)
+                @{
+                    var descPortions = Model.Certificate.DescFre.Split("\r\n");
+                    bool oneLinkAdded = false;
+                    foreach (var desc in descPortions)
+                    {
+                        bool containsALink = false;
+                        if (desc.Contains("http"))
+                        {
+                            containsALink = true;
+                        }
+                        if (!containsALink)
+                        {
+                            <span>@desc</span>
+                            <br />
+                        }
+                        else
+                        {
+                            var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                            var href = formattedLink[0];
+                            var displayStr = formattedLink[1];
+
+                            if (oneLinkAdded)
+                            {
+                                <span class="inline-block margin-left-link-spacing">| </span>
+                            }
+                            <a href="@href" target="_blank">
+                                @displayStr
+                                <img src="~/images/icons/external_link_icon.png" 
+                                class="external-link" alt="Open link in new tab" />
+                            </a>
+
+                            if (!oneLinkAdded)
+                            {
+                                oneLinkAdded = true;
+                            }
+                        }
+                    }
+                }
             </dd>
         }
         else
