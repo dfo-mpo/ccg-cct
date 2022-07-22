@@ -10,12 +10,12 @@ const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
 // Utility functions VVVVV -----------------------------------------------------------------------------------------------------------------
 
 /**
+ * The same querySelectorAll function that you know, expect this one returns an array of HTMLElements, and you don't call it on anything, you can simply pass an optional parent parameter to it. Returns an empty array in case no elements match.
  * 
  * @param {string} selector - The string which represents the desired selection
  * @param {Element} parent - Optional: the parent on which the selection is made (default is document)
  * @returns - HTMLElement[]
  * 
- * The same querySelectorAll function that you know, expect this one returns an array of HTMLElements, and you don't call it on anything, you can simply pass an optional parent parameter to it. Returns an empty array in case no elements match.
  */
 function qsa(selector, parent = document) {
     if ((!selector) || (!parent)) {
@@ -31,12 +31,12 @@ function qsa(selector, parent = document) {
 }
 
 /**
+ * The same querySelector function that you know, expect this one returns a HTMLElement, and you don't call it on anything, you can simply pass an optional parent parameter to it.
  * 
  * @param {string} selector - The string which represents the desired selection
  * @param {Element} parent - Optional: the parent on which the selection is made (default is document)
  * @returns - HTMLElement
  * 
- * The same querySelector function that you know, expect this one returns a HTMLElement, and you don't call it on anything, you can simply pass an optional parent parameter to it.
  */
 function qs(selector, parent = document) {
     if ((!selector) || (!parent)) {
@@ -46,12 +46,12 @@ function qs(selector, parent = document) {
 }
 
 /**
+ * This function is meant to help find the nearest parent of an element of a certain type. It is limited to the tag name, meaning you can't use the full querySelector options. If no parent can be found, null will be returned.
  * 
  * @param {HTMLElement} el - The child element
  * @param {string} parentTagName - The tag name of the parent desired, for exmaple "div"
  * @returns - HTMLElement
  * 
- * This function is meant to help find the nearest parent of an element of a certain type. It is limited to the tag name, meaning you can't use the full querySelector options. If no parent can be found, null will be returned.
  */
 function findNearestParentOfType(el, parentTagName) {
     if ((!el) || (!parentTagName)) {
@@ -80,12 +80,12 @@ function findNearestParentOfType(el, parentTagName) {
 }
 
 /**
+ * This function returns the maximum or minimum "value" attribute of all option elements contained within the dropdown. Returns null if there are no options in the dropdown.
  * 
  * @param {HTMLSelectElement} dropdown - The "select" HTML element
  * @param {Boolean} maximum - True by default. If set to true, will return the maximum, and the minimum otherwise
  * @returns Number
  * 
- * This function returns the maximum or minimum "value" attribute of all option elements contained within the dropdown. Returns null if there are no options in the dropdown.
  */
 function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
     let dropdownOptions = qsa("option", dropdown);
@@ -100,11 +100,11 @@ function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
 }
 
 /**
+ * This function is a simple API to set session variables on the server. There is a corresponding route in the app which receives a key value pair and sets it accordingly in the session.
  * 
  * @param {string} key - The key to set
  * @param {string} value - The value to give to the key
  * 
- * This function is a simple API to set session variables on the server. There is a corresponding route in the app which receives a key value pair and sets it accordingly in the session.
  */
 function setSessionVariable(key, value) {
     if (key && value) {
@@ -113,11 +113,11 @@ function setSessionVariable(key, value) {
 }
 
 /**
+ * This function determines if an element can be scrolled (has a scrollbar).
  * 
  * @param {HTMLElement} el 
  * @returns boolean
  * 
- * This function determines if an element can be scrolled (has a scrollbar)
  */
 function canElementBeScrolled(el) {
     return el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
@@ -175,6 +175,7 @@ function checkIfTableCanBeScrolled() {
 }
 
 /**
+ * This function updates the formaction string of an element whenever a certificate's description is changed, or whenever a competency level is modified.
  * 
  * @param {string} formActionStr - The string that correponds to the "formaction" attribute of the element being updated
  * @param {string} portionToUpdate - This string represents the portion of the formaction string that is of concern, for example, "addedcertificateids"
@@ -182,7 +183,6 @@ function checkIfTableCanBeScrolled() {
  * @param {Number} newId - The value to apply to that specific element. This won't change the id, but the value of the item associated with that id. For example, for competencies, this is the value of the new level of the competency. For certificates, this is the id of the new certificate description
  * @returns string
  * 
- * This function updates the formaction string of an element whenever a certificate's description is changed, or whenever a competency level is modified.
  */
 function updateFormActionString(formActionStr, portionToUpdate, elementId, newId) {
     let itemsIdsStr = formActionStr.substring((formActionStr.indexOf(portionToUpdate) + portionToUpdate.length + 1),
@@ -204,12 +204,12 @@ function updateFormActionString(formActionStr, portionToUpdate, elementId, newId
 }
 
 /**
+ * This function is used to retrieve the td elements that are not empty in the table column specified by the parameter. This happens when sorting/reversing the column. There is logic in place to ensure that only the elements that are not empty are retrieved, since the table in question (the results of the located similar position) may not have an equal number of elements per row, so some cells may be empty.
  * 
  * @param {Number} columnIndex - The index of the column from which the table cells should be retrieved
  * @param {HTMLElement[]} tableRows - The HTML "tr" elements of the main table
  * @returns HTMLElement[]
  * 
- * This function is used to retrieve the td elements that are not empty in the table column specified by the parameter. This happens when sorting/reversing the column. There is logic in place to ensure that only the elements that are not empty are retrieved, since the table in question (the results of the located similar position) may not have an equal number of elements per row, so some cells may be empty.
  */
 function getNonEmptyTableCellsInColumn(columnIndex, tableRows) {
     let allRowElements = [];
@@ -234,11 +234,11 @@ function getNonEmptyTableCellsInColumn(columnIndex, tableRows) {
 // Competency level functions VVVVV --------------------------------------------------------------------------------------------------------
 
 /**
+ * This function is used on tables headers where the elements in the next rows are expandable, for instance in the add/edit/details position page, where you can expand competencies and certificates. This function toggles every expandable element in that table, or in the case of the details page, where there are multiple subsections to the same large table, it expands every element until it meets the next "header" row of the table.
  * 
  * @param {Element} el - The element whose siblings contained in the next table rows are to be expanded (usually a table header)
  * 
- * This function is used on tables headers where the elements in the next rows are expandable, for instance in the add/edit/details position page, where you can expand competencies and certificates. This function toggles every expandable element in that table, or in the case of the details page, where there are multiple subsections to the same large table, it expands every element until it meets the next "header" row of the table.
-*/
+ */
 function toggleExpandableElementsInNextRows(el) {
     let columnAffected = 1;
     let nearestParentRow = findNearestParentOfType(el, "tr");
@@ -312,10 +312,10 @@ function toggleExpandableElementsInNextRows(el) {
 }
 
 /**
+ * This function gets called whenever a dropdown to change a competency's level gets updated, either by the dropdown itself, or by the + or - buttons. It ensures that if the dropdown is at its maximum or minimum value, the corresponding button gets disabled (and re-enabled if the value changes again and is no longer at an extreme).
  * 
  * @param {HTMLSelectElement} dropdown - The dropdown which had its value updated
  * 
- * This function gets called whenever a dropdown to change a competency's level gets updated, either by the dropdown itself, or by the + or - buttons. It ensures that if the dropdown is at its maximum or minimum value, the corresponding button gets disabled (and re-enabled if the value changes again and is no longer at an extreme).
  */
 function checkCompetencyLevelButtonsState(dropdown) {
     if (dropdown) {
@@ -339,10 +339,10 @@ function checkCompetencyLevelButtonsState(dropdown) {
 }
 
 /**
+ * This function gets called whenever the user modifies the level of a competency in edit/create position, either by using the buttons, or by using the dropdown. It will adjust the competency level description to match that of the new level. You can see this description by expanding the "LEVEL / NIVEAU" column of the competency tables. (Note, the data for the competency level descriptions is simply hidden in the page, and it gets queried from there).
  * 
  * @param {HTMLSelectElement} dropdown - The dropdown representing the competency level which had its value modified
  * 
- * This function gets called whenever the user modifies the level of a competency in edit/create position, either by using the buttons, or by using the dropdown. It will adjust the competency level description to match that of the new level. You can see this description by expanding the "LEVEL / NIVEAU" column of the competency tables. (Note, the data for the competency level descriptions is simply hidden in the page, and it gets queried from there).
  */
 function setCompetencyLevelDescription(dropdown) {
     if (dropdown) {
@@ -382,11 +382,11 @@ function setCompetencyLevelDescription(dropdown) {
 }
 
 /**
+ * This function replaces all formaction attributes on the page (add/edit position) whenever a competency level is changed. In doing so, users are able to change the level of a competency without having to remove and add the competency again. If the function gets called by pressing the + or - button, this function also replaces the associated dropdown with the updated number.
  * 
  * @param {HTMLElement} el - The HTMLElement which caused the function to be called, either a + or - button, or a competency level dropdown
  * @param {Number} newNum - The new competency level. It will be set if this function gets called by selecting the dropdown value
  * 
- * This function replaces all formaction attributes on the page (add/edit position) whenever a competency level is changed. In doing so, users are able to change the level of a competency without having to remove and add the competency again. If the function gets called by pressing the + or - button, this function also replaces the associated dropdown with the updated number.
  */
 function changeCompetencyLevelValue(el, newNum = null) {
     let newDropdownValue;
@@ -456,10 +456,10 @@ function changeCompetencyLevelValue(el, newNum = null) {
 }
 
 /**
+ * This function gets called when the user double clicks anywhere on the page, but it only does something if they clicked on a competency that can be expanded (on the edit position page). If they clicked on such a competency, this function will toggle expanding/collapsing that competency.
  * 
  * @param {HTMLElement} el - The element that was clicked
  * 
- * This function gets called when the user double clicks anywhere on the page, but it only does something if they clicked on a competency that can be expanded (on the edit position page). If they clicked on such a competency, this function will toggle expanding/collapsing that competency
  */
 function attemptToExpandCompetency(el) {
     if (el) {
@@ -525,7 +525,7 @@ function setTableContainerMaxHeight() {
         tableContainer.style.maxHeight = `${newHeight}px`;
         tableContainer.style.minHeight = `${newHeight}px`;
 
-        // this code handles centering vertically the text that appears when a position could not be found in a percentage in the locate similar position feature
+        // this code handles centering vertically the text that appears when a position could not be found in a percentage in the locate similar positions feature
         let noResultColumns = qsa(".no-matching-positions-at-percent");
         if (noResultColumns.length > 0) {
             let thead = qs("thead", tableContainer);
@@ -539,10 +539,10 @@ function setTableContainerMaxHeight() {
 }
 
 /**
+ * This function gets called when the user changes a certificate that has been added to a position's description, by selecting it in the dropdown. Similarly to the changeCompetencyLevelValue() function, this function changes the formaction attribute of all elements in the page that have it to update the certificate description id of the certificate that was updated. This function also handles hiding/showing/updating the link that leads to the certificate description (it becomes hidden if the description selected is the empty one).
  * 
  * @param {HTMLSelectElement} dropdown - The certificate description dropdown that was modified
  * 
- * This function gets called when the user changes a certificate that has been added to a position's description, by selecting it in the dropdown. Similarly to the changeCompetencyLevelValue() function, this function changes the formaction attribute of all elements in the page that have it to update the certificate description id of the certificate that was updated. This function also handles hiding/showing/updating the link that leads to the certificate description (it becomes hidden if the description selected is the empty one).
  */
 function changeCertificateDescription(dropdown) {
     let selectedCertDescId = Number(dropdown.value);
@@ -576,10 +576,10 @@ function changeCertificateDescription(dropdown) {
 }
 
 /**
+ * This function is used on tables headers where the elements in the next rows are expandable, for instance in the add/edit/details position page, where you can expand competencies and certificates. This function toggles every expandable element in that table, or in the case of the details page, where there are multiple subsections to the same large table, it expands every element until it meets the next "header" row of the table.
  * 
  * @param {HTMLElement} el - The element whose siblings contained in the next table rows are to be expanded (usually a table header)
  * 
- * This function is used on tables headers where the elements in the next rows are expandable, for instance in the add/edit/details position page, where you can expand competencies and certificates. This function toggles every expandable element in that table, or in the case of the details page, where there are multiple subsections to the same large table, it expands every element until it meets the next "header" row of the table.
  */
 function toggleExpandableElementsInNextRows(el) {
     let columnAffected = 1;
@@ -654,10 +654,10 @@ function toggleExpandableElementsInNextRows(el) {
 }
 
 /**
+ * This function gets called when the user double clicks anywhere on the page, but it only does something if they clicked on a competency level that can be expanded (on the edit/create position page). If they clicked on such a competency, this function will toggle expanding/collapsing that competency.
  * 
  * @param {HTMLElement} el - The element that was double clicked
  * 
- * This function gets called when the user double clicks anywhere on the page, but it only does something if they clicked on a competency level that can be expanded (on the edit/create position page). If they clicked on such a competency, this function will toggle expanding/collapsing that competency
  */
 function attemptToExpandCompetency(el) {
     if (el) {
@@ -690,11 +690,11 @@ function attemptToExpandCompetency(el) {
 }
 
 /**
+ * This function sorts the tables in the index pages based on the column header that was clicked. The sort can be reversed by clicking the same column again. It also can sort the columns that display the number of matching positions per percentage, if the second parameter is set to true.
  * 
  * @param {HTMLElement} el - The column header that was clicked
  * @param {boolean} sortPercents - Whether the table being sorted is displaying the number of matching positions per percentage (only applicable in similar positions index page)
  * 
- * This function sorts the tables in the index pages based on the column header that was clicked. The sort can be reversed by clicking the same column again. It also can sort the columns that display the number of matching positions per percentage, if the second parameter is set to true.
  */
 function sortColumn(el, sortPercents = false) {
     if (el) {
@@ -799,10 +799,10 @@ function sortEveryColumn() {
 }
 
 /**
+ * This function reverses the elements in the table column. It is only used by the results table for located similar positions.
  * 
  * @param {HTMLElement} el - The column header that was clicked
  * 
- * This function reverses the elements in the table column. It is only used by the results table for located similar positions.
  */
 function flipColumn(el) {
     if (el) {
@@ -838,22 +838,22 @@ function flipColumn(el) {
 }
 
 /**
+ * This function gets called if users click on a link that says "Overwrite" when copying similar positions over. It sets up the link used by the modal window that makes users aware that they may overwrite data by copying over the similar positions. Since there is only one modal window and that it may be used by all "Overwrite" links, this function just makes sure that the modal window will have a link to the appropriate position.
  * 
  * @param {HTMLElement} el - The link that was clicked
  * 
- * This function gets called if users click on a link that says "Overwrite" when copying similar positions over. It sets up the link used by the modal window that makes users aware that they may overwrite data by copying over the similar positions. Since there is only one modal window and that it may be used by all "Overwrite" links, this function just makes sure that the modal window will have a link to the appropriate position.
  */
 function prepareOverwriteSimilarModalLink(el) {
     qs("#btn-modal-overwrite-similar").setAttribute("href", `/Similar/Create?id=${el.getAttribute("value")}&copyid=${qs("#position-copied-id").textContent}`);
 }
 
 /**
+ * This function gets called whenever a link is clicked on the located position results page, or in the navigation. It helps users keep track of which links they have clicked by making them a different colour. In the navigation, it just makes sure the link has the proper colour when loading the next page.
  * 
  * @param {HTMLElement} el - The link that was clicked
  * @param {boolean} targetSibling - Whether or not the sibling link should be made visited as well. It is true when the link comes from the locate positions page
  * @param {boolean} ctrlHeld - Whether or not the CTRL key was being held when the click happened
  * 
- * This function gets called whenever a link is clicked on the located position results page, or in the navigation. It helps users keep track of which links they have clicked by making them a different colour. In the navigation, it just makes sure the link has the proper colour when loading the next page.
  */
 function makeLinkVisited(el, targetSibling = true, ctrlHeld = false) {
     if (!ctrlHeld || targetSibling) {
@@ -875,10 +875,10 @@ function makeLinkVisited(el, targetSibling = true, ctrlHeld = false) {
 }
 
 /**
+ * This function is used on the located position results screen to alternate between displaying the French and English titles of positions. It is called by clicking the radio buttons associated to the languages. All this does is change CSS classes to hide/show elements.
  * 
  * @param {HTMLInputElement} el - The radio button that was clicked
  * 
- * This function is used on the located position results screen to alternate between displaying the French and English titles of positions. It is called by clicking the radio buttons associated to the languages. All this does is change CSS classes to hide/show elements.
  */
 function swapJobTitleLanguage(el) {
     let changingToEnglish = el.value.toLowerCase() === "eng";
@@ -982,6 +982,7 @@ function positionCompNavHider() {
  * This function makes it so if you are hovering over the Competencies link in the navigation, it will ensure that the dropdown options will display. This is because of a weird space that existed in between the actual "Competencies" link and the dropdown, where the hover effect wouldn't apply.
  * 
  * @param {MouseEvent} e - The mouseover event
+ * 
  */
 function checkIfCompetencyDropdownShouldDisplay(e) {
     let navComp = qs("#navCompetencies");
@@ -1046,12 +1047,14 @@ function setSelectedNavItem() {
 
     if (selectedItem === "navCompetencies") {
         let compNavHider = qs("#compNavHider");
-        compNavHider.style.backgroundColor = "transparent";
-        setTimeout(() => {
-            compNavHider.style.backgroundColor = "#0069d9";
-            compNavHider.style.top = "58px";
-            compNavHider.style.height = "6px";
-        }, 350);
+        if (compNavHider) {
+            compNavHider.style.backgroundColor = "transparent";
+            setTimeout(() => {
+                compNavHider.style.backgroundColor = "#0069d9";
+                compNavHider.style.top = "58px";
+                compNavHider.style.height = "6px";
+            }, 350);
+        }
     }
 }
 
@@ -1145,12 +1148,12 @@ function checkIfAnElementShouldBeScrolledIntoView() {
 // Handling Events VVVVV -------------------------------------------------------------------------------------------------------------------
 
 /**
+ * This function gets called whenever a transitionstart event is fired, so when an element is expanded/collapsed. It is mainly used on the index pages for toggling the top portion of the page.
  * 
  * @param {TransitionEvent} e - The event object
  * @param {boolean} canRecurse - Whether the function can call itself again, true by default (the function can call itself without recursing though)
  * @param {boolean} firstCall - Whether this is the first time it is called for this animation. Recursive calls have it set to false, and it is false by default
  * 
- * This function gets called whenever a transitionstart event is fired, so when an element is expanded/collapsed. It is mainly used on the index pages for toggling the top portion of the page.
  */
 function transitionStarted(e, canRecurse = true, firstCall = false) {
     let target = /** @type {HTMLInputElement} */ (e.target);
@@ -1220,11 +1223,11 @@ function mouseMoved(e) {
 }
 
 /**
+ * This function gets called whenever an input element has its value change, and in certain cases, it will call other functions to handle special baheviour.
  * 
  * @param {Event} e - The change event
  * @returns void
  * 
- * This function gets called whenever an input element has its value change, and in certain cases, it will call other functions to handle special baheviour.
  */
 function handleChange(e) {
     let target = /** @type {HTMLInputElement} */ (e.target);
@@ -1247,11 +1250,11 @@ function handleChange(e) {
 }
 
 /**
+ * This function gets called whenever a form is submitted and triggers other functions if necessary.
  * 
  * @param {SubmitEvent} e - The form submit event
  * @returns void
  * 
- * This function gets called whenever a form is submitted and triggers other functions if necessary.
  */
 function formSubmitted(e) {
     let target = /** @type {HTMLElement} */ (e.target);
@@ -1265,11 +1268,11 @@ function formSubmitted(e) {
 }
 
 /**
+ * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  * 
  * @param {MouseEvent} e - The double click event
  * @returns void
  * 
- * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
 function handleDoubleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
@@ -1281,11 +1284,11 @@ function handleDoubleClick(e) {
 }
 
 /**
+ * This function gets called whenever something is clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  * 
  * @param {PointerEvent} e - The click event
  * @returns void
  * 
- * This function gets called whenever something is clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
  */
 function handleClick(e) {
     let target = /** @type {HTMLElement} */ (e.target);
