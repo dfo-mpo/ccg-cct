@@ -106,10 +106,11 @@ namespace Service.Controllers
         }
 
         [HttpPost, Route("addjobgroupposition")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task AddJobCompetency([FromBody] AddJobGroupPositionCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddJobCompetency([FromBody] AddJobGroupPositionCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
     }
 }

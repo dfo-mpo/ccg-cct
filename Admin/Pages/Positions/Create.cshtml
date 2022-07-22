@@ -14,20 +14,16 @@
 <div class="space-tables-vertically">
     <div class="row">
         <div class="col-md-12">
-            <form method="post">
+            <form method="post" class="trimFormWhenSubmitting">
                 
                 @{
-                    var editModel = new EditModel(Model.GetContext(), Model.GetJobCompetencyService(), Model.GetJobCertificateService());
+                    var editModel = new EditModel(Model.GetContext(), Model.GetJobCompetencyService(), Model.GetJobCertificateService(), Model.GetJobPositionService());
                     editModel.JobPosition = Model.JobPosition;
                     editModel.AddedCertificates = Model.AddedCertificates;
                     editModel.JobCompetenciesKnowledge = Model.JobCompetenciesKnowledge;
                     editModel.JobCompetenciesTechnical = Model.JobCompetenciesTechnical;
                     editModel.JobCompetenciesBehavioural = Model.JobCompetenciesBehavioural;
                     editModel.JobCompetenciesExecutive = Model.JobCompetenciesExecutive;
-                    editModel.TitleEng = Model.TitleEng;
-                    editModel.TitleFre = Model.TitleFre;
-                    editModel.DescriptionEng = Model.DescriptionEng;
-                    editModel.DescriptionFre = Model.DescriptionFre;
                     editModel.PositionCompetencyRatings = Model.PositionCompetencyRatings;
                     editModel.AddedKnowledgeCompetencies = Model.AddedKnowledgeCompetencies;
                     editModel.AddedTechnicalCompetencies = Model.AddedTechnicalCompetencies;

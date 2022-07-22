@@ -69,6 +69,17 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
+            var compExists = await _context.Competencies.FindAsync(id);
+
+            if (compExists == null)
+            {
+                return NotFound();
+            }
+            if (compExists.Active != 1)
+            {
+                return NotFound();
+            }
+
             Competency = await _jobCompetencyService.GetJobCompetencyById(id);
 
             if (Competency == null)
@@ -76,19 +87,9 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            try
-            {
-                _jobCompetencyService.DeleteJobCompetency(Competency);
-                Thread.Sleep(5000);
-                return RedirectToPage("./List", new { typeId = Competency.TypeId });
-            }
-            catch (DbUpdateException ex)
-            {
-                _logger.LogError(ex, ErrorMessage);
+            await _jobCompetencyService.DeleteJobCompetency(Competency);
 
-                return RedirectToAction("./Delete",
-                                           new { id, saveChangesError = true });
-            }
+            return RedirectToPage("./List", new { typeId = Competency.TypeId });
         }
     }
 }

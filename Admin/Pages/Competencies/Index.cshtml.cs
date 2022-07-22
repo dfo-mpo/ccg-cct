@@ -17,9 +17,9 @@ namespace Admin.Pages.Competencies
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return Redirect("/Competencies/List");
         }
     }
 }

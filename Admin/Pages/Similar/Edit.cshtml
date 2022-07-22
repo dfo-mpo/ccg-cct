@@ -13,7 +13,6 @@
         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
         {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
         {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
-        {"selectedjobpositionid",Model.SelectedJobPositionId.ToString() },
         {"subgroupcode", Model.SubGroupCode },
         {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() }
@@ -38,7 +37,6 @@
         JobGroupLevelPositions = Model.JobGroupLevelPositions,
         AllActiveJobs = await Model.GetAllActiveJobs(),
         CurrentSelectedLevelCode = Model.LevelCode,
-        CurrentSelectedPosition = Model.CurrentSelectedPosition,
         EditModel = Model,
         HadSimilarPositionsOnLoadingPage = await Model.HasSimilarPositionsOnLoadingPage(Model.Id)
     };
@@ -54,6 +52,8 @@
     <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a></h4>
 
 <hr />
+
+<span asp-validation-for="PercentSelection" class="text-danger bold display-block small-margin-bottom"></span>
 
 @if (Model.PercentSelection == "100")
 {

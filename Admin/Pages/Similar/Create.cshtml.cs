@@ -19,7 +19,6 @@ namespace Admin.Pages.Similar
         private readonly ILogger<CreateModel> _logger;
         private readonly JobPositionService _jobPositionService;
 
-
         public CreateModel(DataModel.CctDbContext context,
             ILogger<CreateModel> logger, JobPositionService jobPositionService)
         {
@@ -34,14 +33,11 @@ namespace Admin.Pages.Similar
         [BindProperty]
         public JobGroupDto[] JobGroups { get; set; }
         public JobGroupDto CurrentSelectedJobGroup { get; set; }
-        public JobGroupPositionDto CurrentSelectedLevelCode { get; set; }
         public JobPositionDto CurrentPosition { get; set; }
-        public JobPositionDto CurrentSelectedPosition { get; set; }
-        public string CurrentSelectedJobTitleEng { get; set; } = string.Empty;
-        public string CurrentSelectedJobTitleFre { get; set; } = string.Empty;
-        public JobGroupPositionDto[] JobGroupPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public int SelectedJobPositionId { get; set; }
+        public JobGroupPositionDto[] JobGroupPositions { get; set; }
+        [BindProperty(SupportsGet = true)]
         public JobPositionDto[] JobGroupLevelPositions { get; set; } = new JobPositionDto[] { };
         [BindProperty(SupportsGet = true)]
         public int JobGroupId { get; set; } = 2;
@@ -75,15 +71,132 @@ namespace Admin.Pages.Similar
 
         public JobPositionDto PositionBeingCopied { get; set; }
 
+        private Dictionary<int, bool> _allJobPositionIds = new Dictionary<int, bool>();
+
         public async Task<List<JobPositionDto>> GetAllActiveJobs()
         {
             var jobs = await _jobPositionService.GetAllJobPositions();
             return jobs.Where(x => x.Active == 1).ToList();
         }
 
+        private async Task PrepareAllJobsDictionary()
+        {
+            var jobs = await _jobPositionService.GetAllJobPositions();
+
+            foreach (var job in jobs)
+            {
+                _allJobPositionIds.Add(job.JobTitleId, job.Active == 1);
+            }
+        }
+
         public async Task<JobGroupPositionDto[]> GetJobGroupPositionLevelsById(int id)
         {
             return await _jobPositionService.GetJobGroupPositionLevelsById(id);
+        }
+
+        private string PrepareQueryString(string ids, int deletedposid)
+        {
+            var separatedIds = ids.Split('-').Distinct().Where(x => !string.IsNullOrEmpty(x)).ToList();
+            var result = string.Empty;
+
+            foreach (var id in separatedIds)
+            {
+                bool success = int.TryParse(id, out int numberid);
+                if (success && numberid != deletedposid)
+                {
+                    if (_allJobPositionIds.TryGetValue(numberid, out bool boolVar))
+                    {
+                        result += "&PositionId=" + numberid.ToString();
+                    }
+                }
+            }
+            return result;
+        }
+
+        private async Task PrepareJobGroupPositions(int jobgroupid)
+        {
+            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(jobgroupid);
+        }
+
+        private async Task PreparePageModel(int percent, int jobgroupid, string levelvalue, string subgroupcode, int deletedposid = 0)
+        {
+            int[] acceptedPercents = { 100, 90, 80, 70 };
+            if (!acceptedPercents.Contains(percent))
+            {
+                percent = 100;
+            }
+
+            await PrepareAllJobsDictionary();
+
+            PercentSelection = percent.ToString();
+            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+            JobGroups = await _jobPositionService.GetJobGroups();
+            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
+            if (string.IsNullOrWhiteSpace(levelvalue))
+            {
+                JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
+                LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            }
+            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
+            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
+
+            if (percent == 100)
+            {
+                var querystring = PrepareQueryString(AddedOneHundredPercentIds, deletedposid);
+                AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            }
+            else if (percent == 90)
+            {
+                var querystring = PrepareQueryString(AddedNinetyPercentIds, deletedposid);
+                AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            }
+            else if (percent == 80)
+            {
+                var querystring = PrepareQueryString(AddedEightyPercentIds, deletedposid);
+                AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            }
+            else if (percent == 70)
+            {
+                var querystring = PrepareQueryString(AddedSeventyPercentIds, deletedposid);
+                AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            }
+
+            if (deletedposid != 0)
+            {
+                if (percent == 100)
+                {
+                    AddedOneHundredPercentIds = string.Empty;
+                    foreach (var position in AddedOneHundredPercentJobPositions)
+                    {
+                        AddedOneHundredPercentIds += position.JobTitleId.ToString() + '-';
+                    }
+                }
+                else if (percent == 90)
+                {
+                    AddedNinetyPercentIds = string.Empty;
+                    foreach (var position in AddedNinetyPercentJobPositions)
+                    {
+                        AddedNinetyPercentIds += position.JobTitleId.ToString() + '-';
+                    }
+                }
+                else if (percent == 80)
+                {
+                    AddedEightyPercentIds = string.Empty;
+                    foreach (var position in AddedEightyPercentJobPositions)
+                    {
+                        AddedEightyPercentIds += position.JobTitleId.ToString() + '-';
+                    }
+                }
+                else if (percent == 70)
+                {
+                    AddedSeventyPercentIds = string.Empty;
+                    foreach (var position in AddedSeventyPercentJobPositions)
+                    {
+                        AddedSeventyPercentIds += position.JobTitleId.ToString() + '-';
+                    }
+                }
+            }
+
         }
 
         public async Task<IActionResult> OnGetAsync(int? id, int? copyid)
@@ -146,7 +259,7 @@ namespace Admin.Pages.Similar
             {
                 JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
 
-                if (JobPosition != null) // if the position already has some similar jobs, you should see the edit page
+                if (JobPosition != null) // if the position already has some similar jobs, users should see the edit page
                 {
                     return Redirect("/Similar/Edit?id=" + CurrentPosition.JobTitleId);
                 }
@@ -162,131 +275,90 @@ namespace Admin.Pages.Similar
             LevelCode = CurrentPosition.LevelCode;
             SubGroupCode = JobGroupPositions.FirstOrDefault().SubGroupCode;
             LevelValue = JobGroupPositions.FirstOrDefault().LevelValue;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
 
             if (CopyingAPosition)
             {
+                await PrepareAllJobsDictionary();
                 AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(copiedPositionSimilar.HundredPercent);
-                foreach (var added in copiedPositionSimilar.HundredPercent.Split("&PositionId=").Distinct())
+
+                string[] addedPositionIds = { copiedPositionSimilar.HundredPercent, copiedPositionSimilar.NinetyPercent,
+                    copiedPositionSimilar.EightyPercent, copiedPositionSimilar.SeventyPercent };
+                string[] addedIdsToCopy = new string[4];
+
+                for (int i = 0; i < addedPositionIds.Length; i++)
                 {
-                    if (!string.IsNullOrEmpty(added))
+                    var ids = addedPositionIds[i].Split("&PositionId=").Distinct().Where(x => !string.IsNullOrEmpty(x)).ToList();
+
+                    addedIdsToCopy[i] = string.Empty;
+
+                    foreach (var added in ids)
                     {
-                        int number;
-                        bool success = int.TryParse(added, out number);
+                        bool success = int.TryParse(added, out int number);
                         if (success)
                         {
-                            AddedOneHundredPercentIds += number.ToString() + '-';
+                            if (_allJobPositionIds.TryGetValue(number, out bool boolVar))
+                            {
+                                addedIdsToCopy[i] += number.ToString() + '-';
+                            } 
                         }
                     }
                 }
-                foreach (var added in copiedPositionSimilar.NinetyPercent.Split("&PositionId=").Distinct())
-                {
-                    if (!string.IsNullOrEmpty(added))
-                    {
-                        int number;
-                        bool success = int.TryParse(added, out number);
-                        if (success)
-                        {
-                            AddedNinetyPercentIds += number.ToString() + '-';
-                        }
-                    }
-                }
-                foreach (var added in copiedPositionSimilar.EightyPercent.Split("&PositionId=").Distinct())
-                {
-                    if (!string.IsNullOrEmpty(added))
-                    {
-                        int number;
-                        bool success = int.TryParse(added, out number);
-                        if (success)
-                        {
-                            AddedEightyPercentIds += number.ToString() + '-';
-                        }
-                    }
-                }
-                foreach (var added in copiedPositionSimilar.SeventyPercent.Split("&PositionId=").Distinct())
-                {
-                    if (!string.IsNullOrEmpty(added))
-                    {
-                        int number;
-                        bool success = int.TryParse(added, out number);
-                        if (success)
-                        {
-                            AddedSeventyPercentIds += number.ToString() + '-';
-                        }
-                    }
-                }
+
+                AddedOneHundredPercentIds = addedIdsToCopy[0];
+                AddedNinetyPercentIds = addedIdsToCopy[1];
+                AddedEightyPercentIds = addedIdsToCopy[2];
+                AddedSeventyPercentIds = addedIdsToCopy[3];
             }
 
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostEdit()
         {
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(int.Parse(PercentSelection), JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
+
+            bool onePositionAdded = ((!string.IsNullOrWhiteSpace(AddedOneHundredPercentIds)) || 
+                (!string.IsNullOrWhiteSpace(AddedNinetyPercentIds)) || 
+                (!string.IsNullOrWhiteSpace(AddedEightyPercentIds)) || 
+                (!string.IsNullOrWhiteSpace(AddedSeventyPercentIds)));
+
+            if (!onePositionAdded)
+            {
+                ModelState.AddModelError("PercentSelection", "Make sure that at least one similar position has been added");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var querystring100 = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-').Distinct())
+            string[] addedPositionIds = { AddedOneHundredPercentIds, AddedNinetyPercentIds, AddedEightyPercentIds, AddedSeventyPercentIds };
+            string[] queryStrings = new string[4];
+
+            for (int i = 0; i < addedPositionIds.Length; i++)
             {
-                if (!string.IsNullOrEmpty(id))
+                var ids = addedPositionIds[i].Split('-').Distinct().Where(x => !string.IsNullOrEmpty(x)).ToList();
+
+                queryStrings[i] = string.Empty;
+
+                foreach (var id in ids)
                 {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
+                    bool success = int.TryParse(id, out int numberid);
                     if (success)
                     {
-                        querystring100 += "&PositionId=" + numberid.ToString();
+                        if (_allJobPositionIds.TryGetValue(numberid, out bool boolVar))
+                        {
+                            queryStrings[i] += "&PositionId=" + numberid.ToString();
+                        }
                     }
                 }
             }
-            var querystring90 = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-').Distinct())
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring90 += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            var querystring80 = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-').Distinct())
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring80 += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            var querystring70 = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-').Distinct())
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring70 += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
+
+            var querystring100 = queryStrings[0];
+            var querystring90 = queryStrings[1];
+            var querystring80 = queryStrings[2];
+            var querystring70 = queryStrings[3];
 
             bool creatingSimilarPositions = true;
 
@@ -300,19 +372,14 @@ namespace Admin.Pages.Similar
 
             if (creatingSimilarPositions)
             {
-
-                try
+                await _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
                 {
-                    await _jobPositionService.PostSimilarPositions(new SearchSimilarJob()
-                    {
-                        Position = Id,
-                        HundredPercent = querystring100,
-                        NinetyPercent = querystring90,
-                        EightyPercent = querystring80,
-                        SeventyPercent = querystring70,
-                    });
-                }
-                catch { }
+                    Position = Id,
+                    HundredPercent = querystring100,
+                    NinetyPercent = querystring90,
+                    EightyPercent = querystring80,
+                    SeventyPercent = querystring70,
+                });
             }
             else
             {
@@ -321,660 +388,139 @@ namespace Admin.Pages.Similar
                 JobPosition.EightyPercent = querystring80;
                 JobPosition.SeventyPercent = querystring70;
 
-                try
-                {
-                    await _jobPositionService.UpdateSimilarPositions(JobPosition);
-                }
-                catch { }
+                await _jobPositionService.UpdateSimilarPositions(JobPosition);
             }
 
             return RedirectToPage("Details", new { Id });
         }
+
         public async Task OnPostGroupOneHundredPercent()
         {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(JobGroupPositions.FirstOrDefault().SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().SubGroupCode, JobGroupPositions.FirstOrDefault().LevelValue);
-            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
-            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(100, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostLevelOneHundredPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(jobgroupid);
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(jobgroupid);
+            await PreparePageModel(100, jobgroupid, levelvalue, subgroupcode);
         }
+
         public async Task OnPostGroupNinetyPercent()
         {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(JobGroupPositions.FirstOrDefault().SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().SubGroupCode, JobGroupPositions.FirstOrDefault().LevelValue);
-            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
-            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(90, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostLevelNinetyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(jobgroupid);
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(jobgroupid);
+            await PreparePageModel(90, jobgroupid, levelvalue, subgroupcode);
         }
+
         public async Task OnPostGroupEightyPercent()
         {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(JobGroupPositions.FirstOrDefault().SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().SubGroupCode, JobGroupPositions.FirstOrDefault().LevelValue);
-            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
-            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(80, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostLevelEightyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(jobgroupid);
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(jobgroupid);
+            await PreparePageModel(80, jobgroupid, levelvalue, subgroupcode);
         }
+
         public async Task OnPostGroupSeventyPercent()
         {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(JobGroupPositions.FirstOrDefault().SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupPositions.FirstOrDefault().JobGroupId, JobGroupPositions.FirstOrDefault().SubGroupCode, JobGroupPositions.FirstOrDefault().LevelValue);
-            SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
-            JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(70, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostLevelSeventyPercent(int jobgroupid, string levelvalue, string subgroupcode)
         {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(jobgroupid);
             JobGroupLevelPositions = string.IsNullOrEmpty(subgroupcode) ? await _jobPositionService.GetJobGroupPositionsByLevel(jobgroupid, levelvalue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(jobgroupid, subgroupcode, levelvalue);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(jobgroupid);
-            CurrentSelectedPosition = JobGroupLevelPositions.Where(e => e.Active != 0).FirstOrDefault();
-            if (CurrentSelectedPosition != null)
-            {
-                CurrentSelectedJobTitleEng = CurrentSelectedPosition?.JobTitleEng;
-                CurrentSelectedJobTitleFre = CurrentSelectedPosition?.JobTitleFre;
-                SelectedJobPositionId = CurrentSelectedPosition.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(jobgroupid);
+            await PreparePageModel(70, jobgroupid, levelvalue, subgroupcode);
         }
+
         public async Task OnPostSelectOneHundredPercent()
         {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(100, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostSelectNinetyPercent()
         {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(90, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostSelectEightyPercent()
         {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(80, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostSelectSeventyPercent()
         {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(70, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
 
         public async Task OnPostAddOneHundredPercentSimilarPosition()
         {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
             AddedOneHundredPercentIds += SelectedJobPositionId.ToString() + '-';
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PreparePageModel(100, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostDeleteOneHundredPercentSimilarPosition(int deletepositionid)
         {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success && numberid != deletepositionid)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentIds = string.Empty;
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-            foreach (var position in AddedOneHundredPercentJobPositions)
-            {
-                AddedOneHundredPercentIds += position.JobTitleId.ToString() + '-';
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(100, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode, deletepositionid);
         }
+
         public async Task OnPostAddNinetyPercentSimilarPosition()
         {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
             AddedNinetyPercentIds += SelectedJobPositionId.ToString() + '-';
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PreparePageModel(90, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostDeleteNinetyPercentSimilarPosition(int deletepositionid)
         {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success && numberid != deletepositionid)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentIds = string.Empty;
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-            foreach (var position in AddedNinetyPercentJobPositions)
-            {
-                AddedNinetyPercentIds += position.JobTitleId.ToString() + '-';
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(90, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode, deletepositionid);
         }
+
         public async Task OnPostAddEightyPercentSimilarPosition()
         {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
             AddedEightyPercentIds += SelectedJobPositionId.ToString() + '-';
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PreparePageModel(80, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostDeleteEightyPercentSimilarPosition(int deletepositionid)
         {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success && numberid != deletepositionid)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentIds = string.Empty;
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-            foreach (var position in AddedEightyPercentJobPositions)
-            {
-                AddedEightyPercentIds += position.JobTitleId.ToString() + '-';
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(80, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode, deletepositionid);
         }
+
         public async Task OnPostAddSeventyPercentSimilarPosition()
         {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
             AddedSeventyPercentIds += SelectedJobPositionId.ToString() + '-';
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
+            await PreparePageModel(70, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode);
         }
+
         public async Task OnPostDeleteSeventyPercentSimilarPosition(int deletepositionid)
         {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            if (SelectedJobPositionId != 0)
-            {
-                var positiondto = await _jobPositionService.GetJobPositionById(SelectedJobPositionId);
-                CurrentSelectedJobTitleEng = positiondto.JobTitleEng;
-                CurrentSelectedJobTitleFre = positiondto.JobTitleFre;
-                SelectedJobPositionId = positiondto.JobTitleId;
-            }
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success && numberid != deletepositionid)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentIds = string.Empty;
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-            foreach (var position in AddedSeventyPercentJobPositions)
-            {
-                AddedSeventyPercentIds += position.JobTitleId.ToString() + '-';
-            }
-            JobGroupPositions = await _jobPositionService.GetJobGroupPositionLevelsById(JobGroupId);
-            JobGroups = await _jobPositionService.GetJobGroups();
-            CurrentSelectedJobGroup = await _jobPositionService.GetJobGroupById(JobGroupId);
-            JobGroupLevelPositions = string.IsNullOrEmpty(SubGroupCode) ? await _jobPositionService.GetJobGroupPositionsByLevel(JobGroupId, LevelValue) : await _jobPositionService.GetJobGroupPositionsBySubGroupLevel(JobGroupId, SubGroupCode, LevelValue);
+            await PrepareJobGroupPositions(JobGroupId);
+            await PreparePageModel(70, JobGroupId, JobGroupPositions.FirstOrDefault().LevelValue, JobGroupPositions.FirstOrDefault().SubGroupCode, deletepositionid);
         }
-        private bool JobPositionExists(int id)
-        {
-            return _context.JobPositions.Any(e => e.Id == id);
-        }
+
     }
 }

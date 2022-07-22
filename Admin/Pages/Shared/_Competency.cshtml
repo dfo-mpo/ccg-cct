@@ -56,10 +56,6 @@
                         {
                             var routedataremoveall = new Dictionary<string, string> {
                                 {"id", FullPageModel.Id.ToString() },
-                                {"titleeng", FullPageModel.TitleEng },
-                                {"titlefre", FullPageModel.TitleFre },
-                                {"descriptioneng", FullPageModel.DescriptionEng },
-                                {"descriptionfre", FullPageModel.DescriptionFre },
                                 {"levelcode", FullPageModel.LevelCode },
                                 {"levelvalue", FullPageModel.LevelValue },
                                 {"regionids", FullPageModel.RegionIds },
@@ -140,12 +136,12 @@
                         <div class="modal-body">
                             <div class="card-body table-header-row">
                                 <div class="row">
-                                    <div class="col-9 mb-3">
+                                    <div class="col-10 mb-3">
                                         <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")"><b>@Model.FullCompetencyNameEng / @Model.FullCompetencyNameFre</b></label><br />
                                         <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")">
                                             @foreach (var competency in remainingCompetenciesToAdd)
                                             {
-                                                <option value="@competency.Id">@competency.NameEng</option>
+                                                <option value="@competency.Id">@competency.NameEng <b>/</b> @competency.NameFre</option>
                                             }
                                         </select>
                                     </div>
@@ -161,9 +157,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer no-padding-bottom no-padding-right">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary text-left resetWindowHeight" asp-page-handler="competency" asp-all-route-data="@Model.RouteDataForCompetency">Save Changes</button>
+                                <button class="btn btn-primary text-left resetWindowHeight" asp-page-handler="competency" asp-all-route-data="@Model.RouteDataForCompetency">Add Competency</button>
                             </div>
                         </div>
                     </div>
@@ -182,8 +178,8 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="accordion" id="@divKey">
-                                <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="@key1">
-                                    @competency.CompetencyNameEng / @competency.CompetencyNameFre
+                                <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="@key1" id="competencyScroll-@competency.CompetencyId">
+                                    @competency.CompetencyNameEng <b>/</b> @competency.CompetencyNameFre
                                 </button>
                                 <div id="@key1" class="collapse" aria-labelledby="#@("tableTitle_" + Model.FullCompetencyNameOneWord)" data-parent="#@divKey">
                                     <div class="card-body">
@@ -267,10 +263,6 @@
                             @{
                                 var routedataremove = new Dictionary<string, string> {
                                     {"id", FullPageModel.Id.ToString() },
-                                    {"titleeng", FullPageModel.TitleEng },
-                                    {"titlefre", FullPageModel.TitleFre },
-                                    {"descriptioneng", FullPageModel.DescriptionEng },
-                                    {"descriptionfre", FullPageModel.DescriptionFre },
                                     {"levelcode", FullPageModel.LevelCode },
                                     {"levelvalue", FullPageModel.LevelValue },
                                     {"regionids", FullPageModel.RegionIds },

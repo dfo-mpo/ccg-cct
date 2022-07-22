@@ -22,7 +22,7 @@ namespace Service.Controllers
         }
 
         [HttpGet, Route("reseed")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Reseed()
         {
             await _commandSender.ValidateAndSendAsync(new ReseedDataCommand(), ModelState);

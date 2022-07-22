@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using DataModel;
 using Microsoft.Extensions.Logging;
 using Admin.Data;
+using System.Linq;
 using System.Threading;
+using System;
 
 namespace Admin.Pages.Certificates.Descriptions
 {
@@ -25,6 +27,52 @@ namespace Admin.Pages.Certificates.Descriptions
 
         [BindProperty]
         public CertificateDescription Certificate { get; set; }
+
+        private string CheckUniqueCertificateDescription(CertificateDescription description, bool checkEnglish = true)
+        {
+            if (description == null)
+            {
+                return null;
+            }
+
+            var desc = description;
+
+            var activeDescs = _context.CertificateDescriptions.Where(x => x.Id != desc.Id && x.Active == 1).ToList();
+            var inactiveDescs = _context.CertificateDescriptions.Where(x => x.Id != desc.Id && x.Active == 0).ToList();
+
+            if (checkEnglish)
+            {
+                if (!string.IsNullOrWhiteSpace(desc.DescEng))
+                {
+                    if (activeDescs.Select(x => x.DescEng.ToLowerInvariant()).Contains(desc.DescEng.ToLowerInvariant()))
+                    {
+                        return "That English certificate description already exists";
+                    }
+                    else if (inactiveDescs.Select(x => x.DescEng.ToLowerInvariant()).Contains(desc.DescEng.ToLowerInvariant()))
+                    {
+                        return "There English certificate description already exists, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(desc.DescFre))
+                {
+                    if (activeDescs.Select(x => x.DescFre.ToLowerInvariant()).Contains(desc.DescFre.ToLowerInvariant()))
+                    {
+                        return "That French certificate description already exists";
+                    }
+                    else if (inactiveDescs.Select(x => x.DescFre.ToLowerInvariant()).Contains(desc.DescFre.ToLowerInvariant()))
+                    {
+                        return "That French certificate description already exists, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+
+            return null;
+        }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -57,6 +105,22 @@ namespace Admin.Pages.Certificates.Descriptions
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
+            var errEng = CheckUniqueCertificateDescription(Certificate);
+            if (errEng != null)
+            {
+                ModelState.AddModelError("Certificate.DescEng", errEng);
+            }
+            var errFre = CheckUniqueCertificateDescription(Certificate, false);
+            if (errFre != null)
+            {
+                ModelState.AddModelError("Certificate.DescFre", errFre);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             var certificateToUpdate = await _context.CertificateDescriptions.FindAsync(id);
 
             if (certificateToUpdate == null)
@@ -69,8 +133,8 @@ namespace Admin.Pages.Certificates.Descriptions
                 "certificate",
                 s => s.DescEng, s => s.DescFre))
             {
-                _jobCertificateService.UpdateJobCertificateDescription(Certificate);
-                Thread.Sleep(5000);
+                await _jobCertificateService.UpdateJobCertificateDescription(Certificate);
+
                 return RedirectToPage("Details", new { id });
             }
 

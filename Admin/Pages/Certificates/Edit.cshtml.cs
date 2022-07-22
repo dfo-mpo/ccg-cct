@@ -10,6 +10,7 @@ using DataModel;
 using Microsoft.Extensions.Logging;
 using Admin.Data;
 using System.Threading;
+using Business.Dtos.JobCompetencies;
 
 namespace Admin.Pages.Certificates
 {
@@ -51,10 +52,72 @@ namespace Admin.Pages.Certificates
             return Page();
         }
 
+        private string CheckUniqueCertificateName(Certificate certificate, bool checkEnglish = true)
+        {
+            if (certificate == null)
+            {
+                return null;
+            }
+
+            var cert = certificate;
+
+            var activeCerts = _context.Certificates.Where(x => x.Id != cert.Id && x.Active == 1).ToList();
+            var inactiveCerts = _context.Certificates.Where(x => x.Id != cert.Id && x.Active == 0).ToList();
+
+            if (checkEnglish)
+            {
+                if (!string.IsNullOrWhiteSpace(cert.NameEng))
+                {
+                    if (activeCerts.Select(x => x.NameEng.ToLowerInvariant()).Contains(cert.NameEng.ToLowerInvariant()))
+                    {
+                        return "A certificate with the same English title already exists";
+                    }
+                    else if (inactiveCerts.Select(x => x.NameEng.ToLowerInvariant()).Contains(cert.NameEng.ToLowerInvariant()))
+                    {
+                        return "A certificate with the same English title already exists, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(cert.NameFre))
+                {
+                    if (activeCerts.Select(x => x.NameFre.ToLowerInvariant()).Contains(cert.NameFre.ToLowerInvariant()))
+                    {
+                        return "A certificate with the same French title already exists";
+                    }
+                    else if (inactiveCerts.Select(x => x.NameFre.ToLowerInvariant()).Contains(cert.NameFre.ToLowerInvariant()))
+                    {
+                        return "A certificate with the same English title already exists, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+
+            return null;
+        }
+
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
+            var errEng = CheckUniqueCertificateName(Certificate);
+            if (errEng != null)
+            {
+                ModelState.AddModelError("Certificate.NameEng", errEng);
+            }
+            var errFre = CheckUniqueCertificateName(Certificate, false);
+            if (errFre != null)
+            {
+                ModelState.AddModelError("Certificate.NameFre", errFre);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             var certificateToUpdate = await _context.Certificates.FindAsync(id);
 
             if (certificateToUpdate == null)
@@ -67,8 +130,8 @@ namespace Admin.Pages.Certificates
                 "certificate",
                 s => s.NameEng, s => s.NameFre, s => s.DescEng, s => s.DescFre))
             {
-                _jobCertificateService.UpdateJobCertificate(Certificate);
-                Thread.Sleep(5000);
+                await _jobCertificateService.UpdateJobCertificate(Certificate);
+
                 return RedirectToPage("Details", new { id });
             }
 

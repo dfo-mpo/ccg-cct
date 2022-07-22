@@ -13,6 +13,21 @@
                             Model.PositionsThatHaveItAtEightyMatch.Any() ||
                             Model.PositionsThatHaveItAtSeventyMatch.Any());
     }
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
+        || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
+        || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
+        || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
+        && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
+    var itemsList = itemsThatMatchFilter.ToList();
 }
 
 @functions {
@@ -44,7 +59,7 @@
             <div class="form-actions no-color">
                 <h6>
                     <label for="Filter">Find positions:</label>
-                    <input type="text" asp-for="@Model.Filter" />
+                    <input type="text" asp-for="@Model.Filter" value="@filterValue" />
 
                     <input type="submit" value="Search" class="btn btn-primary" /> 
                     @if (!String.IsNullOrWhiteSpace(Model.Filter))
@@ -63,8 +78,8 @@
     {
         <h4 class="small-margin-bottom">Located Position: 
             <a target="_blank" href="/Positions/Details?positionid=@Model.PositionBengLocated.JobTitleId">
-                <span id="jobTitleEng">@Model.PositionBengLocated.JobGroupLevelCode @Model.PositionBengLocated.JobTitleEng</span>
-                <span id="jobTitleFre" class="dontShow">@Model.PositionBengLocated.JobGroupLevelCode @Model.PositionBengLocated.JobTitleFre</span>
+                <span id="jobTitleEng" class="print-link">@Model.PositionBengLocated.JobGroupLevelCode @Model.PositionBengLocated.JobTitleEng</span>
+                <span id="jobTitleFre" class="dontShow print-link">@Model.PositionBengLocated.JobGroupLevelCode @Model.PositionBengLocated.JobTitleFre</span>
                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
             </a>
         </h4>
@@ -85,30 +100,13 @@
                 <div class="col text-right no-margin-right no-padding @(addedInOnePlace ? "raise-elements-slightly" : "")" style="max-height: 38px">
                     @if (addedInOnePlace)
                     {
-                        <h6 class="glyphicon glyphicon-save-file display-inline position-relative" style="top: 4px !important; right: 5px;" onclick="print()"></h6>
+                        <h6 class="glyphicon glyphicon-save-file display-inline position-relative locate-page-save-icon" onclick="print()"></h6>
                     }
                     <h6 class="display-inline"><a class="btn btn-primary bold bottom-two-px" href="/Similar/Locate">Locate Another Position</a></h6>
                     <a class="btn btn-secondary bottom-two-px bold no-margin-right right-button-locate" asp-page="Index">Back to List</a>
                 </div>
             </div>
         </div>
-    }
-
-    @{
-        string? filterValue = Model.Filter;
-        if (filterValue != null)
-        {
-            filterValue = filterValue.Trim();
-        }
-
-        var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
-            || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
-            || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
-            || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
-            && (e.Active == 1));
-
-        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
-        var itemsList = itemsThatMatchFilter.ToList();
     }
 </div>
 
@@ -212,7 +210,7 @@ else
                 <tbody>
 
                     @{
-                        string urlEnd = "&groupId=" + Model.PositionBengLocated.JobGroupId + "&level=" + Model.PositionBengLocated.LevelCode.ToUpper();
+                        string urlEnd = "&groupId=" + Model.PositionBengLocated.JobGroupId + "&level=" + Model.PositionBengLocated.LevelCode.ToUpper() + "&scrollTo=positionScroll-" + Model.PositionBengLocated.JobTitleId + "_c_h";
                     }
 
                     @for (int i = 0; i < numRows; i++)
@@ -256,12 +254,12 @@ else
                                         @if (hundredPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@hundredPos.JobTitleId&percent=100@(urlEnd)" target="_blank" lang="en"
-                                                class="@(hundredPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink">
+                                                class="@(hundredPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink print-link">
                                                 @hundredPos.JobGroupLevelCode @hundredPos.JobTitleEng
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
                                             <a href="/Similar/Edit?id=@hundredPos.JobTitleId&percent=100@(urlEnd)" target="_blank" lang="fr"
-                                                class="@(hundredPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow">
+                                                class="@(hundredPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow print-link">
                                                 @hundredPos.JobGroupLevelCode @hundredPos.JobTitleFre
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
@@ -290,12 +288,12 @@ else
                                         @if (ninetyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@ninetyPos.JobTitleId&percent=90@(urlEnd)" target="_blank" lang="en"
-                                                class="@(ninetyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink">
+                                                class="@(ninetyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink print-link">
                                                 @ninetyPos.JobGroupLevelCode @ninetyPos.JobTitleEng
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
                                             <a href="/Similar/Edit?id=@ninetyPos.JobTitleId&percent=90@(urlEnd)" target="_blank" lang="fr"
-                                                class="@(ninetyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow">
+                                                class="@(ninetyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow print-link">
                                                 @ninetyPos.JobGroupLevelCode @ninetyPos.JobTitleFre
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
@@ -324,12 +322,12 @@ else
                                         @if (eightyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@eightyPos.JobTitleId&percent=80@(urlEnd)" target="_blank" lang="en"
-                                                class="@(eightyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink">
+                                                class="@(eightyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink print-link">
                                                 @eightyPos.JobGroupLevelCode @eightyPos.JobTitleEng
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
                                             <a href="/Similar/Edit?id=@eightyPos.JobTitleId&percent=80@(urlEnd)" target="_blank" lang="fr"
-                                                class="@(eightyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow">
+                                                class="@(eightyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow print-link">
                                                 @eightyPos.JobGroupLevelCode @eightyPos.JobTitleFre
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
@@ -358,12 +356,12 @@ else
                                         @if (seventyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@seventyPos.JobTitleId&percent=70@(urlEnd)" target="_blank" lang="en"
-                                                class="@(seventyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink">
+                                                class="@(seventyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink print-link">
                                                 @seventyPos.JobGroupLevelCode @seventyPos.JobTitleEng
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>
                                             <a href="/Similar/Edit?id=@seventyPos.JobTitleId&percent=70@(urlEnd)" target="_blank" lang="fr"
-                                                class="@(seventyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow">
+                                                class="@(seventyPos.JobTitleId == Model.PositionBengLocated.JobTitleId ? "bold" : "") rememberIfVisited nextOrPreviousLink dontShow print-link">
                                                 @seventyPos.JobGroupLevelCode @seventyPos.JobTitleFre
                                                 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                             </a>

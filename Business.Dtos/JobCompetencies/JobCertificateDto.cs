@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static Business.Dtos.CustomValidationForDtos;
 
 namespace Business.Dtos.JobCompetencies
 {
@@ -22,11 +23,17 @@ namespace Business.Dtos.JobCompetencies
 
         [Display(Name = "Description English")]
         [MaxLength(1000)]
+        [BothOrNone("DescFre", "Both descriptions must be provided if one is filled out")]
         public string DescEng { get; set; }
 
         [Display(Name = "Description French")]
         [MaxLength(1000)]
         public string DescFre { get; set; }
+
+        public string CertificateDescEng { get; set; }
+
+        public string CertificateDescFre { get; set; }
+
         public int Active { get; set; }
     }
 }

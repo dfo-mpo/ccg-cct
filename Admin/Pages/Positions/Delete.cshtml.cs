@@ -30,7 +30,7 @@ namespace Admin.Pages.Positions
         public JobPosition JobPosition { get; set; }
         public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -49,10 +49,7 @@ namespace Admin.Pages.Positions
             {
                 return NotFound();
             }
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
-            }
+ 
             return Page();
         }
 
@@ -63,18 +60,20 @@ namespace Admin.Pages.Positions
                 return NotFound();
             }
 
-            try
+            JobPosition = await _context.JobPositions.FindAsync(id);
+
+            if (JobPosition == null)
             {
-                _jobPositionService.DeleteJobPosition(JobPosition);
-                Thread.Sleep(5000);
-                return RedirectToPage("./Index");
+                return NotFound();
             }
-            catch (DbUpdateException ex)
+            if (JobPosition.Active != 1)
             {
-                _logger.LogError(ex, ErrorMessage);
-                return RedirectToAction("./Delete",
-                                     new { id, saveChangesError = true });
+                return NotFound();
             }
+
+            await _jobPositionService.DeleteJobPosition(JobPosition);
+
+            return RedirectToPage("./Index");
         }
     }
 }

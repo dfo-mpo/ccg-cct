@@ -138,21 +138,25 @@ function storeCurrentScrollPosition() {
  * This function gets called when the page loads and when the window is resized. It makes sure that on index pages, if there are buttons on the right side of the screen (buttons that switch between competency types for example), they stay aligned with the end of the table, based on if it can scroll or not
  */
 function checkIfTableCanBeScrolled() {
-    let btn = qs(".index-right-button");
+    let btns = qsa(".index-right-button");
     let saveFileIcon = qs(".index-save-file-icon");
     let locateBtn = qs(".right-button-locate");
     let windowCanScroll = canElementBeScrolled(tableContainer);
-    if (btn) {
+    if (btns.length > 0) {
         if (!windowCanScroll) {
-            btn.classList.remove("index-right-button");
-            btn.classList.add("index-right-button-no-scroll");
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("index-right-button");
+                btns[i].classList.add("index-right-button-no-scroll");
+            }
             if (saveFileIcon) {
                 saveFileIcon.style.right = "-6px";
             }
         }
         else {
-            btn.classList.add("index-right-button");
-            btn.classList.remove("index-right-button-no-scroll");
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.add("index-right-button");
+                btns[i].classList.remove("index-right-button-no-scroll");
+            }
             if (saveFileIcon) {
                 saveFileIcon.style.right = "3px";
             }
@@ -847,20 +851,26 @@ function prepareOverwriteSimilarModalLink(el) {
  * 
  * @param {HTMLElement} el - The link that was clicked
  * @param {boolean} targetSibling - Whether or not the sibling link should be made visited as well. It is true when the link comes from the locate positions page
+ * @param {boolean} ctrlHeld - Whether or not the CTRL key was being held when the click happened
  * 
  * This function gets called whenever a link is clicked on the located position results page, or in the navigation. It helps users keep track of which links they have clicked by making them a different colour. In the navigation, it just makes sure the link has the proper colour when loading the next page.
  */
-function makeLinkVisited(el, targetSibling = true) {
-    if (el.classList) {
-        if (!el.classList.contains("visited")) {
-            if (!qs(".nav-link.visited")) {
-                el.classList.add("visited");
-                if (targetSibling) {
-                    let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
-                    sibling.classList.add("visited");
+function makeLinkVisited(el, targetSibling = true, ctrlHeld = false) {
+    if (!ctrlHeld || targetSibling) {
+        if (el.classList) {
+            if (!el.classList.contains("visited")) {
+                if (!qs(".nav-link.visited")) {
+                    el.classList.add("visited");
+                    if (targetSibling) {
+                        let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
+                        sibling.classList.add("visited");
+                    }
                 }
             }
         }
+    }
+    if (ctrlHeld) {
+        el.blur();
     }
 }
 
@@ -898,6 +908,8 @@ function swapJobTitleLanguage(el) {
 
 /**
  * 
+ * This function gets called whenever a form is submited. It ensures that every text field has its contents trimmed with string.trim() before being submitted, to avoid unnecessary whitespace.
+ * 
  * @param {HTMLFormElement} el - The form being submitted
  */
 function trimFormFields(el) {
@@ -915,6 +927,70 @@ function trimFormFields(el) {
             for (let i = 0; i < textareas.length; i++) {
                 textareas[i].value = textareas[i].value.trim();
             }
+        }
+    }
+}
+
+/**
+ * This function gets called when the page loads if there is an element that should be smoothly scrolled into view. This is used for example when locating an item in the application.
+ * 
+ * @param {HTMLElement} el - The element to scroll into view
+ * @param {string} location - Where the element to scroll into view should appear on screen (possible values: start (default), center, end, nearest)
+ * @param {boolean} highlightElement - Whether or not the element should be highlighted, false by default
+ * @param {boolean} openElement - Whether to click on the element to open it, false by default
+ */
+function smoothScrollToElement(el, location = "start", highlightElement = false, openElement = false) {
+    if (el) {
+        if (openElement) {
+            el.click();
+        }
+        if (highlightElement) {
+            el.classList.add("highlighted")
+        }
+        setTimeout(() => {
+            el.scrollIntoView({behavior: "smooth", block: location, inline: "nearest"});
+        }, 100)
+    }
+}
+
+/**
+ * This function gets called whenever the user clicks on the screen. It removes the highlight effect of any elements (if applicable)
+ */
+function removeHighlights() {
+    if (qs(".highlighted")) {
+        let highlightedEls = qsa(".highlighted");
+        for (let i = 0; i < highlightedEls.length; i++) {
+            highlightedEls[i].classList.remove("highlighted");
+        }
+    }
+}
+
+/**
+ * This function positions a tiny element in the navigation which hides the space below the "Competencies" link, which otherwise has a weird effect when the dropdown options appear.
+ */
+function positionCompNavHider() {
+    let compNavHider = qs("#compNavHider");
+    let compNav = qs("#navCompetencies");
+    compNavHider.style.left = `${compNav.getBoundingClientRect().x - 1}px`;
+    compNavHider.style.width = `${compNav.getBoundingClientRect().width}px`;
+}
+
+/**
+ * 
+ * This function makes it so if you are hovering over the Competencies link in the navigation, it will ensure that the dropdown options will display. This is because of a weird space that existed in between the actual "Competencies" link and the dropdown, where the hover effect wouldn't apply.
+ * 
+ * @param {MouseEvent} e - The mouseover event
+ */
+function checkIfCompetencyDropdownShouldDisplay(e) {
+    let navComp = qs("#navCompetencies");
+    if (navComp) {
+        let navCompRect = navComp.getBoundingClientRect();
+        if ((e.pageX > navCompRect.x && e.pageX < (navCompRect.x + navCompRect.width)) && 
+        (e.pageY < navCompRect.height + 1)) {
+            navComp.classList.add("hovered");
+        }
+        else {
+            navComp.classList.remove("hovered");
         }
     }
 }
@@ -959,8 +1035,21 @@ function setSelectedNavItem() {
     let navItems = qsa(".nav-item");
     for (let i = 0; i < navItems.length; i++) {
         if (!navItems[i].classList.contains("selected")) {
-            qs(".nav-link", navItems[i]).classList.add("smooth-underline");
+            let navLinks = qsa(".nav-link", navItems[i]);
+            for (let i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.add("smooth-underline");
+            }
         }
+    }
+
+    if (selectedItem === "navCompetencies") {
+        let compNavHider = qs("#compNavHider");
+        compNavHider.style.backgroundColor = "transparent";
+        setTimeout(() => {
+            compNavHider.style.backgroundColor = "#0069d9";
+            compNavHider.style.top = "58px";
+            compNavHider.style.height = "6px";
+        }, 350);
     }
 }
 
@@ -993,13 +1082,69 @@ function removeTitleAttributes() {
     }
 }
 
+/**
+ * 
+ * This function gets called when a page loads. It checks if the query string contains instructions to scroll the screen to a particular element. If that is the case, this function will call another which will perform the scroll.
+ * 
+ * Here is how the query string should be formatted for an element to be scrolled to: include the key-value pair of "scrollTo", with the value being the HTML id of the element to be scrolled to (without the "#" in front). The value may also include some modifiers to indicate how the scroll should happen:
+ * 
+ * _b to indicate that the element should appear at the bottom of the screen
+ * 
+ * _c to indicate that the element should appear in the center of the screen
+ * 
+ * _n for nearest
+ * 
+ * _h to highlight the element scrolled into view
+ * 
+ * _o to click on the element, or "open" it
+ * 
+ * Note that by default, the element will appear at the top of the screen. Parameters should be included after the id of the element, and each one should have its own underscore.
+ * 
+ * @returns void
+ */
+function checkIfAnElementShouldBeScrolledIntoView() {
+    let queryString = window.location.href.substring(window.location.href.indexOf("?") + 1);
+    let qStringParts = queryString.split("&");
+
+    for (let i = 0; i < qStringParts.length; i++) {
+        if (qStringParts[i].includes("=")) {
+            let keyValuePair = qStringParts[i].split("=");
+            let key = keyValuePair[0];
+            let value = keyValuePair[1];
+
+            let shortValue = value;
+            if (value.includes("_")) {
+                shortValue = value.substring(0, value.indexOf("_"));
+            }
+
+            let location = "start";
+            if (value.includes("_b")) {
+                location = "end";
+            }
+            if (value.includes("_c")) {
+                location = "center";
+            }
+            if (value.includes("_n")) {
+                location = "nearest";
+            }
+
+            if (key.toLowerCase() === "scrollto") {
+                if (qs(`#${shortValue}`)) {
+                    smoothScrollToElement(qs(`#${shortValue}`), location, value.includes("_h"), value.includes("_o"));
+                    return;
+                }
+            }
+        }
+    }
+}
+
 // Page startup functions ^^^^^ ------------------------------------------------------------------------------------------------------------
 
 // Handling Events VVVVV -------------------------------------------------------------------------------------------------------------------
 
 /**
  * 
- * @param {Event} e - The event object
+ * @param {TransitionEvent} e - The event object
  * @param {boolean} canRecurse - Whether the function can call itself again, true by default (the function can call itself without recursing though)
  * @param {boolean} firstCall - Whether this is the first time it is called for this animation. Recursive calls have it set to false, and it is false by default
  * 
@@ -1064,6 +1209,16 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
 
 /**
  * 
+ * This function gets called whenever the mouse moves, and calls other functions as is necessary.
+ * 
+ * @param {MouseEvent} e - The mouse moving event
+ */
+function mouseMoved(e) {
+    checkIfCompetencyDropdownShouldDisplay(e);
+}
+
+/**
+ * 
  * @param {Event} e - The change event
  * @returns void
  * 
@@ -1091,7 +1246,7 @@ function handleChange(e) {
 
 /**
  * 
- * @param {Event} e - The form submit event
+ * @param {SubmitEvent} e - The form submit event
  * @returns void
  * 
  * This function gets called whenever a form is submitted and triggers other functions if necessary.
@@ -1109,7 +1264,7 @@ function formSubmitted(e) {
 
 /**
  * 
- * @param {Event} e - The double click event
+ * @param {MouseEvent} e - The double click event
  * @returns void
  * 
  * This function gets called whenever something is double clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
@@ -1125,7 +1280,7 @@ function handleDoubleClick(e) {
 
 /**
  * 
- * @param {Event} e - The click event
+ * @param {PointerEvent} e - The click event
  * @returns void
  * 
  * This function gets called whenever something is clicked on the page, to then dispatch the event to another function based on what was clicked and if something should happen in that case.
@@ -1163,7 +1318,7 @@ function handleClick(e) {
                 return;
             }
             if (target.classList.contains("rememberIfVisited")) {
-                makeLinkVisited(target, target.classList.contains("nextOrPreviousLink"));
+                makeLinkVisited(target, target.classList.contains("nextOrPreviousLink"), e.ctrlKey);
                 return;
             }
         }
@@ -1174,6 +1329,7 @@ function handleClick(e) {
             }
         }
     }
+    removeHighlights();
 }
 
 // Handling Events ^^^^^ -------------------------------------------------------------------------------------------------------------------
@@ -1198,6 +1354,9 @@ window.addEventListener("load", () => {
     body.addEventListener("submit", (e) => {
         formSubmitted(e);
     });
+    body.addEventListener("mousemove", (e) => {
+        mouseMoved(e);
+    });
     document.addEventListener("transitionstart", (e) => {
         transitionStarted(e, true, true);
     });
@@ -1211,15 +1370,20 @@ window.addEventListener("load", () => {
 
     removeTitleAttributes();
 
+    positionCompNavHider();
     if (tableContainer && footer) {
         setTableContainerMaxHeight();
         checkIfTableCanBeScrolled();
-        window.addEventListener("resize", () => {
+    }
+    window.addEventListener("resize", () => {
+        if (tableContainer && footer) {
             windowHeight = window.innerHeight;
             setTableContainerMaxHeight();
             checkIfTableCanBeScrolled();
-        });
-    }
+        }
+        positionCompNavHider();
+    });
+    checkIfAnElementShouldBeScrolledIntoView();
 });
 
 // Page setup ^^^^^ ------------------------------------------------------------------------------------------------------------------------

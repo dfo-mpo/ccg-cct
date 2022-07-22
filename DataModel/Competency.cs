@@ -13,15 +13,19 @@ namespace DataModel
         public int Id { get; set; }
 
         [Display(Name = "Name English")]
+        [Required]
         public string NameEng { get; set; }
 
         [Display(Name = "Name French")]
+        [Required]
         public string NameFre { get; set; }
 
         [Display(Name = "Description English")]
+        [Required]
         public string DescEng { get; set; }
 
         [Display(Name = "Description French")]
+        [Required]
         public string DescFre { get; set; }
 
         public int Active { get; set; } // ex : 0 = competency deleted, 1 = competency active

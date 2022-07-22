@@ -62,17 +62,19 @@ namespace Service.Controllers
             return Ok(results);
         }
         [HttpPost, Route("updatesimilarjobpositions")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task UpdateSimilarPositions([FromBody] UpdateSimilarPositionsCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateSimilarPositions([FromBody] UpdateSimilarPositionsCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
 
         [HttpPost, Route("addsimilarjobpositions")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task AddSimilarPositions([FromBody] AddSimilarPositionsCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddSimilarPositions([FromBody] AddSimilarPositionsCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
 
         [HttpGet, Route("hundredpercentsimilarjobpositions/{JobPositionId}")]

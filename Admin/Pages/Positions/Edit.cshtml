@@ -17,10 +17,11 @@
 <div class="space-tables-vertically">
     <div class="row">
         <div class="col-md-12">
-            <form method="post">
-    
+            <form method="post" class="trimFormWhenSubmitting">
+                <input type="hidden" asp-for="JobPosition.Id" />
+
                 <partial name="_Position" model="Model" />
-                @* Create a new position with the same details as current selection*@
+
                 <div class="form-group space-btns">
                     <button class="btn btn-primary" asp-page-handler="create" asp-all-route-data="routedata">Save Changes</button>
                     <a class="btn btn-info" href="/Positions/Create?id=@Model.Id"

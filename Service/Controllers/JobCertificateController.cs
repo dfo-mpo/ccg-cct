@@ -58,64 +58,55 @@ namespace Service.Controllers
             return Ok(results);
         }
 
-        [HttpGet, Route("addjobcertificate")]
+        [HttpPost, Route("addjobcertificate")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public async Task<IActionResult> AddJobCertificate(
-
-                [FromQuery] string nameEng,
-                [FromQuery] string nameFre,
-                [FromQuery] string descEng,
-                [FromQuery] string descFre)
+        public async Task<IActionResult> AddJobCertificate([FromBody] AddJobCertificateCommand query)
 
         {
-            var query = new AddJobCertificateCommand
-            {
-                NameEng = nameEng,
-                NameFre = nameFre,
-                DescEng = descEng,
-                DescFre = descFre,
-            };
-
             var results =
             await _queryProvider.ProcessAsync(query);
             return Ok(results);
         }
 
-        [HttpGet, Route("addjobcertificatedescription/{DescEng}/{DescFre}")]
+        [HttpPost, Route("addjobcertificatedescription")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
-        public async Task<IActionResult> AddJobCertificate([FromRoute] AddJobCertificateDescriptionCommand query)
+        public async Task<IActionResult> AddJobCertificate([FromBody] AddJobCertificateDescriptionCommand query)
         {
             var results =
-                await _queryProvider.ProcessAsync(query);
-                   return Ok(results);
+            await _queryProvider.ProcessAsync(query);
+            return Ok(results);
         }
 
         [HttpPost, Route("deletejobcertificate")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task DeleteJobCertificate([FromBody] DeleteJobCertificateByIdCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteJobCertificate([FromBody] DeleteJobCertificateByIdCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
 
         [HttpPost, Route("updatejobcertificate")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task UpdateJobCertificate([FromBody] UpdateJobCertificateCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateJobCertificate([FromBody] UpdateJobCertificateCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
 
         [HttpPost, Route("updatejobcertificatedescription")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task UpdateJobCertificateDescription([FromBody] UpdateJobCertificateDescriptionCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateJobCertificateDescription([FromBody] UpdateJobCertificateDescriptionCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
 
         [HttpPost, Route("deletejobcertificatedescription")]
-        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        public async Task DeleteJobCertificateDescription([FromBody] DeleteJobCertificateDescriptionByIdCommand command)
+        [ProducesResponseType(typeof(Task<IActionResult>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> DeleteJobCertificateDescription([FromBody] DeleteJobCertificateDescriptionByIdCommand command)
         {
             await _commandSender.ValidateAndSendAsync(command, ModelState);
+            return Ok();
         }
     }
 }

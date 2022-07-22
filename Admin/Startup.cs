@@ -14,6 +14,7 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using SimpleInjector;
 using Admin.Config;
+using Admin.Data;
 
 namespace Admin
 {
@@ -36,6 +37,7 @@ namespace Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<FormattingService>();
             services.AddDistributedMemoryCache();
 
             services.AddSession(options => {
