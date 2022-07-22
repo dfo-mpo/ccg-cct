@@ -971,8 +971,10 @@ function removeHighlights() {
 function positionCompNavHider() {
     let compNavHider = qs("#compNavHider");
     let compNav = qs("#navCompetencies");
-    compNavHider.style.left = `${compNav.getBoundingClientRect().x - 1}px`;
-    compNavHider.style.width = `${compNav.getBoundingClientRect().width}px`;
+    if (compNav && compNavHider) {
+        compNavHider.style.left = `${compNav.getBoundingClientRect().x - 1}px`;
+        compNavHider.style.width = `${compNav.getBoundingClientRect().width}px`;
+    }
 }
 
 /**
