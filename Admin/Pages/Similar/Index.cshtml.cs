@@ -32,6 +32,8 @@ namespace Admin.Pages.Similar
 
         public bool DisplayTopOfPage { get; set; }
 
+        public double LastTableContainerHeight { get; set; } = 300;
+
         public bool DisplayNumberOfJobsForEachMatchingPercentage { get; set; } = false;
 
         private const string PercentageSessionString = "DisplayNumberOfJobsForEachMatchingPercentage";
@@ -82,6 +84,17 @@ namespace Admin.Pages.Similar
                 if (sessionStr.ToLower() == "false")
                 {
                     DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
                 }
             }
 

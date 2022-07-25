@@ -22,6 +22,8 @@ namespace Admin.Pages.Positions
 
         public bool DisplayTopOfPage { get; set; }
 
+        public double LastTableContainerHeight { get; set; } = 300;
+
         public IList<JobPositionDto> JobPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
@@ -37,6 +39,17 @@ namespace Admin.Pages.Positions
                 if (sessionStr.ToLower() == "false")
                 {
                     DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
                 }
             }
         }

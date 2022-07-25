@@ -29,6 +29,8 @@ namespace Admin.Pages.Competencies
 
         public bool DisplayTopOfPage { get; set; }
 
+        public double LastTableContainerHeight { get; set; } = 300;
+
         private async Task PreparePage(int typeId)
         {
             var accepetedTypeIds = _context.CompetencyTypes.Select(c => c.Id).ToList();
@@ -51,6 +53,17 @@ namespace Admin.Pages.Competencies
                 if (sessionStr.ToLower() == "false")
                 {
                     DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
                 }
             }
         }

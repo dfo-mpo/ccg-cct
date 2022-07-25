@@ -14,7 +14,7 @@ const MARGIN_BETWEEN_FOOTER_AND_TABLE = 30;
  * 
  * @param {string} selector - The string which represents the desired selection
  * @param {Element} parent - Optional: the parent on which the selection is made (default is document)
- * @returns - HTMLElement[]
+ * @returns HTMLElement[] | []
  * 
  */
 function qsa(selector, parent = document) {
@@ -35,7 +35,7 @@ function qsa(selector, parent = document) {
  * 
  * @param {string} selector - The string which represents the desired selection
  * @param {Element} parent - Optional: the parent on which the selection is made (default is document)
- * @returns - HTMLElement
+ * @returns HTMLElement | null
  * 
  */
 function qs(selector, parent = document) {
@@ -50,7 +50,7 @@ function qs(selector, parent = document) {
  * 
  * @param {HTMLElement} el - The child element
  * @param {string} parentTagName - The tag name of the parent desired, for exmaple "div"
- * @returns - HTMLElement
+ * @returns HTMLElement | null
  * 
  */
 function findNearestParentOfType(el, parentTagName) {
@@ -84,7 +84,7 @@ function findNearestParentOfType(el, parentTagName) {
  * 
  * @param {HTMLSelectElement} dropdown - The "select" HTML element
  * @param {Boolean} maximum - True by default. If set to true, will return the maximum, and the minimum otherwise
- * @returns Number
+ * @returns Number | null
  * 
  */
 function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
@@ -102,7 +102,7 @@ function getMaximumOrMinimumValueFromDropdown(dropdown, maximum = true) {
 /**
  * This function is a simple API to set session variables on the server. There is a corresponding route in the app which receives a key value pair and sets it accordingly in the session.
  * 
- * @param {string} key - The key to set
+ * @param {string} key - The session key to set
  * @param {string} value - The value to give to the key
  * 
  */
@@ -120,7 +120,10 @@ function setSessionVariable(key, value) {
  * 
  */
 function canElementBeScrolled(el) {
-    return el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+    if (el) {
+        return el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+    }
+    return false;
 }
 
 // Utility functions ^^^^^ -----------------------------------------------------------------------------------------------------------------
@@ -135,7 +138,7 @@ function storeCurrentScrollPosition() {
 }
 
 /**
- * This function gets called when the page loads and when the window is resized. It makes sure that on index pages, if there are buttons on the right side of the screen (buttons that switch between competency types for example), they stay aligned with the end of the table, based on if it can scroll or not
+ * This function gets called when the page loads and when the window is resized. It makes sure that on index pages, if there are buttons on the right side of the screen (buttons that switch between competency types for example), they stay aligned with the end of the table, based on if it can scroll or not.
  */
 function checkIfTableCanBeScrolled() {
     let btns = qsa(".index-right-button");
@@ -181,26 +184,31 @@ function checkIfTableCanBeScrolled() {
  * @param {string} portionToUpdate - This string represents the portion of the formaction string that is of concern, for example, "addedcertificateids"
  * @param {Number} elementId - The database id of the element in the portion to update to be updated. For example, if the element being updated was a competency, this parameter would be the id of the competency
  * @param {Number} newId - The value to apply to that specific element. This won't change the id, but the value of the item associated with that id. For example, for competencies, this is the value of the new level of the competency. For certificates, this is the id of the new certificate description
- * @returns string
+ * @returns string | null
  * 
  */
 function updateFormActionString(formActionStr, portionToUpdate, elementId, newId) {
-    let itemsIdsStr = formActionStr.substring((formActionStr.indexOf(portionToUpdate) + portionToUpdate.length + 1),
-        (formActionStr.indexOf("-&", (formActionStr.indexOf(portionToUpdate) + 1))));
+    try {
+        let itemsIdsStr = formActionStr.substring((formActionStr.indexOf(portionToUpdate) + portionToUpdate.length + 1),
+            (formActionStr.indexOf("-&", (formActionStr.indexOf(portionToUpdate) + 1))));
 
-    let endIndex = itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND)))) < 0 ? itemsIdsStr.length :
-        itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))));
+        let endIndex = itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND)))) < 0 ? itemsIdsStr.length :
+            itemsIdsStr.indexOf("-", (itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))));
 
-    let itemToUpdateStr = itemsIdsStr.substring((itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))),
-        endIndex);
+        let itemToUpdateStr = itemsIdsStr.substring((itemsIdsStr.indexOf(elementId.toString().concat(ENCODED_AMPERSAND))),
+            endIndex);
 
-    let updatedStr = itemToUpdateStr.substring(0, itemToUpdateStr.indexOf(ENCODED_AMPERSAND) + ENCODED_AMPERSAND.length).concat(newId.toString());
+        let updatedStr = itemToUpdateStr.substring(0, itemToUpdateStr.indexOf(ENCODED_AMPERSAND) + ENCODED_AMPERSAND.length).concat(newId.toString());
 
-    let formActionStrArr = formActionStr.split('');
-    formActionStrArr.splice(formActionStr.indexOf(itemToUpdateStr), itemToUpdateStr.length, updatedStr);
-    let updatedFormActionStr = formActionStrArr.join('');
+        let formActionStrArr = formActionStr.split('');
+        formActionStrArr.splice(formActionStr.indexOf(itemToUpdateStr), itemToUpdateStr.length, updatedStr);
+        let updatedFormActionStr = formActionStrArr.join('');
 
-    return updatedFormActionStr;
+        return updatedFormActionStr;
+    }
+    catch {
+        return null;
+    }
 }
 
 /**
@@ -215,12 +223,16 @@ function getNonEmptyTableCellsInColumn(columnIndex, tableRows) {
     let allRowElements = [];
     for (let i = 0; i < tableRows.length; i++) {
         let elements = qsa("td", tableRows[i]);
-        let element = elements[columnIndex];
-        for (let j = 0; j < element.childElementCount; j++) {
-            if (elements[columnIndex].children[j].nodeName) {
-                if (elements[columnIndex].children[j].nodeName.toLowerCase() === "a") {
-                    if (elements[columnIndex].children[j].textContent.trim() !== "") {
-                        allRowElements[i] = /** @type {HTMLElement} */ (elements[columnIndex].cloneNode(true));
+        if (elements.length > 0) {
+            let element = elements[columnIndex];
+            if (element) {
+                for (let j = 0; j < element.childElementCount; j++) {
+                    if (elements[columnIndex].children[j].nodeName) {
+                        if (elements[columnIndex].children[j].nodeName.toLowerCase() === "a") {
+                            if (elements[columnIndex].children[j].textContent.trim() !== "") {
+                                allRowElements[i] = /** @type {HTMLElement} */ (elements[columnIndex].cloneNode(true));
+                            }
+                        }
                     }
                 }
             }
@@ -463,30 +475,32 @@ function changeCompetencyLevelValue(el, newNum = null) {
  */
 function attemptToExpandCompetency(el) {
     if (el) {
-        let parentDiv = null;
-        let currentEl = el;
-        if (currentEl.classList) {
-            if (!currentEl.classList.contains("plus-minus-icon")) { // the element should not be toggled if you double-clicked on the + or - buttons
-                while (!parentDiv) {
-                    if (currentEl.classList) {
-                        if (currentEl.classList.contains("compLevelDescContainer")) {
-                            parentDiv = currentEl;
+        if (qs(".compLevelDescContainer")) {
+            let parentDiv = null;
+            let currentEl = el;
+            if (currentEl.classList) {
+                if (!currentEl.classList.contains("plus-minus-icon")) { // the element should not be toggled if you double-clicked on the + or - buttons
+                    while (!parentDiv) {
+                        if (currentEl.classList) {
+                            if (currentEl.classList.contains("compLevelDescContainer")) {
+                                parentDiv = currentEl;
+                            }
                         }
-                    }
-                    if (!parentDiv) {
-                        if (currentEl.parentElement) {
-                            currentEl = currentEl.parentElement;
-                        }
-                        else {
-                            break;
+                        if (!parentDiv) {
+                            if (currentEl.parentElement) {
+                                currentEl = currentEl.parentElement;
+                            }
+                            else {
+                                break;
+                            }
                         }
                     }
                 }
             }
-        }
-
-        if (parentDiv) {
-            qs(".btn.dontShow", parentDiv).click();
+    
+            if (parentDiv) {
+                qs(".btn.dontShow", parentDiv).click();
+            }
         }
     }
 }
@@ -529,12 +543,15 @@ function setTableContainerMaxHeight() {
         let noResultColumns = qsa(".no-matching-positions-at-percent");
         if (noResultColumns.length > 0) {
             let thead = qs("thead", tableContainer);
-            for (let i = 0; i < noResultColumns.length; i++) {
-                let span = qs("span", noResultColumns[i]);
-                let top = ((tableContainer.getBoundingClientRect().height - span.getBoundingClientRect().height - thead.getBoundingClientRect().height) / 2) + thead.getBoundingClientRect().height;
-                span.style.top = `${top}px`;
+            if (thead) {
+                for (let i = 0; i < noResultColumns.length; i++) {
+                    let span = qs("span", noResultColumns[i]);
+                    let top = ((tableContainer.getBoundingClientRect().height - span.getBoundingClientRect().height - thead.getBoundingClientRect().height) / 2) + thead.getBoundingClientRect().height;
+                    span.style.top = `${top}px`;
+                }
             }
         }
+        setSessionVariable("lastTableContainerHeight", newHeight.toString());
     }
 }
 
@@ -948,13 +965,13 @@ function smoothScrollToElement(el, location = "start", highlightElement = false,
             el.classList.add("highlighted")
         }
         setTimeout(() => {
-            el.scrollIntoView({behavior: "smooth", block: location, inline: "nearest"});
+            el.scrollIntoView({ behavior: "smooth", block: location, inline: "nearest" });
         }, 100)
     }
 }
 
 /**
- * This function gets called whenever the user clicks on the screen. It removes the highlight effect of any elements (if applicable)
+ * This function gets called whenever the user clicks on the screen. It removes the highlight effect of any elements (if applicable).
  */
 function removeHighlights() {
     if (qs(".highlighted")) {
@@ -966,7 +983,7 @@ function removeHighlights() {
 }
 
 /**
- * This function positions a tiny element in the navigation which hides the space below the "Competencies" link, which otherwise has a weird effect when the dropdown options appear.
+ * This function positions a tiny element in the navigation which hides the space below the "Competencies" link, which otherwise has a weird effect when the dropdown options appear on hover.
  */
 function positionCompNavHider() {
     let compNavHider = qs("#compNavHider");
@@ -979,7 +996,7 @@ function positionCompNavHider() {
 
 /**
  * 
- * This function makes it so if you are hovering over the Competencies link in the navigation, it will ensure that the dropdown options will display. This is because of a weird space that existed in between the actual "Competencies" link and the dropdown, where the hover effect wouldn't apply.
+ * This function makes it so if you are hovering over the Competencies link in the navigation, it will ensure that the dropdown options will display. This is because of a weird space that otherwise exists between the actual "Competencies" link and the dropdown, where the hover effect wouldn't apply.
  * 
  * @param {MouseEvent} e - The mouseover event
  * 
@@ -988,8 +1005,8 @@ function checkIfCompetencyDropdownShouldDisplay(e) {
     let navComp = qs("#navCompetencies");
     if (navComp) {
         let navCompRect = navComp.getBoundingClientRect();
-        if ((e.pageX > navCompRect.x && e.pageX < (navCompRect.x + navCompRect.width)) && 
-        (e.pageY < navCompRect.height + 1)) {
+        if ((e.pageX > navCompRect.x && e.pageX < (navCompRect.x + navCompRect.width)) &&
+            (e.pageY < navCompRect.height + 1)) {
             navComp.classList.add("hovered");
         }
         else {
@@ -1003,7 +1020,7 @@ function checkIfCompetencyDropdownShouldDisplay(e) {
 // Page startup functions VVVVV ------------------------------------------------------------------------------------------------------------
 
 /**
- * This function gets called whenever a page loads. It indicates in the navigation in which group of pages the user is currently in by adding a blue border below the link
+ * This function gets called whenever a page loads. It indicates in the navigation in which group of pages the user is currently in by adding a blue border below the link.
  */
 function setSelectedNavItem() {
     let url = window.location.href.toLowerCase();
@@ -1059,7 +1076,7 @@ function setSelectedNavItem() {
 }
 
 /**
- * This function gets called whenever a page loads, and simply checks localStorage to see if a window scroll offset it set there (which can be set by the storeCurrentScrollPosition() function). If there is, it will apply this offset to the window, bringing you back to the same scroll position you had before reloading the page (useful in certain forms)
+ * This function gets called whenever a page loads, and simply checks localStorage to see if a window scroll offset it set there (which can be set by the storeCurrentScrollPosition() function). If there is, it will apply this offset to the window, bringing users back to the same scroll position they had before reloading the page (useful in certain forms).
  */
 function checkIfWindowShouldBeScrolled() {
     let scrollValue = localStorage.getItem(localStorageScrollStr);
@@ -1115,25 +1132,27 @@ function checkIfAnElementShouldBeScrolledIntoView() {
         if (qStringParts[i].includes("=")) {
             let keyValuePair = qStringParts[i].split("=");
             let key = keyValuePair[0];
-            let value = keyValuePair[1];
-
-            let shortValue = value;
-            if (value.includes("_")) {
-                shortValue = value.substring(0, value.indexOf("_"));
-            }
-
-            let location = "start";
-            if (value.includes("_b")) {
-                location = "end";
-            }
-            if (value.includes("_c")) {
-                location = "center";
-            }
-            if (value.includes("_n")) {
-                location = "nearest";
-            }
 
             if (key.toLowerCase() === "scrollto") {
+                let value = keyValuePair[1];
+
+                let shortValue = value;
+                if (value.includes("_")) {
+                    shortValue = value.substring(0, value.indexOf("_"));
+                    value = value.toLowerCase();
+                }
+
+                let location = "start";
+                if (value.includes("_b")) {
+                    location = "end";
+                }
+                if (value.includes("_c")) {
+                    location = "center";
+                }
+                if (value.includes("_n")) {
+                    location = "nearest";
+                }
+
                 if (qs(`#${shortValue}`)) {
                     smoothScrollToElement(qs(`#${shortValue}`), location, value.includes("_h"), value.includes("_o"));
                     return;
