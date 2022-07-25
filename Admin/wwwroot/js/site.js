@@ -525,8 +525,10 @@ function toggleRegionCheckboxes() {
 
 /**
  * This function is used on basically all Index pages, where there is a long list of elements to display. It handles setting the height of the element which contains the table and that can be scrolled through to make sure it takes up as much height as it can on screen without hiding anything. The minimum height for it is 300px.
+ * 
+ * @param {boolean} setHeightInSession - Whether or not the new table container height should be set in the session
  */
-function setTableContainerMaxHeight() {
+function setTableContainerMaxHeight(setHeightInSession = false) {
     footer = /** @type {HTMLElement} */ (footer);
     tableContainer = /** @type {HTMLElement} */ (tableContainer);
     windowHeight = /** @type {number} */ (windowHeight);
@@ -551,7 +553,9 @@ function setTableContainerMaxHeight() {
                 }
             }
         }
-        setSessionVariable("lastTableContainerHeight", newHeight.toString());
+        if (setHeightInSession) {
+            setSessionVariable("lastTableContainerHeight", newHeight.toString());
+        }
     }
 }
 
@@ -1224,7 +1228,7 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
                 qs("body").classList.remove("overflow-hidden");
                 setTableContainerMaxHeight();
                 setTimeout(() => { // this delayed call ensures that there can't be a desync, otherwise, it can happen, very rarely
-                    setTableContainerMaxHeight();
+                    setTableContainerMaxHeight(true);
                 }, 100);
             }
         }
@@ -1396,13 +1400,13 @@ window.addEventListener("load", () => {
 
     positionCompNavHider();
     if (tableContainer && footer) {
-        setTableContainerMaxHeight();
+        setTableContainerMaxHeight(true);
         checkIfTableCanBeScrolled();
     }
     window.addEventListener("resize", () => {
         if (tableContainer && footer) {
             windowHeight = window.innerHeight;
-            setTableContainerMaxHeight();
+            setTableContainerMaxHeight(true);
             checkIfTableCanBeScrolled();
         }
         positionCompNavHider();
