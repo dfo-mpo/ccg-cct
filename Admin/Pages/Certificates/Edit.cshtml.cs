@@ -40,7 +40,6 @@ namespace Admin.Pages.Certificates
             }
 
             Certificate = await _context.Certificates.FindAsync(id);
-
             if (Certificate == null)
             {
                 return NotFound();
