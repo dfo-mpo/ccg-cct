@@ -698,7 +698,7 @@ textarea.big-textarea {
 }
 
 .highlighted {
-    background-color: yellow !important;
+    background-color: #f2fdb2 !important;
 }
 
 .overflow-y-auto {
