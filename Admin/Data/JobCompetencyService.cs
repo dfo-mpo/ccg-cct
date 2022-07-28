@@ -185,47 +185,47 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCompetencyTypeDto>(url);
         }
-        public async Task<int> PostJobCompetency(string Parameters)
+        public async Task<int> PostJobCompetency(object Parameters)
         {
-            string url = $"/api/jobcompetencies/addjobcompetency?{Parameters}";
+            string url = $"/api/jobcompetencies/addjobcompetency";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<int>(url);
+            return await httpClient.PostJsonAsync<int>(url, Parameters);
         }
-        public async Task<int> PostJobPositionGetId(string Parameters)
+        public async Task<int> PostJobPositionGetId(object Parameters)
         {
-            string url = $"/api/jobpositions/addjobpositiongetid?{Parameters}";
+            string url = $"/api/jobpositions/addjobpositiongetid";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<int>(url);
+            return await httpClient.PostJsonAsync<int>(url, Parameters);
         }
         public async Task PostJobRolePositionCompetency(object Parameters)
         {
             string url = $"/api/jobpositions/addjobrolepositioncompetency?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task PostJobRolePositionLocation(object Parameters)
         {
             string url = $"/api/jobpositions/addjobrolepositionlocation?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task PostJobRolePositionCertificate(object Parameters)
         {
             string url = $"/api/jobpositions/addjobrolepositioncertificate?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task PostJobRolePositionHLCategory(object Parameters)
         {
             string url = $"/api/jobpositions/addjobrolepositionhlcategory?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task PostJobGroupPosition(object Parameters)
         {
             string url = $"/api/jobgroups/addjobgroupposition?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task<JobGroupPositionDto[]> GetJobGroupPositionsById(int Id)
         {
@@ -238,13 +238,13 @@ namespace Admin.Data
         {
             string url = $"/api/jobcompetencies/updatejobcompetency?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task DeleteJobCompetency(object Parameters)
         {
             string url = $"/api/jobcompetencies/deletejobcompetency?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task<JobGroupPositionDto[]> GetJobGroupPositionLevelsById(int Id)
         {
@@ -256,7 +256,7 @@ namespace Admin.Data
         {
             string url = $"/api/jobpositions/updatejobposition?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
     }
 }

@@ -11,8 +11,8 @@ namespace Business.Commands.Admin.JobPositions
     {
         public string TitleEng { get; set; }
         public string TitleFre { get; set; }
-        public string DescriptionEng { get; set; }
-        public string DescriptionFre { get; set; }
+        public string PositionDescEng { get; set; }
+        public string PositionDescFre { get; set; }
     }
     public class PostJobPositionCommandValidator : AbstractCommandValidator<PostJobPositionCommandGetJobPositionIdQuery>
     {
@@ -22,9 +22,9 @@ namespace Business.Commands.Admin.JobPositions
                 .MaximumLength(3000);
             RuleFor(e => e.TitleFre)
                 .MaximumLength(3000);
-            RuleFor(b => b.DescriptionEng)
+            RuleFor(b => b.PositionDescEng)
                  .MaximumLength(8000);
-            RuleFor(b => b.DescriptionFre)
+            RuleFor(b => b.PositionDescFre)
                 .MaximumLength(8000);
         }
     }
@@ -43,8 +43,8 @@ namespace Business.Commands.Admin.JobPositions
             {
                 TitleEng = query.TitleEng,
                 TitleFre = query.TitleFre,
-                PositionDescEng = string.IsNullOrEmpty(query.DescriptionEng) ? "" : query.DescriptionEng,
-                PositionDescFre = string.IsNullOrEmpty(query.DescriptionFre) ? "" : query.DescriptionFre,
+                PositionDescEng = string.IsNullOrEmpty(query.PositionDescEng) ? "" : query.PositionDescEng,
+                PositionDescFre = string.IsNullOrEmpty(query.PositionDescFre) ? "" : query.PositionDescFre,
                 Active = 1
             };
             await _db.JobPositions.AddAsync(newjobposition, cancellationToken);

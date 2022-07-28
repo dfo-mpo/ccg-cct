@@ -6,11 +6,11 @@
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>Certificates</h1>
+    <h1>Certificates <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
-    <p class="space-btns">
+    <p class="space-btns hide-in-print">
         <a class="btn btn-dark" asp-page="Create">Create New</a>
-        <a class="btn btn-secondary pull-right" href="/Certificates/Descriptions">Certificate Descriptions</a>
+        <a class="btn btn-secondary pull-right index-right-button" href="/Certificates/Descriptions">Certificate Descriptions</a>
         <a class="btn btn-info pull-right" href="/Certificates">Certificates</a>
     </p>
 
@@ -29,7 +29,7 @@
         itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
     }
 
-    <form>
+    <form class="hide-in-print">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find certificates:</label>
@@ -39,6 +39,11 @@
                 {
                     <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
                 }
+
+                <a class="pull-right index-right-button" href="/Certificates/Locate"
+                title="Find out which jobs require the specified certificate" data-toggle="tooltip">
+                    Locate Certificates
+                </a>
             </h6>
         </div>
     </form>
@@ -46,15 +51,15 @@
 
 @if (itemsThatMatchFilter.Any())
 {
-    <div id="table-container">
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">
-                    <th><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Certificate English</b></th>
-                    <th><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Certificate French</b></th>
-                    <th>
+                    <th class="col-5"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Certificate English</b></th>
+                    <th class="col-5"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Certificate French</b></th>
+                    <th class="col-2">
                         <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
-                        class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
+                        class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
                         aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
                         alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
                         title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
@@ -71,10 +76,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NameFre)
                         </td>
-                        <td style="width:15%">
+                        <td class="hide-in-print text-center">
                             <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                             <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                             <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                        <td class="hide-when-not-in-print table-cell text-center col-2">
+                            <a asp-page="./Details" asp-route-id="@item.Id" class="print-link underline">Details</a>
                         </td>
                     </tr>
                 }

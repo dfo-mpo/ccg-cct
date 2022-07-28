@@ -24,7 +24,10 @@
     {
         <p>
             <a class="btn btn-dark" target="_blank" asp-page="ExecutiveSummary">View / Print List</a>
-            <a class="btn btn-secondary pull-right bold" asp-page="Locate">Locate Positions</a>
+            <a class="btn btn-secondary pull-right bold index-right-button" 
+                title="See where jobs have been added as similar positions" data-toggle="tooltip" asp-page="Locate">
+                Locate Positions
+            </a>
         </p> 
     }
 
@@ -55,7 +58,7 @@
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find positions:</label>
-                <input type="text" asp-for="@Model.Filter" />
+                <input type="text" asp-for="@Model.Filter" value="@filterValue" />
 
                 @if (Model.CopyingAPosition)
                 {
@@ -75,16 +78,16 @@
                 {
                     @if (Model.DisplayNumberOfJobsForEachMatchingPercentage)
                     {
-                        <a class="pull-right" href="/Similar?numMatching=false&filter=@filterValue">Hide Number of Matching Positions Per Percentage</a>
+                        <a class="pull-right index-right-button" href="/Similar?numMatching=false&filter=@filterValue">Hide Number of Matching Positions Per Percentage</a>
                     }
                     else
                     {
-                        <a class="pull-right" href="/Similar?numMatching=true&filter=@filterValue">View Number of Matching Positions Per Percentage</a>
+                        <a class="pull-right index-right-button" href="/Similar?numMatching=true&filter=@filterValue">View Number of Matching Positions Per Percentage</a>
                     }
                 }
                 else
                 {
-                    <a class="btn btn-danger pull-right bottom-two-px bold" href="/Similar/Details?id=@Model.PositionBeingCopied.JobTitleId">
+                    <a class="btn btn-danger pull-right bottom-two-px bold index-right-button" href="/Similar/Details?id=@Model.PositionBeingCopied.JobTitleId">
                         Cancel Copy
                     </a>
                 }
@@ -95,7 +98,7 @@
 
 @if (itemsThatMatchFilter.Any())
 {
-    <div id="table-container">
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">

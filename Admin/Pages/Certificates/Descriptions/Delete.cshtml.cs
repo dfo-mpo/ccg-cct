@@ -74,19 +74,14 @@ namespace Admin.Pages.Certificates.Descriptions
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
 
-            try
-            {
-                _jobCertificateService.DeleteJobCertificateDescription(Certificate);
-                Thread.Sleep(5000);
-                return RedirectToPage("./Index");
-            }
-            catch (DbUpdateException ex)
-            {
-                _logger.LogError(ex, ErrorMessage);
-                return RedirectToAction("./Delete",
-                                     new { id, saveChangesError = true });
-            }
+            await _jobCertificateService.DeleteJobCertificateDescription(Certificate);
+
+            return RedirectToPage("./Index");
         }
     }
 }

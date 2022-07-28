@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-6">
-        <form method="post">
+        <form method="post" class="trimFormWhenSubmitting">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Certificate.Id" />
             <div class="form-group">
@@ -26,12 +26,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescEng" class="control-label"></label>
-                <textarea asp-for="Certificate.DescEng" class="form-control"></textarea>
+                <textarea asp-for="Certificate.DescEng" class="form-control big-textarea"></textarea>
                 <span asp-validation-for="Certificate.DescEng" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescFre" class="control-label"></label>
-                <textarea asp-for="Certificate.DescFre" class="form-control"></textarea>
+                <textarea asp-for="Certificate.DescFre" class="form-control big-textarea"></textarea>
                 <span asp-validation-for="Certificate.DescFre" class="text-danger"></span>
             </div>
 
@@ -40,6 +40,34 @@
                 <a class="btn btn-secondary" href="/Certificates/Details?id=@Model.Certificate.Id">Cancel</a>
             </div>
         </form>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-primary" role="alert">
+            Note: if the certificate description includes a link, here is how to denote it. Put the URL at the end
+            of the description, and then include the text that will display in place of the link between two sets
+            of three hyphens (---). <br /><br />
+            For example, if you want the link to appear as "<span class="underline">Some College</span>", you would finish the
+            description with something like this: <br /><br /><b>https://SomeExample.com---Some College---</b>
+            <br /><br />
+            If there are multiple links in the description, simply put each link on a separate line, and leave 
+            no blank lines between them. For example: <br /><br />
+
+            <b>https://link1.com---Link 1---<br />
+            https://link2.com---Link 2---<br />
+            https://link3.com---Link 3---<br /></b>
+            <br />
+
+            The links will appear as follows:
+
+            <br />
+            <br />
+
+            <a href="#">Link 1 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+            <span class="inline-block margin-left-link-spacing">| </span>
+            <a href="#">Link 2 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+            <span class="inline-block margin-left-link-spacing">| </span>
+            <a href="#">Link 3 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+        </div>
     </div>
 </div>
 

@@ -9,7 +9,7 @@
 @{
     var filterdata = new Dictionary<string, string>
     {
-            { "typeid", typeid },
+            {"typeid", typeid },
             {"filter", Model.Filter }
     };
 
@@ -22,24 +22,24 @@
     }
 
     var itemsThatMatchFilter = Model.Competencies.Where(e => (Model.Filter == null
-        || e.NameEng.ToLower().Contains(@Model.Filter.ToLower())
-        || e.NameFre.ToLower().Contains(@Model.Filter.ToLower()))
+        || e.NameEng.ToLower().Contains(Model.Filter.ToLower())
+        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
         && (e.Active == 1));
 
     itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>@Model.Type.NameEng / @Model.Type.NameFre</h1>
+    <h1>@Model.Type.NameEng <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
-    <p class="space-btns">
+    <p class="space-btns hide-in-print">
         <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
-        <a href="@("/Competencies/List?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
+        <a href="@("/Competencies/List?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right index-right-button @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
         <a href="@("/Competencies/List?typeid=3" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
         <a href="@("/Competencies/List?typeid=2" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
         <a href="@("/Competencies/List?typeid=1" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
     </p>
-    <form method="post">
+    <form method="post" class="hide-in-print">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find competencies:</label>
@@ -49,6 +49,11 @@
                 {
                     <span><span class="vertical-bar">|</span> <a href="/Competencies/List?typeid=@typeid">Back to Full List</a></span>
                 }
+
+                <a class="pull-right index-right-button" href="/Competencies/Locate?typeid=@typeid"
+                title="Find out which jobs require the specified competency" data-toggle="tooltip">
+                    Locate Competencies
+                </a>
             </h6>
         </div>
     </form>
@@ -56,7 +61,7 @@
 
 @if (itemsThatMatchFilter.Any())
 {
-    <div id="table-container">
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">
@@ -66,7 +71,7 @@
                     <th class="col-4"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Description French</b></th>
                     <th class="col-1">
                         <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
-                        class="arrow-icon" data-toggle="collapse" data-target="#collapsibleTop" 
+                        class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
                         aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
                         alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
                         title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
@@ -89,10 +94,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DescFre)
                         </td>
-                        <td class="text-center">
+                        <td class="text-center hide-in-print">
                             <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
                             <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
                             <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                        <td class="hide-when-not-in-print table-cell text-center">
+                            <a asp-page="./Details" asp-route-id="@item.Id" class="print-link underline">Details</a>
                         </td>
                     </tr>
                 }

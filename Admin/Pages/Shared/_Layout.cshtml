@@ -16,7 +16,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm rememberIfVisited navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 no-padding">
-            <div class="container">
+            <div class="container nav-container">
                 <a class="navbar-brand smooth-underline" asp-area="" asp-page="/Index">CCG CCT Admin</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,12 @@
                             <a class="nav-link rememberIfVisited" href="/Positions">Positions</a>
                         </li>
                         <li class="nav-item" id="navCompetencies">
+                            <div class="dropdown-content">
+                                <a href="/Competencies/List?typeid=1" class="nav-link smooth-underline">Knowledge</a>
+                                <a href="/Competencies/List?typeid=2" class="nav-link smooth-underline">Technical</a>
+                                <a href="/Competencies/List?typeid=3" class="nav-link smooth-underline">Behavioural</a>
+                                <a href="/Competencies/List?typeid=4" class="nav-link smooth-underline">Executive</a>
+                            </div>
                             <a class="nav-link rememberIfVisited" href="/Competencies/List?typeid=1">Competencies</a>
                         </li>
                         <li class="nav-item" id="navSimilar">
@@ -44,6 +50,12 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div id="navHider">
+            </div>
+            <div id="bottomNavHider">
+            </div>
+            <div id="compNavHider">
             </div>
         </nav>
     </header>

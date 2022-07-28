@@ -14,7 +14,6 @@
         {"AddedNinetyPercentIds", Model.AddedNinetyPercentIds },
         {"AddedEightyPercentIds", Model.AddedEightyPercentIds },
         {"AddedSeventyPercentIds", Model.AddedSeventyPercentIds },
-        {"selectedjobpositionid",Model.SelectedJobPositionId.ToString() },
         {"subgroupcode", Model.SubGroupCode },
         {"subjobgroupId" , Model.SubJobGroupId.ToString() },
         {"jobgrouplevelid", Model.JobGroupLevelId.ToString() },
@@ -40,7 +39,6 @@
         JobGroupLevelPositions = Model.JobGroupLevelPositions,
         AllActiveJobs = await Model.GetAllActiveJobs(),
         CurrentSelectedLevelCode = Model.LevelCode,
-        CurrentSelectedPosition = Model.CurrentSelectedPosition,
         CreateModel = Model,
         IsInEditMode = false,
         CopyingAPosition = Model.CopyingAPosition
@@ -72,6 +70,8 @@ else
 }
 
 <hr />
+
+<span asp-validation-for="PercentSelection" class="text-danger bold display-block small-margin-bottom"></span>
 
 @if (Model.PercentSelection == "100")
 {

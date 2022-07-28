@@ -207,7 +207,7 @@ h4.no-results {
     }
 
 .remove-btn {
-    color: red;
+    color: var(--btnDangerColour);
     font-weight: bold;
 }
 
@@ -272,7 +272,7 @@ h4.no-results {
         #table-container table thead {
             position: sticky;
             top: 0px;
-            z-index: 100 !important;
+            z-index: 10 !important;
             background-color: white;
         }
 
@@ -411,7 +411,7 @@ textarea.form-control {
 .navbar {
     height: 66px !important;
     max-height: 66px !important;
-    overflow-y: hidden;
+    overflow-y: visible;
 }
 
 *.no-padding {
@@ -420,6 +420,10 @@ textarea.form-control {
 
 .no-padding-right {
     padding-right: 0px !important;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0px !important;
 }
 
 .nav-item {
@@ -440,7 +444,11 @@ textarea.form-control {
     cursor: default !important;
 }
 
-.nav-item:not(.selected) .nav-link:hover, .navbar-brand:hover, .nav-item:not(.selected), .nav-link.visited, .navbar-brand.visited {
+.dropdown-content .nav-link:hover {
+    cursor: pointer !important;
+}
+
+.nav-item:not(.selected) .nav-link:hover, .navbar-brand:hover, .nav-item:not(.selected), .nav-link.visited, .navbar-brand.visited, .dropdown-content .nav-link:hover {
     color: var(--btnPrimary) !important;
 }
 
@@ -458,6 +466,8 @@ textarea.form-control {
     padding-bottom: 0px;
     border-bottom: 6px solid var(--btnPrimary) !important;
     transition: border-bottom 0.3s !important;
+    height: 65px;
+    overflow-y: visible;
 }
 
 .smooth-underline::after {
@@ -607,6 +617,10 @@ a.visited {
     margin-right: 0px !important;
 }
 
+.margin-right-space-btn {
+    margin-right: 15px !important;
+}
+
 .vertical-margin-auto {
     margin-top: auto;
     margin-bottom: auto;
@@ -671,6 +685,122 @@ textarea.big-textarea {
 * {
     word-wrap: break-word !important;
     word-break: break-word !important;
+    scroll-margin: 20px;
+}
+
+.field-validation-valid {
+    display: none !important;
+}
+
+.locate-page-save-icon {
+    top: 4px !important; 
+    right: 5px;
+}
+
+.highlighted {
+    background-color: #f2fdb2 !important;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.modal-footer .btn:first-of-type {
+    margin-right: 15px !important;
+}
+
+.modal-footer a.btn:first-of-type {
+    margin-right: 0px !important;
+}
+
+.nav-item > a {
+    background-color: white;
+    z-index: 1000 !important;
+    position: relative;
+    opacity: 1;
+}
+
+header {
+    z-index: 1000;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: white;
+    box-shadow: none;
+    border: 2px solid var(--btnSecondaryColour);
+    border-top: none;
+    padding: 8px 6px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 116px !important;
+    opacity: 0;
+    top: -90px;
+    transition: all 0.3s cubic-bezier(0.41,-0.05, 0.78, 1.14);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    display: block;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    width: fit-content !important;
+    max-width: fit-content !important;
+}
+
+.dropdown-content a:first-child {
+    padding-top: 3px;
+}
+
+#navCompetencies:hover .dropdown-content, #navCompetencies.hovered .dropdown-content {
+    opacity: 1;
+    top: 65px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#navHider, #bottomNavHider {
+    position: absolute;
+    left: 0px;
+    background-color: white;
+    width: 100%;
+    z-index: 10000;
+}
+
+#navHider {
+    top: -1px;
+    height: 8px;
+}
+
+#bottomNavHider {
+    top: 56px;
+    height: 2px;
+}
+
+#compNavHider {
+    position: absolute;
+    top: 59px;
+    left: 0px;
+    background-color: white;
+    height: 5px;
+    width: 116.11px;
+    z-index: 10000;
+}
+
+.dropdown-menu {
+    max-height: 800px;
+    overflow-y: auto;
+    min-width: fit-content;
+    overflow-x: hidden;
+    z-index: 10000;
+}
+
+.dropdown-menu.limit-height {
+    max-height: 500px !important;
 }
 
 @media print {
@@ -701,6 +831,22 @@ textarea.big-textarea {
 
     .col-4 {
         width: 33.33% !important;
+    }
+
+    .col-5 {
+        width: 41.66% !important;
+    }
+
+    .print-link {
+        color: rgb(3, 102, 214) !important;
+    }
+
+    .underline {
+        text-decoration: underline !important;
+    }
+
+    .print-underline {
+        text-decoration: underline !important;
     }
 
     #table-container {

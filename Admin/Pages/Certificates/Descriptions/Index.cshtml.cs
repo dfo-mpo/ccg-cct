@@ -23,9 +23,12 @@ namespace Admin.Pages.Certificates.Descriptions
         public string Filter { get; set; }
 
         public bool DisplayTopOfPage { get; set; }
+
+        public double LastTableContainerHeight { get; set; } = 300;
+
         public IList<JobCertificateDto> Descriptions { get; set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync()
         {
             Descriptions = await _jobCertificateService.GetAllJobCertificateDescriptions();
 
@@ -36,6 +39,17 @@ namespace Admin.Pages.Certificates.Descriptions
                 if (sessionStr.ToLower() == "false")
                 {
                     DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
                 }
             }
         }

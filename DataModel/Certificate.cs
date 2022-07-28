@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using static DataModel.CustomValidation;
 
 namespace DataModel
 {
@@ -24,6 +24,7 @@ namespace DataModel
 
         [Display(Name = "Description English")]
         [MaxLength(1000)]
+        [BothOrNone("DescFre", "Both descriptions must be provided if one is filled out")]
         public string DescEng { get; set; }
 
         [Display(Name = "Description French")]

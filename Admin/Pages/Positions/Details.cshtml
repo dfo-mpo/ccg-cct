@@ -1,5 +1,6 @@
 ﻿@page
 @model Admin.Pages.Positions.DetailsModel
+@inject Admin.Data.FormattingService Formatter
 
 @{
     ViewData["Title"] = "Details";
@@ -102,7 +103,7 @@
             {
                 <tr>
                     <th colspan="2" class="table-header-row">
-                        <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements">
+                        <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="certificatesRow">
                             CERTIFICATIONS / ATTESTATIONS
                         </span>
                     </th>
@@ -116,11 +117,81 @@
                     <tr>
                         <td colspan="2">
                             <div class="accordion" id="@divKey">
-                                <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne">
-                                    @certificate.NameEng / @certificate.NameFre
+                                <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key" aria-expanded="false" aria-controls="collapseOne" id="certificateScroll-@certificate.Id">
+                                    @certificate.NameEng <b>/</b> @certificate.NameFre
                                 </button>
                                 <div id="@key" class="collapse" aria-labelledby="headingFour" data-parent="#@divKey">
                                     <div class="card-body">
+
+                                        @{
+                                            bool emptyCertificateDesc = certificate.CertificateDescEng == "" || certificate.CertificateDescFre == "";
+                                        }
+
+                                        @if (!emptyCertificateDesc)
+                                        {
+                                            <button type="button" class="btn btn-link collapsed no-padding small-margin-bottom display-block" data-toggle="collapse" data-target="#CertificateDescription-@certificate.Id">
+                                                Certificate Descritpion
+                                            </button>
+
+                                            <div id="CertificateDescription-@certificate.Id" class="collapse">
+                                                <div class="card-body no-padding-top xs-margin-bottom">
+                                                    @{
+                                                        string[] languages = { "English", "French" };
+                                                        string[] descriptions = { certificate.CertificateDescEng, certificate.CertificateDescFre };
+
+                                                        for (int i = 0; i < descriptions.Length; i++)
+                                                        {
+                                                            <p class="bold @(i > 0 ? "small-margin-top" : "")">
+                                                                @languages[i]
+                                                            </p>
+
+                                                            <div>
+                                                            @{
+                                                                var descPortions = descriptions[i].Split("\r\n");
+                                                                bool oneLinkAdded = false;
+                                                                foreach (var desc in descPortions)
+                                                                {
+                                                                    bool containsALink = false;
+                                                                    if (desc.Contains("http"))
+                                                                    {
+                                                                        containsALink = true;
+                                                                    }
+                                                                    if (!containsALink)
+                                                                    {
+                                                                        <span>@desc</span>
+                                                                        <br />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                                                                        var href = formattedLink[0];
+                                                                        var displayStr = formattedLink[1];
+                                                                            
+                                                                        if (oneLinkAdded)
+                                                                        {
+                                                                            <span class="inline-block margin-left-link-spacing">| </span>
+                                                                        }
+
+                                                                        <a href="@href" target="_blank">
+                                                                            @displayStr
+                                                                            <img src="~/images/icons/external_link_icon.png" 
+                                                                            class="external-link" alt="Open link in new tab" />
+                                                                        </a>
+
+                                                                        if (!oneLinkAdded)
+                                                                        {
+                                                                            oneLinkAdded = true;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+
                                         @if (string.IsNullOrWhiteSpace(certificate.DescEng) && string.IsNullOrWhiteSpace(certificate.DescFre))
                                         {
                                             <p class="no-margins">
@@ -135,11 +206,11 @@
                                         else
                                         {
                                             <p>
-                                                <b>English Description</b><br />
+                                                <b>Selected English Description</b><br />
                                                 <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescEng) ? "No description specified in English" : certificate.DescEng)</span>
                                             </p>
                                             <p>
-                                                <b>French Description</b><br />
+                                                <b>Selected French Description</b><br />
                                                 <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescFre) ? "Aucune description specifée en français" : certificate.DescFre)</span>
                                             </p>
                                             <div class="expanded-item-navigation">
@@ -147,7 +218,7 @@
                                                     Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                                 </a> <span class="small-padding-left">|</span>
                                                 <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
-                                                    Edit Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    Edit Selected Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
                                                 </a>
                                             </div>
                                         }
@@ -197,8 +268,8 @@
                             <tr>
                                 <td class="col-7 no-padding">
                                     <div class="accordion" id="@divKey">
-                                        <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
-                                            @c.CompetencyNameEng / @c.CompetencyNameFre
+                                        <button class="btn btn-link collapsed text-wrap text-left no-padding" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne" id="competencyScroll-@c.CompetencyId">
+                                            @c.CompetencyNameEng <b>/</b> @c.CompetencyNameFre
                                         </button>
                                         <div id="@key1" class="collapse" aria-labelledby="headingFour" data-parent="#@divKey">
                                             <div class="card-body">
@@ -292,5 +363,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a> |
+    <a href="/Similar/Locate?id=@Model.Position.JobTitleId">Locate in Similar Positions</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Position.JobTitleId">Delete</a>
 </div>

@@ -1,6 +1,8 @@
 ﻿@model Admin.Pages.Positions.EditModel
 @using Admin.Data.PartialModels
 @using Business.Dtos.JobCompetencies
+@using System.Text.RegularExpressions
+@inject Admin.Data.FormattingService Formatter
 
 @{
     bool expandableItemsOpenNewWindows = true;
@@ -21,7 +23,6 @@
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<input type="hidden" asp-for="JobPosition.Id" />
 
 <table class="table table-bordered">
     <thead>
@@ -33,13 +34,13 @@
         <tr>
             <td>
                 <div class="form-group m-2">
-                    <label class="control-label" for="titleEng"><b>Title English</b></label>
-                    <textarea class="form-control" name="titleEng" required id="titleEng">@Model.TitleEng</textarea>
+                    <label class="control-label" asp-for="JobPosition.TitleEng"><b>Title English</b></label>
+                    <textarea class="form-control" asp-for="JobPosition.TitleEng" required></textarea>
                     <span asp-validation-for="JobPosition.TitleEng" class="text-danger"></span>
                 </div>
                 <div class="form-group m-2">
-                    <label class="control-label" for="titleFre"><b>Title French</b></label>
-                    <textarea class="form-control" name="titleFre" required id="titleFre">@Model.TitleFre</textarea>
+                    <label class="control-label" asp-for="JobPosition.TitleFre"><b>Title French</b></label>
+                    <textarea class="form-control" asp-for="JobPosition.TitleFre" required></textarea>
                     <span asp-validation-for="JobPosition.TitleFre" class="text-danger"></span>
                 </div>
             </td>
@@ -47,13 +48,13 @@
         <tr>
             <td>
                 <div class="form-group m-2">
-                    <label class="control-label" for="descEng"><b>Description English</b></label>
-                    <textarea class="form-control" name="descriptionEng" id="descEng">@Model.DescriptionEng</textarea>
+                    <label class="control-label" asp-for="JobPosition.PositionDescEng"><b>Description English</b></label>
+                    <textarea class="form-control" asp-for="JobPosition.PositionDescEng"></textarea>
                     <span asp-validation-for="JobPosition.PositionDescEng" class="text-danger"></span>
                 </div>
                 <div class="form-group m-2">
-                    <label class="control-label" for="descFre"><b>Description French</b></label>
-                    <textarea class="form-control" name="descriptionFre" id="descFre">@Model.DescriptionFre</textarea>
+                    <label class="control-label" asp-for="JobPosition.PositionDescFre"><b>Description French</b></label>
+                    <textarea class="form-control" asp-for="JobPosition.PositionDescFre"></textarea>
                     <span asp-validation-for="JobPosition.PositionDescFre" class="text-danger"></span>
                 </div>
             </td>
@@ -102,6 +103,9 @@
         </tr>
     </tbody>
 </table>
+
+<span asp-validation-for="SelectedRegionIds" style="padding-bottom: 6px" 
+class="text-danger display-block small-margin-bottom no-padding-top bold"></span>
 
 <table class="table table-bordered">
     <thead>
@@ -213,8 +217,6 @@
     </tbody>
 </table>
 
-<span asp-validation-for="SelectedRegionIds"></span>
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -231,7 +233,7 @@
                         <button class="form-control dropdown-toggle mrgn-bttm-md" id="menu1" type="button" data-toggle="dropdown">
                             (@Model.CurrentSelectedJobGroup.Code) @Model.CurrentSelectedJobGroup.NameEng / @Model.CurrentSelectedJobGroup.NameFre
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <ul class="dropdown-menu limit-height" role="menu" aria-labelledby="menu1">
                             @{
                                 var jobGroups = Model.JobGroups.OrderBy(x => x.Code.ToLower()).Distinct().ToList();
                             }
@@ -239,10 +241,6 @@
                             {
                                 var routedatagroup = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
-                                        {"titleeng", Model.TitleEng },
-                                        {"titlefre", Model.TitleFre },
-                                        {"descriptioneng", Model.DescriptionEng },
-                                        {"descriptionfre", Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -331,10 +329,6 @@
                         {
                             var routedataremoveall = new Dictionary<string, string> {
                                 {"id", Model.Id.ToString() },
-                                {"titleeng", Model.TitleEng },
-                                {"titlefre", Model.TitleFre },
-                                {"descriptioneng", Model.DescriptionEng },
-                                {"descriptionfre", Model.DescriptionFre },
                                 {"levelcode", Model.LevelCode },
                                 {"levelvalue", Model.LevelValue },
                                 {"regionids", Model.RegionIds },
@@ -414,7 +408,7 @@
                                         <select class="form-control dropdown-toggle mrgn-bttm-md" id="certificate" name="certificate">
                                             @foreach (var certificate in remainingCertificatesToAdd)
                                             {
-                                                <option value="@certificate.Id">@certificate.NameEng / @certificate.NameFre</option>
+                                                <option value="@certificate.Id">@certificate.NameEng <b>/</b> @certificate.NameFre</option>
                                             }
                                         </select>
                                     </div>
@@ -432,7 +426,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <option value="@certificate.Id">@certificate.DescEng / @certificate.DescFre</option>
+                                                    <option value="@certificate.Id">@certificate.DescEng <b>/</b> @certificate.DescFre</option>
                                                 }
                                             }
                                         </select>
@@ -440,7 +434,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button class="btn btn-primary resetWindowHeight" asp-page-handler="certificate" asp-all-route-data="@routedata">Save Changes</button>
+                                    <button class="btn btn-primary resetWindowHeight" asp-page-handler="certificate" asp-all-route-data="@routedata">Add Certificate</button>
                                 </div>
                             </div>
                         </div>
@@ -458,17 +452,87 @@
                         <div class="row">
                             <div class="col-9">
                                 <div class="accordion" id="@divKey">
-                                    <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne">
-                                        @certificate.NameEng / @certificate.NameFre
+                                    <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="collapseOne" id="certificateScroll-@certificate.Id">
+                                        @certificate.NameEng <b>/</b> @certificate.NameFre
                                     </button>
                                     <div id="@key1" class="collapse" aria-labelledby="#certTableHeader" data-parent="#@divKey">
                                         <div class="card-body">
 
                                             @{
+                                                bool emptyCertificateDesc = certificate.CertificateDescEng == "" || certificate.CertificateDescFre == "";
                                                 bool emptySelectedCertDesc = (certificate.DescEng == "" && certificate.DescFre == "");
                                             }
-                                            <select class="form-control dropdown-toggle mrgn-bttm-md cert-desc-dropdown 
-                                                @(emptySelectedCertDesc ? "bold" : "")" id="cert-desc-@certificate.Id">
+
+                                            @if (!emptyCertificateDesc)
+                                            {
+                                                <button type="button" class="btn btn-link collapsed no-padding small-margin-bottom display-block" data-toggle="collapse" data-target="#CertificateDescription-@certificate.Id">
+                                                    Certificate Descritpion
+                                                </button>
+
+                                                <div id="CertificateDescription-@certificate.Id" class="collapse">
+                                                    <div class="card-body no-padding-top xs-margin-bottom">
+                                                        @{
+                                                            string[] languages = { "English", "French" };
+                                                            string[] descriptions = { certificate.CertificateDescEng, certificate.CertificateDescFre };
+
+                                                            for (int i = 0; i < descriptions.Length; i++)
+                                                            {
+                                                                <p class="bold @(i > 0 ? "small-margin-top" : "")">
+                                                                    @languages[i]
+                                                                </p>
+
+                                                                <div>
+                                                                @{
+                                                                    var descPortions = descriptions[i].Split("\r\n");
+                                                                    bool oneLinkAdded = false;
+                                                                    foreach (var desc in descPortions)
+                                                                    {
+                                                                        bool containsALink = false;
+                                                                        if (desc.Contains("http"))
+                                                                        {
+                                                                            containsALink = true;
+                                                                        }
+                                                                        if (!containsALink)
+                                                                        {
+                                                                            <span>@desc</span>
+                                                                            <br />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                                                                            var href = formattedLink[0];
+                                                                            var displayStr = formattedLink[1];
+                                                                            
+                                                                            if (oneLinkAdded)
+                                                                            {
+                                                                                <span class="inline-block margin-left-link-spacing">| </span>
+                                                                            }
+
+                                                                            <a href="@href" target="_blank">
+                                                                                @displayStr
+                                                                                <img src="~/images/icons/external_link_icon.png" 
+                                                                                class="external-link" alt="Open link in new tab" />
+                                                                            </a>
+
+                                                                            if (!oneLinkAdded)
+                                                                            {
+                                                                                oneLinkAdded = true;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+
+                                            <label for="selectedCertDesc-@certificate.Id" class="xs-margin-bottom">Selected Description:</label>
+                                            <br />
+
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md cert-desc-dropdown small-padding-top
+                                                @(emptySelectedCertDesc ? "bold" : "")" id="selectedCertDesc-@certificate.Id">
                                                 @foreach (var desc in certDescs)
                                                 {
                                                     bool emptyDescInDropdown = (desc.DescEng == "" && desc.DescFre == "");
@@ -495,7 +559,7 @@
                                                 <a class="cert-desc-link @(emptySelectedCertDesc ? "dontShow" : "")" 
                                                     href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" 
                                                     target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
-                                                    Edit Certificate Description
+                                                    Edit Selected Certificate Description
                                                         <img src="~/images/icons/external_link_icon.png" 
                                                         class="external-link" alt="Open link in new tab" />
                                                 </a>
@@ -511,10 +575,6 @@
                                 @{
                                     var routedataremove = new Dictionary<string, string> {
                                         {"id", Model.Id.ToString() },
-                                        {"titleeng", Model.TitleEng },
-                                        {"titlefre", Model.TitleFre },
-                                        {"descriptioneng", Model.DescriptionEng },
-                                        {"descriptionfre", Model.DescriptionFre },
                                         {"levelcode", Model.LevelCode },
                                         {"levelvalue", Model.LevelValue },
                                         {"regionids", Model.RegionIds },
@@ -550,6 +610,9 @@
     </tbody>
 </table>
 
+<span asp-validation-for="AddedBehaviouralCompetencyIds" style="padding-bottom: 6px" 
+class="text-danger display-block small-margin-bottom no-padding-top bold"></span>
+
 <div class="dontShow">
     @{
         var levels = await Model.GetCompetencyLevelDescriptions();
@@ -565,10 +628,10 @@
             {
                 freStr += " " + level.DescFre;
             }
-            <div class="competencyLevelDesc">
-                <span class="eng">@engStr</span>
-                <span class="fre">@freStr</span>
-            </div>
+                <div class="competencyLevelDesc">
+                    <span class="eng">@engStr</span>
+                    <span class="fre">@freStr</span>
+                </div>
         }
     }
 </div>
