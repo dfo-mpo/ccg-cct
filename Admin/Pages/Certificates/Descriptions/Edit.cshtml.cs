@@ -50,7 +50,7 @@ namespace Admin.Pages.Certificates.Descriptions
                     }
                     else if (inactiveDescs.Select(x => x.DescEng.ToLowerInvariant()).Contains(desc.DescEng.ToLowerInvariant()))
                     {
-                        return "There English certificate description already exists, but it was deleted. " +
+                        return "That English certificate description already exists, but it was deleted. " +
                             "If you wish to enable it once again, contact technical support";
                     }
                 }

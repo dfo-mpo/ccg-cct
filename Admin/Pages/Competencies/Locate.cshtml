@@ -1,0 +1,234 @@
+﻿@page
+@model Admin.Pages.Competencies.LocateModel
+@using Business.Dtos.JobPositions
+@{
+    ViewData["Title"] = "Locate Competencies";
+
+    bool addedInOnePlace = false;
+
+    if (Model.LocatingACompetency)
+    {
+        addedInOnePlace = (Model.PositionsThatHaveTheCompetency.Any());
+    }
+
+    bool maintainFilter = false;
+    string typeid = Model.Type.Id.ToString();
+    string classSelectedComp = "btn-info", classUnselectedComp = "btn-secondary";
+
+    var filterdata = new Dictionary<string, string>
+    {
+            {"typeid", typeid },
+            {"filter", Model.Filter }
+    };
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.Competencies.Where(e => (Model.Filter == null
+        || e.NameEng.ToLower().Contains(Model.Filter.ToLower())
+        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
+        && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+    var itemsList = itemsThatMatchFilter.ToList();
+}
+
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    @if (!Model.LocatingACompetency)
+    {
+        <h1>Locate @Model.Type.NameEng</h1>
+
+        <p class="space-btns hide-in-print overflow-y-auto">
+            <a href="@("/Competencies/Locate?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right index-right-button @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
+            <a href="@("/Competencies/Locate?typeid=3" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
+            <a href="@("/Competencies/Locate?typeid=2" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
+            <a href="@("/Competencies/Locate?typeid=1" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
+        </p>
+
+        <form method="post" class="hide-in-print">
+            <div class="form-actions no-color">
+                <h6>
+                    <label for="Filter">Find competencies:</label>
+                    <input type="text" asp-for="@Model.Filter"/>
+                    <input type="submit" value="Search" class="btn btn-primary" asp-all-route-data="@filterdata" /> 
+                    @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                    {
+                        <span><span class="vertical-bar">|</span> <a href="/Competencies/Locate?typeid=@typeid">Back to Full List</a></span>
+                    }
+
+                    <a class="pull-right index-right-button" href="/Competencies/List?typeid=@typeid">Back to List</a>
+                </h6>
+            </div>
+        </form>
+    }
+    else
+    {
+        string compTypeName = Model.Type.NameEng;
+        if (compTypeName.Contains("cies"))
+        {
+            compTypeName = compTypeName.Replace("ies", "y");
+        }
+        else
+        {
+            compTypeName = compTypeName[..^1];
+        }
+
+        <h4 class="small-margin-bottom">Located @compTypeName: 
+            <a target="_blank" href="/Competencies/Details?id=@Model.CompetencyBeingLocated.Id" class="print-link">
+                @Model.CompetencyBeingLocated.NameEng <span class="text-dark">/</span> @Model.CompetencyBeingLocated.NameFre
+                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+            </a>
+            <span class="besides-external-link">(@Model.PositionsThatHaveTheCompetency.Count() 
+                Result@(Model.PositionsThatHaveTheCompetency.Count() > 1 ? "s" : ""))</span>
+        </h4>
+
+        <div class="space-btns no-margin-right small-margin-bottom large-margin-top no-padding-right container hide-in-print">
+            <div class="row no-margin-right">
+                <div class="col text-right no-margin-right no-padding @(addedInOnePlace ? "raise-elements-slightly" : "")" style="max-height: 38px">
+                    @if (addedInOnePlace)
+                    {
+                        <h6 class="glyphicon glyphicon-save-file display-inline position-relative locate-page-save-icon" onclick="print()"></h6>
+                    }
+                    <h6 class="display-inline"><a class="btn btn-primary bold bottom-two-px" href="/Competencies/Locate?typeid=@Model.CompetencyBeingLocated.TypeId">Locate Another Competency</a></h6>
+                    <a class="btn btn-secondary bottom-two-px bold no-margin-right right-button-locate" href="/Competencies/List?typeid=@Model.CompetencyBeingLocated.TypeId">Back to List</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.LocatingACompetency)
+{
+    @if (itemsThatMatchFilter.Any())
+    {
+        <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+            <table class="table">
+                <thead>
+                    <tr class="table-header-row text-center">
+                        <th class="col-2"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Competency English</b></th>
+                        <th class="col-2"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Competency French</b></th>
+                        <th class="col-3"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Description English</b></th>
+                        <th class="col-4"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Description French</b></th>
+                        <th class="col-1">
+                            <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                            class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                            aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                            title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in itemsList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameEng)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameFre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DescEng)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DescFre)
+                            </td>
+                            <td class="text-center hide-in-print">
+                                <a asp-page="./Locate" asp-route-id="@item.Id" class="load-link">Locate</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        if (!string.IsNullOrWhiteSpace(Model.Filter))
+        {
+            <h4 class="no-results">No @Model.Type.NameEng.ToLower() match the filter "@Model.Filter"</h4>
+        }
+        else
+        {
+            <h4 class="no-results">There are currently no @Model.Type.NameEng.ToLower()</h4>
+        }
+    }
+}
+else 
+{
+    if (addedInOnePlace) 
+    {
+        <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+            <table class="table">
+                <thead>
+                   <tr class="table-header-row text-center">
+                        <th style="width: 10%"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                        <th style="width: 25%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                        <th style="width: 25%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
+                        <th style="width: 25%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Competency Level</b></th>
+                        <th style="width: 15%">
+                            <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                            class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                            aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                            title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        var positions = Model.PositionsThatHaveTheCompetency.OrderBy(x => x.Key.JobTitleEng.ToLower()).OrderBy(x => x.Key.LevelCode.ToLower()).ToList();
+                    }
+
+                    @foreach (var pos in positions)
+                    {
+                        <tr>                                
+                            <td class="text-center">
+                                @pos.Key.LevelCode
+                            </td>
+                            <td>
+                                @pos.Key.JobTitleEng
+                            </td>
+                            <td>
+                                @pos.Key.JobTitleFre
+                            </td>
+                            @{
+                                var comp = pos.Value;
+                                var matchingLevel = Model.RatingLevels.Where(x => x.Id == comp.CompetencyRatingLevelId).FirstOrDefault();
+                                if (comp.TypeId == 4 && matchingLevel.Id <= 5) 
+                                {
+                                    matchingLevel = Model.RatingLevels.Where(x => x.Id == comp.CompetencyRatingLevelId + 5).FirstOrDefault();
+                                }
+                            }
+                            <td>
+                                @if (matchingLevel.NameEng.ToLowerInvariant() == matchingLevel.NameFre.ToLowerInvariant())
+                                {
+                                    <span><b>@matchingLevel.Value</b> - @matchingLevel.NameEng</span>
+                                }
+                                else
+                                {
+                                    <span><b>@matchingLevel.Value</b> - @matchingLevel.NameEng / @matchingLevel.NameFre</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <a href="/Positions/Details?positionid=@pos.Key.JobTitleId&scrollTo=competencyScroll-@(comp.CompetencyId)_c_h" target="_blank" class="rememberIfVisited print-link print-underline">Details</a><span class="hide-in-print"> | </span>
+                                <a href="/Positions/Edit?id=@pos.Key.JobTitleId&scrollTo=competencyScroll-@(comp.CompetencyId)_c_h" target="_blank" class="rememberIfVisited hide-in-print">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else 
+    {
+        <h4 class="no-results">This competency has not been added to any positions</h4>
+    }
+}
