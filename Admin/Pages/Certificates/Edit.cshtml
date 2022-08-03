@@ -10,34 +10,64 @@
 <h4>Certificate</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
+    <div class="col-md-6">
+        <form method="post" class="trimFormWhenSubmitting">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Certificate.Id" />
             <div class="form-group">
                 <label asp-for="Certificate.NameEng" class="control-label"></label>
-                <input asp-for="Certificate.NameEng" class="form-control" required />
+                <textarea class="form-control" asp-for="Certificate.NameEng" required></textarea>
                 <span asp-validation-for="Certificate.NameEng" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.NameFre" class="control-label"></label>
-                <input asp-for="Certificate.NameFre" class="form-control" required />
+                <textarea asp-for="Certificate.NameFre" class="form-control" required></textarea>
                 <span asp-validation-for="Certificate.NameFre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescEng" class="control-label"></label>
-                <input asp-for="Certificate.DescEng" class="form-control" />
+                <textarea asp-for="Certificate.DescEng" class="form-control big-textarea"></textarea>
                 <span asp-validation-for="Certificate.DescEng" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Certificate.DescFre" class="control-label"></label>
-                <input asp-for="Certificate.DescFre" class="form-control" />
+                <textarea asp-for="Certificate.DescFre" class="form-control big-textarea"></textarea>
                 <span asp-validation-for="Certificate.DescFre" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="form-group space-btns medium-margin-top padding-top">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a class="btn btn-secondary" href="/Certificates/Details?id=@Model.Certificate.Id">Cancel</a>
             </div>
         </form>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-primary" role="alert">
+            Note: if the certificate description includes a link, here is how to denote it. Put the URL at the end
+            of the description, and then include the text that will display in place of the link between two sets
+            of three hyphens (---). <br /><br />
+            For example, if you want the link to appear as "<span class="underline">Some College</span>", you would finish the
+            description with something like this: <br /><br /><b>https://SomeExample.com---Some College---</b>
+            <br /><br />
+            If there are multiple links in the description, simply put each link on a separate line, and leave 
+            no blank lines between them. For example: <br /><br />
+
+            <b>https://link1.com---Link 1---<br />
+            https://link2.com---Link 2---<br />
+            https://link3.com---Link 3---<br /></b>
+            <br />
+
+            The links will appear as follows:
+
+            <br />
+            <br />
+
+            <a href="#">Link 1 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+            <span class="inline-block margin-left-link-spacing">| </span>
+            <a href="#">Link 2 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+            <span class="inline-block margin-left-link-spacing">| </span>
+            <a href="#">Link 3 <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" /></a>
+        </div>
     </div>
 </div>
 

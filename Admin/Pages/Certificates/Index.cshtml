@@ -5,49 +5,99 @@
     ViewData["Title"] = "Certificates";
 }
 
-<h2>Certificates</h2>
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    <h1>Certificates <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
+    <p class="space-btns hide-in-print">
+        <a class="btn btn-dark" asp-page="Create">Create New</a>
+        <a class="btn btn-secondary pull-right index-right-button" href="/Certificates/Descriptions">Certificate Descriptions</a>
+        <a class="btn btn-info pull-right" href="/Certificates">Certificates</a>
+    </p>
 
-<a class="btn btn-dark" asp-page="Create">Create New</a>
-<a class="btn btn-dark pull-right" asp-page="Descriptions/Index">Descriptions</a>
-
-
-<form>
-    <div class="form-actions no-color">
-        <h6>
-            Find certificates:
-            <input type="text" asp-for="@Model.Filter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to Full List</a>
-        </h6>
-    </div>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Certificate English</th>
-            <th>Certificate French</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Certificates.Where(e => Model.Filter == null || e.NameEng.ToLower().Contains(@Model.Filter.ToLower()) || e.NameFre.ToLower().Contains(@Model.Filter.ToLower())))
+    @{
+        string? filterValue = Model.Filter;
+        if (filterValue != null)
         {
-            if (item.Active != 0) { 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameFre)
-                </td>
-                <td style="width:15%">
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-            }
+            filterValue = filterValue.Trim();
         }
-    </tbody>
-</table>
+
+        var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
+            || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
+            || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
+            && (e.Active == 1));
+
+        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+    }
+
+    <form class="hide-in-print">
+        <div class="form-actions no-color">
+            <h6>
+                <label for="Filter">Find certificates:</label>
+                <input type="text" asp-for="@Model.Filter" value="@filterValue" />
+                <input type="submit" value="Search" class="btn btn-primary" /> 
+                @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                {
+                    <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
+                }
+
+                <a class="pull-right index-right-button" href="/Certificates/Locate"
+                title="Find out which jobs require the specified certificate" data-toggle="tooltip">
+                    Locate Certificates
+                </a>
+            </h6>
+        </div>
+    </form>
+</div>
+
+@if (itemsThatMatchFilter.Any())
+{
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+        <table class="table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    <th class="col-5"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Certificate English</b></th>
+                    <th class="col-5"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Certificate French</b></th>
+                    <th class="col-2">
+                        <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                        class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                        aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                        title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in itemsThatMatchFilter)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameFre)
+                        </td>
+                        <td class="hide-in-print text-center">
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                        <td class="hide-when-not-in-print table-cell text-center col-2">
+                            <a asp-page="./Details" asp-route-id="@item.Id" class="print-link underline">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+} 
+else
+{
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        <h4 class="no-results">No certificates match the filter "@Model.Filter"</h4>
+    }
+    else
+    {
+        <h4 class="no-results">There are currently no certificates</h4>
+    }
+}

@@ -34,65 +34,110 @@ namespace Admin.Pages.Competencies
                 return NotFound();
             }
 
-            //Competency = await _context.Competencies.FirstOrDefaultAsync(m => m.Id == id);
+            var compExists = _context.Competencies.Where(x => x.Id == id.Value).FirstOrDefault();
+
+            if (compExists == null)
+            {
+                return NotFound();
+            }
+            if (compExists.Active != 1)
+            {
+                return NotFound();
+            }
+
             Competency = await _jobCompetencyService.GetJobCompetencyById(id);
-
-            Competency.Level1DescEng = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 1).Result.CompetencyLevelReqDescEng;
-            Competency.Level1DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 1).Result.CompetencyLevelReqDescFre;
-
-            Competency.Level2DescEng = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 2).Result.CompetencyLevelReqDescEng;
-            Competency.Level2DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 2).Result.CompetencyLevelReqDescFre;
-
-            Competency.Level3DescEng = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 3).Result.CompetencyLevelReqDescEng;
-            Competency.Level3DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 3).Result.CompetencyLevelReqDescFre;
-
-            Competency.Level4DescEng = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 4).Result.CompetencyLevelReqDescEng;
-            Competency.Level4DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 4).Result.CompetencyLevelReqDescFre;
-
-            Competency.Level5DescEng = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 5).Result.CompetencyLevelReqDescEng;
-            Competency.Level5DescFre = _jobCompetencyService.GetJobCompetencyLevelRequirementDescriptionByIdLevelValue(id, 5).Result.CompetencyLevelReqDescFre;
             if (Competency == null)
             {
                 return NotFound();
             }
+
             return Page();
+        }
+
+        private string CheckUniqueCompetencyName(JobCompetencyDto competency, bool checkEnglish = true)
+        {
+            if (competency == null)
+            {
+                return null;
+            }
+
+            var comp = competency;
+
+            var compTypeName = _context.CompetencyTypes.Where(x => x.Id == comp.TypeId).FirstOrDefault().NameEng.ToLower();
+            if (compTypeName.Contains("ies"))
+            {
+                compTypeName = compTypeName.Replace("ies", "yX");
+            }
+            compTypeName = compTypeName[..^1];
+
+            var competencyIdsOfType = _context.CompetencyTypeGroups.Where(x => x.CompetencyTypeId == comp.TypeId)
+              .Select(x => x.CompetencyId).ToList();
+
+            var activeComps = _context.Competencies.Where(x => x.Id != comp.Id && competencyIdsOfType.Contains(x.Id) && x.Active == 1).ToList();
+            var inactiveComps = _context.Competencies.Where(x => x.Id != comp.Id && competencyIdsOfType.Contains(x.Id) && x.Active == 0).ToList();
+
+            if (checkEnglish)
+            {
+                if (!string.IsNullOrWhiteSpace(comp.NameEng))
+                {
+                    if (activeComps.Select(x => x.NameEng.ToLowerInvariant()).Contains(comp.NameEng.ToLowerInvariant()))
+                    {
+                        return "There is already a" + (compTypeName[0] == 'e' ? "n " : " ") + compTypeName + " with that English name";
+                    }
+                    else if (inactiveComps.Select(x => x.NameEng.ToLowerInvariant()).Contains(comp.NameEng.ToLowerInvariant()))
+                    {
+                        return "There is already a" + (compTypeName[0] == 'e' ? "n " : " ") + compTypeName + " with that English name, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(comp.NameFre))
+                {
+                    if (activeComps.Select(x => x.NameFre.ToLowerInvariant()).Contains(comp.NameFre.ToLowerInvariant()))
+                    {
+                        return "There is already a" + (compTypeName[0] == 'e' ? "n " : " ") + compTypeName + " with that French name";
+                    }
+                    else if (inactiveComps.Select(x => x.NameFre.ToLowerInvariant()).Contains(comp.NameFre.ToLowerInvariant()))
+                    {
+                        return "There is already a" + (compTypeName[0] == 'e' ? "n " : " ") + compTypeName + " with that French name, but it was deleted. " +
+                            "If you wish to enable it once again, contact technical support";
+                    }
+                }
+            }
+
+            return null;
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+
+            Competency.TypeNameEng = (await _context.CompetencyTypes.Where(x => x.Id == Competency.TypeId).FirstOrDefaultAsync()).NameEng;
+            Competency.TypeNameFre = (await _context.CompetencyTypes.Where(x => x.Id == Competency.TypeId).FirstOrDefaultAsync()).NameFre;
+
+            var errEng = CheckUniqueCompetencyName(Competency);
+            if (errEng != null)
+            {
+                ModelState.AddModelError("Competency.NameEng", errEng);
+            }
+            var errFre = CheckUniqueCompetencyName(Competency, false);
+            if (errFre != null)
+            {
+                ModelState.AddModelError("Competency.NameFre", errFre);
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // _context.Attach(Competency).State = EntityState.Modified;
+            await _jobCompetencyService.UpdateJobCompetency(Competency);
 
-            try
-            {
-                _jobCompetencyService.UpdateJobCompetency(Competency);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CompetencyExists(Competency.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            Thread.Sleep(5000);
             return RedirectToPage("Details", new { id = Competency.Id });
         }
 
-        private bool CompetencyExists(int id)
-        {
-            return _context.Competencies.Any(e => e.Id == id);
-        }
     }
 }

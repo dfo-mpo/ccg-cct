@@ -1,0 +1,296 @@
+﻿@model Admin.Data.PartialModels.CompetencyPartialModel
+
+@{
+    var FullPageModel = Model.FullModel;
+    var addedCompetencies = Model.AddedCompetenciesList.Where(x => x.Active == 1).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+    bool atLeastOneCompetency = addedCompetencies.Any();
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th colspan="3" class="table-header-row">
+            <div class="row">
+                <div class="col-6 m-auto">
+                    @{
+                        if (atLeastOneCompetency)
+                        {
+                            <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">
+                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">
+                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()
+                            </span>
+                        }
+                    }
+                </div>
+                <div class="col-3 text-center m-auto">
+                    @{
+                        if (atLeastOneCompetency)
+                        {
+                            <span class="expand-elements-in-next-rows closed second-column" data-toggle="tooltip" title="Toggle expandable elements" id="@("levelHeader_" + Model.FullCompetencyNameOneWord)">
+                                LEVEL / NIVEAU
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="@("levelHeader_" + Model.FullCompetencyNameOneWord)">
+                                LEVEL / NIVEAU
+                            </span>
+                        }
+                    } 
+                </div>
+                <div class="col-3 text-right">
+                        @{
+                            List<int> addedCompIds = new List<int>();
+                            foreach (var comp in Model.AddedCompetenciesList.Where(x => x.Active == 1))
+                            {
+                                addedCompIds.Add(comp.CompetencyId);
+                            }
+                            var remainingCompetenciesToAdd = Model.FullCompetencyList.Where(x => x.Active == 1 
+                                && !addedCompIds.Contains(x.Id)).Distinct();
+                        }
+                        @if (addedCompetencies.Count() > 1)
+                        {
+                            var routedataremoveall = new Dictionary<string, string> {
+                                {"id", FullPageModel.Id.ToString() },
+                                {"levelcode", FullPageModel.LevelCode },
+                                {"levelvalue", FullPageModel.LevelValue },
+                                {"regionids", FullPageModel.RegionIds },
+                                {"subjobgroupId", FullPageModel.SubJobGroupId.ToString() },
+                                {"jobgrouplevelid", FullPageModel.JobGroupLevelId.ToString() },
+                                {"jobgroupid", FullPageModel.JobGroupId.ToString() },
+                                {"jobhlcategory", FullPageModel.JobHLCategory },
+                                {"addedknowledgecompetencyids", FullPageModel.AddedKnowledgeCompetencyIds },
+                                {"addedtechnicalcompetencyids", FullPageModel.AddedTechnicalCompetencyIds },
+                                {"addedbehaviouralcompetencyids", FullPageModel.AddedBehaviouralCompetencyIds },
+                                {"addedexecutivecompetencyids", FullPageModel.AddedExecutiveCompetencyIds }
+                            };
+
+                            var strToRemoveFromDictionary = "added" + Model.FullCompetencyNameOneWord.ToLower() + "competencyids";
+                            routedataremoveall.Remove(strToRemoveFromDictionary);
+
+                            <button class="btn btn-danger remove-all-btn" type="button" 
+                                data-toggle="modal" data-target="#@("removeall-" + Model.FullCompetencyNameOneWord)">
+                                REMOVE ALL
+                            </button>
+
+                            <div class="modal fade bd-modal-xl" id="@("removeall-" + Model.FullCompetencyNameOneWord)" tabindex="-1" role="dialog" 
+                                aria-labelledby="@("removeall-" + Model.FullCompetencyNameOneWord + "ModelTitle")" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="@("removeall-" + Model.FullCompetencyNameOneWord + "ModelTitle")">
+                                                REMOVE ALL @(Model.FullCompetencyNameEng.ToUpper())
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body text-center">
+                                                <h3 class="text-center">Are you sure you want to remove all @Model.FullCompetencyNameEng.ToLower() that have been added to this position?</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-primary resetWindowHeight" asp-page-handler="delete" 
+                                                    asp-all-route-data="@routedataremoveall">
+                                                    Yes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (remainingCompetenciesToAdd.Any())
+                        {
+                            remainingCompetenciesToAdd = remainingCompetenciesToAdd.OrderBy(x => x.NameEng.ToLower()).ToList();
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("add" + Model.ShortCompetencyName.ToLower())">
+                                Add
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn disabled-btn">
+                                Add
+                            </button>
+                        }
+                </div>
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div class="modal fade bd-modal-xl" id="@("add" + Model.ShortCompetencyName.ToLower())" tabindex="-1" role="dialog" aria-labelledby="#@("modalTitle_" + Model.FullCompetencyNameOneWord)" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="@("modalTitle_" + Model.FullCompetencyNameOneWord)">ADD @(Model.UseAn ? "AN" : "A") @Model.FullCompetencyNameOneWord.ToUpper() @(Model.UseElement ? "ELEMENT" : "COMPETENCY")</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body table-header-row">
+                                <div class="row">
+                                    <div class="col-10 mb-3">
+                                        <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")"><b>@Model.FullCompetencyNameEng / @Model.FullCompetencyNameFre</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")">
+                                            @foreach (var competency in remainingCompetenciesToAdd)
+                                            {
+                                                <option value="@competency.Id">@competency.NameEng <b>/</b> @competency.NameFre</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-2 mb-3">
+                                        <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")"><b>Level</b></label><br />
+                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")">
+                                            <option value="@(1 + Model.AmountToAddToCompetencyRating)">01</option>
+                                            <option value="@(2 + Model.AmountToAddToCompetencyRating)">02</option>
+                                            <option value="@(3 + Model.AmountToAddToCompetencyRating)">03</option>
+                                            <option value="@(4 + Model.AmountToAddToCompetencyRating)">04</option>
+                                            <option value="@(5 + Model.AmountToAddToCompetencyRating)">05</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer no-padding-bottom no-padding-right">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary text-left resetWindowHeight" asp-page-handler="competency" asp-all-route-data="@Model.RouteDataForCompetency">Add Competency</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (atLeastOneCompetency) {
+                addedCompetencies = addedCompetencies.GroupBy(x => x.CompetencyId).Select(x => x.First()).ToList();
+                
+                @foreach (var competency in addedCompetencies)
+                {
+                    var key1 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_a_" + competency.CompetencyId.ToString();
+                    var key2 = Model.ShortCompetencyName.ToLower().Substring(0, 2) + "_b_" + competency.CompetencyId.ToString();
+                    var divKey = Model.ShortCompetencyName.ToLower() + "Div-" + competency.CompetencyId.ToString();
+                    var rateDivKey = Model.ShortCompetencyName.ToLower() + "RateDiv-" + competency.CompetencyId.ToString();
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="accordion" id="@divKey">
+                                <button class="btn btn-link collapsed text-wrap text-left" type="button" data-toggle="collapse" data-target="#@key1" aria-expanded="false" aria-controls="@key1" id="competencyScroll-@competency.CompetencyId">
+                                    @competency.CompetencyNameEng <b>/</b> @competency.CompetencyNameFre
+                                </button>
+                                <div id="@key1" class="collapse" aria-labelledby="#@("tableTitle_" + Model.FullCompetencyNameOneWord)" data-parent="#@divKey">
+                                    <div class="card-body">
+                                        <p>
+                                            <b>English Description</b><br />
+                                            <span class="small-padding-top display-block">@competency.CompetencyDescEng</span>
+                                        </p>
+                                        <p>
+                                            <b>French Description</b><br />
+                                            <span class="small-padding-top display-block">@competency.CompetencyDescFre</span>
+                                        </p>
+                                            <div class="expanded-item-navigation">
+                                                <a href="/Competencies/Edit?id=@competency.CompetencyId" target="@(Model.ExpandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a>
+                                                <hr />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center m-auto compLevelDescContainer">
+                            <div class="accordion" id="@rateDivKey">
+                                <button class="btn btn-link collapsed align-text-top dontShow" type="button" data-toggle="collapse" data-target="#@key2" aria-expanded="false" aria-controls="@key2">
+                                    @competency.RatingValue
+                                </button>
+                                <img src="~/images/icons/minus_icon_black_30.png" class="plus-minus-icon minus-icon @(competency.RatingValue == 1 ? "disabled" : "")" alt="Decrease competency level" />
+                                <select class="changeCompetencyLevelDropdown form-control dropdown-toggle" id="@Model.ShortCompetencyName.ToLower()-@competency.CompetencyId">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        @if (competency.RatingValue == i)
+                                        {
+                                            <option value="@(i + Model.AmountToAddToCompetencyRating)" selected>@i</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@(i + Model.AmountToAddToCompetencyRating)">@i</option>
+                                        }
+                                    }
+                                </select>
+                                <img src="~/images/icons/plus_icon_black_30.png" class="plus-minus-icon plus-icon @(competency.RatingValue == 5 ? "disabled" : "")" alt="Increase competency level" />
+
+                                <div id="@key2" class="collapse" aria-labelledby="#@("levelHeader_" + Model.FullCompetencyNameOneWord)" data-parent="#@rateDivKey">
+                                    <div class="card-body align-text-top text-left">
+                                        <p>
+                                            <b>English Description</b><br />
+                                            <span class="small-padding-top display-block engLevelDesc">@competency.RatingNameEng @competency.RatingDescEng</span>
+                                            <br />
+                                            <span class="compLevelReqDescEng">@competency.CompetencyLevelReqDescEng</span>
+                                        </p>
+                                        <p>
+                                            <b>French Description</b><br />
+                                            <span class="small-padding-top display-block freLevelDesc">@competency.RatingNameFre @competency.RatingDescFre</span>
+                                            <br />
+                                            <span class="compLevelReqDescFre">@competency.CompetencyLevelReqDescFre</span>
+                                        </p>
+                                        <div class="expanded-item-navigation">
+                                            <a href="/Competencies/Edit?id=@competency.CompetencyId" target="@(Model.ExpandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                            </a>
+                                            <hr /> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dontShow">
+                                    @{
+                                        var descs = await FullPageModel.GetCompetencyDescriptions(competency.CompetencyId);
+                                    }
+                                    @foreach (var desc in descs)
+                                    {
+                                        <span class="compDescEng">@desc.DescEng</span>
+                                        <span class="compDescFre">@desc.DescFre</span>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-3 text-right">
+                            @{
+                                var routedataremove = new Dictionary<string, string> {
+                                    {"id", FullPageModel.Id.ToString() },
+                                    {"levelcode", FullPageModel.LevelCode },
+                                    {"levelvalue", FullPageModel.LevelValue },
+                                    {"regionids", FullPageModel.RegionIds },
+                                    {"subjobgroupId", FullPageModel.SubJobGroupId.ToString() },
+                                    {"jobgrouplevelid", FullPageModel.JobGroupLevelId.ToString() },
+                                    {"jobgroupid", FullPageModel.JobGroupId.ToString() },
+                                    {"addedcertificateids", FullPageModel.AddedCertificateIds },
+                                    {"addedknowledgecompetencyids", FullPageModel.AddedKnowledgeCompetencyIds },
+                                    {"addedtechnicalcompetencyids", FullPageModel.AddedTechnicalCompetencyIds },
+                                    {"addedbehaviouralcompetencyids", FullPageModel.AddedBehaviouralCompetencyIds },
+                                    {"addedexecutivecompetencyids", FullPageModel.AddedExecutiveCompetencyIds },
+                                    {"competencyId", competency.CompetencyId.ToString() }
+                                };
+                            }
+                            <button class="btn btn-link remove-btn resetWindowHeight" asp-page-handler="delete" asp-all-route-data="@routedataremove">REMOVE</button>
+                        </div>
+                    </div> 
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-9">
+                        <p class="no-competency">This position does not currently have any @Model.FullCompetencyNameEng.ToLower() associated to it</p>
+                    </div>
+                </div>
+            }
+            <hr />
+        </td>
+    </tr>
+</table>

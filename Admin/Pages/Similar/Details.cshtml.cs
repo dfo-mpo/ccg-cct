@@ -68,156 +68,95 @@ namespace Admin.Pages.Similar
         [BindProperty(SupportsGet = true)]
         public string AddedSeventyPercentIds { get; set; } = string.Empty;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
+        public bool HasMultipleSimilarPositions { get; set; } = false;
 
+        public async Task<IActionResult> OnGetAsync(int? id, string? percent)
+        {
             if (id == null)
             {
                 return NotFound();
             }
 
-            JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.HundredPercent);
-            foreach (var added in JobPosition.HundredPercent.Split("&PositionId="))
+            try
             {
-                if (!string.IsNullOrEmpty(added))
-                {
-                    int number;
-                    bool success = int.TryParse(added, out number);
-                    if (success)
-                    {
-                        AddedOneHundredPercentIds += number.ToString() + '-';
-                    }
-                }
+                CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
             }
-            foreach (var added in JobPosition.NinetyPercent.Split("&PositionId="))
-            {
-                if (!string.IsNullOrEmpty(added))
-                {
-                    int number;
-                    bool success = int.TryParse(added, out number);
-                    if (success)
-                    {
-                        AddedNinetyPercentIds += number.ToString() + '-';
-                    }
-                }
-            }
-            foreach (var added in JobPosition.EightyPercent.Split("&PositionId="))
-            {
-                if (!string.IsNullOrEmpty(added))
-                {
-                    int number;
-                    bool success = int.TryParse(added, out number);
-                    if (success)
-                    {
-                        AddedEightyPercentIds += number.ToString() + '-';
-                    }
-                }
-            }
-            foreach (var added in JobPosition.SeventyPercent.Split("&PositionId="))
-            {
-                if (!string.IsNullOrEmpty(added))
-                {
-                    int number;
-                    bool success = int.TryParse(added, out number);
-                    if (success)
-                    {
-                        AddedSeventyPercentIds += number.ToString() + '-';
-                    }
-                }
-            }
-            if (JobPosition == null)
+            catch
             {
                 return NotFound();
             }
+
+            if (CurrentPosition == null)
+            {
+                return NotFound();
+            }
+            if (CurrentPosition.Active != 1)
+            {
+                return NotFound();
+            }
+
+            JobPosition = await _context.SearchSimilarJobs.FirstOrDefaultAsync(m => m.Position == id);
+
+            if (JobPosition == null)
+            {
+                return Redirect("/Similar/Create?id=" + CurrentPosition.JobTitleId);
+            }
+
+            PercentSelection = "100";
+
+            if (percent != null)
+            {
+                if (percent == "90")
+                {
+                    PercentSelection = "90";
+                }
+                else if (percent == "80")
+                {
+                    PercentSelection = "80";
+                }
+                else if (percent == "70")
+                {
+                    PercentSelection = "70";
+                }
+            }
+
+            var activePositionIds = await _context.JobPositions.Where(x => x.Active == 1).Select(x => x.Id).ToListAsync();
+
+            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.HundredPercent);
+            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.NinetyPercent);
+            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.EightyPercent);
+            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(JobPosition.SeventyPercent);
+
+            JobPositionDto[][] positionsArray = { AddedOneHundredPercentJobPositions, AddedNinetyPercentJobPositions, 
+                AddedEightyPercentJobPositions, AddedSeventyPercentJobPositions };
+            
+            foreach (var group in positionsArray)
+            {
+                if (!HasMultipleSimilarPositions)
+                {
+                    foreach (var pos in group)
+                    {
+                        if (!HasMultipleSimilarPositions)
+                        {
+                            if (activePositionIds.Contains(pos.JobTitleId))
+                            {
+                                HasMultipleSimilarPositions = true;
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task OnPostSelectOneHundredPercent()
-        {
-            PercentSelection = "100";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            var querystring = string.Empty;
-            foreach (var id in AddedOneHundredPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedOneHundredPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-        }
-        public async Task OnPostSelectNinetyPercent()
-        {
-            PercentSelection = "90";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            var querystring = string.Empty;
-            foreach (var id in AddedNinetyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedNinetyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-        }
-
-        public async Task OnPostSelectEightyPercent()
-        {
-            PercentSelection = "80";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            var querystring = string.Empty;
-            foreach (var id in AddedEightyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedEightyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-        }
-        public async Task OnPostSelectSeventyPercent()
-        {
-            PercentSelection = "70";
-            CurrentPosition = await _jobPositionService.GetJobPositionById(Id);
-            var querystring = string.Empty;
-            foreach (var id in AddedSeventyPercentIds.Split('-'))
-            {
-                if (!string.IsNullOrEmpty(id))
-                {
-                    int numberid;
-                    bool success = int.TryParse(id, out numberid);
-                    if (success)
-                    {
-                        querystring += "&PositionId=" + numberid.ToString();
-                    }
-                }
-            }
-            AddedSeventyPercentJobPositions = await _jobPositionService.GetJobPositionByIdValues(querystring);
-        }
-
-        private bool JobPositionExists(int id)
-        {
-            return _context.JobPositions.Any(e => e.Id == id);
-        }
     }
 }

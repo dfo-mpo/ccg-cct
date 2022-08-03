@@ -43,6 +43,10 @@ namespace Admin.Pages.Certificates
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
             if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
@@ -63,19 +67,14 @@ namespace Admin.Pages.Certificates
             {
                 return NotFound();
             }
+            if (Certificate.Active != 1)
+            {
+                return NotFound();
+            }
 
-            try
-            {
-                _jobCertificateService.DeleteJobCertificate(Certificate);
-                Thread.Sleep(5000);
-                return RedirectToPage("./Index");
-            }
-            catch (DbUpdateException ex)
-            {
-                _logger.LogError(ex, ErrorMessage);
-                return RedirectToAction("./Delete",
-                                     new { id, saveChangesError = true });
-            }
+            await _jobCertificateService.DeleteJobCertificate(Certificate);
+
+            return RedirectToPage("./Index");
         }
     }
 }

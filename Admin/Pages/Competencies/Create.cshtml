@@ -1,26 +1,27 @@
 ﻿@page
 @model Admin.Pages.Competencies.CreateModel
 @{
-    ViewData["Title"] = "Create New Competency";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Create a new Competency</h1>
+<h1>Create</h1>
 
+<h4>Competency</h4>
 <hr />
 
 <div class="col-md-12">
-    <form method="post">
+    <form method="post" class="trimFormWhenSubmitting">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <h3 style="margin-bottom:15px;">Choose a competency to add</h3>
+        <h3 style="margin-bottom:15px;">Choose the competency type</h3>
         <div class="form-group">
-            <input type="radio" id="knowledge" asp-for="@Model.TypeId" name="CompetencyType" value="1">
-            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="knowledge">Knowledge</label>
-            <input type="radio" id="technical" asp-for="@Model.TypeId" name="CompetencyType" value="2">
-            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="technical">Technical</label>
-            <input type="radio" id="behavioural" asp-for="@Model.TypeId" name="CompetencyType" value="3">
-            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="behavioural">Behavioural</label>
-            <input type="radio" id="executive" asp-for="@Model.TypeId" name="CompetencyType" value="4">
-            <label class="h5 mr-md-3" asp-for="@Model.TypeId" for="executive">Executive</label>
+            <input type="radio" id="knowledge" asp-for="@Model.TypeId" value="1">
+            <label class="h5 mr-md-3" for="knowledge">Knowledge</label>
+            <input type="radio" id="technical" asp-for="@Model.TypeId" value="2">
+            <label class="h5 mr-md-3" for="technical">Technical</label>
+            <input type="radio" id="behavioural" asp-for="@Model.TypeId" value="3">
+            <label class="h5 mr-md-3" for="behavioural">Behavioural</label>
+            <input type="radio" id="executive" asp-for="@Model.TypeId" value="4">
+            <label class="h5 mr-md-3" for="executive">Executive</label>
         </div>
         <div class="form-group">
             <label asp-for="Competency.NameEng" class="control-label"><b>Name English</b></label>
@@ -34,83 +35,87 @@
         </div>
         <div class="form-group">
             <label asp-for="Competency.DescEng" class="control-label"><b>Description English</b></label>
-            <textarea asp-for="Competency.DescEng" class="form-control" rows="5" cols="50"></textarea>
+            <textarea asp-for="Competency.DescEng" class="form-control" rows="5" cols="50" required></textarea>
             <span asp-validation-for="Competency.DescEng" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Competency.DescFre" class="control-label"><b>Description French</b></label>
-            <textarea asp-for="Competency.DescFre" class="form-control" rows="5" cols="50"></textarea>
+            <textarea asp-for="Competency.DescFre" class="form-control" rows="5" cols="50" required></textarea>
             <span asp-validation-for="Competency.DescFre" class="text-danger"></span>
         </div>
-        <h3 style="margin-bottom:15px;">Add a description for each Level</h3>
+
+        <h3 class="small-margin-bottom small-margin-top">Add a description for each level</h3>
+
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 1 - English</b></label>
-                <textarea asp-for="Competency.Level1DescEng" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level1DescEng" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level1DescEng" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 1 - French</b></label>
-                <textarea asp-for="Competency.Level1DescFre" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level1DescFre" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level1DescFre" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level2DescEng" class="control-label"><b>Level 2 - English</b></label>
-                <textarea asp-for="Competency.Level2DescEng" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level2DescEng" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level2DescEng" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level2DescFre" class="control-label"><b>Level 2 - French</b></label>
-                <textarea asp-for="Competency.Level2DescFre" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level2DescFre" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level2DescFre" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level3DescEng" class="control-label"><b>Level 3 - English</b></label>
-                <textarea asp-for="Competency.Level3DescEng" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level3DescEng" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level3DescEng" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level3DescFre" class="control-label"><b>Level 3 - French</b></label>
-                <textarea asp-for="Competency.Level3DescFre" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level3DescFre" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level3DescFre" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level4DescEng" class="control-label"><b>Level 4 - English</b></label>
-                <textarea asp-for="Competency.Level4DescEng" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level4DescEng" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level4DescEng" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level4DescFre" class="control-label"><b>Level 4 - French</b></label>
-                <textarea asp-for="Competency.Level4DescFre" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level4DescFre" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level2DescFre" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level5DescEng" class="control-label"><b>Level 5 - English</b></label>
-                <textarea asp-for="Competency.Level5DescEng" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level5DescEng" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level5DescEng" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Competency.Level5DescFre" class="control-label"><b>Level 5 - French</b></label>
-                <textarea asp-for="Competency.Level5DescFre" class="form-control" rows="3" cols="45"></textarea>
+                <textarea asp-for="Competency.Level5DescFre" class="form-control" rows="3" cols="45" required></textarea>
                 <span asp-validation-for="Competency.Level5DescFre" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group space-btns padding-top">
             <input type="submit" value="Create" class="btn btn-primary" />
+            <a class="btn btn-secondary" asp-page="List" asp-route-typeid="@Model.TypeId">Cancel</a>
         </div>
     </form>
 </div>
 
 
-<div>
+<div class="padding-left">
     <a asp-page="List" asp-route-typeid="@Model.TypeId">Back to List</a>
 </div>
 

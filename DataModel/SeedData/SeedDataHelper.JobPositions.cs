@@ -60,7 +60,6 @@ namespace DataModel.SeedData
             new JobPosition {Id = 51, TitleEng = "Leader Monitoring Communications and Information / Public Affairs / International Relations Officer / Multimedia Video - Officer", TitleFre = "Chef de la surveillance des communications et de l'information / Affaires publiques / Agent des relations internationales / Officier multimédia vidéo ", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 52, TitleEng = "Regional Supervisor Network Services", TitleFre = "Superviseur régionale services de réseau", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 53, TitleEng = "Desk Officer Technical Training", TitleFre = "Officier d'entrainement technique", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-
             new JobPosition {Id = 55, TitleEng = "Analyst (Planning, Performance and Risk / Business Issues / Programs Planning and Budgeting / Senior Advisor, Outreach / Senior Planning & Performance / Senior Analyst, PMMR / Senior Public Affairs)", TitleFre = "Analyste (Planification, Performance et Risque / Enjeux d'affaires / Planification et budgétisation des programmes / Conseiller principal, Sensibilisation / Planification et performance principal / Analyste principal, PMMR / Affaires publiques principales)", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 56, TitleEng = "Analyst - Fleet (Head of Quality Assurance and Academic Support / Maritime Security Operations / Operations Analyst, VOC, AtoN, MCTS / Fleet Management / Exercise Planning Senior / Operations Management / Operations Data)", TitleFre = "Analyste - Flotte (Chef de l'assurance de la qualité et du soutien académique / Opérations de sécurité maritime / Analyste des opérations, VOC, AtoN, SCTM / Gestion de la flotte / Senior de la planification des exercices / Gestion des opérations / Données opérationnelles)", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 57, TitleEng = "Investment Analyst / Manager, Reporting, Monitoring / Costing Management Analyst", TitleFre = "Analyste des investissements /Gestionnaire, rapports, suivi / Analyste de la gestion des coûts", Active = 1, PositionDescEng = "", PositionDescFre = "" },
@@ -68,7 +67,6 @@ namespace DataModel.SeedData
             new JobPosition {Id = 59, TitleEng = "Superintendent, Fleet Safety & Security / Marine Security Operations Centre (MSOC) Project Division / Manager, Safety and Security", TitleFre = "Surintendant, sûreté et sécurité de la flotte / Projet Centre des opérations de la sûreté maritime (COSM) / Gestionnaire, Sûreté et sécurité", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 60, TitleEng = "Head Quality Assurance & Academic Support", TitleFre = "Responsable assurance qualité et soutien académique", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 61, TitleEng = "Executive Advisor to the Deputy Commissioner / Executive Advisor to Director General", TitleFre = "Conseiller exécutif du commissaire adjoint / Conseiller exécutif du directeur général", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-
             new JobPosition {Id = 63, TitleEng = "Manager, Operational Personnel Management", TitleFre = "Gestionnaire, Gestion du personnel opérationnel", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 64, TitleEng = "Manager, Planning and Governance / Policy and Standards Operations Personnel", TitleFre = "Gestionnaire, Planification et direction / Personnel des opérations des politiques et des normes", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 65, TitleEng = "Chief of Operations", TitleFre = "Chef des opérations", Active = 1, PositionDescEng = "", PositionDescFre = "" },
@@ -416,7 +414,24 @@ namespace DataModel.SeedData
             new JobPosition {Id = 410, TitleEng = "Wellness Coordinator", TitleFre = "Coordonnateur du bien-être", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 411, TitleEng = "Wellness Analyst", TitleFre = "Analyste du bien-être", Active = 1, PositionDescEng = "", PositionDescFre = "" },
             new JobPosition {Id = 412, TitleEng = "Director, Training Development & Academic Support", TitleFre = "Directeur, développement de la formation et soutien scolaire", Active = 1, PositionDescEng = "", PositionDescFre = "" },
-            new JobPosition {Id = 413, TitleEng = "Manager Wellness and Recruitment Strategy", TitleFre = "Gestionnaire du bien-être et stratégie de recrutement", Active = 1, PositionDescEng = "", PositionDescFre = "" }
+            new JobPosition {Id = 413, TitleEng = "Manager Wellness and Recruitment Strategy", TitleFre = "Gestionnaire du bien-être et stratégie de recrutement", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 414, TitleEng = "Print Shop Operator", TitleFre = "Opérateur d'atelier d'imprimerie", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 415, TitleEng = "Duty Officer", TitleFre = "Officier de service", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 416, TitleEng = "Field Officer", TitleFre = "Arbitre de terrain", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 417, TitleEng = "Handling Operations Instructor", TitleFre = "Formateur en opérations de manutention", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 418, TitleEng = "Analyst", TitleFre = "Analyste", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 419, TitleEng = "Help Desk Technician", TitleFre = "Technicien de bureau de dépannage", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 420, TitleEng = "Maintenance Technician, ER", TitleFre = "Technicien d'entretien, RE", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 421, TitleEng = "Regional ICS Support Officer", TitleFre = "Agent de soutien régional du SCI", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 422, TitleEng = "Analyst", TitleFre = "Analyste", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 423, TitleEng = "ER Asset Data Analyst", TitleFre = "Formateur en opérations de manutention", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 424, TitleEng = "Icebreaking Officer", TitleFre = "Analyste", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 425, TitleEng = "Junior Project Officer", TitleFre = "Technicien de bureau de dépannage", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 426, TitleEng = "Foreman", TitleFre = "Contremaître", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 427, TitleEng = "Monitoring & Evaluation Officer / Q&A Coordinator", TitleFre = "Officier du suivi et de l'évaluation / Coordonnateur de l'assurance qualité", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 428, TitleEng = "Ops Requirements Analyst, AtoN Program", TitleFre = "Analyse des exigences opérationnelles, Programme AtoN", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 429, TitleEng = "Ops Requirements Analyst, Icebreaking Program", TitleFre = "Analyse des exigences opérationnelles, Programme de déglaçage", Active = 1, PositionDescEng = "", PositionDescFre = "" },
+            new JobPosition {Id = 430, TitleEng = "Ops Requirements Analyst, RAMSARD", TitleFre = "Analyse des exigences opérationnelles, RAMSARD", Active = 1, PositionDescEng = "", PositionDescFre = "" }
         };
     }
 }

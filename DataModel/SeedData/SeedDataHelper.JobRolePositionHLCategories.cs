@@ -388,7 +388,7 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 2, JobPositionId = 383, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 384, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 16, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 385, JobHLCategoryId = 2},
-            new JobRolePositionHLCategory {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 5, JobPositionId = 386, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 16, SubJobGroupId = 23, JobGroupLevelId = 1, JobPositionId = 386, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 5, JobPositionId = 387, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 8, SubJobGroupId = 1, JobGroupLevelId = 7, JobPositionId = 388, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 10, SubJobGroupId = 9, JobGroupLevelId = 6, JobPositionId = 389, JobHLCategoryId = 1},
@@ -415,6 +415,23 @@ namespace DataModel.SeedData
             new JobRolePositionHLCategory {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 411, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 7, JobPositionId = 412, JobHLCategoryId = 2},
             new JobRolePositionHLCategory {JobGroupId = 2, SubJobGroupId = 25, JobGroupLevelId = 7, JobPositionId = 413, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 2, JobPositionId = 414, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 2, JobPositionId = 415, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 416, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 417, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 3, JobPositionId = 418, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 419, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 420, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 4, JobPositionId = 421, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 422, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 423, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 424, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 425, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 426, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 5, JobPositionId = 427, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 6, JobPositionId = 428, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 6, JobPositionId = 429, JobHLCategoryId = 2},
+            new JobRolePositionHLCategory {JobGroupId = 1, SubJobGroupId = 25, JobGroupLevelId = 6, JobPositionId = 430, JobHLCategoryId = 2}
         };
     }
 }

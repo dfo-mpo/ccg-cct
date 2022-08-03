@@ -42,10 +42,25 @@ namespace Business.Commands.Admin
 
         private async Task DeleteTables()
         {
+            DeleteTable<CertificateDescription>();
+            DeleteTable<Certificate>();
+
+            DeleteTable<Competency>();
+            DeleteTable<CompetencyLevelRequirement>();
             DeleteTable<CompetencyRatingGroup>();
+            DeleteTable<CompetencyRatingLevel>();
             DeleteTable<CompetencyTypeGroup>();
+            DeleteTable<CompetencyType>();
+
+            DeleteTable<JobGroupLevel>();
             DeleteTable<JobGroupPosition>();
+            DeleteTable<JobGroup>();
+
+            DeleteTable<JobHLCategory>();
+            DeleteTable<JobLocationRegion>();
+
             DeleteTable<JobPositionCompetency>();
+            DeleteTable<JobPosition>();
             DeleteTable<JobRolePositionCertificate>();
             DeleteTable<JobRolePositionCompetency>();
             DeleteTable<JobRolePositionCompetencyRating>();
@@ -53,19 +68,9 @@ namespace Business.Commands.Admin
             DeleteTable<JobRolePositionLocation>();
             DeleteTable<JobRole>();
 
+            DeleteTable<SearchSimilarJob>();
+            DeleteTable<SubJobGroup>();
 
-            DeleteTable<Competency>();
-            DeleteTable<CompetencyType>();
-            DeleteTable<Certificate>();
-            DeleteTable<CertificateDescription>();
-
-            DeleteTable<JobLocationRegion>();
-            DeleteTable<JobPosition>();
-            DeleteTable<JobHLCategory>();
-            DeleteTable<JobGroupLevel>();
-            DeleteTable<JobGroup>();
-            DeleteTable<CompetencyLevelRequirement>();
-            DeleteTable<CompetencyRatingLevel>();
 
             await _db.SaveChangesAsync();
 

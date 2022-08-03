@@ -126,28 +126,28 @@ namespace Admin.Data
         {
             string url = $"/api/jobpositions/updatejobposition?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
 
         public async Task DeleteJobPosition(object Parameters)
         {
             string url = $"/api/jobpositions/deletejobposition?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
 
         public async Task UpdateSimilarPositions(object Parameters)
         {
             string url = $"/api/similar/updatesimilarjobpositions?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
 
         public async Task PostSimilarPositions(object Parameters)
         {
             string url = $"/api/similar/addsimilarjobpositions?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
 
         public async Task<int[]> GetAllSimilarSearchIds()

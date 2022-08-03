@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DataModel;
 using Admin.Data;
 using Business.Dtos.JobCompetencies;
+using Microsoft.AspNetCore.Http;
 
 namespace Admin.Pages.Certificates
 {
@@ -25,11 +26,36 @@ namespace Admin.Pages.Certificates
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
 
+        public bool DisplayTopOfPage { get; set; }
+
+        public double LastTableContainerHeight { get; set; } = 300;
+
         public IList<JobCertificateDto> Certificates { get; set; }
 
         public async Task OnGetAsync(string searchString)
         {
             Certificates = await _jobCompetencyService.GetJobCertificates();
+
+            DisplayTopOfPage = true;
+            var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (sessionStr.ToLower() == "false")
+                {
+                    DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
+                }
+            }
         }
     }
 }

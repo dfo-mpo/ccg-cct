@@ -1,45 +1,47 @@
 ﻿@page
 @model Admin.Pages.Competencies.DetailsModel
 @{
-    ViewData["Title"] = "Knowledge Details";
+    ViewData["Title"] = "Details";
 }
 
-<div style="margin-top:55px;">
+<h1>Details</h1>
+
+<div class="small-margin-bottom">
     <h4>@Html.DisplayFor(model => model.Competency.NameEng) / @Html.DisplayFor(model => model.Competency.NameFre)</h4>
     <hr />
-    <dl class="row border-bottom">
+    <dl class="row border-bottom small-padding-bottom">
         <dt class="col-md-2">
-            Name English
+            @Html.DisplayNameFor(model => model.Competency.NameEng)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.NameEng)
         </dd>
         <dt class="col-md-2">
-            Name French
+            @Html.DisplayNameFor(model => model.Competency.NameFre)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.NameFre)
         </dd>
         <dt class="col-md-2">
-            Description English
+            @Html.DisplayNameFor(model => model.Competency.DescEng)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.DescEng)
         </dd>
         <dt class="col-md-2">
-            Description French
+            @Html.DisplayNameFor(model => model.Competency.DescFre)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.DescFre)
         </dd>
         <dt class="col-md-2">
-            Type Name English
+            @Html.DisplayNameFor(model => model.Competency.TypeNameEng)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.TypeNameEng)
         </dd>
         <dt class="col-md-2">
-            Type Name French
+            @Html.DisplayNameFor(model => model.Competency.TypeNameFre)
         </dt>
         <dd class="col-md-10">
             @Html.DisplayFor(model => model.Competency.TypeNameFre)
@@ -49,65 +51,57 @@
 <div class="row">
     <div class="form-group col-md-6">
         <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 1 - English</b></label>
-        <textarea asp-for="Competency.Level1DescEng" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level1DescEng" class="text-danger"></span>
+        <p class="comp-details-level">@Model.Competency.Level1DescEng</p>
     </div>
     <div class="form-group col-md-6">
         <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 1 - French</b></label>
-        <textarea asp-for="Competency.Level1DescFre" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level1DescFre" class="text-danger"></span>
+        <p class="comp-details-level">@Model.Competency.Level1DescFre</p>
     </div>
 </div>
 <div class="row">
     <div class="form-group col-md-6">
-        <label asp-for="Competency.Level2DescEng" class="control-label"><b>Level 2 - English</b></label>
-        <textarea asp-for="Competency.Level2DescEng" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level2DescEng" class="text-danger"></span>
+        <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 2 - English</b></label>
+        <p class="comp-details-level">@Model.Competency.Level2DescEng</p>
     </div>
     <div class="form-group col-md-6">
-        <label asp-for="Competency.Level2DescFre" class="control-label"><b>Level 2 - French</b></label>
-        <textarea asp-for="Competency.Level2DescFre" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level2DescFre" class="text-danger"></span>
+        <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 2 - French</b></label>
+        <p class="comp-details-level">@Model.Competency.Level2DescFre</p>
+    </div>
+</div>
+<div class="row">
+   <div class="form-group col-md-6">
+        <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 3 - English</b></label>
+        <p class="comp-details-level">@Model.Competency.Level3DescEng</p>
+    </div>
+    <div class="form-group col-md-6">
+        <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 3 - French</b></label>
+        <p class="comp-details-level">@Model.Competency.Level3DescFre</p>
     </div>
 </div>
 <div class="row">
     <div class="form-group col-md-6">
-        <label asp-for="Competency.Level3DescEng" class="control-label"><b>Level 3 - English</b></label>
-        <textarea asp-for="Competency.Level3DescEng" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level3DescEng" class="text-danger"></span>
+        <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 4 - English</b></label>
+        <p class="comp-details-level">@Model.Competency.Level4DescEng</p>
     </div>
     <div class="form-group col-md-6">
-        <label asp-for="Competency.Level3DescFre" class="control-label"><b>Level 3 - French</b></label>
-        <textarea asp-for="Competency.Level3DescFre" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level3DescFre" class="text-danger"></span>
+        <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 4 - French</b></label>
+        <p class="comp-details-level">@Model.Competency.Level4DescFre</p>
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-6">
-        <label asp-for="Competency.Level4DescEng" class="control-label"><b>Level 4 - English</b></label>
-        <textarea asp-for="Competency.Level4DescEng" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level4DescEng" class="text-danger"></span>
+   <div class="form-group col-md-6">
+        <label asp-for="Competency.Level1DescEng" class="control-label"><b>Level 5 - English</b></label>
+        <p class="comp-details-level">@Model.Competency.Level5DescEng</p>
     </div>
     <div class="form-group col-md-6">
-        <label asp-for="Competency.Level4DescFre" class="control-label"><b>Level 4 - French</b></label>
-        <textarea asp-for="Competency.Level4DescFre" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level4DescFre" class="text-danger"></span>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-md-6">
-        <label asp-for="Competency.Level5DescEng" class="control-label"><b>Level 5 - English</b></label>
-        <textarea asp-for="Competency.Level5DescEng" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level5DescEng" class="text-danger"></span>
-    </div>
-    <div class="form-group col-md-6">
-        <label asp-for="Competency.Level5DescFre" class="control-label"><b>Level 5 - French</b></label>
-        <textarea asp-for="Competency.Level5DescFre" class="form-control" rows="3" cols="45"></textarea>
-        <span asp-validation-for="Competency.Level5DescFre" class="text-danger"></span>
+        <label asp-for="Competency.Level1DescFre" class="control-label"><b>Level 5 - French</b></label>
+        <p class="comp-details-level">@Model.Competency.Level5DescFre</p>
     </div>
 </div>
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Competency.Id">Edit</a> |
-    <a asp-page="./List" asp-route-typeid="@Model.Competency.TypeId">Back to List</a>
+    <a asp-page="./List" asp-route-typeid="@Model.Competency.TypeId">Back to List</a> |
+    <a asp-page="./Locate" asp-route-id="@Model.Competency.Id">Locate</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Competency.Id">Delete</a>
 </div>

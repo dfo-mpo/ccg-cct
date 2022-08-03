@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Admin.Data;
 using Business.Dtos.JobPositions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Admin.Pages.Positions
 {
@@ -19,6 +20,10 @@ namespace Admin.Pages.Positions
             _jobPositionService = jobPositionService;
         }
 
+        public bool DisplayTopOfPage { get; set; }
+
+        public double LastTableContainerHeight { get; set; } = 300;
+
         public IList<JobPositionDto> JobPositions { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
@@ -26,6 +31,27 @@ namespace Admin.Pages.Positions
         public async Task OnGetAsync()
         {
             JobPositions = await _jobPositionService.GetAllJobPositions();
+
+            DisplayTopOfPage = true;
+            var sessionStr = HttpContext.Session.GetString("displayTopOfPage");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (sessionStr.ToLower() == "false")
+                {
+                    DisplayTopOfPage = false;
+                }
+            }
+            sessionStr = HttpContext.Session.GetString("lastTableContainerHeight");
+            if (!string.IsNullOrEmpty(sessionStr))
+            {
+                if (double.TryParse(sessionStr, out double num))
+                {
+                    if (num > 300)
+                    {
+                        LastTableContainerHeight = num;
+                    }
+                }
+            }
         }
     }
 }

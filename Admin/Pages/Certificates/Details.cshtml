@@ -1,5 +1,6 @@
 ﻿@page
 @model Admin.Pages.Certificates.DetailsModel
+@inject Admin.Data.FormattingService Formatter
 
 @{
     ViewData["Title"] = "Details";
@@ -26,18 +27,114 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Certificate.DescEng)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Certificate.DescEng)
-        </dd>
+        @if (!string.IsNullOrWhiteSpace(Model.Certificate.DescEng))
+        {
+            <dd class="col-sm-10">
+                @{
+                    var descPortions = Model.Certificate.DescEng.Split("\r\n");
+                    bool oneLinkAdded = false;
+                    foreach (var desc in descPortions)
+                    {
+                        bool containsALink = false;
+                        if (desc.Contains("http"))
+                        {
+                            containsALink = true;
+                        }
+                        if (!containsALink)
+                        {
+                            <span>@desc</span>
+                            <br />
+                        }
+                        else
+                        {
+                            var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                            var href = formattedLink[0];
+                            var displayStr = formattedLink[1];
+                            
+                            if (oneLinkAdded)
+                            {
+                                <span class="inline-block margin-left-link-spacing">| </span>
+                            }
+
+                            <a href="@href" target="_blank">
+                                @displayStr
+                                <img src="~/images/icons/external_link_icon.png" 
+                                class="external-link" alt="Open link in new tab" />
+                            </a>
+
+                            if (!oneLinkAdded)
+                            {
+                                oneLinkAdded = true;
+                            }
+                        }
+                    }
+                }
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10 bold">
+                Not provided
+            </dd>
+        }
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Certificate.DescFre)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Certificate.DescFre)
-        </dd>
+        @if (!string.IsNullOrWhiteSpace(Model.Certificate.DescFre))
+        {
+            <dd class="col-sm-10">
+                @{
+                    var descPortions = Model.Certificate.DescFre.Split("\r\n");
+                    bool oneLinkAdded = false;
+                    foreach (var desc in descPortions)
+                    {
+                        bool containsALink = false;
+                        if (desc.Contains("http"))
+                        {
+                            containsALink = true;
+                        }
+                        if (!containsALink)
+                        {
+                            <span>@desc</span>
+                            <br />
+                        }
+                        else
+                        {
+                            var formattedLink = Formatter.FormatCertificateDescriptionLink(desc);
+                            var href = formattedLink[0];
+                            var displayStr = formattedLink[1];
+
+                            if (oneLinkAdded)
+                            {
+                                <span class="inline-block margin-left-link-spacing">| </span>
+                            }
+                            <a href="@href" target="_blank">
+                                @displayStr
+                                <img src="~/images/icons/external_link_icon.png" 
+                                class="external-link" alt="Open link in new tab" />
+                            </a>
+
+                            if (!oneLinkAdded)
+                            {
+                                oneLinkAdded = true;
+                            }
+                        }
+                    }
+                }
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-10 bold">
+                Not provided
+            </dd>
+        }
     </dl>
 </div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Certificate.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a> |
+    <a asp-page="./Locate" asp-route-id="@Model.Certificate.Id">Locate</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Certificate.Id">Delete</a>
 </div>

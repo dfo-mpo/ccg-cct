@@ -31,35 +31,35 @@ namespace Admin.Data
             using var httpClient = _clientFactory.CreateClient("api");
             return await httpClient.GetJsonAsync<JobCertificateDto>(url);
         }
-        public async Task<int> PostJobCertificate(string Parameters)
+        public async Task<int> PostJobCertificate(object Parameters)
         {
-            string url = $"/api/jobcertificates/addjobcertificate?{Parameters}";
+            string url = $"/api/jobcertificates/addjobcertificate";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<int>(url);
+            return await httpClient.PostJsonAsync<int>(url, Parameters);
         }
         public async Task UpdateJobCertificate(object Parameters)
         {
             string url = $"/api/jobcertificates/updatejobcertificate?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task DeleteJobCertificate(object Parameters)
         {
             string url = $"/api/jobcertificates/deletejobcertificate?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
-        public async Task<int> PostJobCertificateDescription(string DescEng, string DescFre)
+        public async Task<int> PostJobCertificateDescription(object Parameters)
         {
-            string url = $"/api/jobcertificates/addjobcertificatedescription/{DescEng}/{DescFre}";
+            string url = $"/api/jobcertificates/addjobcertificatedescription";
             using var httpClient = _clientFactory.CreateClient("api");
-            return await httpClient.GetJsonAsync<int>(url);
+            return await httpClient.PostJsonAsync<int>(url, Parameters);
         }
         public async Task UpdateJobCertificateDescription(object Parameters)
         {
-            string url = $"/api/jobcertificates/updatejobcertificatedescription?";
+            string url = $"/api/jobcertificates/updatejobcertificatedescription";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
         public async Task<JobCertificateDto[]> GetAllJobCertificateDescriptions()
         {
@@ -70,7 +70,7 @@ namespace Admin.Data
         {
             string url = $"/api/jobcertificates/deletejobcertificatedescription?";
             using var httpClient = _clientFactory.CreateClient("api");
-            await httpClient.PostJsonAsync<HttpResponseMessage>(url, Parameters);
+            await httpClient.PostJsonAsync(url, Parameters);
         }
     }
 }

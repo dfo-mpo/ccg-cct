@@ -1,0 +1,63 @@
+﻿@page
+@model Admin.Pages.Similar.ExecutiveSummaryModel
+@{
+	ViewData["Title"] = "Similar Positions Summary";
+	Layout = "_LayoutNoNavigation";
+
+    var itemsThatMatchFilter = Model.JobPositions.Where(e => e.Active == 1).ToList();
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower())
+                            .OrderBy(x => x.LevelCode.ToLower()).ToList();
+}
+
+<br /><br />
+
+<span class="glyphicon glyphicon-save-file relatively-down pull-right" onclick="print()"></span>
+
+<h1>Number of Similar Positions Per Percentage</h1>
+
+<table class="table small-margin-top">
+    <thead>
+        <tr class="table-header-row text-center">
+
+            @* Inline width property is used here because it applies flawlessly in print mode *@
+
+            <th style="width: 8.33%;"><b class="sort-column-percents">Level</b></th>
+            <th style="width: 33.33%;"><b class="sort-column-percents">Title English</b></th>
+            <th style="width: 33.33%;"><b class="sort-column-percents">Title French</b></th>
+            <th style="width: 25%;">
+                <div class="four-col-grid">
+                    <span class="sort-column-percents">100%</span>
+                    <span class="sort-column-percents">90%</span>
+                    <span class="sort-column-percents">80%</span>
+                    <span class="sort-column-percents">70%</span>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in itemsThatMatchFilter)
+        {
+            <tr>
+                <td class="text-center sort-percents">
+                    @Html.DisplayFor(modelItem => item.LevelCode)
+                </td>
+                <td class="sort-percents">
+                    @Html.DisplayFor(modelItem => item.JobTitleEng)
+                </td>
+                <td class="sort-percents">
+                    @Html.DisplayFor(modelItem => item.JobTitleFre)
+                </td>
+                <td class="four-col-grid">
+                    @{
+                        foreach (var positionCount in 
+                                    Model.NumberOfMatchingPositionsPerPecrentagePerPosition[item.JobTitleId].Split("&"))
+                        {
+                                    <span class="sort-percents">@positionCount</span>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -4,39 +4,66 @@
     ViewData["Title"] = "Positions";
 }
 
-<h1>Positions</h1>
-<p>
-    <a class="btn btn-dark" asp-page="Create">Create New</a>
-</p>
-<form>
-    <div class="form-actions no-color">
-        <h6>
-            Find similar positions:
-            <input type="text" asp-for="@Model.Filter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to Full List</a>
-        </h6>
-    </div>
-</form>
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    <h1>Positions <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
+    <p>
+        <a class="btn btn-dark hide-in-print" asp-page="Create">Create New</a>
+    </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th width="7%"><b>Level</b></th>
-            <th width="35%"><b>Title English</b></th>
-            <th width="35%"><b>Title French</b></th>
-            <th width="15%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.JobPositions.Any(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower()) || e.LevelCode.ToLower().Contains(@Model.Filter.ToLower())))
+    @{
+        string? filterValue = Model.Filter;
+        if (filterValue != null)
         {
-            @foreach (var item in Model.JobPositions.Where(e => Model.Filter == null || e.JobTitleEng.ToLower().Contains(@Model.Filter.ToLower()) || e.JobTitleFre.ToLower().Contains(@Model.Filter.ToLower())))
-            {
-                if (item.Active != 0)
+            filterValue = filterValue.Trim();
+        }
+
+        var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
+            || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
+            || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
+            || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
+            && (e.Active == 1));
+
+        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
+    }
+
+    <form class="hide-in-print">
+        <div class="form-actions no-color">
+            <h6>
+                <label for="Filter">Find positions:</label>
+                <input type="text" asp-for="@Model.Filter" value="@filterValue" />
+                <input type="submit" value="Search" class="btn btn-primary" /> 
+                @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                {
+                    <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
+                }
+            </h6>
+        </div>
+    </form>
+</div>
+
+@if (itemsThatMatchFilter.Any())
+{
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+        <table class="table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    <th width="10%"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                    <th width="37.5%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                    <th width="37.5%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
+                    <th width="15%">
+                        <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                        class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                        aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                        title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in itemsThatMatchFilter)
                 {
                     <tr>
-                        <td>
+                        <td class="text-center">
                             @Html.DisplayFor(modelItem => item.LevelCode)
                         </td>
                         <td>
@@ -45,14 +72,28 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.JobTitleFre)
                         </td>
-                        <td>
+                        <td class="text-center hide-in-print">
                             <a asp-page="Details" asp-route-positionid="@item.JobTitleId">Details</a> |
                             <a asp-page="Edit" asp-route-id="@item.JobTitleId">Edit</a> |
                             <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
                         </td>
+                        <td class="hide-when-not-in-print table-cell text-center">
+                            <a asp-page="Details" asp-route-positionid="@item.JobTitleId" class="print-link underline">Details</a>
+                        </td>
                     </tr>
                 }
-            }
-        }
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        <h4 class="no-results">No positions match the filter "@Model.Filter"</h4>
+    }
+    else
+    {
+        <h4 class="no-results">There are currently no positions</h4>
+    }
+}

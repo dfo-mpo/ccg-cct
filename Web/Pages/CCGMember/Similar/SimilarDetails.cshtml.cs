@@ -14,7 +14,6 @@ namespace Web.Pages.CCGMember.Similar
     {
         private readonly ILogger<SimilarDetailsModel> _logger;
         private readonly JobPositionService _jobpositionService;
-        private readonly CompareService _compareService;
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; } = string.Empty;
         [BindProperty(SupportsGet = true)]

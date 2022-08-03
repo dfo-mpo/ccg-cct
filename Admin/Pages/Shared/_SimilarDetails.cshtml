@@ -1,0 +1,81 @@
+﻿@model Admin.Data.PartialModels.SimilarDetailsPartialModel
+@using Business.Dtos.JobPositions
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="table-header-row">PERCENT MATCH</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="space-btns small-padding">
+                        @for (int i = 100; i >= 70; i -= 10)
+                        {
+                            <a class="btn @(Model.PercentMatch == i ? "btn-info" : "btn-secondary") resetWindowHeight" 
+                                href="/Similar/Details?id=@Model.JobPositionId&percent=@i">
+                                &nbsp;&nbsp;&nbsp;@i%&nbsp;&nbsp;&nbsp;
+                            </a>
+                        }
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered no-margin-bottom">
+            <thead>
+                <tr>
+                    @{
+                        var positionList = Model.JobPositions
+                        .Where(e => e.Active != 0)
+                        .OrderBy(x => x.JobTitleEng.ToLower())
+                        .OrderBy(x => x.JobGroupLevelCode.ToLower())
+                        .ToList();
+                    }
+                    <th class="table-header-row small-margin-top">SIMILAR POSITIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @if (positionList.Any())
+                        {
+
+                            // this section of code tries to find the position being viewed in the list of added similar positions.
+                            // If it finds it, it will display first in the list. For example, if you are viewing the similar
+                            // positions for Deckhand, and the deckhand position has been added under the 100% match, it will display
+                            // first in the list of 100% similar jobs (and be bolded)
+
+                            JobPositionDto samePosition = positionList.Where(x => x.JobTitleId == Model.JobPositionId).FirstOrDefault();
+                            if (samePosition != null)
+                            {
+                                positionList.Remove(samePosition);
+                                positionList.Insert(0, samePosition);
+                            }
+
+                            @foreach (var position in positionList)
+                            {
+                                <div class="row">
+                                    <div class="col-12 @(position.JobTitleId == Model.JobPositionId ? "same-position" : "")">
+                                        <a class="btn btn-link col-12 text-left text-wrap" href="/Positions/Details?positionid=@position.JobTitleId">
+                                                @position.JobGroupLevelCode @position.JobTitleEng 
+                                                <span class="bold @(position.JobTitleId == Model.JobPositionId ? "text-dark" : "")">/</span> 
+                                                @position.JobTitleFre 
+                                        </a>
+                                        <hr />
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <h4 class="no-results medium-margin-top medium-margin-bottom">This position currently does not have any similar positions at @Model.PercentMatch% match</h4>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

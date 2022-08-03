@@ -32,7 +32,9 @@ namespace Business.Queries.JobCertificates
                     NameFre = e.NameFre,
                     DescEng = e.DescEng,
                     DescFre = e.DescFre,
-                    Active = e.Active
+                    Active = e.Active,
+                    CertificateDescEng = e.DescEng,
+                    CertificateDescFre = e.DescFre,
 
                 }).FirstOrDefaultAsync(cancellationToken);
         }

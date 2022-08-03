@@ -9,15 +9,19 @@
     <Compile Remove="Pages\Candidate\Shoreside\Compare\**" />
     <Compile Remove="Pages\Mockups\Students\**" />
     <Compile Remove="Resources\Pages\Candidate\Shoreside\Compare\**" />
+    <Compile Remove="Views\**" />
     <Content Remove="Pages\Candidate\Shoreside\Compare\**" />
     <Content Remove="Pages\Mockups\Students\**" />
     <Content Remove="Resources\Pages\Candidate\Shoreside\Compare\**" />
+    <Content Remove="Views\**" />
     <EmbeddedResource Remove="Pages\Candidate\Shoreside\Compare\**" />
     <EmbeddedResource Remove="Pages\Mockups\Students\**" />
     <EmbeddedResource Remove="Resources\Pages\Candidate\Shoreside\Compare\**" />
+    <EmbeddedResource Remove="Views\**" />
     <None Remove="Pages\Candidate\Shoreside\Compare\**" />
     <None Remove="Pages\Mockups\Students\**" />
     <None Remove="Resources\Pages\Candidate\Shoreside\Compare\**" />
+    <None Remove="Views\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -103,7 +107,6 @@
 
 	<ItemGroup>
 		<Folder Include="Properties\" />
-		<Folder Include="Views\" />
 		<Folder Include="wwwroot\themes-dist-8.0.1-gcweb\wet-boew\assets\" />
 	</ItemGroup>
 
