@@ -1,0 +1,198 @@
+﻿@page
+@model Admin.Pages.Certificates.LocateModel
+@using Business.Dtos.JobPositions
+@{
+    ViewData["Title"] = "Locate Certificates";
+
+    bool addedInOnePlace = false;
+
+    if (Model.LocatingACertificate)
+    {
+        addedInOnePlace = (Model.PositionsThatHaveTheCertificate.Any());
+    }
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
+            || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
+            || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
+            && (e.Active == 1));
+
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+    var itemsList = itemsThatMatchFilter.ToList();
+}
+
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    @if (!Model.LocatingACertificate)
+    {
+        <h1>Locate Certificates</h1>
+
+        <form>
+            <div class="form-actions no-color">
+                <h6>
+                    <label for="Filter">Find certificates:</label>
+                    <input type="text" asp-for="@Model.Filter" />
+                    <input type="submit" value="Search" class="btn btn-primary" /> 
+                    @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                    {
+                        <span><span class="vertical-bar">|</span> <a asp-page="./Locate">Back to Full List</a></span>
+                    }
+
+                    <a class="btn btn-secondary pull-right bottom-two-px bold index-right-button" asp-page="Index">Back to List</a>
+                </h6>
+            </div>
+        </form>
+    }
+    else
+    {
+        <h4 class="small-margin-bottom">Located Certificate: 
+            <a target="_blank" href="/Certificates/Details?id=@Model.CertificateBeingLocated.Id" class="print-link">
+                @Model.CertificateBeingLocated.NameEng <span class="text-dark">/</span> @Model.CertificateBeingLocated.NameFre
+                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+            </a>
+            <span class="besides-external-link">(@Model.PositionsThatHaveTheCertificate.Count() 
+                Result@(Model.PositionsThatHaveTheCertificate.Count() > 1 ? "s" : ""))</span>
+        </h4>
+
+        <div class="space-btns no-margin-right small-margin-bottom large-margin-top no-padding-right container hide-in-print">
+            <div class="row no-margin-right">
+                <div class="col text-right no-margin-right no-padding @(addedInOnePlace ? "raise-elements-slightly" : "")" style="max-height: 38px">
+                    @if (addedInOnePlace)
+                    {
+                        <h6 class="glyphicon glyphicon-save-file display-inline position-relative locate-page-save-icon" onclick="print()"></h6>
+                    }
+                    <h6 class="display-inline"><a class="btn btn-primary bold bottom-two-px" href="/Certificates/Locate">Locate Another Certificate</a></h6>
+                    <a class="btn btn-secondary bottom-two-px bold no-margin-right right-button-locate" asp-page="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.LocatingACertificate)
+{
+    @if (itemsThatMatchFilter.Any())
+    {
+        <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+            <table class="table">
+                <thead>
+                    <tr class="table-header-row text-center">
+                        <th class="col-5"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Certificate English</b></th>
+                        <th class="col-5"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Certificate French</b></th>
+                        <th class="col-2">
+                            <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                            class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                            aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                            title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in itemsList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameEng)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameFre)
+                            </td>
+                             <td class="text-center">
+                                <a href="/Certificates/Locate?id=@item.Id" class="load-link">Locate</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        if (!string.IsNullOrWhiteSpace(Model.Filter))
+        {
+            <h4 class="no-results">No certificates match the filter "@Model.Filter"</h4>
+        }
+        else
+        {
+            <h4 class="no-results">There are currently no certificates</h4>
+        }
+    }
+}
+else 
+{
+    if (addedInOnePlace) 
+    {
+        <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+            <table class="table">
+                <thead>
+                   <tr class="table-header-row text-center">
+                        <th style="width: 10%"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                        <th style="width: 20%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                        <th style="width: 20%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
+                        <th style="width: 35%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Selected Certificate Description</b></th>
+                        <th style="width: 15%">
+                            <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+                            class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+                            aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+                            alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+                            title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        var positions = Model.PositionsThatHaveTheCertificate.OrderBy(x => x.Key.JobTitleEng.ToLower()).OrderBy(x => x.Key.LevelCode.ToLower()).ToList();
+                    }
+
+                    @foreach (var pos in positions)
+                    {
+                        <tr>                                
+                            <td class="text-center">
+                                @pos.Key.LevelCode
+                            </td>
+                            <td>
+                                @pos.Key.JobTitleEng
+                            </td>
+                            <td>
+                                @pos.Key.JobTitleFre
+                            </td>
+                            @{
+                                var cert = pos.Value;
+                                bool selectedACertDesc = !string.IsNullOrWhiteSpace(cert.DescEng) && !string.IsNullOrWhiteSpace(cert.DescFre);
+                            }
+                            <td>
+                                @if (selectedACertDesc)
+                                {
+                                    <a href="/Certificates/Descriptions/Details?id=@cert.CertificateDescId" target="_blank" class="rememberIfVisited print-link">
+                                        @cert.DescEng <b>/</b> @cert.DescFre
+                                        <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                    </a>
+                                }
+                                else
+                                {
+                                   <b>No description selected</b> 
+                                }
+                            </td>
+                            <td class="text-center">
+                                <a href="/Positions/Details?positionid=@pos.Key.JobTitleId&scrollTo=certificateScroll-@(cert.Id)_c_h" target="_blank" class="rememberIfVisited print-link print-underline">Details</a><span class="hide-in-print"> | </span>
+                                <a href="/Positions/Edit?id=@pos.Key.JobTitleId&scrollTo=certificateScroll-@(cert.Id)_c_h" target="_blank" class="rememberIfVisited hide-in-print">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else 
+    {
+        <h4 class="no-results">This certificate has not been added to any positions</h4>
+    }
+}
