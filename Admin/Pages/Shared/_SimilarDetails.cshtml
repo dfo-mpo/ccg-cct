@@ -34,7 +34,7 @@
                         .OrderBy(x => x.JobGroupLevelCode.ToLower())
                         .ToList();
                     }
-                    <th class="table-header-row small-margin-top">SIMILAR POSITIONS</th>
+                    <th class="table-header-row small-margin-top">SIMILAR POSITIONS @(positionList.Any() ? ("(" + positionList.Count() + ")") : "")</th>
                 </tr>
             </thead>
             <tbody>

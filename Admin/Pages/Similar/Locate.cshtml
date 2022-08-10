@@ -1,8 +1,11 @@
 ﻿@page
 @model Admin.Pages.Similar.LocateModel
 @using Business.Dtos.JobPositions
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Locate Similar Positions";
+    ViewData["HideBodyOverflow"] = true;
 
     bool addedInOnePlace = false;
 
@@ -20,14 +23,17 @@
         filterValue = filterValue.Trim();
     }
 
-    var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
-        || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
-        || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
-        || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
-        && (e.Active == 1));
-
+    var itemsThatMatchFilter = Model.JobPositions.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.LevelCode, x.JobTitleEng, x.JobTitleFre })).ToList();
+    }
     itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
     var itemsList = itemsThatMatchFilter.ToList();
+    var numItems = itemsList.Count();
 }
 
 @functions {
@@ -53,9 +59,9 @@
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
     @if (!Model.LocatingAPosition)
     {
-        <h1>Locate Similar Positions</h1>
+        <h1>Locate Similar Positions @(numItems > 0 ? "(" + numItems + ")" : "")</h1>
 
-        <form>
+        <form class="@(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
             <div class="form-actions no-color">
                 <h6>
                     <label for="Filter">Find positions:</label>
@@ -112,7 +118,7 @@
 
 @if (!Model.LocatingAPosition)
 {
-    @if (itemsThatMatchFilter.Any())
+    @if (itemsList.Any())
     {
         <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
             <table class="table">

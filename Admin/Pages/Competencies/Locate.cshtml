@@ -1,8 +1,11 @@
 ﻿@page
 @model Admin.Pages.Competencies.LocateModel
 @using Business.Dtos.JobPositions
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Locate Competencies";
+    ViewData["HideBodyOverflow"] = true;
 
     bool addedInOnePlace = false;
 
@@ -27,28 +30,35 @@
         filterValue = filterValue.Trim();
     }
 
-    var itemsThatMatchFilter = Model.Competencies.Where(e => (Model.Filter == null
-        || e.NameEng.ToLower().Contains(Model.Filter.ToLower())
-        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
-        && (e.Active == 1));
-
+    var itemsThatMatchFilter = Model.Competencies.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.NameEng, x.NameFre })).ToList();
+    }
     itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
     var itemsList = itemsThatMatchFilter.ToList();
+    var numItems = itemsList.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
     @if (!Model.LocatingACompetency)
     {
-        <h1>Locate @Model.Type.NameEng</h1>
+        <h1>Locate @Model.Type.NameEng @(numItems > 0 ? "(" + numItems + ")" : "")</h1>
 
         <p class="space-btns hide-in-print overflow-y-auto">
+
+            @* The order goes 4 3 2 1 because they are all floated to the right, which kind of reverses the order *@
+
             <a href="@("/Competencies/Locate?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right index-right-button @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
             <a href="@("/Competencies/Locate?typeid=3" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
             <a href="@("/Competencies/Locate?typeid=2" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
             <a href="@("/Competencies/Locate?typeid=1" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
         </p>
 
-        <form method="post" class="hide-in-print">
+        <form method="post" class="hide-in-print @(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
             <div class="form-actions no-color">
                 <h6>
                     <label for="Filter">Find competencies:</label>
@@ -102,7 +112,7 @@
 
 @if (!Model.LocatingACompetency)
 {
-    @if (itemsThatMatchFilter.Any())
+    @if (itemsList.Any())
     {
         <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
             <table class="table">

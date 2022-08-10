@@ -7,13 +7,39 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-   @* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
-
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+
+@{
+     /*
+     * Index pages start off with the body having its overflow hidden. This is done to stop a rare visual flicker which is caused by the app
+     * remembering what the last size that your tableContainer was at before switching pages, where the destination page has a smaller
+     * space from its tableContainer, which causes the body to overflow when the page loads, but then as soon as the tableContainer
+     * gets resized appropriately, the body doesn't overflow anymore (in 99% of cases). This means that the page might load with a scrollbar 
+     * on the body, only for it to be hidden within a second, which causes the flicker. Starting off with the overflow hidden on those pages
+     * removes the flicker, and then after a second the body loses that class to allow it to overflow, should it need to.
+     * 
+     * Also, if the body starts off with the overflow hidden, the footer will consequently first appear with its position fixed, for similar 
+     * reasons to the body's overflow being hidden. After a second, it will go back to absolute as well.
+    */
+
+    string extraClass = "";
+    try
+    {
+        bool? hideBodyOverflow = (bool?)ViewData["HideBodyOverflow"];
+        if (hideBodyOverflow != null)
+        {
+            if (hideBodyOverflow.Value)
+            {
+                extraClass = "overflow-y-hidden";
+            }
+        }
+    }
+    catch { }
+}
+
+<body class="@extraClass">
     <header>
         <nav class="navbar navbar-expand-sm rememberIfVisited navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 no-padding">
             <div class="container nav-container">
@@ -38,10 +64,10 @@
                         </li>
                         <li class="nav-item" id="navCompetencies">
                             <div class="dropdown-content">
-                                <a href="/Competencies/List?typeid=1" class="nav-link smooth-underline">Knowledge</a>
-                                <a href="/Competencies/List?typeid=2" class="nav-link smooth-underline">Technical</a>
-                                <a href="/Competencies/List?typeid=3" class="nav-link smooth-underline">Behavioural</a>
-                                <a href="/Competencies/List?typeid=4" class="nav-link smooth-underline">Executive</a>
+                                <a href="/Competencies/List?typeid=1" class="nav-link smooth-underline rememberIfVisited">Knowledge</a>
+                                <a href="/Competencies/List?typeid=2" class="nav-link smooth-underline rememberIfVisited">Technical</a>
+                                <a href="/Competencies/List?typeid=3" class="nav-link smooth-underline rememberIfVisited">Behavioural</a>
+                                <a href="/Competencies/List?typeid=4" class="nav-link smooth-underline rememberIfVisited">Executive</a>
                             </div>
                             <a class="nav-link rememberIfVisited" href="/Competencies/List?typeid=1">Competencies</a>
                         </li>
@@ -58,6 +84,11 @@
             <div id="compNavHider">
             </div>
         </nav>
+
+        <div class="spinner-border dontShow text-primary" id="loading-indicator" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -65,20 +96,18 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted @(extraClass == "" ? "" : "position-fixed")">
         <div class="container">
             &copy; @DateTime.Now.Year - Canadian Coast Guard Career Competency Tool | Admin
         </div>
     </footer>
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>*@
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-   @* <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
-
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @RenderSection("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
