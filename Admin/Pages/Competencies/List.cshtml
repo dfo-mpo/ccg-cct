@@ -1,16 +1,18 @@
 ﻿@page
 @model Admin.Pages.Competencies.ListModel
-@{
-    ViewData["Title"] = "Competencies";
-    string typeid = Model.Type.Id.ToString();
-    string classSelectedComp = "btn-info", classUnselectedComp = "btn-secondary";
-}
+@inject Admin.Data.FormattingService Formatter
 
 @{
+    ViewData["Title"] = "Competencies";
+    ViewData["HideBodyOverflow"] = true;
+
+    string typeid = Model.Type.Id.ToString();
+    string classSelectedComp = "btn-info", classUnselectedComp = "btn-secondary";
+
     var filterdata = new Dictionary<string, string>
     {
-            {"typeid", typeid },
-            {"filter", Model.Filter }
+        {"typeid", typeid },
+        {"filter", Model.Filter }
     };
 
     bool maintainFilter = false;
@@ -21,25 +23,32 @@
         filterValue = filterValue.Trim();
     }
 
-    var itemsThatMatchFilter = Model.Competencies.Where(e => (Model.Filter == null
-        || e.NameEng.ToLower().Contains(Model.Filter.ToLower())
-        || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
-        && (e.Active == 1));
-
+    var itemsThatMatchFilter = Model.Competencies.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.NameEng, x.NameFre })).ToList();
+    }
     itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
+    var numItems = itemsThatMatchFilter.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>@Model.Type.NameEng <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
+    <h1>@Model.Type.NameEng @(numItems > 0 ? "(" + numItems + ")" : "")<span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
     <p class="space-btns hide-in-print">
+
+        @* The order goes 4 3 2 1 because they are all floated to the right, which kind of reverses the order *@
+
         <a class="btn btn-dark" asp-page="/Competencies/Create" asp-route-typeid="@Model.Type.Id">Create New</a>
         <a href="@("/Competencies/List?typeid=4" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right index-right-button @(typeid == "4" ? classSelectedComp : classUnselectedComp)">Executive</a>
         <a href="@("/Competencies/List?typeid=3" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "3" ? classSelectedComp : classUnselectedComp)">Behavioural</a>
         <a href="@("/Competencies/List?typeid=2" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "2" ? classSelectedComp : classUnselectedComp)">Technical</a>
         <a href="@("/Competencies/List?typeid=1" + (maintainFilter ? "&filter=" + filterValue : ""))" class="btn pull-right @(typeid == "1" ? classSelectedComp : classUnselectedComp)">Knowledge</a>
     </p>
-    <form method="post" class="hide-in-print">
+    <form method="post" class="hide-in-print @(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find competencies:</label>

@@ -68,7 +68,7 @@ namespace Admin.Pages.Certificates.Descriptions
                 return NotFound();
             }
 
-            var Certificate = await _context.Certificates.FindAsync(id);
+            var Certificate = await _context.CertificateDescriptions.FindAsync(id);
 
             if (Certificate == null)
             {

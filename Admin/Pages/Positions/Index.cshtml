@@ -1,38 +1,43 @@
 ﻿@page
 @model Admin.Pages.Positions.IndexModel
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Positions";
+    ViewData["HideBodyOverflow"] = true;
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.JobPositions.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.LevelCode, x.JobTitleEng, x.JobTitleFre })).ToList();
+    }
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
+    var numItems = itemsThatMatchFilter.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>Positions <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
-    <p>
-        <a class="btn btn-dark hide-in-print" asp-page="Create">Create New</a>
+    <h1>Positions @(numItems > 0 ? "(" + numItems + ")" : "")<span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
+    <p class="hide-in-print">
+        <a class="btn btn-dark" asp-page="Create">Create New</a>
+        <a class="btn btn-secondary pull-right bold index-right-button load-link" asp-page="AllDetails">All Position Details</a>
     </p>
 
-    @{
-        string? filterValue = Model.Filter;
-        if (filterValue != null)
-        {
-            filterValue = filterValue.Trim();
-        }
-
-        var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
-            || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
-            || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
-            || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
-            && (e.Active == 1));
-
-        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
-    }
-
-    <form class="hide-in-print">
+    <form class="hide-in-print @(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find positions:</label>
                 <input type="text" asp-for="@Model.Filter" value="@filterValue" />
                 <input type="submit" value="Search" class="btn btn-primary" /> 
-                @if (!String.IsNullOrWhiteSpace(Model.Filter))
+                @if (!string.IsNullOrWhiteSpace(Model.Filter))
                 {
                     <span><span class="vertical-bar">|</span> <a asp-page="./Index">Back to Full List</a></span>
                 }
@@ -47,9 +52,9 @@
         <table class="table">
             <thead>
                 <tr class="table-header-row text-center">
-                    <th width="10%"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
-                    <th width="37.5%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
-                    <th width="37.5%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
+                    <th width="7%"><b class="sort-column sorted" data-toggle="tooltip" title="Click to sort column">Level</b></th>
+                    <th width="35%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title English</b></th>
+                    <th width="35%"><b class="sort-column" data-toggle="tooltip" title="Click to sort column">Title French</b></th>
                     <th width="15%">
                         <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                         class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
@@ -78,7 +83,7 @@
                             <a asp-page="Delete" asp-route-id="@item.JobTitleId">Delete</a>
                         </td>
                         <td class="hide-when-not-in-print table-cell text-center">
-                            <a asp-page="Details" asp-route-positionid="@item.JobTitleId" class="print-link underline">Details</a>
+                            <a asp-page="./Details" asp-route-positionid="@item.JobTitleId" class="print-link underline">Details</a>
                         </td>
                     </tr>
                 }

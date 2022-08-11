@@ -1,8 +1,35 @@
 ﻿@page
 @model Admin.Pages.Similar.IndexModel
 @using Business.Dtos.JobPositions
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Similar Positions";
+    ViewData["HideBodyOverflow"] = true;
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.JobPositions.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.LevelCode, x.JobTitleEng, x.JobTitleFre })).ToList();
+    }
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
+    var itemsList = itemsThatMatchFilter.ToList();
+
+    if (Model.CopyingAPosition)
+    {
+        // this is so that you can't copy similar positions onto the same position
+        itemsList = itemsList.Where(x => x.JobTitleId != Model.PositionBeingCopied.JobTitleId).ToList();
+    }
+    var numItems = itemsList.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
@@ -18,7 +45,7 @@
     }
     else
     {
-        <h1>Similar Positions</h1>
+        <h1>Similar Positions @(numItems > 0 ? "(" + numItems + ")" : "")</h1>
     }
     @if (!Model.CopyingAPosition)
     {
@@ -31,30 +58,7 @@
         </p> 
     }
 
-    @{
-        string? filterValue = Model.Filter;
-        if (filterValue != null)
-        {
-            filterValue = filterValue.Trim();
-        }
-
-        var itemsThatMatchFilter = Model.JobPositions.Where(e => (Model.Filter == null
-            || e.JobTitleEng.ToLower().Contains(Model.Filter.ToLower())
-            || e.JobTitleFre.ToLower().Contains(Model.Filter.ToLower())
-            || e.LevelCode.ToLower().Contains(Model.Filter.ToLower()))
-            && (e.Active == 1));
-
-        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.JobTitleEng.ToLower()).OrderBy(x => x.LevelCode.ToLower()).ToList();
-        var itemsList = itemsThatMatchFilter.ToList();
-
-        if (Model.CopyingAPosition)
-        {
-            // this is so that you can't copy similar positions onto the same position
-            itemsList = itemsList.Where(x => x.JobTitleId != Model.PositionBeingCopied.JobTitleId).ToList();
-        }
-    }
-
-    <form>
+    <form class="@(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find positions:</label>
@@ -96,7 +100,7 @@
     </form>
 </div>
 
-@if (itemsThatMatchFilter.Any())
+@if (itemsList.Any())
 {
     <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
         <table class="table">

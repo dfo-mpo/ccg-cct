@@ -1,6 +1,11 @@
 ﻿@model Admin.Data.PartialModels.CompetencyPartialModel
 
 @{
+    /*
+     * This partial view is used on the position create/edit pages and represents the table that displays the competencies added
+     * for that type, and it also contains the modal window to add more competencies
+     */ 
+
     var FullPageModel = Model.FullModel;
     var addedCompetencies = Model.AddedCompetenciesList.Where(x => x.Active == 1).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
     bool atLeastOneCompetency = addedCompetencies.Any();
@@ -15,7 +20,7 @@
                         if (atLeastOneCompetency)
                         {
                             <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="@("tableTitle_" + Model.FullCompetencyNameOneWord)">
-                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper()
+                                @Model.FullCompetencyNameEng.ToUpper() / @Model.FullCompetencyNameFre.ToUpper() (@addedCompetencies.Count())
                             </span>
                         }
                         else
@@ -77,6 +82,7 @@
                                 REMOVE ALL
                             </button>
 
+                            @* Modal to confirm removing all competencies *@
                             <div class="modal fade bd-modal-xl" id="@("removeall-" + Model.FullCompetencyNameOneWord)" tabindex="-1" role="dialog" 
                                 aria-labelledby="@("removeall-" + Model.FullCompetencyNameOneWord + "ModelTitle")" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -124,47 +130,52 @@
     </tr>
     <tr>
         <td colspan="3">
-            <div class="modal fade bd-modal-xl" id="@("add" + Model.ShortCompetencyName.ToLower())" tabindex="-1" role="dialog" aria-labelledby="#@("modalTitle_" + Model.FullCompetencyNameOneWord)" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="@("modalTitle_" + Model.FullCompetencyNameOneWord)">ADD @(Model.UseAn ? "AN" : "A") @Model.FullCompetencyNameOneWord.ToUpper() @(Model.UseElement ? "ELEMENT" : "COMPETENCY")</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card-body table-header-row">
-                                <div class="row">
-                                    <div class="col-10 mb-3">
-                                        <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")"><b>@Model.FullCompetencyNameEng / @Model.FullCompetencyNameFre</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")">
-                                            @foreach (var competency in remainingCompetenciesToAdd)
-                                            {
-                                                <option value="@competency.Id">@competency.NameEng <b>/</b> @competency.NameFre</option>
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-2 mb-3">
-                                        <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")"><b>Level</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")">
-                                            <option value="@(1 + Model.AmountToAddToCompetencyRating)">01</option>
-                                            <option value="@(2 + Model.AmountToAddToCompetencyRating)">02</option>
-                                            <option value="@(3 + Model.AmountToAddToCompetencyRating)">03</option>
-                                            <option value="@(4 + Model.AmountToAddToCompetencyRating)">04</option>
-                                            <option value="@(5 + Model.AmountToAddToCompetencyRating)">05</option>
-                                        </select>
+
+            @if (remainingCompetenciesToAdd.Any())
+            {
+                @* Modal to add a competency *@
+                <div class="modal fade bd-modal-xl" id="@("add" + Model.ShortCompetencyName.ToLower())" tabindex="-1" role="dialog" aria-labelledby="#@("modalTitle_" + Model.FullCompetencyNameOneWord)" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="@("modalTitle_" + Model.FullCompetencyNameOneWord)">ADD @(Model.UseAn ? "AN" : "A") @Model.FullCompetencyNameOneWord.ToUpper() @(Model.UseElement ? "ELEMENT" : "COMPETENCY")</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body table-header-row">
+                                    <div class="row">
+                                        <div class="col-10 mb-3">
+                                            <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")"><b>@Model.FullCompetencyNameEng / @Model.FullCompetencyNameFre</b></label><br />
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Competency")">
+                                                @foreach (var competency in remainingCompetenciesToAdd)
+                                                {
+                                                    <option value="@competency.Id">@competency.NameEng <b>/</b> @competency.NameFre</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-2 mb-3">
+                                            <label class="control-label" for="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")"><b>Level</b></label><br />
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")" name="@(Model.FullCompetencyNameOneWord.ToLower() + "Level")">
+                                                <option value="@(1 + Model.AmountToAddToCompetencyRating)">01</option>
+                                                <option value="@(2 + Model.AmountToAddToCompetencyRating)">02</option>
+                                                <option value="@(3 + Model.AmountToAddToCompetencyRating)">03</option>
+                                                <option value="@(4 + Model.AmountToAddToCompetencyRating)">04</option>
+                                                <option value="@(5 + Model.AmountToAddToCompetencyRating)">05</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer no-padding-bottom no-padding-right">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary text-left resetWindowHeight" asp-page-handler="competency" asp-all-route-data="@Model.RouteDataForCompetency">Add Competency</button>
+                                <div class="modal-footer no-padding-bottom no-padding-right">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary text-left resetWindowHeight" asp-page-handler="competency" asp-all-route-data="@Model.RouteDataForCompetency">Add Competency</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
             @if (atLeastOneCompetency) {
                 addedCompetencies = addedCompetencies.GroupBy(x => x.CompetencyId).Select(x => x.First()).ToList();
