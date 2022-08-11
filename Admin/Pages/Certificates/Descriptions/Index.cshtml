@@ -1,11 +1,31 @@
 ﻿@page
 @model Admin.Pages.Certificates.Descriptions.IndexModel
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Certificate Descriptions";
+    ViewData["HideBodyOverflow"] = true;
+
+    string? filterValue = Model.Filter;
+    if (filterValue != null)
+    {
+        filterValue = filterValue.Trim();
+    }
+
+    var itemsThatMatchFilter = Model.Descriptions.Where(x => x.Active == 1 && (x.DescEng != "" && x.DescFre != "")).ToList(); // the empty description should not display
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.DescEng, x.DescFre })).ToList();
+    }
+    itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.DescEng.ToLower()).ToList();
+    var numItems = itemsThatMatchFilter.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
-    <h1>Certificate Descriptions <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
+    <h1>Certificate Descriptions @(numItems > 0 ? "(" + numItems + ")" : "") <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
     <p class="space-btns hide-in-print">
         <a class="btn btn-dark" asp-page="Create">Create New</a>    
@@ -13,23 +33,7 @@
         <a class="btn btn-secondary pull-right" href="/Certificates">Certificates</a>
     </p>
 
-    @{
-        string? filterValue = Model.Filter;
-        if (filterValue != null)
-        {
-            filterValue = filterValue.Trim();
-        }
-
-        var itemsThatMatchFilter = Model.Descriptions.Where(e => ((Model.Filter == null
-            || e.DescEng.ToLower().Contains(Model.Filter.ToLower())
-            || e.DescFre.ToLower().Contains(Model.Filter.ToLower()))
-            && ((e.DescFre != "" && e.DescEng != "")
-            && (e.Active == 1))));
-
-        itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.DescEng.ToLower()).ToList();
-    }
-
-    <form class="hide-in-print">
+    <form class="hide-in-print @(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
         <div class="form-actions no-color">
             <h6>
                 <label for="Filter">Find certificate descriptions:</label>

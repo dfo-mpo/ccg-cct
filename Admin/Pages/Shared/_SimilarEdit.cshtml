@@ -60,8 +60,8 @@
 
         // this loop identifies which jobs can be added as similar jobs (the ones that can appear in the dropdown).
         // It also identifies which levels (for example, AS-01) have at least one job that can be added. This is important,
-        // because levels that have no jobs to that can be added can't be selected. This loop does the same thing for
-        // groups (example, AS), to identify which ones have at least one job that can be added
+        // because levels that have no jobs that can be added can't be selected. This loop does the same thing for
+        // groups (example, AS), to identify which ones have at least one level that can be selected
 
         if (!allAddedSimilarJobsIds.TryGetValue(job.JobTitleId, out intValue)) // we are only retrieving the jobs that have NOT been added yet
         {
@@ -135,6 +135,7 @@
 
         if (Model.CurrentSelectedLevelCode == null || (!foundSelectedJobGroup))
         {
+            // if a new group has to be selected because the previous group no longer has levels which have at least one position left, grab the first level in the new group
             actualSelectedJobGroupLevel = groupLevelsThatCanBeSelected.FirstOrDefault();
         }
         else
@@ -409,7 +410,7 @@
                         <th class="table-header-row">
                             <div class="row">
                                 <div class="col-6 m-auto">
-                                    SIMILAR POSITIONS
+                                    SIMILAR POSITIONS @(positionList.Any() ? ("(" + positionList.Count() + ")") : "")
                                 </div>
                                 <div class="col-6 text-right">
                                     @if (positionList.Count() > 1)

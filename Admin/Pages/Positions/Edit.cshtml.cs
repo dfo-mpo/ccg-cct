@@ -80,10 +80,10 @@ namespace Admin.Pages.Positions
         public int JobGroupLevelId { get; set; }
         [BindProperty(SupportsGet = true)]
         public int SubJobGroupId { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string LevelCode { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string LevelValue { get; set; }
+        public string LevelCode { get; set; } // the level code is not set directly from the form, it comes from the LevelValue dropdown
+        [BindProperty]
+        public string LevelValue { get; set; } // this comes from the dropdown that lets users select their job's level. It is composed from the SubJobGroupId,
+        // the level id, and the level code, and all three parts are separated by "/"
 
         private async Task ValidateModel()
         {
@@ -240,7 +240,14 @@ namespace Admin.Pages.Positions
             CurrentSelectedJobGroup = await _jobCompetencyService.GetJobGroupById(JobGroupId);
             SubJobGroupId = JobGroupPositions.FirstOrDefault().SubJobGroupId;
             JobGroupLevelId = JobGroupPositions.FirstOrDefault().LevelId;
-            LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            try
+            {
+                LevelCode = LevelValue.Split("/")[2];
+            }
+            catch
+            {
+                LevelCode = JobGroupPositions.FirstOrDefault().LevelCode;
+            }
 
             var acceptedRegionsIds = await _context.JobLocationRegions.Where(x => x.Active == 1).Select(x => x.Id).ToListAsync();
             RegionIds = string.Empty;

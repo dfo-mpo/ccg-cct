@@ -263,8 +263,8 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
                         </ul>
                     </div>
                     <div class="dropdown col-3 m-1">
-                        <label class="control-label" for="levelValue"><b>Level / Niveau</b></label><br />
-                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="levelValue" name="LevelValue">
+                        <label class="control-label" for="LevelValue"><b>Level / Niveau</b></label><br />
+                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="LevelValue" name="LevelValue">
                             @{
                                 var jobGroupPositions = Model.JobGroupPositions.OrderBy(x => x.LevelCode.ToLower()).Distinct().ToList();
                             }
@@ -306,7 +306,7 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
                             if (atLeastOneCert)
                             {
                                 <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="certTableHeader">
-                                    CERTIFICATIONS / ATTESTATIONS
+                                    CERTIFICATIONS / ATTESTATIONS (@addedCertificates.Count())
                                 </span>
                             }
                             else
@@ -346,6 +346,7 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
                                 REMOVE ALL
                             </button>
 
+                            @* Modal to confirm removing all certificates *@
                             <div class="modal fade bd-modal-xl" id="removeallcerts" tabindex="-1" role="dialog" aria-labelledby="removeAllCertsModalTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                     <div class="modal-content">
@@ -392,54 +393,59 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
     <tbody>
         <tr>
             <td>
-                <div class="modal fade bd-modal-xl" id="addcert" tabindex="-1" role="dialog" aria-labelledby="addcertModalTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addcertModalTitle">ADD A CERTIFICATE</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="card-body table-header-row">
-                                    <div class="mb-3">
-                                        <label class="control-label" for="certificate"><b>Certificates</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="certificate" name="certificate">
-                                            @foreach (var certificate in remainingCertificatesToAdd)
-                                            {
-                                                <option value="@certificate.Id">@certificate.NameEng <b>/</b> @certificate.NameFre</option>
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="control-label" for="CertificateDescriptionId"><b>Description</b></label><br />
-                                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="CertificateDescriptionId" name="CertificateDescriptionId">
-                                            @{
-                                                var certDescs = Model.JobCertificateDescriptions.Where(x => x.Active == 1).OrderBy(x => x.DescEng.ToLower()).Distinct().ToList();
-                                            }
-                                            @foreach (var certificate in certDescs)
-                                            {
-                                                if (certificate.DescEng == "" && certificate.DescFre == "")
-                                                {
-                                                    <option value="@certificate.Id">No description</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@certificate.Id">@certificate.DescEng <b>/</b> @certificate.DescFre</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
+                @{
+                    var certDescs = Model.JobCertificateDescriptions.Where(x => x.Active == 1).OrderBy(x => x.DescEng.ToLower()).Distinct().ToList();
+                }
+                @if (remainingCertificatesToAdd.Any())
+                {
+                    @* Modal to add certificates *@
+                    <div class="modal fade bd-modal-xl" id="addcert" tabindex="-1" role="dialog" aria-labelledby="addcertModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addcertModalTitle">ADD A CERTIFICATE</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button class="btn btn-primary resetWindowHeight" asp-page-handler="certificate" asp-all-route-data="@routedata">Add Certificate</button>
+                                <div class="modal-body">
+                                    <div class="card-body table-header-row">
+                                        <div class="mb-3">
+                                            <label class="control-label" for="certificate"><b>Certificates</b></label><br />
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="certificate" name="certificate">
+                                                @foreach (var certificate in remainingCertificatesToAdd)
+                                                {
+                                                    <option value="@certificate.Id">@certificate.NameEng <b>/</b> @certificate.NameFre</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="control-label" for="CertificateDescriptionId"><b>Select a Description</b></label><br />
+                                            <select class="form-control dropdown-toggle mrgn-bttm-md" id="CertificateDescriptionId" name="CertificateDescriptionId">
+                                                @foreach (var certificate in certDescs)
+                                                {
+                                                    if (certificate.DescEng == "" && certificate.DescFre == "")
+                                                    {
+                                                        <option value="@certificate.Id">No description</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@certificate.Id">@certificate.DescEng <b>/</b> @certificate.DescFre</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-primary resetWindowHeight" asp-page-handler="certificate" asp-all-route-data="@routedata">Add Certificate</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
+
                 @if (atLeastOneCert)
                 {
                     addedCertificates = addedCertificates.GroupBy(x => x.Id).Select(x => x.First()).ToList(); // remove duplicates
@@ -459,8 +465,8 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
                                         <div class="card-body">
 
                                             @{
-                                                bool emptyCertificateDesc = certificate.CertificateDescEng == "" || certificate.CertificateDescFre == "";
-                                                bool emptySelectedCertDesc = (certificate.DescEng == "" && certificate.DescFre == "");
+                                                bool emptyCertificateDesc = string.IsNullOrWhiteSpace(certificate.CertificateDescEng) || string.IsNullOrWhiteSpace(certificate.CertificateDescFre);
+                                                bool emptySelectedCertDesc = string.IsNullOrWhiteSpace(certificate.DescEng) || string.IsNullOrWhiteSpace(certificate.DescFre);
                                             }
 
                                             @if (!emptyCertificateDesc)
@@ -613,6 +619,9 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
 <span asp-validation-for="AddedBehaviouralCompetencyIds" style="padding-bottom: 6px" 
 class="text-danger display-block small-margin-bottom no-padding-top bold"></span>
 
+@* This is where the competency level descriptions (for example, the description of the novice level of competencies) is stored
+    on the page, so that the JavaScript can keep those descriptions consistent when you modify the level of a competency
+*@
 <div class="dontShow">
     @{
         var levels = await Model.GetCompetencyLevelDescriptions();
@@ -628,10 +637,10 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
             {
                 freStr += " " + level.DescFre;
             }
-                <div class="competencyLevelDesc">
-                    <span class="eng">@engStr</span>
-                    <span class="fre">@freStr</span>
-                </div>
+            <div class="competencyLevelDesc">
+                <span class="eng">@engStr</span>
+                <span class="fre">@freStr</span>
+            </div>
         }
     }
 </div>

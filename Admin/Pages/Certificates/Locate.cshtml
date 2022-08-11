@@ -1,8 +1,11 @@
 ﻿@page
 @model Admin.Pages.Certificates.LocateModel
 @using Business.Dtos.JobPositions
+@inject Admin.Data.FormattingService Formatter
+
 @{
     ViewData["Title"] = "Locate Certificates";
+    ViewData["HideBodyOverflow"] = true;
 
     bool addedInOnePlace = false;
 
@@ -17,21 +20,25 @@
         filterValue = filterValue.Trim();
     }
 
-    var itemsThatMatchFilter = Model.Certificates.Where(e => (Model.Filter == null 
-            || e.NameEng.ToLower().Contains(Model.Filter.ToLower()) 
-            || e.NameFre.ToLower().Contains(Model.Filter.ToLower()))
-            && (e.Active == 1));
-
+    var itemsThatMatchFilter = Model.Certificates.Where(x => x.Active == 1).ToList();
+    if (!string.IsNullOrWhiteSpace(Model.Filter))
+    {
+        Formatter.Filters = filterValue;
+        Formatter.PrepareFiltersArray();
+        itemsThatMatchFilter = itemsThatMatchFilter
+        .Where(x => Formatter.RowContentsMatchFilters(new string[] { x.NameEng, x.NameFre })).ToList();
+    }
     itemsThatMatchFilter = itemsThatMatchFilter.OrderBy(x => x.NameEng.ToLower()).ToList();
     var itemsList = itemsThatMatchFilter.ToList();
+    var numItems = itemsList.Count();
 }
 
 <div class="collapse @(Model.DisplayTopOfPage ? "show" : "")" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
     @if (!Model.LocatingACertificate)
     {
-        <h1>Locate Certificates</h1>
+        <h1>Locate Certificates @(numItems > 0 ? "(" + numItems + ")" : "")</h1>
 
-        <form>
+        <form class="@(numItems == 0 && string.IsNullOrWhiteSpace(Model.Filter) ? "dontShow" : "")">
             <div class="form-actions no-color">
                 <h6>
                     <label for="Filter">Find certificates:</label>
@@ -75,7 +82,7 @@
 
 @if (!Model.LocatingACertificate)
 {
-    @if (itemsThatMatchFilter.Any())
+    @if (itemsList.Any())
     {
         <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
             <table class="table">

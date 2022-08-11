@@ -131,17 +131,6 @@ namespace Admin.Pages.Similar
 
             var jobsToLoop = JobPositions;
 
-            if (!string.IsNullOrWhiteSpace(Filter))
-            {
-                string filter = Filter.ToLower();
-                jobsToLoop = JobPositions.Where(e => 
-                    ((e.JobTitleEng.ToLower().Contains(filter)
-                    || e.JobTitleFre.ToLower().Contains(filter)
-                    || e.LevelCode.ToLower().Contains(filter))
-                    && (e.Active == 1))
-                    ).ToList();
-            }
-
             SimilarSearchIds = await _jobPositionService.GetAllSimilarSearchIds();
             NumberOfMatchingPositionsPerPecrentagePerPosition = new Dictionary<int, string>();
 

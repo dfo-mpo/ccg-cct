@@ -7,7 +7,7 @@
     bool expandableItemsOpenNewWindows = true;
 }
 
-<h1>Position Details / Détails du poste</h1>
+<h1>Position Details / Détails du poste <span class="glyphicon glyphicon-save-file pull-right index-save-file-icon" onclick="print()"></span></h1>
 
 <div>
     <h4>@Html.DisplayFor(model => model.Position.JobTitleEng)</h4>
@@ -76,7 +76,7 @@
             </tr>
 
             <tr>
-                <th class="table-header-row" colspan="2">REGIONS / RÉGIONS</th>
+                <th class="table-header-row" colspan="2">REGIONS / RÉGIONS (@Model.JobLocationRegions.Count())</th>
             </tr>
             @if (Model.JobLocationRegions.Any())
             {
@@ -104,7 +104,7 @@
                 <tr>
                     <th colspan="2" class="table-header-row">
                         <span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements" id="certificatesRow">
-                            CERTIFICATIONS / ATTESTATIONS
+                            CERTIFICATIONS / ATTESTATIONS (@certificates.Count())
                         </span>
                     </th>
                 </tr>
@@ -124,7 +124,7 @@
                                     <div class="card-body">
 
                                         @{
-                                            bool emptyCertificateDesc = certificate.CertificateDescEng == "" || certificate.CertificateDescFre == "";
+                                            bool emptyCertificateDesc = string.IsNullOrWhiteSpace(certificate.CertificateDescEng) || string.IsNullOrWhiteSpace(certificate.CertificateDescFre);
                                         }
 
                                         @if (!emptyCertificateDesc)
@@ -198,8 +198,12 @@
                                                 <b>No description selected</b>
                                             </p>
                                             <div class="expanded-item-navigation">
-                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-in-print">
                                                     Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a>
+
+                                                <a href="/Certificates/Details?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-when-not-in-print print-link underline display-inline">
+                                                    Certificate Details
                                                 </a>
                                             </div>
                                         }
@@ -214,11 +218,16 @@
                                                 <span class="small-padding-top display-block">@(string.IsNullOrWhiteSpace(certificate.DescFre) ? "Aucune description specifée en français" : certificate.DescFre)</span>
                                             </p>
                                             <div class="expanded-item-navigation">
-                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                <a href="/Certificates/Edit?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-in-print">
                                                     Edit Certificate <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
-                                                </a> <span class="small-padding-left">|</span>
-                                                <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                </a> <span class="small-padding-left hide-in-print">|</span>
+                                                <a href="/Certificates/Descriptions/Edit?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-in-print">
                                                     Edit Selected Certificate Description <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                </a>
+
+                                                <a href="/Certificates/Details?id=@certificate.Id" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-when-not-in-print print-link underline display-inline">Certificate Details</a>&nbsp;<span class="hide-when-not-in-print display-inline no-underline">|</span> 
+                                                <a href="/Certificates/Descriptions/Details?id=@certificate.CertificateDescId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-when-not-in-print print-link underline display-inline">
+                                                    Selected Certificate Description Details
                                                 </a>
                                             </div>
                                         }
@@ -246,7 +255,6 @@
                 int executiveId = Model.CompetencyTypeNames.Where(x => x.NameEng.ToLower().Contains("executive")).Select(x => x.Id).FirstOrDefault();
             }
 
-
             @if (Model.PositionCompetencyRatings.Any())
             {
                 int loopCounter = 0;
@@ -256,7 +264,7 @@
                     if (competenciesOfType.Any())
                     {
                         <tr>
-                            <th class="col-7 table-header-row"><span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper()</span></th>
+                            <th class="col-7 table-header-row"><span class="expand-elements-in-next-rows closed" data-toggle="tooltip" title="Toggle expandable elements">@competencytype.FirstOrDefault()?.TypeNameEng.ToUpper() / @competencytype.FirstOrDefault()?.TypeNameFre.ToUpper() (@competenciesOfType.Count())</span></th>
                             <th class="text-center col-3 table-header-row"><span class="expand-elements-in-next-rows closed second-column" data-toggle="tooltip" title="Toggle expandable elements">LEVEL / NIVEAU</span></th>
                         </tr>
                         foreach (var c in competenciesOfType)
@@ -282,8 +290,11 @@
                                                     <span class="small-padding-top display-block">@c.CompetencyDescFre</span>
                                                 </p>
                                                 <div class="expanded-item-navigation">
-                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-in-print">
                                                         Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a>
+                                                    <a href="/Competencies/Details?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-when-not-in-print print-link underline display-inline">
+                                                        Details
                                                     </a>
                                                 </div>
                                             </div>
@@ -326,8 +337,11 @@
                                                     @c.CompetencyLevelReqDescFre
                                                 </p>
                                                 <div class="expanded-item-navigation">
-                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")">
+                                                    <a href="/Competencies/Edit?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-in-print">
                                                         Edit Competency <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                                    </a>
+                                                    <a href="/Competencies/Details?id=@c.CompetencyId" target="@(expandableItemsOpenNewWindows ? "_blank" : "_self")" class="hide-when-not-in-print print-link underline display-inline">
+                                                        Details
                                                     </a>
                                                 </div>
                                             </div>
@@ -356,14 +370,14 @@
     </table>
 </div>
 
-<div class="form-group space-btns small-margin-top">
+<div class="form-group space-btns small-margin-top hide-in-print">
     <a asp-page="./Edit" asp-route-id="@Model.Position.JobTitleId" class="btn btn-primary">Edit</a>
     <a class="btn btn-info" href="/Positions/Create?id=@Model.Position.JobTitleId"
     data-toggle="tooltip" title="Create a new position with the same details as current selection">Save a Copy</a>
 </div>
 
-<div>
+<div class="hide-in-print">
     <a asp-page="./Index">Back to List</a> |
-    <a href="/Similar/Locate?id=@Model.Position.JobTitleId">Locate in Similar Positions</a> |
+    <a href="/Similar/Locate?id=@Model.Position.JobTitleId" class="load-link">Locate in Similar Positions</a> |
     <a asp-page="./Delete" asp-route-id="@Model.Position.JobTitleId">Delete</a>
 </div>

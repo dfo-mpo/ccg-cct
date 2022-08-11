@@ -1,0 +1,828 @@
+﻿@page
+@model Admin.Pages.Positions.AllDetailsModel
+@{
+    ViewData["Title"] = "All Position Details";
+    ViewData["HideBodyOverflow"] = true;
+
+    var anyPositions = Model.AllPositionDetails.Any();
+
+    /*
+     * Here is how this page works: it loads in nearly all data from the database, pretty much anything a user could want to find in the application.
+     * It makes a big table where each row represents one position, and each column a detail about that position. At first, only two columns display:
+     * the first one, which is always shown, contains the position's level and title (both English and French). The second column has all the 
+     * competencies added to the position, separated by type. However, the second column can be changed, and in fact, the user can display as many
+     * columns as they want simultaneously. This is done by checking checkboxes in a modal window. Each checkbox represnts a column that the users
+     * want to display. 
+     * 
+     * It should be noted that this page uses a lot of JavaScript for its functionality. Once the page is loaded, no more requests are sent to the
+     * server, everything is handled on the browser. You can find the functions related to this page in the "APD functions" section of the site.js file.
+     * (APD stands for All Position Details, by the way). The way the code determines which columns to display is based on the checkboxes, yes, but more
+     * specifically, it is based on the CSS classes of the table cells. Every column has its own CSS class, and the value of the checkboxes correspond to
+     * those.
+     * 
+     * When there are more than two columns displayed, the table overflows its container and scrolls horizontally. However, that horizontal scrollbar
+     * is hidden from users. Instead, to change which column they are currently displaying, the page will display navigation links which serve to let
+     * users select which column they wish to display. All eleven links are on the page, but only those that correspond to the columns being displayed
+     * are also displayed (once again based on CSS classes). The reason why the users can't scroll manually is because after some testing, it was
+     * awkward to manually scroll over the column that you wanted to display, as you had to take time to line it up properly. Now, with the links,
+     * that is done instantly and perfectly.
+     * 
+     * For every cell that is displayed, there is the chance that the position does not have the corresponding item (for exmaple, a job description).
+     * If that is the case, the cell will have the CSS class of "empty". This class has a significance, because it will always sort last. And also,
+     * the radio buttons that switch between displaying positions with results or those without also use this class to determine whether a position
+     * has the element or not.
+     * 
+     * Something else to note is that right before a cell is generated here on this page, the loop that goes through the data to display executes to
+     * prepare a string variable. This variable is added as an attribute of the cell (simple-text) and contains the exact same text the cell will
+     * contain, however it is all lowercase and has no extra whitespace. The reason for that is performance on the client-side. When the JavaScript
+     * sorts the table, it usually does so based on the text content of the cells. Simple enough, right? However, when getting an element's text content,
+     * it will also have all the extra whitespace included. At first, I attempted to just use the raw text content, and later to remove the extra 
+     * whitespace. While that worked no problem, it was extremely demanding, as a lot of actions that users perform on the page cause the table to be
+     * re-sorted, and doing so took a very long time because of all the whitespace that had to be removed from a bunch of cells (especially when the
+     * column being sorted was the All Competencies one). Now, the table gets sorted based on the simple-text attribute of cells, which means the code
+     * can just do a raw comparison, no preparation needed. However, since the loops that prepare this page have to run twice, this is a drawback
+     * on the server, but an advantage on the client side.
+     * 
+     * When this page was first created, it only had two columns displaying at most. You could display the same items in that second column as you
+     * can in this version, however, you weren't able to put into relation more than two columns at a time, the job and something else. The reason
+     * it was switch to as many columns as the user needs is to allow an easy way to view simultaneously the regions, locations, competencies, or
+     * anything else that could be required. This becomes especially relevant when considering the advanced filtering options available. They
+     * don't require an explanation here, since there is already a modal on the page that does just that :)
+     * 
+     * If any future devs want to improve this page, I would suggest perhaps improving the filtering even further, by adding brackets for order
+     * of operations, perhaps. Or maybe a way to indicate in your filter which column specifically you are searching in.
+     */
+}
+
+<div class="collapse @(Model.DisplayTopOfPage ? "show" : "") position-relative" id="collapsibleTop" aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")">
+    <h1>All Position Details</h1>
+    <p class="@(anyPositions ? "" : "dontShow") hide-in-print">
+        <h6 class="hide-in-print position-relative @(anyPositions ? "" : "dontShow")">
+            <label for="APD-chooseColumns">Choose the Columns to Display:</label>
+            <input type="button" value="Choose" class="btn btn-dark margin-right-space-btn inline-block apd-action-btn" 
+            data-toggle="modal" data-target="#APDModal" id="APD-chooseColumns" />
+            <span class="glyphicon glyphicon-save-file display-inline position-absolute" style="top: 0px !important; left: 398.609px;" onclick="print()"></span>
+        </h6>
+    </p>
+
+    <div class="modal fade bd-modal-xl" id="APDModal" tabindex="-1" role="dialog" aria-labelledby="APDModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="APDModalTitle">CHOOSE THE COLUMNS TO DISPLAY</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body text-center">
+                        <h3 class="text-center">Choose the columns to display. Multiple can be selected at once</h3>
+
+                        <div id="APD-checkboxDiv">
+                            <div>
+                                <input type="checkbox" name="APD-columns" value="APD-competencies" id="apd-check-competencies" apd-width="30" checked />
+                                <label for="apd-check-competencies">All Competencies</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-knowledge" id="apd-check-knowledge" />
+                                <label for="apd-check-knowledge">Knowledge Elements</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-technical" id="apd-check-technical" />
+                                <label for="apd-check-technical">Technical Elements</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-behavioural" id="apd-check-behavioural" />
+                                <label for="apd-check-behavioural">Behavioural Elements</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-executive" id="apd-check-executive" />
+                                <label for="apd-check-executive">Executive Competencies</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-descriptions" id="apd-check-descriptions" />
+                                <label for="apd-check-descriptions">Job Descriptions</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" name="APD-columns" value="APD-certificates-all" id="apd-check-certificates-all" apd-width="30" />
+                                <label for="apd-check-certificates-all">All Certificates</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-certificates-with-desc" id="apd-check-certificates-with-desc" />
+                                <label for="apd-check-certificates-with-desc">Certificates With a Selected Description</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-certificates-no-desc" id="apd-check-certificates-no-desc" />
+                                <label for="apd-check-certificates-no-desc">Certificates Without a Selected Description</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-regions" id="apd-check-regions" />
+                                <label for="apd-check-regions">Regions</label>
+
+                                <input type="checkbox" name="APD-columns" value="APD-location" id="apd-check-location" />
+                                <label for="apd-check-location">Location</label>
+                                
+                                <input type="checkbox" id="apd-check-master" />
+                                <label for="apd-check-master">Toggle all columns</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" data-dismiss="modal" id="APD-ApplyDropdownSelections">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-modal-xl" id="APDModalHelp" tabindex="-1" role="dialog" aria-labelledby="APDModalHelpTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="APDModalHelpTitle">HOW TO USE THE FILTERS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body text-center no-padding-top">
+                        <h6>
+                            The text filters are very powerful and allow you to find exactly what you are looking for. They are done on a partial match, 
+                            which means that any filter you provide only has to be a part of the entire words ("admin" will match with "administrative", 
+                            and any other word that contains "admin"). The filtering is only performed on the columns that are being displayed, and is case
+                            <span class="underline">insensitive</span>. Here are the special characters that can be used:
+                        </h6>
+                        <div class="display-block">
+                            <ul>
+                                <li>
+                                    <span class="code">"&"</span> - Ampersands allow you to separate multiple search filters that must all
+                                    match. For example, if you wanted to find all AS-01 positions that also require the "financial management" 
+                                    competency, your search filters could be 
+                                    <span class="code">"as-01 & financial"</span>
+                                </li>
+                                <li>
+                                    <span class="code">"|"</span> - The vertical bar allows you to offer possible options, where only one
+                                    of them must match. For example, if you wanted both AS-01 and AS-02 positions displayed, your filters would be 
+                                    <span class="code">"as-01 | as-02"</span>
+                                </li>
+                                <li>
+                                    <span class="code">"!"</span> - The exclamation mark allows you to exclude a certain word or phrase 
+                                    from your results. For example, if you wanted all positions <span class="underline">except</span> administrative ones, 
+                                    your filter would be <span class="code">"!as-"</span>. The <span class="code">"!"</span> must be <span class="font-italic">before</span> 
+                                    the word you want to exclude from your search
+                                </li>
+                            </ul>
+                        </div>
+                        <h6>
+                            Do note that all three special characters can be used at once, or separately, to allow for some very complex queries. Keep in mind that 
+                            your results can also be filtered using the radio buttons, to remove positions that are missing results in certain columns, or to only display 
+                            those positions with missing results.
+                        </h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary no-margin-right" data-dismiss="modal">
+                            Got it!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-actions no-color @(anyPositions ? "" : "dontShow") hide-in-print">
+        <h6 class="position-relative">
+            <label for="APD-Filter">Filters:</label>
+            <input type="text" id="APD-Filter" data-toggle="tooltip" />
+            <input type="button" value="Apply" class="btn btn-primary margin-right-space-btn inline-block apd-action-btn" id="APD-ApplyFilters" />
+            <input type="button" value="Clear" class="btn btn-danger margin-right-space-btn inline-block apd-action-btn no-margin-left" id="APD-ClearFilters" />
+            <input type="button" value="Help" class="btn btn-info apd-action-btn no-margin-left" id="APD-Help"
+            data-toggle="modal" data-target="#APDModalHelp" />
+        </h6>
+    </div>
+
+    <div id="APD-DisplayWhatDiv" class="hide-in-print @(anyPositions ? "" : "dontShow")">
+        <h1>Display Which Positions?</h1>
+
+        <input type="radio" name="APD-display-what" value="all" id="APD-display-what-all" checked />
+        <label for="APD-display-what-all">All Positions</label>
+
+        <input type="radio" name="APD-display-what" value="results-only" id="APD-display-what-results" />
+        <label for="APD-display-what-results">Positions With Results</label>
+
+        <input type="radio" name="APD-display-what" value="no-results" id="APD-display-what-no-results" />
+        <label for="APD-display-what-no-results">Positions Without Results</label>
+    </div>
+</div>
+
+@if (anyPositions)
+{
+    <div class="position-relative">
+
+        <div id="APD-list-group" class="list-group dontShow hide-in-print">
+            <a class="list-group-item list-group-item-action APD-competencies" apd-scrollto="#APD-competencies-header" href="#">All Competencies</a>
+            <a class="list-group-item list-group-item-action APD-knowledge" apd-scrollto="#APD-knowledge-header" href="#">Knowledge Elements</a>
+            <a class="list-group-item list-group-item-action APD-technical" apd-scrollto="#APD-technical-header" href="#">Technical Elements</a>
+            <a class="list-group-item list-group-item-action APD-behavioural" apd-scrollto="#APD-behavioural-header" href="#">Behavioural Elements</a>
+            <a class="list-group-item list-group-item-action APD-executive" apd-scrollto="#APD-executive-header" href="#">Executive Competencies</a>
+            <a class="list-group-item list-group-item-action APD-certificates-all" apd-scrollto="#APD-certificates-all-header" href="#">All Certificates</a>
+            <a class="list-group-item list-group-item-action APD-certificates-with-desc" apd-scrollto="#APD-certificates-with-desc-header" href="#">Certificates With a Selected Description</a>
+            <a class="list-group-item list-group-item-action APD-certificates-no-desc" apd-scrollto="#APD-certificates-no-desc-header" href="#">Certificates Without a Selected Description</a>
+            <a class="list-group-item list-group-item-action APD-descriptions" apd-scrollto="#APD-descriptions-header" href="#">Job Descriptions</a>
+            <a class="list-group-item list-group-item-action APD-regions" apd-scrollto="#APD-regions-header" href="#">Regions</a>
+            <a class="list-group-item list-group-item-action APD-location" apd-scrollto="#APD-location-header" href="#">Locations</a>
+        </div>
+
+    <div id="table-container" style="max-height: @(Model.LastTableContainerHeight)px; height: @(Model.LastTableContainerHeight)px">
+        
+        <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
+        class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
+        aria-expanded="@(Model.DisplayTopOfPage ? "true" : "false")" aria-controls="collapsibleTop" 
+        alt="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page" tooltip
+        title="@(Model.DisplayTopOfPage ? "Collapse" : "Expand") the top of the page"
+        id="APD-toggle-top-of-page" />
+        
+        <table class="table" id="APD-table">
+            <thead>
+                <tr class="table-header-row text-center">
+                    <th>
+                        <div id="APD-firstHeader">
+                            <b class="sort-column sorted loading" data-toggle="tooltip" title="Click to sort column" id="adp-positionHeader">Positions (@Model.AllPositionDetails.Count())</b>
+                        </div>
+                    </th>
+                    <th class="APD-competencies APD-item" id="APD-competencies-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">All Competencies</b></th>
+                    <th class="dontShow APD-item APD-knowledge" id="APD-knowledge-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Knowledge Elements</b></th>
+                    <th class="dontShow APD-item APD-technical" id="APD-technical-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Technical Elements</b></th>
+                    <th class="dontShow APD-item APD-behavioural" id="APD-behavioural-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Behavioural Elements</b></th>
+                    <th class="dontShow APD-item APD-executive" id="APD-executive-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Executive Competencies</b></th>
+                    <th class="dontShow APD-item APD-certificates-all" id="APD-certificates-all-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">All Certificates</b></th>
+                    <th class="dontShow APD-item APD-certificates-with-desc" id="APD-certificates-with-desc-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Certificates With a Selected Description</b></th>
+                    <th class="dontShow APD-item APD-certificates-no-desc" id="APD-certificates-no-desc-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Certificates Without a Selected Description</b></th>
+                    <th class="dontShow APD-item APD-descriptions" id="APD-descriptions-header"><b class="sort-column loading" data-toggle="tooltip" title="Click to sort column">Job Descriptions</b></th>
+                    <th class="dontShow APD-item APD-regions" id="APD-regions-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Regions</b></th>
+                    <th class="dontShow APD-item APD-location" id="APD-location-header"><b class="sort-column loading apd-sort" data-toggle="tooltip" title="Click to sort column">Locations</b></th>  
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    var positions = Model.AllPositionDetails.OrderBy(x => x.Position.JobTitleEng.ToLower()).OrderBy(x => x.Position.LevelCode.ToLower()).ToList();
+                }
+
+                @foreach (var position in positions)
+                {
+                    var knowledgeComps = position.PositionCompetencyRatings.ElementAt(0).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+                    var techComps = position.PositionCompetencyRatings.ElementAt(1).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+                    var behavComps = position.PositionCompetencyRatings.ElementAt(2).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+                    var execComps = position.PositionCompetencyRatings.ElementAt(3).OrderBy(x => x.CompetencyNameEng.ToLower()).ToList();
+                    var jobPosition = position.Position;
+
+                    var numComps = knowledgeComps.Count() + techComps.Count() + behavComps.Count() + execComps.Count();
+                    var compPlural = numComps <= 1 ? "y" : "ies";
+
+                    int loopCounter = 0;
+                    var simpleText = "";
+
+                    <tr>
+                        @{
+                            simpleText = jobPosition.LevelCode + " " + jobPosition.JobTitleEng + " / " + jobPosition.JobTitleFre;
+                        }
+                        <td simple-text="@simpleText.ToLowerInvariant().Trim()">
+                            <b>@jobPosition.LevelCode</b>
+                            <a href="/Positions/Details?positionid=@jobPosition.JobTitleId" target="_blank"
+                                class="rememberIfVisited print-link">
+                                @jobPosition.JobTitleEng <b>/</b> @jobPosition.JobTitleFre
+                                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                            </a>
+                        </td>
+
+                        @* All Competencies *@
+                        @{
+                            simpleText = "";
+                            for (int i = 0; i < position.PositionCompetencyRatings.Count(); i++)
+                            {
+                                var compType = position.PositionCompetencyRatings.ElementAt(i);
+                                var compTypeName = Model.CompetencyTypeNames.ElementAt(i).NameEng;
+                                simpleText += Model.CompetencyTypeNames.ElementAt(i).NameEng + " ";
+
+                                if (compType.Any())
+                                {
+                                    compType = compType.OrderBy(x => x.CompetencyNameEng.ToLower()).ToArray();
+
+                                    for (int j = 0; j < compType.Count(); j++)
+                                    {
+                                        var comp = compType.ElementAt(j);
+                                        simpleText += comp.CompetencyNameEng + " / " + comp.CompetencyNameFre + " (Level " + comp.RatingValue.ToString() + ") ";
+
+                                        if (j == compType.Count() - 1)
+                                        {
+                                            if (compType.Count() == 1) 
+                                            {
+                                                if (compTypeName.Contains("ies"))
+                                                {
+                                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                                }
+                                                compTypeName = compTypeName[..^1];
+                                            }
+                                            simpleText += compType.Count().ToString() + " " + compTypeName + " ";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    simpleText += "This position requires no " + Model.CompetencyTypeNames.ElementAt(i).NameEng + " ";
+                                }
+                            }
+                            simpleText += numComps.ToString() + " competenc" + compPlural;
+                        }
+                        <td class="APD-competencies APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                            @for (int i = 0; i < position.PositionCompetencyRatings.Count(); i++) 
+                            {
+                                var compType = position.PositionCompetencyRatings.ElementAt(i);
+                                var compTypeName = Model.CompetencyTypeNames.ElementAt(i).NameEng;
+
+                                <b class="underline">@compTypeName:</b>
+                                <br /><br />
+                                if (compType.Any())
+                                {
+                                    compType = compType.OrderBy(x => x.CompetencyNameEng.ToLower()).ToArray();
+
+                                    for (int j = 0; j < compType.Count(); j++)
+                                    {
+                                        var comp = compType.ElementAt(j);
+
+                                        <div class="apd-comp-grid">
+                                            <a href="/Competencies/Details?id=@comp.CompetencyId" target="_blank" class="print-link">
+                                                @comp.CompetencyNameEng <b>/</b> @comp.CompetencyNameFre
+                                                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                            </a>
+                                            <b>(Level @comp.RatingValue)</b>
+                                        </div>
+
+                                        <br />
+                                        if (j == compType.Count() - 1)
+                                        {
+                                            if (compType.Count() == 1) 
+                                            {
+                                                if (compTypeName.Contains("ies"))
+                                                {
+                                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                                }
+                                                compTypeName = compTypeName[..^1];
+                                            }
+                                            <div>
+                                                <span class="apd-num-elements">@compType.Count() @compTypeName</span>
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="APD-empty display-block">
+                                        This position requires no @compTypeName.ToLowerInvariant()
+                                    </span>
+                                }
+                                <br />
+                            }
+                            <div>
+                                <span class="apd-num-elements">@numComps Competenc@(compPlural)</span>
+                            </div>
+                        </td>
+
+                        @* Knowledge Competencies *@
+                        @if (knowledgeComps.Any())
+                        {
+                            simpleText = "";
+                            foreach (var comp in knowledgeComps)
+                            {
+                                simpleText += comp.CompetencyNameEng + " / " + comp.CompetencyNameFre + " (Level " + comp.RatingValue.ToString() + ") ";
+                            }
+                            var compTypeName = knowledgeComps.ElementAt(0).TypeNameEng;
+                            if (knowledgeComps.Count() == 1) 
+                            {
+                                if (compTypeName.Contains("ies"))
+                                {
+                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                }
+                                compTypeName = compTypeName[..^1];
+                            }
+                            simpleText += knowledgeComps.Count().ToString() + " " + compTypeName;
+
+                            <td class="APD-knowledge APD-item dontShow" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @foreach (var comp in knowledgeComps)
+                                {
+                                    <div class="apd-comp-grid">
+                                        <a href="/Competencies/Details?id=@comp.CompetencyId" target="_blank" class="print-link">
+                                            @comp.CompetencyNameEng <b>/</b> @comp.CompetencyNameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+                                        <b>(Level @comp.RatingValue)</b>
+                                    </div>
+                                    <br />
+                                    @if (loopCounter == knowledgeComps.Count() - 1)
+                                    {
+                                        <div>
+                                            <span class="apd-num-elements">@knowledgeComps.Count() @compTypeName</span>
+                                        </div>
+                                    }
+                                    loopCounter++;
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position requires no knowledge elements";
+                            <td class="APD-knowledge empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position requires no knowledge elements</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Technical Competencies *@
+                        @if (techComps.Any())
+                        {
+                            simpleText = "";
+                            foreach (var comp in techComps)
+                            {
+                                simpleText += comp.CompetencyNameEng + " / " + comp.CompetencyNameFre + " (Level " + comp.RatingValue.ToString() + ") ";
+                            }
+                            var compTypeName = techComps.ElementAt(0).TypeNameEng;
+                            if (techComps.Count() == 1) 
+                            {
+                                if (compTypeName.Contains("ies"))
+                                {
+                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                }
+                                compTypeName = compTypeName[..^1];
+                            }
+                            simpleText += techComps.Count().ToString() + " " + compTypeName;
+
+                            <td class="APD-technical dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @foreach (var comp in techComps)
+                                {
+                                    <div class="apd-comp-grid">
+                                        <a href="/Competencies/Details?id=@comp.CompetencyId" target="_blank" class="print-link">
+                                            @comp.CompetencyNameEng <b>/</b> @comp.CompetencyNameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+                                        <b>(Level @comp.RatingValue)</b>
+                                    </div>
+                                    <br />
+                                    @if (loopCounter == techComps.Count() - 1)
+                                    {
+                                        <div>
+                                            <span class="apd-num-elements">@techComps.Count() @compTypeName</span>
+                                        </div>
+                                    }
+                                    loopCounter++;
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position requires no technical elements";
+                            <td class="APD-technical empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position requires no technical elements</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Behavioural Competencies *@
+                        @if (behavComps.Any())
+                        {
+                            simpleText = "";
+                            foreach (var comp in behavComps)
+                            {
+                                simpleText += comp.CompetencyNameEng + " / " + comp.CompetencyNameFre + " (Level " + comp.RatingValue.ToString() + ") ";
+                            }
+                            var compTypeName = behavComps.ElementAt(0).TypeNameEng;
+                            if (behavComps.Count() == 1) 
+                            {
+                                if (compTypeName.Contains("ies"))
+                                {
+                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                }
+                                compTypeName = compTypeName[..^1];
+                            }
+                            simpleText += behavComps.Count().ToString() + " " + compTypeName;
+
+                            <td class="APD-behavioural dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @foreach (var comp in behavComps)
+                                {
+                                    <div class="apd-comp-grid">
+                                        <a href="/Competencies/Details?id=@comp.CompetencyId" target="_blank" class="print-link">
+                                            @comp.CompetencyNameEng <b>/</b> @comp.CompetencyNameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+                                        <b>(Level @comp.RatingValue)</b>
+                                    </div>
+                                    <br />
+                                    @if (loopCounter == behavComps.Count() - 1)
+                                    {
+                                        <div>
+                                            <span class="apd-num-elements">@behavComps.Count() @compTypeName</span>
+                                        </div>
+                                    }
+                                    loopCounter++;
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position requires no behavioural elements";
+                            <td class="APD-behavioural empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position requires no behavioural elements</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Executive Competencies *@
+                        @if (execComps.Any())
+                        {
+                            simpleText = "";
+                            foreach (var comp in execComps)
+                            {
+                                simpleText += comp.CompetencyNameEng + " / " + comp.CompetencyNameFre + " (Level " + comp.RatingValue.ToString() + ") ";
+                            }
+                            var compTypeName = execComps.ElementAt(0).TypeNameEng;
+                            if (execComps.Count() == 1) 
+                            {
+                                if (compTypeName.Contains("ies"))
+                                {
+                                    compTypeName = compTypeName.Replace("ies", "yX");
+                                }
+                                compTypeName = compTypeName[..^1];
+                            }
+                            simpleText += execComps.Count().ToString() + " " + compTypeName;
+
+                            <td class="APD-executive dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @foreach (var comp in execComps)
+                                {
+                                    <div class="apd-comp-grid">
+                                        <a href="/Competencies/Details?id=@comp.CompetencyId" target="_blank" class="print-link">
+                                            @comp.CompetencyNameEng <b>/</b> @comp.CompetencyNameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+                                        <b>(Level @comp.RatingValue)</b>
+                                    </div>
+                                    <br />
+                                    @if (loopCounter == execComps.Count() - 1)
+                                    {
+                                        <div>
+                                            <span class="apd-num-elements">@execComps.Count() @compTypeName</span>
+                                        </div>
+                                    }
+                                    loopCounter++;
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position requires no executive competencies";
+                            <td class="APD-executive empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position requires no executive competencies</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* All Certificates *@
+                        @if (position.PositionCertificates.Any())
+                        {
+                            simpleText = "";
+                            foreach (var cert in position.PositionCertificates)
+                            {
+                                simpleText += cert.NameEng + " / " + cert.NameFre + " ";
+                                if (!string.IsNullOrWhiteSpace(cert.DescEng) && !string.IsNullOrWhiteSpace(cert.DescFre))
+                                {
+                                    simpleText += "selected description: " + cert.DescEng + " / " + cert.DescFre + " ";
+                                }
+                            }
+                            var plural = position.PositionCertificates.Count() > 1 ? "s" : "";
+                            simpleText += position.PositionCertificates.Count().ToString() + " certificate" + plural;
+
+                            <td class="APD-certificates-all dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @foreach (var cert in position.PositionCertificates)
+                                {
+                                    <a href="/Certificates/Details?id=@cert.Id" target="_blank" class="print-link">
+                                        @cert.NameEng <b>/</b> @cert.NameFre
+                                        <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                    </a>
+
+                                    bool hasDesc = !string.IsNullOrWhiteSpace(cert.DescEng) && !string.IsNullOrWhiteSpace(cert.DescFre);
+
+                                    if (hasDesc)
+                                    {
+                                        <div class="card-body @(loopCounter == position.PositionCertificates.Count() - 1 ? "no-padding-bottom" : "")">
+                                            <b>Selected Description: </b>
+                                            <a href="/Certificates/Descriptions/Details?id=@cert.CertificateDescId" target="_blank">
+                                                @cert.DescEng <b>/</b> @cert.DescFre
+                                                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                            </a>
+                                        </div>
+                                    }
+
+                                    if (loopCounter < position.PositionCertificates.Count() - 1 && !hasDesc)
+                                    {
+                                        <br /><br />
+                                    }
+                                    if (loopCounter == position.PositionCertificates.Count() - 1)
+                                    {
+                                        <br />
+                                        if (!hasDesc)
+                                        {
+                                            <br />
+                                        }
+                                        <div>
+                                            <span class="apd-num-elements">@position.PositionCertificates.Count() Certificate@(plural)</span>
+                                        </div>
+                                    }
+                                    loopCounter++;
+                                }
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position does not have any certificates associated to it";
+                            <td class="APD-certificates-all empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position does not have any certificates associated to it</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Certificates with descriptions *@
+                        @if (position.PositionCertificates.Any())
+                        {
+                            var certsWithDescs = position.PositionCertificates.Where(x => !string.IsNullOrWhiteSpace(x.DescEng) && !string.IsNullOrWhiteSpace(x.DescFre)).ToList();
+
+                            simpleText = "";
+                            foreach (var cert in certsWithDescs)
+                            {
+                                simpleText += cert.NameEng + " / " + cert.NameFre + " selected description: " + cert.DescEng + " / " + cert.DescFre + " ";
+                            }
+                            var plural = certsWithDescs.Count() > 1 ? "s" : "";
+                            simpleText += certsWithDescs.Count().ToString() + " certificate" + plural + " with a selected description";
+
+                            if (certsWithDescs.Any())
+                            {
+                                <td class="APD-certificates-with-desc dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                    @foreach (var cert in certsWithDescs)
+                                    {
+                                        <a href="/Certificates/Details?id=@cert.Id" target="_blank" class="print-link">
+                                            @cert.NameEng <b>/</b> @cert.NameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+
+                                        <div class="card-body @(loopCounter == certsWithDescs.Count() - 1 ? "no-padding-bottom" : "")">
+                                            <b>Selected Description: </b>
+                                            <a href="/Certificates/Descriptions/Details?id=@cert.CertificateDescId" target="_blank">
+                                                @cert.DescEng <b>/</b> @cert.DescFre
+                                                <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                            </a>
+                                        </div>
+
+                                        if (loopCounter == certsWithDescs.Count() - 1)
+                                        {
+                                            <br />
+                                            <div>
+                                                <span class="apd-num-elements">@certsWithDescs.Count() Certificate@(plural) With a Selected Description</span>
+                                            </div>
+                                        }
+                                        loopCounter++;
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                simpleText = "This position does not have any certificates with a selected description associated to it";
+                                <td class="APD-certificates-with-desc empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                    <span class="APD-empty">This position does not have any certificates with a selected description associated to it</span>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            simpleText = "This position does not have any certificates associated to it";
+                            <td class="APD-certificates-with-desc empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position does not have any certificates associated to it</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Certificates without descriptions *@
+                        @if (position.PositionCertificates.Any())
+                        {
+                            var certsWithoutDescs = position.PositionCertificates.Where(x => string.IsNullOrWhiteSpace(x.DescEng) && string.IsNullOrWhiteSpace(x.DescFre)).ToList();
+
+                            simpleText = "";
+                            foreach (var cert in certsWithoutDescs)
+                            {
+                                simpleText += cert.NameEng + " / " + cert.NameFre + " ";
+                            }
+                            var plural = certsWithoutDescs.Count() > 1 ? "s" : "";
+                            simpleText += certsWithoutDescs.Count().ToString() + " certificate" + plural + " without a selected description";
+
+                            if (certsWithoutDescs.Any())
+                            {
+                                <td class="APD-certificates-no-desc dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                    @foreach (var cert in certsWithoutDescs)
+                                    {
+                                        <a href="/Certificates/Details?id=@cert.Id" target="_blank" class="print-link">
+                                            @cert.NameEng <b>/</b> @cert.NameFre
+                                            <img src="~/images/icons/external_link_icon.png" class="external-link" alt="Open link in new tab" />
+                                        </a>
+
+                                        <br /><br />
+
+                                        if (loopCounter == certsWithoutDescs.Count() - 1)
+                                        {
+                                            <div>
+                                                <span class="apd-num-elements">@certsWithoutDescs.Count() Certificate@(plural) Without a Selected Description</span>
+                                            </div>
+                                        }
+                                        loopCounter++;
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                simpleText = "This position does not have any certificates without a selected description associated to it";
+                                <td class="APD-certificates-no-desc empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                    <span class="APD-empty">This position does not have any certificates without a selected description associated to it</span>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            simpleText = "This position does not have any certificates associated to it";
+                            <td class="APD-certificates-no-desc empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position does not have any certificates associated to it</span>
+                            </td>
+                        }
+                        @{loopCounter = 0;}
+
+                        @* Job Descriptions *@
+                        @if (!string.IsNullOrWhiteSpace(jobPosition.JobDescriptionEng) && !string.IsNullOrWhiteSpace(jobPosition.JobDescriptionFre))
+                        {
+                            simpleText = jobPosition.JobDescriptionEng + " " + jobPosition.JobDescriptionFre;
+                            <td class="APD-descriptions dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                @jobPosition.JobDescriptionEng <br /><br />
+                                @jobPosition.JobDescriptionFre
+                            </td>
+                        }
+                        else
+                        {
+                            simpleText = "This position does not have a description";
+                            <td class="APD-descriptions empty dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                                <span class="APD-empty">This position does not have a description</span>
+                            </td>
+                        }
+
+                        @* Regions *@
+                        @{
+                            simpleText = position.JobLocationRegions.Count().ToString() + ": ";
+                            foreach (var region in position.JobLocationRegions)
+                            {
+                                simpleText += region.NameEng + " / " + region.NameFre + ", ";
+                            }
+                        }
+                        <td class="APD-regions dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()[..^1]">
+                            <b>@position.JobLocationRegions.Count(): </b>
+                            @foreach (var region in position.JobLocationRegions)
+                            {
+                                <span>@region.NameEng / @region.NameFre@(loopCounter < position.JobLocationRegions.Count() - 1 ? ", " : "")</span>
+                                loopCounter++;
+                            }
+                        </td>
+                        @{loopCounter = 0;}
+
+                        @* Location *@
+                        @{
+                            if (position.JobHLCategory == "2")
+                            {
+                                simpleText = "Shore side / À terre";
+                            }
+                            else
+                            {
+                                simpleText = "Seagoing / En mer";
+                            }
+                        }
+                        <td class="APD-location dontShow APD-item" simple-text="@simpleText.ToLowerInvariant().Trim()">
+                            @if (position.JobHLCategory == "2")
+                            {
+                                <span>Shore side / À terre</span>
+                            }
+                            else
+                            {
+                                <span>Seagoing / En mer <img src="~/images/icons/anchor-icon-sm.png" alt="Anchor" class="anchor" /></span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div id="APD-no-results" class="dontShow">
+        <h4 class="no-results">There are no positions that match the filters and options selected</h4>
+    </div>
+}
+else
+{
+    <h4 class="no-results">There are currently no positions</h4>
+}
