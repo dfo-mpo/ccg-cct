@@ -585,12 +585,17 @@ function setTableContainerMaxHeight(setHeightInSession = false) {
         }
         tableContainer.style.maxHeight = `${newHeight}px`;
         tableContainer.style.minHeight = `${newHeight}px`;
-
-        // this code handles centering vertically the text that appears when a position could not be found in a percentage column in the locate similar positions results page
+        
         let noResultColumns = qsa(".no-matching-positions-at-percent");
+        // this code handles centering vertically the text that appears when a position could not be found in a percentage column in the locate similar positions results page. It also ensures that the table itself has the correct minimum height to ensure that it takes up at least as much space as the tableContainer, just to make sure that the text that says that the position hasn't been added to the percentage match is at the center of the tableContainer, which takes up as much vertical space as is available (but the table itself might not have enough height by itself)
         if (noResultColumns.length > 0) {
             let thead = qs("thead", tableContainer);
+            let table = qs("table", tableContainer);
             if (thead) {
+                table.style.minHeight = "none";
+                if (table.getBoundingClientRect().height < newHeight) {
+                    table.style.minHeight = `${newHeight - thead.getBoundingClientRect().height}px`;
+                }
                 for (let i = 0; i < noResultColumns.length; i++) {
                     let span = qs("span", noResultColumns[i]);
                     let top = ((tableContainer.getBoundingClientRect().height - span.getBoundingClientRect().height - thead.getBoundingClientRect().height) / 2) + thead.getBoundingClientRect().height;
@@ -976,27 +981,27 @@ function prepareOverwriteSimilarModalLink(el) {
  * 
  * @param {HTMLElement} el - The link that was clicked
  * @param {boolean} targetSibling - Whether or not the sibling link should be made visited as well. It is true when the link comes from the locate positions page
- * @param {boolean} ctrlHeld - Whether or not the CTRL key was being held when the click happened
+ * @param {boolean} ctrlOrShiftHeld - Whether or not the CTRL or shift key was being held when the click happened
  * 
  */
-function makeLinkVisited(el, targetSibling = true, ctrlHeld = false) {
-    if (!ctrlHeld || targetSibling) {
+function makeLinkVisited(el, targetSibling = true, ctrlOrShiftHeld = false) {
+    if (!ctrlOrShiftHeld || targetSibling) {
         if (el.classList) {
             if (!el.classList.contains("visited")) {
                 if (!qs(".nav-link.visited")) {
                     el.classList.add("visited");
                     if (targetSibling) {
                         let sibling = el.nextElementSibling ? el.nextElementSibling : el.previousElementSibling;
-                        sibling.classList.add("visited");
+                        if (sibling) {
+                            sibling.classList.add("visited");
+                        }
                     }
                 }
             }
         }
     }
-    console.log("yo")
-    if (ctrlHeld) {
-        // if the user clicked on a navigation link while holding ctrl, it means the link opened in a new tab. This blur() call is to ensure that the animated underline that appears below a navigation link doesn't stay there, because the element was focused
-        console.log("hi")
+    if (ctrlOrShiftHeld) {
+        // if the user clicked on a navigation link while holding control or shift, it means the link opened in a new tab (or a new window). This blur() call is to ensure that the animated underline that appears below a navigation link doesn't stay there, because the element was focused, and since the page in which the link was clicked doesn't change, it's just to ensure it doesn't stay selected for longer than it should
         el.blur();
     }
 }
@@ -1782,6 +1787,7 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
             if (firstCall) {
                 // when the animation is happening, the body has its overflow hidden, to ensure that even if the animation would momentarily cause the body to need to scroll, it will not be able to for the duration of the transition (otherwise the scrollbar can flicker in and out of view, which is very distracting). Also, to avoid the footer moving all over, it is fixed on screen during the animation as well
 
+                checkIfTableCanBeScrolled();
                 qs("body").classList.add("overflow-y-hidden");
                 footer.style.position = "fixed";
                 let arrowIcon = qs(`[data-target="#collapsibleTop"]`);
@@ -1818,11 +1824,14 @@ function transitionStarted(e, canRecurse = true, firstCall = false) {
                 }
             }
             else {
+                // this is the final call, since it won't recurse anymore
                 footer.style.position = "absolute";
                 qs("body").classList.remove("overflow-y-hidden");
                 setTableContainerMaxHeight();
+                checkIfTableCanBeScrolled();
                 setTimeout(() => { // this delayed call ensures that there can't be a desync, otherwise, it can happen, very rarely
                     setTableContainerMaxHeight(true);
+                    checkIfTableCanBeScrolled();
                 }, 100);
             }
         }
@@ -1957,7 +1966,7 @@ function handleClick(e) {
         }
 
         let parentLink = findNearestParentOfType(target, "a");
-        if (!e.ctrlKey) {
+        if (!e.ctrlKey && !e.shiftKey) {
             if (target.classList) {
                 if (target.classList.contains("load-link")) {
                     toggleLoadingSymbol(true);
@@ -2016,7 +2025,7 @@ function handleClick(e) {
         if (parentLink) {
             if (parentLink.classList) {
                 if (parentLink.classList.contains("rememberIfVisited")) {
-                    makeLinkVisited(parentLink, parentLink.classList.contains("nextOrPreviousLink"), e.ctrlKey);
+                    makeLinkVisited(parentLink, parentLink.classList.contains("nextOrPreviousLink"), e.ctrlKey || e.shiftKey);
                     return;
                 }
             }

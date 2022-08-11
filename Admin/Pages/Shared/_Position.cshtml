@@ -263,8 +263,8 @@ class="text-danger display-block small-margin-bottom no-padding-top bold"></span
                         </ul>
                     </div>
                     <div class="dropdown col-3 m-1">
-                        <label class="control-label" for="levelValue"><b>Level / Niveau</b></label><br />
-                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="levelValue" name="LevelValue">
+                        <label class="control-label" for="LevelValue"><b>Level / Niveau</b></label><br />
+                        <select class="form-control dropdown-toggle mrgn-bttm-md" id="LevelValue" name="LevelValue">
                             @{
                                 var jobGroupPositions = Model.JobGroupPositions.OrderBy(x => x.LevelCode.ToLower()).Distinct().ToList();
                             }

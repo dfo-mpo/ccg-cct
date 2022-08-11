@@ -634,7 +634,7 @@ a {
 }
 
 header {
-    z-index: 1000;
+    z-index: 2000;
 }
 
 h1 {
@@ -684,6 +684,7 @@ input[value="Clear"] {
     position: fixed;
     top: calc((66px - 32px) / 2);
     left: 20px;
+    z-index: 10100;
 }
 
 #Filter, #APD-Filter {

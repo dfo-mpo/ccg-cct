@@ -199,10 +199,10 @@ else
             <table class="table">
                 <thead>
                     <tr class="table-header-row text-center">
-                            <th class="col-3"><b class="@(!hunredIsEmpty ? "sorted flip-column" : "")" title="@(!hunredIsEmpty ? "Click to flip column" : "")" data-toggle="@(hundredPositions.Any() ? "tooltip" : "")">100% (@hundredPositions.Count())</b></th>
-                            <th class="col-3"><b class="@(!ninetyIsEmpty ? "sorted flip-column" : "")" title="@(!ninetyIsEmpty ? "Click to flip column" : "")" data-toggle="@(ninetyPositions.Any() ? "tooltip" : "")">90% (@ninetyPositions.Count())</b></th>
-                            <th class="col-3"><b class="@(!eightyIsEmpty ? "sorted flip-column" : "")" title="@(!eightyIsEmpty ? "Click to flip column" : "")" data-toggle="@(eightyPositions.Any() ? "tooltip" : "")">80% (@eightyPositions.Count())</b></th>
-                            <th class="col-2 hide-in-print"><b class="@(!seventyIsEmpty ? "sorted flip-column" : "")" title="@(!seventyIsEmpty ? "Click to flip column" : "")" data-toggle="@(seventyPositions.Any() ? "tooltip" : "")">70% (@seventyPositions.Count())</b></th>
+                        <th class="col-3"><b class="@(!hunredIsEmpty ? "sorted flip-column" : "")" title="@(!hunredIsEmpty ? "Click to flip column" : "")" data-toggle="@(hundredPositions.Any() ? "tooltip" : "")">100% @(hundredPositions.Any() ? ("(" + hundredPositions.Count() + ")") : "")</b></th>
+                        <th class="col-3"><b class="@(!ninetyIsEmpty ? "sorted flip-column" : "")" title="@(!ninetyIsEmpty ? "Click to flip column" : "")" data-toggle="@(ninetyPositions.Any() ? "tooltip" : "")">90% @(ninetyPositions.Any() ? ("(" + ninetyPositions.Count() + ")") : "")</b></th>
+                        <th class="col-3"><b class="@(!eightyIsEmpty ? "sorted flip-column" : "")" title="@(!eightyIsEmpty ? "Click to flip column" : "")" data-toggle="@(eightyPositions.Any() ? "tooltip" : "")">80% @(eightyPositions.Any() ? ("(" + eightyPositions.Count() + ")") : "")</b></th>
+                        <th class="col-2 hide-in-print"><b class="@(!seventyIsEmpty ? "sorted flip-column" : "")" title="@(!seventyIsEmpty ? "Click to flip column" : "")" data-toggle="@(seventyPositions.Any() ? "tooltip" : "")">70% @(seventyPositions.Any() ? ("(" + seventyPositions.Count() + ")") : "")</b></th>
                             <th class="col-1 hide-in-print">
                                 <img src="@(Model.DisplayTopOfPage ? "/images/icons/up_arrow.png" : "/images/icons/down_arrow.png")" 
                                 class="arrow-icon hide-in-print" data-toggle="collapse" data-target="#collapsibleTop" 
@@ -256,7 +256,7 @@ else
                             {
                                 if (!hunredIsEmpty)
                                 {
-                                    <td>
+                                    <td class="@(hundredPos == null ? "no-border" : "")">
                                         @if (hundredPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@hundredPos.JobTitleId&percent=100@(urlEnd)" target="_blank" lang="en"
@@ -276,6 +276,10 @@ else
                                         }
                                     </td>
                                 }
+                                else 
+                                {
+                                    <td class="dontShow"></td>
+                                }
                             }
 
                             @if (ninetyIsEmpty && i == 0)
@@ -290,7 +294,7 @@ else
                             {
                                 if (!ninetyIsEmpty)
                                 {
-                                    <td>
+                                    <td class="@(ninetyPos == null ? "no-border" : "")">
                                         @if (ninetyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@ninetyPos.JobTitleId&percent=90@(urlEnd)" target="_blank" lang="en"
@@ -310,6 +314,10 @@ else
                                         }
                                     </td>
                                 }
+                                else
+                                {
+                                    <td class="dontShow"></td>
+                                }
                             }
 
                             @if (eightyIsEmpty && i == 0)
@@ -324,7 +332,7 @@ else
                             {
                                 if (!eightyIsEmpty)
                                 {
-                                    <td>
+                                    <td class="@(eightyPos == null ? "no-border" : "")">
                                         @if (eightyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@eightyPos.JobTitleId&percent=80@(urlEnd)" target="_blank" lang="en"
@@ -344,6 +352,10 @@ else
                                         }
                                     </td>
                                 }
+                                else
+                                {
+                                    <td class="dontShow"></td>
+                                }
                             }
 
                             @if (seventyIsEmpty && i == 0)
@@ -358,7 +370,7 @@ else
                             {
                                 if (!seventyIsEmpty)
                                 {
-                                    <td colspan="2">
+                                    <td colspan="2" class="@(seventyPos == null ? "no-border" : "")">
                                         @if (seventyPos != null)
                                         {
                                             <a href="/Similar/Edit?id=@seventyPos.JobTitleId&percent=70@(urlEnd)" target="_blank" lang="en"
@@ -377,6 +389,10 @@ else
                                             <span></span>
                                         }
                                     </td>
+                                }
+                                else
+                                {
+                                    <td class="dontShow"></td>
                                 }
                             }
                         </tr>
