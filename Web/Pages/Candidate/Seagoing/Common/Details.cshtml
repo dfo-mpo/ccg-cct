@@ -545,7 +545,38 @@ else if(!(Model.PageSubmit == "true"))
                     @foreach (var c in Model.PositionCertificates.Where(e => e.Active != 0))
                     {
                         <tr>
-                            <td colspan="2">@(isEnglish ? c.NameEng : c.NameFre) @(isEnglish ? c.DescEng : c.DescFre)</td>
+                            <td colspan="2">
+                                @(isEnglish ? c.NameEng : c.NameFre) 
+                                @{
+                                    var description = isEnglish ? c.CertificateDescEng : c.CertificateDescFre;
+                                    foreach (var desc in description.Split("\r\n"))
+                                    {
+                                        if (desc.Contains("http"))
+                                        {
+
+                                            try
+                                            {
+                                                var dashes_index = desc.IndexOf("---");
+                                                var link = desc.Substring(desc.IndexOf("http"), dashes_index);
+                                                var textlen = desc.IndexOf("---", dashes_index + 1) - dashes_index - 3;
+                                                var linktext = desc.Substring(dashes_index + 3, textlen);
+                                                <a href="@link" target="_blank">
+                                                    @linktext
+                                                </a> <span style="color:#000; font-size:14px" class="glyphicon glyphicon-new-window"></span>
+                                            }
+                                            catch
+                                            {
+                                                <span>@desc</span>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <span>@desc</span><br />
+                                        }
+                                    }
+                                }
+                            </td>
                         </tr>
                     }
                 }
