@@ -12,6 +12,12 @@
 
         public string DescFre { get; set; }
 
+        public string CertificateDescEng { get; set; } // this corresponds to the description that is unique to the certificate, not the selected one (if applicable)
+
+        public string CertificateDescFre { get; set; }
+
+
+
         public int Active { get; set; } 
         public string CurrentPositionHas { get; set; }
         public string ObjectivePositionHas { get; set; }
